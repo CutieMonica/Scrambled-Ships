@@ -19,6 +19,7 @@ var money_coin = preload("res://Scenes/currency_gold_coin.tscn")
 var money_coin_instance
 
 signal rerolling
+signal round_started
 
 @onready var main_scene: Node3D = $"."
 @onready var dice_cup: Node3D = $DiceCup
@@ -153,6 +154,7 @@ func spawn_money():
 		add_child(money_coin_instance)
 
 func round_start():
+	round_started.emit()
 	spawn_coins()
 
 func _ready() -> void:

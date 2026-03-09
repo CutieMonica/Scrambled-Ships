@@ -25,12 +25,16 @@ buses/default_bus_layout="uid://d0egtkkm6dfk0"
 GameManager="*uid://cg3ysk1gmje83"
 GlobalMusicPlayer="*uid://bu0owrhtrjj5o"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="keep_height"
 
 [global_group]
 
@@ -40,6 +44,10 @@ performance_switch=""
 currency=""
 reroll_coins=""
 dice_logic=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -79,6 +87,11 @@ debug_give_money={
 common/physics_ticks_per_second=180
 3d/physics_engine="Jolt Physics"
 jolt_physics_3d/time_before_sleep=0.5
+rapier/solver/preset=1
+rapier/solver/num_internal_pgs_iterations=4
+rapier/solver/num_internal_stabilization_iterations=4
+rapier/solver/contact_damping_ratio=20.0
+rapier/solver/contact_natural_frequency=50.0
 
 [rendering]
 

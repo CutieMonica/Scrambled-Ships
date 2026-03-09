@@ -51,6 +51,7 @@ stencil_color = Color(1, 1, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d82p8"]
 material = SubResource("StandardMaterial3D_badgh")
+size = Vector2(3, 3)
 
 [node name="Boat" type="StaticBody3D" unique_id=1218170003]
 script = ExtResource("1_badgh")
@@ -95,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2, 3.6999989, -3.6499977)
 shape = SubResource("BoxShape3D_tcwdh")
 
 [node name="WoodCarving" type="MeshInstance3D" parent="." unique_id=1190818902]
-transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 13.100001, 0, 4.5000005)
+transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 12.800001, 0, 4.1000004)
 mesh = SubResource("PlaneMesh_d82p8")
 
 [editable path="Sketchfab_Scene2"]

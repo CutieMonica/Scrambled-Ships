@@ -13,33 +13,67 @@ var salesman = load("uid://cmmwwfobvobw7")
 var cool_s = load("res://Assets/Textures/deskcarvings/cool s.png")
 var volf = load("res://Assets/Textures/deskcarvings/Volf.png")
 var cabl = load("res://Assets/Textures/deskcarvings/cablo.png")
+var rus = load("res://Assets/Textures/deskcarvings/rus.png")
+var midnight = load("res://Assets/Textures/deskcarvings/midnight.png")
+var lila = load("res://Assets/Textures/deskcarvings/lila.png")
+var cartooneye = load("uid://cxeo6dkk60f0u")
+var d6 = load("res://Assets/Textures/deskcarvings/d6.png")
+var d20 = load("res://Assets/Textures/deskcarvings/d20.png")
+var godork = load("res://Assets/Textures/deskcarvings/godork.png")
+var heart = load("res://Assets/Textures/deskcarvings/heart.png")
+var infinity = load("res://Assets/Textures/deskcarvings/infinity.png")
+var lightbulb = load("res://Assets/Textures/deskcarvings/lightbulb.png")
+var lilblock = load("res://Assets/Textures/deskcarvings/lilblock.png")
+var minecrap = load("res://Assets/Textures/deskcarvings/minecrap.png")
+var opticalillusion = load("res://Assets/Textures/deskcarvings/opticalillusion.png")
+var overlydetailedeye = load("res://Assets/Textures/deskcarvings/overlydetailedeye.png")
+var saveicon = load("res://Assets/Textures/deskcarvings/saveicon.png")
+var shrimps = load("res://Assets/Textures/deskcarvings/shrimps.png")
+var star = load("res://Assets/Textures/deskcarvings/star.png")
+var funnyorb = load("res://Assets/Textures/deskcarvings/the orb everyone has drawn at least once.png")
+var silvia1 = load("res://Assets/Textures/deskcarvings/silviaart1.png")
+var silvia2 = load("res://Assets/Textures/deskcarvings/silvia2.png")
+var thesog = load("res://Assets/Textures/deskcarvings/thesog.png")
+
+var random_icon_image : Dictionary = {
+	1 : bad_ideas,
+	2 : monica,
+	3 : gorbert,
+	4 : bob,
+	5 : B_0,
+	6 : brooke,
+	7 : limp_knight,
+	8 : mushroom_kid,
+	9 : salesman,
+	10 : cool_s,
+	11 : volf,
+	12 : cabl,
+	13 : rus,
+	14 : midnight,
+	15 : lila,
+	16 : cartooneye,
+	17 : d6,
+	18 : d20,
+	19 : godork,
+	20 : heart,
+	21 : infinity,
+	22 : lightbulb,
+	23 : lilblock,
+	24 : minecrap,
+	25 : opticalillusion,
+	26 : overlydetailedeye,
+	27 : saveicon,
+	28 : shrimps,
+	29 : star,
+	30 : funnyorb,
+	31 : silvia1,
+	32 : silvia2,
+	33 : thesog
+}
 
 var random_icon : int
 
 func _ready() -> void:
-	random_icon = GameManager.rng.randi_range(1, 12)
-	match random_icon:
-		1: 
-			wood_carving.get_active_material(0).albedo_texture = bad_ideas
-		2: 
-			wood_carving.get_active_material(0).albedo_texture = monica
-		3: 
-			wood_carving.get_active_material(0).albedo_texture = gorbert
-		4:
-			wood_carving.get_active_material(0).albedo_texture = bob
-		5:
-			wood_carving.get_active_material(0).albedo_texture = B_0
-		6:
-			wood_carving.get_active_material(0).albedo_texture = brooke
-		7:
-			wood_carving.get_active_material(0).albedo_texture = limp_knight
-		8:
-			wood_carving.get_active_material(0).albedo_texture = mushroom_kid
-		9:
-			wood_carving.get_active_material(0).albedo_texture = salesman
-		10:
-			wood_carving.get_active_material(0).albedo_texture = cool_s
-		11:
-			wood_carving.get_active_material(0).albedo_texture = volf
-		12: 
-			wood_carving.get_active_material(0).albedo_texture = cabl
+	random_icon = GameManager.rng.randi_range(1, random_icon_image.size())
+	
+	wood_carving.get_active_material(0).albedo_texture = random_icon_image.get(random_icon)

@@ -9,9 +9,14 @@ extends Node3D
 @export var added_modifier : float
 @onready var category_chosen: Label3D = $CategoryChosen
 @onready var buff_text: Label3D = $BuffText
+@export var trigger_condition : String = "RoundStart"
+var has_given_modifier : bool = false
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func randomize_category():
+	if has_given_modifier:
+		get_parent().get_parent().score_sheet.buff_one_modifier(-added_modifier, current_category)
 	var random_category = GameManager.rng_statues.randi_range(1, 12)
 	match random_category:
 		1:
@@ -57,7 +62,6 @@ func generate_value():
 			added_modifier = base_modifier + ((get_parent().statue_bottom_instance.base_statue_value * 0.1))
 			buff_text.text = get_symbol() + str(added_modifier) + "X"
 func update_text():
-	randomize_category()
 	match current_category:
 		"ones_multiplier":
 			category_chosen.text = "Ones"
@@ -84,3 +88,9 @@ func update_text():
 		"yacht_multiplier":
 			category_chosen.text = "Yacht"
 			
+func statue_activate():
+	randomize_category()
+	generate_value()
+	update_text()
+	get_parent().get_parent().score_sheet.buff_one_modifier(added_modifier, current_category)
+	animation_player.play("activate")

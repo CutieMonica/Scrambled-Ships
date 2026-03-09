@@ -335,6 +335,14 @@ size = Vector3(10.037079, 0.8005859, 0.61865234)
 
 [node name="ScoreSheet" type="Node3D" unique_id=533206830 groups=["scoresheet"]]
 script = ExtResource("1_ocyq2")
+hovered_category = null
+is_leave_area_highlighted = null
+current_best_double = null
+current_best_triple = null
+current_best_quad = null
+current_best_quint = null
+second_best_triple = null
+second_best_double = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1489588181]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.01, 0)

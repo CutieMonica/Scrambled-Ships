@@ -54,9 +54,11 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		GameManager.toggle_performance_mode(true)
 		get_parent().performance_switch()
+		Engine.physics_ticks_per_second = 120
 	if !toggled_on:
 		GameManager.toggle_performance_mode(false)
 		get_parent().performance_switch()
+		Engine.physics_ticks_per_second = 120 
 
 func _on_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, value)

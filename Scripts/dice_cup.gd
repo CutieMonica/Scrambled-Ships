@@ -9,6 +9,7 @@ extends Node3D
 @onready var outliner: AnimationPlayer = $Outliner
 @onready var cup_body_3d: AnimatableBody3D = $Cup/CupBody3D
 @onready var lid_collider: CollisionShape3D = $Cup/CupBody3D/lid_collider
+@onready var lid_collider_timer: Timer = $LidColliderTimer
 
 
 var outlined : bool = false
@@ -17,9 +18,8 @@ var back_to_normal : bool = true
 func release_on_that_thang():
 	RELEASE = true
 	animation_player.play("lid_off_after_shake")
-	await get_tree().create_timer(0.8).timeout
-	lid_collider.disabled = true
-	await get_tree().create_timer(1.2).timeout
+	lid_collider_timer.start()
+
 	#cup_body_3d.set_collision_layer_value(1, false)
 	#cup_body_3d.set_collision_mask_value(1, false)
 	
@@ -101,3 +101,7 @@ func _on_static_body_3d_mouse_exited() -> void:
 	outlined = false
 	if get_parent().input_handler.hovered_object == "dicecup":
 		get_parent().input_handler.hovered_object = "none"
+
+
+func _on_lid_collider_timer_timeout() -> void:
+	lid_collider.disabled = true

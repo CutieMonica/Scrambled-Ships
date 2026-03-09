@@ -370,6 +370,12 @@ shape = SubResource("BoxShape3D_5ajnl")
 [node name="Outliner" type="AnimationPlayer" parent="." unique_id=226330111]
 libraries/ = SubResource("AnimationLibrary_lgi01")
 
+[node name="LidColliderTimer" type="Timer" parent="." unique_id=1493967005]
+process_callback = 0
+wait_time = 0.6
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="Cup/CupBody3D" to="." method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Cup/CupBody3D" to="." method="_on_static_body_3d_mouse_exited"]
+[connection signal="timeout" from="LidColliderTimer" to="." method="_on_lid_collider_timer_timeout"]

@@ -34,12 +34,13 @@ func _ready() -> void:
 	Engine.max_fps = DisplayServer.screen_get_refresh_rate()
 	if !OS.has_feature("web"):
 		toggle_performance_mode(false)
-		Engine.physics_ticks_per_second = 60
+		Engine.physics_ticks_per_second = 120 
 		print("notonweb")
 	if OS.has_feature("web"):
+		Engine.max_fps = 60
 		toggle_performance_mode(true)
 		get_tree().call_group("performance_switch", "performance_switch")
-		Engine.physics_ticks_per_second = 60
+		Engine.physics_ticks_per_second = 120
 		print("onweb")
 
 func give_me_your_seed():

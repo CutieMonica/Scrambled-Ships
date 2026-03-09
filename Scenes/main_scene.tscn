@@ -860,6 +860,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4, -0.09999995, -8.9)
 
 [node name="Timer" type="Timer" parent="." unique_id=2000857198]
+process_callback = 0
 wait_time = 0.3
 autostart = true
 
@@ -1164,5 +1165,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.199999, 0.5, -11.500001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2000003, 0.89999986, -11.499999)
 
 [connection signal="rerolling" from="." to="StatueCombiner" method="_on_main_scene_rerolling"]
+[connection signal="round_started" from="." to="StatueCombiner" method="_on_main_scene_round_started"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

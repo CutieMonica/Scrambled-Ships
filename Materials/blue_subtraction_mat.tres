@@ -5,10 +5,8 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cc56a"]
 load_path = "res://.godot/imported/Texturelabs_Metal_249S.jpg-033e02de6c67ab4aaf040250f5cd98ca.s3tc.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0kjl6"]
-load_path = "res://.godot/imported/StatueMidNormal.png-0dfdfc009c8b5ad3934166735bb8b08d.s3tc.ctex"
-
 [resource]
+resource_local_to_scene = true
 albedo_color = Color(0.018267546, 0.35733628, 0.96030635, 1)
 albedo_texture = SubResource("CompressedTexture2D_cc56a")
 metallic = 1.0
@@ -19,4 +17,4 @@ emission = Color(0, 0.3372549, 1, 1)
 emission_energy_multiplier = 0.01
 normal_enabled = true
 normal_scale = 3.55
-normal_texture = SubResource("CompressedTexture2D_0kjl6")
+normal_texture = ExtResource("1_t0i85")

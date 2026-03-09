@@ -114,7 +114,8 @@ attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = -9.0
 
 [node name="Timer" type="Timer" parent="." unique_id=893960193]
-wait_time = 10.0
+process_callback = 0
+wait_time = 3.0
 autostart = true
 
 [node name="Currency_coin" type="Node3D" parent="." unique_id=1666231531]

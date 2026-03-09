@@ -21,6 +21,163 @@ normal_texture = ExtResource("4_14nap")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g18ih"]
 points = PackedVector3Array(-124.67774, 10.435056, -537.13275, 24.48226, 453.53384, -901.94214, -209.74185, 37.00122, 269.4638, -157.59692, 948.0367, 529.5769, 206.76529, 37.00122, 269.4638, 154.62036, 948.0367, 529.5769, -165.28233, 571.6323, -373.1325, 24.48226, 661.51733, 764.0864, 180.71321, 661.51733, -224.99573, -24.820723, 735.2999, -419.53714, -209.74185, -15.136047, -485.435, 206.76529, 10.979736, -537.45764, -27.458822, 401.39655, -901.94214, -53.470135, 687.6331, 737.9936, -209.74185, 63.022736, -537.45764, 45.082523, 734.1276, -394.8141, -116.440186, 661.8839, -390.83643, -183.68977, 37.00122, -589.31714, 154.62036, 948.0367, 555.5067, -157.59692, 948.0367, 555.5067, 206.76529, 63.022736, -537.45764, -27.458822, 427.41806, -901.94214, 159.825, 570.03925, -391.48224, 50.57511, 687.6331, 737.9936, 22.12548, 762.2016, -329.16116, -131.5856, 948.0367, 503.64716, 24.48226, 401.39655, -901.94214, 136.53336, 638.91656, -391.03842, -53.470135, 713.7489, 737.9936, 128.60904, 948.0367, 503.64716, 206.76529, 63.022736, 243.20789, -209.74185, 63.022736, 243.20789)
 
+[sub_resource type="Animation" id="Animation_g18ih"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:spot_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D:spot_angle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.22]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpotLight3D:spot_attenuation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.26]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf/wolf_Material_0:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf/wolf_Material_0:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xe8q2"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.006910703, 0.055285625, 0.18658894, 0.442285, 0.8638377, 1.4927115, 2.3703706, 3.53828, 5.0379024, 6.9107018, 9.0893, 10.9621, 12.461721, 13.62963, 14.507289, 15.136164, 15.557715, 15.813412, 15.944715, 15.99309, 16.0, 15.912208504974842, 15.297668039798737, 13.62963, 10.381344318389893, 5.618657, 2.3703709, 0.7023325, 0.08779144, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:spot_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [6.6, 6.601447696837638, 6.611582242273124, 6.639090285389399, 6.692658605757009, 6.780973893780285, 6.912722950687211, 7.096592515269911, 7.341269513628092, 7.655440372374571, 8.0477918178143, 8.504208150714419, 8.896559696051526, 9.21073035500325, 9.455407203515364, 9.639276718149375, 9.771025974851057, 9.859341050592406, 9.912909420908704, 9.940417362566706, 9.950551951512182, 9.952, 9.933607347417531, 9.804861129193762, 9.455407203515364, 8.774891383403613, 7.777108485227728, 7.0965925652186, 6.7471385521299965, 6.6183922105954025, 6.6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D:spot_angle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [50.22, 50.215063441790825, 50.18049898940472, 50.086681207046546, 49.903983370315885, 49.60277889789185, 49.15344111145049, 48.526343348188334, 47.691858417605204, 46.62036068125008, 45.28222263821294, 43.64781852587885, 41.68752034668205, 39.37170208967973, 36.6707382405848, 33.555, 30.439260383143846, 27.738299513983293, 25.422477283735134, 23.462181091161256, 21.82777648217143, 20.489640922412946, 19.418141944418494, 18.583657013835364, 17.956559623065004, 17.507221277885947, 17.20601745732256, 17.023319667153373, 16.929501399779838, 16.894938134226322, 16.89]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpotLight3D:spot_attenuation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [2.48, 2.479041158999765, 2.472329138483714, 2.45411080289795, 2.418632974355307, 2.3601425340226214, 2.272886289669195, 2.1511110904150534, 1.9890636613280535, 1.7809910582818347, 1.521140138666567, 1.21885960622555, 0.9590086204491257, 0.75093614972522, 0.5888888198799549, 0.4671136537063916, 0.3798572770306521, 0.32136697729042396, 0.285889115667203, 0.2676708472763636, 0.26095879794402776, 0.273552802664749, 0.3684224880751943, 0.6259258497423588, 1.1273799713587564, 1.8626198173427753, 2.36407401257091, 2.6215774386483446, 2.716447214923278, 2.73]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf/wolf_Material_0:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.13816383, 0.17149717, 0.2048305, 0.23816383, 0.27149716, 0.2807966, 0.31412992, 0.3398873, 0.37322062, 0.40655395, 0.42750457, 0.4608379, 0.49417123, 0.52750456, 0.5608379, 0.5742126, 0.607546, 0.6408793, 0.67421263, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.8000001, 0), Vector3(-0.054320995, 1.8169312, 0), Vector3(-0.053129777, 80.029274, 0), Vector3(-0.049991623, 286.07303, 0), Vector3(-0.048455156, 386.95364, 0), Vector3(-0.04843014, 388.59613, 0), Vector3(-42.51948, 401.71436, 0), Vector3(-169.93263, 441.06897, 0), Vector3(-319.39035, 487.23264, 0), Vector3(-385.55875, 507.67035, 0), Vector3(-388.86432, 508.69135, 0), Vector3(-69.450775, 539.5382, 0), Vector3(126.326866, 558.4451, 0), Vector3(173.72134, 579.80035, 0), Vector3(271.33115, 623.78186, 0), Vector3(290.05362, 632.2179, 0), Vector3(233.99524, 644.9717, 0), Vector3(65.82008, 683.2331, 0), Vector3(-142.82837, 730.7026, 0), Vector3(-243.87259, 753.6911, 0), Vector3(-252.89764, 755.7444, 0), Vector3(-217.37885, 771.79126, 0), Vector3(-111.732605, 819.52075, 0), Vector3(-21.25763, 860.3961, 0), Vector3(0, 870, 0), Vector3(0, 848.563, 0), Vector3(0, 784.25183, 0), Vector3(0, 677.06665, 0), Vector3(0, 527.0074, 0), Vector3(0, 344.79266, 0), Vector3(0, 194.73334, 0), Vector3(0, 87.54822, 0), Vector3(0, 23.237, 0), Vector3(0, 1.8000001, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf/wolf_Material_0:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.028495178, 0), Vector3(0, 0.11398071, 0), Vector3(0, 0.25645655, 0), Vector3(0, 0.45592284, 0), Vector3(0, 0.7123794, 0), Vector3(0, 1.0258262, 0), Vector3(0, 1.3962636, 0), Vector3(0, 1.8236914, 0), Vector3(0, 2.3081093, 0), Vector3(0, 2.8495176, 0), Vector3(0, 3.4336686, 0), Vector3(0, 3.975077, 0), Vector3(0, 4.4594946, 0), Vector3(0, 4.8869224, 0), Vector3(0, 5.2573595, 0), Vector3(0, 5.5708065, 0), Vector3(0, 5.827263, 0), Vector3(0, 6.026729, 0), Vector3(0, 6.169205, 0), Vector3(0, 6.25469, 0), Vector3(0, 6.2831855, 0), Vector3(0, 5.9729047, 0), Vector3(0, 5.0420623, 0), Vector3(0, 3.490659, 0), Vector3(0, 1.3186932, 0), Vector3(0, -1.3186927, 0), Vector3(0, -3.4906583, 0), Vector3(0, -5.0420613, 0), Vector3(0, -5.9729047, 0), Vector3(0, -6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14nap"]
+_data = {
+&"RESET": SubResource("Animation_g18ih"),
+&"activate": SubResource("Animation_xe8q2")
+}
+
 [node name="WolfModel" type="Node3D" unique_id=86786559]
 script = ExtResource("1_gl83b")
 
@@ -55,8 +212,14 @@ shape = SubResource("ConvexPolygonShape3D_g18ih")
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1277093788]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.2000003, 0)
 light_color = Color(1, 0.7341848, 0.69103616, 1)
+light_energy = 0.0
 shadow_enabled = true
 spot_range = 6.6
-spot_angle = 23.55
+spot_attenuation = 0.26
+spot_angle = 50.22
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1273895839]
+libraries/ = SubResource("AnimationLibrary_14nap")
+speed_scale = 0.75
 
 [editable path="WolfModel"]

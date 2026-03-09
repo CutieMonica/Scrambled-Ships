@@ -136,7 +136,8 @@ attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = -9.0
 
 [node name="Timer" type="Timer" parent="GoldCoin" unique_id=391281326]
-wait_time = 5.0
+process_callback = 0
+wait_time = 7.0
 one_shot = true
 autostart = true
 

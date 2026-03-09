@@ -732,3 +732,32 @@ func buff_all_modifiers(buff):
 	yacht_multiplier = yacht_multiplier + buff
 	
 	update_multipliers()
+
+func buff_one_modifier(buff, modifier):
+	match modifier:
+		"ones_multiplier":
+			ones_multiplier += buff
+		"twos_multiplier":
+			twos_multiplier += buff
+		"threes_multiplier":
+			threes_multiplier += buff
+		"fours_multiplier":
+			fours_multiplier += buff
+		"fives_multiplier":
+			fives_multiplier += buff
+		"sixes_multiplier":
+			sixes_multiplier += buff
+		"choice_multiplier":
+			choice_multiplier += buff
+		"small_straight_multiplier":
+			small_straight_multiplier += buff
+		"large_straight_multiplier":
+			large_straight_multiplier += buff
+		"full_house_multiplier":
+			full_house_multiplier += buff
+		"four_of_a_kind_multiplier":
+			four_of_a_kind_multiplier += buff
+		"yacht_multiplier":
+			yacht_multiplier += buff
+	
+	update_multipliers()

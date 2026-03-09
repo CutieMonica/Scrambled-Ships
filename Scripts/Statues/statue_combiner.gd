@@ -51,3 +51,8 @@ func create_statue():
 func _on_main_scene_rerolling() -> void:
 	if statue_top_instance.trigger_condition == "Reroll":
 		statue_top_instance.statue_activate()
+
+
+func _on_main_scene_round_started() -> void:
+	if statue_top_instance.trigger_condition == "RoundStart":
+		statue_top_instance.statue_activate()

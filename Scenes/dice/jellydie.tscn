@@ -293,6 +293,7 @@ normal = ExtResource("4_83gkj")
 roughness = ExtResource("3_wae6c")
 
 [node name="BladeBounce" type="Timer" parent="." unique_id=1386026640]
+process_callback = 0
 one_shot = true
 
 [connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
