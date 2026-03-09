@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dla5fm74slht3"
+path="res://.godot/imported/see you next time.ogg-2431f4ee1ba47c941d519e7408756c35.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/see you next time.ogg"
+dest_files=["res://.godot/imported/see you next time.ogg-2431f4ee1ba47c941d519e7408756c35.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

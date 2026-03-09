@@ -1,0 +1,375 @@
+[gd_scene format=3 uid="uid://bovakshm0lnr4"]
+
+[ext_resource type="Material" uid="uid://dnss80dkblnx4" path="res://Materials/outside_box_mat.tres" id="1_5ajnl"]
+[ext_resource type="Script" uid="uid://c36kiness2afc" path="res://Scripts/dice_cup.gd" id="1_5fdiy"]
+
+[sub_resource type="Animation" id="Animation_fspbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cup:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yvavy"]
+resource_name = "lid_off_after_shake"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333334, 0.8666667, 0.90000004, 0.93333334, 0.9666667, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333334, 1.5666667, 1.6, 1.6333333, 1.6666667, 1.7, 1.7333333, 1.7666667, 1.8000001, 1.8333334, 1.8666667, 1.9, 1.9333334, 1.9666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0027, 0.0030000005, 0.0012120001), Vector3(0.0216, 0.024000004, 0.009696001), Vector3(0.07289999, 0.08099999, 0.032723997), Vector3(0.1728, 0.19200003, 0.07756801), Vector3(0.3375, 0.37500003, 0.15150002), Vector3(0.5022, 0.558, 0.22543201), Vector3(0.60209996, 0.669, 0.270276), Vector3(0.6534, 0.7260001, 0.29330403), Vector3(0.6723, 0.74700004, 0.30178803), Vector3(0.675, 0.75000006, 0.30300003), Vector3(0.673819, 0.7506409, 0.30332926), Vector3(0.6655518, 0.755127, 0.3056338), Vector3(0.6431122, 0.7673035, 0.31188908), Vector3(0.59941405, 0.7910157, 0.32407036), Vector3(0.52737117, 0.8301087, 0.344153), Vector3(0.4198974, 0.88842785, 0.37411237), Vector3(0.26990652, 0.96981823, 0.41592377), Vector3(0.07031226, 1.0781252, 0.4715626), Vector3(-0.18597138, 1.2171938, 0.54300416), Vector3(-0.5060306, 1.3908694, 0.6322237), Vector3(-0.89695174, 1.6029971, 0.7411968), Vector3(-1.3658209, 1.8574224, 0.87189865), Vector3(-1.9197242, 2.15799, 1.0263045), Vector3(-2.565748, 2.5085454, 1.2063899), Vector3(-3.3109782, 2.9129338, 1.41413), Vector3(-4.162502, 3.375001, 1.6515005), Vector3(-5.014023, 3.8370667, 1.8888702), Vector3(-5.759254, 4.241456, 2.0966108), Vector3(-6.4052763, 4.5920105, 2.2766957), Vector3(-6.959181, 4.8925786, 2.4311018), Vector3(-7.428049, 5.147003, 2.5618033), Vector3(-7.8189707, 5.3591313, 2.6707766), Vector3(-8.139029, 5.5328064, 2.759996), Vector3(-8.395313, 5.6718755, 2.8314376), Vector3(-8.594907, 5.780182, 2.8870764), Vector3(-8.744898, 5.8615723, 2.9288876), Vector3(-8.852371, 5.9198914, 2.958847), Vector3(-8.924414, 5.9589844, 2.9789298), Vector3(-8.968112, 5.9826965, 2.991111), Vector3(-8.990552, 5.994873, 2.9973662), Vector3(-8.998819, 5.999359, 2.9996707), Vector3(-9, 6, 3), Vector3(-9, 6, 3), Vector3(-9, 6, 3), Vector3(-8.999023, 6.0185547, 2.9951172), Vector3(-8.9921875, 6.1484375, 2.9609375), Vector3(-8.973633, 6.5009766, 2.868164), Vector3(-8.9375, 7.1875005, 2.6875), Vector3(-8.87793, 8.319337, 2.3896482), Vector3(-8.7890625, 10.007813, 1.9453123), Vector3(-8.665039, 12.36426, 1.3251948), Vector3(-8.5, 15.500004, 0.49999905), Vector3(-8.334961, 18.635744, -0.3251958), Vector3(-8.2109375, 20.99219, -0.945313), Vector3(-8.12207, 22.680666, -1.3896489), Vector3(-8.0625, 23.812502, -1.6875005), Vector3(-8.026367, 24.499023, -1.8681641), Vector3(-8.0078125, 24.851563, -1.9609375), Vector3(-8.000977, 24.981445, -1.9951172), Vector3(-8, 25, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cup:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333334, 0.8666667, 0.90000004, 0.93333334, 0.9666667, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666666, 1.6, 1.6333333, 1.6666666, 1.6999999, 1.7333333, 1.7666667, 1.8, 1.8333333, 1.8666667, 1.9, 1.9333333, 1.9666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0004058415, -0.000688742, 0), Vector3(0.003246732, -0.005509936, 0), Vector3(0.010957719, -0.018596029, 0), Vector3(0.025973856, -0.044079486, 0), Vector3(0.050730187, -0.08609274, 0), Vector3(0.07548651, -0.12810598, 0), Vector3(0.09050265, -0.15358944, 0), Vector3(0.09821364, -0.16667554, 0), Vector3(0.101054534, -0.17149673, 0), Vector3(0.101460375, -0.17218548, 0), Vector3(0.10144799, -0.17216446, 0.00038349535), Vector3(0.10136129, -0.17201734, 0.0030679628), Vector3(0.10112597, -0.17161797, 0.010354374), Vector3(0.100667715, -0.17084028, 0.024543703), Vector3(0.09991221, -0.16955814, 0.047936916), Vector3(0.09878515, -0.16764544, 0.08283499), Vector3(0.09721222, -0.16497605, 0.1315389), Vector3(0.0951191, -0.16142389, 0.19634962), Vector3(0.092431486, -0.15686283, 0.2795681), Vector3(0.08907507, -0.15116674, 0.38349533), Vector3(0.08497554, -0.14420953, 0.51043224), Vector3(0.080058575, -0.13586509, 0.6626799), Vector3(0.07424986, -0.1260073, 0.84253913), Vector3(0.0674751, -0.11451006, 1.0523112), Vector3(0.05965998, -0.101247236, 1.2942966), Vector3(0.05073017, -0.08609271, 1.570797), Vector3(0.041800387, -0.07093823, 1.8472964), Vector3(0.03398525, -0.05767539, 2.0892823), Vector3(0.027210504, -0.046178162, 2.2990537), Vector3(0.021401785, -0.03632036, 2.4789133), Vector3(0.016484834, -0.027975932, 2.6311607), Vector3(0.012385294, -0.021018729, 2.7580976), Vector3(0.009028882, -0.015322655, 2.8620248), Vector3(0.006341271, -0.010761589, 2.9452434), Vector3(0.004248157, -0.00720942, 3.0100539), Vector3(0.0026752278, -0.004540041, 3.0587578), Vector3(0.0015481636, -0.002627343, 3.0936558), Vector3(0.0007926598, -0.0013452023, 3.117049), Vector3(0.0003344044, -0.0005675107, 3.1312385), Vector3(9.908527e-05, -0.0001681447, 3.1385248), Vector3(1.2382865e-05, -2.1025538e-05, 3.1412094), Vector3(0, 0, 3.1415927), Vector3(-0.0002501878, 0.0002465966, 3.141959), Vector3(-0.0020015023, 0.0019727729, 3.1445231), Vector3(-0.0067550694, 0.006658107, 3.1514828), Vector3(-0.016012019, 0.015782183, 3.1650362), Vector3(-0.03127347, 0.03082457, 3.1873808), Vector3(-0.054040555, 0.053264856, 3.2207143), Vector3(-0.0858144, 0.08458262, 3.2672348), Vector3(-0.12809615, 0.12625746, 3.3291402), Vector3(-0.1823869, 0.17976892, 3.408628), Vector3(-0.23667763, 0.23328035, 3.488116), Vector3(-0.2789594, 0.27495518, 3.5500212), Vector3(-0.31073323, 0.30627295, 3.596542), Vector3(-0.33350033, 0.32871327, 3.6298754), Vector3(-0.34876177, 0.34375563, 3.65222), Vector3(-0.35801876, 0.35287973, 3.6657734), Vector3(-0.36277232, 0.35756508, 3.672733), Vector3(-0.36452362, 0.35929126, 3.6752973), Vector3(-0.3647738, 0.35953784, 3.6756635)]
+}
+
+[sub_resource type="Animation" id="Animation_5ajnl"]
+resource_name = "reload_die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cup:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x2tb1"]
+resource_name = "shake"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.22500002, 0.25000003, 0.10100002), Vector3(0.675, 0.75000006, 0.30300003), Vector3(0.9, 1, 0.404), Vector3(0.8211559, 0.96650636, 0.29527962), Vector3(0.60574996, 0.875, -0.0017499626), Vector3(0.3115, 0.75, -0.40749988), Vector3(0.017250001, 0.625, -0.8132498), Vector3(-0.198156, 0.53349364, -1.1102796), Vector3(-0.277, 0.5, -1.219), Vector3(-0.20775, 0.37499997, -0.9142499), Vector3(-0.06924997, 0.12499994, -0.30474985), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cup:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.033820126, -0.057395164, 0), Vector3(0.101460375, -0.17218548, 0), Vector3(0.13528049, -0.22958063, 0), Vector3(0.08892726, -0.22774705, -0.033767123), Vector3(-0.0037791878, -0.22407989, -0.101301365), Vector3(-0.050132412, -0.22224632, -0.13506848), Vector3(-0.020075103, -0.223738, -0.091986544), Vector3(0.040039513, -0.22672136, -0.0058226734), Vector3(0.07009683, -0.22821304, 0.03725927), Vector3(0.052572615, -0.17115977, 0.02794445), Vector3(0.017524198, -0.05705324, 0.009314813), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5fdiy"]
+resource_name = "shake_backwards"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666666, 0.099999994, 0.13333333, 0.16666666, 0.19999999, 0.23333333, 0.26666665, 0.29999998, 0.3333333, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4.5225425, 0), Vector3(0, 4.7838635, 0), Vector3(0, 4.9453692, 0), Vector3(0, 5, 0), Vector3(0, 4.9148145, 0), Vector3(0, 4.6650634, 0), Vector3(0, 4.267767, 0), Vector3(0, 3.75, 0), Vector3(0, 3.1470475, 0), Vector3(0, 2.5, 0), Vector3(0, 1.8529525, 0), Vector3(0, 1.2499998, 0), Vector3(0, 0.73223305, 0), Vector3(0, 0.33493614, 0), Vector3(0, 0.08518553, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cup:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666666, 0.099999994, 0.13333333, 0.16666666, 0.19999999, 0.23333333, 0.26666665, 0.29999998, 0.3333333, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.026895776, 0.06723944, 0.09413522), Vector3(0.028449865, 0.07112466, 0.09957453), Vector3(0.029410345, 0.07352586, 0.10293621), Vector3(0.029735237, 0.07433809, 0.10407333), Vector3(0.029228635, 0.07307159, 0.10230023), Vector3(0.027743354, 0.069358386, 0.09710174), Vector3(0.025380611, 0.06345153, 0.08883214), Vector3(0.022301428, 0.055753566, 0.078054994), Vector3(0.018715642, 0.046789102, 0.065504745), Vector3(0.014867619, 0.037169047, 0.052036665), Vector3(0.011019597, 0.027548991, 0.038568586), Vector3(0.0074338075, 0.01858452, 0.026018329), Vector3(0.004354624, 0.010886557, 0.015241183), Vector3(0.001991883, 0.0049797073, 0.00697159), Vector3(0.0005066022, 0.0012665018, 0.0017731041), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdsbt"]
+_data = {
+&"RESET": SubResource("Animation_fspbs"),
+&"lid_off_after_shake": SubResource("Animation_yvavy"),
+&"reload_die": SubResource("Animation_5ajnl"),
+&"shake": SubResource("Animation_x2tb1"),
+&"shake_backwards": SubResource("Animation_5fdiy")
+}
+
+[sub_resource type="TorusMesh" id="TorusMesh_dk23n"]
+material = ExtResource("1_5ajnl")
+inner_radius = 3.2
+outer_radius = 2.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ajnl"]
+transparency = 1
+albedo_color = Color(2.3133948, 2.3133948, 2.3133948, 0.3254902)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fspbs"]
+material = SubResource("StandardMaterial3D_5ajnl")
+top_radius = 3.2
+bottom_radius = 3.2
+height = 0.001
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5fdiy"]
+material = ExtResource("1_5ajnl")
+top_radius = 2.6
+bottom_radius = 2.5
+height = 0.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ajnl"]
+rough = true
+absorbent = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5ajnl"]
+margin = 10.0
+height = 1.492041
+radius = 3.269043
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5fdiy"]
+margin = 10.0
+height = 0.503833
+radius = 2.7861328
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ajnl"]
+size = Vector3(1, 5.3, 0.5)
+
+[sub_resource type="Animation" id="Animation_pdsbt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup/MeshInstance3D/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5u4gv"]
+resource_name = "outlineoff"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup/MeshInstance3D/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ic34a"]
+resource_name = "outlineon"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cup/MeshInstance3D/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgi01"]
+_data = {
+&"RESET": SubResource("Animation_pdsbt"),
+&"outlineoff": SubResource("Animation_5u4gv"),
+&"outlineon": SubResource("Animation_ic34a")
+}
+
+[node name="DiceCup" type="Node3D" unique_id=1210964154]
+script = ExtResource("1_5fdiy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=180341227]
+libraries/ = SubResource("AnimationLibrary_pdsbt")
+
+[node name="Cup" type="Node3D" parent="." unique_id=1797666549]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cup" unique_id=320317198]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 2.8, 0)
+mesh = SubResource("TorusMesh_dk23n")
+
+[node name="Outline" type="MeshInstance3D" parent="Cup/MeshInstance3D" unique_id=1442489958]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, -0.54, 0)
+visible = false
+mesh = SubResource("CylinderMesh_fspbs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cup" unique_id=851259063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999981, 0)
+mesh = SubResource("CylinderMesh_5fdiy")
+
+[node name="CupBody3D" type="AnimatableBody3D" parent="Cup" unique_id=1998185871]
+physics_material_override = SubResource("PhysicsMaterial_5ajnl")
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1584246479]
+transform = Transform3D(0.99998814, 6.388873e-07, 2.2351742e-07, -9.313226e-10, 0.9999862, -2.9802322e-08, 2.9802322e-08, 4.470349e-08, 0.9999878, 3.5762787e-07, 0.015708173, 4.470349e-08)
+shape = SubResource("CylinderShape3D_5ajnl")
+
+[node name="lid_collider" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1092772340]
+transform = Transform3D(0.99998814, 6.388873e-07, 2.2351742e-07, -9.313226e-10, 0.99999416, -2.9802322e-08, 2.9802322e-08, 4.4703967e-08, 0.99999577, 4.1951097e-08, 5.7528186, 2.2615206e-08)
+shape = SubResource("CylinderShape3D_5fdiy")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1523307062]
+transform = Transform3D(1, -6.519258e-08, 0, -7.124618e-08, 0.9999999, 0, 3.7252903e-08, -3.7252903e-09, 1, 0.2029345, 2.9548407, -2.7134302)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1497299138]
+transform = Transform3D(0.9848077, -6.484905e-08, 0.17364818, -7.124618e-08, 0.9999999, 0, -0.17364815, 7.651878e-09, 0.9848077, -0.39706552, 2.9548407, -2.61343)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=291608259]
+transform = Transform3D(0.9396927, -5.998686e-08, -0.34202015, -7.124618e-08, 0.9999999, -1.7493699e-15, 0.3420202, -2.5797805e-08, 0.9396927, 0.9029347, 2.9548407, -2.51343)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=138946707]
+transform = Transform3D(0.86602545, -5.459578e-08, -0.49999994, -7.124617e-08, 0.99999976, -6.9974794e-15, 0.50000006, -3.582248e-08, 0.8660255, 1.4029348, 2.9548407, -2.31343)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=76396954]
+transform = Transform3D(0.6427876, -3.905124e-08, -0.7660443, -7.124617e-08, 0.99999976, -7.841479e-15, 0.7660445, -5.233498e-08, 0.6427877, 2.0029347, 2.9548407, -1.8134302)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1049910925]
+transform = Transform3D(0.34202015, -1.8796552e-08, -0.9396926, -7.1246184e-08, 0.9999999, -1.2523528e-14, 0.93969274, -6.253511e-08, 0.34202033, 2.4969037, 2.9548407, -0.94763213)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1704938983]
+transform = Transform3D(-2.9802322e-08, 3.7252885e-09, -1, -7.1246184e-08, 0.9999999, -9.26302e-15, 1.0000001, -6.519258e-08, 1.4901161e-07, 2.6969037, 2.9048407, -0.14763212)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=440010567]
+transform = Transform3D(-0.17364827, 1.4989272e-08, -0.9848078, -7.1246184e-08, 1, -8.533686e-15, 0.9848079, -6.355527e-08, -0.17364812, 2.5969038, 2.9048407, 0.4523679)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=424635340]
+transform = Transform3D(-0.49999994, 3.582248e-08, -0.86602545, -7.124617e-08, 0.9999999, -4.0192886e-15, 0.86602545, -5.4595787e-08, -0.49999994, 2.258115, 2.9548407, 1.383196)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=238734297]
+transform = Transform3D(-0.76604456, 5.2334983e-08, -0.64278775, -7.1246184e-08, 1, -1.9923037e-15, 0.6427877, -3.9051244e-08, -0.7660445, 1.7349102, 2.9548407, 1.9894142)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1663747189]
+transform = Transform3D(-0.9396926, 6.253511e-08, -0.34202027, -7.124616e-08, 0.99999964, -6.4527334e-15, 0.34202012, -1.8796547e-08, -0.93969256, 1.2117053, 2.9548407, 2.322427)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1247086631]
+transform = Transform3D(-0.98480785, 6.484906e-08, -0.17364837, -7.124619e-08, 1, -1.6166742e-14, 0.17364825, -7.651895e-09, -0.9848076, 0.52869284, 2.9548407, 2.5054395)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=71824222]
+transform = Transform3D(-0.98480785, 6.355527e-08, 0.17364801, -7.124619e-08, 1, -8.819849e-15, -0.17364822, 1.4989265e-08, -0.9848079, -0.43149242, 2.9548407, 2.521564)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=823930981]
+transform = Transform3D(-0.86602557, 5.4595805e-08, 0.4999999, -7.124619e-08, 1, -9.462864e-15, -0.50000006, 3.5822488e-08, -0.86602557, -1.1743126, 2.9048407, 2.2727814)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1558681816]
+transform = Transform3D(-0.7660445, 4.754584e-08, 0.64278746, -7.124618e-08, 1, -9.402537e-15, -0.6427877, 4.475873e-08, -0.76604444, -1.6939276, 2.9048407, 1.9235355)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=993228974]
+transform = Transform3D(-0.5, 2.9370092e-08, 0.8660254, -7.124617e-08, 0.9999999, -6.846934e-15, -0.8660254, 5.8321078e-08, -0.5, -2.2417195, 2.9548407, 1.285374)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=911012587]
+transform = Transform3D(-0.23760118, 1.1871224e-08, 0.9713628, -7.124619e-08, 1, -8.0651555e-15, -0.9713628, 6.4210774e-08, -0.2376012, -2.5528193, 2.9548407, 0.5999906)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=394902187]
+transform = Transform3D(0.17364824, -1.4989265e-08, 0.9848078, -7.124616e-08, 0.99999964, -1.078787e-14, -0.9848077, 6.355528e-08, 0.17364806, -2.6164486, 2.9548407, -0.29105932)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1317199894]
+transform = Transform3D(0.34202015, -2.5797785e-08, 0.93969256, -7.124619e-08, 1, -1.6589157e-14, -0.93969274, 5.998688e-08, 0.34201995, -2.4110851, 2.9548407, -1.0644164)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1514864893]
+transform = Transform3D(0.64278775, -4.4758732e-08, 0.7660446, -7.124618e-08, 1, -1.0991001e-14, -0.7660445, 4.7545843e-08, 0.6427876, -2.0982928, 2.9548407, -1.6932516)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=890788386]
+transform = Transform3D(0.86602557, -5.8321092e-08, 0.5000001, -7.124619e-08, 1, -8.732872e-15, -0.5, 2.93701e-08, 0.86602545, -1.4554725, 2.9048407, -2.2243996)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=491101375]
+transform = Transform3D(0.93969274, -6.253511e-08, 0.34202018, -7.124618e-08, 1, -7.57909e-15, -0.34202012, 1.8796534e-08, 0.9396925, -0.9358572, 2.9048407, -2.4798532)
+shape = SubResource("BoxShape3D_5ajnl")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2063001589]
+
+[node name="Outliner" type="AnimationPlayer" parent="." unique_id=226330111]
+libraries/ = SubResource("AnimationLibrary_lgi01")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="Cup/CupBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Cup/CupBody3D" to="." method="_on_static_body_3d_mouse_exited"]

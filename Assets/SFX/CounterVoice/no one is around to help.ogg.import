@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bptygd7tubmal"
+path="res://.godot/imported/no one is around to help.ogg-1de20852aaacec41a425a850d2904e9e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/no one is around to help.ogg"
+dest_files=["res://.godot/imported/no one is around to help.ogg-1de20852aaacec41a425a850d2904e9e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

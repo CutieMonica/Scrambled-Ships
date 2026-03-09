@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bwhv5cg85yfkq"]
+
+[ext_resource type="PackedScene" uid="uid://c1iivfe8aym1q" path="res://Assets/Models/lowpolywolfmirandanimator/scene.gltf" id="1_al8g3"]
+[ext_resource type="Script" uid="uid://4pj4xrali5qi" path="res://Scripts/Statues/wolf.gd" id="1_gl83b"]
+[ext_resource type="Texture2D" uid="uid://b64w4y7u28o2k" path="res://Assets/Textures/Texturelabs_Metal_249S.jpg" id="3_xe8q2"]
+[ext_resource type="Texture2D" uid="uid://byqe5dgbju3cs" path="res://Assets/Textures/Normals/StatueMidNormal.png" id="4_14nap"]
+[ext_resource type="PackedScene" uid="uid://dbf2qrmgjbpyi" path="res://Scenes/Statues/statue_model_logic.tscn" id="4_ea5w3"]
+[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="6_xe8q2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g18ih"]
+resource_local_to_scene = true
+albedo_color = Color(0.18039216, 0.43137255, 1, 1)
+albedo_texture = ExtResource("3_xe8q2")
+emission_enabled = true
+emission = Color(1, 0, 0.1254902, 1)
+emission_energy_multiplier = 0.01
+normal_enabled = true
+normal_scale = 3.55
+normal_texture = ExtResource("4_14nap")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g18ih"]
+points = PackedVector3Array(-124.67774, 10.435056, -537.13275, 24.48226, 453.53384, -901.94214, -209.74185, 37.00122, 269.4638, -157.59692, 948.0367, 529.5769, 206.76529, 37.00122, 269.4638, 154.62036, 948.0367, 529.5769, -165.28233, 571.6323, -373.1325, 24.48226, 661.51733, 764.0864, 180.71321, 661.51733, -224.99573, -24.820723, 735.2999, -419.53714, -209.74185, -15.136047, -485.435, 206.76529, 10.979736, -537.45764, -27.458822, 401.39655, -901.94214, -53.470135, 687.6331, 737.9936, -209.74185, 63.022736, -537.45764, 45.082523, 734.1276, -394.8141, -116.440186, 661.8839, -390.83643, -183.68977, 37.00122, -589.31714, 154.62036, 948.0367, 555.5067, -157.59692, 948.0367, 555.5067, 206.76529, 63.022736, -537.45764, -27.458822, 427.41806, -901.94214, 159.825, 570.03925, -391.48224, 50.57511, 687.6331, 737.9936, 22.12548, 762.2016, -329.16116, -131.5856, 948.0367, 503.64716, 24.48226, 401.39655, -901.94214, 136.53336, 638.91656, -391.03842, -53.470135, 713.7489, 737.9936, 128.60904, 948.0367, 503.64716, 206.76529, 63.022736, 243.20789, -209.74185, 63.022736, 243.20789)
+
+[node name="WolfModel" type="Node3D" unique_id=86786559]
+script = ExtResource("1_gl83b")
+
+[node name="WolfModel" parent="." unique_id=935228335 instance=ExtResource("1_al8g3")]
+transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, 0.90000004, 0.3)
+
+[node name="wolf_Material_0" parent="WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf" parent_id_path=PackedInt32Array(935228335, 664740748) index="0" unique_id=583058577]
+surface_material_override/0 = SubResource("StandardMaterial3D_g18ih")
+
+[node name="StatueModelLogic" parent="." unique_id=334103761 instance=ExtResource("4_ea5w3")]
+
+[node name="CategoryChosen" type="Label3D" parent="." unique_id=814395500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50000006, 1)
+pixel_size = 0.003
+text = "Large Straights"
+font = ExtResource("6_xe8q2")
+font_size = 64
+
+[node name="BuffText" type="Label3D" parent="." unique_id=1765353765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30000007, 1)
+pixel_size = 0.003
+text = "+10x"
+font = ExtResource("6_xe8q2")
+font_size = 64
+
+[node name="Collider" type="StaticBody3D" parent="." unique_id=565700885]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" unique_id=1308145268]
+transform = Transform3D(0.0020683538, 0, 0, 0, 0.0020683538, -4.592668e-19, 0, 4.592668e-19, 0.0020683538, 0, 0.90000004, 0.3)
+shape = SubResource("ConvexPolygonShape3D_g18ih")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1277093788]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.2000003, 0)
+light_color = Color(1, 0.7341848, 0.69103616, 1)
+shadow_enabled = true
+spot_range = 6.6
+spot_angle = 23.55
+
+[editable path="WolfModel"]

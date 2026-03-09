@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4aay76extf34"]
+
+[ext_resource type="Texture2D" uid="uid://bdk7wtl7hch01" path="res://Assets/Textures/Texturelabs_Stone_153S.jpg" id="1_mgo3g"]
+[ext_resource type="Texture2D" uid="uid://cim3n4016ciqq" path="res://Assets/Textures/Normals/BoulderNormalMap.png" id="2_26o68"]
+
+[resource]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_mgo3g")
+metallic_specular = 0.16
+roughness_texture = ExtResource("2_26o68")
+normal_enabled = true
+normal_texture = ExtResource("2_26o68")

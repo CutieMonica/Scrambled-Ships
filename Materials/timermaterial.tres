@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://nresw6p1iyy6"]
+
+[ext_resource type="Texture2D" uid="uid://bgqj6p3p75unm" path="res://Assets/Textures/Texturelabs_Metal_280S.jpg" id="1_3sq37"]
+
+[resource]
+albedo_color = Color(0.20623091, 0.5699446, 1, 1)
+albedo_texture = ExtResource("1_3sq37")
+metallic = 0.41
+metallic_specular = 0.16

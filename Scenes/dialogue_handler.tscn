@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://30sqn75hc7i"]
+
+[ext_resource type="Script" uid="uid://bulp188gl0xcb" path="res://Scripts/dialogue_handler.gd" id="1_u17yf"]
+[ext_resource type="Shader" uid="uid://c8kwx4cskfyqs" path="res://Shaders/test_shader.gdshader" id="2_decec"]
+[ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="2_u17yf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhbmq"]
+shader = ExtResource("2_decec")
+shader_parameter/wave_amplitude = -5.0
+shader_parameter/wave_frequency = 140.0
+shader_parameter/movement_speed = 2.0
+shader_parameter/movement_amplitude = 1.0
+
+[sub_resource type="Theme" id="Theme_u17yf"]
+default_font_size = 48
+
+[sub_resource type="Animation" id="Animation_decec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:material:shader_parameter/wave_frequency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [140.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:material:shader_parameter/wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
+}
+
+[sub_resource type="Animation" id="Animation_mhbmq"]
+resource_name = "wave"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:material:shader_parameter/wave_frequency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [140.0, 280.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:material:shader_parameter/wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.31, 3.88),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8ks0"]
+_data = {
+&"RESET": SubResource("Animation_decec"),
+&"wave": SubResource("Animation_mhbmq")
+}
+
+[node name="DialogueHandler" type="Control" unique_id=176303350]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_right = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u17yf")
+text = " pluh pluh pluh ahwaurfhahnfgeuianiu eguhniusgh isgjuhnidsngbi  hisbn ikunswvi uoi9 sfdsdvfsdf"
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=2092525365]
+material = SubResource("ShaderMaterial_mhbmq")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -639.5
+offset_top = 11.0
+offset_right = 639.5
+offset_bottom = 624.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = SubResource("Theme_u17yf")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1.6845763e-06, 0, 0.54036456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 1, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("2_u17yf")
+text = "ABCDEFGHIJKLMNOPQRSTUVWXYS!~,.?'\": aa aa aa AAAAAAAAAAAA AA AA AA AA AA"
+autowrap_mode = 2
+horizontal_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=175666386]
+wait_time = 0.02
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=620808071]
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="text_shader_animation" type="AnimationPlayer" parent="." unique_id=787625017]
+libraries/ = SubResource("AnimationLibrary_a8ks0")
+autoplay = &"wave"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cikdiag27ut6g"]
+
+[ext_resource type="Texture2D" uid="uid://dlqkmrb0x6lqk" path="res://Assets/Textures/Texturelabs_Wood_261S.jpg" id="1_ug7ug"]
+[ext_resource type="Texture2D" uid="uid://cqm33unthamme" path="res://Assets/Textures/Normals/StatueBaseNormal.png" id="2_3n3mf"]
+
+[resource]
+albedo_color = Color(1, 0.6627451, 0.6784314, 1)
+albedo_texture = ExtResource("1_ug7ug")
+metallic_specular = 0.28
+roughness_texture = ExtResource("2_3n3mf")
+normal_enabled = true
+normal_scale = 2.98
+normal_texture = ExtResource("2_3n3mf")

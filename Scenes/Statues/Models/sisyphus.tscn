@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dqrsqg8wysoh8"]
+
+[ext_resource type="Script" uid="uid://uxw27bfil2ft" path="res://Scripts/Statues/sisyphus.gd" id="1_srq3i"]
+[ext_resource type="Material" uid="uid://4aay76extf34" path="res://Materials/bouldermaterial.tres" id="2_8su0r"]
+[ext_resource type="PackedScene" uid="uid://dbf2qrmgjbpyi" path="res://Scenes/Statues/statue_model_logic.tscn" id="5_26v4f"]
+[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="6_1y2ml"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rstxs"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_srq3i"]
+radius = 496.80002
+
+[sub_resource type="Animation" id="Animation_8su0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.8000001, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rstxs"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 16.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.23, 0.3, 0.36, 0.47, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.8000001, 0), Vector3(-0.36666667, 1.9142858, 0), Vector3(-0.1, 1.9714286, 0), Vector3(-0.42545456, 2.0628572, 0), Vector3(0.22727275, 2.1428573, 0), Vector3(-0.3068182, 2.2114286, 0), Vector3(-0.007553473, 2.337143, 0), Vector3(0.09671588, 2.4857144, 0), Vector3(0, 2.6000001, 0), Vector3(-0.3, 2.3333335, 0), Vector3(0.14999996, 2.0666668, 0), Vector3(0, 1.8000001, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.0943952, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srq3i"]
+_data = {
+&"RESET": SubResource("Animation_8su0r"),
+&"activate": SubResource("Animation_rstxs")
+}
+
+[node name="SisyphusModel" type="Node3D" unique_id=86786559]
+script = ExtResource("1_srq3i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=988273164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8000001, 0)
+mesh = SubResource("SphereMesh_rstxs")
+surface_material_override/0 = ExtResource("2_8su0r")
+
+[node name="StatueModelLogic" parent="." unique_id=334103761 instance=ExtResource("5_26v4f")]
+
+[node name="CategoryChosen" type="Label3D" parent="." unique_id=814395500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50000006, 1)
+pixel_size = 0.003
+text = "Large Straights"
+font = ExtResource("6_1y2ml")
+font_size = 64
+
+[node name="BuffText" type="Label3D" parent="." unique_id=1765353765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30000007, 1)
+pixel_size = 0.003
+text = "+10x"
+font = ExtResource("6_1y2ml")
+font_size = 64
+
+[node name="Collider" type="StaticBody3D" parent="." unique_id=565700885]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" unique_id=1308145268]
+transform = Transform3D(0.0020683538, 0, 0, 0, 0.0020683538, -4.592668e-19, 0, 4.592668e-19, 0.0020683538, 0, 1.7, 0)
+shape = SubResource("SphereShape3D_srq3i")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1277093788]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.2000003, 0)
+light_energy = 0.0
+shadow_enabled = true
+spot_range = 6.6
+spot_angle = 23.55
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=143757768]
+libraries/ = SubResource("AnimationLibrary_srq3i")

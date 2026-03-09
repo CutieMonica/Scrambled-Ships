@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://fi4jk63k3asd"
+path="res://.godot/imported/so sad.ogg-f87364c7f177da1cc49537e9784e56d7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/so sad.ogg"
+dest_files=["res://.godot/imported/so sad.ogg-f87364c7f177da1cc49537e9784e56d7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

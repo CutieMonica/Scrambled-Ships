@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cd5dn7ep10ocp"
+path="res://.godot/imported/Listening to the Radio.ogg-743246ce858af875d355f8bbe0bfac89.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Listening to the Radio.ogg"
+dest_files=["res://.godot/imported/Listening to the Radio.ogg-743246ce858af875d355f8bbe0bfac89.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

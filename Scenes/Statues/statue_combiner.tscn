@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bi60iqmoecgti"]
+
+[ext_resource type="Script" uid="uid://df02ry3ltiofv" path="res://Scripts/Statues/statue_combiner.gd" id="1_xwwdv"]
+
+[node name="StatueCombiner" type="Node3D" unique_id=868220046]
+script = ExtResource("1_xwwdv")

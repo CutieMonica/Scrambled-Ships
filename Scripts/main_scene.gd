@@ -1,0 +1,233 @@
+extends Node3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var current_state : int = 0
+@export var die_spawned : int = 0
+var max_die : int = 7
+var basic_d6 = preload("res://Scenes/dice/Basicd_6.tscn")
+var cursed_die = load("res://Scenes/dice/CursedDice.tscn")
+var leaded_die = load("res://Scenes/dice/LeadedDice.tscn")
+var sky_die = load("res://Scenes/dice/SkyDie.tscn")
+var weighted_die = load("res://Scenes/dice/weighteddie.tscn")
+var inscrybed_die = load("uid://cvdes1pfuas6d")
+var jelly_die = preload("uid://vlnditpvpyti")
+var dice_instance
+var prev_die : int = 0
+var placeholdersong = preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
+var reroll_coin = preload("res://Scenes/gold_coin.tscn")
+var reroll_coin_instance
+var money_coin = preload("res://Scenes/currency_gold_coin.tscn")
+var money_coin_instance
+
+signal rerolling
+
+@onready var main_scene: Node3D = $"."
+@onready var dice_cup: Node3D = $DiceCup
+@onready var camera_movement: AnimationPlayer = $CameraMovement
+@onready var dice_box: Node3D = $DiceBox
+@onready var score_sheet: Node3D = $ScoreSheet
+@onready var input_handler: Node = $input_handler
+@onready var music_source: AudioStreamPlayer3D = $Boat/Radio/MusicSource
+@onready var current_dice_paper: Node3D = $CurrentDicePaper
+@onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D
+@onready var mesh_instance_3d: MeshInstance3D = $Camera3D/MeshInstance3D
+@onready var omni_light_3d: OmniLight3D = $OmniLight3D
+@onready var omni_light_3d_2: OmniLight3D = $OmniLight3D2
+@onready var spot_light_3d_3: SpotLight3D = $SpotLight3D3
+@onready var spot_light_3d_2: SpotLight3D = $SpotLight3D2
+
+
+var chosen_dice : Dictionary = {
+	1: basic_d6,
+	2: weighted_die,
+	3: leaded_die,
+	4: sky_die,
+	5: cursed_die,
+	6: inscrybed_die,
+	7: jelly_die
+	
+}
+
+var in_play_dice_instances : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null,
+	7: null
+}
+
+@export var stored_dice : Dictionary = {
+	1: "false",
+	2: "false",
+	3: "false",
+	4: "false",
+	5: "false",
+	6: null,
+	7: null,
+}
+
+@export var reroll_coins : Dictionary = {}
+
+@export var money_coins : Dictionary = {}
+
+func performance_switch():
+	if GameManager.performance_mode:
+		mesh_instance_3d.visible = false
+		directional_light_3d.shadow_enabled = false
+		omni_light_3d.shadow_enabled = false
+		omni_light_3d_2.shadow_enabled = false
+		spot_light_3d_2.shadow_enabled = false
+		spot_light_3d_3.shadow_enabled = false
+	if !GameManager.performance_mode:
+		mesh_instance_3d.visible = true
+		directional_light_3d.shadow_enabled = true
+		omni_light_3d.shadow_enabled = true
+		omni_light_3d_2.shadow_enabled = true
+		spot_light_3d_2.shadow_enabled = true
+		spot_light_3d_3.shadow_enabled = true
+		
+
+func remove_dice(dice_position):
+	chosen_dice.set(dice_position, null)
+	in_play_dice_instances.set(dice_position, null)
+	stored_dice.set(dice_position, null)
+	GameManager.dice_amount -= 1
+	GameManager.dice_numbers.set(dice_position, null)
+	
+func give_extra_rerolls(amount):
+	for i in amount:
+		GameManager.rolls += 1
+		var n = reroll_coins.size()
+		reroll_coins.get_or_add(n, reroll_coin)
+		reroll_coin_instance = reroll_coins.get(n).instantiate()
+		reroll_coins.set(n, reroll_coin_instance)
+		reroll_coin_instance.name = "Coin" + str(n)
+		reroll_coin_instance.coin_number = n + 1
+		reroll_coin_instance.position.y = GameManager.rng.randf_range(11, 13)
+		reroll_coin_instance.position.x = GameManager.rng.randf_range(10.5, 12.5)
+		reroll_coin_instance.position.z = GameManager.rng.randf_range(2.5, 4.5)
+		add_child(reroll_coin_instance)
+
+func give_extra_money(amount):
+	for i in amount:
+		GameManager.current_money += 1
+		var n = money_coins.size()
+		money_coins.get_or_add(n, money_coin)
+		money_coin_instance = money_coins.get(n).instantiate()
+		money_coins.set(n, money_coin_instance)
+		money_coin_instance.name = "MoneyCoin" + str(n)
+		money_coin_instance.coin_number = n + 1
+		money_coin_instance.position.y = GameManager.rng.randf_range(15, 16)
+		money_coin_instance.position.x = GameManager.rng.randf_range(15.3, 15.8)
+		money_coin_instance.position.z = GameManager.rng.randf_range(-3.65, -3.3)
+		add_child(money_coin_instance)
+		
+func spawn_coins():
+	for n in GameManager.rolls:
+		var random_buffer_time = GameManager.rng.randf_range(0.1, 0.2)
+		await get_tree().create_timer(random_buffer_time).timeout
+		reroll_coins.get_or_add(n, reroll_coin)
+		reroll_coin_instance = reroll_coins.get(n).instantiate()
+		reroll_coins.set(n, reroll_coin_instance)
+		reroll_coin_instance.name = "Coin" + str(n)
+		reroll_coin_instance.coin_number = n + 1
+		reroll_coin_instance.position.y = GameManager.rng.randf_range(11, 13)
+		reroll_coin_instance.position.x = GameManager.rng.randf_range(10.5, 12.5)
+		reroll_coin_instance.position.z = GameManager.rng.randf_range(2.5, 4.5)
+		add_child(reroll_coin_instance)
+	
+
+func spawn_money():
+	for n in GameManager.money_due:
+		var random_buffer_time = GameManager.rng.randf_range(0.1, 0.2)
+		await get_tree().create_timer(random_buffer_time).timeout
+		money_coins.get_or_add(n, money_coin)
+		money_coin_instance = money_coins.get(n).instantiate()
+		money_coins.set(n, money_coin_instance)
+		money_coin_instance.name = "MoneyCoin" + str(n)
+		money_coin_instance.coin_number = n + 1
+		money_coin_instance.position.y = GameManager.rng.randf_range(15, 16)
+		money_coin_instance.position.x = GameManager.rng.randf_range(15.3, 15.8)
+		money_coin_instance.position.z = GameManager.rng.randf_range(-3.65, -3.3)
+		add_child(money_coin_instance)
+
+func round_start():
+	spawn_coins()
+
+func _ready() -> void:
+	performance_switch()
+	music_source.stream = placeholdersong
+	music_source.play()
+	round_start()
+
+func _on_timer_timeout() -> void:
+	if die_spawned != max_die:
+		die_spawned += 1
+		dice_spawner(die_spawned)
+		
+func dice_spawner(dice_position):
+	dice_instance = chosen_dice.get(dice_position).instantiate()
+	in_play_dice_instances.set(dice_position, dice_instance)
+	dice_instance.name = "Die" + str(dice_position)
+	dice_instance.position.y = GameManager.rng.randf_range(11, 13)
+	dice_instance.position.x = GameManager.rng.randf_range(-4.5, 4.5)
+	dice_instance.position.z = GameManager.rng.randf_range(-4.5, 4.5)
+	stored_dice.set(dice_instance.dice_position, "false")
+	add_child(dice_instance)
+	dice_instance.dice_logic.adjust_number(dice_position)
+	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "cup_reloading":
+		current_state = 2
+		get_tree().call_group("dice_logic", "drop")
+		await get_tree().create_timer(0.2).timeout
+		camera_movement.play("zoom_on_box")
+		animation_player.play("cup_shake")
+		get_tree().call_group("dice_logic", "shake")
+		await get_tree().create_timer(0.8).timeout
+		dice_cup.lid_collider.disabled = false
+		current_state = 3
+		
+func roll_used():
+	if reroll_coins.get(GameManager.rolls) != null:
+		reroll_coins.get(GameManager.rolls).i_must_go_now()
+		reroll_coins.erase(GameManager.rolls)
+	
+func become_actionable():
+	input_handler.actionable = true
+		
+func become_inactionable():
+	input_handler.actionable = false
+		
+func reload():
+	if current_state == 0 and GameManager.dice_resting and stored_dice.find_key("false") != null and GameManager.rolls > 0:
+		become_inactionable()
+		GameManager.reset_dice_resting()
+		current_state = 1
+		animation_player.play("cup_reloading")
+		get_tree().call_group("dice_logic", "start_recall")
+		get_tree().call_group("stored_dice", "update_ui")
+		GameManager.update_rolls_count(-1)
+	if current_state == 3:
+		GameManager.has_pressed_release = true
+		camera_movement.play_backwards("zoom_on_box")
+		current_state = 4
+		rerolling.emit()
+		
+func focus_a_die(focused_die):
+	if prev_die != 0:
+		in_play_dice_instances.get(prev_die).dice_logic.losefocusdie()
+	in_play_dice_instances.get(focused_die).focusdie()
+
+func zoom_on_score_sheet():
+	camera_movement.play("DefaultToSheet")
+
+func zoom_out_score_sheet():
+	camera_movement.play_backwards("DefaultToSheet")
+
+func zoom_in_timer():
+	camera_movement.play("default_to_counter")
+	
+func zoom_out_timer():
+	camera_movement.play_backwards("default_to_counter")

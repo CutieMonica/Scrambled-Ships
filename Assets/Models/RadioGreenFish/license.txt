@@ -1,0 +1,11 @@
+Model Information:
+* title:	Old Radio
+* source:	https://sketchfab.com/3d-models/old-radio-8a6351b439a34b8ba9712849acc39927
+* author:	Green fish (https://sketchfab.com/crescentgamedev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Old Radio" (https://sketchfab.com/3d-models/old-radio-8a6351b439a34b8ba9712849acc39927) by Green fish (https://sketchfab.com/crescentgamedev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

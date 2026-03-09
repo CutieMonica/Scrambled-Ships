@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnvak0evd2c1v"
+path="res://.godot/imported/will you persist.ogg-555f630a820f754c40dc0b5b5b051f78.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/will you persist.ogg"
+dest_files=["res://.godot/imported/will you persist.ogg-555f630a820f754c40dc0b5b5b051f78.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

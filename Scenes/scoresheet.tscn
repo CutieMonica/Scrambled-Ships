@@ -1,0 +1,1180 @@
+[gd_scene format=3 uid="uid://b113lh2fktwjk"]
+
+[ext_resource type="Texture2D" uid="uid://b6boaes53b136" path="res://Assets/Textures/scoresheet.jpg" id="1_2r358"]
+[ext_resource type="Script" uid="uid://c2iv0t7df14sk" path="res://Scripts/scoresheet.gd" id="1_ocyq2"]
+[ext_resource type="Texture2D" uid="uid://bs3qsv323tlp4" path="res://Assets/ThunderSpark Assets/styled_dice_1.png" id="3_ocyq2"]
+[ext_resource type="Texture2D" uid="uid://c5um1r12jmcis" path="res://Assets/ThunderSpark Assets/styled_dice_2.png" id="3_psume"]
+[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="4_mqscg"]
+[ext_resource type="Texture2D" uid="uid://cw60wdkcqy0y" path="res://Assets/ThunderSpark Assets/styled_dice_4.png" id="5_a5dby"]
+[ext_resource type="Texture2D" uid="uid://c0va7nnnvsa4d" path="res://Assets/ThunderSpark Assets/styled_dice_5.png" id="6_xrmti"]
+[ext_resource type="Texture2D" uid="uid://delp754go67b4" path="res://Assets/ThunderSpark Assets/styled_dice_6.png" id="7_xrmti"]
+[ext_resource type="Texture2D" uid="uid://hvfwmhhrc1ap" path="res://Assets/ThunderSpark Assets/styled_choice.png" id="9_r2exa"]
+[ext_resource type="Texture2D" uid="uid://cmnya7vskvss8" path="res://Assets/ThunderSpark Assets/styled_small_straight.png" id="10_n5bwl"]
+[ext_resource type="Texture2D" uid="uid://b0lgnlpq3uix8" path="res://Assets/ThunderSpark Assets/styled_large_straight.png" id="11_0erlp"]
+[ext_resource type="Texture2D" uid="uid://bnt3jhml147ch" path="res://Assets/ThunderSpark Assets/styled_full_house.png" id="12_xkks2"]
+[ext_resource type="Texture2D" uid="uid://c4v8qsiat6vtr" path="res://Assets/ThunderSpark Assets/styled_4_of_a_kind.png" id="13_0erlp"]
+[ext_resource type="Texture2D" uid="uid://bnnkp4lv6ejme" path="res://Assets/ThunderSpark Assets/styled_yacht.png" id="14_xkks2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r358"]
+render_priority = -3
+albedo_texture = ExtResource("1_2r358")
+albedo_texture_force_srgb = true
+metallic = 1.0
+metallic_specular = 0.29
+metallic_texture = ExtResource("1_2r358")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8pf8w"]
+material = SubResource("StandardMaterial3D_2r358")
+size = Vector2(8.5, 11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0req8"]
+transparency = 1
+albedo_texture = ExtResource("3_ocyq2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_65ape"]
+material = SubResource("StandardMaterial3D_0req8")
+size = Vector2(7, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocyq2"]
+size = Vector3(11.2, 1, 9.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65ape"]
+transparency = 1
+albedo_texture = ExtResource("3_psume")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_twkpa"]
+material = SubResource("StandardMaterial3D_65ape")
+size = Vector2(7, 7)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_psume"]
+load_path = "res://.godot/imported/styled_dice_3.png-6d5a7c8c3592d189117c7071f263ee53.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5dby"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_psume")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xrmti"]
+material = SubResource("StandardMaterial3D_a5dby")
+size = Vector2(7, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrmti"]
+transparency = 1
+albedo_texture = ExtResource("5_a5dby")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ocyq2"]
+material = SubResource("StandardMaterial3D_xrmti")
+size = Vector2(7, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2exa"]
+transparency = 1
+albedo_texture = ExtResource("6_xrmti")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0req8"]
+material = SubResource("StandardMaterial3D_r2exa")
+size = Vector2(7, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dlp3"]
+transparency = 1
+albedo_texture = ExtResource("7_xrmti")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n5bwl"]
+material = SubResource("StandardMaterial3D_7dlp3")
+size = Vector2(7, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0erlp"]
+transparency = 1
+albedo_texture = ExtResource("9_r2exa")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xkks2"]
+material = SubResource("StandardMaterial3D_0erlp")
+size = Vector2(6, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5bwl"]
+size = Vector3(26.396875, 1, 7.218457)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkks2"]
+transparency = 1
+albedo_texture = ExtResource("10_n5bwl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mqscg"]
+material = SubResource("StandardMaterial3D_xkks2")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1inwp"]
+transparency = 1
+albedo_texture = ExtResource("12_xkks2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sv0l0"]
+material = SubResource("StandardMaterial3D_1inwp")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqscg"]
+transparency = 1
+albedo_texture = ExtResource("11_0erlp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o31sk"]
+material = SubResource("StandardMaterial3D_mqscg")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o31sk"]
+transparency = 1
+albedo_texture = ExtResource("13_0erlp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1inwp"]
+material = SubResource("StandardMaterial3D_o31sk")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv0l0"]
+transparency = 1
+albedo_texture = ExtResource("14_xkks2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e3ght"]
+material = SubResource("StandardMaterial3D_sv0l0")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5bwl"]
+transparency = 1
+albedo_color = Color(2.5025156, 2.5025156, 2.5025156, 1)
+albedo_texture_force_srgb = true
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0erlp"]
+material = SubResource("StandardMaterial3D_n5bwl")
+size = Vector2(8.5, 11)
+
+[sub_resource type="Animation" id="Animation_ocyq2"]
+resource_name = "Clicked"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:input_ray_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HighlightOverlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:is_sheet_highlighted")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MouseDetectLeave:input_ray_pickable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_0req8"]
+resource_name = "Highlighted"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighlightOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:input_ray_pickable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:is_sheet_highlighted")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7dlp3"]
+resource_name = "NotHighlighted"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighlightOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:is_sheet_highlighted")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_n5bwl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighlightOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:input_ray_pickable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:is_sheet_highlighted")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MouseDetectLeave:input_ray_pickable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0erlp"]
+_data = {
+&"Clicked": SubResource("Animation_ocyq2"),
+&"Highlighted": SubResource("Animation_0req8"),
+&"NotHighlighted": SubResource("Animation_7dlp3"),
+&"RESET": SubResource("Animation_n5bwl")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2exa"]
+size = Vector3(8.2, 0.3, 10.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0req8"]
+size = Vector3(0.66154003, 0.7761108, 11.052246)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dlp3"]
+size = Vector3(10.037079, 0.8005859, 0.61865234)
+
+[node name="ScoreSheet" type="Node3D" unique_id=533206830 groups=["scoresheet"]]
+script = ExtResource("1_ocyq2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1489588181]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_8pf8w")
+
+[node name="CurrentSum" type="Label3D" parent="MeshInstance3D" unique_id=767030659]
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, 0.050002392, 0.011000001, -0.6999998)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.7526912, 0.7939707, 0.8760598, 1)
+outline_modulate = Color(0.05882353, 0.05882353, 0.05882353, 0.84705883)
+text = "TOP SUM: 0"
+font = ExtResource("4_mqscg")
+font_size = 74
+outline_size = 16
+horizontal_alignment = 0
+
+[node name="Grand Total" type="Label3D" parent="MeshInstance3D" unique_id=160209659]
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, -3.819378, 0.011000002, 5.0317492)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "GRAND TOTAL"
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 32
+horizontal_alignment = 0
+
+[node name="Grand Total Amount" type="Label3D" parent="MeshInstance3D" unique_id=1049134023]
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, 2.0742753, 0.011000002, 5.0108643)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0.5726471, 1)
+outline_modulate = Color(0.8450555, 0.9238609, 1, 0.75686276)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 32
+
+[node name="BonusScore" type="Label3D" parent="MeshInstance3D" unique_id=1970468534]
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, 1.9500027, 0.011000002, -0.95188516)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 0.8745098)
+outline_modulate = Color(0.42785186, 0.4401774, 0.46054202, 0.6627451)
+text = "BONUS SCORE: 35"
+font = ExtResource("4_mqscg")
+font_size = 64
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="BonusThreshold" type="Label3D" parent="MeshInstance3D" unique_id=1146521266]
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, 1.7398448, 0.011000002, -0.50698143)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.42785186, 0.4401774, 0.46054202, 0.6627451)
+text = "BONUS THRESHOLD: 63"
+font = ExtResource("4_mqscg")
+font_size = 64
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="Bonus Explaination" type="Label3D" parent="MeshInstance3D" unique_id=1392725227]
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, -4.1499977, 0.011000002, -0.70725435)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.71287674, 0.71884143, 1, 0.75686276)
+text = "Once you reach 60% of your total possible 
+top half score, receive a bonus of 33% of 
+your total possible top half score."
+font = ExtResource("4_mqscg")
+font_size = 61
+outline_size = 16
+horizontal_alignment = 0
+
+[node name="DiceIcon1" type="MeshInstance3D" parent="MeshInstance3D" unique_id=575170090]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.6999998, 0.01, -3.7000008)
+mesh = SubResource("PlaneMesh_65ape")
+
+[node name="Ones" type="Label3D" parent="MeshInstance3D/DiceIcon1" unique_id=135459968]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 8.772554, 0.010000005, 0.43593216)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Ones"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="OnesScore" type="Label3D" parent="MeshInstance3D/DiceIcon1" unique_id=2722883]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 30.45961, 0.010000005, 3.8146973e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(7.860955e-05, 1.5630461e-05, 0.19691819, 1)
+outline_modulate = Color(0.62609214, 0.06467085, 0.6348665, 0.1882353)
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="OnesScoreMult" type="Label3D" parent="MeshInstance3D/DiceIcon1" unique_id=1272505931]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 13.951778, 0.010085836, 1.1643028)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectOnes" type="Area3D" parent="MeshInstance3D" unique_id=1064467529]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000005)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectOnes" unique_id=1502708299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119633675, 0, 0.6652336)
+shape = SubResource("BoxShape3D_ocyq2")
+
+[node name="DiceIcon2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2132957675]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.6999998, 0.02, -2.700001)
+mesh = SubResource("PlaneMesh_twkpa")
+
+[node name="Twos" type="Label3D" parent="MeshInstance3D/DiceIcon2" unique_id=2062940165]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 8.760309, -0.089999974, 5.722046e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Twos"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="TwosScore" type="Label3D" parent="MeshInstance3D/DiceIcon2" unique_id=1154397441]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 30.45961, -0.089999974, 7.6293945e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="TwosScoreMult" type="Label3D" parent="MeshInstance3D/DiceIcon2" unique_id=767430654]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 14.3496685, -0.08991414, 0.5994034)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectTwos" type="Area3D" parent="MeshInstance3D" unique_id=945247232]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000005)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectTwos" unique_id=1378852998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050002098, 0, 10.099989)
+shape = SubResource("BoxShape3D_ocyq2")
+
+[node name="DiceIcon3" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2054942473]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.7, 0.01, -1.7000011)
+mesh = SubResource("PlaneMesh_xrmti")
+
+[node name="Threes" type="Label3D" parent="MeshInstance3D/DiceIcon3" unique_id=237566356]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 10.274321, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Threes"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="ThreesScore" type="Label3D" parent="MeshInstance3D/DiceIcon3" unique_id=126534409]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 30.459635, 0.01000002, 7.6293945e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="ThreesScoreMult" type="Label3D" parent="MeshInstance3D/DiceIcon3" unique_id=1379885107]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 17.516727, 0.010085851, 0.68021774)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectThrees" type="Area3D" parent="MeshInstance3D" unique_id=1441360183]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000005)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectThrees" unique_id=103206898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05000305, 0, 19.899986)
+shape = SubResource("BoxShape3D_ocyq2")
+
+[node name="DiceIcon4" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1823588445]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.50000024, 0.01, -3.7000003)
+mesh = SubResource("PlaneMesh_ocyq2")
+
+[node name="Fours" type="Label3D" parent="MeshInstance3D/DiceIcon4" unique_id=275538076]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 9.662788, 0.010000005, 0.25287247)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Fours"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="FoursScore" type="Label3D" parent="MeshInstance3D/DiceIcon4" unique_id=553404290]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 30.75123, 0.010000005, 3.8146973e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="FoursScoreMult" type="Label3D" parent="MeshInstance3D/DiceIcon4" unique_id=837115282]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 16.01377, 0.010085836, 0.93562317)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectFours" type="Area3D" parent="MeshInstance3D" unique_id=1594759535]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000005)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectFours" unique_id=1388529187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2, 0, -0.099998474)
+shape = SubResource("BoxShape3D_ocyq2")
+
+[node name="DiceIcon5" type="MeshInstance3D" parent="MeshInstance3D" unique_id=642303328]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.50000036, 0.02, -2.7000003)
+mesh = SubResource("PlaneMesh_0req8")
+
+[node name="Fives" type="Label3D" parent="MeshInstance3D/DiceIcon5" unique_id=1658208667]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 8.966177, -0.089999974, 1.9073486e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Fives"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="FivesScore" type="Label3D" parent="MeshInstance3D/DiceIcon5" unique_id=1571881078]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 30.751232, -0.089999974, 3.8146973e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="FivesScoreMult" type="Label3D" parent="MeshInstance3D/DiceIcon5" unique_id=1312976357]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 14.5084915, -0.08991414, 0.60209274)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectFives" type="Area3D" parent="MeshInstance3D" unique_id=2010950441]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000005)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectFives" unique_id=424074964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2, 0, 9.9)
+shape = SubResource("BoxShape3D_ocyq2")
+
+[node name="DiceIcon6" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1680853984]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.50000006, 0.01, -1.7000003)
+mesh = SubResource("PlaneMesh_n5bwl")
+
+[node name="Sixes" type="Label3D" parent="MeshInstance3D/DiceIcon6" unique_id=1069388175]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 8.8783455, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Sixes"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="SixesScore" type="Label3D" parent="MeshInstance3D/DiceIcon6" unique_id=2024967519]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 30.751225, 0.01000002, 1.1444092e-05)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="SixesScoreMult" type="Label3D" parent="MeshInstance3D/DiceIcon6" unique_id=1529681777]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 14.280138, 0.010085836, 0.93564224)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectSixes" type="Area3D" parent="MeshInstance3D" unique_id=1637755849]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000003)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectSixes" unique_id=741215037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.199997, 0, 19.9)
+shape = SubResource("BoxShape3D_ocyq2")
+
+[node name="ChoiceIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1398624594]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.8167515, 0.01, 0.33356038)
+mesh = SubResource("PlaneMesh_xkks2")
+
+[node name="Choice" type="Label3D" parent="MeshInstance3D/ChoiceIcon" unique_id=1966437927]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 11.103874, 0.01000002, -0.15741396)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Choice"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+
+[node name="ChoiceScore" type="Label3D" parent="MeshInstance3D/ChoiceIcon" unique_id=48145268]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 66.41372, 0.01000002, 1.0251999e-05)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 24
+
+[node name="ChoiceScoreMult" type="Label3D" parent="MeshInstance3D/ChoiceIcon" unique_id=1111071187]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 18.18491, 0.010085836, 0.49962783)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectChoice" type="Area3D" parent="MeshInstance3D" unique_id=1500591545]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000003)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectChoice" unique_id=496701767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.601555, 0, 40.250313)
+shape = SubResource("BoxShape3D_n5bwl")
+
+[node name="SmallStraightIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=943999086]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.8167515, 0.01, 1.1022877)
+mesh = SubResource("PlaneMesh_mqscg")
+
+[node name="SmallStraight" type="Label3D" parent="MeshInstance3D/SmallStraightIcon" unique_id=799828906]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 3.6634216, 0.01000002, -0.106946945)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Small Straight"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="SmallStraightScore" type="Label3D" parent="MeshInstance3D/SmallStraightIcon" unique_id=501400623]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 66.4233, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 24
+
+[node name="SmallStraightMult" type="Label3D" parent="MeshInstance3D/SmallStraightIcon" unique_id=1460144628]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 33.49173, 0.010085836, 0.91073036)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x1.5"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectSmallStraight" type="Area3D" parent="MeshInstance3D" unique_id=1788622754]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000003)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectSmallStraight" unique_id=1522429955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.601555, 0, 48.126106)
+shape = SubResource("BoxShape3D_n5bwl")
+
+[node name="FullHouseIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=216514352]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.8167517, 0.01, 1.8902601)
+mesh = SubResource("PlaneMesh_sv0l0")
+
+[node name="FullHouse" type="Label3D" parent="MeshInstance3D/FullHouseIcon" unique_id=2140134349]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 3.6634216, 0.01000002, -0.106946945)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Full House"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="FullHouseScore" type="Label3D" parent="MeshInstance3D/FullHouseIcon" unique_id=1460133679]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 66.4233, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 24
+
+[node name="FullHouseMult" type="Label3D" parent="MeshInstance3D/FullHouseIcon" unique_id=416973558]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 25.857372, 0.010085836, 0.910738)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x2"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectFullHouse" type="Area3D" parent="MeshInstance3D" unique_id=1137227272]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499997, 0.01, -4.458992)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectFullHouse" unique_id=859237616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.60155, 0, 63.44451)
+shape = SubResource("BoxShape3D_n5bwl")
+
+[node name="LargeStraightIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1231227737]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.8167517, 0.01, 2.641888)
+mesh = SubResource("PlaneMesh_o31sk")
+
+[node name="LargeStraight" type="Label3D" parent="MeshInstance3D/LargeStraightIcon" unique_id=772570253]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 3.6634216, 0.01000002, -0.106946945)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Large Straight"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="LargeStraightScore" type="Label3D" parent="MeshInstance3D/LargeStraightIcon" unique_id=1576430043]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 66.4233, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 24
+
+[node name="LargeStraightMult" type="Label3D" parent="MeshInstance3D/LargeStraightIcon" unique_id=59236092]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 32.807114, 0.010085836, 0.9107361)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x2.5"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectLargeStraight" type="Area3D" parent="MeshInstance3D" unique_id=2126477140]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.64999986, 0.01, -2.9262824)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectLargeStraight" unique_id=665225101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.60155, 0, 55.759563)
+shape = SubResource("BoxShape3D_n5bwl")
+
+[node name="FourOfAKindIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=638414819]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.8167517, 0.01, 3.410546)
+mesh = SubResource("PlaneMesh_1inwp")
+
+[node name="FourOfAKind" type="Label3D" parent="MeshInstance3D/FourOfAKindIcon" unique_id=958792377]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 3.6634216, 0.01000002, -0.106946945)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Four of a Kind"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="FourOfAKindScore" type="Label3D" parent="MeshInstance3D/FourOfAKindIcon" unique_id=153399049]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 66.4233, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 24
+
+[node name="FourOfAKindMult" type="Label3D" parent="MeshInstance3D/FourOfAKindIcon" unique_id=828797978]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 32.973946, 0.010085836, 0.91075134)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x3"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectFourOfAKind" type="Area3D" parent="MeshInstance3D" unique_id=1001420191]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000003)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectFourOfAKind" unique_id=1068216264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.60155, 0, 71.270035)
+shape = SubResource("BoxShape3D_n5bwl")
+
+[node name="YachtIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=522677308]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.816752, 0.01, 4.211457)
+mesh = SubResource("PlaneMesh_e3ght")
+
+[node name="Yacht" type="Label3D" parent="MeshInstance3D/YachtIcon" unique_id=533226389]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 3.6634216, 0.01000002, 0.16738892)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.12263773, 0.13572392, 0.19774398, 1)
+outline_modulate = Color(0.39607844, 0.48235294, 0.6431373, 0.36078432)
+text = "Yacht"
+font = ExtResource("4_mqscg")
+font_size = 128
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="YachtScore" type="Label3D" parent="MeshInstance3D/YachtIcon" unique_id=2106461385]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 66.4233, 0.01000002, 9.536743e-06)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.003921569, 0, 1, 0.6627451)
+font = ExtResource("4_mqscg")
+font_size = 164
+outline_size = 24
+
+[node name="YachtMult" type="Label3D" parent="MeshInstance3D/YachtIcon" unique_id=374551180]
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 15.145063, 0.010085836, 0.910759)
+shaded = true
+double_sided = false
+texture_filter = 1
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.19215687, 0, 0, 1)
+outline_modulate = Color(0.5040109, 2.0455568e-06, 0.31274348, 0.5254902)
+text = "x5"
+font = ExtResource("4_mqscg")
+font_size = 96
+outline_size = 24
+horizontal_alignment = 0
+
+[node name="MouseDetectYacht" type="Area3D" parent="MeshInstance3D" unique_id=1489884867]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.6499998, 0.01, -3.7000003)
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MouseDetectYacht" unique_id=1608525401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.60155, 0, 78.9874)
+shape = SubResource("BoxShape3D_n5bwl")
+
+[node name="HighlightOverlay" type="MeshInstance3D" parent="." unique_id=85966341]
+transform = Transform3D(-1.05, 0, -1.5854559e-07, 0, 1.05, 0, 1.5854559e-07, 0, -1.05, 0, 0, 0)
+visible = false
+transparency = 0.9
+mesh = SubResource("PlaneMesh_0erlp")
+
+[node name="Highlighter" type="AnimationPlayer" parent="." unique_id=780991852]
+libraries/ = SubResource("AnimationLibrary_0erlp")
+autoplay = &"NotHighlighted"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1766602894]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.47619048, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1596969990]
+transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, 9.082612e-07, -0.2595237, 4.7435407e-07)
+shape = SubResource("BoxShape3D_r2exa")
+
+[node name="MouseDetectLeave" type="Area3D" parent="." unique_id=921477177]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.47619048, 0)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseDetectLeave" unique_id=58806605]
+transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, 4.406585, -0.557827, 0.05205119)
+shape = SubResource("BoxShape3D_0req8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MouseDetectLeave" unique_id=1213530356]
+transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, -4.6981063, -0.5231651, 0.028649632)
+shape = SubResource("BoxShape3D_0req8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MouseDetectLeave" unique_id=1210961532]
+transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, -0.16068985, -0.5099144, 5.8886285)
+shape = SubResource("BoxShape3D_7dlp3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MouseDetectLeave" unique_id=198085899]
+transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, -0.049408454, -0.55884016, -5.877757)
+shape = SubResource("BoxShape3D_7dlp3")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1218816317]
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectOnes" to="." method="_on_mouse_detect_ones_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectOnes" to="." method="_on_mouse_detect_ones_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectTwos" to="." method="_on_mouse_detect_twos_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectTwos" to="." method="_on_mouse_detect_twos_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectThrees" to="." method="_on_mouse_detect_threes_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectThrees" to="." method="_on_mouse_detect_threes_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectFours" to="." method="_on_mouse_detect_fours_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectFours" to="." method="_on_mouse_detect_fours_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectFives" to="." method="_on_mouse_detect_fives_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectFives" to="." method="_on_mouse_detect_fives_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectSixes" to="." method="_on_mouse_detect_sixes_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectSixes" to="." method="_on_mouse_detect_sixes_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectChoice" to="." method="_on_mouse_detect_choice_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectChoice" to="." method="_on_mouse_detect_choice_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectSmallStraight" to="." method="_on_mouse_detect_small_straight_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectSmallStraight" to="." method="_on_mouse_detect_small_straight_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectFullHouse" to="." method="_on_mouse_detect_full_house_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectFullHouse" to="." method="_on_mouse_detect_full_house_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectLargeStraight" to="." method="_on_mouse_detect_large_straight_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectLargeStraight" to="." method="_on_mouse_detect_large_straight_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectFourOfAKind" to="." method="_on_mouse_detect_four_of_a_kind_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectFourOfAKind" to="." method="_on_mouse_detect_four_of_a_kind_mouse_exited"]
+[connection signal="mouse_entered" from="MeshInstance3D/MouseDetectYacht" to="." method="_on_mouse_detect_yacht_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/MouseDetectYacht" to="." method="_on_mouse_detect_yacht_mouse_exited"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]
+[connection signal="mouse_entered" from="MouseDetectLeave" to="." method="_on_mouse_detect_leave_mouse_entered"]

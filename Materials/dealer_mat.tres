@@ -1,0 +1,54 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvx7dgv2fgh5n"]
+
+[ext_resource type="Shader" uid="uid://rr4nq7kuqo0n" path="res://Shaders/dealer_outline.gdshader" id="1_s146u"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s146u"]
+noise_type = 5
+frequency = 0.0696
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s146u"]
+noise = SubResource("FastNoiseLite_s146u")
+in_3d_space = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5aqi4"]
+render_priority = 0
+shader = ExtResource("1_s146u")
+shader_parameter/outline_thickness = 0.001
+shader_parameter/speed = 0.01
+shader_parameter/noise_scale = 0.005
+shader_parameter/alpha = 0.4
+shader_parameter/fire_noise = SubResource("NoiseTexture2D_s146u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s146u"]
+render_priority = 3
+next_pass = SubResource("ShaderMaterial_5aqi4")
+transparency = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.011
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[resource]
+render_priority = 2
+next_pass = SubResource("StandardMaterial3D_s146u")
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+rim_enabled = true
+backlight = Color(1, 1, 1, 1)
+disable_receive_shadows = true
+grow = true
+proximity_fade_enabled = true
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+stencil_outline_thickness = 0.011

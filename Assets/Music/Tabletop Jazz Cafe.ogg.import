@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ct35e0t124pmd"
+path="res://.godot/imported/Tabletop Jazz Cafe.ogg-83075300acc5163928091c8dae246d27.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Tabletop Jazz Cafe.ogg"
+dest_files=["res://.godot/imported/Tabletop Jazz Cafe.ogg-83075300acc5163928091c8dae246d27.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

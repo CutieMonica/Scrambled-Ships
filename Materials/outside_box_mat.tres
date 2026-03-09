@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnss80dkblnx4"]
+
+[ext_resource type="Texture2D" uid="uid://7idd0ljt3aph" path="res://Assets/Textures/leather2.jpg" id="1_pbd68"]
+[ext_resource type="Texture2D" uid="uid://q1rvacwmd1xd" path="res://Assets/Textures/Normals/LeatherNormal.png" id="2_qm7f7"]
+
+[resource]
+albedo_color = Color(2.1658839e-06, 0.36908993, 0.63204986, 1)
+albedo_texture = ExtResource("1_pbd68")
+metallic_specular = 0.48
+roughness = 0.94
+normal_enabled = true
+normal_scale = 1.33
+normal_texture = ExtResource("2_qm7f7")

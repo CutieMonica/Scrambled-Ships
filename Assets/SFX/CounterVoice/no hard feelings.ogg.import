@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbtth2a5p2xf"
+path="res://.godot/imported/no hard feelings.ogg-38aee2df347b26af27ce370c17d98830.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/no hard feelings.ogg"
+dest_files=["res://.godot/imported/no hard feelings.ogg-38aee2df347b26af27ce370c17d98830.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

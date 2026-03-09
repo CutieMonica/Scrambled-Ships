@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ca5xq3wwesjuy"]
+
+[ext_resource type="Shader" uid="uid://cidc38pcjkhmr" path="res://Shaders/camerafiltertest.gdshader" id="1_3gv1l"]
+
+[resource]
+shader = ExtResource("1_3gv1l")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.2690000127775
+shader_parameter/warp_amount = 0.0110000005225
+shader_parameter/vignette_amount = 1.0
+shader_parameter/vignette_intensity = 0.2230000105925
+shader_parameter/grille_amount = 0.358000017005
+shader_parameter/brightness_boost = 1.2990000142025

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bsijpipthoih6"]
+
+[ext_resource type="Script" uid="uid://ddqn1p6rgkn7o" path="res://Scripts/Statues/statue_base_subtraction.gd" id="1_73cdk"]
+[ext_resource type="Material" uid="uid://bctupi7vtgra8" path="res://Materials/blue_marble_statue_mat.tres" id="1_va3gn"]
+[ext_resource type="Material" uid="uid://41aow681w6va" path="res://Materials/blue_subtraction_mat.tres" id="1_xfmr7"]
+[ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="4_f803e"]
+[ext_resource type="PackedScene" uid="uid://dp21i2y5sc45l" path="res://Scenes/Statues/statue_base_logic.tscn" id="5_har0x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gya28"]
+material = ExtResource("1_va3gn")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_har0x"]
+material = ExtResource("1_va3gn")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6mupk"]
+material = ExtResource("1_va3gn")
+size = Vector3(0.9, 0.4, 0.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_06cby"]
+material = ExtResource("1_xfmr7")
+size = Vector3(0.955, 0.1, 0.955)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73cdk"]
+size = Vector3(1, 0.505, 1)
+
+[node name="StatueBaseSubtract" type="Node3D" unique_id=295038882]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_73cdk")
+
+[node name="Square" type="Node3D" parent="." unique_id=1880339018]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Square" unique_id=1357465537]
+mesh = SubResource("BoxMesh_gya28")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Square" unique_id=934393813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0)
+mesh = SubResource("BoxMesh_har0x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Square" unique_id=2057985912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23500001, 0)
+mesh = SubResource("BoxMesh_6mupk")
+
+[node name="SubtractionMinus" type="Node3D" parent="." unique_id=544511002]
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SubtractionMinus" unique_id=531747660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20500001, 0)
+mesh = SubResource("BoxMesh_06cby")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1431282794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4075, 0.5025)
+pixel_size = 0.0015
+modulate = Color(0.8047426, 0.80474263, 0.8047426, 1)
+outline_modulate = Color(0.15294118, 0.15294118, 0.15294118, 0.5529412)
+text = "Sample Text"
+font = ExtResource("4_f803e")
+font_size = 64
+
+[node name="StatueBaseLogic" parent="." unique_id=1867326457 instance=ExtResource("5_har0x")]
+
+[node name="Collider" type="StaticBody3D" parent="." unique_id=1830794781]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" unique_id=1806000196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20249999, 0)
+shape = SubResource("BoxShape3D_73cdk")

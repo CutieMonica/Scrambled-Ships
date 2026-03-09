@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://c538npb3wtyy8"]
+
+[ext_resource type="Script" uid="uid://cslltvnqvf3so" path="res://Scripts/current_dice_paper.gd" id="1_1vxcl"]
+[ext_resource type="Texture2D" uid="uid://bgb1ksujx7am2" path="res://Assets/Textures/DiceCounterPaper.png" id="1_si4sk"]
+[ext_resource type="Shader" uid="uid://ckv2fv5jqhjy6" path="res://Shaders/pencildissolve.gdshader" id="3_p4nx5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsuyi"]
+transparency = 1
+albedo_texture = ExtResource("1_si4sk")
+metallic = 0.43
+metallic_specular = 0.25
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wsuyi"]
+material = SubResource("StandardMaterial3D_wsuyi")
+size = Vector2(8.5, 2)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_si4sk"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p4nx5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cl2oe"]
+noise = SubResource("FastNoiseLite_p4nx5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl2oe"]
+shader = ExtResource("3_p4nx5")
+shader_parameter/progress = 0.0
+shader_parameter/noiseForce = 0.2
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_cl2oe")
+shader_parameter/burnColor = Color(0, 0, 0, 1)
+shader_parameter/borderWidth = 0.0
+shader_parameter/direction = 180.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vxcl"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_cl2oe")
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_si4sk")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p4nx5"]
+material = SubResource("StandardMaterial3D_1vxcl")
+size = Vector2(1.18, 1.18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1vxcl"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cl2oe"]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_1vxcl")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o31ra"]
+material = SubResource("StandardMaterial3D_cl2oe")
+size = Vector2(1.18, 1.18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_77oee"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpv1g"]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_77oee")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bthrv"]
+material = SubResource("StandardMaterial3D_hpv1g")
+size = Vector2(1.18, 1.18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pvrt5"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbm42"]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_pvrt5")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sb24l"]
+material = SubResource("StandardMaterial3D_dbm42")
+size = Vector2(1.18, 1.18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3y1ah"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_algeb"]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_3y1ah")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kg1sk"]
+material = SubResource("StandardMaterial3D_algeb")
+size = Vector2(1.18, 1.18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n818o"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chsek"]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_n818o")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_owpvw"]
+material = SubResource("StandardMaterial3D_chsek")
+size = Vector2(1.18, 1.18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n4ouq"]
+load_path = "res://.godot/imported/diceicon1.png-84c48d21e36930232a8c12519d91b732.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycu7b"]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_n4ouq")
+metallic = 0.7
+metallic_specular = 0.73
+roughness = 0.37
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6e2yp"]
+material = SubResource("StandardMaterial3D_ycu7b")
+size = Vector2(1.18, 1.18)
+
+[node name="CurrentDicePaper" type="Node3D" unique_id=970437158 groups=["dice_paper"]]
+script = ExtResource("1_1vxcl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2067240820]
+mesh = SubResource("PlaneMesh_wsuyi")
+
+[node name="DiceIcon1" type="MeshInstance3D" parent="MeshInstance3D" unique_id=178591616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4880407, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_p4nx5")
+
+[node name="DiceIcon2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1170542370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3182924, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_o31ra")
+
+[node name="DiceIcon3" type="MeshInstance3D" parent="MeshInstance3D" unique_id=717160009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1246351, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_bthrv")
+
+[node name="DiceIcon4" type="MeshInstance3D" parent="MeshInstance3D" unique_id=286264983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061699152, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_sb24l")
+
+[node name="DiceIcon5" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1259758018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2186599, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_kg1sk")
+
+[node name="DiceIcon6" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2055823498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.430207, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_owpvw")
+
+[node name="DiceIcon7" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1099509224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5963235, 0.01, 0.23069918)
+visible = false
+mesh = SubResource("PlaneMesh_6e2yp")

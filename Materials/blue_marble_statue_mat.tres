@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bctupi7vtgra8"]
+
+[ext_resource type="Texture2D" uid="uid://bdkc6gfhff78" path="res://Assets/Textures/Texturelabs_Stone_120S.jpg" id="1_ecqmf"]
+[ext_resource type="Texture2D" uid="uid://bft76i0jmwl8u" path="res://Assets/Textures/Normals/BlueStatueMarbleNormal.png" id="2_fcelo"]
+
+[resource]
+albedo_color = Color(0.8289751, 0.94888335, 0.9999997, 1)
+albedo_texture = ExtResource("1_ecqmf")
+metallic = 1.0
+metallic_specular = 0.27
+metallic_texture = ExtResource("2_fcelo")
+roughness = 0.76
+roughness_texture = ExtResource("2_fcelo")
+normal_enabled = true
+normal_scale = -0.32
+normal_texture = ExtResource("2_fcelo")

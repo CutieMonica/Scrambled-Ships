@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://rgkb2nb8axmm"]
+
+[ext_resource type="Texture2D" uid="uid://bs3qsv323tlp4" path="res://Assets/ThunderSpark Assets/styled_dice_1.png" id="1_rjdcu"]
+[ext_resource type="Texture2D" uid="uid://c5um1r12jmcis" path="res://Assets/ThunderSpark Assets/styled_dice_2.png" id="2_iabyr"]
+[ext_resource type="Texture2D" uid="uid://qsb7raky3em8" path="res://Assets/ThunderSpark Assets/styled_dice_3.png" id="3_hjltj"]
+[ext_resource type="Texture2D" uid="uid://cw60wdkcqy0y" path="res://Assets/ThunderSpark Assets/styled_dice_4.png" id="4_2s27j"]
+[ext_resource type="Texture2D" uid="uid://c0va7nnnvsa4d" path="res://Assets/ThunderSpark Assets/styled_dice_5.png" id="5_1yvqm"]
+[ext_resource type="Texture2D" uid="uid://delp754go67b4" path="res://Assets/ThunderSpark Assets/styled_dice_6.png" id="6_ybcay"]
+[ext_resource type="Shader" uid="uid://c8kwx4cskfyqs" path="res://Shaders/test_shader.gdshader" id="7_iabyr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vknqs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6mkj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rjdcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iabyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hjltj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2s27j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1yvqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ybcay")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjltj"]
+shader = ExtResource("7_iabyr")
+shader_parameter/shake_power = 0.6
+shader_parameter/shake_rate = 0.0570000027075
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 300.0
+shader_parameter/shake_color_rate = 0.374000017765
+
+[node name="testSprite" type="Node2D" unique_id=459035644]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=829806581]
+material = SubResource("ShaderMaterial_vknqs")
+sprite_frames = SubResource("SpriteFrames_j6mkj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1549193818]
+material = SubResource("ShaderMaterial_hjltj")
+offset_left = -592.0
+offset_top = -482.0
+offset_right = 580.0
+offset_bottom = 575.0

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dp21i2y5sc45l"]
+
+[ext_resource type="Script" uid="uid://c43nqee36vbm" path="res://Scripts/Statues/statue_base_logic.gd" id="1_md1l1"]
+
+[node name="StatueBaseLogic" type="Node3D" unique_id=1867326457]
+script = ExtResource("1_md1l1")

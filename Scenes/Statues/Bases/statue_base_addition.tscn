@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c64vl8ofj38lu"]
+
+[ext_resource type="Script" uid="uid://bpialge1p5u1q" path="res://Scenes/Statues/Bases/statue_base_addition.gd" id="1_4wrto"]
+[ext_resource type="Material" uid="uid://cikdiag27ut6g" path="res://Materials/red_wood_statue_mat.tres" id="1_i12ok"]
+[ext_resource type="Material" uid="uid://cgy8ohm86068a" path="res://Materials/red_addition_mat.tres" id="2_4wrto"]
+[ext_resource type="PackedScene" uid="uid://dp21i2y5sc45l" path="res://Scenes/Statues/statue_base_logic.tscn" id="5_bnj25"]
+[ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="5_kf2v3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k7u25"]
+material = ExtResource("1_i12ok")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d31w3"]
+material = ExtResource("1_i12ok")
+size = Vector3(0.9, 0.4, 0.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ri4fo"]
+material = ExtResource("2_4wrto")
+size = Vector3(0.1, 0.4, 0.95)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lfhto"]
+material = ExtResource("2_4wrto")
+size = Vector3(0.955, 0.1, 0.955)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wrto"]
+size = Vector3(1, 0.505, 1)
+
+[node name="StatueBaseAdd" type="Node3D" unique_id=295038882]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_4wrto")
+
+[node name="Square" type="Node3D" parent="." unique_id=1880339018]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Square" unique_id=1357465537]
+mesh = SubResource("BoxMesh_k7u25")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Square" unique_id=934393813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0)
+mesh = SubResource("BoxMesh_k7u25")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Square" unique_id=566022250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0)
+mesh = SubResource("BoxMesh_k7u25")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Square" unique_id=2057985912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23500001, 0)
+mesh = SubResource("BoxMesh_d31w3")
+
+[node name="AdditionPlus" type="Node3D" parent="." unique_id=544511002]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="AdditionPlus" unique_id=1729761115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23500001, 0)
+mesh = SubResource("BoxMesh_ri4fo")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="AdditionPlus" unique_id=1936171398]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.23500001, 0)
+mesh = SubResource("BoxMesh_ri4fo")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="AdditionPlus" unique_id=531747660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20500001, 0)
+mesh = SubResource("BoxMesh_lfhto")
+
+[node name="Collider" type="StaticBody3D" parent="." unique_id=255256072]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" unique_id=918653926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20249999, 0)
+shape = SubResource("BoxShape3D_4wrto")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=321860289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4075, 0.5025)
+pixel_size = 0.0015
+modulate = Color(0.8047426, 0.80474263, 0.8047426, 1)
+outline_modulate = Color(0.15294118, 0.15294118, 0.15294118, 0.5529412)
+text = "Sample Text"
+font = ExtResource("5_kf2v3")
+font_size = 64
+
+[node name="StatueBaseLogic" parent="." unique_id=1867326457 instance=ExtResource("5_bnj25")]

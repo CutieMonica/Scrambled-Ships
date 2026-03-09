@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://c5oy06b4cu1kk"]
+
+[ext_resource type="FontFile" uid="uid://6jxcimkqvcqw" path="res://Assets/Fonts/RedeemGold.ttf" id="1_xdwmm"]
+
+[resource]
+default_font = ExtResource("1_xdwmm")
+default_font_size = 128

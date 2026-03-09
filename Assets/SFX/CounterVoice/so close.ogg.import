@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckigwsru8pvnw"
+path="res://.godot/imported/so close.ogg-41c39e6b13233c27bbcd4cf478d3984a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/so close.ogg"
+dest_files=["res://.godot/imported/so close.ogg-41c39e6b13233c27bbcd4cf478d3984a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

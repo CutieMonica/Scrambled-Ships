@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bycdfg0k7o8hv"
+path="res://.godot/imported/rolls light as waves v1.ogg-54b722aecef8ccea5e5adf323727749b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/rolls light as waves v1.ogg"
+dest_files=["res://.godot/imported/rolls light as waves v1.ogg-54b722aecef8ccea5e5adf323727749b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=99.18
+bpm=0.0
+beat_count=0
+bar_beats=4

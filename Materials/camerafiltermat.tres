@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://duylpm4lh50d5"]
+
+[ext_resource type="Shader" uid="uid://belwys75tenpd" path="res://Shaders/camerafilter.gdshader" id="1_2uir7"]
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_2uir7")
+shader_parameter/zNear = 0.05
+shader_parameter/zFar = 100.0
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0.499
+shader_parameter/enable_color_limit = false
+shader_parameter/color_levels = 32
+shader_parameter/enable_color_palette = false
+shader_parameter/color1 = Color(0.99999994, 0.6448072, 0.8143347, 1)
+shader_parameter/color2 = Color(1, 0.5958415, 0.67884713, 1)
+shader_parameter/color3 = Color(0.0627451, 0, 0.15686275, 1)
+shader_parameter/color4 = Color(0.4509804, 0.06666667, 0.25882354, 1)
+shader_parameter/color5 = Color(0.5921569, 0.09411765, 0.24313726, 1)
+shader_parameter/color6 = Color(0.1078851, 0.17479691, 0.31521913, 1)
+shader_parameter/color7 = Color(0, 0.08235294, 0.1764706, 1)
+shader_parameter/color8 = Color(0, 0.003921569, 0.007843138, 1)
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 1.0

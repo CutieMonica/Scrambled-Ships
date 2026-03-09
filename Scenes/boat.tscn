@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dgbnt6hnb02c8"]
+
+[ext_resource type="Script" uid="uid://br44jrrlrwjny" path="res://Scripts/boat.gd" id="1_badgh"]
+[ext_resource type="PackedScene" uid="uid://d4mx62vgaocyg" path="res://Assets/Models/BoatUsedm/scene.gltf" id="1_d82p8"]
+[ext_resource type="Texture2D" uid="uid://ecaxgiy5lpk6" path="res://Assets/Textures/deskcarvings/badideaswoodcarving.png" id="2_g7r5y"]
+[ext_resource type="Texture2D" uid="uid://gpdqo2eij4fn" path="res://Assets/Models/BoatUsedm/textures/Material_71_alt.png" id="3_tcwdh"]
+[ext_resource type="Texture2D" uid="uid://c1vp8uhoow0lh" path="res://Assets/Models/BoatUsedm/textures/NormalMap.png" id="4_tdcrg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdcrg"]
+albedo_texture = ExtResource("3_tcwdh")
+metallic_specular = 0.01
+roughness = 0.81
+normal_enabled = true
+normal_texture = ExtResource("4_tdcrg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d82p8"]
+size = Vector3(130.8, 1, 60.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdcrg"]
+size = Vector3(33.2, 1, 20.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1i231"]
+size = Vector3(38.9, 1, 16.300001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7r5y"]
+size = Vector3(130.8, 6.7000003, 60.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_badgh"]
+size = Vector3(130.8, 65.4, 4.7000003)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tcwdh"]
+size = Vector3(18, 65.4, 50.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_badgh"]
+transparency = 1
+albedo_color = Color(0.0627451, 0.0627451, 0.0627451, 0.9254902)
+albedo_texture = ExtResource("2_g7r5y")
+metallic = 0.78
+metallic_specular = 1.0
+roughness = 0.95
+rim = 0.0
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat = 0.22
+clearcoat_roughness = 0.69
+refraction_scale = -1.0
+distance_fade_mode = 1
+distance_fade_max_distance = 30.0
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d82p8"]
+material = SubResource("StandardMaterial3D_badgh")
+
+[node name="Boat" type="StaticBody3D" unique_id=1218170003]
+script = ExtResource("1_badgh")
+
+[node name="Sketchfab_Scene2" parent="." unique_id=758205406 instance=ExtResource("1_d82p8")]
+transform = Transform3D(-3000, 0, -0.0004529874, 0, 3000, 0, 0.0004529874, 0, -3000, 14.1, -55.300003, -4)
+
+[node name="Object002_Material #71_0" parent="Sketchfab_Scene2/Sketchfab_model/model_FBX/RootNode/Object002" parent_id_path=PackedInt32Array(758205406, 836249663) index="0" unique_id=784900405]
+transform = Transform3D(1, 0, 8.4703295e-22, 0, 1, -1.3594044e-21, 0, -1.3482707e-21, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_tdcrg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1389783493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.299997, -22.5, 1.9000015)
+shape = SubResource("BoxShape3D_d82p8")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." unique_id=1969138244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999466, -0.50000036, -4.0999994)
+shape = SubResource("BoxShape3D_tdcrg")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="." unique_id=2110674804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7499943, -0.50000036, -4.1499987)
+shape = SubResource("BoxShape3D_1i231")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=337943364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.299997, 33.05, 1.9000015)
+shape = SubResource("BoxShape3D_g7r5y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=289314791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.299997, 3.6999989, -16.749996)
+shape = SubResource("BoxShape3D_badgh")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1128449026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.299997, 3.6999989, 8.350003)
+shape = SubResource("BoxShape3D_badgh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=139952136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.000004, 3.6999989, -3.6499977)
+shape = SubResource("BoxShape3D_tcwdh")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=1838640215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2, 3.6999989, -3.6499977)
+shape = SubResource("BoxShape3D_tcwdh")
+
+[node name="WoodCarving" type="MeshInstance3D" parent="." unique_id=1190818902]
+transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 13.100001, 0, 4.5000005)
+mesh = SubResource("PlaneMesh_d82p8")
+
+[editable path="Sketchfab_Scene2"]

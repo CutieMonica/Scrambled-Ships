@@ -1,0 +1,14 @@
+[gd_resource type="BoxMesh" format=3 uid="uid://um5mf4ccmhn5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_663lq"]
+load_path = "res://.godot/imported/leather2.jpg-14ce716f053ec32eca2b3e4a3eaa8d2b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uybg"]
+render_priority = 3
+transparency = 1
+albedo_color = Color(2.8933547, 3.3580627, 3.851815, 0.09019608)
+albedo_texture = SubResource("CompressedTexture2D_663lq")
+
+[resource]
+material = SubResource("StandardMaterial3D_4uybg")
+size = Vector3(1.2, 0.2, 0.1)

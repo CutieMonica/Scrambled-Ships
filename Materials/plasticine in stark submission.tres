@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bfp1igb2v7bhh"]
+
+[ext_resource type="Texture2D" uid="uid://ru2x7hvkphyp" path="res://Assets/Textures/Texturelabs_InkPaint_324S.jpg" id="1_blpoj"]
+[ext_resource type="Texture2D" uid="uid://dsb6yb746ei23" path="res://Assets/Textures/Normals/InkPaintNormalMap.png" id="2_78x3s"]
+
+[resource]
+albedo_color = Color(0.36773884, 0.0922114, 0.088167734, 1)
+albedo_texture = ExtResource("1_blpoj")
+roughness_texture = ExtResource("2_78x3s")
+normal_enabled = true
+normal_texture = ExtResource("2_78x3s")

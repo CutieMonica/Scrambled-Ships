@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dwp7cq0rq8nc3"]
+
+[ext_resource type="Script" uid="uid://cdlsrwwd1mt5m" path="res://Scripts/dice_logic.gd" id="1_bjgww"]
+
+[node name="DiceLogic" type="Node3D" unique_id=1171884486]
+script = ExtResource("1_bjgww")

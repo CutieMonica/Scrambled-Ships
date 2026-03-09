@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://o6mj605nw506"
+path="res://.godot/imported/will you try again.ogg-1fa23ee64cbd38dcee1a68f954725615.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/CounterVoice/will you try again.ogg"
+dest_files=["res://.godot/imported/will you try again.ogg-1fa23ee64cbd38dcee1a68f954725615.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

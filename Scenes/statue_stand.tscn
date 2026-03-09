@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dx3u1bbeg8ri4"]
+
+[ext_resource type="Material" uid="uid://bfp1igb2v7bhh" path="res://Materials/plasticine in stark submission.tres" id="1_e6lpb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6lpb"]
+size = Vector3(2, 0.8, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7g0sy"]
+points = PackedVector3Array(0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 12, 1, 0, 12, 0, 0, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ky2l"]
+points = PackedVector3Array(0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 4, 1, 0, 4, 0, 0, 4)
+
+[sub_resource type="PrismMesh" id="PrismMesh_7g0sy"]
+material = ExtResource("1_e6lpb")
+left_to_right = 1.0
+size = Vector3(1, 1, 12)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3ky2l"]
+material = ExtResource("1_e6lpb")
+size = Vector2(2, 12)
+
+[sub_resource type="PrismMesh" id="PrismMesh_8x2pv"]
+material = ExtResource("1_e6lpb")
+left_to_right = 1.0
+size = Vector3(1, 1, 4)
+
+[node name="StatueStand" type="Node3D" unique_id=1704196050]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=122661202]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=825538710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -0.099999994, 0)
+shape = SubResource("BoxShape3D_e6lpb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1876489380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, -6)
+shape = SubResource("ConvexPolygonShape3D_7g0sy")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=602237063]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.3999995, -0.5, 6)
+shape = SubResource("ConvexPolygonShape3D_7g0sy")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1924942803]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.4999998, -0.5, 6)
+shape = SubResource("ConvexPolygonShape3D_3ky2l")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=2117463780]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.49999964, -0.5, -6)
+shape = SubResource("ConvexPolygonShape3D_3ky2l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2074362759]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 1.6)
+mesh = SubResource("PrismMesh_7g0sy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2021757882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.3, 0)
+mesh = SubResource("PlaneMesh_3ky2l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1056750770]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5, 0, -1.5)
+mesh = SubResource("PrismMesh_7g0sy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1393973178]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 11.5, 0, 2.2351742e-08)
+mesh = SubResource("PrismMesh_8x2pv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=943116614]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -1.5000005, 0, 1.4901161e-08)
+mesh = SubResource("PrismMesh_8x2pv")

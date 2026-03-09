@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ico Sphere 2 Subdivisions-color
+* source:	https://sketchfab.com/3d-models/ico-sphere-2-subdivisions-color-145d2aa556dd4e3893756e3de321648b
+* author:	chandlerklebs (https://sketchfab.com/chandlerklebs)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ico Sphere 2 Subdivisions-color" (https://sketchfab.com/3d-models/ico-sphere-2-subdivisions-color-145d2aa556dd4e3893756e3de321648b) by chandlerklebs (https://sketchfab.com/chandlerklebs) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

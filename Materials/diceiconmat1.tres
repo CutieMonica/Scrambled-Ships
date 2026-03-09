@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dxb2apil0i3ld"]
+
+[ext_resource type="Texture2D" uid="uid://bs3qsv323tlp4" path="res://Assets/ThunderSpark Assets/styled_dice_1.png" id="1_bdhhq"]
+[ext_resource type="Shader" uid="uid://txju7cf8rojy" path="res://Shaders/PaperIconShader.gdshader" id="2_a6nf6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upscr"]
+render_priority = 0
+shader = ExtResource("2_a6nf6")
+
+[resource]
+next_pass = SubResource("ShaderMaterial_upscr")
+transparency = 1
+albedo_texture = ExtResource("1_bdhhq")
