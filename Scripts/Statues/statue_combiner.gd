@@ -1,16 +1,16 @@
 extends Node3D
 
-var statue_top
+var statue_top : PackedScene
 
-var statue_top_instance
+var statue_top_instance : Node
 
-var statue_bottom
+var statue_bottom : PackedScene
 
-var statue_bottom_instance
+var statue_bottom_instance : Node
 
 #statue models
-var wolf = load("uid://bwhv5cg85yfkq")
-var sisyphus = load("res://Scenes/Statues/Models/sisyphus.tscn")
+var wolf := load("uid://bwhv5cg85yfkq")
+var sisyphus := load("res://Scenes/Statues/Models/sisyphus.tscn")
 
 var common_statues : Dictionary = {
 	1: wolf,
@@ -18,8 +18,8 @@ var common_statues : Dictionary = {
 	}
 	
 #statue bases
-var statue_base_addition = load("uid://c64vl8ofj38lu")
-var state_base_subtraction = load("uid://bsijpipthoih6")
+var statue_base_addition := load("uid://c64vl8ofj38lu")
+var state_base_subtraction := load("uid://bsijpipthoih6")
 
 var common_bases : Dictionary = {
 	1: statue_base_addition,
@@ -29,7 +29,7 @@ var common_bases : Dictionary = {
 func _ready() -> void:
 	create_statue()
 
-func create_statue():
+func create_statue() -> void:
 	var random_statue_base_choice : int = GameManager.rng_statues.randi_range(1, common_bases.size())
 	statue_bottom = common_bases.get(random_statue_base_choice)
 	statue_bottom_instance = statue_bottom.instantiate()
@@ -48,11 +48,10 @@ func create_statue():
 	statue_top_instance.generate_value()
 	statue_top_instance.update_text()
 
-func _on_main_scene_rerolling() -> void:
+func main_scene_rerolling() -> void:
 	if statue_top_instance.trigger_condition == "Reroll":
 		statue_top_instance.statue_activate()
 
-
-func _on_main_scene_round_started() -> void:
+func main_scene_round_started() -> void:
 	if statue_top_instance.trigger_condition == "RoundStart":
 		statue_top_instance.statue_activate()

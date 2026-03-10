@@ -12,9 +12,12 @@ class_name DiceLogic
 @export var normal : Texture2D
 @export var roughness : Texture2D
 
-@export var dice_clink_sound_1 = preload("res://Assets/SFX/diceclink1.ogg")
-@export var dice_clink_sound_2 = preload("res://Assets/SFX/diceclink2.ogg")
-@export var dice_clink_sound_3 = preload("res://Assets/SFX/diceclink3.ogg")
+@export var dice_clink_sound_1 := preload("res://Assets/SFX/diceclink1.ogg")
+@export var dice_clink_sound_2 := preload("res://Assets/SFX/diceclink2.ogg")
+@export var dice_clink_sound_3 := preload("res://Assets/SFX/diceclink3.ogg")
+@onready var storage_timer: Timer = $StorageTimer
+@onready var back_to_box_timer: Timer = $BackToBoxTimer
+@onready var gravity_reset_timer: Timer = $GravityResetTimer
 
 func _ready() -> void:
 	await get_tree().create_timer(0.001).timeout
@@ -27,7 +30,7 @@ func _ready() -> void:
 	get_parent().highlight.get_material_override().roughness_texture = roughness
 	get_parent().highlight.get_material_override().normal_texture = normal
 
-func adjust_number(new_pos):
+func adjust_number(new_pos : float) -> void:
 	get_parent().dice_position = new_pos
 	match get_parent().dice_position:
 		1:
@@ -45,20 +48,16 @@ func adjust_number(new_pos):
 		7:
 			get_parent().stored_pos = Vector3(4.25, 3.5, -5.6)
 			
-func sealed_away_forever():
+func sealed_away_forever() -> void:
 	get_parent().gravity_scale = 1
 	get_parent().set_collision_mask_value(1, false)
 	get_parent().set_collision_layer_value(1, false)
 	get_parent().storing = true
 	get_parent().get_parent().stored_dice.set(dice_position, "true")
-	await get_tree().create_timer(0.8).timeout
-	get_parent().storing = false
-	get_parent().set_collision_mask_value(1, true)
-	get_parent().set_collision_layer_value(1, true)
-	get_parent().gravity_scale = default_gravity
-	get_parent().stored = true
+	storage_timer.start()
+	
 
-func start_recall():
+func start_recall() -> void:
 	if !get_parent().stored:
 		if get_parent().outside_the_box:
 			match get_parent().outside_the_box_multiplier_given_to_top_row:
@@ -81,14 +80,14 @@ func start_recall():
 		get_parent().dropping = false
 		get_parent().shaking = false
 
-func drop():
+func drop() -> void:
 	if get_parent().recalling == true:
 		get_parent().set_collision_mask_value(1, true)
 		get_parent().recalling = false
 		get_parent().dropping = true
 		get_parent().shaking = false
 
-func shake():
+func shake() -> void:
 	if !get_parent().stored:
 		var rotating_x : float
 		var rotating_y : float
@@ -103,22 +102,15 @@ func shake():
 		get_parent().dropping = false
 		get_parent().shaking = true
 		
-func return_to_box():
+func return_to_box() -> void:
 	get_parent().gravity_scale = 1
 	get_parent().set_collision_mask_value(1, false)
 	get_parent().set_collision_layer_value(1, false)
 	get_parent().returning_to_box = true
 	get_parent().get_parent().stored_dice.set(dice_position, "false")
-	await get_tree().create_timer(0.3).timeout
-	get_parent().returning_to_box = false
-	get_parent().stored = false
-	get_parent().gravity_scale = default_gravity
-	get_parent().set_collision_mask_value(1, true)
-	get_parent().set_collision_layer_value(1, true)
-	get_parent().add_to_group("dice")
-	get_parent().remove_from_group("stored_dice")
+	back_to_box_timer.start()
 
-func throw():
+func throw() -> void:
 	#linear_velocity = Vector3(0, -100, 0)
 	#gravity_scale = 4.0
 	get_parent().recalling = false
@@ -127,10 +119,10 @@ func throw():
 	get_parent().get_parent().current_state = 0
 	if !get_parent().stored:
 		get_parent().has_given_number = false
-	await get_tree().create_timer(0.3).timeout
-	get_parent().gravity_scale = default_gravity
+	gravity_reset_timer.start()
 	
-func update_ui():
+	
+func update_ui() -> void:
 	GameManager.update_dice_numbers(get_parent().dice_position, get_parent().number)
 	get_parent().get_parent().current_dice_paper.update_dice_numbers(get_parent().dice_position, get_parent().number)
 
@@ -161,7 +153,7 @@ func _physics_process(delta: float) -> void:
 	if get_parent().returning_to_box:
 		get_parent().position = lerp(get_parent().position, Vector3(get_parent().dice_position * 0.5, 2, 0), delta)
 		
-func focusdie():
+func focusdie() -> void:
 	if !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and get_parent().get_parent().input_handler.hovered_object != "scoresheet":
 		get_parent().animation_player.play("highlighted")
 		get_parent().focused = true
@@ -171,17 +163,17 @@ func focusdie():
 	else:
 		pass
 
-func losefocusdie():
+func losefocusdie() -> void:
 	get_parent().animation_player.play("not_highlighted")
 	print("gups")
 	get_parent().focused = false
 	if get_parent().get_parent().input_handler.hovered_object == "dice" + str(get_parent().dice_position):
 		get_parent().get_parent().input_handler.hovered_object = "none"
 		
-func interacted():
+func interacted() -> void:
 	get_parent().leftclickinteraction()
 	
-func storage():
+func storage() -> void:
 	if get_parent().focused and !get_parent().storing and !get_parent().stored and get_parent().rigid_body_3d.sleeping and !get_parent().outside_the_box:
 		sealed_away_forever()
 		get_parent().add_to_group("stored_dice")
@@ -190,3 +182,25 @@ func storage():
 	if get_parent().focused and get_parent().stored and get_parent().rigid_body_3d.sleeping:
 		return_to_box()
 		losefocusdie()
+
+
+func _on_storage_timer_timeout() -> void:
+	get_parent().storing = false
+	get_parent().set_collision_mask_value(1, true)
+	get_parent().set_collision_layer_value(1, true)
+	get_parent().gravity_scale = default_gravity
+	get_parent().stored = true
+
+
+func _on_back_to_box_timer_timeout() -> void:
+	get_parent().returning_to_box = false
+	get_parent().stored = false
+	get_parent().gravity_scale = default_gravity
+	get_parent().set_collision_mask_value(1, true)
+	get_parent().set_collision_layer_value(1, true)
+	get_parent().add_to_group("dice")
+	get_parent().remove_from_group("stored_dice")
+
+
+func _on_gravity_reset_timer_timeout() -> void:
+	get_parent().gravity_scale = default_gravity

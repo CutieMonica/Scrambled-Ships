@@ -1,8 +1,8 @@
 extends Control
 
-var pen_sound = preload("res://Assets/SFX/sound_garage-pen-signature-5-395486.ogg")
+var pen_sound := preload("res://Assets/SFX/sound_garage-pen-signature-5-395486.ogg")
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-var star_sound = preload("res://Assets/SFX/Extra Life.wav")
+var star_sound := preload("res://Assets/SFX/Extra Life.wav")
 @onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
 func _ready() -> void:

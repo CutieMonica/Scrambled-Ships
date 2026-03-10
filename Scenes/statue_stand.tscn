@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dx3u1bbeg8ri4"]
 
+[ext_resource type="Script" uid="uid://cjnfyted6ht4n" path="res://Scripts/statue_stand.gd" id="1_7g0sy"]
 [ext_resource type="Material" uid="uid://bfp1igb2v7bhh" path="res://Materials/plasticine in stark submission.tres" id="1_e6lpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6lpb"]
@@ -49,10 +50,24 @@ normal_texture = SubResource("CompressedTexture2D_0o3ei")
 material = SubResource("StandardMaterial3D_vtoes")
 size = Vector3(0.45, 0.3, 2.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ky2l"]
+size = Vector3(14.61, 5.31, 3.98)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g0sy"]
+emission_enabled = true
+emission = Color(0.6902347, 0.6844191, 0.9798816, 1)
+emission_energy_multiplier = 0.7
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8x2pv"]
+material = SubResource("StandardMaterial3D_7g0sy")
+size = Vector2(14.5, 4.5)
+
 [node name="StatueStand" type="Node3D" unique_id=1704196050]
+script = ExtResource("1_7g0sy")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=122661202]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 1.5)
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=825538710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -0.099999994, 0)
@@ -127,3 +142,19 @@ mesh = SubResource("BoxMesh_eey84")
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Dividers5" unique_id=1167362594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.699999, 0.5, 2.2351742e-08)
 mesh = SubResource("BoxMesh_eey84")
+
+[node name="MouseDetect" type="Area3D" parent="." unique_id=1391025129]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseDetect" unique_id=785181677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.945, 2.155, 0.00999999)
+shape = SubResource("BoxShape3D_3ky2l")
+
+[node name="Outline" type="MeshInstance3D" parent="." unique_id=1787267122]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 5.02, -0.51, 0)
+visible = false
+mesh = SubResource("PlaneMesh_8x2pv")
+
+[connection signal="mouse_entered" from="MouseDetect" to="." method="_on_mouse_detect_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetect" to="." method="_on_mouse_detect_mouse_exited"]

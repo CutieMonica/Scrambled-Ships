@@ -58,14 +58,12 @@ load_path = "res://.godot/imported/CoinNormalMap.png-93fb82ce8842f032bba5ccb6323
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1jaf"]
 resource_local_to_scene = true
-render_priority = 4
 albedo_color = Color(0.0018249255, 0.27044308, 0.946891, 1)
-metallic = 0.9
-metallic_specular = 0.2
-roughness = 0.83
+metallic = 1.0
+metallic_specular = 0.1
+roughness = 0.78
 normal_texture = SubResource("CompressedTexture2D_5rwv6")
 bent_normal_texture = SubResource("CompressedTexture2D_13x2q")
-clearcoat_enabled = true
 clearcoat = 0.19
 clearcoat_roughness = 0.7
 refraction_scale = 1.0
@@ -137,7 +135,7 @@ attenuation_filter_db = -9.0
 
 [node name="Timer" type="Timer" parent="GoldCoin" unique_id=391281326]
 process_callback = 0
-wait_time = 7.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -179,6 +177,11 @@ font = ExtResource("2_ev4ma")
 font_size = 64
 outline_size = 24
 
+[node name="KillTimer" type="Timer" parent="." unique_id=719516859]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
 [connection signal="body_entered" from="GoldCoin" to="GoldCoin" method="_on_body_entered"]
 [connection signal="timeout" from="GoldCoin/Timer" to="GoldCoin" method="_on_timer_timeout"]
 [connection signal="area_entered" from="GoldCoin/StupidFeatureStopper" to="GoldCoin" method="_on_stupid_feature_stopper_area_entered"]
@@ -188,3 +191,4 @@ outline_size = 24
 [connection signal="mouse_entered" from="GoldCoin/StupidFeatureContinuer" to="GoldCoin" method="_on_stupid_feature_continuer_mouse_entered"]
 [connection signal="mouse_exited" from="GoldCoin/StupidFeatureContinuer" to="GoldCoin" method="_on_stupid_feature_continuer_mouse_exited"]
 [connection signal="body_entered" from="GoldCoin/StupidFeatureNeutral" to="GoldCoin" method="_on_stupid_feature_neutral_body_entered"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

@@ -732,7 +732,12 @@ scale_amount_min = 0.8
 scale_amount_max = 1.2
 scale_amount_curve = SubResource("Curve_nqhm1")
 
-[connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
+[node name="DeathTimer" type="Timer" parent="." unique_id=1510915993]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_body_entered"]
 [connection signal="mouse_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

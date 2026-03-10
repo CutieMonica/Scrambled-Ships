@@ -75,7 +75,7 @@ var dice_images: Dictionary = {
 	null: DICEICONNULL
 }
 
-func clear_dice_numbers():
+func clear_dice_numbers() -> void:
 	for i in 8:
 		match i:
 			1: 
@@ -100,7 +100,8 @@ func clear_dice_numbers():
 				dice_icon_7.get_active_material(0).albedo_texture = DICEICONNULL
 				dice_icon_7.visible = false
 
-func update_dice_numbers(dice_position, dice_value):
+@warning_ignore("untyped_declaration")
+func update_dice_numbers(dice_position : int, dice_value) -> void:
 	print(dice_number_display.get(dice_position))
 	print("dice position for sheet is " + str(dice_position))
 	#dice_number_display.get(dice_position).get_active_material(0).albedo_texture = dice_images.get(dice_value)

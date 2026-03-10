@@ -23,8 +23,8 @@ var returning_to_box : bool = false
 var rotation_delta_mult : int = 10
 var outside_the_box : bool = false
 var outside_the_box_multiplier_given_to_top_row : int 
-var values = [1, 2, 3, 4, 5, 6]
-@export var weight_probabilities = [1, 1, 1, 0.8, 0.6, 0.5]
+var values : Array = [1, 2, 3, 4, 5, 6]
+@export var weight_probabilities : Array = [1, 1, 1, 0.8, 0.6, 0.5]
 @export var dice_position : int = 1
 @onready var ray_cast_1: RayCast3D = $RayCast1
 @onready var ray_cast_2: RayCast3D = $RayCast2
@@ -52,9 +52,9 @@ func _ready() -> void:
 	
 	rig_die()
 	
-func rig_die():
-	var random_weight = GameManager.rng
-	var random_value = values[random_weight.rand_weighted(weight_probabilities)]
+func rig_die() -> void:
+	var random_weight := GameManager.rng
+	var random_value : int = values[random_weight.rand_weighted(weight_probabilities)]
 	match random_value:
 		1:
 			rigid_body_3d.center_of_mass.y = -0.2
@@ -69,10 +69,10 @@ func rig_die():
 		6:
 			rigid_body_3d.center_of_mass.y = 0.2
 	
-func update_ui():
+func update_ui() -> void:
 	dice_logic.update_ui()
 
-func return_to_box():
+func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
@@ -191,7 +191,7 @@ func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 		audio_stream_player_3d.pitch_scale = (0 + randf_range(0.8, 2))
 		audio_stream_player_3d.play()
 	
-func leftclickinteraction():
+func leftclickinteraction() -> void:
 	dice_logic.storage()
 	
 func _on_d_6_mouse_detect_mouse_entered() -> void:

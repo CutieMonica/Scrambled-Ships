@@ -5,7 +5,7 @@ extends RigidBody3D
 var mid_air_hits : int = 0
 var hovered : bool = false
 var random_song : int = 1
-var hit = preload("res://Assets/SFX/impact-fx-orchestra-hit_C_major.wav")
+var hit := preload("res://Assets/SFX/impact-fx-orchestra-hit_C_major.wav")
 var moving : bool = false
 @onready var gold_coin: RigidBody3D = $"."
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
@@ -13,15 +13,15 @@ var moving : bool = false
 @onready var timer: Timer = $Timer
 @onready var collision_shape_3d: CollisionShape3D = $StupidFeatureNeutral/CollisionShape3D
 @onready var mesh: MeshInstance3D = $"Sketchfab_Scene/Sketchfab_model/4761e60571154708a3a5b48b4216d582_fbx/RootNode/bitcoin/bitcoin_Material_0"
-var values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-@export var weight_probabilities = [2, 2, 1, 0.7, 0.7, 0.7, 0.2, 0.2, 0.9, 0.9]
+var values : Array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+@export var weight_probabilities : Array = [2, 2, 1, 0.7, 0.7, 0.7, 0.2, 0.2, 0.9, 0.9]
 
 var proximity_coins : Dictionary = {}
 
 func _ready() -> void:
 	hit_counter.visible = false
-	var random_weight = GameManager.rng
-	var random_value = values[random_weight.rand_weighted(weight_probabilities)]
+	var random_weight := GameManager.rng
+	var random_value : int = values[random_weight.rand_weighted(weight_probabilities)]
 	match random_value:
 		1:
 			mesh.get_surface_override_material(0).albedo_color = Color("fcb700")
@@ -44,12 +44,12 @@ func _ready() -> void:
 		10:
 			mesh.get_surface_override_material(0).albedo_color = Color("fcb458ff")
 
-func freeze():
-	if gold_coin.sleeping or linear_velocity.length() < 1.0:
+func freeze() -> void:
+	if gold_coin.sleeping or linear_velocity.length() < 1.5:
 		gold_coin.freeze = true
 		moving = false
 
-func unfreeze():
+func unfreeze() -> void:
 	timer.start()
 	gold_coin.freeze = false
 
@@ -133,7 +133,7 @@ func _input(event: InputEvent) -> void:
 				audio_stream_player_3d.pitch_scale = (1 + mid_air_hits * 0.1)
 					
 
-func stop_the_count():
+func stop_the_count() -> void:
 	collision_shape_3d.disabled = true
 	moving = false
 	mid_air_hits = 0
@@ -169,12 +169,11 @@ func _on_stupid_feature_continuer_mouse_exited() -> void:
 
 
 func _on_timer_timeout() -> void:
-	if gold_coin.sleeping or linear_velocity.length() < 1.0:
+	if gold_coin.sleeping or linear_velocity.length() < 1.5:
 		freeze()
 		timer.stop()
 	else:
 		timer.start()
-
 
 func _on_stupid_feature_neutral_body_entered(body: Node3D) -> void:
 	if body.is_in_group("reroll_coins"):

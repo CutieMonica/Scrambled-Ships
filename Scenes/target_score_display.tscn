@@ -237,3 +237,5 @@ bus = &"SFX"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1165333056]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009999961, 0.20250002, 0.9999999)
 shape = SubResource("BoxShape3D_2xv7r")
+
+[node name="VariableTimer" type="Timer" parent="." unique_id=95203118]

@@ -46,10 +46,10 @@ func _ready() -> void:
 	gravity_scale = dice_logic.default_gravity
 	mass = dice_logic.default_mass
 	
-func update_ui():
+func update_ui() -> void:
 	dice_logic.update_ui()
 
-func return_to_box():
+func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
@@ -172,7 +172,7 @@ func _on_d_6_mouse_detect_mouse_entered() -> void:
 	dice_logic.focusdie()
 	print(str(dice_position) + " focused")
 
-func leftclickinteraction():
+func leftclickinteraction() -> void:
 	dice_logic.storage()
 
 func _on_d_6_mouse_detect_mouse_exited() -> void:

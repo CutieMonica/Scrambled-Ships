@@ -1,7 +1,8 @@
 extends Node
 
 var hovered_object : String = "none"
-@export var actionable = false
+var statue_camera_state : bool = false
+@export var actionable : bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_spawn_coins"):
@@ -32,6 +33,11 @@ func _input(event: InputEvent) -> void:
 				get_parent().reload()
 			if hovered_object == "scoresheet":
 				get_parent().score_sheet.interact()
-			
+			if hovered_object == "statues":
+				if !statue_camera_state: 
+					get_parent().zoom_on_statue()
+				if statue_camera_state: 
+					get_parent().zoom_out_statue()
+				statue_camera_state = !statue_camera_state
 	if event.is_action_pressed("DebugTool"):
 		print(get_parent().stored_dice.has("false"))

@@ -2,6 +2,7 @@ extends Node3D
 @onready var label_3d: Label3D = $Label3D
 @onready var round_counter: Label3D = $RoundCounter
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var variable_timer: Timer = $VariableTimer
 
 
 const voice_0 = preload("uid://eu3fkj42s76c")
@@ -24,10 +25,10 @@ func _ready() -> void:
 	GameManager.calculate_round_target_and_progress_round()
 	label_3d.text = str(GameManager.new_round_target)
 	round_counter.text = str(GameManager.current_round)
-	#await get_tree().create_timer(2).timeout
-	#get_new_target_score()
+	await get_tree().create_timer(2).timeout
+	get_new_target_score()
 	
-func play_number(number):
+func play_number(number : int) -> void:
 	match number:
 		0:
 			audio_stream_player_3d.stream = voice_0
@@ -52,49 +53,89 @@ func play_number(number):
 	audio_stream_player_3d.play()
 
 
-func get_new_target_score():
+func get_new_target_score() -> void:
 	get_parent().zoom_in_timer()
 	GameManager.calculate_round_target_and_progress_round()
 	label_3d.text = "ROUND " + str(GameManager.current_round - 1)
 	audio_stream_player_3d.stream = voiceROUND
 	audio_stream_player_3d.play()
-	await get_tree().create_timer(0.2).timeout
-	play_number(GameManager.current_round - 1)
-	await get_tree().create_timer(0.6).timeout
+	variable_timer.wait_time = 0.2
+	variable_timer.start()
+	await variable_timer.timeout
+	for n in (int(str(GameManager.current_round - 1).length())):
+		play_number((int(str(GameManager.current_round - 1)[n])))
+		variable_timer.wait_time = 0.6
+		variable_timer.start()
+		await variable_timer.timeout
 	label_3d.text = "SCORE"
 	audio_stream_player_3d.stream = voiceSCORE
 	audio_stream_player_3d.play()
-	await get_tree().create_timer(0.8).timeout
+	variable_timer.wait_time = 0.8
+	variable_timer.start()
+	await variable_timer.timeout
 	label_3d.text = "PASSED!!"
 	audio_stream_player_3d.stream = voicePASSED
 	audio_stream_player_3d.play()
-	await get_tree().create_timer(0.8).timeout
+	variable_timer.wait_time = 0.8
+	variable_timer.start()
+	await variable_timer.timeout
 	label_3d.text = "ROUND " + str(GameManager.current_round)
 	audio_stream_player_3d.stream = voiceROUND
 	audio_stream_player_3d.play()
-	await get_tree().create_timer(0.2).timeout
-	play_number(GameManager.current_round)
-	await get_tree().create_timer(0.6).timeout
+	variable_timer.wait_time = 0.2
+	variable_timer.start()
+	await variable_timer.timeout
+	for n in (int(str(GameManager.current_round).length())):
+		play_number((int(str(GameManager.current_round)[n])))
+		variable_timer.wait_time = 0.6
+		variable_timer.start()
+		await variable_timer.timeout
 	label_3d.text = "SCORE"
 	audio_stream_player_3d.stream = voiceSCORE
 	audio_stream_player_3d.play()
-	await get_tree().create_timer(0.8).timeout
+	variable_timer.wait_time = 0.8
+	variable_timer.start()
+	await variable_timer.timeout
 	label_3d.text = "IS"
 	audio_stream_player_3d.stream = voiceIS
 	audio_stream_player_3d.play()
-	await get_tree().create_timer(0.4).timeout
-	label_3d.text = ""
-	await get_tree().create_timer(0.4).timeout
+	variable_timer.wait_time = 0.4
+	variable_timer.start()
+	await variable_timer.timeout
 	label_3d.text = str(GameManager.new_round_target)
-	await get_tree().create_timer(0.4).timeout
-	label_3d.text = " "
-	await get_tree().create_timer(0.4).timeout
-	label_3d.text = str(GameManager.new_round_target)
-	await get_tree().create_timer(0.4).timeout
-	label_3d.text = " "
-	await get_tree().create_timer(0.4).timeout
-	label_3d.text = str(GameManager.new_round_target)
-	await get_tree().create_timer(0.2).timeout
+	for n in (int(str(GameManager.new_round_target).length())):
+		play_number((int(str(GameManager.new_round_target)[n])))
+		variable_timer.wait_time = 0.4
+		variable_timer.start()
+		label_3d.visible = !label_3d.visible
+		round_counter.visible = !round_counter.visible
+		await variable_timer.timeout
+	#label_3d.text = ""
+	#variable_timer.wait_time = 0.4
+	#variable_timer.start()
+	#await variable_timer.timeout
+	#label_3d.text = str(GameManager.new_round_target)
+	#variable_timer.wait_time = 0.4
+	#variable_timer.start()
+	#await variable_timer.timeout
+	#label_3d.text = " "
+	#variable_timer.wait_time = 0.4
+	#variable_timer.start()
+	#await variable_timer.timeout
+	#label_3d.text = str(GameManager.new_round_target)
+#	variable_timer.wait_time = 0.4
+	#variable_timer.start()
+	#await variable_timer.timeout
+#	label_3d.text = " "
+	#variable_timer.wait_time = 0.4
+	#variable_timer.start()
+	#await variable_timer.timeout
+	#label_3d.text = str(GameManager.new_round_target)
+	#variable_timer.wait_time = 0.4
+	#variable_timer.start()
+	#await variable_timer.timeout
+	label_3d.visible = true
+	round_counter.visible = true
 	round_counter.text = str(GameManager.current_round)
 	get_parent().zoom_out_timer()
 	

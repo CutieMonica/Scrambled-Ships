@@ -18,9 +18,9 @@ var visible_fps : bool = false
 var has_pressed_release : bool = false
 var dice_amount : int = 7
 var previous_round_target : int = 40
-var rng = RandomNumberGenerator.new()
-var rng_shops = RandomNumberGenerator.new()
-var rng_statues = RandomNumberGenerator.new()
+var rng := RandomNumberGenerator.new()
+var rng_shops := RandomNumberGenerator.new()
+var rng_statues := RandomNumberGenerator.new()
 var input_seed : int
 @export var base_round_target : int = 80
 @export var new_round_target : int = 40
@@ -43,18 +43,18 @@ func _ready() -> void:
 		Engine.physics_ticks_per_second = 120
 		print("onweb")
 
-func give_me_your_seed():
+func give_me_your_seed() -> void:
 	#seed
 	if input_seed != null and input_seed != 0:
 		rng.seed = input_seed
 		rng_shops.seed = input_seed
 		rng_statues.seed = input_seed
 	if input_seed == null or input_seed == 0:
-		var random_seed = RandomNumberGenerator.new().randi_range(1, 999999999)
+		var random_seed := RandomNumberGenerator.new().randi_range(1, 999999999)
 		rng.seed = random_seed
 		rng_shops.seed = random_seed
 		rng_statues.seed = random_seed
-func toggle_performance_mode(state):
+func toggle_performance_mode(state : bool) -> void:
 	if state == true:
 		performance_mode = true
 		crt_filter.visible = true
@@ -72,13 +72,14 @@ func toggle_performance_mode(state):
 	7: null
 }
 
-func update_rolls_count(increment):
+func update_rolls_count(increment : int) -> void:
 	rolls += increment
 	rolls_counter.text = "Rolls:" + str(rolls)
 	if increment < 0:
 		get_tree().call_group("main", "roll_used")
 
-func update_dice_numbers(dice_position, dice_value):
+@warning_ignore("untyped_declaration")
+func update_dice_numbers(dice_position : int, dice_value) -> void:
 	dice_numbers.set(dice_position, dice_value)
 	dice_rested += 1
 	if dice_rested >= dice_amount:
@@ -87,7 +88,7 @@ func update_dice_numbers(dice_position, dice_value):
 		print("become_actionable")
 		get_tree().call_group("scoresheet", "calculate_score")
 	
-func reset_dice_resting():
+func reset_dice_resting() -> void:
 	get_tree().call_group("dice_paper", "clear_dice_numbers")
 	dice_resting = false
 	dice_rested = 0
@@ -102,7 +103,7 @@ func _input(event: InputEvent) -> void:
 			fps.visible = false
 			fps_2.visible = false
 
-func calculate_round_target_and_progress_round():
+func calculate_round_target_and_progress_round() -> void:
 	current_round += 1
 	previous_round_target = new_round_target
 	@warning_ignore("integer_division")

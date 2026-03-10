@@ -10,7 +10,7 @@ extends Node3D
 func _ready() -> void:
 	seed(1)
 
-func performance_switch():
+func performance_switch() -> void:
 	if GameManager.performance_mode:
 		mesh_instance_3d.visible = false
 		directional_light_3d.shadow_enabled = false

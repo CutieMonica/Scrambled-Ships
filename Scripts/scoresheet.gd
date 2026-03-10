@@ -59,9 +59,9 @@ extends Node3D
 @export var second_best_triple : int = 0
 @export var second_best_double : int = 0
 	
-var highlighted = false
-var can_highlight = true
-var has_temp_modifier = false
+var highlighted : bool = false
+var can_highlight : bool = true
+var has_temp_modifier : bool = false
 
 
 var ones_amount : int
@@ -131,22 +131,22 @@ var full_house_larger_number : int
 var full_house_smaller_number : int
 
 var top_sum : int
-var bonus_given = false
+var bonus_given : bool = false
 var max_top_sum : int
 var bonus_amount : int
 var current_grand_total : int
 var bonus_threshold_amount : int
 
-var outline_color = Color("a010a230")
-var permanent_number_color = Color("000032")
-var info_outline_color = Color("0f0f0fd8")
-var info_color = Color("c0cadf")
+var outline_color : Color = Color("a010a230")
+var permanent_number_color : Color = Color("000032")
+var info_outline_color : Color = Color("0f0f0fd8")
+var info_color : Color = Color("c0cadf")
 var inside_sheet : bool = false
 
-var pencil_sound_1 = preload("res://Assets/SFX/pencilsound1.ogg")
-var pencil_sound_2 = preload("res://Assets/SFX/pencilsound2.ogg")
+var pencil_sound_1 := preload("res://Assets/SFX/pencilsound1.ogg")
+var pencil_sound_2 := preload("res://Assets/SFX/pencilsound2.ogg")
 
-func random_sound():
+func random_sound() -> void:
 	var play_sound : int
 	play_sound = randi_range(1, 2)
 	if play_sound == 1:
@@ -154,7 +154,7 @@ func random_sound():
 	if play_sound == 2:
 		audio_stream_player.stream = pencil_sound_2
 	audio_stream_player.play()
-func calculate_score():
+func calculate_score() -> void:
 	print("score calculated")
 	ones_amount = GameManager.dice_numbers.values().count(1)
 	twos_amount = (GameManager.dice_numbers.values().count(2) * 2)
@@ -307,11 +307,11 @@ func _ready() -> void:
 	bonus_explaination.outline_modulate = info_outline_color
 
 
-func reset_text():
+func reset_text() -> void:
 	current_sum.modulate = info_color
 	current_sum.outline_modulate = info_outline_color
 	
-func update_multipliers():
+func update_multipliers() -> void:
 	ones_score_mult.text = ("x" + str(snappedf(ones_multiplier, 0.01)))
 	twos_score_mult.text = ("x" + str(snappedf(twos_multiplier, 0.01)))
 	threes_score_mult.text = ("x" + str(snappedf(threes_multiplier, 0.01)))
@@ -345,7 +345,7 @@ func update_multipliers():
 		bonus_given = true
 	
 
-func lock_in_score():
+func lock_in_score() -> void:
 	random_sound()
 	if hovered_category == "ones":
 		ones_locked_in = true
@@ -448,7 +448,7 @@ func _on_area_3d_mouse_exited() -> void:
 	if get_parent().input_handler.hovered_object == "scoresheet" and inside_sheet:
 		pass
 
-func interact():
+func interact() -> void:
 	if is_sheet_highlighted:
 		enter_sheet()
 	if hovered_category != "none" and hovered_category != "outside":
@@ -458,13 +458,13 @@ func interact():
 	if hovered_category == "none":
 		pass
 
-func enter_sheet():
+func enter_sheet() -> void:
 	inside_sheet = true
 	highlighter.play("Clicked")
 	is_sheet_highlighted = false
 	get_parent().zoom_on_score_sheet()
 		
-func leave_sheet():
+func leave_sheet() -> void:
 	inside_sheet = false
 	highlighter.play_backwards("Clicked")
 	unhighlight_box()
@@ -713,10 +713,10 @@ func _on_mouse_detect_leave_mouse_entered() -> void:
 	print("readytoleave")
 	get_parent().dice_box.highlighton()
 
-func unhighlight_box():
+func unhighlight_box() -> void:
 	get_parent().dice_box.highlightoff()
 
-func buff_all_modifiers(buff):
+func buff_all_modifiers(buff : float) -> void:
 	ones_multiplier = ones_multiplier + buff
 	twos_multiplier = twos_multiplier + buff
 	threes_multiplier = threes_multiplier + buff
@@ -733,7 +733,7 @@ func buff_all_modifiers(buff):
 	
 	update_multipliers()
 
-func buff_one_modifier(buff, modifier):
+func buff_one_modifier(buff : float, modifier : String) -> void:
 	match modifier:
 		"ones_multiplier":
 			ones_multiplier += buff

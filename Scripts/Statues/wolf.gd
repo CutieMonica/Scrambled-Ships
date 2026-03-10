@@ -14,10 +14,10 @@ var has_given_modifier : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func randomize_category():
+func randomize_category() -> void:
 	if has_given_modifier:
 		get_parent().get_parent().score_sheet.buff_one_modifier(-added_modifier, current_category)
-	var random_category = GameManager.rng_statues.randi_range(1, 12)
+	var random_category := GameManager.rng_statues.randi_range(1, 12)
 	match random_category:
 		1:
 			current_category = "ones_multiplier"
@@ -44,24 +44,16 @@ func randomize_category():
 		12:
 			current_category = "yacht_multiplier"
 
-func get_symbol():
-	var symbol : String = ""
-	if added_modifier < 0:
-		symbol = ""
-	if added_modifier >= 0:
-		symbol = "+"
-	return symbol
-
-func generate_value():
-	var modifier_value = get_parent().statue_bottom_instance.statue_type
+func generate_value() -> void:
+	var modifier_value : String = get_parent().statue_bottom_instance.statue_type
 	match modifier_value:
 		"Subtract":
 			added_modifier = (base_modifier - (get_parent().statue_bottom_instance.base_statue_value * 0.1))
-			buff_text.text = get_symbol() + str(added_modifier) + "X"
+			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X Per Round"
 		"Add":
 			added_modifier = base_modifier + ((get_parent().statue_bottom_instance.base_statue_value * 0.1))
-			buff_text.text = get_symbol() + str(added_modifier) + "X"
-func update_text():
+			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X Per Round"
+func update_text() -> void:
 	match current_category:
 		"ones_multiplier":
 			category_chosen.text = "Ones"
@@ -88,7 +80,8 @@ func update_text():
 		"yacht_multiplier":
 			category_chosen.text = "Yacht"
 			
-func statue_activate():
+func statue_activate() -> void:
+	statue_model_logic.play_audio()
 	randomize_category()
 	generate_value()
 	update_text()

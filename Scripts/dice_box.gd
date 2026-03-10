@@ -10,11 +10,11 @@ func _on_back_in_the_box_detect_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice"):
 		body.outside_the_box = false
 
-func highlighton():
+func highlighton() -> void:
 	highlighter.play("highlighted")
 	
 
-func highlightoff():
+func highlightoff() -> void:
 	highlighter.play("unhighlighted")
 
 func _on_dice_clipping_fix_body_entered(body: Node3D) -> void:

@@ -44,6 +44,7 @@ performance_switch=""
 currency=""
 reroll_coins=""
 dice_logic=""
+statues=""
 
 [gui]
 

@@ -51,14 +51,12 @@ shadow_mesh = SubResource("ArrayMesh_3gpbk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ev4ma"]
 resource_local_to_scene = true
-render_priority = 4
 albedo_color = Color(0.989878, 0.71681124, 3.85046e-07, 1)
-metallic = 0.9
-metallic_specular = 0.2
+metallic = 1.0
+metallic_specular = 0.1
 roughness = 0.83
 normal_texture = ExtResource("3_i3p37")
 bent_normal_texture = ExtResource("3_i3p37")
-clearcoat_enabled = true
 clearcoat = 0.19
 clearcoat_roughness = 0.7
 refraction_scale = 1.0
@@ -116,8 +114,15 @@ attenuation_filter_db = -9.0
 [node name="Timer" type="Timer" parent="." unique_id=893960193]
 process_callback = 0
 wait_time = 3.0
+one_shot = true
 autostart = true
 
 [node name="Currency_coin" type="Node3D" parent="." unique_id=1666231531]
 
+[node name="KillTimer" type="Timer" parent="." unique_id=48367572]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

@@ -4,3 +4,22 @@
 
 [node name="DiceLogic" type="Node3D" unique_id=1171884486]
 script = ExtResource("1_bjgww")
+
+[node name="StorageTimer" type="Timer" parent="." unique_id=994431955]
+process_callback = 0
+wait_time = 0.8
+one_shot = true
+
+[node name="BackToBoxTimer" type="Timer" parent="." unique_id=874391405]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="GravityResetTimer" type="Timer" parent="." unique_id=102278694]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="StorageTimer" to="." method="_on_storage_timer_timeout"]
+[connection signal="timeout" from="BackToBoxTimer" to="." method="_on_back_to_box_timer_timeout"]
+[connection signal="timeout" from="GravityResetTimer" to="." method="_on_gravity_reset_timer_timeout"]

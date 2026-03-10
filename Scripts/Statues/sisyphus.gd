@@ -17,28 +17,21 @@ extends Node3D
 #func _ready() -> void:
 	#statue_activate()
 
-func get_symbol():
-	var symbol : String = ""
-	if added_modifier < 0:
-		symbol = ""
-	if added_modifier >= 0:
-		symbol = "+"
-	return symbol
-
-func generate_value():
-	var modifier_value = get_parent().statue_bottom_instance.statue_type
+func generate_value() -> void:
+	var modifier_value : String = get_parent().statue_bottom_instance.statue_type
 	match modifier_value:
 		"Subtract":
 			added_modifier = (base_modifier - (get_parent().statue_bottom_instance.base_statue_value * 0.01))
-			buff_text.text = get_symbol() + str(added_modifier) + "X Every Roll"
+			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X Every Roll"
 		"Add":
 			added_modifier = base_modifier + ((get_parent().statue_bottom_instance.base_statue_value * 0.01))
-			buff_text.text = get_symbol() + str(added_modifier) + "X Every Roll"
+			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X Every Roll"
 			
-func update_text():
+func update_text() -> void:
 	category_chosen.text = "All Categories"
 
-func statue_activate():
+func statue_activate() -> void:
+	statue_model_logic.play_audio()
 	get_parent().get_parent().score_sheet.buff_all_modifiers(added_modifier)
 	animation_player.play("activate")
 	

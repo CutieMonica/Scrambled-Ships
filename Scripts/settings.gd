@@ -7,12 +7,12 @@ var screensize : int
 var volume : float
 var music_volume : float
 var sfx_volume : float
-var pencil_sound_1 = preload("res://Assets/SFX/pencilsound1.ogg")
-var pencil_sound_2 = preload("res://Assets/SFX/pencilsound2.ogg")
+var pencil_sound_1 := preload("res://Assets/SFX/pencilsound1.ogg")
+var pencil_sound_2 := preload("res://Assets/SFX/pencilsound2.ogg")
 @onready var check_button: CheckButton = $CanvasLayer/TextureRect/CheckButton
 @onready var line_edit: LineEdit = $CanvasLayer/TextureRect/LineEdit
 
-func random_sound():
+func random_sound() -> void:
 	var play_sound : int
 	play_sound = randi_range(1, 2)
 	if play_sound == 1:
@@ -82,7 +82,7 @@ func _on_sfx_volume_drag_ended(_value_changed: bool) -> void:
 func _on_music_volume_drag_ended(_value_changed: bool) -> void:
 	random_sound()
 
-func and_then_i_pull_up_hop_out_at_the_after_party():
+func and_then_i_pull_up_hop_out_at_the_after_party() -> void:
 	animation_player.play("settingspopup")
 
 func _on_line_edit_text_submitted(_new_text: String) -> void:

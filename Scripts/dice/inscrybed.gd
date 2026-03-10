@@ -38,6 +38,7 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var death_timer: Timer = $DeathTimer
 
 func _ready() -> void:
 	var rotating_x : float
@@ -52,10 +53,10 @@ func _ready() -> void:
 	gravity_scale = dice_logic.default_gravity
 	mass = dice_logic.default_mass
 	
-func update_ui():
+func update_ui() -> void:
 	dice_logic.update_ui()
 
-func return_to_box():
+func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
@@ -174,7 +175,7 @@ func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 			audio_stream_player_3d.pitch_scale = (0 + randf_range(0.8, 2))
 			audio_stream_player_3d.play()
 	
-func leftclickinteraction():
+func leftclickinteraction() -> void:
 	get_parent().input_handler.actionable = false
 	remove_from_group("dice")
 	shaker.stop()
@@ -193,8 +194,8 @@ func leftclickinteraction():
 	get_parent().current_dice_paper.update_dice_numbers(dice_position, null)
 	get_parent().remove_dice(dice_position)
 	get_parent().input_handler.actionable = true
-	await get_tree().create_timer(3).timeout
-	queue_free()
+	death_timer.start()
+
 	
 	
 func _on_d_6_mouse_detect_mouse_entered() -> void:
@@ -210,3 +211,7 @@ func _on_d_6_mouse_detect_mouse_exited() -> void:
 		dice_logic.losefocusdie()
 		start_shaking = false
 		shaker.play("RESET")
+
+
+func _on_death_timer_timeout() -> void:
+	queue_free()

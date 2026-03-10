@@ -10,12 +10,14 @@ extends Node3D
 @onready var cup_body_3d: AnimatableBody3D = $Cup/CupBody3D
 @onready var lid_collider: CollisionShape3D = $Cup/CupBody3D/lid_collider
 @onready var lid_collider_timer: Timer = $LidColliderTimer
+@onready var release_timer: Timer = $ReleaseTimer
+@onready var returnal_timer: Timer = $ReturnalTimer
 
 
 var outlined : bool = false
 var back_to_normal : bool = true
 
-func release_on_that_thang():
+func release_on_that_thang() -> void:
 	RELEASE = true
 	animation_player.play("lid_off_after_shake")
 	lid_collider_timer.start()
@@ -74,18 +76,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			release_on_that_thang()
 			get_tree().call_group("dice_logic", "throw")
 			get_parent().current_state = -1
-			await get_tree().create_timer(2.01).timeout
-			get_parent().animation_player.play("cup_respawn")
-			returnal = true
-			RELEASE = false
-			#cup_body_3d.set_collision_layer_value(1, true)
-			#cup_body_3d.set_collision_mask_value(1, true)
-			back_to_normal = true
-			get_parent().current_state = 0
-			resetting = true
-			GameManager.has_pressed_release = false
-			await get_tree().create_timer(0.2).timeout
-			returnal = false
+			release_timer.start()
 	if anim_name == "shake_backwards":
 		animation_player.play("shake")
 
@@ -105,3 +96,20 @@ func _on_static_body_3d_mouse_exited() -> void:
 
 func _on_lid_collider_timer_timeout() -> void:
 	lid_collider.disabled = true
+
+
+func _on_release_timer_timeout() -> void:
+	get_parent().animation_player.play("cup_respawn")
+	returnal = true
+	RELEASE = false
+	#cup_body_3d.set_collision_layer_value(1, true)
+	#cup_body_3d.set_collision_mask_value(1, true)
+	back_to_normal = true
+	get_parent().current_state = 0
+	resetting = true
+	GameManager.has_pressed_release = false
+	returnal_timer.start()
+	
+
+func _on_returnal_timer_timeout() -> void:
+	returnal = false

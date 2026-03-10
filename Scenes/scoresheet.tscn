@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c5um1r12jmcis" path="res://Assets/ThunderSpark Assets/styled_dice_2.png" id="3_psume"]
 [ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="4_mqscg"]
 [ext_resource type="Texture2D" uid="uid://cw60wdkcqy0y" path="res://Assets/ThunderSpark Assets/styled_dice_4.png" id="5_a5dby"]
-[ext_resource type="Texture2D" uid="uid://c0va7nnnvsa4d" path="res://Assets/ThunderSpark Assets/styled_dice_5.png" id="6_xrmti"]
 [ext_resource type="Texture2D" uid="uid://delp754go67b4" path="res://Assets/ThunderSpark Assets/styled_dice_6.png" id="7_xrmti"]
 [ext_resource type="Texture2D" uid="uid://hvfwmhhrc1ap" path="res://Assets/ThunderSpark Assets/styled_choice.png" id="9_r2exa"]
 [ext_resource type="Texture2D" uid="uid://cmnya7vskvss8" path="res://Assets/ThunderSpark Assets/styled_small_straight.png" id="10_n5bwl"]
@@ -29,6 +28,7 @@ size = Vector2(8.5, 11)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0req8"]
 transparency = 1
+albedo_color = Color(0.988646, 0.73484087, 0.62017107, 1)
 albedo_texture = ExtResource("3_ocyq2")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_65ape"]
@@ -40,6 +40,7 @@ size = Vector3(11.2, 1, 9.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65ape"]
 transparency = 1
+albedo_color = Color(0.99385744, 0.78655535, 0.6438324, 1)
 albedo_texture = ExtResource("3_psume")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_twkpa"]
@@ -51,6 +52,7 @@ load_path = "res://.godot/imported/styled_dice_3.png-6d5a7c8c3592d189117c7071f26
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5dby"]
 transparency = 1
+albedo_color = Color(0.99386865, 0.7300953, 0.57020086, 1)
 albedo_texture = SubResource("CompressedTexture2D_psume")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xrmti"]
@@ -59,15 +61,20 @@ size = Vector2(7, 7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrmti"]
 transparency = 1
+albedo_color = Color(0.99569064, 0.84176713, 0.7624852, 1)
 albedo_texture = ExtResource("5_a5dby")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ocyq2"]
 material = SubResource("StandardMaterial3D_xrmti")
 size = Vector2(7, 7)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0erlp"]
+load_path = "res://.godot/imported/styled_dice_5.png-fb53bd0cb79fbc649e09d7d0811c2589.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2exa"]
 transparency = 1
-albedo_texture = ExtResource("6_xrmti")
+albedo_color = Color(0.9976304, 0.78347707, 0.65359515, 1)
+albedo_texture = SubResource("CompressedTexture2D_0erlp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0req8"]
 material = SubResource("StandardMaterial3D_r2exa")
@@ -75,6 +82,7 @@ size = Vector2(7, 7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dlp3"]
 transparency = 1
+albedo_color = Color(0.9977309, 0.82661676, 0.7065615, 1)
 albedo_texture = ExtResource("7_xrmti")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n5bwl"]
@@ -83,6 +91,7 @@ size = Vector2(7, 7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0erlp"]
 transparency = 1
+albedo_color = Color(0.99159616, 0.6938416, 0.50792336, 1)
 albedo_texture = ExtResource("9_r2exa")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xkks2"]
@@ -94,6 +103,7 @@ size = Vector3(26.396875, 1, 7.218457)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkks2"]
 transparency = 1
+albedo_color = Color(0.9809424, 0.6510491, 0.48021364, 1)
 albedo_texture = ExtResource("10_n5bwl")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mqscg"]
@@ -102,6 +112,7 @@ size = Vector2(6, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1inwp"]
 transparency = 1
+albedo_color = Color(0.99329215, 0.7149594, 0.578609, 1)
 albedo_texture = ExtResource("12_xkks2")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sv0l0"]
@@ -110,6 +121,7 @@ size = Vector2(6, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqscg"]
 transparency = 1
+albedo_color = Color(0.9985475, 0.7585566, 0.6165835, 1)
 albedo_texture = ExtResource("11_0erlp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_o31sk"]
@@ -118,6 +130,7 @@ size = Vector2(6, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o31sk"]
 transparency = 1
+albedo_color = Color(1, 0.752986, 0.59410995, 1)
 albedo_texture = ExtResource("13_0erlp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1inwp"]
@@ -126,6 +139,7 @@ size = Vector2(6, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv0l0"]
 transparency = 1
+albedo_color = Color(0.99768156, 0.7290042, 0.559455, 1)
 albedo_texture = ExtResource("14_xkks2")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e3ght"]
@@ -335,14 +349,6 @@ size = Vector3(10.037079, 0.8005859, 0.61865234)
 
 [node name="ScoreSheet" type="Node3D" unique_id=533206830 groups=["scoresheet"]]
 script = ExtResource("1_ocyq2")
-hovered_category = null
-is_leave_area_highlighted = null
-current_best_double = null
-current_best_triple = null
-current_best_quad = null
-current_best_quint = null
-second_best_triple = null
-second_best_double = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1489588181]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.01, 0)
@@ -1002,7 +1008,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.60155, 0, 55.759563)
 shape = SubResource("BoxShape3D_n5bwl")
 
 [node name="FourOfAKindIcon" type="MeshInstance3D" parent="MeshInstance3D" unique_id=638414819]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.8167517, 0.01, 3.410546)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.7719204, 0.11000001, 3.4283676)
 mesh = SubResource("PlaneMesh_1inwp")
 
 [node name="FourOfAKind" type="Label3D" parent="MeshInstance3D/FourOfAKindIcon" unique_id=958792377]
@@ -1158,6 +1164,13 @@ shape = SubResource("BoxShape3D_7dlp3")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1218816317]
 bus = &"SFX"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=108171885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.642809, 0)
+light_color = Color(1, 0.5019608, 1, 1)
+light_energy = 2.558
+omni_range = 4096.0
+omni_attenuation = 0.5
 
 [connection signal="mouse_entered" from="MeshInstance3D/MouseDetectOnes" to="." method="_on_mouse_detect_ones_mouse_entered"]
 [connection signal="mouse_exited" from="MeshInstance3D/MouseDetectOnes" to="." method="_on_mouse_detect_ones_mouse_exited"]

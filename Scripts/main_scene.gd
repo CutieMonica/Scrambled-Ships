@@ -3,24 +3,26 @@ extends Node3D
 var current_state : int = 0
 @export var die_spawned : int = 0
 var max_die : int = 7
-var basic_d6 = preload("res://Scenes/dice/Basicd_6.tscn")
-var cursed_die = load("res://Scenes/dice/CursedDice.tscn")
-var leaded_die = load("res://Scenes/dice/LeadedDice.tscn")
-var sky_die = load("res://Scenes/dice/SkyDie.tscn")
-var weighted_die = load("res://Scenes/dice/weighteddie.tscn")
-var inscrybed_die = load("uid://cvdes1pfuas6d")
-var jelly_die = preload("uid://vlnditpvpyti")
-var dice_instance
+var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
+var cursed_die : PackedScene = load("res://Scenes/dice/CursedDice.tscn")
+var leaded_die : PackedScene = load("res://Scenes/dice/LeadedDice.tscn")
+var sky_die : PackedScene = load("res://Scenes/dice/SkyDie.tscn")
+var weighted_die : PackedScene = load("res://Scenes/dice/weighteddie.tscn")
+var inscrybed_die : PackedScene = load("uid://cvdes1pfuas6d")
+var jelly_die : PackedScene = preload("uid://vlnditpvpyti")
+var dice_instance : Node
 var prev_die : int = 0
-var placeholdersong = preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
-var reroll_coin = preload("res://Scenes/gold_coin.tscn")
-var reroll_coin_instance
-var money_coin = preload("res://Scenes/currency_gold_coin.tscn")
-var money_coin_instance
+var placeholdersong := preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
+var reroll_coin : PackedScene = preload("res://Scenes/gold_coin.tscn")
+var reroll_coin_instance : Node
+var money_coin : PackedScene = preload("res://Scenes/currency_gold_coin.tscn")
+var money_coin_instance : Node
 
-signal rerolling
-signal round_started
+@onready var random_money_buffer: Timer = $RandomMoneyBuffer
+@onready var lid_collider_delay: Timer = $LidColliderDelay
+@onready var zoom_delay: Timer = $ZoomDelay
 
+@onready var random_coin_buffer: Timer = $RandomCoinBuffer
 @onready var main_scene: Node3D = $"."
 @onready var dice_cup: Node3D = $DiceCup
 @onready var camera_movement: AnimationPlayer = $CameraMovement
@@ -72,7 +74,7 @@ var in_play_dice_instances : Dictionary = {
 
 @export var money_coins : Dictionary = {}
 
-func performance_switch():
+func performance_switch() -> void:
 	if GameManager.performance_mode:
 		mesh_instance_3d.visible = false
 		directional_light_3d.shadow_enabled = false
@@ -89,17 +91,17 @@ func performance_switch():
 		spot_light_3d_3.shadow_enabled = true
 		
 
-func remove_dice(dice_position):
+func remove_dice(dice_position : int) -> void:
 	chosen_dice.set(dice_position, null)
 	in_play_dice_instances.set(dice_position, null)
 	stored_dice.set(dice_position, null)
 	GameManager.dice_amount -= 1
 	GameManager.dice_numbers.set(dice_position, null)
 	
-func give_extra_rerolls(amount):
+func give_extra_rerolls(amount : int) -> void:
 	for i in amount:
 		GameManager.rolls += 1
-		var n = reroll_coins.size()
+		var n : int = reroll_coins.size()
 		reroll_coins.get_or_add(n, reroll_coin)
 		reroll_coin_instance = reroll_coins.get(n).instantiate()
 		reroll_coins.set(n, reroll_coin_instance)
@@ -110,10 +112,10 @@ func give_extra_rerolls(amount):
 		reroll_coin_instance.position.z = GameManager.rng.randf_range(2.5, 4.5)
 		add_child(reroll_coin_instance)
 
-func give_extra_money(amount):
+func give_extra_money(amount : int) -> void:
 	for i in amount:
 		GameManager.current_money += 1
-		var n = money_coins.size()
+		var n : int = money_coins.size()
 		money_coins.get_or_add(n, money_coin)
 		money_coin_instance = money_coins.get(n).instantiate()
 		money_coins.set(n, money_coin_instance)
@@ -124,10 +126,12 @@ func give_extra_money(amount):
 		money_coin_instance.position.z = GameManager.rng.randf_range(-3.65, -3.3)
 		add_child(money_coin_instance)
 		
-func spawn_coins():
+func spawn_coins() -> void:
 	for n in GameManager.rolls:
-		var random_buffer_time = GameManager.rng.randf_range(0.1, 0.2)
-		await get_tree().create_timer(random_buffer_time).timeout
+		var random_buffer_time : float = GameManager.rng.randf_range(0.1, 0.2)
+		random_coin_buffer.wait_time = random_buffer_time
+		random_coin_buffer.start()
+		await random_coin_buffer.timeout
 		reroll_coins.get_or_add(n, reroll_coin)
 		reroll_coin_instance = reroll_coins.get(n).instantiate()
 		reroll_coins.set(n, reroll_coin_instance)
@@ -139,10 +143,12 @@ func spawn_coins():
 		add_child(reroll_coin_instance)
 	
 
-func spawn_money():
+func spawn_money() -> void:
 	for n in GameManager.money_due:
-		var random_buffer_time = GameManager.rng.randf_range(0.1, 0.2)
-		await get_tree().create_timer(random_buffer_time).timeout
+		var random_buffer_time : float = GameManager.rng.randf_range(0.1, 0.2)
+		random_money_buffer.wait_time = random_buffer_time
+		random_money_buffer.start()
+		await random_money_buffer.timeout
 		money_coins.get_or_add(n, money_coin)
 		money_coin_instance = money_coins.get(n).instantiate()
 		money_coins.set(n, money_coin_instance)
@@ -153,8 +159,8 @@ func spawn_money():
 		money_coin_instance.position.z = GameManager.rng.randf_range(-3.65, -3.3)
 		add_child(money_coin_instance)
 
-func round_start():
-	round_started.emit()
+func round_start() -> void:
+	get_tree().call_group("statues", "main_scene_round_started")
 	spawn_coins()
 
 func _ready() -> void:
@@ -168,7 +174,7 @@ func _on_timer_timeout() -> void:
 		die_spawned += 1
 		dice_spawner(die_spawned)
 		
-func dice_spawner(dice_position):
+func dice_spawner(dice_position : int) -> void:
 	dice_instance = chosen_dice.get(dice_position).instantiate()
 	in_play_dice_instances.set(dice_position, dice_instance)
 	dice_instance.name = "Die" + str(dice_position)
@@ -183,26 +189,28 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "cup_reloading":
 		current_state = 2
 		get_tree().call_group("dice_logic", "drop")
-		await get_tree().create_timer(0.2).timeout
+		zoom_delay.start()
+		await zoom_delay.timeout
 		camera_movement.play("zoom_on_box")
 		animation_player.play("cup_shake")
 		get_tree().call_group("dice_logic", "shake")
-		await get_tree().create_timer(0.8).timeout
+		lid_collider_delay.start()
+		await lid_collider_delay.timeout
 		dice_cup.lid_collider.disabled = false
 		current_state = 3
 		
-func roll_used():
+func roll_used() -> void:
 	if reroll_coins.get(GameManager.rolls) != null:
 		reroll_coins.get(GameManager.rolls).i_must_go_now()
 		reroll_coins.erase(GameManager.rolls)
 	
-func become_actionable():
+func become_actionable() -> void:
 	input_handler.actionable = true
 		
-func become_inactionable():
+func become_inactionable() -> void:
 	input_handler.actionable = false
 		
-func reload():
+func reload() -> void:
 	if current_state == 0 and GameManager.dice_resting and stored_dice.find_key("false") != null and GameManager.rolls > 0:
 		become_inactionable()
 		GameManager.reset_dice_resting()
@@ -215,21 +223,27 @@ func reload():
 		GameManager.has_pressed_release = true
 		camera_movement.play_backwards("zoom_on_box")
 		current_state = 4
-		rerolling.emit()
+		get_tree().call_group("statues", "main_scene_rerolling")
 		
-func focus_a_die(focused_die):
+func focus_a_die(focused_die : int) -> void:
 	if prev_die != 0:
 		in_play_dice_instances.get(prev_die).dice_logic.losefocusdie()
 	in_play_dice_instances.get(focused_die).focusdie()
 
-func zoom_on_score_sheet():
+func zoom_on_score_sheet() -> void:
 	camera_movement.play("DefaultToSheet")
 
-func zoom_out_score_sheet():
+func zoom_out_score_sheet() -> void:
 	camera_movement.play_backwards("DefaultToSheet")
 
-func zoom_in_timer():
+func zoom_in_timer() -> void:
 	camera_movement.play("default_to_counter")
 	
-func zoom_out_timer():
+func zoom_out_timer() -> void:
 	camera_movement.play_backwards("default_to_counter")
+
+func zoom_on_statue() -> void:
+	camera_movement.play("default_to_statues")
+	
+func zoom_out_statue() -> void:
+	camera_movement.play_backwards("default_to_statues")
