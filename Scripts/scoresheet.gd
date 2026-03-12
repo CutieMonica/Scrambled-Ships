@@ -438,14 +438,14 @@ func _on_area_3d_mouse_entered() -> void:
 	if can_highlight:
 		highlighter.play("Highlighted")
 		highlighted = true
-		get_parent().input_handler.hovered_object = "scoresheet"
+		InputHandler.hovered_object = "scoresheet"
 
 func _on_area_3d_mouse_exited() -> void:
 	highlighter.play("NotHighlighted")
 	highlighted = false
-	if get_parent().input_handler.hovered_object == "scoresheet" and !inside_sheet:
-		get_parent().input_handler.hovered_object = "none"
-	if get_parent().input_handler.hovered_object == "scoresheet" and inside_sheet:
+	if InputHandler.hovered_object == "scoresheet" and !inside_sheet:
+		InputHandler.hovered_object = "none"
+	if InputHandler.hovered_object == "scoresheet" and inside_sheet:
 		pass
 
 func interact() -> void:
@@ -470,8 +470,9 @@ func leave_sheet() -> void:
 	unhighlight_box()
 	get_parent().zoom_out_score_sheet()
 	hovered_category = "none"
-	if get_parent().input_handler.hovered_object == "scoresheet":
-		get_parent().input_handler.hovered_object = "none"
+	if InputHandler.hovered_object == "scoresheet":
+		InputHandler.hovered_object = "none"
+	InputHandler.actionable = false
 	#await get_tree().create_timer(1).timeout
 		
 func _on_mouse_detect_ones_mouse_entered() -> void:

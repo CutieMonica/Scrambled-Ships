@@ -35,8 +35,8 @@ func _process(delta: float) -> void:
 		if outlined:
 			outliner.play("outlineoff")
 			outlined = false
-			if get_parent().input_handler.hovered_object == "dicecup":
-				get_parent().input_handler.hovered_object = "none"
+			if InputHandler.hovered_object == "dicecup":
+				InputHandler.hovered_object = "none"
 		play_anim = "none"
 	if play_anim == "locked_in":
 		animation_player.play_backwards("reload_die")
@@ -75,7 +75,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			play_anim = "none"
 			release_on_that_thang()
 			get_tree().call_group("dice_logic", "throw")
-			get_parent().current_state = -1
+			InputHandler.current_reroll_state = -1
 			release_timer.start()
 	if anim_name == "shake_backwards":
 		animation_player.play("shake")
@@ -85,13 +85,13 @@ func _on_static_body_3d_mouse_entered() -> void:
 	if back_to_normal:
 		outliner.play("outlineon")
 		outlined = true
-		get_parent().input_handler.hovered_object = "dicecup"
+		InputHandler.hovered_object = "dicecup"
 
 func _on_static_body_3d_mouse_exited() -> void:
 	outliner.play("outlineoff")
 	outlined = false
-	if get_parent().input_handler.hovered_object == "dicecup":
-		get_parent().input_handler.hovered_object = "none"
+	if InputHandler.hovered_object == "dicecup":
+		InputHandler.hovered_object = "none"
 
 
 func _on_lid_collider_timer_timeout() -> void:
@@ -105,7 +105,7 @@ func _on_release_timer_timeout() -> void:
 	#cup_body_3d.set_collision_layer_value(1, true)
 	#cup_body_3d.set_collision_mask_value(1, true)
 	back_to_normal = true
-	get_parent().current_state = 0
+	InputHandler.current_reroll_state = 0
 	resetting = true
 	GameManager.has_pressed_release = false
 	returnal_timer.start()

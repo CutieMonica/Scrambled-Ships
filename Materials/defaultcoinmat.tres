@@ -12,3 +12,4 @@ bent_normal_texture = ExtResource("1_gir85")
 clearcoat = 0.19
 clearcoat_roughness = 0.7
 refraction_scale = 1.0
+disable_receive_shadows = true

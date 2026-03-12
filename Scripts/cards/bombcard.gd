@@ -8,7 +8,9 @@ extends Node3D
 @onready var card_art: MeshInstance3D = $CardVisuals/CardArt
 @onready var card_front: MeshInstance3D = $CardVisuals/CardFront
 @export var playsound : String = "none"
+@export var card_position : int = 1
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var mouse_collider: CollisionShape3D = $MouseDetect/MouseCollider
 
 @onready var card_logic: Node3D = $card_logic
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -32,3 +34,10 @@ func _process(_delta: float) -> void:
 		audio_stream_player_3d.play()
 		playsound = "none"
 				
+func yall_ready_for_this() -> void:
+	animation_player.play("get_out")
+
+func activate() -> void:
+	position = Vector3(0, 0, 0)
+	rotation = Vector3.ZERO
+	animation_player.play("explode")

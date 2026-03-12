@@ -65,7 +65,7 @@ func sealed_away_forever() -> void:
 	get_parent().set_collision_mask_value(1, false)
 	get_parent().set_collision_layer_value(1, false)
 	get_parent().storing = true
-	get_parent().get_parent().stored_dice.set(dice_position, "true")
+	get_parent().get_parent().stored_dice.set(get_parent().dice_position, "true")
 	storage_timer.start()
 	
 
@@ -128,7 +128,7 @@ func throw() -> void:
 	get_parent().recalling = false
 	get_parent().dropping = false
 	get_parent().shaking = false
-	get_parent().get_parent().current_state = 0
+	InputHandler.current_reroll_state = 0
 	if !get_parent().stored:
 		get_parent().has_given_number = false
 	gravity_reset_timer.start()
@@ -166,12 +166,12 @@ func _physics_process(delta: float) -> void:
 		get_parent().position = lerp(get_parent().position, Vector3(get_parent().dice_position * 0.5, 2, 0), delta)
 		
 func focusdie() -> void:
-	if !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and get_parent().get_parent().input_handler.hovered_object != "scoresheet":
+	if !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and InputHandler.hovered_object != "scoresheet":
 		get_parent().animation_player.play("highlighted")
 		get_parent().focused = true
 		print("sus")
-		get_parent().get_parent().input_handler.hovered_object = "dice" + str(get_parent().dice_position)
-		print(get_parent().get_parent().input_handler.hovered_object)
+		InputHandler.hovered_object = "dice" + str(get_parent().dice_position)
+		print(InputHandler.hovered_object)
 	else:
 		pass
 
@@ -179,8 +179,8 @@ func losefocusdie() -> void:
 	get_parent().animation_player.play("not_highlighted")
 	print("gups")
 	get_parent().focused = false
-	if get_parent().get_parent().input_handler.hovered_object == "dice" + str(get_parent().dice_position):
-		get_parent().get_parent().input_handler.hovered_object = "none"
+	if InputHandler.hovered_object == "dice" + str(get_parent().dice_position):
+		InputHandler.hovered_object = "none"
 		
 func interacted() -> void:
 	get_parent().leftclickinteraction()

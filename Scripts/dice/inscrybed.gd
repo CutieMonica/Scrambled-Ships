@@ -178,13 +178,13 @@ func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 	
 func leftclickinteraction() -> void:
 	dying = true
-	get_parent().input_handler.actionable = false
+	InputHandler.actionable = false
 	remove_from_group("dice")
 	mouse_detect.disabled = true
 	shaker.stop()
 	highlight.visible = false
-	if get_parent().input_handler.hovered_object == "dice" + str(dice_position):
-		get_parent().input_handler.hovered_object = "none"
+	if InputHandler.hovered_object == "dice" + str(dice_position):
+		InputHandler.hovered_object = "none"
 	animation_player.play("kill")
 	var random_coins_haha_inscryption_reference : int = GameManager.rng.randi_range(1, 3)
 	get_parent().give_extra_rerolls(random_coins_haha_inscryption_reference)
@@ -195,8 +195,9 @@ func leftclickinteraction() -> void:
 	audio_stream_player_3d.volume_db = 5
 	audio_stream_player_3d.play()
 	get_parent().current_dice_paper.update_dice_numbers(dice_position, null)
+	get_parent().stored_dice.set(dice_position, null)
 	get_parent().remove_dice(dice_position)
-	get_parent().input_handler.actionable = true
+	InputHandler.actionable = true
 	death_timer.start()
 
 	

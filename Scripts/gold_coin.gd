@@ -219,3 +219,6 @@ func _on_stupid_feature_neutral_body_entered(body: Node3D) -> void:
 	if body.is_in_group("reroll_coins"):
 		body.unfreeze()
 		body.linear_velocity.y += 2
+	if body.is_in_group("currency"):
+		body.unfreeze()
+		body.linear_velocity.y += 2

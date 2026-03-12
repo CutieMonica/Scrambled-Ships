@@ -536,6 +536,66 @@ tracks/11/keys = {
 "update": 0,
 "values": [5.0]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Explosionboxes/CollisionShape3D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Explosionboxes/CollisionShape3D2:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Explosionboxes/CollisionShape3D2:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.42999554, -23.399502, 10.75)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Explosionboxes/CollisionShape3D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -34.06, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Explosionboxes/CollisionShape3D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [22.14]
+}
 
 [sub_resource type="Animation" id="Animation_taem4"]
 resource_name = "explode"
@@ -672,6 +732,81 @@ tracks/10/keys = {
 "update": 0,
 "values": [5.0, 5.0, 4096.0]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Explosionboxes/CollisionShape3D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1, 1.9, 1.9333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Explosionboxes/CollisionShape3D2:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1, 1.9333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Explosionboxes/CollisionShape3D2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.9, 1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.42999554, -23.399502, 10.75), Vector3(-0.43, -20, 10.75), Vector3(-0.43, 40, 10.75)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Explosionboxes/CollisionShape3D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -34.06, 0), Vector3(0, -35.545002, 0), Vector3(0, -38.515, 0), Vector3(0, -40, 0), Vector3(0, -39.795647, 0), Vector3(0, -39.185158, 0), Vector3(0, -38.17621, 0), Vector3(0, -36.781487, 0), Vector3(0, -35.018536, 0), Vector3(0, -32.909523, 0), Vector3(0, -30.480968, 0), Vector3(0, -27.763416, 0), Vector3(0, -24.791039, 0), Vector3(0, -21.60122, 0), Vector3(0, -18.234068, 0), Vector3(0, -14.731926, 0), Vector3(0, -11.138844, 0), Vector3(0, -7.499996, 0), Vector3(0, -3.8611526, 0), Vector3(0, -0.2680626, 0), Vector3(0, 3.2340698, 0), Vector3(0, 6.601227, 0), Vector3(0, 9.791046, 0), Vector3(0, 12.763424, 0), Vector3(0, 15.480972, 0), Vector3(0, 17.909527, 0), Vector3(0, 20.01854, 0), Vector3(0, 21.78149, 0), Vector3(0, 23.176212, 0), Vector3(0, 24.185158, 0), Vector3(0, 24.795647, 0), Vector3(0, 25, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Explosionboxes/CollisionShape3D:shape:radius")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.0233333, 1.0566667, 1.09, 1.1233333, 1.1566666, 1.19, 1.2233334, 1.2566667, 1.29, 1.3233334, 1.3566667, 1.39, 1.4233333, 1.4566667, 1.49, 1.5233333, 1.5566667, 1.5666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [22.14, 22.14, 22.574590572312545, 23.86407194727576, 25.966037286888195, 28.811361823521338, 32.30647208389291, 36.33642732442149, 40.768698797746765, 45.45752717298592, 50.24871238977903, 54.984689438500936, 59.50971126432614, 63.674970232613305, 67.34348014097122, 70.39460377739942, 72.72800074934185, 74.26693256962244, 74.96078951909567, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_8ds6r"]
+resource_name = "get_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0008923063, 0), Vector3(0, 0.028553803, 0), Vector3(0, 0.2168304, 0), Vector3(0, 0.9137217, 0), Vector3(0, 2.7884572, 0), Vector3(0, 6.938573, 0), Vector3(0, 14.99699, 0), Vector3(0, 29.239094, 0), Vector3(0, 52.689796, 0), Vector3(0, 89.23063, 0), Vector3(0, 143.7068, 0), Vector3(0, 222.03433, 0), Vector3(0, 331.30704, 0), Vector3(0, 479.9037, 0), Vector3(0, 677.595, 0), Vector3(0, 875.28644, 0), Vector3(0, 1023.88293, 0), Vector3(0, 1133.1558, 0), Vector3(0, 1211.4832, 0), Vector3(0, 1265.9594, 0), Vector3(0, 1302.5001, 0), Vector3(0, 1325.9508, 0), Vector3(0, 1340.193, 0), Vector3(0, 1348.2513, 0), Vector3(0, 1352.4015, 0), Vector3(0, 1354.2762, 0), Vector3(0, 1354.9731, 0), Vector3(0, 1355.1614, 0), Vector3(0, 1355.1891, 0), Vector3(0, 1355.19, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ginii"]
 resource_name = "highlight"
@@ -709,6 +844,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_urq1j"),
 &"explode": SubResource("Animation_taem4"),
+&"get_out": SubResource("Animation_8ds6r"),
 &"highlight": SubResource("Animation_ginii"),
 &"unhighlight": SubResource("Animation_5smr4")
 }
@@ -789,7 +925,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05472637, 1), 0.0, 0.0, 0, 0, 
 point_count = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urq1j"]
-render_priority = -2
+render_priority = 16
 metallic = 0.71
 metallic_specular = 0.19
 emission_enabled = true
@@ -800,7 +936,7 @@ material = SubResource("StandardMaterial3D_urq1j")
 size = Vector2(10.5, 15.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3ge4"]
-render_priority = 4
+render_priority = 22
 transparency = 1
 albedo_texture = ExtResource("2_mp8sq")
 metallic = 0.71
@@ -811,6 +947,7 @@ material = SubResource("StandardMaterial3D_k3ge4")
 size = Vector2(10, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keqs"]
+render_priority = 17
 transparency = 1
 albedo_texture = ExtResource("3_rtn2f")
 
@@ -819,7 +956,7 @@ material = SubResource("StandardMaterial3D_5keqs")
 size = Vector2(9.29, 5.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80ftd"]
-render_priority = 1
+render_priority = 18
 transparency = 1
 cull_mode = 1
 albedo_texture = ExtResource("4_c8p8o")
@@ -829,6 +966,12 @@ metallic_specular = 0.19
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wocp"]
 material = SubResource("StandardMaterial3D_80ftd")
 size = Vector2(10, 15)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ginii"]
+radius = 22.14
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_taem4"]
+size = Vector3(101.34, 4.6, 77.479996)
 
 [node name="BombCard" type="Node3D" unique_id=1143179809]
 script = ExtResource("1_lyrm8")
@@ -850,14 +993,16 @@ attenuation_filter_cutoff_hz = 12088.0
 
 [node name="MouseDetect" type="Area3D" parent="." unique_id=1647229609]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseDetect" unique_id=1523409022]
+[node name="MouseCollider" type="CollisionShape3D" parent="MouseDetect" unique_id=1523409022]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.010000229, 0.04000002, -0.039999247)
 shape = SubResource("BoxShape3D_5smr4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=65002038]
+callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_taem4")
 
 [node name="ExplodeParticles3D" type="CPUParticles3D" parent="." unique_id=1337244922]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 emitting = false
 one_shot = true
 explosiveness = 1.0
@@ -877,13 +1022,14 @@ damping_min = 20.0
 damping_max = 40.0
 angle_min = -460.8
 angle_max = 460.8
-scale_amount_min = 14.33
-scale_amount_max = 41.01
+scale_amount_min = 3.0
+scale_amount_max = 12.0
 scale_amount_curve = SubResource("Curve_vgjow")
 hue_variation_min = -0.35
 hue_variation_max = 0.53
 
 [node name="ExplodeParticles3D2" type="CPUParticles3D" parent="." unique_id=1417210883]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 emitting = false
 one_shot = true
 explosiveness = 1.0
@@ -903,13 +1049,14 @@ damping_min = 20.0
 damping_max = 40.0
 angle_min = -460.8
 angle_max = 460.8
-scale_amount_min = 14.33
-scale_amount_max = 41.01
+scale_amount_min = 3.0
+scale_amount_max = 12.0
 scale_amount_curve = SubResource("Curve_vgjow")
 hue_variation_min = -0.35
 hue_variation_max = 0.53
 
 [node name="ExplodeParticles3D3" type="CPUParticles3D" parent="." unique_id=1763757285]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 emitting = false
 one_shot = true
 explosiveness = 1.0
@@ -929,13 +1076,14 @@ damping_min = 20.0
 damping_max = 40.0
 angle_min = -460.8
 angle_max = 460.8
-scale_amount_min = 1.01
-scale_amount_max = 27.68
+scale_amount_min = 3.0
+scale_amount_max = 12.0
 scale_amount_curve = SubResource("Curve_vgjow")
 hue_variation_min = -0.35
 hue_variation_max = 0.53
 
 [node name="ExplodeParticles3D4" type="CPUParticles3D" parent="." unique_id=615213623]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 emitting = false
 one_shot = true
 explosiveness = 1.0
@@ -955,13 +1103,14 @@ damping_min = 20.0
 damping_max = 40.0
 angle_min = -460.8
 angle_max = 460.8
-scale_amount_min = 27.68
-scale_amount_max = 30.0
+scale_amount_min = 3.0
+scale_amount_max = 12.0
 scale_amount_curve = SubResource("Curve_vgjow")
 hue_variation_min = -0.35
 hue_variation_max = 0.53
 
 [node name="ExplodeParticles3D5" type="CPUParticles3D" parent="." unique_id=30546218]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 emitting = false
 amount = 4
 one_shot = true
@@ -992,16 +1141,16 @@ hue_variation_max = 0.53
 [node name="Nametag" type="Label3D" parent="CardVisuals" unique_id=374057504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4713951, 0.098538175)
 shaded = true
-render_priority = 3
-outline_render_priority = 2
+render_priority = 20
+outline_render_priority = 19
 text = "Bomb"
 font_size = 128
 
 [node name="Description" type="Label3D" parent="CardVisuals" unique_id=1363177856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17139512, 0.098538116)
 shaded = true
-render_priority = 4
-outline_render_priority = 2
+render_priority = 20
+outline_render_priority = 19
 text = "Upon use, explodes in the center of the Dice Box, launching every die caught in the explosion."
 font_size = 128
 vertical_alignment = 0
@@ -1011,8 +1160,8 @@ width = 1800.0
 [node name="Rarity" type="Label3D" parent="CardVisuals" unique_id=2066783178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.4486046, 0.098537825)
 shaded = true
-render_priority = 3
-outline_render_priority = 2
+render_priority = 20
+outline_render_priority = 19
 text = "COMMON"
 font_size = 128
 
@@ -1038,6 +1187,19 @@ light_color = Color(0.9647953, 0.7152747, 0.59337306, 1)
 light_energy = 0.0
 
 [node name="card_logic" parent="." unique_id=300499701 instance=ExtResource("98_urq1j")]
+
+[node name="Explosionboxes" type="AnimatableBody3D" parent="." unique_id=1024455551]
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Explosionboxes" unique_id=1795746961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.06, 0)
+shape = SubResource("SphereShape3D_ginii")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Explosionboxes" unique_id=1845039879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42999554, -23.399502, 10.75)
+shape = SubResource("BoxShape3D_taem4")
+disabled = true
 
 [connection signal="mouse_entered" from="MouseDetect" to="." method="_on_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetect" to="." method="_on_mouse_detect_mouse_exited"]

@@ -1,8 +1,8 @@
 extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-var current_state : int = 0
 @export var die_spawned : int = 0
 var max_die : int = 7
+var next_card : int = 0
 
 #all possible dice
 var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
@@ -14,7 +14,8 @@ var inscrybed_die : PackedScene = load("uid://cvdes1pfuas6d")
 var jelly_die : PackedScene = preload("uid://vlnditpvpyti")
 
 #all possible cards
-var bombcard : PackedScene = load("uid://dgpdr61xocghe")
+var bomb_card := preload("uid://dgpdr61xocghe")
+
 
 var card_instance : Node
 var dice_instance : Node
@@ -29,6 +30,11 @@ var money_coin_instance : Node
 @onready var random_money_buffer: Timer = $RandomMoneyBuffer
 @onready var lid_collider_delay: Timer = $LidColliderDelay
 @onready var zoom_delay: Timer = $ZoomDelay
+@onready var card_hover_detection: Area3D = $CardHoverDetection
+@onready var card_outline: MeshInstance3D = $CardOutline
+@onready var card_animations: AnimationPlayer = $CardAnimations
+@onready var card_exit_detect: Area3D = $CardExitDetect
+@onready var card_exit_collider: CollisionShape3D = $CardExitDetect/CardExitCollider
 
 @onready var random_coin_buffer: Timer = $RandomCoinBuffer
 @onready var main_scene: Node3D = $"."
@@ -36,7 +42,6 @@ var money_coin_instance : Node
 @onready var camera_movement: AnimationPlayer = $CameraMovement
 @onready var dice_box: Node3D = $DiceBox
 @onready var score_sheet: Node3D = $ScoreSheet
-@onready var input_handler: Node = $input_handler
 @onready var music_source: AudioStreamPlayer3D = $Boat/Radio/MusicSource
 @onready var current_dice_paper: Node3D = $CurrentDicePaper
 @onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D
@@ -45,6 +50,8 @@ var money_coin_instance : Node
 @onready var omni_light_3d_2: OmniLight3D = $OmniLight3D2
 @onready var spot_light_3d_3: SpotLight3D = $SpotLight3D3
 @onready var spot_light_3d_2: SpotLight3D = $SpotLight3D2
+@onready var camerabuffer: Timer = $Camerabuffer
+@onready var exit_card_outline: MeshInstance3D = $ExitCardOutline
 
 @onready var card_placement_ref_1: Node3D = $CardPlacementRef1
 @onready var card_placement_ref_2: Node3D = $CardPlacementRef2
@@ -102,7 +109,7 @@ var in_play_dice_instances : Dictionary = {
 }
 
 @export var card_deck : Dictionary = {
-	1: bombcard,
+	1: bomb_card,
 	2: null,
 	3: null,
 	4: null,
@@ -210,6 +217,7 @@ func round_start() -> void:
 	spawn_coins()
 
 func _ready() -> void:
+	InputHandler.main_scene_entered()
 	performance_switch()
 	music_source.stream = roll_with_it_music
 	music_source.play()
@@ -261,7 +269,7 @@ func card_spawner(card_position : int) -> void:
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "cup_reloading":
-		current_state = 2
+		InputHandler.current_reroll_state = 2
 		get_tree().call_group("dice_logic", "drop")
 		zoom_delay.start()
 		await zoom_delay.timeout
@@ -271,7 +279,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		lid_collider_delay.start()
 		await lid_collider_delay.timeout
 		dice_cup.lid_collider.disabled = false
-		current_state = 3
+		InputHandler.current_reroll_state = 3
+	
+		
 		
 func roll_used() -> void:
 	if reroll_coins.get(GameManager.rolls) != null:
@@ -279,24 +289,24 @@ func roll_used() -> void:
 		reroll_coins.erase(GameManager.rolls)
 	
 func become_actionable() -> void:
-	input_handler.actionable = true
+	InputHandler.actionable = true
 		
 func become_inactionable() -> void:
-	input_handler.actionable = false
+	InputHandler.actionable = false
 		
 func reload() -> void:
-	if current_state == 0 and GameManager.dice_resting and stored_dice.find_key("false") != null and GameManager.rolls > 0:
+	if InputHandler.current_reroll_state == 0 and GameManager.dice_resting and stored_dice.find_key("false") != null and GameManager.rolls > 0:
 		become_inactionable()
 		GameManager.reset_dice_resting()
-		current_state = 1
+		InputHandler.current_reroll_state = 1
 		animation_player.play("cup_reloading")
 		get_tree().call_group("dice_logic", "start_recall")
 		get_tree().call_group("stored_dice", "update_ui")
 		GameManager.update_rolls_count(-1)
-	if current_state == 3:
+	if InputHandler.current_reroll_state == 3:
 		GameManager.has_pressed_release = true
 		camera_movement.play_backwards("zoom_on_box")
-		current_state = 4
+		InputHandler.current_reroll_state = 4
 		get_tree().call_group("statues", "main_scene_rerolling")
 		
 func focus_a_die(focused_die : int) -> void:
@@ -306,9 +316,17 @@ func focus_a_die(focused_die : int) -> void:
 
 func zoom_on_score_sheet() -> void:
 	camera_movement.play("DefaultToSheet")
+	InputHandler.actionable = false
+	camerabuffer.start()
+	await camerabuffer.timeout
+	InputHandler.actionable = true
 
 func zoom_out_score_sheet() -> void:
 	camera_movement.play_backwards("DefaultToSheet")
+	InputHandler.actionable = false
+	camerabuffer.start()
+	await camerabuffer.timeout
+	InputHandler.actionable = true
 
 func zoom_in_timer() -> void:
 	camera_movement.play("default_to_counter")
@@ -321,3 +339,47 @@ func zoom_on_statue() -> void:
 	
 func zoom_out_statue() -> void:
 	camera_movement.play_backwards("default_to_statues")
+
+
+func _on_card_hover_detection_mouse_entered() -> void:
+	InputHandler.hovered_object = "cards"
+	card_outline.visible = true
+
+func _on_card_hover_detection_mouse_exited() -> void:
+	if InputHandler.hovered_object == "cards":
+		InputHandler.hovered_object = "none"
+		card_outline.visible = false
+
+func pull_up_cards() -> void:
+	card_animations.play("pullupcards")
+	
+func pull_down_cards() -> void:
+	card_animations.play_backwards("pullupcards")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_spawn_card"):
+		next_card += 1
+		get_tree().get_first_node_in_group("main").card_spawner(next_card)
+
+func _on_card_exit_detect_mouse_entered() -> void:
+	InputHandler.hovered_object = "exitcards"
+	exit_card_outline.visible = true
+
+func _on_card_exit_detect_mouse_exited() -> void:
+	exit_card_outline.visible = false
+	if InputHandler.hovered_object == "exitcards":
+		InputHandler.hovered_object = "none"
+		
+
+func remove_card(card_position : int) -> void:
+	card_deck.set(card_position, null)
+	if InputHandler.hovered_object == "card" + str(card_position):
+		InputHandler.hovered_object = "none"
+func _on_card_animations_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "pullupcards":
+		card_exit_collider.disabled = !card_exit_collider.disabled
+		if card_exit_collider.disabled == true:
+			exit_card_outline.visible = false
+			for i : int in card_deck.size():
+					if card_deck.get(i) != null:
+						card_deck.get(i).card_logic.move_along_now = false

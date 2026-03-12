@@ -25,6 +25,7 @@ buses/default_bus_layout="uid://d0egtkkm6dfk0"
 GameManager="*uid://cg3ysk1gmje83"
 GlobalMusicPlayer="*uid://bu0owrhtrjj5o"
 SfxBank="*uid://hfm2er5quhfd"
+InputHandler="*uid://cw5iqymbhvxuo"
 
 [debug]
 

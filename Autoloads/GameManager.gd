@@ -16,6 +16,7 @@ var performance_mode : bool = false
 var visible_fps : bool = false
 var has_pressed_release : bool = false
 var dice_amount : int = 7
+var card_slots : int = 5
 var previous_round_target : int = 40
 var rng := RandomNumberGenerator.new()
 var rng_shops := RandomNumberGenerator.new()

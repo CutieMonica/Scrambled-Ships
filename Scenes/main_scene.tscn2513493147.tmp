@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://523q6q1mxokb" path="res://Assets/Textures/musicnote.png" id="10_76v2p"]
 [ext_resource type="PackedScene" uid="uid://cw5iqymbhvxuo" path="res://Scenes/input_handler.tscn" id="13_ioaeq"]
 [ext_resource type="PackedScene" uid="uid://b4krx2v1nqn5p" path="res://Scenes/dealer.tscn" id="14_7ewk0"]
+[ext_resource type="PackedScene" uid="uid://dgpdr61xocghe" path="res://Scenes/Cards/BombCard.tscn" id="14_8edxt"]
 [ext_resource type="PackedScene" uid="uid://bk22h6psdkhr2" path="res://Assets/Models/FoldingTableKathrinChristian/scene.gltf" id="15_2ebs2"]
 [ext_resource type="PackedScene" uid="uid://c538npb3wtyy8" path="res://Scenes/current_dice_paper.tscn" id="15_lhp3t"]
 [ext_resource type="PackedScene" uid="uid://bis01byg0ohxw" path="res://Scenes/target_score_display.tscn" id="16_gnsmo"]
@@ -255,7 +256,6 @@ shader_parameter/WaterOpacity = 0.8
 shader_parameter/FoamGlowIntensity = 0.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_mai8y"]
-lightmap_size_hint = Vector2i(100004, 55006)
 material = SubResource("ShaderMaterial_gnsmo")
 size = Vector3(10000, 500, 10000)
 
@@ -1057,23 +1057,8 @@ top_radius = 1.7
 bottom_radius = 1.7
 height = 0.01
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oxhp"]
-render_priority = 3
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_color = Color(1, 1, 1, 0.011764706)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_nt2eh"]
-material = SubResource("StandardMaterial3D_5oxhp")
-top_radius = 7.576
-height = 1.952
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8edxt"]
 size = Vector3(3.9, 1, 2.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5oxhp"]
-size = Vector3(74.6, 63.8, 0.001)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhp3t"]
 size = Vector3(7.4, 26.800001, 1.0500001)
@@ -1081,519 +1066,11 @@ size = Vector3(7.4, 26.800001, 1.0500001)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnsmo"]
 size = Vector3(0.25, 29.9, 7.55)
 
-[sub_resource type="Animation" id="Animation_xle81"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardPlacementRef1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-10.253, 0, 6.032)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CardPlacementRef1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0.52359873, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CardPlacementRef1:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CardPlacementRef2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-9.82, 0, 5.782)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CardPlacementRef2:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0.2617994, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CardPlacementRef2:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999999, 0.14999999, 0.14999998)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CardPlacementRef3:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-9.597, 0, 5.769)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CardPlacementRef3:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 9.9341094e-08, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CardPlacementRef3:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999998, 0.14999998, 0.14999996)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CardPlacementRef4:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-9.374, 0, 5.756)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CardPlacementRef4:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, -0.26179925, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CardPlacementRef4:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999998)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CardPlacementRef5:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-9.101, 0, 5.829)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CardPlacementRef5:rotation")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, -0.52359873, 0)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CardPlacementRef5:scale")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999996)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("CardPlacementRef6:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-8.827, 0, 5.902)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("CardPlacementRef6:rotation")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, -0.78539807, 0)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("CardPlacementRef6:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999996)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("CardPlacementRef7:position")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-8.627, 0, 6.248)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("CardPlacementRef7:rotation")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, -1.3089969, 0)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("CardPlacementRef7:scale")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999996)]
-}
-
 [sub_resource type="Animation" id="Animation_5bov3"]
 resource_name = "pullupcards"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardPlacementRef1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-10.253, 0, 6.032), Vector3(-10.251944, 0.0015503707, 6.03149), Vector3(-10.24455, 0.012402966, 6.027917), Vector3(-10.224481, 0.041860003, 6.01822), Vector3(-10.185397, 0.099223725, 5.9993362), Vector3(-10.120963, 0.19379632, 5.9682035), Vector3(-10.02484, 0.33488002, 5.92176), Vector3(-9.890691, 0.531777, 5.856943), Vector3(-9.712176, 0.7937898, 5.7706904), Vector3(-9.48296, 1.1302202, 5.65994), Vector3(-9.196704, 1.5503706, 5.52163), Vector3(-8.84707, 2.063543, 5.352697), Vector3(-8.42772, 2.6790402, 5.1500797), Vector3(-7.932317, 3.406164, 4.910716), Vector3(-7.354523, 4.254216, 4.6315436), Vector3(-6.688, 5.2325, 4.3094997), Vector3(-6.0214767, 6.2107844, 3.987456), Vector3(-5.4436836, 7.058836, 3.708284), Vector3(-4.94828, 7.785961, 3.4689198), Vector3(-4.52893, 8.401458, 3.2663028), Vector3(-4.179296, 8.91463, 3.0973701), Vector3(-3.8930407, 9.33478, 2.95906), Vector3(-3.663824, 9.67121, 2.8483095), Vector3(-3.4853096, 9.933223, 2.7620568), Vector3(-3.35116, 10.13012, 2.6972399), Vector3(-3.2550373, 10.271204, 2.6507962), Vector3(-3.1906033, 10.365776, 2.6196637), Vector3(-3.1515203, 10.423141, 2.60078), Vector3(-3.1314507, 10.452598, 2.5910828), Vector3(-3.1240568, 10.4634495, 2.5875103), Vector3(-3.123, 10.465, 2.587)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CardPlacementRef1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0.52359873, 0), Vector3(-1.5707188, 0.5235212, 0), Vector3(-1.5701758, 0.5229782, 0), Vector3(-1.568702, 0.52150434, 0), Vector3(-1.5658319, 0.51863426, 0), Vector3(-1.5611001, 0.5139025, 0), Vector3(-1.5540413, 0.50684357, 0), Vector3(-1.5441898, 0.49699217, 0), Vector3(-1.5310805, 0.48388278, 0), Vector3(-1.5142477, 0.46705008, 0), Vector3(-1.4932262, 0.44602853, 0), Vector3(-1.4675504, 0.42035282, 0), Vector3(-1.4367551, 0.38955745, 0), Vector3(-1.4003747, 0.353177, 0), Vector3(-1.3579438, 0.31074613, 0), Vector3(-1.3089969, 0.26179937, 0), Vector3(-1.2600502, 0.21285254, 0), Vector3(-1.2176193, 0.17042172, 0), Vector3(-1.1812389, 0.13404122, 0), Vector3(-1.1504436, 0.103245884, 0), Vector3(-1.1247678, 0.07757017, 0), Vector3(-1.1037463, 0.056548685, 0), Vector3(-1.0869136, 0.039715946, 0), Vector3(-1.0738041, 0.02660656, 0), Vector3(-1.0639527, 0.016755164, 0), Vector3(-1.0568938, 0.009696245, 0), Vector3(-1.052162, 0.004964471, 0), Vector3(-1.049292, 0.002094388, 0), Vector3(-1.0478182, 0.00062054396, 0), Vector3(-1.0472752, 7.760525e-05, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CardPlacementRef1:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CardPlacementRef2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-9.82, 0, 5.782), Vector3(-9.818625, 0.001716348, 5.781476), Vector3(-9.809009, 0.013730784, 5.777808), Vector3(-9.782905, 0.046341386, 5.767852), Vector3(-9.73207, 0.10984627, 5.7484636), Vector3(-9.648262, 0.21454345, 5.7164993), Vector3(-9.523237, 0.3707311, 5.6688147), Vector3(-9.348753, 0.58870727, 5.602266), Vector3(-9.116564, 0.8787702, 5.5137086), Vector3(-8.818428, 1.2512176, 5.399999), Vector3(-8.446102, 1.7163476, 5.257993), Vector3(-7.991341, 2.284459, 5.084547), Vector3(-7.445904, 2.9658487, 4.8765163), Vector3(-6.801545, 3.7708166, 4.630757), Vector3(-6.050023, 4.709658, 4.3441253), Vector3(-5.212975, 5.7553434, 4.024874), Vector3(-4.461453, 6.6941853, 3.7382424), Vector3(-3.8170948, 7.499152, 3.4924834), Vector3(-3.271658, 8.180542, 3.2844527), Vector3(-2.8168979, 8.748652, 3.1110067), Vector3(-2.4445715, 9.213783, 2.9690008), Vector3(-2.1464357, 9.58623, 2.8552914), Vector3(-1.914247, 9.876293, 2.7667341), Vector3(-1.7397614, 10.09427, 2.7001853), Vector3(-1.6147366, 10.250457, 2.6525006), Vector3(-1.5309296, 10.355154, 2.6205363), Vector3(-1.4800949, 10.418659, 2.6011481), Vector3(-1.4539909, 10.451269, 2.591192), Vector3(-1.4443741, 10.463284, 2.587524), Vector3(-1.443, 10.465, 2.587)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CardPlacementRef2:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0.2617994, 0), Vector3(-1.5707105, 0.26175645, 0), Vector3(-1.5701094, 0.2614559, 0), Vector3(-1.5684777, 0.26064008, 0), Vector3(-1.5653003, 0.2590514, 0), Vector3(-1.560062, 0.25643224, 0), Vector3(-1.5522474, 0.25252494, 0), Vector3(-1.5413414, 0.2470719, 0), Vector3(-1.5268285, 0.2398155, 0), Vector3(-1.5081937, 0.2304981, 0), Vector3(-1.4849218, 0.2188621, 0), Vector3(-1.4564973, 0.20464985, 0), Vector3(-1.4224051, 0.18760376, 0), Vector3(-1.3821299, 0.16746613, 0), Vector3(-1.3351564, 0.14397946, 0), Vector3(-1.2828374, 0.117819905, 0), Vector3(-1.2358639, 0.0943332, 0), Vector3(-1.1955888, 0.07419562, 0), Vector3(-1.1614966, 0.05714953, 0), Vector3(-1.1330721, 0.042937294, 0), Vector3(-1.1098001, 0.03130129, 0), Vector3(-1.0911653, 0.021983892, 0), Vector3(-1.0766525, 0.014727488, 0), Vector3(-1.0657465, 0.009274453, 0), Vector3(-1.0579319, 0.00536716, 0), Vector3(-1.0526936, 0.0027479827, 0), Vector3(-1.0495162, 0.0011593103, 0), Vector3(-1.0478846, 0.00034350157, 0), Vector3(-1.0472834, 4.2945147e-05, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CardPlacementRef2:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CardPlacementRef3:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-9.597, 0, 5.769), Vector3(-9.595172, 0.001906888, 5.76842), Vector3(-9.582374, 0.015255104, 5.7643614), Vector3(-9.547634, 0.05148597, 5.753345), Vector3(-9.479985, 0.12204083, 5.731892), Vector3(-9.368456, 0.23836099, 5.6965237), Vector3(-9.202076, 0.41188776, 5.643761), Vector3(-8.969875, 0.6540625, 5.570125), Vector3(-8.660883, 0.97632664, 5.472137), Vector3(-8.264131, 1.3901216, 5.3463182), Vector3(-7.768647, 1.9068879, 5.1891894), Vector3(-7.163462, 2.538068, 4.997272), Vector3(-6.4376063, 3.2951021, 4.7670875), Vector3(-5.5801086, 4.189433, 4.4951563), Vector3(-4.58, 5.2325, 4.178), Vector3(-3.5798912, 6.275567, 3.8608437), Vector3(-2.722393, 7.1698985, 3.5889122), Vector3(-1.9965372, 7.9269323, 3.3587277), Vector3(-1.3913517, 8.558113, 3.1668103), Vector3(-0.89586926, 9.074879, 3.009682), Vector3(-0.49911594, 9.488674, 2.8838627), Vector3(-0.19012451, 9.810938, 2.7858748), Vector3(0.04207611, 10.053113, 2.7122388), Vector3(0.20845604, 10.226639, 2.6594763), Vector3(0.3199854, 10.342959, 2.6241078), Vector3(0.38763428, 10.413514, 2.6026547), Vector3(0.42237282, 10.449745, 2.5916386), Vector3(0.43517208, 10.463094, 2.5875797), Vector3(0.437, 10.465, 2.587)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CardPlacementRef3:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, 9.9341094e-08, 0), Vector3(-1.570701, 9.932299e-08, 0), Vector3(-1.5700331, 9.9196285e-08, 0), Vector3(-1.5682204, 9.8852354e-08, 0), Vector3(-1.5646902, 9.8182596e-08, 0), Vector3(-1.5588704, 9.7078406e-08, 0), Vector3(-1.5501883, 9.543117e-08, 0), Vector3(-1.5380714, 9.313227e-08, 0), Vector3(-1.5219475, 9.0073115e-08, 0), Vector3(-1.501244, 8.6145086e-08, 0), Vector3(-1.4753884, 8.1239584e-08, 0), Vector3(-1.4438083, 7.524798e-08, 0), Vector3(-1.4059315, 6.806168e-08, 0), Vector3(-1.3611851, 5.957207e-08, 0), Vector3(-1.3089969, 4.9670547e-08, 0), Vector3(-1.2568089, 3.9769024e-08, 0), Vector3(-1.2120625, 3.1279406e-08, 0), Vector3(-1.1741855, 2.4093112e-08, 0), Vector3(-1.1426055, 1.8101503e-08, 0), Vector3(-1.11675, 1.3196008e-08, 0), Vector3(-1.0960464, 9.267971e-09, 0), Vector3(-1.0799224, 6.208822e-09, 0), Vector3(-1.0678056, 3.909925e-09, 0), Vector3(-1.0591235, 2.2626878e-09, 0), Vector3(-1.0533037, 1.1584973e-09, 0), Vector3(-1.0497736, 4.887397e-10, 0), Vector3(-1.0479609, 1.4481571e-10, 0), Vector3(-1.047293, 1.8104629e-11, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CardPlacementRef3:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CardPlacementRef4:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-9.374, 0, 5.756), Vector3(-9.371665, 0.002126709, 5.755356), Vector3(-9.355326, 0.017013673, 5.750848), Vector3(-9.310976, 0.05742114, 5.7386117), Vector3(-9.224611, 0.13610938, 5.7147837), Vector3(-9.082225, 0.26583856, 5.675499), Vector3(-8.869813, 0.45936912, 5.6168942), Vector3(-8.57337, 0.7294609, 5.5351057), Vector3(-8.17889, 1.088875, 5.426268), Vector3(-7.67237, 1.5503706, 5.2865186), Vector3(-7.0398026, 2.1267085, 5.1119924), Vector3(-6.2671824, 2.8306494, 4.8988256), Vector3(-5.340506, 3.674953, 4.6431546), Vector3(-4.245768, 4.6723785, 4.3411155), Vector3(-3.016231, 5.7926216, 4.0018845), Vector3(-1.9214911, 6.790049, 3.6998446), Vector3(-0.9948139, 7.634353, 3.4441736), Vector3(-0.22219563, 8.338293, 3.231007), Vector3(0.41037083, 8.91463, 3.0564814), Vector3(0.9168911, 9.376125, 2.9167318), Vector3(1.3113718, 9.735539, 2.8078942), Vector3(1.6078138, 10.005631, 2.7261055), Vector3(1.8202257, 10.199162, 2.6675007), Vector3(1.9626122, 10.328891, 2.6282165), Vector3(2.048977, 10.407579, 2.604388), Vector3(2.0933266, 10.447987, 2.5921519), Vector3(2.1096668, 10.462873, 2.5876439), Vector3(2.112, 10.465, 2.587)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CardPlacementRef4:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, -0.26179925, 0), Vector3(-1.5706899, -0.26174605, 0), Vector3(-1.5699451, -0.2613736, 0), Vector3(-1.5679234, -0.26036277, 0), Vector3(-1.5639864, -0.25839424, 0), Vector3(-1.5574956, -0.25514886, 0), Vector3(-1.5478126, -0.25030738, 0), Vector3(-1.534299, -0.24355058, 0), Vector3(-1.5163163, -0.23455924, 0), Vector3(-1.4932262, -0.22301418, 0), Vector3(-1.46439, -0.20859613, 0), Vector3(-1.4291695, -0.19098589, 0), Vector3(-1.3869263, -0.16986424, 0), Vector3(-1.3370217, -0.14491197, 0), Vector3(-1.2809722, -0.11688726, 0), Vector3(-1.2310677, -0.091934964, 0), Vector3(-1.1888243, -0.07081331, 0), Vector3(-1.1536038, -0.05320309, 0), Vector3(-1.1247678, -0.03878507, 0), Vector3(-1.1016777, -0.027240008, 0), Vector3(-1.0836949, -0.018248662, 0), Vector3(-1.0701814, -0.011491865, 0), Vector3(-1.0604984, -0.0066503882, 0), Vector3(-1.0540075, -0.0034050047, 0), Vector3(-1.0500705, -0.0014364719, 0), Vector3(-1.0480489, -0.00042563677, 0), Vector3(-1.0473039, -5.3197145e-05, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CardPlacementRef4:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999996, 0.14999996, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999999), Vector3(0.14999998, 0.14999998, 0.14999999), Vector3(0.14999998, 0.14999998, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CardPlacementRef5:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.90000004, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-9.101, 0, 5.829), Vector3(-9.09945, 0.0021347294, 5.828732), Vector3(-9.088605, 0.017077835, 5.826857), Vector3(-9.059166, 0.057637688, 5.821768), Vector3(-9.001839, 0.13662268, 5.8118567), Vector3(-8.907327, 0.26684117, 5.795517), Vector3(-8.766333, 0.4611015, 5.771141), Vector3(-8.569561, 0.73221207, 5.737122), Vector3(-8.307714, 1.0929815, 5.691853), Vector3(-7.9714975, 1.5562177, 5.633726), Vector3(-7.5516143, 2.1347294, 5.561135), Vector3(-7.038768, 2.8413246, 5.472471), Vector3(-6.4236617, 3.688812, 5.366129), Vector3(-5.697, 4.69, 5.2405), Vector3(-4.9703383, 5.691188, 5.114871), Vector3(-4.3552322, 6.5386753, 5.0085287), Vector3(-3.8423858, 7.245271, 4.919865), Vector3(-3.4225025, 7.823782, 4.847274), Vector3(-3.086285, 8.287019, 4.789147), Vector3(-2.8244395, 8.647788, 4.743878), Vector3(-2.6276674, 8.918899, 4.709859), Vector3(-2.4866734, 9.113159, 4.685483), Vector3(-2.392161, 9.243378, 4.669143), Vector3(-2.3348336, 9.322362, 4.659232), Vector3(-2.3053956, 9.362922, 4.654143), Vector3(-2.2945495, 9.377866, 4.652268), Vector3(-2.293, 9.38, 4.652)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CardPlacementRef5:rotation")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.90000004, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, -0.52359873, 0), Vector3(-1.5706772, -0.5234796, 0), Vector3(-1.569843, -0.5226454, 0), Vector3(-1.567579, -0.52038133, 0), Vector3(-1.56317, -0.5159724, 0), Vector3(-1.555901, -0.5087035, 0), Vector3(-1.5450573, -0.4978597, 0), Vector3(-1.5299237, -0.4827261, 0), Vector3(-1.5097853, -0.46258768, 0), Vector3(-1.4839271, -0.4367295, 0), Vector3(-1.4516342, -0.40443653, 0), Vector3(-1.4121914, -0.3649938, 0), Vector3(-1.364884, -0.31768644, 0), Vector3(-1.3089969, -0.26179937, 0), Vector3(-1.2531099, -0.20591232, 0), Vector3(-1.2058024, -0.15860489, 0), Vector3(-1.1663598, -0.1191622, 0), Vector3(-1.1340668, -0.08686927, 0), Vector3(-1.1082087, -0.061011016, 0), Vector3(-1.0880702, -0.040872633, 0), Vector3(-1.0729365, -0.025739014, 0), Vector3(-1.0620928, -0.01489526, 0), Vector3(-1.0548239, -0.0076263547, 0), Vector3(-1.050415, -0.0032173991, 0), Vector3(-1.0481509, -0.0009533167, 0), Vector3(-1.0473168, -0.000119149685, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CardPlacementRef5:scale")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.90000004, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("CardPlacementRef6:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-8.827, 0, 5.902), Vector3(-8.824881, 0.0024012807, 5.90168), Vector3(-8.810044, 0.019210245, 5.89944), Vector3(-8.769775, 0.064834565, 5.89336), Vector3(-8.691357, 0.15368196, 5.88152), Vector3(-8.562072, 0.30016008, 5.862), Vector3(-8.3692045, 0.5186765, 5.83288), Vector3(-8.100038, 0.82363904, 5.79224), Vector3(-7.7418547, 1.2294557, 5.73816), Vector3(-7.2819395, 1.7505332, 5.66872), Vector3(-6.7075753, 2.4012806, 5.582), Vector3(-6.0060463, 3.1961043, 5.47608), Vector3(-5.1646347, 4.149412, 5.34904), Vector3(-4.210364, 5.230589, 5.20496), Vector3(-3.3689537, 6.183896, 5.07792), Vector3(-2.6674237, 6.9787207, 4.972), Vector3(-2.0930595, 7.6294675, 4.8852797), Vector3(-1.6331453, 8.150545, 4.81584), Vector3(-1.2749624, 8.556361, 4.7617598), Vector3(-1.005796, 8.861323, 4.72112), Vector3(-0.8129282, 9.079841, 4.692), Vector3(-0.68364334, 9.226318, 4.67248), Vector3(-0.6052246, 9.3151655, 4.66064), Vector3(-0.5649557, 9.360789, 4.65456), Vector3(-0.5501194, 9.377599, 4.65232), Vector3(-0.548, 9.38, 4.652)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("CardPlacementRef6:rotation")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, -0.78539807, 0), Vector3(-1.5706624, -0.785197, 0), Vector3(-1.5697241, -0.7837896, 0), Vector3(-1.5671773, -0.7799694, 0), Vector3(-1.5622177, -0.7725301, 0), Vector3(-1.5540411, -0.76026535, 0), Vector3(-1.5418434, -0.7419687, 0), Vector3(-1.5248202, -0.7164338, 0), Vector3(-1.5021672, -0.68245435, 0), Vector3(-1.4730803, -0.6388239, 0), Vector3(-1.4367551, -0.5843361, 0), Vector3(-1.3923874, -0.5177846, 0), Vector3(-1.339173, -0.43796307, 0), Vector3(-1.2788209, -0.3474349, 0), Vector3(-1.2256066, -0.2676134, 0), Vector3(-1.1812389, -0.20106184, 0), Vector3(-1.1449137, -0.14657408, 0), Vector3(-1.1158267, -0.10294366, 0), Vector3(-1.0931737, -0.06896418, 0), Vector3(-1.0761505, -0.043429375, 0), Vector3(-1.0639527, -0.025132716, 0), Vector3(-1.0557762, -0.012867987, 0), Vector3(-1.0508168, -0.005428672, 0), Vector3(-1.04827, -0.001608491, 0), Vector3(-1.0473316, -0.00020104647, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("CardPlacementRef6:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("CardPlacementRef7:position")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-8.627, 0, 6.248), Vector3(-8.624157, 0.0027141208, 6.2475386), Vector3(-8.6042595, 0.021712966, 6.2443056), Vector3(-8.55025, 0.07328125, 6.2355313), Vector3(-8.445074, 0.17370373, 6.2184443), Vector3(-8.271676, 0.3392651, 6.1902742), Vector3(-8.013, 0.58625, 6.14825), Vector3(-7.651991, 0.93094325, 6.089601), Vector3(-7.171592, 1.3896298, 6.0115557), Vector3(-6.55475, 1.9785938, 5.911344), Vector3(-5.7844067, 2.7141209, 5.7861943), Vector3(-4.843509, 3.6124945, 5.633337), Vector3(-3.7150002, 4.69, 5.45), Vector3(-2.586491, 5.767506, 5.266663), Vector3(-1.6455936, 6.665879, 5.113806), Vector3(-0.87525034, 7.4014063, 4.988656), Vector3(-0.2584076, 7.9903708, 4.8884444), Vector3(0.22199059, 8.449057, 4.810399), Vector3(0.5829992, 8.79375, 4.75175), Vector3(0.84167576, 9.040735, 4.7097254), Vector3(1.0150738, 9.206297, 4.6815557), Vector3(1.1202497, 9.306719, 4.664469), Vector3(1.1742592, 9.358287, 4.6556945), Vector3(1.1941566, 9.377286, 4.652462), Vector3(1.197, 9.38, 4.652)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("CardPlacementRef7:rotation")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, -1.3089969, 0), Vector3(-1.5706449, -1.3086182, 0), Vector3(-1.5695844, -1.3059669, 0), Vector3(-1.5667057, -1.2987704, 0), Vector3(-1.5611001, -1.2847562, 0), Vector3(-1.5518583, -1.2616519, 0), Vector3(-1.5380714, -1.2271847, 0), Vector3(-1.5188304, -1.179082, 0), Vector3(-1.4932262, -1.1150714, 0), Vector3(-1.4603498, -1.0328803, 0), Vector3(-1.4192921, -0.93023616, 0), Vector3(-1.3691442, -0.80486643, 0), Vector3(-1.3089969, -0.65449846, 0), Vector3(-1.2488497, -0.5041305, 0), Vector3(-1.1987019, -0.3787608, 0), Vector3(-1.1576443, -0.2761165, 0), Vector3(-1.1247678, -0.19392538, 0), Vector3(-1.0991635, -0.12991488, 0), Vector3(-1.0799224, -0.08181226, 0), Vector3(-1.0661356, -0.047345042, 0), Vector3(-1.0568938, -0.024240613, 0), Vector3(-1.0512881, -0.010226488, 0), Vector3(-1.0484096, -0.0030300617, 0), Vector3(-1.0473491, -0.00037884712, 0), Vector3(-1.0471976, 0, 0)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("CardPlacementRef7:scale")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.9666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999996, 0.14999996, 0.14999996), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999998, 0.14999998, 0.14999998), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999), Vector3(0.14999999, 0.14999999, 0.14999999)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xle81"]
 _data = {
-&"RESET": SubResource("Animation_xle81"),
 &"pullupcards": SubResource("Animation_5bov3")
 }
 
@@ -1622,7 +1099,6 @@ attributes = SubResource("CameraAttributesPractical_b48ew")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=950415625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.0160253, -0.24019241)
-visible = false
 mesh = SubResource("QuadMesh_m1efj")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D" unique_id=2140876827]
@@ -1860,16 +1336,12 @@ libraries/ = SubResource("AnimationLibrary_gnsmo")
 autoplay = &"idle"
 
 [node name="input_handler" parent="." unique_id=1801933789 instance=ExtResource("13_ioaeq")]
+actionable = null
 
 [node name="CardOutline" type="MeshInstance3D" parent="." unique_id=1786308359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.400001, -0.009, 6)
 visible = false
 mesh = SubResource("CylinderMesh_5oxhp")
-
-[node name="ExitCardOutline" type="MeshInstance3D" parent="." unique_id=184227849]
-transform = Transform3D(1, 0, 0, 0, 0.86602527, -0.5, 0, 0.5, 0.86602527, -0.6000005, 8.291, 2.7)
-visible = false
-mesh = SubResource("CylinderMesh_nt2eh")
 
 [node name="CardHoverDetection" type="Area3D" parent="." unique_id=1559750003]
 
@@ -1878,33 +1350,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 0, 5.9500003)
 shape = SubResource("BoxShape3D_8edxt")
 
 [node name="CardPlacementRef1" type="Node3D" parent="." unique_id=636786966]
-transform = Transform3D(0.12990381, -0.07499999, -3.2783536e-09, 0, -6.556708e-09, 0.14999999, -0.07499999, -0.12990381, -5.6782756e-09, -10.253, 0, 6.032)
+transform = Transform3D(0.12990381, -0.074999996, -3.2783538e-09, 0, -6.5567076e-09, 0.14999999, -0.074999996, -0.12990381, -5.678275e-09, -10.253, 0, 6.032)
+
+[node name="BombCard" parent="CardPlacementRef1" unique_id=1143179809 instance=ExtResource("14_8edxt")]
 
 [node name="CardPlacementRef2" type="Node3D" parent="." unique_id=97416]
-transform = Transform3D(0.14488886, -0.038822856, -1.6970007e-09, 0, -6.556708e-09, 0.14999998, -0.038822856, -0.14488886, -6.333293e-09, -9.82, 0, 5.782)
+transform = Transform3D(0.14488886, -0.038822856, -1.6970013e-09, 2.6661363e-16, -6.5567076e-09, 0.14999998, -0.038822856, -0.14488886, -6.333292e-09, -9.82, 0, 5.782)
+
+[node name="BombCard" parent="CardPlacementRef2" unique_id=987351877 instance=ExtResource("14_8edxt")]
 
 [node name="CardPlacementRef3" type="Node3D" parent="." unique_id=256149166]
-transform = Transform3D(0.14999998, -1.4901161e-08, -6.5135044e-16, 0, -6.556707e-09, 0.14999996, -1.4901161e-08, -0.14999998, -6.5567067e-09, -9.597, 0, 5.769)
+transform = Transform3D(0.14999998, -1.4901161e-08, -2.220446e-16, 3.585808e-17, -6.5567067e-09, 0.14999996, -1.4901161e-08, -0.14999998, -6.5567067e-09, -9.597, 0, 5.769)
+
+[node name="BombCard" parent="CardPlacementRef3" unique_id=2014003459 instance=ExtResource("14_8edxt")]
 
 [node name="CardPlacementRef4" type="Node3D" parent="." unique_id=1228104427]
-transform = Transform3D(0.14488885, 0.038822826, 1.6969998e-09, 0, -6.5567067e-09, 0.14999998, 0.038822826, -0.14488885, -6.333293e-09, -9.374, 0, 5.756)
+transform = Transform3D(0.14488885, 0.038822833, 1.6970003e-09, 4.1268025e-16, -6.556707e-09, 0.14999998, 0.038822833, -0.14488885, -6.333292e-09, -9.374, 0, 5.756)
+
+[node name="BombCard" parent="CardPlacementRef4" unique_id=1811917420 instance=ExtResource("14_8edxt")]
 
 [node name="CardPlacementRef5" type="Node3D" parent="." unique_id=911178435]
-transform = Transform3D(0.12990378, 0.07499997, 3.278353e-09, 0, -6.5567067e-09, 0.14999996, 0.07499997, -0.12990378, -5.6782743e-09, -9.101, 0, 5.829)
+transform = Transform3D(0.12990378, 0.07499997, 3.2783527e-09, 1.4622669e-16, -6.556707e-09, 0.14999996, 0.07499997, -0.12990378, -5.678274e-09, -9.101, 0, 5.829)
+
+[node name="BombCard" parent="CardPlacementRef5" unique_id=1547810057 instance=ExtResource("14_8edxt")]
 
 [node name="CardPlacementRef6" type="Node3D" parent="." unique_id=806711927]
-transform = Transform3D(0.106065996, 0.10606598, 4.6362914e-09, 0, -6.5567067e-09, 0.14999996, 0.10606598, -0.106065996, -4.636292e-09, -8.827, 0, 5.902)
+transform = Transform3D(0.106066, 0.10606599, 4.63629e-09, 1.7539538e-17, -6.556707e-09, 0.14999996, 0.10606599, -0.106066, -4.636291e-09, -8.827, 0, 5.902)
+
+[node name="BombCard" parent="CardPlacementRef6" unique_id=610442077 instance=ExtResource("14_8edxt")]
 
 [node name="CardPlacementRef7" type="Node3D" parent="." unique_id=1678420898]
-transform = Transform3D(0.038822852, 0.14488883, 6.333292e-09, 0, -6.5567067e-09, 0.14999996, 0.14488883, -0.038822852, -1.6970008e-09, -8.627, 0, 6.248)
+transform = Transform3D(0.03882285, 0.14488883, 6.3332903e-09, 1.7539538e-17, -6.556707e-09, 0.14999996, 0.14488883, -0.03882285, -1.6969997e-09, -8.627, 0, 6.248)
 
-[node name="CardExitDetect" type="Area3D" parent="." unique_id=78340855]
-transform = Transform3D(0.14999999, 0, 0, 0, 0.07499999, 0.12990381, 0, -0.12990381, 0.07499999, 1.1969995, 9.38, 4.652)
-
-[node name="CardExitCollider" type="CollisionShape3D" parent="CardExitDetect" unique_id=1517231407]
-transform = Transform3D(1, 0, 0, 0, 1, 5.9604645e-08, 0, -5.9604645e-08, 1, -11.200001, 11.888029, -2.3208237)
-shape = SubResource("BoxShape3D_5oxhp")
-disabled = true
+[node name="BombCard" parent="CardPlacementRef7" unique_id=220758296 instance=ExtResource("14_8edxt")]
 
 [node name="Dealer" parent="." unique_id=2084854741 instance=ExtResource("14_7ewk0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, -17.15, -30.750002)
@@ -1951,11 +1429,11 @@ transform = Transform3D(-0.05602272, -0.066765174, -0.99619466, -0.7660446, 0.64
 [node name="CurrencyCup" parent="." unique_id=1786481844 instance=ExtResource("19_oyb3p")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.45, -0.05000019, -3.4500003)
 
-[node name="ShopBox" parent="." unique_id=342615568 instance=ExtResource("16_oyb3p")]
-transform = Transform3D(19.696156, 0, 3.4729636, 0, 20, 0, -3.4729636, 0, 19.696156, 23.899996, -6.1499968, -2.6000004)
-
 [node name="Sketchfab_Scene" parent="." unique_id=657791988 instance=ExtResource("15_2ebs2")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 23.899998, -14.55, -2.300002)
+
+[node name="ShopBox" parent="Sketchfab_Scene" unique_id=342615568 instance=ExtResource("16_oyb3p")]
+transform = Transform3D(0.9848078, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848078, -1.1920929e-07, 0.42000017, -0.014999919)
 
 [node name="StatueStand" parent="." unique_id=1704196050 instance=ExtResource("20_b48ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.199999, 0.6, -11.500001)
@@ -1997,15 +1475,8 @@ one_shot = true
 
 [node name="CardAnimations" type="AnimationPlayer" parent="." unique_id=1681459123]
 libraries/ = SubResource("AnimationLibrary_xle81")
-speed_scale = 3.0
-
-[node name="Camerabuffer" type="Timer" parent="." unique_id=616537585]
-one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="CardHoverDetection" to="." method="_on_card_hover_detection_mouse_entered"]
 [connection signal="mouse_exited" from="CardHoverDetection" to="." method="_on_card_hover_detection_mouse_exited"]
-[connection signal="mouse_entered" from="CardExitDetect" to="." method="_on_card_exit_detect_mouse_entered"]
-[connection signal="mouse_exited" from="CardExitDetect" to="." method="_on_card_exit_detect_mouse_exited"]
-[connection signal="animation_finished" from="CardAnimations" to="." method="_on_card_animations_animation_finished"]
