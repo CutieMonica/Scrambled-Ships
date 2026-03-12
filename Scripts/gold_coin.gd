@@ -5,7 +5,7 @@ extends RigidBody3D
 var mid_air_hits : int = 0
 var hovered : bool = false
 var random_song : int = 1
-var hit := preload("res://Assets/SFX/impact-fx-orchestra-hit_C_major.wav")
+
 var moving : bool = false
 @onready var gold_coin: RigidBody3D = $"."
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
@@ -15,8 +15,28 @@ var moving : bool = false
 @onready var mesh: MeshInstance3D = $"Sketchfab_Scene/Sketchfab_model/4761e60571154708a3a5b48b4216d582_fbx/RootNode/bitcoin/bitcoin_Material_0"
 var values : Array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 @export var weight_probabilities : Array = [2, 2, 1, 0.7, 0.7, 0.7, 0.2, 0.2, 0.9, 0.9]
-
+var random_noise : int = 1
+var can_play_sound : bool = false
 var proximity_coins : Dictionary = {}
+var soundtype : String = "coin"
+
+func random_coin_clink() -> void:
+	if soundtype == "coin":
+		match random_noise:
+			1:
+				audio_stream_player_3d.stream = SfxBank.coin_drop_1
+			2:
+				audio_stream_player_3d.stream = SfxBank.coin_hit_1
+			3:
+				audio_stream_player_3d.stream = SfxBank.coin_hit_2
+			4:
+				audio_stream_player_3d.stream = SfxBank.coin_hit_3
+	if soundtype == "wood":
+		audio_stream_player_3d.stream = SfxBank.coin_table_hit
+	audio_stream_player_3d.volume_db = randf_range(-9, -7)
+	audio_stream_player_3d.pitch_scale = randf_range(0.9, 1.2)
+	audio_stream_player_3d.play()
+
 
 func _ready() -> void:
 	hit_counter.visible = false
@@ -36,13 +56,13 @@ func _ready() -> void:
 		6:
 			mesh.get_surface_override_material(0).albedo_color = Color("bb5333ff")
 		7:
-			mesh.get_surface_override_material(0).albedo_color = Color("c5d3efff")
+			mesh.get_surface_override_material(0).albedo_color = Color("cde9fdff")
 		8:
-			mesh.get_surface_override_material(0).albedo_color = Color("8b9bbbff")
+			mesh.get_surface_override_material(0).albedo_color = Color("aed9f6ff")
 		9:
-			mesh.get_surface_override_material(0).albedo_color = Color("cd9400ff")
+			mesh.get_surface_override_material(0).albedo_color = Color("d48c5aff")
 		10:
-			mesh.get_surface_override_material(0).albedo_color = Color("fcb458ff")
+			mesh.get_surface_override_material(0).albedo_color = Color("fecf98ff")
 
 func freeze() -> void:
 	if gold_coin.sleeping or linear_velocity.length() < 1.5:
@@ -65,6 +85,10 @@ func _input(event: InputEvent) -> void:
 		linear_velocity.z = GameManager.rng.randf_range(-2, 2)
 		angular_velocity.x = GameManager.rng.randf_range(-40, 40)
 		angular_velocity.z = GameManager.rng.randf_range(-40, 40)
+		if mid_air_hits < 3:
+			audio_stream_player_3d.stream = SfxBank.coinclick
+			audio_stream_player_3d.volume_db = (-8)
+			audio_stream_player_3d.play()
 		if mid_air_hits == 2:
 			collision_shape_3d.disabled = true
 		if mid_air_hits >= 3:
@@ -73,7 +97,7 @@ func _input(event: InputEvent) -> void:
 			hit_counter.font_size = 256 + (mid_air_hits * 4)
 			print(hit_counter.font_size)
 			hit_counter.text = str(mid_air_hits)
-			audio_stream_player_3d.stream = hit
+			audio_stream_player_3d.stream = SfxBank.orchestrahit
 			audio_stream_player_3d.volume_db = (-8 + mid_air_hits * 0.1)
 			audio_stream_player_3d.play()
 			if mid_air_hits < 15:
@@ -144,15 +168,31 @@ func _on_sleeping_state_changed() -> void:
 	if gold_coin.sleeping:
 		stop_the_count()
 
-func _on_stupid_feature_stopper_area_entered(_area: Area3D) -> void:
+func _on_stupid_feature_stopper_area_entered(area: Area3D) -> void:
+	if area.is_in_group("wood") and can_play_sound:
+		if linear_velocity.y < -2:
+			random_noise = randi_range(1, 1)
+			random_coin_clink()
+			soundtype = "wood"
 	stop_the_count()
 
 
-func _on_stupid_feature_stopper_area_shape_entered(_area_rid: RID, _area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
+func _on_stupid_feature_stopper_area_shape_entered(_area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
+	if area.is_in_group("wood") and can_play_sound:
+		if linear_velocity.y < -2:
+			random_noise = randi_range(1, 1)
+			random_coin_clink()
+			soundtype = "wood"
 	stop_the_count()
 
 
-func _on_stupid_feature_stopper_body_entered(_body: Node3D) -> void:
+func _on_stupid_feature_stopper_body_entered(body: Node3D) -> void:
+	if body.is_in_group("reroll_coins") and can_play_sound:
+		if linear_velocity.y < -2:
+			random_noise = randi_range(1, 4)
+			random_coin_clink()
+			soundtype = "coin"
+	can_play_sound = true
 	stop_the_count()
 
 

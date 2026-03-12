@@ -177,3 +177,9 @@ func leftclickinteraction() -> void:
 
 func _on_d_6_mouse_detect_mouse_exited() -> void:
 	dice_logic.losefocusdie()
+
+func _on_dice_noise_detection_area_entered(area: Area3D) -> void:
+	if area.is_in_group("wood"):
+		dice_logic.play_wood_sound()
+	if area.is_in_group("soft"):
+		dice_logic.play_soft_sound()

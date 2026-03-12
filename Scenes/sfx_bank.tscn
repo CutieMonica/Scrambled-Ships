@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1b860y2xrhvk"]
+
+[ext_resource type="Script" uid="uid://hfm2er5quhfd" path="res://Scripts/sfx_bank.gd" id="1_gq4t3"]
+
+[node name="SFXBank" type="Node" unique_id=860984771]
+script = ExtResource("1_gq4t3")

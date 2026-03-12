@@ -287,7 +287,7 @@ texture = ExtResource("2_yahnv")
 normal = ExtResource("4_s2i7n")
 roughness = ExtResource("3_6fs1r")
 
+[connection signal="area_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_area_entered"]
 [connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
-[connection signal="body_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_body_entered"]
 [connection signal="mouse_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_exited"]

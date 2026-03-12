@@ -5,6 +5,8 @@ var statue_camera_state : bool = false
 @export var actionable : bool = false
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_spawn_card"):
+		get_parent().card_spawner(1)
 	if event.is_action_pressed("debug_spawn_coins"):
 		get_parent().give_extra_rerolls(10)
 	if event.is_action_pressed("debug_give_money"):
@@ -39,5 +41,7 @@ func _input(event: InputEvent) -> void:
 				if statue_camera_state: 
 					get_parent().zoom_out_statue()
 				statue_camera_state = !statue_camera_state
+			if hovered_object == "cards":
+				
 	if event.is_action_pressed("DebugTool"):
 		print(get_parent().stored_dice.has("false"))

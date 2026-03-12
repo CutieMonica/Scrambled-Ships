@@ -2,19 +2,31 @@ extends Node3D
 class_name DiceLogic
 
 
+@export_group("stats")
 @export var outside_the_box_multiplier : float = 1.0
-
 @export var default_gravity : float = 3.0
 @export var default_mass : float = 0.75
 @export var dice_position : int = 1
 
+@export_group("textures")
 @export var texture : Texture2D
 @export var normal : Texture2D
 @export var roughness : Texture2D
 
-@export var dice_clink_sound_1 := preload("res://Assets/SFX/diceclink1.ogg")
-@export var dice_clink_sound_2 := preload("res://Assets/SFX/diceclink2.ogg")
-@export var dice_clink_sound_3 := preload("res://Assets/SFX/diceclink3.ogg")
+@export_group("sounds")
+@warning_ignore("untyped_declaration")
+@export var dice_clink_sound_1 = SfxBank.dice_clink_sound_1
+@warning_ignore("untyped_declaration")
+@export var dice_clink_sound_2 = SfxBank.dice_clink_sound_2
+@warning_ignore("untyped_declaration")
+@export var dice_clink_sound_3 = SfxBank.dice_clink_sound_3
+@warning_ignore("untyped_declaration")
+@export var dice_wood_sound = SfxBank.coin_table_hit
+@warning_ignore("untyped_declaration")
+@export var dice_soft_sound_1 = SfxBank.softsound1
+@warning_ignore("untyped_declaration")
+@export var dice_soft_sound_2 = SfxBank.softsound2
+
 @onready var storage_timer: Timer = $StorageTimer
 @onready var back_to_box_timer: Timer = $BackToBoxTimer
 @onready var gravity_reset_timer: Timer = $GravityResetTimer
@@ -204,3 +216,20 @@ func _on_back_to_box_timer_timeout() -> void:
 
 func _on_gravity_reset_timer_timeout() -> void:
 	get_parent().gravity_scale = default_gravity
+
+func play_wood_sound() -> void:
+	get_parent().audio_stream_player_3d.stream = dice_wood_sound
+	get_parent().audio_stream_player_3d.volume_db = (-9 + randf_range(-1, 3))
+	get_parent().audio_stream_player_3d.pitch_scale = (0 + randf_range(0.8, 2))
+	get_parent().audio_stream_player_3d.play()
+
+func play_soft_sound() -> void:
+	var random_noise : int = 0
+	random_noise = randi_range(1, 2)
+	if random_noise == 1:
+		get_parent().audio_stream_player_3d.stream = dice_soft_sound_1
+	if random_noise == 2:
+		get_parent().audio_stream_player_3d.stream = dice_soft_sound_2
+	get_parent().audio_stream_player_3d.volume_db = (-10 + randf_range(-2, 2))
+	get_parent().audio_stream_player_3d.pitch_scale = (0 + randf_range(0.8, 1.3))
+	get_parent().audio_stream_player_3d.play()

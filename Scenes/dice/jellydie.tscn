@@ -268,7 +268,6 @@ collision_priority = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiceNoiseDetection" unique_id=1745767475]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008239746, 0.0034926683, -0.0001449585)
-visible = false
 shape = SubResource("BoxShape3D_6fs1r")
 debug_color = Color(0.84470236, 0.0010357738, 0.9137237, 0.41960785)
 
@@ -296,6 +295,7 @@ roughness = ExtResource("3_wae6c")
 process_callback = 0
 one_shot = true
 
+[connection signal="area_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_area_entered"]
 [connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
 [connection signal="mouse_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_exited"]

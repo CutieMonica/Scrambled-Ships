@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://7y3bs8ucwywy"]
+
+[ext_resource type="Script" uid="uid://c4qlpux1n5ki5" path="res://Scripts/ticket_generator.gd" id="1_0y5pb"]
+[ext_resource type="Texture2D" uid="uid://i7fpuld1xwaq" path="res://Assets/Textures/ticketbackground.png" id="1_8jw0b"]
+[ext_resource type="Texture2D" uid="uid://jabs1pxp48lv" path="res://Assets/Textures/ticketicons/fourofakindlowerfloor.png" id="2_6mu8e"]
+[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="3_mv6s8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0y5pb"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_hn5p3"]
+sky_material = SubResource("ProceduralSkyMaterial_0y5pb")
+
+[sub_resource type="Environment" id="Environment_kwcev"]
+background_mode = 2
+sky = SubResource("Sky_hn5p3")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0y5pb"]
+transparency = 1
+albedo_texture = ExtResource("1_8jw0b")
+metallic = 0.71
+metallic_specular = 0.19
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jvxuq"]
+material = SubResource("StandardMaterial3D_0y5pb")
+size = Vector2(1.83, 2.61)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hn5p3"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("2_6mu8e")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0y5pb"]
+material = SubResource("StandardMaterial3D_hn5p3")
+size = Vector2(1.2, 1.2)
+
+[node name="TicketGenerator" type="Node3D" unique_id=1146082060]
+script = ExtResource("1_0y5pb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1939950215]
+environment = SubResource("Environment_kwcev")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=183110822]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=593821278]
+mesh = SubResource("PlaneMesh_jvxuq")
+
+[node name="Icon" type="MeshInstance3D" parent="." unique_id=591485127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.43023318)
+mesh = SubResource("PlaneMesh_0y5pb")
+
+[node name="Name" type="Label3D" parent="." unique_id=1506551501]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.19)
+pixel_size = 0.002
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.93375623, 0.80522776, 0.7375256, 1)
+outline_modulate = Color(0.10558469, 0.04934538, 0.01453367, 1)
+text = "Easy Four of a Kind"
+font = ExtResource("3_mv6s8")
+font_size = 100
+outline_size = 24
+vertical_alignment = 0
+
+[node name="Description" type="Label3D" parent="." unique_id=1913809960]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.39999995)
+pixel_size = 0.002
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.9437283, 0.8422532, 0.7861883, 1)
+outline_modulate = Color(0.14154723, 0.08082212, 0.027646441, 1)
+text = "a a a a a a a a  a a a a a a aa a a a a a  a aa a a  aa a a a a a a a a  a a a a a  a a a a a a a a aa  aa a a a a a a  a a a a a a a aa a  aa a a a a a a a a a a aa "
+font = ExtResource("3_mv6s8")
+font_size = 64
+vertical_alignment = 0
+autowrap_mode = 3
+width = 900.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1013141515]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.73, 0)

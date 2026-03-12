@@ -243,11 +243,11 @@ func calculate_score() -> void:
 				current_best_double = n
 					
 	#this code is ok
-	if current_best_quint > current_best_quad and current_best_quint > current_best_triple:
+	if current_best_quint >= current_best_quad and current_best_quint >= current_best_triple:
 		full_house_larger_number = current_best_quint
-	if current_best_quad > current_best_quint and current_best_quad > current_best_triple:
+	if current_best_quad >= current_best_quint and current_best_quad >= current_best_triple:
 		full_house_larger_number = current_best_quad
-	if current_best_triple > current_best_quint and current_best_triple > current_best_quad:
+	if current_best_triple >= current_best_quint and current_best_triple >= current_best_quad:
 		full_house_larger_number = current_best_triple
 		
 	#this code sucks

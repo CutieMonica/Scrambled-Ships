@@ -35,6 +35,7 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var ray_cast_6: RayCast3D = $RayCast6
 @onready var highlight: MeshInstance3D = $highlight
 @onready var shaker: AnimationPlayer = $Shaker
+@onready var mouse_detect: CollisionShape3D = $D6_Mouse_Detect/MouseDetect
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
@@ -176,8 +177,10 @@ func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 			audio_stream_player_3d.play()
 	
 func leftclickinteraction() -> void:
+	dying = true
 	get_parent().input_handler.actionable = false
 	remove_from_group("dice")
+	mouse_detect.disabled = true
 	shaker.stop()
 	highlight.visible = false
 	if get_parent().input_handler.hovered_object == "dice" + str(dice_position):
@@ -212,6 +215,11 @@ func _on_d_6_mouse_detect_mouse_exited() -> void:
 		start_shaking = false
 		shaker.play("RESET")
 
-
 func _on_death_timer_timeout() -> void:
 	queue_free()
+
+func _on_dice_noise_detection_area_entered(area: Area3D) -> void:
+	if area.is_in_group("wood"):
+		dice_logic.play_wood_sound()
+	if area.is_in_group("soft"):
+		dice_logic.play_soft_sound()

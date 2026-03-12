@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://crcpsnxro28o7"]
+
+[ext_resource type="Script" uid="uid://4lk3aa5qqmtb" path="res://Scripts/cards/card_logic.gd" id="1_3rgpg"]
+
+[node name="card_logic" type="Node3D" unique_id=300499701]
+script = ExtResource("1_3rgpg")
+
+[node name="Timer" type="Timer" parent="." unique_id=541735209]
+wait_time = 0.009999999999999998
+one_shot = true

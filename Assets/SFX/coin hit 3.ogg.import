@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://28f6e7uj2whu"
+path="res://.godot/imported/coin hit 3.ogg-45a3523451e44a81b39940df87388920.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/coin hit 3.ogg"
+dest_files=["res://.godot/imported/coin hit 3.ogg-45a3523451e44a81b39940df87388920.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

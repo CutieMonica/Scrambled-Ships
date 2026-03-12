@@ -198,3 +198,9 @@ func _on_blade_bounce_timeout() -> void:
 		linear_velocity = Vector3.ZERO
 		velocity_zeroed = true
 		rigid_body_3d.sleeping = true
+
+func _on_dice_noise_detection_area_entered(area: Area3D) -> void:
+	if area.is_in_group("wood"):
+		dice_logic.play_wood_sound()
+	if area.is_in_group("soft"):
+		dice_logic.play_soft_sound()

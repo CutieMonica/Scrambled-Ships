@@ -692,7 +692,7 @@ mesh = SubResource("ArrayMesh_r3gm5")
 collision_layer = 128
 collision_mask = 128
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="D6_Mouse_Detect" unique_id=107950606]
+[node name="MouseDetect" type="CollisionShape3D" parent="D6_Mouse_Detect" unique_id=107950606]
 shape = SubResource("BoxShape3D_yahnv")
 
 [node name="DiceLogic" parent="." unique_id=1171884486 groups=["dice_logic"] instance=ExtResource("5_nqhm1")]
@@ -737,6 +737,8 @@ process_callback = 0
 wait_time = 3.0
 one_shot = true
 
+[connection signal="area_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_area_entered"]
+[connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
 [connection signal="body_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_body_entered"]
 [connection signal="mouse_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_exited"]

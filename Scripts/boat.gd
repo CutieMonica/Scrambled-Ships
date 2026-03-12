@@ -35,6 +35,8 @@ var silvia1 := load("res://Assets/Textures/deskcarvings/silviaart1.png")
 var silvia2 := load("res://Assets/Textures/deskcarvings/silvia2.png")
 var thesog := load("res://Assets/Textures/deskcarvings/thesog.png")
 
+var mrbeast := load("res://Assets/Textures/deskcarvings/mr beast.png")
+
 var random_icon_image : Dictionary = {
 	1 : bad_ideas,
 	2 : monica,
@@ -74,6 +76,9 @@ var random_icon_image : Dictionary = {
 var random_icon : int
 
 func _ready() -> void:
+	var mystery_man : int = GameManager.rng.randi_range(1, 1000)
+	if mystery_man == 666:
+		wood_carving.get_active_material(0).albedo_texture = mrbeast
+		await get_tree().create_timer(6.66).timeout
 	random_icon = GameManager.rng.randi_range(1, random_icon_image.size())
-	
 	wood_carving.get_active_material(0).albedo_texture = random_icon_image.get(random_icon)

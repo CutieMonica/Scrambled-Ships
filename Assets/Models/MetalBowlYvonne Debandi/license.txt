@@ -1,0 +1,11 @@
+Model Information:
+* title:	Metal bowl. Art
+* source:	https://sketchfab.com/3d-models/metal-bowl-art-5fd7aea1bb554878a6613b0541ae7387
+* author:	Yvonne DeBandi (https://sketchfab.com/yvonne.debandi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Metal bowl. Art" (https://sketchfab.com/3d-models/metal-bowl-art-5fd7aea1bb554878a6613b0541ae7387) by Yvonne DeBandi (https://sketchfab.com/yvonne.debandi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

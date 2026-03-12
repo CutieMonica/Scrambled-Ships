@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://br44jrrlrwjny" path="res://Scripts/boat.gd" id="1_badgh"]
 [ext_resource type="PackedScene" uid="uid://d4mx62vgaocyg" path="res://Assets/Models/BoatUsedm/scene.gltf" id="1_d82p8"]
 [ext_resource type="Texture2D" uid="uid://ecaxgiy5lpk6" path="res://Assets/Textures/deskcarvings/badideaswoodcarving.png" id="2_g7r5y"]
-[ext_resource type="Texture2D" uid="uid://gpdqo2eij4fn" path="res://Assets/Models/BoatUsedm/textures/Material_71_alt.png" id="3_tcwdh"]
+[ext_resource type="Texture2D" uid="uid://o264esalgu3v" path="res://Assets/Models/BoatUsedm/textures/Material_71_alt.png" id="3_tcwdh"]
 [ext_resource type="Texture2D" uid="uid://c1vp8uhoow0lh" path="res://Assets/Models/BoatUsedm/textures/NormalMap.png" id="4_tdcrg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdcrg"]
@@ -53,7 +53,10 @@ stencil_color = Color(1, 1, 1, 1)
 material = SubResource("StandardMaterial3D_badgh")
 size = Vector2(3, 3)
 
-[node name="Boat" type="StaticBody3D" unique_id=1218170003]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wsvtm"]
+size = Vector3(39, 0.6, 20.5)
+
+[node name="Boat" type="StaticBody3D" unique_id=1218170003 groups=["wood"]]
 script = ExtResource("1_badgh")
 
 [node name="Sketchfab_Scene2" parent="." unique_id=758205406 instance=ExtResource("1_d82p8")]
@@ -98,5 +101,11 @@ shape = SubResource("BoxShape3D_tcwdh")
 [node name="WoodCarving" type="MeshInstance3D" parent="." unique_id=1190818902]
 transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 12.800001, 0, 4.1000004)
 mesh = SubResource("PlaneMesh_d82p8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1966370889 groups=["wood"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1306567531 groups=["wood"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8000021, -0.29999998, -4.1500006)
+shape = SubResource("BoxShape3D_wsvtm")
 
 [editable path="Sketchfab_Scene2"]

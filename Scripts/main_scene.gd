@@ -3,6 +3,8 @@ extends Node3D
 var current_state : int = 0
 @export var die_spawned : int = 0
 var max_die : int = 7
+
+#all possible dice
 var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
 var cursed_die : PackedScene = load("res://Scenes/dice/CursedDice.tscn")
 var leaded_die : PackedScene = load("res://Scenes/dice/LeadedDice.tscn")
@@ -10,9 +12,15 @@ var sky_die : PackedScene = load("res://Scenes/dice/SkyDie.tscn")
 var weighted_die : PackedScene = load("res://Scenes/dice/weighteddie.tscn")
 var inscrybed_die : PackedScene = load("uid://cvdes1pfuas6d")
 var jelly_die : PackedScene = preload("uid://vlnditpvpyti")
+
+#all possible cards
+var bombcard : PackedScene = load("uid://dgpdr61xocghe")
+
+var card_instance : Node
 var dice_instance : Node
 var prev_die : int = 0
-var placeholdersong := preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
+#var placeholdersong := preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
+var roll_with_it_music := load("res://Assets/Music/Roll with it (final).ogg")
 var reroll_coin : PackedScene = preload("res://Scenes/gold_coin.tscn")
 var reroll_coin_instance : Node
 var money_coin : PackedScene = preload("res://Scenes/currency_gold_coin.tscn")
@@ -38,6 +46,13 @@ var money_coin_instance : Node
 @onready var spot_light_3d_3: SpotLight3D = $SpotLight3D3
 @onready var spot_light_3d_2: SpotLight3D = $SpotLight3D2
 
+@onready var card_placement_ref_1: Node3D = $CardPlacementRef1
+@onready var card_placement_ref_2: Node3D = $CardPlacementRef2
+@onready var card_placement_ref_3: Node3D = $CardPlacementRef3
+@onready var card_placement_ref_4: Node3D = $CardPlacementRef4
+@onready var card_placement_ref_5: Node3D = $CardPlacementRef5
+@onready var card_placement_ref_6: Node3D = $CardPlacementRef6
+@onready var card_placement_ref_7: Node3D = $CardPlacementRef7
 
 var chosen_dice : Dictionary = {
 	1: basic_d6,
@@ -47,7 +62,6 @@ var chosen_dice : Dictionary = {
 	5: cursed_die,
 	6: inscrybed_die,
 	7: jelly_die
-	
 }
 
 var in_play_dice_instances : Dictionary = {
@@ -70,6 +84,34 @@ var in_play_dice_instances : Dictionary = {
 	7: null,
 }
 
+@export var card_placement_references : Dictionary = {
+	1:
+		card_placement_ref_1,
+	2:
+		card_placement_ref_2,
+	3:
+		card_placement_ref_3,
+	4:
+		card_placement_ref_4,
+	5:
+		card_placement_ref_5,
+	6:
+		card_placement_ref_6,
+	7:
+		card_placement_ref_7
+}
+
+@export var card_deck : Dictionary = {
+	1: bombcard,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null,
+	7: null
+}
+
+
 @export var reroll_coins : Dictionary = {}
 
 @export var money_coins : Dictionary = {}
@@ -84,9 +126,9 @@ func performance_switch() -> void:
 		spot_light_3d_3.shadow_enabled = false
 	if !GameManager.performance_mode:
 		mesh_instance_3d.visible = true
-		directional_light_3d.shadow_enabled = true
-		omni_light_3d.shadow_enabled = true
-		omni_light_3d_2.shadow_enabled = true
+		#directional_light_3d.shadow_enabled = true
+		#omni_light_3d.shadow_enabled = true
+		#omni_light_3d_2.shadow_enabled = true
 		spot_light_3d_2.shadow_enabled = true
 		spot_light_3d_3.shadow_enabled = true
 		
@@ -114,6 +156,10 @@ func give_extra_rerolls(amount : int) -> void:
 
 func give_extra_money(amount : int) -> void:
 	for i in amount:
+		var random_buffer_time : float = GameManager.rng.randf_range(0.1, 0.2)
+		random_money_buffer.wait_time = random_buffer_time
+		random_money_buffer.start()
+		await random_money_buffer.timeout
 		GameManager.current_money += 1
 		var n : int = money_coins.size()
 		money_coins.get_or_add(n, money_coin)
@@ -165,9 +211,26 @@ func round_start() -> void:
 
 func _ready() -> void:
 	performance_switch()
-	music_source.stream = placeholdersong
+	music_source.stream = roll_with_it_music
 	music_source.play()
 	round_start()
+	GlobalMusicPlayer.start_act1ambience()
+	card_placement_references = {
+	1:
+		card_placement_ref_1,
+	2:
+		card_placement_ref_2,
+	3:
+		card_placement_ref_3,
+	4:
+		card_placement_ref_4,
+	5:
+		card_placement_ref_5,
+	6:
+		card_placement_ref_6,
+	7:
+		card_placement_ref_7
+	}
 
 func _on_timer_timeout() -> void:
 	if die_spawned != max_die:
@@ -184,6 +247,17 @@ func dice_spawner(dice_position : int) -> void:
 	stored_dice.set(dice_instance.dice_position, "false")
 	add_child(dice_instance)
 	dice_instance.dice_logic.adjust_number(dice_position)
+	
+func card_spawner(card_position : int) -> void:
+	card_instance = card_deck.get(card_position).instantiate()
+	card_deck.set(card_position, card_instance)
+	card_instance.name = "Card" + str(card_position)
+	card_instance.position = card_placement_references[card_position].position
+	card_instance.rotation = card_placement_references[card_position].rotation
+	card_instance.scale = card_placement_references[card_position].scale
+	add_child(card_instance)
+	card_instance.card_logic.card_position = card_position
+	card_instance.card_logic.change_layers()
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "cup_reloading":

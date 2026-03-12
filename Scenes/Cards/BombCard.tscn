@@ -1,0 +1,1043 @@
+[gd_scene format=3 uid="uid://dgpdr61xocghe"]
+
+[ext_resource type="Script" uid="uid://byncwn3p2gghx" path="res://Scripts/cards/bombcard.gd" id="1_lyrm8"]
+[ext_resource type="Texture2D" uid="uid://1uxwhk4j1jnk" path="res://Assets/Textures/cards/carddesigncommonBack.png" id="2_mp8sq"]
+[ext_resource type="Texture2D" uid="uid://v7henwksk06j" path="res://Assets/Textures/cards/CardArt/bombs.png" id="3_rtn2f"]
+[ext_resource type="Texture2D" uid="uid://copnjnm1gnic0" path="res://Assets/Textures/cards/carddesigncommon.png" id="4_c8p8o"]
+[ext_resource type="Texture2D" uid="uid://ddqi71hbqi7qk" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-1.png" id="5_lof6c"]
+[ext_resource type="Texture2D" uid="uid://7c2hdb2c2dsc" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-2.png" id="6_1gkla"]
+[ext_resource type="Texture2D" uid="uid://beqwruylancns" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-3.png" id="7_2upxx"]
+[ext_resource type="Texture2D" uid="uid://dooy8vvvgv2sj" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-4.png" id="8_glx6m"]
+[ext_resource type="Texture2D" uid="uid://b72g5ps88mb3h" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-5.png" id="9_w26qk"]
+[ext_resource type="Texture2D" uid="uid://b2in44xrmt1yq" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-6.png" id="10_7ad53"]
+[ext_resource type="Texture2D" uid="uid://b3m0klsdxywaq" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-7.png" id="11_qeuge"]
+[ext_resource type="Texture2D" uid="uid://c1vkvc6fhklny" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-8.png" id="12_b86q0"]
+[ext_resource type="Texture2D" uid="uid://cw1gexjsdddmc" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-9.png" id="13_r16va"]
+[ext_resource type="Texture2D" uid="uid://eifuweklr1q5" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-10.png" id="14_nhvsq"]
+[ext_resource type="Texture2D" uid="uid://c0a4gaurvnprt" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-11.png" id="15_snb8j"]
+[ext_resource type="Texture2D" uid="uid://bj7a0qmqks038" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-12.png" id="16_4hspn"]
+[ext_resource type="Texture2D" uid="uid://biiocbmr8af3c" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-13.png" id="17_3ek4x"]
+[ext_resource type="Texture2D" uid="uid://bcmgondcv54ep" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-14.png" id="18_hari6"]
+[ext_resource type="Texture2D" uid="uid://bsb03fbwnbdhj" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-15.png" id="19_l51fr"]
+[ext_resource type="Texture2D" uid="uid://die8wrqkoxnqw" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-16.png" id="20_l6ay4"]
+[ext_resource type="Texture2D" uid="uid://didbjv7nwo0ya" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-17.png" id="21_2b7xp"]
+[ext_resource type="Texture2D" uid="uid://b2k1xq4wxwgr" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-18.png" id="22_vf84p"]
+[ext_resource type="Texture2D" uid="uid://bjepf1dvoav3w" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-19.png" id="23_gca8e"]
+[ext_resource type="Texture2D" uid="uid://kgumduiq0vv6" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-20.png" id="24_h8x2x"]
+[ext_resource type="Texture2D" uid="uid://cgm4orv7e2jnu" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-21.png" id="25_hdm81"]
+[ext_resource type="Texture2D" uid="uid://cc6irby6uayf6" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-22.png" id="26_k82il"]
+[ext_resource type="Texture2D" uid="uid://5hsj7kl5hr4y" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-23.png" id="27_smfx4"]
+[ext_resource type="Texture2D" uid="uid://cuq67t5ipyq45" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-24.png" id="28_g1vrp"]
+[ext_resource type="Texture2D" uid="uid://62onefn2qr40" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-25.png" id="29_pos7x"]
+[ext_resource type="Texture2D" uid="uid://yxkntnxwkkpn" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-26.png" id="30_l645t"]
+[ext_resource type="Texture2D" uid="uid://dlb3n66218don" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-27.png" id="31_0sch2"]
+[ext_resource type="Texture2D" uid="uid://bk67pbwdwn3bo" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-28.png" id="32_rcbpp"]
+[ext_resource type="Texture2D" uid="uid://bpn8e5dusg7w4" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-29.png" id="33_h7eih"]
+[ext_resource type="Texture2D" uid="uid://dpwiqexxseqgl" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-30.png" id="34_utnuv"]
+[ext_resource type="Texture2D" uid="uid://buxiqjxqgl01s" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-31.png" id="35_cacvq"]
+[ext_resource type="Texture2D" uid="uid://crxdjqf1226pg" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-32.png" id="36_xdr57"]
+[ext_resource type="Texture2D" uid="uid://byxqhurpbkpbb" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-33.png" id="37_mbshn"]
+[ext_resource type="Texture2D" uid="uid://crfr10t7a0hse" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-34.png" id="38_nrmby"]
+[ext_resource type="Texture2D" uid="uid://b00q4q11a0ojy" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-35.png" id="39_5ipal"]
+[ext_resource type="Texture2D" uid="uid://dpdlw1v83mquw" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-36.png" id="40_fjq4m"]
+[ext_resource type="Texture2D" uid="uid://5jocmeeaaghr" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-37.png" id="41_xys7u"]
+[ext_resource type="Texture2D" uid="uid://ddtunau08k20h" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-38.png" id="42_cw1e2"]
+[ext_resource type="Texture2D" uid="uid://bfvmt7vxmmjhp" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-39.png" id="43_d212s"]
+[ext_resource type="Texture2D" uid="uid://dfk706y43ta4f" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-40.png" id="44_lvm2g"]
+[ext_resource type="Texture2D" uid="uid://d3f3con2l5mw2" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-41.png" id="45_6yruf"]
+[ext_resource type="Texture2D" uid="uid://bi2ftcfg6y5ro" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-42.png" id="46_2k7ef"]
+[ext_resource type="Texture2D" uid="uid://de21ugu8v2mfv" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-43.png" id="47_3wly3"]
+[ext_resource type="Texture2D" uid="uid://clmwlqwrgyl82" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-44.png" id="48_jcncc"]
+[ext_resource type="Texture2D" uid="uid://dkfsvyiqf5lgg" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-45.png" id="49_n5ko1"]
+[ext_resource type="Texture2D" uid="uid://ggt2f5gehbv1" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-46.png" id="50_eekn8"]
+[ext_resource type="Texture2D" uid="uid://kojy54u83v8u" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-47.png" id="51_rnwrl"]
+[ext_resource type="Texture2D" uid="uid://bppqrbameoob3" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-48.png" id="52_m3x3q"]
+[ext_resource type="Texture2D" uid="uid://dxkjryn26a0av" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-49.png" id="53_hdbsu"]
+[ext_resource type="Texture2D" uid="uid://4sl3ij6p4j54" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-50.png" id="54_j2q4c"]
+[ext_resource type="Texture2D" uid="uid://bda33gs2j7528" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-51.png" id="55_tftxm"]
+[ext_resource type="Texture2D" uid="uid://bjm3axk0661b4" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-52.png" id="56_y5si7"]
+[ext_resource type="Texture2D" uid="uid://dgu2exjs0n7uh" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-53.png" id="57_w6o6p"]
+[ext_resource type="Texture2D" uid="uid://clmc042xlwxdq" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-54.png" id="58_q5kda"]
+[ext_resource type="Texture2D" uid="uid://bitl2644qosjt" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-55.png" id="59_yyl3r"]
+[ext_resource type="Texture2D" uid="uid://w5gxms5glehb" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-56.png" id="60_xj67p"]
+[ext_resource type="Texture2D" uid="uid://cj2t3hx2os32k" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-57.png" id="61_8yggq"]
+[ext_resource type="Texture2D" uid="uid://cmy1ltajr4cjc" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-58.png" id="62_ea2ly"]
+[ext_resource type="Texture2D" uid="uid://b1px65weidfy7" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-59.png" id="63_jaytc"]
+[ext_resource type="Texture2D" uid="uid://gtkm7ob0eqcy" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-60.png" id="64_hjgoo"]
+[ext_resource type="Texture2D" uid="uid://cr073wgi1k600" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-61.png" id="65_70ogv"]
+[ext_resource type="Texture2D" uid="uid://cdlf5umf0gbfa" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-62.png" id="66_ucwl4"]
+[ext_resource type="Texture2D" uid="uid://cguxpqcbyq316" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-63.png" id="67_44kx1"]
+[ext_resource type="Texture2D" uid="uid://crh18gfkbrivo" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-64.png" id="68_curdj"]
+[ext_resource type="Texture2D" uid="uid://btxety7pdduio" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-65.png" id="69_u4je1"]
+[ext_resource type="Texture2D" uid="uid://b08f0vd6sh5mo" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-66.png" id="70_8mee2"]
+[ext_resource type="Texture2D" uid="uid://d2bmdferwck7c" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-67.png" id="71_1kohw"]
+[ext_resource type="Texture2D" uid="uid://m8e7yvr57uop" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-68.png" id="72_lde7e"]
+[ext_resource type="Texture2D" uid="uid://besus0m3qg17s" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-69.png" id="73_i72sp"]
+[ext_resource type="Texture2D" uid="uid://fvissl0yi2mf" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-70.png" id="74_m0gc1"]
+[ext_resource type="Texture2D" uid="uid://d3kxkun4s8pa5" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-71.png" id="75_obbv7"]
+[ext_resource type="Texture2D" uid="uid://deeuxs3gyn3bv" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-72.png" id="76_gy75k"]
+[ext_resource type="Texture2D" uid="uid://dn5gs57mm0p6p" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-73.png" id="77_2ew5v"]
+[ext_resource type="Texture2D" uid="uid://n4mqfr84a47m" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-74.png" id="78_ixrt4"]
+[ext_resource type="Texture2D" uid="uid://bgtj4ae4wy0bt" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-75.png" id="79_0fbcc"]
+[ext_resource type="Texture2D" uid="uid://cd6hkk2f6ht7m" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-76.png" id="80_1dq1n"]
+[ext_resource type="Texture2D" uid="uid://dkdq4uc1dxs7o" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-77.png" id="81_ypb4l"]
+[ext_resource type="Texture2D" uid="uid://daur7xy68ktuc" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-78.png" id="82_dntfs"]
+[ext_resource type="Texture2D" uid="uid://ctb8l1rqwvkom" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-79.png" id="83_r1y2o"]
+[ext_resource type="Texture2D" uid="uid://dicj24j74d471" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-80.png" id="84_5h64f"]
+[ext_resource type="Texture2D" uid="uid://b4axerrx0j2k3" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-81.png" id="85_ocog0"]
+[ext_resource type="Texture2D" uid="uid://b74tkeamdki6v" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-82.png" id="86_6prvy"]
+[ext_resource type="Texture2D" uid="uid://p8ba72y1geew" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-83.png" id="87_0x6i3"]
+[ext_resource type="Texture2D" uid="uid://cubyrsmano2sp" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-84.png" id="88_rc10q"]
+[ext_resource type="Texture2D" uid="uid://5g2m370rmk04" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-85.png" id="89_fab7p"]
+[ext_resource type="Texture2D" uid="uid://clg04wd8e7hbl" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-86.png" id="90_ccl7a"]
+[ext_resource type="Texture2D" uid="uid://dvidwcycb1oc6" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-87.png" id="91_stxpu"]
+[ext_resource type="Texture2D" uid="uid://6jb0sdhrlpof" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-88.png" id="92_b0euj"]
+[ext_resource type="Texture2D" uid="uid://1kang3sttgic" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-89.png" id="93_0l1gb"]
+[ext_resource type="Texture2D" uid="uid://bfjwcny64gsnw" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-90.png" id="94_hbvsk"]
+[ext_resource type="Texture2D" uid="uid://yfn28yb6dpff" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-91.png" id="95_neltr"]
+[ext_resource type="Texture2D" uid="uid://bm6r0252qrrlo" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-92.png" id="96_t2mso"]
+[ext_resource type="Texture2D" uid="uid://87jbjddr3fd8" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-93.png" id="97_5cash"]
+[ext_resource type="PackedScene" uid="uid://crcpsnxro28o7" path="res://Scenes/card_logic.tscn" id="98_urq1j"]
+[ext_resource type="Texture2D" uid="uid://x7xp7sx6t2d3" path="res://Assets/particles/smoketexture.png" id="99_ginii"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t1vb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lof6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1gkla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2upxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_glx6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w26qk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7ad53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qeuge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b86q0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_r16va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nhvsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_snb8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4hspn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3ek4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hari6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_l51fr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_l6ay4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2b7xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vf84p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gca8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_h8x2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_hdm81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_k82il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_smfx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_g1vrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_pos7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_l645t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_0sch2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rcbpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_h7eih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_utnuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_cacvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_xdr57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_mbshn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_nrmby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5ipal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_fjq4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_xys7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_cw1e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_d212s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_lvm2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_6yruf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_2k7ef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_3wly3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_jcncc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_n5ko1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_eekn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_rnwrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_m3x3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_hdbsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_j2q4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_tftxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_y5si7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_w6o6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_q5kda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_yyl3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_xj67p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_8yggq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_ea2ly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_jaytc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_hjgoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_70ogv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_ucwl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_44kx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_curdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_u4je1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_8mee2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_1kohw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_lde7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_i72sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_m0gc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_obbv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_gy75k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_2ew5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_ixrt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_0fbcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_1dq1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_ypb4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_dntfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_r1y2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_5h64f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_ocog0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_6prvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_0x6i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_rc10q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_fab7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_ccl7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_stxpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_b0euj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_0l1gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_hbvsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_neltr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_t2mso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_5cash")
+}],
+"loop": true,
+"name": &"Explode",
+"speed": 120.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5smr4"]
+size = Vector3(10, 0.06, 15.04)
+
+[sub_resource type="Animation" id="Animation_urq1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplodeParticles3D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplodeParticles3D3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplodeParticles3D4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplodeParticles3D5:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CardVisuals:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CardVisuals:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CardVisuals:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:playsound")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["none"]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("OmniLight3D:light_energy")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("OmniLight3D:omni_range")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Animation_taem4"]
+resource_name = "explode"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplodeParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeParticles3D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplodeParticles3D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplodeParticles3D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplodeParticles3D5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CardVisuals:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 134.59, 0), Vector3(0, 134.57005, 0), Vector3(0, 134.43048, 0), Vector3(0, 134.05164, 0), Vector3(0, 133.31389, 0), Vector3(0, 132.0976, 0), Vector3(0, 130.28311, 0), Vector3(0, 127.75083, 0), Vector3(0, 124.381096, 0), Vector3(0, 120.054276, 0), Vector3(0, 114.650734, 0), Vector3(0, 108.05084, 0), Vector3(0, 100.13496, 0), Vector3(0, 90.78345, 0), Vector3(0, 79.87667, 0), Vector3(0, 67.295, 0), Vector3(0, 54.713318, 0), Vector3(0, 43.806557, 0), Vector3(0, 34.455032, 0), Vector3(0, 26.539146, 0), Vector3(0, 19.939255, 0), Vector3(0, 14.535728, 0), Vector3(0, 10.2089, 0), Vector3(0, 6.8391647, 0), Vector3(0, 4.306885, 0), Vector3(0, 2.4924011, 0), Vector3(0, 1.2761078, 0), Vector3(0, 0.5383606, 0), Vector3(0, 0.15951538, 0), Vector3(0, 0.019943237, 0), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CardVisuals:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0009308425, 2.7666707e-05, 5.5591976e-05), Vector3(0.00744674, 0.00022133366, 0.0004447358), Vector3(0.025132744, 0.000747001, 0.0015009831), Vector3(0.05957392, 0.0017706692, 0.0035578865), Vector3(0.1163553, 0.003458338, 0.006948997), Vector3(0.20106195, 0.005976008, 0.012007865), Vector3(0.3192789, 0.009489679, 0.019068046), Vector3(0.47659135, 0.014165354, 0.028463092), Vector3(0.6785841, 0.020169027, 0.040526547), Vector3(0.9308424, 0.027666705, 0.055591974), Vector3(1.2389511, 0.03682438, 0.07399291), Vector3(1.6084956, 0.047808062, 0.09606292), Vector3(2.0450606, 0.060783748, 0.12213556), Vector3(2.5542312, 0.07591743, 0.15254436), Vector3(3.1415927, 0.09337512, 0.18762289), Vector3(3.7289546, 0.11083282, 0.22270145), Vector3(4.238125, 0.12596647, 0.2531102), Vector3(4.6746902, 0.13894218, 0.27918288), Vector3(5.0442348, 0.14992586, 0.30125287), Vector3(5.3523436, 0.15908353, 0.3196538), Vector3(5.6046014, 0.1665812, 0.3347192), Vector3(5.8065944, 0.17258488, 0.34678268), Vector3(5.963907, 0.17726056, 0.35617775), Vector3(6.0821233, 0.18077423, 0.36323792), Vector3(6.16683, 0.1832919, 0.3682968), Vector3(6.2236114, 0.18497956, 0.3716879), Vector3(6.258053, 0.18600324, 0.3737448), Vector3(6.2757387, 0.1865289, 0.37480104), Vector3(6.2822547, 0.18672256, 0.37519017), Vector3(6.2831855, 0.18675023, 0.37524578)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CardVisuals:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:playsound")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["none", "explode"]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("OmniLight3D:light_energy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.84, 1, 1.6230556, 1.92),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 3.84, 3.84, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("OmniLight3D:omni_range")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.97, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 4096.0]
+}
+
+[sub_resource type="Animation" id="Animation_ginii"]
+resource_name = "highlight"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5smr4"]
+resource_name = "unhighlight"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_taem4"]
+_data = {
+&"RESET": SubResource("Animation_urq1j"),
+&"explode": SubResource("Animation_taem4"),
+&"highlight": SubResource("Animation_ginii"),
+&"unhighlight": SubResource("Animation_5smr4")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ds6r"]
+render_priority = 5
+transparency = 3
+alpha_hash_scale = 1.43
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.827451, 0.34509805, 0, 0.36862746)
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7mqoc"]
+material = SubResource("StandardMaterial3D_8ds6r")
+radial_segments = 12
+rings = 12
+
+[sub_resource type="Curve" id="Curve_vgjow"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.12437811, 1), 0.0, 0.0, 0, 0, Vector2(0.2288557, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lk8p"]
+render_priority = 5
+transparency = 3
+alpha_hash_scale = 0.02
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.7512286, 0, 0.085142605, 0.22352941)
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_uyu0s"]
+material = SubResource("StandardMaterial3D_0lk8p")
+radial_segments = 12
+rings = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8rm6"]
+render_priority = 5
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.7472839, 0.47155243, 0, 0.22352941)
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ievl8"]
+material = SubResource("StandardMaterial3D_s8rm6")
+radial_segments = 12
+rings = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i63c2"]
+render_priority = 7
+transparency = 3
+alpha_hash_scale = 1.69
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 1, 1, 0.8666667)
+albedo_texture = ExtResource("99_ginii")
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0l22v"]
+material = SubResource("StandardMaterial3D_i63c2")
+radius = 0.69
+radial_segments = 12
+rings = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpas6"]
+render_priority = 5
+transparency = 3
+alpha_hash_scale = 1.69
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 1, 1, 0.654902)
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_80os5"]
+material = SubResource("StandardMaterial3D_fpas6")
+radial_segments = 12
+rings = 12
+
+[sub_resource type="Curve" id="Curve_yrmsy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05472637, 1), 0.0, 0.0, 0, 0, Vector2(0.23880595, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urq1j"]
+render_priority = -2
+metallic = 0.71
+metallic_specular = 0.19
+emission_enabled = true
+emission = Color(1, 0.50463665, 0.97491246, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ginii"]
+material = SubResource("StandardMaterial3D_urq1j")
+size = Vector2(10.5, 15.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3ge4"]
+render_priority = 4
+transparency = 1
+albedo_texture = ExtResource("2_mp8sq")
+metallic = 0.71
+metallic_specular = 0.19
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7v11y"]
+material = SubResource("StandardMaterial3D_k3ge4")
+size = Vector2(10, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keqs"]
+transparency = 1
+albedo_texture = ExtResource("3_rtn2f")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_80ftd"]
+material = SubResource("StandardMaterial3D_5keqs")
+size = Vector2(9.29, 5.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80ftd"]
+render_priority = 1
+transparency = 1
+cull_mode = 1
+albedo_texture = ExtResource("4_c8p8o")
+metallic = 0.71
+metallic_specular = 0.19
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6wocp"]
+material = SubResource("StandardMaterial3D_80ftd")
+size = Vector2(10, 15)
+
+[node name="BombCard" type="Node3D" unique_id=1143179809]
+script = ExtResource("1_lyrm8")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2075573986]
+transform = Transform3D(24, 0, 0, 0, 24, 0, 0, 0, 24, 0, 5.98, 0)
+visible = false
+billboard = 1
+render_priority = 8
+sprite_frames = SubResource("SpriteFrames_1t1vb")
+animation = &"Explode"
+frame = 18
+frame_progress = 0.70150036
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1339127415]
+unit_size = 45.36
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 12088.0
+
+[node name="MouseDetect" type="Area3D" parent="." unique_id=1647229609]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseDetect" unique_id=1523409022]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.010000229, 0.04000002, -0.039999247)
+shape = SubResource("BoxShape3D_5smr4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=65002038]
+libraries/ = SubResource("AnimationLibrary_taem4")
+
+[node name="ExplodeParticles3D" type="CPUParticles3D" parent="." unique_id=1337244922]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_7mqoc")
+emission_shape = 1
+emission_sphere_radius = 4.41
+direction = Vector3(0, 100, 0)
+spread = 180.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 13.33
+initial_velocity_max = 26.67
+angular_velocity_min = -19.2
+angular_velocity_max = 115.2
+linear_accel_min = 29.33
+linear_accel_max = 29.33
+damping_min = 20.0
+damping_max = 40.0
+angle_min = -460.8
+angle_max = 460.8
+scale_amount_min = 14.33
+scale_amount_max = 41.01
+scale_amount_curve = SubResource("Curve_vgjow")
+hue_variation_min = -0.35
+hue_variation_max = 0.53
+
+[node name="ExplodeParticles3D2" type="CPUParticles3D" parent="." unique_id=1417210883]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_uyu0s")
+emission_shape = 1
+emission_sphere_radius = 4.41
+direction = Vector3(0, 100, 0)
+spread = 180.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 13.33
+initial_velocity_max = 26.67
+angular_velocity_min = -19.2
+angular_velocity_max = 115.2
+linear_accel_min = 29.33
+linear_accel_max = 29.33
+damping_min = 20.0
+damping_max = 40.0
+angle_min = -460.8
+angle_max = 460.8
+scale_amount_min = 14.33
+scale_amount_max = 41.01
+scale_amount_curve = SubResource("Curve_vgjow")
+hue_variation_min = -0.35
+hue_variation_max = 0.53
+
+[node name="ExplodeParticles3D3" type="CPUParticles3D" parent="." unique_id=1763757285]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_ievl8")
+emission_shape = 1
+emission_sphere_radius = 4.41
+direction = Vector3(0, 100, 0)
+spread = 180.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 13.33
+initial_velocity_max = 26.67
+angular_velocity_min = -19.2
+angular_velocity_max = 115.2
+linear_accel_min = 29.33
+linear_accel_max = 29.33
+damping_min = 20.0
+damping_max = 40.0
+angle_min = -460.8
+angle_max = 460.8
+scale_amount_min = 1.01
+scale_amount_max = 27.68
+scale_amount_curve = SubResource("Curve_vgjow")
+hue_variation_min = -0.35
+hue_variation_max = 0.53
+
+[node name="ExplodeParticles3D4" type="CPUParticles3D" parent="." unique_id=615213623]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_0l22v")
+emission_shape = 1
+emission_sphere_radius = 4.41
+direction = Vector3(0, 100, 0)
+spread = 180.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 13.33
+initial_velocity_max = 26.67
+angular_velocity_min = -19.2
+angular_velocity_max = 115.2
+linear_accel_min = 29.33
+linear_accel_max = 29.33
+damping_min = 20.0
+damping_max = 40.0
+angle_min = -460.8
+angle_max = 460.8
+scale_amount_min = 27.68
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_vgjow")
+hue_variation_min = -0.35
+hue_variation_max = 0.53
+
+[node name="ExplodeParticles3D5" type="CPUParticles3D" parent="." unique_id=30546218]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_80os5")
+emission_shape = 1
+emission_sphere_radius = 4.41
+direction = Vector3(0, 100, 0)
+spread = 180.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 13.33
+initial_velocity_max = 26.67
+angular_velocity_min = -19.2
+angular_velocity_max = 115.2
+linear_accel_min = 29.33
+linear_accel_max = 29.33
+damping_min = 20.0
+damping_max = 40.0
+angle_min = -460.8
+angle_max = 460.8
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_yrmsy")
+hue_variation_min = -0.35
+hue_variation_max = 0.53
+
+[node name="CardVisuals" type="Node3D" parent="." unique_id=109712147]
+
+[node name="Nametag" type="Label3D" parent="CardVisuals" unique_id=374057504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4713951, 0.098538175)
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Bomb"
+font_size = 128
+
+[node name="Description" type="Label3D" parent="CardVisuals" unique_id=1363177856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17139512, 0.098538116)
+shaded = true
+render_priority = 4
+outline_render_priority = 2
+text = "Upon use, explodes in the center of the Dice Box, launching every die caught in the explosion."
+font_size = 128
+vertical_alignment = 0
+autowrap_mode = 2
+width = 1800.0
+
+[node name="Rarity" type="Label3D" parent="CardVisuals" unique_id=2066783178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.4486046, 0.098537825)
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "COMMON"
+font_size = 128
+
+[node name="Outline" type="MeshInstance3D" parent="CardVisuals" unique_id=1545889884]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.10139525, 0.058538113)
+visible = false
+mesh = SubResource("PlaneMesh_ginii")
+
+[node name="CardBack" type="MeshInstance3D" parent="CardVisuals" unique_id=1935962852]
+transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.10139525, 0.058538113)
+mesh = SubResource("PlaneMesh_7v11y")
+
+[node name="CardArt" type="MeshInstance3D" parent="CardVisuals" unique_id=1241105196]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.651628, 0.06853831)
+mesh = SubResource("PlaneMesh_80ftd")
+
+[node name="CardFront" type="MeshInstance3D" parent="CardVisuals" unique_id=1386641156]
+transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.10139525, 0.07853811)
+mesh = SubResource("PlaneMesh_6wocp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1064943768]
+light_color = Color(0.9647953, 0.7152747, 0.59337306, 1)
+light_energy = 0.0
+
+[node name="card_logic" parent="." unique_id=300499701 instance=ExtResource("98_urq1j")]
+
+[connection signal="mouse_entered" from="MouseDetect" to="." method="_on_mouse_detect_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetect" to="." method="_on_mouse_detect_mouse_exited"]

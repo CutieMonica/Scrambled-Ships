@@ -1,7 +1,6 @@
 extends Control
 
 @onready var rolls_counter: Label = $CanvasLayer/RollsCounter
-@onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 @onready var crt_filter: ColorRect = $CanvasLayer/CRTFilter
 @onready var fps: Label = $CanvasLayer/FPS
 
@@ -21,6 +20,8 @@ var previous_round_target : int = 40
 var rng := RandomNumberGenerator.new()
 var rng_shops := RandomNumberGenerator.new()
 var rng_statues := RandomNumberGenerator.new()
+var rng_upgrades := RandomNumberGenerator.new()
+var rng_cards := RandomNumberGenerator.new()
 var input_seed : int
 @export var base_round_target : int = 80
 @export var new_round_target : int = 40
@@ -30,9 +31,9 @@ var input_seed : int
 @export var highlighting : String = "none"
 
 func _ready() -> void:
-	@warning_ignore("narrowing_conversion")
-	Engine.max_fps = DisplayServer.screen_get_refresh_rate()
 	if !OS.has_feature("web"):
+		@warning_ignore("narrowing_conversion")
+		Engine.max_fps = DisplayServer.screen_get_refresh_rate()
 		toggle_performance_mode(false)
 		Engine.physics_ticks_per_second = 120 
 		print("notonweb")
@@ -49,11 +50,16 @@ func give_me_your_seed() -> void:
 		rng.seed = input_seed
 		rng_shops.seed = input_seed
 		rng_statues.seed = input_seed
+		rng_upgrades.seed = input_seed
+		rng_cards.seed = input_seed
 	if input_seed == null or input_seed == 0:
 		var random_seed := RandomNumberGenerator.new().randi_range(1, 999999999)
 		rng.seed = random_seed
 		rng_shops.seed = random_seed
 		rng_statues.seed = random_seed
+		rng_upgrades.seed = random_seed
+		rng_cards.seed = random_seed
+		
 func toggle_performance_mode(state : bool) -> void:
 	if state == true:
 		performance_mode = true

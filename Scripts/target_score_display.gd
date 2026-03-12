@@ -25,8 +25,6 @@ func _ready() -> void:
 	GameManager.calculate_round_target_and_progress_round()
 	label_3d.text = str(GameManager.new_round_target)
 	round_counter.text = str(GameManager.current_round)
-	await get_tree().create_timer(2).timeout
-	get_new_target_score()
 	
 func play_number(number : int) -> void:
 	match number:
