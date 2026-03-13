@@ -1,18 +1,11 @@
 extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var die_spawned : int = 0
-var max_die : int = 7
+var max_die : int = 5
 var next_card : int = 0
 var watching_coins : bool = false
 
-#all possible dice
 var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
-var cursed_die : PackedScene = load("res://Scenes/dice/CursedDice.tscn")
-var leaded_die : PackedScene = load("res://Scenes/dice/LeadedDice.tscn")
-var sky_die : PackedScene = load("res://Scenes/dice/SkyDie.tscn")
-var weighted_die : PackedScene = load("res://Scenes/dice/weighteddie.tscn")
-var inscrybed_die : PackedScene = load("uid://cvdes1pfuas6d")
-var jelly_die : PackedScene = preload("uid://vlnditpvpyti")
 
 #all possible cards
 var bomb_card := preload("uid://dgpdr61xocghe")
@@ -28,6 +21,8 @@ var reroll_coin_instance : Node
 var money_coin : PackedScene = preload("res://Scenes/currency_gold_coin.tscn")
 var money_coin_instance : Node
 
+var dice_shop_slots_unlocked : int = 3
+
 @onready var random_money_buffer: Timer = $RandomMoneyBuffer
 @onready var lid_collider_delay: Timer = $LidColliderDelay
 @onready var zoom_delay: Timer = $ZoomDelay
@@ -38,6 +33,7 @@ var money_coin_instance : Node
 @onready var card_exit_collider: CollisionShape3D = $CardExitDetect/CardExitCollider
 
 @onready var target_score_display: Node3D = $TargetScoreDisplay
+@onready var round_score_buffer: Timer = $RoundScoreBuffer
 
 @onready var random_coin_buffer: Timer = $RandomCoinBuffer
 @onready var main_scene: Node3D = $"."
@@ -55,6 +51,7 @@ var money_coin_instance : Node
 @onready var spot_light_3d_2: SpotLight3D = $SpotLight3D2
 @onready var camerabuffer: Timer = $Camerabuffer
 @onready var exit_card_outline: MeshInstance3D = $ExitCardOutline
+@onready var shop_box: Node3D = $ShopBox
 
 @onready var card_placement_ref_1: Node3D = $CardPlacementRef1
 @onready var card_placement_ref_2: Node3D = $CardPlacementRef2
@@ -64,14 +61,34 @@ var money_coin_instance : Node
 @onready var card_placement_ref_6: Node3D = $CardPlacementRef6
 @onready var card_placement_ref_7: Node3D = $CardPlacementRef7
 
+@onready var dice_shop_placement_1: Node3D = $ShopPlacementReferences/DiceShopPlacement1
+@onready var dice_shop_placement_2: Node3D = $ShopPlacementReferences/DiceShopPlacement2
+@onready var dice_shop_placement_3: Node3D = $ShopPlacementReferences/DiceShopPlacement3
+@onready var dice_shop_placement_4: Node3D = $ShopPlacementReferences/DiceShopPlacement4
+@onready var dice_shop_placement_5: Node3D = $ShopPlacementReferences/DiceShopPlacement5
+@onready var ticket_shop_placement: Node3D = $ShopPlacementReferences/TicketShopPlacement
+@onready var ticket_shop_placement_2: Node3D = $ShopPlacementReferences/TicketShopPlacement2
+@onready var statue_shop_placement_1: Node3D = $ShopPlacementReferences/StatueShopPlacement1
+@onready var statue_shop_placement_2: Node3D = $ShopPlacementReferences/StatueShopPlacement2
+@onready var card_shop_placement_1: Node3D = $ShopPlacementReferences/CardShopPlacement1
+@onready var card_shop_placement_2: Node3D = $ShopPlacementReferences/CardShopPlacement2
+@onready var card_shop_placement_3: Node3D = $ShopPlacementReferences/CardShopPlacement3
+@onready var dice_generator_1: Node3D = $ShopPlacementReferences/DiceShopPlacement1/DiceGenerator1
+@onready var dice_generator_2: Node3D = $ShopPlacementReferences/DiceShopPlacement2/DiceGenerator2
+@onready var dice_generator_3: Node3D = $ShopPlacementReferences/DiceShopPlacement3/DiceGenerator3
+@onready var dice_generator_4: Node3D = $ShopPlacementReferences/DiceShopPlacement4/DiceGenerator4
+@onready var dice_generator_5: Node3D = $ShopPlacementReferences/DiceShopPlacement5/DiceGenerator5
+
+
+
 var chosen_dice : Dictionary = {
 	1: basic_d6,
-	2: weighted_die,
-	3: leaded_die,
-	4: sky_die,
-	5: cursed_die,
-	6: inscrybed_die,
-	7: jelly_die
+	2: basic_d6,
+	3: basic_d6,
+	4: basic_d6,
+	5: basic_d6,
+	6: null,
+	7: null
 }
 
 var in_play_dice_instances : Dictionary = {
@@ -119,6 +136,22 @@ var in_play_dice_instances : Dictionary = {
 	5: null,
 	6: null,
 	7: null
+}
+
+@export var shop_items : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null,
+	7: null,
+	8: null,
+	9: null,
+	10: null,
+	11: null,
+	12: null,
+	13: null
 }
 
 
@@ -183,8 +216,8 @@ func give_extra_money(amount : int) -> void:
 		add_child(money_coin_instance)
 		
 func spawn_coins() -> void:
-	for n in GameManager.rolls:
-		var random_buffer_time : float = GameManager.rng.randf_range(0.1, 0.2)
+	for n in GameManager.max_rolls:
+		var random_buffer_time : float = GameManager.rng.randf_range(0.05, 0.1)
 		random_coin_buffer.wait_time = random_buffer_time
 		random_coin_buffer.start()
 		await random_coin_buffer.timeout
@@ -214,6 +247,15 @@ func spawn_money() -> void:
 		money_coin_instance.position.x = GameManager.rng.randf_range(15.3, 15.8)
 		money_coin_instance.position.z = GameManager.rng.randf_range(-3.65, -3.3)
 		add_child(money_coin_instance)
+		GameManager.current_money += 1
+		if GameManager.rolls > 0:
+			GameManager.update_rolls_count(-1)
+	GameManager.money_due = 0
+	if watching_coins == true:
+		random_money_buffer.wait_time = 1.0
+		random_money_buffer.start()
+		await random_money_buffer.timeout
+		play_coins_to_shop()
 
 func round_start() -> void:
 	get_tree().call_group("statues", "main_scene_round_started")
@@ -258,6 +300,7 @@ func dice_spawner(dice_position : int) -> void:
 	stored_dice.set(dice_instance.dice_position, "false")
 	add_child(dice_instance)
 	dice_instance.dice_logic.adjust_number(dice_position)
+	dice_instance.dice_logic.just_spawned = false
 	
 func card_spawner(card_position : int) -> void:
 	card_instance = card_deck.get(card_position).instantiate()
@@ -391,8 +434,19 @@ func _on_card_animations_animation_finished(anim_name: StringName) -> void:
 func play_sheet_to_counter() -> void:
 	InputHandler.actionable = false
 	camera_movement.play("sheet_to_counter")
+	round_score_buffer.start()
+	await round_score_buffer.timeout
 	target_score_display.get_new_target_score()
 
 func get_rick_quick_bitch() -> void:
 	watching_coins = true
 	camera_movement.play("end_of_round_counter_to_coins")
+	spawn_money()
+	
+func play_coins_to_shop() -> void:
+	watching_coins = false
+	camera_movement.play("coins_to_shop")
+	shop_box.play_shop_reload()
+
+func generate_shop() -> void:
+	get_tree().call_group("dice_gen", "create_dice")

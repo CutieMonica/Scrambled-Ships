@@ -56,6 +56,8 @@ func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
+	if dice_logic.just_spawned == true:
+		return
 	if rigid_body_3d.sleeping and !has_given_number:
 		current_pos = position
 		if ray_cast_1.is_colliding():

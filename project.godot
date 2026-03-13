@@ -49,6 +49,7 @@ statues=""
 wood=""
 soft=""
 DealerDialogue=""
+dice_gen=""
 
 [gui]
 

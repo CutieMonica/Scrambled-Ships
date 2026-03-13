@@ -134,7 +134,7 @@ var top_sum : int
 var bonus_given : bool = false
 var max_top_sum : int
 var bonus_amount : int
-var current_grand_total : int
+var current_grand_total : int = 79
 var bonus_threshold_amount : int
 
 var outline_color : Color = Color("a010a230")
@@ -425,7 +425,7 @@ func lock_in_score() -> void:
 	grand_total_amount.text = str(current_grand_total)
 	if current_grand_total > GameManager.new_round_target:
 		GameManager.progress_round(current_grand_total)
-	
+		return
 	if GameManager.rolls > 0:
 		get_tree().call_group("stored_dice", "return_to_box")
 		leave_sheet()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c0bfuidrt3tno"]
+
+[ext_resource type="Script" uid="uid://d30q5fjm1wf7w" path="res://Scripts/dice_generator.gd" id="1_vu8pb"]
+
+[node name="DiceGenerator" type="Node3D" unique_id=1558030893 groups=["dice_gen"]]
+script = ExtResource("1_vu8pb")

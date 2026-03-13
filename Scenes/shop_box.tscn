@@ -308,6 +308,7 @@ mesh = SubResource("BoxMesh_0wc18")
 
 [node name="BETTER lid" type="MeshInstance3D" parent="Box" unique_id=1191654872]
 transform = Transform3D(0.99999994, 1.729599e-07, -2.9542153e-23, -1.7295989e-07, 1, 2.646978e-23, 2.954216e-23, -2.646978e-23, 0.99999976, 0, 5.999999, 0)
+visible = false
 mesh = SubResource("PlaneMesh_j5hcy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box/BETTER lid" unique_id=2104100924]
@@ -337,7 +338,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005074239, 0.004798889, 0.
 shape = SubResource("BoxShape3D_315vy")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1070946193]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005074239, 0.1482489, -0.06782031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005074239, 0.1471989, -0.06782031)
 shape = SubResource("BoxShape3D_8oqvb")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=489199588]
@@ -370,4 +371,8 @@ shape = SubResource("BoxShape3D_ns8lt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956335153]
 libraries/ = SubResource("AnimationLibrary_cufmt")
-autoplay = &"lidflip"
+
+[node name="ShopGenerateTimer" type="Timer" parent="." unique_id=1066667544]
+one_shot = true
+
+[connection signal="timeout" from="ShopGenerateTimer" to="." method="_on_shop_generate_timer_timeout"]

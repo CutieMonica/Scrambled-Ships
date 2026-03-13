@@ -7,6 +7,7 @@ class_name DiceLogic
 @export var default_gravity : float = 3.0
 @export var default_mass : float = 0.75
 @export var dice_position : int = 1
+@export var just_spawned : bool = false
 
 @export_group("textures")
 @export var texture : Texture2D
@@ -32,7 +33,7 @@ class_name DiceLogic
 @onready var gravity_reset_timer: Timer = $GravityResetTimer
 
 func _ready() -> void:
-	await get_tree().create_timer(0.001).timeout
+	await get_tree().physics_frame
 	get_parent().mesh.get_active_material(0).albedo_texture = texture
 	get_parent().mesh.get_active_material(0).metallic_texture = roughness
 	get_parent().mesh.get_active_material(0).roughness_texture = roughness
@@ -165,10 +166,13 @@ func _physics_process(delta: float) -> void:
 	if get_parent().returning_to_box:
 		get_parent().position = lerp(get_parent().position, Vector3(get_parent().dice_position * 0.5, 2, 0), delta)
 		
+	if get_parent().focused == true and !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and InputHandler.hovered_object != "scoresheet" and !just_spawned:
+		focusdie()
+		
 func focusdie() -> void:
-	if !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and InputHandler.hovered_object != "scoresheet":
+	get_parent().focused = true
+	if !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and InputHandler.hovered_object != "scoresheet" and !just_spawned:
 		get_parent().animation_player.play("highlighted")
-		get_parent().focused = true
 		print("sus")
 		InputHandler.hovered_object = "dice" + str(get_parent().dice_position)
 		print(InputHandler.hovered_object)
@@ -176,11 +180,12 @@ func focusdie() -> void:
 		pass
 
 func losefocusdie() -> void:
-	get_parent().animation_player.play("not_highlighted")
-	print("gups")
-	get_parent().focused = false
-	if InputHandler.hovered_object == "dice" + str(get_parent().dice_position):
-		InputHandler.hovered_object = "none"
+	if get_parent().focused:
+		get_parent().animation_player.play("not_highlighted")
+		print("gups")
+		get_parent().focused = false
+		if InputHandler.hovered_object == "dice" + str(get_parent().dice_position):
+			InputHandler.hovered_object = "none"
 		
 func interacted() -> void:
 	get_parent().leftclickinteraction()

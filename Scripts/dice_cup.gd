@@ -1,5 +1,7 @@
 extends Node3D
 
+
+var hovered : bool = false
 @export var play_anim : String = "none"
 @export var RELEASE : bool = false
 @export var returnal : bool = false
@@ -28,6 +30,9 @@ func release_on_that_thang() -> void:
 	
 
 func _process(delta: float) -> void:
+	if hovered and back_to_normal and !outlined:
+		outliner.play("outlineon")
+		outlined = true
 	if play_anim == "reload_die":
 		lid_collider.disabled = true
 		animation_player.play("reload_die")
@@ -86,12 +91,15 @@ func _on_static_body_3d_mouse_entered() -> void:
 		outliner.play("outlineon")
 		outlined = true
 		InputHandler.hovered_object = "dicecup"
+	hovered = true
 
 func _on_static_body_3d_mouse_exited() -> void:
-	outliner.play("outlineoff")
-	outlined = false
+	if outlined == true:
+		outliner.play("outlineoff")
+		outlined = false
 	if InputHandler.hovered_object == "dicecup":
 		InputHandler.hovered_object = "none"
+	hovered = false
 
 
 func _on_lid_collider_timer_timeout() -> void:

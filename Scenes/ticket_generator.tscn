@@ -5,19 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://jabs1pxp48lv" path="res://Assets/Textures/ticketicons/fourofakindlowerfloor.png" id="2_6mu8e"]
 [ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="3_mv6s8"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0y5pb"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_hn5p3"]
-sky_material = SubResource("ProceduralSkyMaterial_0y5pb")
-
-[sub_resource type="Environment" id="Environment_kwcev"]
-background_mode = 2
-sky = SubResource("Sky_hn5p3")
-tonemap_mode = 2
-glow_enabled = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0y5pb"]
 transparency = 1
 albedo_texture = ExtResource("1_8jw0b")
@@ -38,14 +25,8 @@ material = SubResource("StandardMaterial3D_hn5p3")
 size = Vector2(1.2, 1.2)
 
 [node name="TicketGenerator" type="Node3D" unique_id=1146082060]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("1_0y5pb")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1939950215]
-environment = SubResource("Environment_kwcev")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=183110822]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=593821278]
 mesh = SubResource("PlaneMesh_jvxuq")
@@ -82,6 +63,3 @@ font_size = 64
 vertical_alignment = 0
 autowrap_mode = 3
 width = 900.0
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1013141515]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.73, 0)

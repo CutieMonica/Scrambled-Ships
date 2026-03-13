@@ -110,7 +110,7 @@ func get_new_target_score() -> void:
 	label_3d.visible = true
 	round_counter.visible = true
 	round_counter.text = str(GameManager.current_round)
-	get_parent().zoom_out_timer()
+	get_parent().get_rick_quick_bitch()
 	
 	
 	

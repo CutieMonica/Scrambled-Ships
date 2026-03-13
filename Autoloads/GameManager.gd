@@ -15,7 +15,7 @@ var current_money : int
 var performance_mode : bool = false
 var visible_fps : bool = false
 var has_pressed_release : bool = false
-var dice_amount : int = 7
+var dice_amount : int = 5
 var card_slots : int = 5
 var previous_round_target : int = 40
 var rng := RandomNumberGenerator.new()
@@ -122,7 +122,7 @@ func calculate_round_target_and_progress_round() -> void:
 func progress_round(current_grand_total : int) -> void:
 	@warning_ignore("integer_division")
 	money_due = (((current_grand_total - new_round_target) / current_round) + rolls)
-	
+	get_tree().call_group("main", "play_sheet_to_counter")
 
 func _process(_delta: float) -> void:
 	
