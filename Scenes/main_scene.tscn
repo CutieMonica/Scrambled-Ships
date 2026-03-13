@@ -1622,7 +1622,6 @@ attributes = SubResource("CameraAttributesPractical_b48ew")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=950415625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.0160253, -0.24019241)
-visible = false
 mesh = SubResource("QuadMesh_m1efj")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D" unique_id=2140876827]

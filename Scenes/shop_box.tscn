@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cnl0f87a45pkg"]
 
+[ext_resource type="Script" uid="uid://b0a72yeeas3v6" path="res://Scripts/shop_box.gd" id="1_cufmt"]
 [ext_resource type="Texture2D" uid="uid://e8b5dvqrx1b8" path="res://Assets/Textures/Texturelabs_Wood_283S.jpg" id="4_315vy"]
 [ext_resource type="Texture2D" uid="uid://duas4bx6ljad1" path="res://Assets/Models/BoxesCozmoth/textures/material_baseColor.png" id="4_aqkja"]
 [ext_resource type="Texture2D" uid="uid://4rwe0263v5qo" path="res://Assets/Models/BoxesCozmoth/textures/material_metallicRoughness.png" id="5_c8qmp"]
@@ -68,7 +69,7 @@ normal_scale = 1.26
 normal_texture = ExtResource("6_hq6jb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqkja"]
-albedo_color = Color(0.9999996, 0.7373664, 0.53440267, 1)
+albedo_color = Color(0.94607764, 0.6434137, 0.48105478, 1)
 albedo_texture = ExtResource("4_315vy")
 metallic_specular = 0.0
 normal_enabled = true
@@ -168,14 +169,124 @@ size = Vector3(0.30800003, 0.202, 0.004)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ns8lt"]
 size = Vector3(0.006, 0.20300001, 0.43500003)
 
+[sub_resource type="Animation" id="Animation_cufmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box/Box:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.2857137, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box/Box:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Box/BETTER lid:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.999999, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Box/BETTER lid:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.6469786e-23, -2.954216e-23, -1.729599e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_uy6a0"]
+resource_name = "lidflip"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box/Box:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.25, 0.28333333, 0.31666666, 0.35, 0.38333333, 0.41666666, 0.45, 0.48333332, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.75, 0.78333336, 0.81666666, 0.85, 0.8833333, 0.9166667, 0.95, 0.98333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0), Vector3(-5.2857137, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box/Box:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.25, 0.28333333, 0.31666666, 0.35, 0.38333333, 0.41666666, 0.45, 0.48333332, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.75, 0.78333336, 0.81666666, 0.85, 0.8833333, 0.9166667, 0.95, 0.98333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.1984363e-20, 0.0016548311, -3.6558366e-19), Vector3(2.558749e-19, 0.013238649, -2.9246693e-18), Vector3(8.635777e-19, 0.044680435, -9.870758e-18), Vector3(2.002021e-18, 0.10358208, -2.288325e-17), Vector3(2.8735948e-18, 0.1486762, -3.2845403e-17), Vector3(3.265403e-18, 0.16894788, -3.73238e-17), Vector3(3.3693523e-18, 0.17432608, -3.8511948e-17), Vector3(3.3733503e-18, 0.17453294, -3.8557645e-17), Vector3(3.3413659e-18, 0.1728781, -3.819206e-17), Vector3(3.1174754e-18, 0.16129428, -3.5632975e-17), Vector3(2.5097727e-18, 0.1298525, -2.8686888e-17), Vector3(1.3713292e-18, 0.07095086, -1.5674394e-17), Vector3(4.9975544e-19, 0.025856733, -5.7122413e-18), Vector3(1.07947277e-19, 0.0055850595, -1.2338458e-18), Vector3(3.9979707e-21, 0.00020685792, -4.5696766e-20), Vector3(0, 0, 0), Vector3(3.198438e-20, -0.0016548311, 3.6558366e-19), Vector3(2.5587504e-19, -0.013238649, 2.9246693e-18), Vector3(8.635781e-19, -0.044680435, 9.870758e-18), Vector3(2.0020221e-18, -0.10358208, 2.288325e-17), Vector3(2.8735963e-18, -0.1486762, 3.2845403e-17), Vector3(3.2654047e-18, -0.16894788, 3.73238e-17), Vector3(3.369354e-18, -0.17432608, 3.8511948e-17), Vector3(3.373352e-18, -0.17453294, 3.8557645e-17), Vector3(3.3413675e-18, -0.1728781, 3.819206e-17), Vector3(3.1174768e-18, -0.16129428, 3.5632975e-17), Vector3(2.509774e-18, -0.1298525, 2.8686888e-17), Vector3(1.3713298e-18, -0.07095086, 1.5674394e-17), Vector3(4.9975564e-19, -0.025856733, 5.7122413e-18), Vector3(1.07947277e-19, -0.0055850595, 1.2338458e-18), Vector3(3.9979707e-21, -0.00020685792, 4.5696766e-20), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Box/BETTER lid:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.25, 0.28333333, 0.31666666, 0.35, 0.38333333, 0.41666666, 0.45, 0.48333332, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.75, 0.78333336, 0.81666666, 0.85, 0.8833333, 0.9166667, 0.95, 0.98333335, 1, 1.15, 1.1833333, 1.2166667, 1.25, 1.2833333, 1.3, 1.3333333, 1.3666667, 1.4, 1.4333333, 1.4666666, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666668, 1.8000001, 1.8333334, 1.8666667, 1.9000001, 1.9333334, 1.9666667, 2, 2.0333333, 2.0666666, 2.1000001, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333335, 2.3666668, 2.4, 2.4333334, 2.4666667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 5.999999, 0), Vector3(0.0019504767, 5.999999, -0.0093054), Vector3(0.015603813, 5.999999, -0.0744432), Vector3(0.052662864, 5.999999, -0.25124577), Vector3(0.12208764, 5.999999, -0.58245987), Vector3(0.17523812, 5.999999, -0.8360319), Vector3(0.19913144, 5.999999, -0.950023), Vector3(0.20547049, 5.999999, -0.98026556), Vector3(0.2057143, 5.999999, -0.98142874), Vector3(0.20376383, 5.999999, -0.9721233), Vector3(0.19011049, 5.999999, -0.9069855), Vector3(0.15305144, 5.999999, -0.730183), Vector3(0.08362666, 5.999999, -0.39896888), Vector3(0.030476183, 5.999999, -0.14539683), Vector3(0.006582856, 5.999999, -0.031405747), Vector3(0.0002438128, 5.999999, -0.0011631846), Vector3(0, 5.999999, 0), Vector3(0.0011106881, 5.999999, 0.008750055), Vector3(0.008885505, 5.999999, 0.07000044), Vector3(0.029988574, 5.999999, 0.23625146), Vector3(0.06952213, 5.999999, 0.54769874), Vector3(0.09978837, 5.999999, 0.78613764), Vector3(0.11339429, 5.999999, 0.8933258), Vector3(0.11700403, 5.999999, 0.9217635), Vector3(0.11714286, 5.999999, 0.9228572), Vector3(0.116032176, 5.999999, 0.91410714), Vector3(0.10825736, 5.999999, 0.85285676), Vector3(0.08715429, 5.999999, 0.68660575), Vector3(0.047620736, 5.999999, 0.3751585), Vector3(0.017354496, 5.999999, 0.13671958), Vector3(0.0037485734, 5.999999, 0.02953142), Vector3(0.00013883412, 5.999999, 0.0010937452), Vector3(0, 5.999999, 0), Vector3(0, 6.4999995, 0), Vector3(0.51771045, 6.4999995, 0), Vector3(1.8285993, 6.4999995, 0), Vector3(3.3192866, 6.4999995, 0), Vector3(4.2922635, 6.4999995, 0), Vector3(4.4257145, 6.4999995, 0), Vector3(4.680649, 6.254252, 0), Vector3(5.377143, 5.582857, 0), Vector3(6.3285713, 4.6657143, 0), Vector3(7.2799997, 3.7485716, 0), Vector3(7.976494, 3.0771763, 0), Vector3(8.231429, 2.831428, 0), Vector3(8.400237, 2.5748668, 0), Vector3(8.861429, 1.8739283, 0), Vector3(9.491428, 0.91642857, 0), Vector3(10.1214285, -0.041071653, 0), Vector3(10.582621, -0.74201035, 0), Vector3(10.751429, -0.9985723, 0), Vector3(10.776111, -1.1245162, 0), Vector3(10.849732, -1.5001929, 0), Vector3(10.971036, -2.1191747, 0), Vector3(11.137945, -2.9708703, 0), Vector3(11.347605, -4.040707, 0), Vector3(11.596426, -5.31038, 0), Vector3(11.880152, -6.7581644, 0), Vector3(12.193929, -8.359289, 0), Vector3(12.532388, -10.086356, 0), Vector3(12.889736, -11.909818, 0), Vector3(13.259861, -13.798471, 0), Vector3(13.636429, -15.720004, 0), Vector3(14.012997, -17.641535, 0), Vector3(14.3831215, -19.530188, 0), Vector3(14.740471, -21.35365, 0), Vector3(15.07893, -23.080719, 0), Vector3(15.392706, -24.68184, 0), Vector3(15.676433, -26.129627, 0), Vector3(15.925254, -27.399298, 0), Vector3(16.134912, -28.469135, 0), Vector3(16.301823, -29.32083, 0), Vector3(16.423126, -29.939812, 0), Vector3(16.496748, -30.315487, 0), Vector3(16.52143, -30.441431, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Box/BETTER lid:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.25, 0.28333333, 0.31666666, 0.35, 0.38333333, 0.41666666, 0.45, 0.48333332, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.75, 0.78333336, 0.81666666, 0.85, 0.8833333, 0.9166667, 0.95, 0.98333335, 1, 1.15, 1.1833333, 1.2166667, 1.25, 1.2833333, 1.3, 1.3333333, 1.3666667, 1.4, 1.4333333, 1.4666666, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666668, 1.8000001, 1.8333334, 1.8666667, 1.9000001, 1.9333334, 1.9666667, 2, 2.0333333, 2.0666666, 2.1000001, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333335, 2.3666668, 2.4, 2.4333334, 2.4666667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.6469786e-23, -2.954216e-23, -1.729599e-07), Vector3(-3.365304e-17, 0.0016548311, -1.729599e-07), Vector3(-2.6922413e-16, 0.013238649, -1.729599e-07), Vector3(-9.086312e-16, 0.044680435, -1.7295991e-07), Vector3(-2.106468e-15, 0.10358208, -1.7295991e-07), Vector3(-3.0235125e-15, 0.1486762, -1.7295993e-07), Vector3(-3.4357617e-15, 0.16894788, -1.7295993e-07), Vector3(-3.545134e-15, 0.17432608, -1.7295993e-07), Vector3(-3.5493406e-15, 0.17453294, -1.7295993e-07), Vector3(-3.5156875e-15, 0.1728781, -1.7295993e-07), Vector3(-3.2801165e-15, 0.16129428, -1.7295993e-07), Vector3(-2.6407095e-15, 0.1298525, -1.7295991e-07), Vector3(-1.4428726e-15, 0.07095086, -1.7295991e-07), Vector3(-5.258281e-16, 0.025856733, -1.729599e-07), Vector3(-1.1357886e-16, 0.0055850595, -1.729599e-07), Vector3(-4.2065774e-18, 0.00020685792, -1.729599e-07), Vector3(-2.6469786e-23, -2.954216e-23, -1.729599e-07), Vector3(3.1958136e-20, -0.0016548311, -1.729599e-07), Vector3(2.5585038e-19, -0.013238649, -1.729599e-07), Vector3(8.6355774e-19, -0.044680435, -1.7295991e-07), Vector3(2.0020097e-18, -0.10358208, -1.7295991e-07), Vector3(2.8735899e-18, -0.1486762, -1.7295993e-07), Vector3(3.2654011e-18, -0.16894788, -1.7295993e-07), Vector3(3.3693513e-18, -0.17432608, -1.7295993e-07), Vector3(3.3733492e-18, -0.17453294, -1.7295993e-07), Vector3(3.3413647e-18, -0.1728781, -1.7295993e-07), Vector3(3.1174725e-18, -0.16129428, -1.7295993e-07), Vector3(2.509765e-18, -0.1298525, -1.7295991e-07), Vector3(1.371313e-18, -0.07095086, -1.7295991e-07), Vector3(4.997329e-19, -0.025856733, -1.729599e-07), Vector3(1.07921634e-19, -0.0055850595, -1.729599e-07), Vector3(3.971501e-21, -0.00020685792, -1.729599e-07), Vector3(-2.6469786e-23, -2.954216e-23, -1.729599e-07), Vector3(-1.3234895e-23, -2.9542162e-23, -1.7295989e-07), Vector3(-1.1686705e-23, -2.6086384e-23, -0.12862399), Vector3(-7.766553e-24, -1.7336048e-23, -0.45431092), Vector3(-3.3087209e-24, -7.385535e-24, -0.82466835), Vector3(-3.990792e-25, -8.908007e-25, -1.0664018), Vector3(0, 0, -1.0995574), Vector3(0, 0, -1.1942585), Vector3(0, 0, -1.4529865), Vector3(0, 0, -1.8064156), Vector3(0, 0, -2.1598449), Vector3(0, 0, -2.418573), Vector3(0, 0, -2.5132742), Vector3(0, 0, -2.5974529), Vector3(0, 0, -2.8274333), Vector3(0, 0, -3.1415925), Vector3(0, 0, -3.455752), Vector3(0, 0, -3.6857324), Vector3(0, 0, -3.7699113), Vector3(0, 0, -3.780662), Vector3(0, 0, -3.81273), Vector3(0, 0, -3.8655672), Vector3(0, 0, -3.9382687), Vector3(0, 0, -4.029591), Vector3(0, 0, -4.137972), Vector3(0, 0, -4.261556), Vector3(0, 0, -4.39823), Vector3(0, 0, -4.5456543), Vector3(0, 0, -4.701307), Vector3(0, 0, -4.8625245), Vector3(0, 0, -5.0265484), Vector3(0, 0, -5.1905727), Vector3(0, 0, -5.35179), Vector3(0, 0, -5.5074425), Vector3(0, 0, -5.654867), Vector3(0, 0, -5.7915406), Vector3(0, 0, -5.915125), Vector3(0, 0, -6.0235057), Vector3(0, 0, -6.114828), Vector3(0, 0, -6.1875296), Vector3(0, 0, -6.240367), Vector3(0, 0, -6.2724347), Vector3(0, 0, -6.2831855)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cufmt"]
+_data = {
+&"RESET": SubResource("Animation_cufmt"),
+&"lidflip": SubResource("Animation_uy6a0")
+}
+
 [node name="ShopBox" type="Node3D" unique_id=342615568]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("1_cufmt")
 
 [node name="Box" type="Node3D" parent="." unique_id=1859922774]
 transform = Transform3D(0.035, 0, 0, 0, 0.035, -7.771561e-18, 0, 7.771561e-18, 0.035, -0.004003763, -1.1920929e-07, 0.0021870136)
 
 [node name="Box" type="MeshInstance3D" parent="Box" unique_id=500294043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2857137, 0, 0)
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, -5.2857137, 0, 0)
 mesh = SubResource("ArrayMesh_ont23")
 surface_material_override/0 = SubResource("StandardMaterial3D_cufmt")
 
@@ -196,7 +307,7 @@ transform = Transform3D(-4.371139e-08, 2.220446e-16, 1, -2.220446e-16, 1, -2.220
 mesh = SubResource("BoxMesh_0wc18")
 
 [node name="BETTER lid" type="MeshInstance3D" parent="Box" unique_id=1191654872]
-transform = Transform3D(1, 1.729599e-07, -4.7267463e-23, -1.729599e-07, 1, -5.293956e-23, 2.9542162e-23, -2.646978e-23, 1, 0, 5.999999, 0)
+transform = Transform3D(0.99999994, 1.729599e-07, -2.9542153e-23, -1.7295989e-07, 1, 2.646978e-23, 2.954216e-23, -2.646978e-23, 0.99999976, 0, 5.999999, 0)
 mesh = SubResource("PlaneMesh_j5hcy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box/BETTER lid" unique_id=2104100924]
@@ -256,3 +367,7 @@ shape = SubResource("BoxShape3D_ns8lt")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=1884250555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14747576, 0.106673695, 0.0028297186)
 shape = SubResource("BoxShape3D_ns8lt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956335153]
+libraries/ = SubResource("AnimationLibrary_cufmt")
+autoplay = &"lidflip"

@@ -1,0 +1,2079 @@
+[gd_scene format=3 uid="uid://css064ga3f1a7"]
+
+[ext_resource type="Script" uid="uid://wd148c7je3ef" path="res://Scripts/breakdown_cutscene.gd" id="1_gobfi"]
+[ext_resource type="PackedScene" uid="uid://cqkd1gi4oeeoa" path="res://Scenes/dialogue_handler_voice_2.tscn" id="1_hafik"]
+[ext_resource type="PackedScene" uid="uid://30sqn75hc7i" path="res://Scenes/dialogue_handler.tscn" id="1_m705g"]
+[ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="4_wmpjr"]
+
+[sub_resource type="Shader" id="Shader_m705g"]
+code = "// Pixelated noise effect based on https://godotshaders.com/shader/warped-fractal-noise/
+//
+// Copyright Gerardo Montaño 2025
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of 
+// this software and associated documentation files (the “Software”), to deal in 
+// the Software without restriction, including without limitation the rights to 
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+// of the Software, and to permit persons to whom the Software is furnished to do 
+// so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all 
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+// SOFTWARE.
+
+shader_type canvas_item;
+uniform float speed = 0.1; 
+
+uniform float pixelation = 8.0;
+uniform float zoom = 2.0;
+
+uniform float gradient_pixelation : hint_range(0.001, 1.0) = 0.2;
+uniform float background_threshold : hint_range(0.0, 1.0) = 0.0;
+uniform float color_low_threshold : hint_range(0.0, 1.0)  = 0.24;
+uniform float color_mid_threshold : hint_range(0.0, 1.0)  = 0.48;
+
+uniform vec4 color_low : source_color = vec4(0.01, 0.41, 0.51, 1.0); 
+uniform vec4 color_mid : source_color = vec4(.50, 0.10, 0.30, 1.0); 
+uniform vec4 color_high : source_color = vec4(1.0, 1.0, 1.0, 1.0); 
+
+#define iTime (TIME * speed)
+#define iResolution 1.0/SCREEN_PIXEL_SIZE
+
+const mat2 mtx = mat2( vec2(0.80, -0.60), vec2(0.60, 0.80) );
+
+float rand(vec2 n) { 
+    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+}
+
+float noise(vec2 p){
+    vec2 ip = floor(p);
+    vec2 u = fract(p);
+    u = u * u * (3.0 - 2.0 * u);
+
+    float res = mix(
+        mix(rand(ip), rand(ip + vec2(1.0, 0.0)), u.x),
+        mix(rand(ip + vec2(0.0, 1.0)), rand(ip + vec2(1.0, 1.0)), u.x), u.y);
+        
+    return res * res;
+}
+
+float fbm( vec2 p )
+{
+    float f = 0.0;
+    
+    f += 0.500000 * noise( p + iTime ); p = mtx * p * 2.02;
+    f += 0.031250 * noise( p ); p = mtx * p * 2.01;
+    f += 0.250000 * noise( p ); p = mtx * p * 2.03;
+    f += 0.125000 * noise( p ); p = mtx * p * 2.01;
+    f += 0.062500 * noise( p ); p = mtx * p * 2.04;
+    f += 0.015625 * noise( p + sin(iTime) );
+
+    return f / 0.96875;
+}
+
+float pattern( in vec2 p )
+{
+	return fbm( p + fbm( p + fbm( p ) ) );
+}
+
+vec4 colormap(float x, vec2 uv) {
+	
+	x *= (1.0 - pow(max(abs(0.5 - uv.x), abs(0.5 - uv.y)) * 2.0, 3.0));
+    
+    if (x < background_threshold) { 
+        return vec4(0.0, 0.0, 0.0, 0.0);
+    }
+    else if (x < color_low_threshold) { 
+        return mix(
+			vec4(0.0, 0.0, 0.0, 0.0),
+			color_low,
+			round((x - background_threshold) / (color_low_threshold - background_threshold) / gradient_pixelation) * gradient_pixelation
+		);
+    }
+    else if (x < color_mid_threshold) { 
+        return 
+			mix(
+				color_low,
+				color_mid,
+				round((x - color_low_threshold) / (color_mid_threshold - color_low_threshold) / gradient_pixelation) * gradient_pixelation
+			);
+    }
+	else
+		return
+			mix(
+				color_mid,
+				color_high,
+				round((x - color_mid_threshold) / (1.0 - color_mid_threshold) / gradient_pixelation) * gradient_pixelation
+			);
+}
+
+void fragment()
+{
+    vec2 uv = floor(UV / SCREEN_PIXEL_SIZE / pixelation) * SCREEN_PIXEL_SIZE * pixelation; 
+   	float shade = pattern(uv * zoom);
+    
+    COLOR = colormap(shade, uv);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmpjr"]
+shader = SubResource("Shader_m705g")
+shader_parameter/speed = 0.595
+shader_parameter/pixelation = 0.01
+shader_parameter/zoom = 3.815
+shader_parameter/gradient_pixelation = 0.2
+shader_parameter/background_threshold = 0.0730000034675
+shader_parameter/color_low_threshold = 0.0610000028975
+shader_parameter/color_mid_threshold = 0.19600000931
+shader_parameter/color_low = Color(0.38039216, 0.22745098, 0.7882353, 0.6745098)
+shader_parameter/color_mid = Color(0.46666667, 0.05490196, 0.47843137, 0.77254903)
+shader_parameter/color_high = Color(0.9843137, 0.5882353, 0.58431375, 1)
+
+[sub_resource type="Animation" id="Animation_m705g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueHandlerMiddle:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueHandlerMiddle:start_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:material:shader_parameter/color_low")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.38039216, 0.22745098, 0.7882353, 0.6745098)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:material:shader_parameter/color_mid")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.46666667, 0.05490196, 0.47843137, 0.77254903)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect2:material:shader_parameter/color_high")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9843137, 0.5882353, 0.58431375, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect2:material:shader_parameter/color_mid_threshold")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.19600000931]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect2:material:shader_parameter/color_low_threshold")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0610000028975]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect2:material:shader_parameter/background_threshold")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0730000034675]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect2:material:shader_parameter/gradient_pixelation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect2:material:shader_parameter/pixelation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect3:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.14509805)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DialogueHandlerMiddle:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DialogueHandlerMiddle:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DialogueHandlerTopLeft:text")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["  "]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DialogueHandlerTopLeft:start_cutscene")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DialogueHandlerTopRight2:text")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DialogueHandlerTopRight2:start_cutscene")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("DialogueHandlerLowerRight2:text")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [" "]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("DialogueHandlerLowerRight2:start_cutscene")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("DialogueHandlerTopLeft3:text")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(-0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("DialogueHandlerTopLeft3:start_cutscene")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("DialogueHandlerLowerRight5:text")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("DialogueHandlerLowerRight4:text")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DialogueHandlerLowerRight3:text")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DialogueHandlerLowerRight:text")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("DialogueHandlerTopRight3:text")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("DialogueHandlerTopRight:text")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("DialogueHandlerLowerLeft4:text")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("DialogueHandlerLowerLeft3:text")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("DialogueHandlerLowerLeft2:text")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("DialogueHandlerLowerLeft:text")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("DialogueHandlerTopLeft2:text")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["   "]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("DialogueHandlerTopLeft2:start_cutscene")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("DialogueHandlerLowerLeft:start_cutscene")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("DialogueHandlerTopRight:start_cutscene")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("DialogueHandlerTopRight3:start_cutscene")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("DialogueHandlerLowerRight3:start_cutscene")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("DialogueHandlerLowerRight4:start_cutscene")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("DialogueHandlerLowerLeft3:start_cutscene")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("DialogueHandlerLowerLeft2:start_cutscene")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("DialogueHandlerLowerRight:start_cutscene")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("DialogueHandlerLowerLeft4:start_cutscene")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("DialogueHandlerLowerRight5:start_cutscene")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("DialogueHandler2:text")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("DialogueHandler2:start_cutscene")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("DialogueHandlerLowerRight5:volume")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("DialogueHandlerTopLeft:volume")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("DialogueHandlerTopLeft2:volume")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("DialogueHandlerTopLeft3:volume")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("DialogueHandlerLowerLeft:volume")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("DialogueHandlerLowerLeft2:volume")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("DialogueHandlerLowerLeft3:volume")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("DialogueHandlerLowerLeft4:volume")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("DialogueHandlerTopRight:volume")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("DialogueHandlerTopRight2:volume")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("DialogueHandlerTopRight3:volume")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("DialogueHandlerLowerRight:volume")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("DialogueHandlerLowerRight2:volume")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("DialogueHandlerLowerRight3:volume")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("DialogueHandlerLowerRight4:volume")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("DialogueHandler2:visible")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("DialogueHandler2:volume")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("ColorRect4/Label:visible")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("ColorRect4:visible")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hafik"]
+resource_name = "breakdown"
+length = 386.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueHandlerMiddle:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["   ", "I'm really just quite done.", "Well, I really don't want to be associated anymore."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueHandlerMiddle:start_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:material:shader_parameter/color_low")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.38039216, 0.22745098, 0.7882353, 0), Color(0.38039216, 0.22745098, 0.7882353, 0.8980392)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:material:shader_parameter/color_mid")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.46666667, 0.05490196, 0.47843137, 0), Color(0.46666667, 0.05490196, 0.47843137, 0.9098039)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect2:material:shader_parameter/color_high")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9843137, 0.5882353, 0.58431375, 0), Color(0.9843137, 0.5882353, 0.58431375, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect2:material:shader_parameter/color_mid_threshold")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 131.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.19600000931]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect2:material:shader_parameter/color_low_threshold")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 131.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0610000028975]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect2:material:shader_parameter/background_threshold")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 131.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0730000034675]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect2:material:shader_parameter/gradient_pixelation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(131.43333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect2:material:shader_parameter/pixelation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(131.43333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect3:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 75.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.14509805), Color(0, 0, 0, 0.8862745)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DialogueHandlerMiddle:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DialogueHandlerMiddle:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 10, 10.0001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DialogueHandlerTopLeft:text")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 7.5, 12, 19, 20, 22.973688, 24.5, 27.473688, 28.899029, 31.5, 33.39903, 34.473686, 35.473686, 39.973686, 40.39903, 41.39903, 44.37272, 45.66458, 46.66458, 46.973686, 48.87272, 50.313416, 54.813416, 55.87272, 56.87272, 61.813416, 62.813416, 67.313416, 70.61339, 71.61339, 71.71245, 74.313416, 76.21245, 80.65153, 83.21245, 84.21245, 85.15153, 92.15153, 93.15153, 96.393814, 97.393814, 97.65153, 102.05055, 104.65153, 104.710075, 105.710075, 106.55055, 108.71893, 113.21893, 113.55055, 114.55055, 120.21893, 121.21893, 125.71893, 130.11797, 132.71893, 134.61797, 141.10417, 141.61797, 142.61797, 145.60417, 152.60417, 153.60417, 158.10417, 162.5032, 165.10417, 167.0032, 173.1218, 174.0032, 175.0032, 177.6218, 184.6218, 185.6218, 190.1218, 194.52083, 197.1218, 199.02083, 201.9532, 206.02083, 206.4532, 207.02083, 213.4532, 214.4532, 218.9532, 223.35223, 225.9532, 227.85223, 231.94186, 234.85223, 235.85223, 236.44186, 243.44186, 244.44186, 248.94186, 253.3409, 255.94186, 257.84088, 262.93814, 264.84088, 265.84088, 267.43814, 274.43814, 275.43814, 279.93814, 284.33716, 286.93814, 288.83716, 293.81244, 295.83716, 296.83716, 298.31244, 305.31244, 306.31244, 310.81244, 315.21146, 317.81244, 319.71146, 326.1352, 326.71146, 327.71146, 330.6352, 337.6352, 338.6352, 343.1352, 347.5342, 350.1352, 352.0342, 356.22925, 359.0342, 360.0342, 360.72925, 367.72925, 368.72925, 373.22925, 377.62827, 380.22925, 382.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["  ", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "   I want out. I can't help you here.", "I am not your therapist", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "Stop trying to talk to me.", "   I want out. I can't help you here.", "I am not your therapist", "   I want out. I can't help you here.", "Stop trying to talk to me.", "I am not your therapist"]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DialogueHandlerTopLeft:start_cutscene")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.5, 12, 19, 20, 22.973688, 24.5, 27.473688, 28.899029, 31.5, 33.39903, 34.473686, 35.473686, 39.973686, 40.39903, 41.39903, 44.37272, 45.66458, 46.66458, 46.973686, 48.87272, 50.313416, 54.813416, 55.87272, 56.87272, 61.813416, 62.813416, 67.313416, 70.61339, 71.61339, 71.71245, 74.313416, 76.21245, 80.65153, 83.21245, 84.21245, 85.15153, 92.15153, 93.15153, 96.393814, 97.393814, 97.65153, 102.05055, 104.65153, 104.710075, 105.710075, 106.55055, 108.71893, 113.21893, 113.55055, 114.55055, 120.21893, 121.21893, 125.71893, 130.11797, 132.71893, 134.61797, 141.10417, 141.61797, 142.61797, 145.60417, 152.60417, 153.60417, 158.10417, 162.5032, 165.10417, 167.0032, 173.1218, 174.0032, 175.0032, 177.6218, 184.6218, 185.6218, 190.1218, 194.52083, 197.1218, 199.02083, 201.9532, 206.02083, 206.4532, 207.02083, 213.4532, 214.4532, 218.9532, 223.35223, 225.9532, 227.85223, 231.94186, 234.85223, 235.85223, 236.44186, 243.44186, 244.44186, 248.94186, 253.3409, 255.94186, 257.84088, 262.93814, 264.84088, 265.84088, 267.43814, 274.43814, 275.43814, 279.93814, 284.33716, 286.93814, 288.83716, 293.81244, 295.83716, 296.83716, 298.31244, 305.31244, 306.31244, 310.81244, 315.21146, 317.81244, 319.71146, 326.1352, 326.71146, 327.71146, 330.6352, 337.6352, 338.6352, 343.1352, 347.5342, 350.1352, 352.0342, 356.22925, 359.0342, 360.0342, 360.72925, 367.72925, 368.72925, 373.22925, 377.62827, 380.22925, 382.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DialogueHandlerTopRight2:text")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 8, 13.825794, 20, 23.473688, 29.299482, 29.399029, 35.224823, 35.473686, 41.39903, 44.87272, 46.66458, 50.69851, 50.813416, 56.63921, 56.87272, 62.813416, 71.61339, 72.21245, 78.03824, 81.15153, 84.21245, 86.977325, 93.15153, 97.393814, 102.55055, 105.710075, 108.37635, 109.21893, 114.55055, 115.04472, 121.21893, 130.61797, 136.44376, 141.60417, 142.61797, 147.42996, 153.60417, 163.0032, 168.829, 173.6218, 175.0032, 179.44759, 185.6218, 195.02083, 200.84662, 202.4532, 207.02083, 208.27899, 214.4532, 223.85223, 229.67802, 232.44186, 235.85223, 238.26765, 244.44186, 253.8409, 259.6667, 263.43814, 265.84088, 269.26395, 275.43814, 284.83716, 290.66296, 294.31244, 296.83716, 300.13824, 306.31244, 315.71146, 321.53726, 326.6352, 327.71146, 332.461, 338.6352, 348.0342, 353.86002, 356.72925, 360.0342, 362.55505, 368.72925, 378.12827, 383.95407),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["  ", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist", "   I put too much effort in for people as is.", "   I put too much effort in for people as is.", "I am not your therapist"]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DialogueHandlerTopRight2:start_cutscene")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(8, 13.825794, 20, 23.473688, 29.299482, 29.399029, 35.224823, 35.473686, 41.39903, 44.87272, 46.66458, 50.69851, 50.813416, 56.63921, 56.87272, 62.813416, 71.61339, 72.21245, 78.03824, 81.15153, 84.21245, 86.977325, 93.15153, 97.393814, 102.55055, 105.710075, 108.37635, 109.21893, 114.55055, 115.04472, 121.21893, 130.61797, 136.44376, 141.60417, 142.61797, 147.42996, 153.60417, 163.0032, 168.829, 173.6218, 175.0032, 179.44759, 185.6218, 195.02083, 200.84662, 202.4532, 207.02083, 208.27899, 214.4532, 223.85223, 229.67802, 232.44186, 235.85223, 238.26765, 244.44186, 253.8409, 259.6667, 263.43814, 265.84088, 269.26395, 275.43814, 284.83716, 290.66296, 294.31244, 296.83716, 300.13824, 306.31244, 315.71146, 321.53726, 326.6352, 327.71146, 332.461, 338.6352, 348.0342, 353.86002, 356.72925, 360.0342, 362.55505, 368.72925, 378.12827, 383.95407),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("DialogueHandlerLowerRight2:text")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 8.5, 14.761374, 17, 18, 19, 23.261375, 23.973688, 24.261375, 25.261375, 29.899029, 30.235062, 32.473686, 33.473686, 34.473686, 36.160404, 38.39903, 38.73506, 39.39903, 39.73506, 40.39903, 40.73506, 43.66458, 44.66458, 45.37272, 45.66458, 51.313416, 51.634094, 53.87272, 54.87272, 55.87272, 57.57479, 59.813416, 60.813416, 61.813416, 66.07479, 67.07479, 68.07479, 68.61339, 69.61339, 70.61339, 72.71245, 78.973816, 81.21245, 81.65153, 82.21245, 83.21245, 87.9129, 90.15153, 91.15153, 92.15153, 94.393814, 95.393814, 96.393814, 96.4129, 97.4129, 98.4129, 102.710075, 103.05055, 103.710075, 104.710075, 109.311935, 109.71893, 111.55055, 112.55055, 113.55055, 115.98031, 118.21893, 119.21893, 120.21893, 124.48031, 125.48031, 126.48031, 131.11797, 137.37933, 139.61797, 140.61797, 141.61797, 142.10417, 148.36554, 150.60417, 151.60417, 152.60417, 156.86554, 157.86554, 158.86554, 163.5032, 169.76457, 172.0032, 173.0032, 174.0032, 174.1218, 180.38316, 182.6218, 183.6218, 184.6218, 188.88318, 189.88318, 190.88318, 195.52083, 201.7822, 202.9532, 204.02083, 205.02083, 206.02083, 209.21457, 211.4532, 212.4532, 213.4532, 217.71457, 218.71457, 219.71457, 224.35223, 230.6136, 232.85223, 232.94186, 233.85223, 234.85223, 239.20323, 241.44186, 242.44186, 243.44186, 247.70325, 248.70325, 249.70325, 254.3409, 260.60226, 262.84088, 263.84088, 263.93814, 264.84088, 270.19952, 272.43814, 273.43814, 274.43814, 278.69952, 279.69952, 280.69952, 285.33716, 291.59854, 293.83716, 294.81244, 294.83716, 295.83716, 301.07382, 303.31244, 304.31244, 305.31244, 309.57382, 310.57382, 311.57382, 316.21146, 322.47284, 324.71146, 325.71146, 326.71146, 327.1352, 333.39658, 335.6352, 336.6352, 337.6352, 341.89658, 342.89658, 343.89658, 348.5342, 354.7956, 357.0342, 357.22925, 358.0342, 359.0342, 363.49063, 365.72925, 366.72925, 367.72925, 371.99063, 372.99063, 373.99063, 378.62827, 384.88965),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [" ", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "   A messed up brain isn't a get out of jail free card.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You can control this, you just don't want to.", "You are not worth helping.", "You are not worth helping.", "I really don't want to be associated anymore.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "   A messed up brain isn't a get out of jail free card.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "   A messed up brain isn't a get out of jail free card.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "   A messed up brain isn't a get out of jail free card.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "   A messed up brain isn't a get out of jail free card.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "   A messed up brain isn't a get out of jail free card.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "   A messed up brain isn't a get out of jail free card.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "   A messed up brain isn't a get out of jail free card.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "You can control this, you just don't want to.", "You are not worth helping.", "I really don't want to be associated anymore.", "   A messed up brain isn't a get out of jail free card.", "   A messed up brain isn't a get out of jail free card."]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("DialogueHandlerLowerRight2:start_cutscene")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(8.5, 14.761374, 17, 18, 19, 23.261375, 23.973688, 24.261375, 25.261375, 29.899029, 30.235062, 32.473686, 33.473686, 34.473686, 36.160404, 38.39903, 38.73506, 39.39903, 39.73506, 40.39903, 40.73506, 43.66458, 44.66458, 45.37272, 45.66458, 51.313416, 51.634094, 53.87272, 54.87272, 55.87272, 57.57479, 59.813416, 60.813416, 61.813416, 66.07479, 67.07479, 68.07479, 68.61339, 69.61339, 70.61339, 72.71245, 78.973816, 81.21245, 81.65153, 82.21245, 83.21245, 87.9129, 90.15153, 91.15153, 92.15153, 94.393814, 95.393814, 96.393814, 96.4129, 97.4129, 98.4129, 102.710075, 103.05055, 103.710075, 104.710075, 109.311935, 109.71893, 111.55055, 112.55055, 113.55055, 115.98031, 118.21893, 119.21893, 120.21893, 124.48031, 125.48031, 126.48031, 131.11797, 137.37933, 139.61797, 140.61797, 141.61797, 142.10417, 148.36554, 150.60417, 151.60417, 152.60417, 156.86554, 157.86554, 158.86554, 163.5032, 169.76457, 172.0032, 173.0032, 174.0032, 174.1218, 180.38316, 182.6218, 183.6218, 184.6218, 188.88318, 189.88318, 190.88318, 195.52083, 201.7822, 202.9532, 204.02083, 205.02083, 206.02083, 209.21457, 211.4532, 212.4532, 213.4532, 217.71457, 218.71457, 219.71457, 224.35223, 230.6136, 232.85223, 232.94186, 233.85223, 234.85223, 239.20323, 241.44186, 242.44186, 243.44186, 247.70325, 248.70325, 249.70325, 254.3409, 260.60226, 262.84088, 263.84088, 263.93814, 264.84088, 270.19952, 272.43814, 273.43814, 274.43814, 278.69952, 279.69952, 280.69952, 285.33716, 291.59854, 293.83716, 294.81244, 294.83716, 295.83716, 301.07382, 303.31244, 304.31244, 305.31244, 309.57382, 310.57382, 311.57382, 316.21146, 322.47284, 324.71146, 325.71146, 326.71146, 327.1352, 333.39658, 335.6352, 336.6352, 337.6352, 341.89658, 342.89658, 343.89658, 348.5342, 354.7956, 357.0342, 357.22925, 358.0342, 359.0342, 363.49063, 365.72925, 366.72925, 367.72925, 371.99063, 372.99063, 373.99063, 378.62827, 384.88965),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("DialogueHandlerTopLeft3:text")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 9, 14, 18, 24.473688, 29.473688, 30.399029, 33.473686, 35.39903, 39.39903, 44.66458, 45.87272, 50.87272, 51.813416, 54.87272, 56.813416, 60.813416, 69.61339, 73.21245, 78.21245, 82.15153, 82.21245, 87.15153, 91.15153, 95.393814, 103.55055, 103.710075, 108.55055, 110.21893, 112.55055, 115.21893, 119.21893, 131.61797, 136.61797, 140.61797, 142.60417, 147.60417, 151.60417, 164.0032, 169.0032, 173.0032, 174.6218, 179.6218, 183.6218, 196.02083, 201.02083, 203.4532, 205.02083, 208.4532, 212.4532, 224.85223, 229.85223, 233.44186, 233.85223, 238.44186, 242.44186, 254.8409, 259.84088, 263.84088, 264.43814, 269.43814, 273.43814, 285.83716, 290.83716, 294.83716, 295.31244, 300.31244, 304.31244, 316.71146, 321.71146, 325.71146, 327.6352, 332.6352, 336.6352, 349.0342, 354.0342, 357.72925, 358.0342, 362.72925, 366.72925, 379.12827, 384.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["  ", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you.", "   I feel like an object of desire here, not a person.", "You don't need to talk to me.", "I don't want to upset you.", "You don't need to talk to me.", "   I feel like an object of desire here, not a person.", "I don't want to upset you."]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("DialogueHandlerTopLeft3:start_cutscene")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 9.043941, 14.033701, 18, 24.517628, 29.50739, 30.44297, 33.473686, 35.43273, 39.39903, 44.66458, 45.916656, 50.906418, 51.857357, 54.87272, 56.847115, 60.813416, 69.61339, 73.256386, 78.24615, 82.195465, 82.21245, 87.18523, 91.15153, 95.393814, 103.5945, 103.710075, 108.58426, 110.26287, 112.55055, 115.25263, 119.21893, 131.6619, 136.65167, 140.61797, 142.64812, 147.63788, 151.60417, 164.04715, 169.0369, 173.0032, 174.66574, 179.6555, 183.6218, 196.06476, 201.05453, 203.49715, 205.02083, 208.48691, 212.4532, 224.89618, 229.88593, 233.48581, 233.85223, 238.47557, 242.44186, 254.88483, 259.8746, 263.84088, 264.4821, 269.47183, 273.43814, 285.8811, 290.87088, 294.83716, 295.35638, 300.34613, 304.31244, 316.7554, 321.74518, 325.71146, 327.67914, 332.66888, 336.6352, 349.07816, 354.06793, 357.7732, 358.0342, 362.76294, 366.72925, 379.1722, 384.162),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("DialogueHandlerLowerRight5:text")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 9.766666, 12, 17.46416, 25.240355, 27.473688, 31.165695, 32.93785, 33.39903, 38.86319, 44.128754, 46.63938, 48.87272, 52.580082, 54.336876, 54.813416, 60.277576, 69.07756, 73.97911, 76.21245, 81.676605, 82.9182, 85.15153, 90.61569, 94.85799, 103.17425, 104.31722, 106.55055, 110.985596, 112.01472, 113.21893, 118.68309, 132.38463, 134.61797, 140.08212, 143.37083, 145.60417, 151.06833, 164.76987, 167.0032, 172.46736, 175.38846, 177.6218, 183.08595, 196.78749, 199.02083, 204.21986, 204.48499, 206.4532, 211.91736, 225.6189, 227.85223, 233.31639, 234.20853, 236.44186, 241.90602, 255.60756, 257.84088, 263.30505, 265.2048, 267.43814, 272.9023, 286.60382, 288.83716, 294.30133, 296.0791, 298.31244, 303.7766, 317.47815, 319.71146, 325.17563, 328.40186, 330.6352, 336.09937, 349.8009, 352.0342, 357.49838, 358.4959, 360.72925, 366.19342, 379.89496, 382.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once.", "Can you please be normal for once.", "Stop talking.", "Can you please be normal for once."]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("DialogueHandlerLowerRight4:text")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 10.5, 13.306027, 15.904861, 25.973688, 28.779716, 31.37855, 31.899029, 34.705055, 37.30389, 42.569458, 47.37272, 50.17874, 52.77758, 53.313416, 56.119442, 58.718277, 67.518265, 74.71245, 77.51847, 80.11731, 83.65153, 86.45756, 89.05639, 93.29869, 101.61495, 105.05055, 107.85658, 110.455414, 111.71893, 114.52496, 117.123795, 133.11797, 135.92398, 138.52283, 144.10417, 146.9102, 149.50903, 165.5032, 168.30923, 170.90807, 176.1218, 178.92783, 181.52666, 197.52083, 200.32684, 202.92569, 204.9532, 207.75923, 210.35806, 226.35223, 229.15826, 231.7571, 234.94186, 237.7479, 240.34673, 256.34088, 259.1469, 261.74576, 265.93814, 268.74417, 271.34302, 287.33716, 290.1432, 292.74203, 296.81244, 299.61847, 302.2173, 318.21146, 321.0175, 323.61633, 329.1352, 331.94122, 334.54004, 350.5342, 353.34024, 355.9391, 359.22925, 362.03528, 364.6341, 380.62827, 383.4343),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you.", "You have people you can talk to about this.", "You have people you can talk to about this.", "If you can't control it, I don't want to talk to you."]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DialogueHandlerLowerRight3:text")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 10, 18, 19, 25.473688, 31.399029, 33.473686, 34.473686, 39.39903, 40.39903, 44.66458, 45.66458, 46.87272, 52.813416, 54.87272, 55.87272, 60.813416, 61.813416, 69.61339, 70.61339, 74.21245, 82.21245, 83.15153, 83.21245, 91.15153, 92.15153, 95.393814, 96.393814, 103.710075, 104.55055, 104.710075, 111.21893, 112.55055, 113.55055, 119.21893, 120.21893, 132.61797, 140.61797, 141.61797, 143.60417, 151.60417, 152.60417, 165.0032, 173.0032, 174.0032, 175.6218, 183.6218, 184.6218, 197.02083, 204.4532, 205.02083, 206.02083, 212.4532, 213.4532, 225.85223, 233.85223, 234.44186, 234.85223, 242.44186, 243.44186, 255.8409, 263.84088, 264.84088, 265.43814, 273.43814, 274.43814, 286.83716, 294.83716, 295.83716, 296.31244, 304.31244, 305.31244, 317.71146, 325.71146, 326.71146, 328.6352, 336.6352, 337.6352, 350.0342, 358.0342, 358.72925, 359.0342, 366.72925, 367.72925, 380.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "   I don't want presence here, please leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "   I don't want presence here, please leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "   I don't want presence here, please leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone.", "Leave me alone.", "   I don't want presence here, please leave me alone.", "I don't want to be associated anymore.", "Leave me alone.", "I don't want to be associated anymore.", "   I don't want presence here, please leave me alone."]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DialogueHandlerLowerRight:text")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 11, 14.333333, 19.127415, 26.473688, 29.807022, 32.39903, 34.601105, 35.73236, 40.526443, 45.791992, 47.87272, 51.206047, 53.813416, 56.00013, 57.146748, 61.94083, 70.7408, 75.21245, 78.54578, 83.33986, 84.15153, 87.48486, 92.278946, 96.521225, 104.83749, 105.55055, 108.88389, 112.21893, 113.67797, 115.55227, 120.346344, 133.61797, 136.9513, 141.74538, 144.60417, 147.9375, 152.73158, 166.0032, 169.33653, 174.13062, 176.6218, 179.95512, 184.7492, 198.02083, 201.35416, 205.4532, 206.14824, 208.78653, 213.58061, 226.85223, 230.18556, 234.97964, 235.44186, 238.77519, 243.56927, 256.84088, 260.17422, 264.96832, 266.43814, 269.77148, 274.56555, 287.83716, 291.1705, 295.9646, 297.31244, 300.64578, 305.43985, 318.71146, 322.0448, 326.83887, 329.6352, 332.96854, 337.7626, 351.0342, 354.36755, 359.16162, 359.72925, 363.0626, 367.85666, 381.12827, 384.4616),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you.", "Stop telling me you love me.", "Stop telling me you love me.", "I don't want to deal with you."]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("DialogueHandlerTopRight3:text")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 10, 15, 18, 25.473688, 30.473688, 31.399029, 33.473686, 36.39903, 39.39903, 44.66458, 46.87272, 51.87272, 52.813416, 54.87272, 57.813416, 60.813416, 69.61339, 74.21245, 79.21245, 82.21245, 83.15153, 88.15153, 91.15153, 95.393814, 103.710075, 104.55055, 109.55055, 111.21893, 112.55055, 116.21893, 119.21893, 132.61797, 137.61797, 140.61797, 143.60417, 148.60417, 151.60417, 165.0032, 170.0032, 173.0032, 175.6218, 180.6218, 183.6218, 197.02083, 202.02083, 204.4532, 205.02083, 209.4532, 212.4532, 225.85223, 230.85223, 233.85223, 234.44186, 239.44186, 242.44186, 255.8409, 260.84088, 263.84088, 265.43814, 270.43814, 273.43814, 286.83716, 291.83716, 294.83716, 296.31244, 301.31244, 304.31244, 317.71146, 322.71146, 325.71146, 328.6352, 333.6352, 336.6352, 350.0342, 355.0342, 358.0342, 358.72925, 363.72925, 366.72925, 380.12827, 385.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I don't want to be involved.", "I know I'm using you for this, I don't care.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I don't want to be involved.", "I know I'm using you for this, I don't care.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I know I'm using you for this, I don't care.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I don't want to be involved.", "I know I'm using you for this, I don't care.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I don't want to be involved.", "I know I'm using you for this, I don't care.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this.", "I know I'm using you for this, I don't care.", "I don't want to be involved.", "I'm so sick of this."]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("DialogueHandlerTopRight:text")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 10, 16, 20.374855, 25.473688, 31.399029, 31.473688, 35.84854, 37.39903, 41.773884, 42.66458, 46.87272, 47.03946, 52.813416, 52.87272, 57.247574, 58.813416, 63.18827, 67.61339, 71.988266, 74.21245, 80.21245, 83.15153, 84.587296, 89.15153, 93.393814, 93.52638, 97.76869, 101.710075, 104.55055, 106.08495, 110.55055, 111.21893, 114.925415, 117.21893, 121.59379, 132.61797, 138.61797, 142.99281, 143.60417, 149.60417, 153.97903, 165.0032, 171.0032, 175.37805, 175.6218, 181.6218, 185.99664, 197.02083, 203.02083, 204.4532, 207.39568, 210.4532, 214.82806, 225.85223, 231.85223, 234.44186, 236.22708, 240.44186, 244.81671, 255.8409, 261.84088, 265.43814, 266.21576, 271.43814, 275.813, 286.83716, 292.83716, 296.31244, 297.21204, 302.31244, 306.6873, 317.71146, 323.71146, 328.08633, 328.6352, 334.6352, 339.01004, 350.0342, 356.0342, 358.72925, 360.4091, 364.72925, 369.1041, 380.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I'm always everyone's therapist.", "I can't help you.", "I can't help you.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested.", "I'm always everyone's therapist.", "I'm not going to play it. I'm not interested.", "I can't help you.", "I'm always everyone's therapist.", "I can't help you.", "I'm not going to play it. I'm not interested."]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("DialogueHandlerLowerLeft4:text")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 11.5, 15, 19, 26.973688, 30.473688, 32.89903, 34.473686, 36.39903, 40.39903, 45.66458, 48.37272, 51.87272, 54.313416, 55.87272, 57.813416, 61.813416, 70.61339, 75.71245, 79.21245, 83.21245, 84.65153, 88.15153, 92.15153, 96.393814, 104.710075, 106.05055, 109.55055, 112.71893, 113.55055, 116.21893, 120.21893, 134.11797, 137.61797, 141.61797, 145.10417, 148.60417, 152.60417, 166.5032, 170.0032, 174.0032, 177.1218, 180.6218, 184.6218, 198.52083, 202.02083, 205.9532, 206.02083, 209.4532, 213.4532, 227.35223, 230.85223, 234.85223, 235.94186, 239.44186, 243.44186, 257.34088, 260.84088, 264.84088, 266.93814, 270.43814, 274.43814, 288.33716, 291.83716, 295.83716, 297.81244, 301.31244, 305.31244, 319.21146, 322.71146, 326.71146, 330.1352, 333.6352, 337.6352, 351.5342, 355.0342, 359.0342, 360.22925, 363.72925, 367.72925, 381.62827, 385.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "It's your fault that you're like this.", "I cannot care anymore.", "I can't help you here.", "I cannot care anymore.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "It's your fault that you're like this.", "I cannot care anymore.", "I can't help you here.", "I cannot care anymore.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "I cannot care anymore.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "It's your fault that you're like this.", "I cannot care anymore.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "It's your fault that you're like this.", "I cannot care anymore.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here.", "I cannot care anymore.", "It's your fault that you're like this.", "I can't help you here."]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("DialogueHandlerLowerLeft3:text")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 11, 15.7, 26.473688, 31.173687, 32.39903, 37.09903, 42.364594, 47.87272, 52.572716, 53.813416, 58.513416, 67.3134, 75.21245, 79.912445, 84.15153, 88.851524, 93.09383, 101.41009, 105.55055, 110.25056, 112.21893, 116.91893, 133.61797, 138.31796, 144.60417, 149.30417, 166.0032, 170.7032, 176.6218, 181.3218, 198.02083, 202.72083, 205.4532, 210.1532, 226.85223, 231.55223, 235.44186, 240.14186, 256.84088, 261.5409, 266.43814, 271.13815, 287.83716, 292.53717, 297.31244, 302.01245, 318.71146, 323.41147, 329.6352, 334.3352, 351.0342, 355.73422, 359.72925, 364.42926, 381.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "I cannot care anymore.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it.", "I cannot care anymore.", "   I know it isn't helping, but I want to be left completely out of it."]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("DialogueHandlerLowerLeft2:text")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 11, 18, 26.473688, 32.39903, 33.473686, 39.39903, 44.66458, 47.87272, 53.813416, 54.87272, 60.813416, 69.61339, 75.21245, 82.21245, 84.15153, 91.15153, 95.393814, 103.710075, 105.55055, 112.21893, 112.55055, 119.21893, 133.61797, 140.61797, 144.60417, 151.60417, 166.0032, 173.0032, 176.6218, 183.6218, 198.02083, 205.02083, 205.4532, 212.4532, 226.85223, 233.85223, 235.44186, 242.44186, 256.84088, 263.84088, 266.43814, 273.43814, 287.83716, 294.83716, 297.31244, 304.31244, 318.71146, 325.71146, 329.6352, 336.6352, 351.0342, 358.0342, 359.72925, 366.72925, 381.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I swear it's not about how you look.", "I already have someone else.", "I already have someone else.", "I already have someone else.", "I swear it's not about how you look.", "I swear it's not about how you look.", "I already have someone else.", "I already have someone else.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I already have someone else.", "I already have someone else.", "I swear it's not about how you look.", "I swear it's not about how you look.", "I already have someone else.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look.", "I already have someone else.", "I swear it's not about how you look."]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("DialogueHandlerLowerLeft:text")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 10, 16, 25.473688, 31.399029, 31.473688, 37.39903, 42.66458, 46.87272, 52.813416, 52.87272, 58.813416, 67.61339, 74.21245, 80.21245, 83.15153, 89.15153, 93.393814, 101.710075, 104.55055, 110.55055, 111.21893, 117.21893, 132.61797, 138.61797, 143.60417, 149.60417, 165.0032, 171.0032, 175.6218, 181.6218, 197.02083, 203.02083, 204.4532, 210.4532, 225.85223, 231.85223, 234.44186, 240.44186, 255.8409, 261.84088, 265.43814, 271.43814, 286.83716, 292.83716, 296.31244, 302.31244, 317.71146, 323.71146, 328.6352, 334.6352, 350.0342, 356.0342, 358.72925, 364.72925, 380.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "  Leave me out of it. ", "I can't help you here.", "I can't help you here.", "I can't help you here.", "  Leave me out of it. ", "  Leave me out of it. ", "I can't help you here.", "I can't help you here.", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "I can't help you here.", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. ", "I can't help you here.", "  Leave me out of it. "]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("DialogueHandlerTopLeft2:text")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 9.5, 13, 17.46416, 24.973688, 28.473688, 30.899029, 32.93785, 34.39903, 38.86319, 44.128754, 46.37272, 49.87272, 52.313416, 54.336876, 55.813416, 60.277576, 69.07756, 73.71245, 77.21245, 81.676605, 82.65153, 86.15153, 90.61569, 94.85799, 103.17425, 104.05055, 107.55055, 110.71893, 112.01472, 114.21893, 118.68309, 132.11797, 135.61797, 140.08212, 143.10417, 146.60417, 151.06833, 164.5032, 168.0032, 172.46736, 175.1218, 178.6218, 183.08595, 196.52083, 200.02083, 203.9532, 204.48499, 207.4532, 211.91736, 225.35223, 228.85223, 233.31639, 233.94186, 237.44186, 241.90602, 255.3409, 258.84088, 263.30505, 264.93814, 268.43814, 272.9023, 286.33716, 289.83716, 294.30133, 295.81244, 299.31244, 303.7766, 317.21146, 320.71146, 325.17563, 328.1352, 331.6352, 336.09937, 349.5342, 353.0342, 357.49838, 358.22925, 361.72925, 366.19342, 379.62827, 383.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["   ", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself.", "   Do you have anything you want to say?", "   Do you have anything you want to say?", "I'm not contradicting myself."]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("DialogueHandlerTopLeft2:start_cutscene")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(9.5, 13, 17.46416, 24.973688, 28.473688, 30.899029, 32.93785, 34.39903, 38.86319, 44.128754, 46.37272, 49.87272, 52.313416, 54.336876, 55.813416, 60.277576, 69.07756, 73.71245, 77.21245, 81.676605, 82.65153, 86.15153, 90.61569, 94.85799, 103.17425, 104.05055, 107.55055, 110.71893, 112.01472, 114.21893, 118.68309, 132.11797, 135.61797, 140.08212, 143.10417, 146.60417, 151.06833, 164.5032, 168.0032, 172.46736, 175.1218, 178.6218, 183.08595, 196.52083, 200.02083, 203.9532, 204.48499, 207.4532, 211.91736, 225.35223, 228.85223, 233.31639, 233.94186, 237.44186, 241.90602, 255.3409, 258.84088, 263.30505, 264.93814, 268.43814, 272.9023, 286.33716, 289.83716, 294.30133, 295.81244, 299.31244, 303.7766, 317.21146, 320.71146, 325.17563, 328.1352, 331.6352, 336.09937, 349.5342, 353.0342, 357.49838, 358.22925, 361.72925, 366.19342, 379.62827, 383.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("DialogueHandlerLowerLeft:start_cutscene")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(10, 16, 25.473688, 31.399029, 31.473688, 37.39903, 42.66458, 46.87272, 52.813416, 52.87272, 58.813416, 67.61339, 74.21245, 80.21245, 83.15153, 89.15153, 93.393814, 101.710075, 104.55055, 110.55055, 111.21893, 117.21893, 132.61797, 138.61797, 143.60417, 149.60417, 165.0032, 171.0032, 175.6218, 181.6218, 197.02083, 203.02083, 204.4532, 210.4532, 225.85223, 231.85223, 234.44186, 240.44186, 255.8409, 261.84088, 265.43814, 271.43814, 286.83716, 292.83716, 296.31244, 302.31244, 317.71146, 323.71146, 328.6352, 334.6352, 350.0342, 356.0342, 358.72925, 364.72925, 380.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("DialogueHandlerTopRight:start_cutscene")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(10, 16, 20.374855, 25.473688, 31.399029, 31.473688, 35.84854, 37.39903, 41.773884, 42.66458, 46.87272, 47.03946, 52.813416, 52.87272, 57.247574, 58.813416, 63.18827, 67.61339, 71.988266, 74.21245, 80.21245, 83.15153, 84.587296, 89.15153, 93.393814, 93.52638, 97.76869, 101.710075, 104.55055, 106.08495, 110.55055, 111.21893, 114.925415, 117.21893, 121.59379, 132.61797, 138.61797, 142.99281, 143.60417, 149.60417, 153.97903, 165.0032, 171.0032, 175.37805, 175.6218, 181.6218, 185.99664, 197.02083, 203.02083, 204.4532, 207.39568, 210.4532, 214.82806, 225.85223, 231.85223, 234.44186, 236.22708, 240.44186, 244.81671, 255.8409, 261.84088, 265.43814, 266.21576, 271.43814, 275.813, 286.83716, 292.83716, 296.31244, 297.21204, 302.31244, 306.6873, 317.71146, 323.71146, 328.08633, 328.6352, 334.6352, 339.01004, 350.0342, 356.0342, 358.72925, 360.4091, 364.72925, 369.1041, 380.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("DialogueHandlerTopRight3:start_cutscene")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(10, 15.066667, 18, 25.473688, 30.540356, 31.399029, 33.473686, 36.465694, 39.39903, 44.66458, 46.87272, 51.939384, 52.813416, 54.87272, 57.88008, 60.813416, 69.61339, 74.21245, 79.27911, 82.21245, 83.15153, 88.21819, 91.15153, 95.393814, 103.710075, 104.55055, 109.61722, 111.21893, 112.55055, 116.2856, 119.21893, 132.61797, 137.68463, 140.61797, 143.60417, 148.67084, 151.60417, 165.0032, 170.06987, 173.0032, 175.6218, 180.68846, 183.6218, 197.02083, 202.0875, 204.4532, 205.02083, 209.51987, 212.4532, 225.85223, 230.9189, 233.85223, 234.44186, 239.50853, 242.44186, 255.8409, 260.90756, 263.84088, 265.43814, 270.50482, 273.43814, 286.83716, 291.90384, 294.83716, 296.31244, 301.37912, 304.31244, 317.71146, 322.77814, 325.71146, 328.6352, 333.70187, 336.6352, 350.0342, 355.1009, 358.0342, 358.72925, 363.79593, 366.72925, 380.12827, 385.19495),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("DialogueHandlerLowerRight3:start_cutscene")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(10, 18, 19.127415, 25.473688, 31.399029, 33.473686, 34.601105, 39.39903, 40.526443, 44.66458, 45.791992, 46.87272, 52.813416, 54.87272, 56.00013, 60.813416, 61.94083, 69.61339, 70.7408, 74.21245, 82.21245, 83.15153, 83.33986, 91.15153, 92.278946, 95.393814, 96.521225, 103.710075, 104.55055, 104.83749, 111.21893, 112.55055, 113.67797, 119.21893, 120.346344, 132.61797, 140.61797, 141.74538, 143.60417, 151.60417, 152.73158, 165.0032, 173.0032, 174.13062, 175.6218, 183.6218, 184.7492, 197.02083, 204.4532, 205.02083, 206.14824, 212.4532, 213.58061, 225.85223, 233.85223, 234.44186, 234.97964, 242.44186, 243.56927, 255.8409, 263.84088, 264.96832, 265.43814, 273.43814, 274.56555, 286.83716, 294.83716, 295.9646, 296.31244, 304.31244, 305.43985, 317.71146, 325.71146, 326.83887, 328.6352, 336.6352, 337.7626, 350.0342, 358.0342, 358.72925, 359.16162, 366.72925, 367.85666, 380.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("DialogueHandlerLowerRight4:start_cutscene")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(10.5, 13.306027, 15.904861, 25.973688, 28.779716, 31.37855, 31.899029, 34.705055, 37.30389, 42.569458, 47.37272, 50.17874, 52.77758, 53.313416, 56.119442, 58.718277, 67.518265, 74.71245, 77.51847, 80.11731, 83.65153, 86.45756, 89.05639, 93.29869, 101.61495, 105.05055, 107.85658, 110.455414, 111.71893, 114.52496, 117.123795, 133.11797, 135.92398, 138.52283, 144.10417, 146.9102, 149.50903, 165.5032, 168.30923, 170.90807, 176.1218, 178.92783, 181.52666, 197.52083, 200.32684, 202.92569, 204.9532, 207.75923, 210.35806, 226.35223, 229.15826, 231.7571, 234.94186, 237.7479, 240.34673, 256.34088, 259.1469, 261.74576, 265.93814, 268.74417, 271.34302, 287.33716, 290.1432, 292.74203, 296.81244, 299.61847, 302.2173, 318.21146, 321.0175, 323.61633, 329.1352, 331.94122, 334.54004, 350.5342, 353.34024, 355.9391, 359.22925, 362.03528, 364.6341, 380.62827, 383.4343),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("DialogueHandlerLowerLeft3:start_cutscene")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(11, 16.333334, 26.473688, 31.807022, 32.39903, 37.73236, 42.997925, 47.87272, 53.206047, 53.813416, 59.14675, 67.94673, 75.21245, 80.54578, 84.15153, 89.48486, 93.72716, 102.04342, 105.55055, 110.88389, 112.21893, 117.55227, 133.61797, 138.9513, 144.60417, 149.9375, 166.0032, 171.33653, 176.6218, 181.95512, 198.02083, 203.35416, 205.4532, 210.78653, 226.85223, 232.18556, 235.44186, 240.77519, 256.84088, 262.17422, 266.43814, 271.77148, 287.83716, 293.1705, 297.31244, 302.64578, 318.71146, 324.0448, 329.6352, 334.96854, 351.0342, 356.36755, 359.72925, 365.0626, 381.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("DialogueHandlerLowerLeft2:start_cutscene")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(11, 18, 26.473688, 32.39903, 33.473686, 39.39903, 44.66458, 47.87272, 53.813416, 54.87272, 60.813416, 69.61339, 75.21245, 82.21245, 84.15153, 91.15153, 95.393814, 103.710075, 105.55055, 112.21893, 112.55055, 119.21893, 133.61797, 140.61797, 144.60417, 151.60417, 166.0032, 173.0032, 176.6218, 183.6218, 198.02083, 205.02083, 205.4532, 212.4532, 226.85223, 233.85223, 235.44186, 242.44186, 256.84088, 263.84088, 266.43814, 273.43814, 287.83716, 294.83716, 297.31244, 304.31244, 318.71146, 325.71146, 329.6352, 336.6352, 351.0342, 358.0342, 359.72925, 366.72925, 381.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("DialogueHandlerLowerRight:start_cutscene")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(11, 14.333333, 19.127415, 26.473688, 29.807022, 32.39903, 34.601105, 35.73236, 40.526443, 45.791992, 47.87272, 51.206047, 53.813416, 56.00013, 57.146748, 61.94083, 70.7408, 75.21245, 78.54578, 83.33986, 84.15153, 87.48486, 92.278946, 96.521225, 104.83749, 105.55055, 108.88389, 112.21893, 113.67797, 115.55227, 120.346344, 133.61797, 136.9513, 141.74538, 144.60417, 147.9375, 152.73158, 166.0032, 169.33653, 174.13062, 176.6218, 179.95512, 184.7492, 198.02083, 201.35416, 205.4532, 206.14824, 208.78653, 213.58061, 226.85223, 230.18556, 234.97964, 235.44186, 238.77519, 243.56927, 256.84088, 260.17422, 264.96832, 266.43814, 269.77148, 274.56555, 287.83716, 291.1705, 295.9646, 297.31244, 300.64578, 305.43985, 318.71146, 322.0448, 326.83887, 329.6352, 332.96854, 337.7626, 351.0342, 354.36755, 359.16162, 359.72925, 363.0626, 367.85666, 381.12827, 384.4616),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("DialogueHandlerLowerLeft4:start_cutscene")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(11.5, 15.177188, 19, 26.973688, 30.650875, 32.89903, 34.473686, 36.576218, 40.39903, 45.66458, 48.37272, 52.049904, 54.313416, 55.87272, 57.990604, 61.813416, 70.61339, 75.71245, 79.38963, 83.21245, 84.65153, 88.32871, 92.15153, 96.393814, 104.710075, 106.05055, 109.727745, 112.71893, 113.55055, 116.39612, 120.21893, 134.11797, 137.79515, 141.61797, 145.10417, 148.78136, 152.60417, 166.5032, 170.18039, 174.0032, 177.1218, 180.79898, 184.6218, 198.52083, 202.19801, 205.9532, 206.02083, 209.63039, 213.4532, 227.35223, 231.02942, 234.85223, 235.94186, 239.61905, 243.44186, 257.34088, 261.01807, 264.84088, 266.93814, 270.61533, 274.43814, 288.33716, 292.01434, 295.83716, 297.81244, 301.48962, 305.31244, 319.21146, 322.88867, 326.71146, 330.1352, 333.81238, 337.6352, 351.5342, 355.21143, 359.0342, 360.22925, 363.90643, 367.72925, 381.62827, 385.30548),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("DialogueHandlerLowerRight5:start_cutscene")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(9.766666, 12, 15.7, 17.46416, 25.240355, 27.473688, 31.165695, 31.173687, 32.93785, 33.39903, 37.09903, 38.86319, 42.364594, 44.128754, 46.63938, 48.87272, 52.572716, 52.580082, 54.336876, 54.813416, 58.513416, 60.277576, 67.3134, 69.07756, 73.97911, 76.21245, 79.912445, 81.676605, 82.9182, 85.15153, 88.851524, 90.61569, 93.09383, 94.85799, 101.41009, 103.17425, 104.31722, 106.55055, 110.25056, 110.985596, 112.01472, 113.21893, 116.91893, 118.68309, 132.38463, 134.61797, 138.31796, 140.08212, 143.37083, 145.60417, 149.30417, 151.06833, 164.76987, 167.0032, 170.7032, 172.46736, 175.38846, 177.6218, 181.3218, 183.08595, 196.78749, 199.02083, 202.72083, 204.21986, 204.48499, 206.4532, 210.1532, 211.91736, 225.6189, 227.85223, 231.55223, 233.31639, 234.20853, 236.44186, 240.14186, 241.90602, 255.60756, 257.84088, 261.5409, 263.30505, 265.2048, 267.43814, 271.13815, 272.9023, 286.60382, 288.83716, 292.53717, 294.30133, 296.0791, 298.31244, 302.01245, 303.7766, 317.47815, 319.71146, 323.41147, 325.17563, 328.40186, 330.6352, 334.3352, 336.09937, 349.8009, 352.0342, 355.73422, 357.49838, 358.4959, 360.72925, 364.42926, 366.19342, 379.89496, 382.12827),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("DialogueHandler2:text")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0, 12, 15, 18, 22, 26, 30, 34, 38, 42, 48, 52, 56, 62, 66, 70, 76, 80, 84, 88, 92, 96, 102, 106, 112, 118, 124, 130, 134, 140, 148, 154, 158, 162, 168, 174, 176, 182, 186, 190, 194, 200, 208, 214, 218, 224, 230, 236, 240, 246, 252, 258, 264, 270, 274, 278, 284, 290, 296, 300, 304, 310, 318, 322, 328, 332, 336, 342, 350, 354, 360, 366, 372, 376, 380),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["  ", "Their voice...", "I can't hear my own thoughts...", "Every horrible word they said...", "Everything they made me hate about myself...", "It's all on loop.", "And yet...", "I can't know why, but...", "All the better memories...", "They're what come to the surface first.", "I remember playing games with them.", "I remember us having fun together.", "All the lonely nights where they were there for company.", "All the jokes we made together.", "All the times we laughed together.", "My mind doesn't want to believe that it's all gone now.", "It wants to believe they're still...", "A friend.", "Or maybe something more.", "But...", "Deep down...", "Beyond the static their horrid words burned into my skull...", "I know they weren't really a friend.", "Not a good one, anyways.", "They never wanted to make me happy.", "They just wanted someone to play that game with.", "They were terrible to me.", "They ruined me.", "I almost lost myself that night.", "The night they told me they wanted nothing to do with me.", "The night they left me for dead.", "I almost gave in.", "But I got reminded.", "By friends who are better to me than they ever were.", "Reminded that I'm more than me with them.", "It hurt.", "It hurt more than you could ever imagine.", "Yet here I stand to this day.", "Still here.", "Still living.", "Better than when I was spending my nights playing games with you.", "I've done so much more than I ever thought I could.", "And sometimes, I consider trying to share it with you.", "But you wouldn't care.", "You'd find some way to antagonize me for it.", "Find some way to make me the villain.", "All for saying I loved you.", "Because I did.", "I wanted nothing more than for you to know that.", "Even if it wasn't romantic.", "And you hated me for it.", "You broke your own boundaries and reprimanded me for it.", "You told me to be myself, then locked my self away in a pit of despair.", "Well...", "Guess who still has claws.", "Guess who can climb out of any void.", "No matter how hopeless it seems.", "And every time I climb out...", "I get stronger.", "More resilient.", "A little scared to fall again...", "But better off climbing than wallowing away down there.", "And here I am.", "I've climbed so high that I can look down upon you.", "And there you are.", "Still on the sea floor.", "Cruising like nothing's ever gone wrong.", "Constantly reminding me that your ship has long since sailed.", "But here I am.", "Up higher than you'll ever be.", "I don't settle for the sea.", "I climb mountains and don't let leeches drag me down.", "You don't deserve me.", "...", "You never did."]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("DialogueHandler2:start_cutscene")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0, 12, 15, 18, 22, 26, 30, 34, 38, 42, 48, 52, 56, 62, 66, 70, 76, 80, 84, 88, 92, 96, 102, 106, 112, 118, 124, 130, 134, 140, 148, 154, 158, 162, 168, 174, 176, 182, 186, 190, 194, 200, 208, 214, 218, 224, 230, 236, 240, 246, 252, 258, 264, 270, 274, 278, 284, 290, 296, 300, 304, 310, 318, 322, 328, 332, 336, 342, 350, 354, 360, 366, 372, 376, 380),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("DialogueHandlerLowerRight5:volume")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("DialogueHandlerTopLeft:volume")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("DialogueHandlerTopLeft2:volume")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("DialogueHandlerTopLeft3:volume")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("DialogueHandlerLowerLeft:volume")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("DialogueHandlerLowerLeft2:volume")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("DialogueHandlerLowerLeft3:volume")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("DialogueHandlerLowerLeft4:volume")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("DialogueHandlerTopRight:volume")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("DialogueHandlerTopRight2:volume")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("DialogueHandlerTopRight3:volume")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("DialogueHandlerLowerRight:volume")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("DialogueHandlerLowerRight2:volume")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("DialogueHandlerLowerRight3:volume")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("DialogueHandlerLowerRight4:volume")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0, 26, 222.23334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 50.0]
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("DialogueHandler2:visible")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0, 386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("DialogueHandler2:volume")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(10, 386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 0.0]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("ColorRect4/Label:visible")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0, 386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("ColorRect4:visible")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0, 385.99973),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m705g"]
+_data = {
+&"RESET": SubResource("Animation_m705g"),
+&"breakdown": SubResource("Animation_hafik")
+}
+
+[node name="BreakdownCutscene" type="Control" unique_id=347516536]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gobfi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1853355631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueHandlerTopLeft" parent="." unique_id=242444181 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -297.0
+offset_top = -303.0
+offset_right = -297.0
+offset_bottom = -303.0
+text = "  "
+
+[node name="DialogueHandlerTopLeft9" parent="." unique_id=176303350 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 616.0
+offset_top = 244.0
+offset_right = 616.0
+offset_bottom = 244.0
+text = "  "
+
+[node name="DialogueHandlerTopLeft8" parent="." unique_id=323450839 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -334.0
+offset_top = -220.0
+offset_right = -334.0
+offset_bottom = -220.0
+text = "  "
+
+[node name="DialogueHandlerTopLeft2" parent="." unique_id=1965668978 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -241.0
+offset_top = -52.0
+offset_right = -241.0
+offset_bottom = -52.0
+text = "   "
+
+[node name="DialogueHandlerTopLeft3" parent="." unique_id=905309470 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -117.0
+offset_top = -68.0
+offset_right = -117.0
+offset_bottom = -68.0
+text = "   "
+
+[node name="DialogueHandlerTopLeft6" parent="." unique_id=1733306013 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -238.0
+offset_top = -323.0
+offset_right = -238.0
+offset_bottom = -323.0
+text = "  "
+
+[node name="DialogueHandlerTopLeft7" parent="." unique_id=2007936244 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 300.0
+offset_top = -318.0
+offset_right = 300.0
+offset_bottom = -318.0
+text = "  "
+
+[node name="DialogueHandlerTopLeft5" parent="." unique_id=107154988 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 302.0
+offset_top = -72.0
+offset_right = 302.0
+offset_bottom = -72.0
+text = "  "
+
+[node name="DialogueHandlerTopLeft4" parent="." unique_id=1584339325 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 343.0
+offset_top = 36.0
+offset_right = 343.0
+offset_bottom = 36.0
+text = "  "
+
+[node name="DialogueHandlerLowerLeft" parent="." unique_id=637278484 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -361.0
+offset_top = 135.0
+offset_right = -361.0
+offset_bottom = 135.0
+text = "   "
+
+[node name="DialogueHandlerLowerLeft2" parent="." unique_id=1306582456 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -89.0
+offset_top = 328.0
+offset_right = -89.0
+offset_bottom = 328.0
+text = "   "
+
+[node name="DialogueHandlerLowerLeft3" parent="." unique_id=425624591 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 307.0
+offset_top = 99.0
+offset_right = 307.0
+offset_bottom = 99.0
+text = "   "
+
+[node name="DialogueHandlerLowerLeft6" parent="." unique_id=727801155 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -254.0
+offset_top = 76.0
+offset_right = -254.0
+offset_bottom = 76.0
+text = "   "
+
+[node name="DialogueHandlerLowerLeft4" parent="." unique_id=1922405438 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -206.0
+offset_top = 301.0
+offset_right = -206.0
+offset_bottom = 301.0
+text = "   "
+
+[node name="DialogueHandlerLowerLeft5" parent="." unique_id=1444380206 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -388.0
+offset_top = -161.0
+offset_right = -388.0
+offset_bottom = -161.0
+text = "   "
+
+[node name="DialogueHandlerTopRight" parent="." unique_id=1390303756 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 263.0
+offset_top = -339.0
+offset_right = 263.0
+offset_bottom = -339.0
+text = "   "
+
+[node name="DialogueHandlerTopRight11" parent="." unique_id=1904590640 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 303.0
+offset_top = -30.0
+offset_right = 303.0
+offset_bottom = -30.0
+text = "   "
+
+[node name="DialogueHandlerTopRight2" parent="." unique_id=1929767049 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -255.0
+offset_top = 199.0
+offset_right = -255.0
+offset_bottom = 199.0
+text = "   "
+
+[node name="DialogueHandlerTopRight10" parent="." unique_id=2071890364 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 358.0
+offset_top = 110.0
+offset_right = 358.0
+offset_bottom = 110.0
+text = "  "
+
+[node name="DialogueHandlerTopRight9" parent="." unique_id=1131306637 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 401.0
+offset_top = -196.0
+offset_right = 401.0
+offset_bottom = -196.0
+text = "  "
+
+[node name="DialogueHandlerTopRight3" parent="." unique_id=1094180585 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 221.0
+offset_top = -4.0
+offset_right = 221.0
+offset_bottom = -4.0
+text = "   "
+
+[node name="DialogueHandlerTopRight8" parent="." unique_id=688069680 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 266.0
+offset_top = 303.0
+offset_right = 266.0
+offset_bottom = 303.0
+text = "   "
+
+[node name="DialogueHandlerTopRight7" parent="." unique_id=945305713 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -201.0
+offset_top = 328.0
+offset_right = -201.0
+offset_bottom = 328.0
+text = "   "
+
+[node name="DialogueHandlerTopRight6" parent="." unique_id=1827534372 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -364.0
+offset_top = 161.0
+offset_right = -364.0
+offset_bottom = 161.0
+text = "   "
+
+[node name="DialogueHandlerTopRight5" parent="." unique_id=968139010 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -298.0
+offset_top = -23.0
+offset_right = -298.0
+offset_bottom = -23.0
+text = "   "
+
+[node name="DialogueHandlerTopRight4" parent="." unique_id=1412632869 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 228.0
+offset_top = -183.0
+offset_right = 228.0
+offset_bottom = -183.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight" parent="." unique_id=617080764 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -276.0
+offset_top = 268.0
+offset_right = -276.0
+offset_bottom = 268.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight11" parent="." unique_id=1677557683 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -463.0
+offset_top = 301.0
+offset_right = -463.0
+offset_bottom = 301.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight2" parent="." unique_id=627423338 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 507.0
+offset_top = 35.0
+offset_right = 507.0
+offset_bottom = 35.0
+text = " "
+
+[node name="DialogueHandlerLowerRight3" parent="." unique_id=432095314 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 321.0
+offset_top = 207.0
+offset_right = 321.0
+offset_bottom = 207.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight10" parent="." unique_id=547373613 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -197.0
+offset_top = -123.0
+offset_right = -197.0
+offset_bottom = -123.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight4" parent="." unique_id=307381836 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 181.0
+offset_top = 271.0
+offset_right = 181.0
+offset_bottom = 271.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight5" parent="." unique_id=780582506 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 372.0
+offset_top = 344.0
+offset_right = 372.0
+offset_bottom = 344.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight9" parent="." unique_id=564875147 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 252.0
+offset_top = 158.0
+offset_right = 252.0
+offset_bottom = 158.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight8" parent="." unique_id=431493468 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 304.0
+offset_top = -132.0
+offset_right = 304.0
+offset_bottom = -132.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight7" parent="." unique_id=1935331420 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = -309.0
+offset_top = -274.0
+offset_right = -309.0
+offset_bottom = -274.0
+text = "   "
+
+[node name="DialogueHandlerLowerRight6" parent="." unique_id=571619211 instance=ExtResource("1_m705g")]
+layout_mode = 1
+offset_left = 183.0
+offset_top = 146.0
+offset_right = 183.0
+offset_bottom = 146.0
+text = "   "
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=421313784]
+material = SubResource("ShaderMaterial_wmpjr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -653.0
+offset_top = -330.0
+offset_right = 609.0
+offset_bottom = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32941177)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=460199862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.14509805)
+
+[node name="DialogueHandlerMiddle" parent="." unique_id=862913948 instance=ExtResource("1_m705g")]
+z_index = 3
+layout_mode = 1
+offset_left = 51.0
+offset_top = 2.0
+offset_right = -57.0
+offset_bottom = 2.0
+text = ""
+
+[node name="DialogueHandler2" parent="." unique_id=397818223 instance=ExtResource("1_hafik")]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_right = 0.0
+text = ""
+volume = 10.0
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=2034329832]
+visible = false
+z_index = 8
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect4" unique_id=201656156]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wmpjr")
+theme_override_font_sizes/font_size = 128
+text = "SCRAMBLED
+SHIPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2041957050]
+libraries/ = SubResource("AnimationLibrary_m705g")
+autoplay = &"breakdown"
+speed_scale = 1.5

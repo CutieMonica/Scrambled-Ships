@@ -423,6 +423,8 @@ func lock_in_score() -> void:
 	top_sum = (ones_locked_in_score + twos_locked_in_score + threes_locked_in_score + fours_locked_in_score + fives_locked_in_score + sixes_locked_in_score)
 	current_sum.text = "TOP SUM: " + str(top_sum)
 	grand_total_amount.text = str(current_grand_total)
+	if current_grand_total > GameManager.new_round_target:
+		GameManager.progress_round(current_grand_total)
 	
 	if GameManager.rolls > 0:
 		get_tree().call_group("stored_dice", "return_to_box")

@@ -52,7 +52,6 @@ func play_number(number : int) -> void:
 
 
 func get_new_target_score() -> void:
-	get_parent().zoom_in_timer()
 	GameManager.calculate_round_target_and_progress_round()
 	label_3d.text = "ROUND " + str(GameManager.current_round - 1)
 	audio_stream_player_3d.stream = voiceROUND
@@ -108,30 +107,6 @@ func get_new_target_score() -> void:
 		label_3d.visible = !label_3d.visible
 		round_counter.visible = !round_counter.visible
 		await variable_timer.timeout
-	#label_3d.text = ""
-	#variable_timer.wait_time = 0.4
-	#variable_timer.start()
-	#await variable_timer.timeout
-	#label_3d.text = str(GameManager.new_round_target)
-	#variable_timer.wait_time = 0.4
-	#variable_timer.start()
-	#await variable_timer.timeout
-	#label_3d.text = " "
-	#variable_timer.wait_time = 0.4
-	#variable_timer.start()
-	#await variable_timer.timeout
-	#label_3d.text = str(GameManager.new_round_target)
-#	variable_timer.wait_time = 0.4
-	#variable_timer.start()
-	#await variable_timer.timeout
-#	label_3d.text = " "
-	#variable_timer.wait_time = 0.4
-	#variable_timer.start()
-	#await variable_timer.timeout
-	#label_3d.text = str(GameManager.new_round_target)
-	#variable_timer.wait_time = 0.4
-	#variable_timer.start()
-	#await variable_timer.timeout
 	label_3d.visible = true
 	round_counter.visible = true
 	round_counter.text = str(GameManager.current_round)

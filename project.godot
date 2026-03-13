@@ -48,6 +48,7 @@ dice_logic=""
 statues=""
 wood=""
 soft=""
+DealerDialogue=""
 
 [gui]
 

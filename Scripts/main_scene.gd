@@ -3,6 +3,7 @@ extends Node3D
 @export var die_spawned : int = 0
 var max_die : int = 7
 var next_card : int = 0
+var watching_coins : bool = false
 
 #all possible dice
 var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
@@ -35,6 +36,8 @@ var money_coin_instance : Node
 @onready var card_animations: AnimationPlayer = $CardAnimations
 @onready var card_exit_detect: Area3D = $CardExitDetect
 @onready var card_exit_collider: CollisionShape3D = $CardExitDetect/CardExitCollider
+
+@onready var target_score_display: Node3D = $TargetScoreDisplay
 
 @onready var random_coin_buffer: Timer = $RandomCoinBuffer
 @onready var main_scene: Node3D = $"."
@@ -375,6 +378,7 @@ func remove_card(card_position : int) -> void:
 	card_deck.set(card_position, null)
 	if InputHandler.hovered_object == "card" + str(card_position):
 		InputHandler.hovered_object = "none"
+		
 func _on_card_animations_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "pullupcards":
 		card_exit_collider.disabled = !card_exit_collider.disabled
@@ -383,3 +387,12 @@ func _on_card_animations_animation_finished(anim_name: StringName) -> void:
 			for i : int in card_deck.size():
 					if card_deck.get(i) != null:
 						card_deck.get(i).card_logic.move_along_now = false
+
+func play_sheet_to_counter() -> void:
+	InputHandler.actionable = false
+	camera_movement.play("sheet_to_counter")
+	target_score_display.get_new_target_score()
+
+func get_rick_quick_bitch() -> void:
+	watching_coins = true
+	camera_movement.play("end_of_round_counter_to_coins")

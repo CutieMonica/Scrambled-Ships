@@ -7,13 +7,13 @@ Key art by Rand0man
 
 Textures from Texturelabs.org
 
-SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX
+SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX, VIRALAUDIO, DRAGONSTUDIO, Crunchpix Studio, universfield, Tiovanlley, RibhavAgrawal, 
 
 Main Music Composer: RussT
 
 Extra Music from Skye Ash, LudoLoon Studio
 
-Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta
+Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF.
 
 Animations and Models from Mixamo
 
@@ -24,3 +24,7 @@ Normal maps from cpetry's website
 Desk Carving Easter Egg ideas from Me, Bad Ideas Productions, Fan_go_brrrr, VolfenF, Cablll, RussT, LilacStarvix, ThunderSpark, SilviaFoxtris
 
 Idea Guys - EnderSam, ThunderSpark, Rand0man
+
+Special Thanks To: Terry Cavanagh, Daniel Mullins, and LocalThunk for inspiring the hell out of this game, I hope the items I made to pay tribute to your games were cool!
+
+Thank you to Mostly Mad Productions and especially to Brackeys for having great tutorials, I literally had never touched 3D game development in my life until the day of the jam starting and Brackeys' 3D Godot tutorial was a miracle.

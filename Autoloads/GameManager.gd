@@ -119,6 +119,10 @@ func calculate_round_target_and_progress_round() -> void:
 	print("new round target is " + str((base_round_target * (current_round * (previous_round_target / 40)))))
 	round_changing.emit()
 	
+func progress_round(current_grand_total : int) -> void:
+	@warning_ignore("integer_division")
+	money_due = (((current_grand_total - new_round_target) / current_round) + rolls)
+	
 
 func _process(_delta: float) -> void:
 	
