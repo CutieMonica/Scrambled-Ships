@@ -6,8 +6,8 @@ var act1_ambience := preload("res://Assets/Music/Looming figure (final).ogg")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	#start_title_song()
-	start_act1ambience()
+	start_title_song()
+
 
 func start_title_song() -> void:
 	global_music_player.stream = title_music

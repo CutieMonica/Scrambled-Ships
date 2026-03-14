@@ -18,13 +18,16 @@
 [ext_resource type="PackedScene" uid="uid://c538npb3wtyy8" path="res://Scenes/current_dice_paper.tscn" id="15_lhp3t"]
 [ext_resource type="PackedScene" uid="uid://bis01byg0ohxw" path="res://Scenes/target_score_display.tscn" id="16_gnsmo"]
 [ext_resource type="PackedScene" uid="uid://cnl0f87a45pkg" path="res://Scenes/shop_box.tscn" id="16_oyb3p"]
+[ext_resource type="Script" uid="uid://bvhuj0ii64uy4" path="res://Scripts/shop_mousing.gd" id="19_5bov3"]
 [ext_resource type="PackedScene" uid="uid://c0bfuidrt3tno" path="res://Scenes/dice_generator.tscn" id="19_b48ew"]
 [ext_resource type="PackedScene" uid="uid://dy0hihy23cf5k" path="res://Scenes/currency_cup.tscn" id="19_oyb3p"]
-[ext_resource type="PackedScene" uid="uid://bwyxwy80ndwux" path="res://Scenes/dice/Basicd_6.tscn" id="20_8edxt"]
 [ext_resource type="PackedScene" uid="uid://dx3u1bbeg8ri4" path="res://Scenes/statue_stand.tscn" id="20_b48ew"]
 [ext_resource type="PackedScene" uid="uid://dh4agxkfu8xcc" path="res://Scenes/price_tag.tscn" id="21_5oxhp"]
 [ext_resource type="Script" uid="uid://b8daofsm2tax7" path="res://Scripts/dice_shop_placement.gd" id="22_5cm5d"]
-[ext_resource type="Script" uid="uid://bbc1nmhiknl07" path="res://Scripts/ticket_shop_placement.gd" id="23_5bov3"]
+[ext_resource type="PackedScene" uid="uid://7y3bs8ucwywy" path="res://Scenes/ticket_generator.tscn" id="23_s8qe6"]
+[ext_resource type="PackedScene" uid="uid://bwyxwy80ndwux" path="res://Scenes/dice/Basicd_6.tscn" id="23_yb0ja"]
+[ext_resource type="PackedScene" uid="uid://dy43eotutggt5" path="res://Scenes/statue_spawner.tscn" id="25_s8qe6"]
+[ext_resource type="Texture2D" uid="uid://d4kch0rqr5410" path="res://Assets/LonelyBlackBalloonEasterEgg/1773451192331.png" id="32_b00ha"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6l7je"]
 sky_top_color = Color(1, 0.6253529, 0.82935846, 1)
@@ -560,7 +563,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [51.5, 51.49888888869464, 51.491111109557096, 51.46999999857508, 51.42888887645677, 51.36111109610647, 51.25999998860061, 51.11888888850808, 50.93111101165414, 50.68999992311001, 50.38888876885176, 50.02111108601093, 49.57999990880489, 49.05888871848583, 48.45111110806465, 47.75, 47.04888844490051, 46.441111505031586, 45.91999942064285, 45.47888869047165, 45.111110895872116, 44.81000030040741, 44.56888893246651, 44.381111055612564, 44.240000039339066, 44.13888880610466, 44.07111117243767, 44.03000006079674, 44.008888840675354, 44.00111132860184, 44.0]
+"values": [51.5, 51.49888888869464, 51.491111109557096, 51.46999999857508, 51.42888887645677, 51.36111109610647, 51.25999998860061, 51.11888888850808, 50.93111101165414, 50.68999992311001, 50.38888876885176, 50.02111108601093, 49.57999990880489, 49.05888871848583, 48.45111110806465, 47.75, 47.04888844490051, 46.441111505031586, 45.91999942064285, 45.47888869047165, 45.11111089587211, 44.81000030040741, 44.56888893246651, 44.38111105561256, 44.240000039339066, 44.13888880610466, 44.07111117243767, 44.03000006079674, 44.008888840675354, 44.00111132860184, 44.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1085,6 +1088,57 @@ size = Vector3(7.4, 26.800001, 1.0500001)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnsmo"]
 size = Vector3(0.25, 29.9, 7.55)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5cm5d"]
+size = Vector3(1.734375, 0.06793213, 0.9349365)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b00ha"]
+emission_enabled = true
+emission = Color(0.914986, 0.7856974, 1, 1)
+emission_energy_multiplier = 2.47
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_urcnp"]
+material = SubResource("StandardMaterial3D_b00ha")
+size = Vector2(1.75, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xle81"]
+size = Vector3(1.6397705, 0.06793213, 1.4277649)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urcnp"]
+emission_enabled = true
+emission = Color(0.914986, 0.7856974, 1, 1)
+emission_energy_multiplier = 2.47
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rpyod"]
+material = SubResource("StandardMaterial3D_urcnp")
+size = Vector2(1.9, 1.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15kh8"]
+size = Vector3(2.873783, 0.06793213, 2.4609451)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpyod"]
+emission_enabled = true
+emission = Color(0.914986, 0.7856974, 1, 1)
+emission_energy_multiplier = 2.47
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mplvr"]
+material = SubResource("StandardMaterial3D_rpyod")
+size = Vector2(3.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b00ha"]
+size = Vector3(1.7675555, 0.06793213, 1.3989296)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mplvr"]
+emission_enabled = true
+emission = Color(0.914986, 0.7856974, 1, 1)
+emission_energy_multiplier = 2.47
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vggli"]
+material = SubResource("StandardMaterial3D_mplvr")
+size = Vector2(1.7, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_urcnp"]
+size = Vector3(1.3164822, 0.06793213, 2.1484528)
+
 [sub_resource type="Animation" id="Animation_xle81"]
 length = 0.001
 tracks/0/type = "value"
@@ -1601,6 +1655,15 @@ _data = {
 &"pullupcards": SubResource("Animation_5bov3")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viu5a"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.03529412)
+albedo_texture = ExtResource("32_b00ha")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b00ha"]
+material = SubResource("StandardMaterial3D_viu5a")
+size = Vector2(2.64, 0.88)
+
 [node name="MainScene" type="Node3D" unique_id=400639399 groups=["main"]]
 script = ExtResource("1_x6ack")
 
@@ -1958,6 +2021,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.45, -0.05000019, -3.
 transform = Transform3D(19.696156, 0, 3.4729636, 0, 20, 0, -3.4729636, 0, 19.696156, 23.899996, -6.1499968, -2.6000004)
 
 [node name="ShopPlacementReferences" type="Node3D" parent="." unique_id=1462091957]
+script = ExtResource("19_5bov3")
 
 [node name="DiceShopPlacement1" type="Node3D" parent="ShopPlacementReferences" unique_id=2094484397]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.544676, -2.6884804, -6.5233912)
@@ -1965,10 +2029,11 @@ script = ExtResource("22_5cm5d")
 
 [node name="DiceGenerator1" parent="ShopPlacementReferences/DiceShopPlacement1" unique_id=1558030893 instance=ExtResource("19_b48ew")]
 
-[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement1/DiceGenerator1" unique_id=194486236 instance=ExtResource("20_8edxt")]
-
 [node name="PriceTag" parent="ShopPlacementReferences/DiceShopPlacement1" unique_id=1588340511 instance=ExtResource("21_5oxhp")]
-transform = Transform3D(-0.019281887, 0, -0.399535, 0, 0.39999998, 0, 0.399535, 0, -0.019281887, -0.6574726, -0.4215746, -0.0077414513)
+transform = Transform3D(-0.019281887, 0, -0.399535, 0, 0.39999998, 0, 0.399535, 0, -0.019281887, -0.75445557, -0.4215746, 0.043396473)
+visible = false
+
+[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement1" unique_id=194486236 instance=ExtResource("23_yb0ja")]
 
 [node name="DiceShopPlacement2" type="Node3D" parent="ShopPlacementReferences" unique_id=659221549]
 transform = Transform3D(0.9251766, 0, 0.3795369, 0, 1, 0, -0.3795369, 0, 0.9251766, 25.11762, -2.6884804, -5.3090615)
@@ -1977,10 +2042,11 @@ script = ExtResource("22_5cm5d")
 [node name="DiceGenerator2" parent="ShopPlacementReferences/DiceShopPlacement2" unique_id=1640803134 instance=ExtResource("19_b48ew")]
 shop_position = 2
 
-[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement2/DiceGenerator2" unique_id=807836687 instance=ExtResource("20_8edxt")]
-
 [node name="PriceTag" parent="ShopPlacementReferences/DiceShopPlacement2" unique_id=381932801 instance=ExtResource("21_5oxhp")]
-transform = Transform3D(-0.13513386, 0, -0.37648228, 0, 0.4, 0, 0.37648228, 0, -0.13513386, 0.7124443, -0.4215746, 0.030315876)
+transform = Transform3D(-0.13513388, 0, -0.37648234, 0, 0.4, 0, 0.37648234, 0, -0.13513388, 0.8596363, -0.4215746, 0.007860661)
+visible = false
+
+[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement2" unique_id=1808311153 instance=ExtResource("23_yb0ja")]
 
 [node name="DiceShopPlacement3" type="Node3D" parent="ShopPlacementReferences" unique_id=662815450]
 transform = Transform3D(0.9983788, 0, 0.056919336, 0, 1, 0, -0.056919336, 0, 0.9983788, 25.921288, -2.6884804, -4.346537)
@@ -1989,10 +2055,11 @@ script = ExtResource("22_5cm5d")
 [node name="DiceGenerator3" parent="ShopPlacementReferences/DiceShopPlacement3" unique_id=1999584102 instance=ExtResource("19_b48ew")]
 shop_position = 3
 
-[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement3/DiceGenerator3" unique_id=1206979371 instance=ExtResource("20_8edxt")]
-
 [node name="PriceTag" parent="ShopPlacementReferences/DiceShopPlacement3" unique_id=1183731716 instance=ExtResource("21_5oxhp")]
-transform = Transform3D(0.08470733, 0, -0.39092797, 0, 0.4, 0, 0.39092797, 0, 0.08470733, -0.69347954, -0.4215746, 0.087200165)
+transform = Transform3D(0.08470731, 0, -0.39092797, 0, 0.4, 0, 0.39092797, 0, 0.08470731, -0.7928238, -0.4215746, 0.08153629)
+visible = false
+
+[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement3" unique_id=292893871 instance=ExtResource("23_yb0ja")]
 
 [node name="DiceShopPlacement4" type="Node3D" parent="ShopPlacementReferences" unique_id=2045690044]
 transform = Transform3D(0.9421803, 0, 0.33510625, 0, 1, 0, -0.33510625, 0, 0.9421803, 25.445238, -2.6884804, -3.213392)
@@ -2001,10 +2068,11 @@ script = ExtResource("22_5cm5d")
 [node name="DiceGenerator4" parent="ShopPlacementReferences/DiceShopPlacement4" unique_id=1639604890 instance=ExtResource("19_b48ew")]
 shop_position = 4
 
-[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement4/DiceGenerator4" unique_id=292110940 instance=ExtResource("20_8edxt")]
-
 [node name="PriceTag" parent="ShopPlacementReferences/DiceShopPlacement4" unique_id=1179146551 instance=ExtResource("21_5oxhp")]
-transform = Transform3D(-0.15700549, 0, -0.3678985, 0, 0.4, 0, 0.3678985, 0, -0.15700549, 0.77267647, -0.4215746, 0.10543585)
+transform = Transform3D(-0.15700549, 0, -0.3678985, 0, 0.4, 0, 0.3678985, 0, -0.15700549, 0.854105, -0.4215746, 0.14164734)
+visible = false
+
+[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement4" unique_id=1352473953 instance=ExtResource("23_yb0ja")]
 
 [node name="DiceShopPlacement5" type="Node3D" parent="ShopPlacementReferences" unique_id=929569450]
 transform = Transform3D(0.98749363, 0, 0.15765828, 0, 1, 0, -0.15765828, 0, 0.98749363, 26.22401, -2.6884804, -2.2105815)
@@ -2013,38 +2081,211 @@ script = ExtResource("22_5cm5d")
 [node name="DiceGenerator5" parent="ShopPlacementReferences/DiceShopPlacement5" unique_id=23606185 instance=ExtResource("19_b48ew")]
 shop_position = 5
 
-[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement5/DiceGenerator5" unique_id=941292147 instance=ExtResource("20_8edxt")]
-
 [node name="PriceTag" parent="ShopPlacementReferences/DiceShopPlacement5" unique_id=18810250 instance=ExtResource("21_5oxhp")]
-transform = Transform3D(0.017273452, 0, -0.399627, 0, 0.39999998, 0, 0.399627, 0, 0.017273452, -0.66719246, -0.4701643, 0.07173061)
+transform = Transform3D(0.017273463, 0, -0.39962706, 0, 0.39999998, 0, 0.39962706, 0, 0.017273463, -0.77661324, -0.45635343, 0.08620024)
+visible = false
+
+[node name="Standard_D6" parent="ShopPlacementReferences/DiceShopPlacement5" unique_id=1164187203 instance=ExtResource("23_yb0ja")]
 
 [node name="TicketShopPlacement" type="Node3D" parent="ShopPlacementReferences" unique_id=602489085]
-transform = Transform3D(0.21591133, 0, -0.97641295, 0, 1, 0, 0.97641295, 0, 0.21591133, 23.359734, -3.161254, -6.0889134)
-script = ExtResource("23_5bov3")
+transform = Transform3D(0.21591133, 0, -0.97641295, 0, 1, 0, 0.97641295, 0, 0.21591133, 23.359734, -3.1456006, -6.0889134)
+script = ExtResource("22_5cm5d")
+
+[node name="PriceTag" parent="ShopPlacementReferences/TicketShopPlacement" unique_id=137773436 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(0.4000002, 0, -1.4901161e-08, 0, 0.4, 0, 1.4901161e-08, 0, 0.4000002, 0.68066454, 0, 0.68483925)
+visible = false
+
+[node name="TicketGenerator1" parent="ShopPlacementReferences/TicketShopPlacement" unique_id=1146082060 groups=["ticket_gen"] instance=ExtResource("23_s8qe6")]
+shop_slot = 6
 
 [node name="TicketShopPlacement2" type="Node3D" parent="ShopPlacementReferences" unique_id=1562467025]
-transform = Transform3D(0.072803006, 0, -0.9973464, 0, 1, 0, 0.9973464, 0, 0.072803006, 21.596537, -3.161254, -5.333625)
+transform = Transform3D(0.072803006, 0, -0.9973464, 0, 1, 0, 0.9973464, 0, 0.072803006, 21.444277, -3.1454442, -5.333625)
 script = ExtResource("22_5cm5d")
+
+[node name="PriceTag" parent="ShopPlacementReferences/TicketShopPlacement2" unique_id=1542313348 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.51827383, 0.16226768, 0.82287025)
+visible = false
+
+[node name="TicketGenerator2" parent="ShopPlacementReferences/TicketShopPlacement2" unique_id=249960999 groups=["ticket_gen"] instance=ExtResource("23_s8qe6")]
+shop_slot = 7
 
 [node name="StatueShopPlacement1" type="Node3D" parent="ShopPlacementReferences" unique_id=495311458]
 transform = Transform3D(0.08492999, 0.99638695, 4.3553456e-08, 0, -4.371139e-08, 1, 0.99638695, -0.08492999, -3.7124077e-09, 21.637741, -5.0173593, 0.9589329)
 script = ExtResource("22_5cm5d")
 
+[node name="PriceTag" parent="ShopPlacementReferences/StatueShopPlacement1" unique_id=890218036 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(0.4000001, 2.295706e-16, 7.450581e-09, 7.450581e-09, -1.7484561e-08, -0.4000001, 1.110223e-16, 0.4, -1.7484556e-08, -0.65529156, 0.055854797, 1.0150766)
+visible = false
+
+[node name="StatueSpawner1" parent="ShopPlacementReferences/StatueShopPlacement1" unique_id=1058466344 instance=ExtResource("25_s8qe6")]
+shop_slot = 8
+
 [node name="StatueShopPlacement2" type="Node3D" parent="ShopPlacementReferences" unique_id=676399084]
 transform = Transform3D(0.05081962, -0.9987079, -4.365491e-08, 0, -4.371139e-08, 1, -0.9987079, -0.05081962, -2.2213957e-09, 26.935635, -5.0173593, -0.1319747)
 script = ExtResource("22_5cm5d")
+
+[node name="PriceTag" parent="ShopPlacementReferences/StatueShopPlacement2" unique_id=1400458683 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(-0.32315484, -5.281415e-15, -0.23573497, -0.23573497, -1.7484554e-08, 0.32315484, -1.0304303e-08, 0.4, 1.4125548e-08, -0.9372458, 0.5983677, 1.0261965)
+visible = false
+
+[node name="StatueSpawner2" parent="ShopPlacementReferences/StatueShopPlacement2" unique_id=2113267803 instance=ExtResource("25_s8qe6")]
+shop_slot = 9
 
 [node name="CardShopPlacement1" type="Node3D" parent="ShopPlacementReferences" unique_id=1372799371]
 transform = Transform3D(0.054424256, 0.13977839, 6.1099086e-09, 6.8490534e-18, -6.5567094e-09, 0.15, 0.13977839, -0.054424267, -2.3789597e-09, 21.848738, -3.161254, -3.6358638)
 script = ExtResource("22_5cm5d")
 
+[node name="PriceTag" parent="ShopPlacementReferences/CardShopPlacement1" unique_id=579337101 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(2.3999996, -7.3152e-15, 0, -3.5762787e-07, -1.0490727e-07, -2.4, 0, 2.4, -1.0490733e-07, -4.248579, -4.6597443, 0.026855469)
+visible = false
+
 [node name="CardShopPlacement2" type="Node3D" parent="ShopPlacementReferences" unique_id=1081190983]
 transform = Transform3D(-0.009985486, 0.14966723, 6.5421637e-09, 1.4273248e-16, -6.5567085e-09, 0.15, 0.14966723, 0.009985482, 4.3647946e-10, 22.211338, -3.161254, -1.7946484)
 script = ExtResource("22_5cm5d")
 
+[node name="PriceTag" parent="ShopPlacementReferences/CardShopPlacement2" unique_id=890338875 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(2.3999999, -5.3123365e-17, 4.4703484e-08, 0, -1.0490734e-07, -2.3999999, -2.220446e-15, 2.4, -1.0490737e-07, -4.4372044, 1.7277222, 0)
+visible = false
+
 [node name="CardShopPlacement3" type="Node3D" parent="ShopPlacementReferences" unique_id=1743298211]
 transform = Transform3D(-0.14444757, 0.040433783, 1.7674178e-09, 8.0417176e-18, -6.556709e-09, 0.15, 0.04043378, 0.14444757, 6.314005e-09, 23.936157, -3.161254, -3.294302)
 script = ExtResource("22_5cm5d")
+
+[node name="PriceTag" parent="ShopPlacementReferences/CardShopPlacement3" unique_id=1233809648 instance=ExtResource("21_5oxhp")]
+transform = Transform3D(1.1792271, 5.3361674e-08, 2.0903168, 2.0903168, -9.137064e-08, -1.1792272, 5.3361674e-08, 2.4, -9.137064e-08, 2.4143372, 8.625124, 0)
+visible = false
+
+[node name="ShopPlacementArea1" type="Area3D" parent="ShopPlacementReferences" unique_id=1862975034]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea1" unique_id=304841052]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 25.211212, -2.0601091, -6.2880726)
+shape = SubResource("BoxShape3D_5cm5d")
+
+[node name="Highlight1" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea1" unique_id=1052184308]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 25.25065, -3.1455274, -6.533242)
+visible = false
+mesh = SubResource("PlaneMesh_urcnp")
+
+[node name="ShopPlacementArea2" type="Area3D" parent="ShopPlacementReferences" unique_id=624165652]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea2" unique_id=235498306]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 25.417614, -2.0601091, -5.2250786)
+shape = SubResource("BoxShape3D_5cm5d")
+
+[node name="Highlight2" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea2" unique_id=447121090]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 25.449053, -3.1455274, -5.421317)
+visible = false
+mesh = SubResource("PlaneMesh_urcnp")
+
+[node name="ShopPlacementArea3" type="Area3D" parent="ShopPlacementReferences" unique_id=762308785]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea3" unique_id=1828640957]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 25.632269, -2.0601091, -4.188965)
+shape = SubResource("BoxShape3D_5cm5d")
+
+[node name="Highlight3" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea3" unique_id=1494704731]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 25.660313, -3.1455274, -4.3070545)
+visible = false
+mesh = SubResource("PlaneMesh_urcnp")
+
+[node name="ShopPlacementArea4" type="Area3D" parent="ShopPlacementReferences" unique_id=1348392817]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea4" unique_id=1394019534]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 25.832405, -2.0601091, -3.222149)
+shape = SubResource("BoxShape3D_5cm5d")
+
+[node name="Highlight4" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea4" unique_id=1547120219]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 25.832422, -3.1455274, -3.2646248)
+visible = false
+mesh = SubResource("PlaneMesh_urcnp")
+
+[node name="ShopPlacementArea5" type="Area3D" parent="ShopPlacementReferences" unique_id=2080495223]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea5" unique_id=163181301]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 26.022127, -2.0601091, -2.208613)
+shape = SubResource("BoxShape3D_5cm5d")
+
+[node name="Highlight5" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea5" unique_id=1837535428]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 26.023964, -3.1455274, -2.1389575)
+visible = false
+mesh = SubResource("PlaneMesh_urcnp")
+
+[node name="ShopPlacementArea6" type="Area3D" parent="ShopPlacementReferences" unique_id=640871971]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea6" unique_id=1975050596]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 23.452549, -2.0601091, -5.4075975)
+shape = SubResource("BoxShape3D_xle81")
+
+[node name="Highlight6" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea6" unique_id=648480242]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 23.381792, -3.1726792, -5.866773)
+visible = false
+mesh = SubResource("PlaneMesh_rpyod")
+
+[node name="ShopPlacementArea7" type="Area3D" parent="ShopPlacementReferences" unique_id=659343443]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea7" unique_id=1748759847]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 21.784733, -2.0601091, -5.0332713)
+shape = SubResource("BoxShape3D_xle81")
+
+[node name="Highlight7" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea7" unique_id=1458653688]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 21.389708, -3.1726792, -5.4950213)
+visible = false
+mesh = SubResource("PlaneMesh_rpyod")
+
+[node name="ShopPlacementArea8" type="Area3D" parent="ShopPlacementReferences" unique_id=2107719367]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea8" unique_id=217504982]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 22.785513, -2.0601091, 0.5188271)
+shape = SubResource("BoxShape3D_15kh8")
+
+[node name="Highlight8" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea8" unique_id=1793284203]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 23.02192, -6.040225, 0.4637084)
+visible = false
+mesh = SubResource("PlaneMesh_mplvr")
+
+[node name="ShopPlacementArea9" type="Area3D" parent="ShopPlacementReferences" unique_id=742153129]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea9" unique_id=523753437]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 25.660059, -2.0601091, -0.03187269)
+shape = SubResource("BoxShape3D_15kh8")
+
+[node name="Highlight9" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea9" unique_id=537783842]
+transform = Transform3D(0.98827904, 0, 0.1526581, 0, 1, 0, -0.1526581, 0, 0.98827904, 25.55748, -6.040225, -0.07589483)
+visible = false
+mesh = SubResource("PlaneMesh_mplvr")
+
+[node name="ShopPlacementArea10" type="Area3D" parent="ShopPlacementReferences" unique_id=1560979837]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea10" unique_id=149290124]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 21.81466, -2.0601091, -3.614765)
+shape = SubResource("BoxShape3D_b00ha")
+
+[node name="Highlight10" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea10" unique_id=454303780]
+transform = Transform3D(0.9635744, 0, 0.26744017, 0, 1, 0, -0.26744017, 0, 0.9635744, 23.906368, -3.1731126, -3.3038378)
+visible = false
+mesh = SubResource("PlaneMesh_vggli")
+
+[node name="ShopPlacementArea11" type="Area3D" parent="ShopPlacementReferences" unique_id=757147893]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea11" unique_id=35861843]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 22.067377, -2.0601091, -2.0247424)
+shape = SubResource("BoxShape3D_b00ha")
+
+[node name="Highlight11" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea11" unique_id=215678935]
+transform = Transform3D(-0.32570016, 0, 0.9454731, 0, 1, 0, -0.9454731, 0, -0.32570016, 21.900463, -3.1731126, -3.58007)
+visible = false
+mesh = SubResource("PlaneMesh_vggli")
+
+[node name="ShopPlacementArea12" type="Area3D" parent="ShopPlacementReferences" unique_id=1685649031]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopPlacementReferences/ShopPlacementArea12" unique_id=1246696988]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, 23.88663, -2.0293267, -3.034498)
+shape = SubResource("BoxShape3D_urcnp")
+
+[node name="Highlight12" type="MeshInstance3D" parent="ShopPlacementReferences/ShopPlacementArea12" unique_id=1652772194]
+transform = Transform3D(0.071323335, 0, 0.99745333, 0, 1, 0, -0.99745333, 0, 0.071323335, 22.250536, -3.1731126, -1.8022064)
+visible = false
+mesh = SubResource("PlaneMesh_vggli")
 
 [node name="Sketchfab_Scene" parent="." unique_id=657791988 instance=ExtResource("15_2ebs2")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 23.899998, -14.55, -2.300002)
@@ -2083,10 +2324,38 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="LonelyBlackBalloonEasterEgg" type="MeshInstance3D" parent="." unique_id=466109357]
+transform = Transform3D(1, 0, 0, 0, 0.70520365, -0.7090049, 0, 0.7090049, 0.70520365, -14.448209, 0.44668102, -9.7370205)
+mesh = SubResource("PlaneMesh_b00ha")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="CardHoverDetection" to="." method="_on_card_hover_detection_mouse_entered"]
 [connection signal="mouse_exited" from="CardHoverDetection" to="." method="_on_card_hover_detection_mouse_exited"]
 [connection signal="mouse_entered" from="CardExitDetect" to="." method="_on_card_exit_detect_mouse_entered"]
 [connection signal="mouse_exited" from="CardExitDetect" to="." method="_on_card_exit_detect_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea1" to="ShopPlacementReferences" method="_on_shop_placement_area_1_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea1" to="ShopPlacementReferences" method="_on_shop_placement_area_1_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea2" to="ShopPlacementReferences" method="_on_shop_placement_area_2_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea2" to="ShopPlacementReferences" method="_on_shop_placement_area_2_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea3" to="ShopPlacementReferences" method="_on_shop_placement_area_3_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea3" to="ShopPlacementReferences" method="_on_shop_placement_area_3_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea4" to="ShopPlacementReferences" method="_on_shop_placement_area_4_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea4" to="ShopPlacementReferences" method="_on_shop_placement_area_4_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea5" to="ShopPlacementReferences" method="_on_shop_placement_area_5_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea5" to="ShopPlacementReferences" method="_on_shop_placement_area_5_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea6" to="ShopPlacementReferences" method="_on_shop_placement_area_6_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea6" to="ShopPlacementReferences" method="_on_shop_placement_area_6_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea7" to="ShopPlacementReferences" method="_on_shop_placement_area_7_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea7" to="ShopPlacementReferences" method="_on_shop_placement_area_7_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea8" to="ShopPlacementReferences" method="_on_shop_placement_area_8_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea8" to="ShopPlacementReferences" method="_on_shop_placement_area_8_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea9" to="ShopPlacementReferences" method="_on_shop_placement_area_9_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea9" to="ShopPlacementReferences" method="_on_shop_placement_area_9_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea10" to="ShopPlacementReferences" method="_on_shop_placement_area_10_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea10" to="ShopPlacementReferences" method="_on_shop_placement_area_10_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea11" to="ShopPlacementReferences" method="_on_shop_placement_area_11_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea11" to="ShopPlacementReferences" method="_on_shop_placement_area_11_mouse_exited"]
+[connection signal="mouse_entered" from="ShopPlacementReferences/ShopPlacementArea12" to="ShopPlacementReferences" method="_on_shop_placement_area_12_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPlacementReferences/ShopPlacementArea12" to="ShopPlacementReferences" method="_on_shop_placement_area_12_mouse_exited"]
 [connection signal="animation_finished" from="CardAnimations" to="." method="_on_card_animations_animation_finished"]

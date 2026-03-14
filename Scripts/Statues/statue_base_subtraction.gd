@@ -26,21 +26,25 @@ func create_value() -> void:
 			base_statue_value = common_values
 			label_3d.modulate = statue_base_logic.common_text_color
 			label_3d.outline_modulate = statue_base_logic.common_text_outline_color
+			get_parent().statue_bottom_rarity = 1
 			print("common base")
 		2:
 			base_statue_value = uncommon_values
 			label_3d.modulate = statue_base_logic.uncommon_text_color
 			label_3d.outline_modulate = statue_base_logic.uncommon_text_outline_color
+			get_parent().statue_bottom_rarity = 2
 			print("uncommon base")
 		3:
 			base_statue_value = rare_values
 			label_3d.modulate = statue_base_logic.rare_text_color
 			label_3d.outline_modulate = statue_base_logic.rare_text_outline_color
+			get_parent().statue_bottom_rarity = 3
 			print("rare base")
 		4:
 			base_statue_value = legendary_values
 			label_3d.modulate = statue_base_logic.legendary_text_color
 			label_3d.outline_modulate = statue_base_logic.legendary_text_outline_color
+			get_parent().statue_bottom_rarity = 4
 			print("legendary base")
 	print(base_statue_value)
 	create_tooltip()

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://buuvt254w64xs" path="res://Scripts/price_tag.gd" id="1_5wmyn"]
 [ext_resource type="Texture2D" uid="uid://qu66yl6pcvrx" path="res://Assets/Textures/PricetagPaper.png" id="2_okodh"]
 [ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="3_r0crr"]
-[ext_resource type="Script" uid="uid://cy8gaaeb76p2n" path="res://Scripts/gold_coin_number.gd" id="4_okodh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73eno"]
+render_priority = 23
 transparency = 1
 albedo_texture = ExtResource("2_okodh")
 metallic_specular = 0.0
@@ -21,14 +21,13 @@ script = ExtResource("1_5wmyn")
 [node name="Pricetag" type="MeshInstance3D" parent="." unique_id=1700722138]
 mesh = SubResource("PlaneMesh_i2f6j")
 
-[node name="Label3D" type="Label3D" parent="Pricetag" unique_id=322736497]
-transform = Transform3D(1, 0, 0, 0, 7.4505806e-08, 1.0000001, 0, -1.0000001, 7.4505806e-08, 0, 0, 0)
-render_priority = 9
-outline_render_priority = 8
-modulate = Color(0.9341132, 0.7505345, 0.3927703, 1)
-outline_modulate = Color(0.25922048, 0.15633851, 0.07799823, 1)
+[node name="Label3D" type="Label3D" parent="Pricetag" unique_id=1950172049]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+render_priority = 25
+outline_render_priority = 24
+modulate = Color(0.93333334, 0.7490196, 0.39215687, 1)
+outline_modulate = Color(0.25882354, 0.15686275, 0.078431375, 1)
 text = "$5"
 font = ExtResource("3_r0crr")
 font_size = 164
 outline_size = 24
-script = ExtResource("4_okodh")

@@ -50,6 +50,8 @@ wood=""
 soft=""
 DealerDialogue=""
 dice_gen=""
+ticket_gen=""
+statue_gen=""
 
 [gui]
 

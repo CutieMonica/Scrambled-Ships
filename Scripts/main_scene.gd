@@ -4,6 +4,7 @@ extends Node3D
 var max_die : int = 5
 var next_card : int = 0
 var watching_coins : bool = false
+var statues_created : int = 0
 
 var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
 
@@ -14,6 +15,7 @@ var bomb_card := preload("uid://dgpdr61xocghe")
 var card_instance : Node
 var dice_instance : Node
 var prev_die : int = 0
+var between_rounds : bool = false
 #var placeholdersong := preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
 var roll_with_it_music := load("res://Assets/Music/Roll with it (final).ogg")
 var reroll_coin : PackedScene = preload("res://Scenes/gold_coin.tscn")
@@ -22,6 +24,9 @@ var money_coin : PackedScene = preload("res://Scenes/currency_gold_coin.tscn")
 var money_coin_instance : Node
 
 var dice_shop_slots_unlocked : int = 3
+var ticket_shop_slots_unlocked : int = 6
+var statue_shop_slots_unlocked : int = 8
+var card_shop_slots_unlocked : int = 11
 
 @onready var random_money_buffer: Timer = $RandomMoneyBuffer
 @onready var lid_collider_delay: Timer = $LidColliderDelay
@@ -150,8 +155,7 @@ var in_play_dice_instances : Dictionary = {
 	9: null,
 	10: null,
 	11: null,
-	12: null,
-	13: null
+	12: null
 }
 
 
@@ -432,6 +436,7 @@ func _on_card_animations_animation_finished(anim_name: StringName) -> void:
 						card_deck.get(i).card_logic.move_along_now = false
 
 func play_sheet_to_counter() -> void:
+	between_rounds = true
 	InputHandler.actionable = false
 	camera_movement.play("sheet_to_counter")
 	round_score_buffer.start()
@@ -450,3 +455,5 @@ func play_coins_to_shop() -> void:
 
 func generate_shop() -> void:
 	get_tree().call_group("dice_gen", "create_dice")
+	get_tree().call_group("ticket_gen", "generate_ticket")
+	get_tree().call_group("statue_gen", "spawn_statue")

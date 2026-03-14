@@ -3,6 +3,8 @@ extends Node3D
 @onready var nametag: Label3D = $Name
 @onready var description: Label3D = $Description
 @onready var icon: MeshInstance3D = $Icon
+@export var shop_slot : int = 0
+@export var ticket_price : int = 0
 
 #all the ticket textures
 
@@ -95,14 +97,19 @@ var common_upgrades_names : Dictionary = {
 	8:
 		"SHOP REROLL"
 }
-#replace later
-func _ready() -> void:
-	generate_ticket()
-	
+
 func generate_ticket() -> void:
+	if get_parent().get_parent().get_parent().ticket_shop_slots_unlocked < shop_slot:
+		visible = false
+		return
 	var random_ticket_choice : int = GameManager.rng_upgrades.randi_range(1, common_upgrades.size())
+	ticket_price = 3
 	icon.get_active_material(0).albedo_texture = common_upgrades.get(random_ticket_choice)
 	description.text = common_upgrades_descriptions.get(random_ticket_choice)
 	nametag.text = common_upgrades_names.get(random_ticket_choice)
+	get_parent().get_parent().get_parent().shop_items.set(shop_slot, self)
+	get_parent().price_tag.inflation_is_a_bitch(ticket_price)
+	get_parent().show_price()
+	visible = true
 	
 	

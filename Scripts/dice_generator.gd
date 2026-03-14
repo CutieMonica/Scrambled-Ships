@@ -63,9 +63,12 @@ func create_dice() -> void:
 			dice_price = 8
 	dice_instance = dice_choice.instantiate()
 	dice_instance.name = "Die" + str(shop_position)
+	get_parent().price_tag.inflation_is_a_bitch(dice_price)
+	get_parent().show_price()
 	#dice_instance.position = Vector3.ZERO
 	dice_instance.freeze = true
 	#dice_instance.rotation = get_parent().rotation
 	add_child(dice_instance)
 	dice_instance.rotation = Vector3.ZERO
+	get_parent().get_parent().get_parent().shop_items.set(shop_position, dice_instance)
 	dice_instance.reparent(get_parent().get_parent().get_parent())
