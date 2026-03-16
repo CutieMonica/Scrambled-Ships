@@ -35,6 +35,7 @@ var silvia1 := load("res://Assets/Textures/deskcarvings/silviaart1.png")
 var silvia2 := load("res://Assets/Textures/deskcarvings/silvia2.png")
 var thesog := load("res://Assets/Textures/deskcarvings/thesog.png")
 var jonnyboy := load("uid://pa7ius5g80hi")
+var eotu := load("res://Assets/Textures/deskcarvings/eyeogtheuniverse.png")
 
 var mrbeast := load("res://Assets/Textures/deskcarvings/mr beast.png")
 
@@ -72,7 +73,8 @@ var random_icon_image : Dictionary = {
 	31 : silvia1,
 	32 : silvia2,
 	33 : thesog,
-	34 : jonnyboy
+	34 : jonnyboy,
+	35 : eotu
 }
 
 var random_icon : int

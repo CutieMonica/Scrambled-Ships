@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var highlighter: AnimationPlayer = $Highlighter
+@onready var dice_slots: AnimationPlayer = $DiceSlots
 
 func _on_outside_the_box_detect_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice"):
@@ -20,3 +21,9 @@ func highlightoff() -> void:
 func _on_dice_clipping_fix_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice") or body.is_in_group("dice_resting"):
 		body.position.y += 0.1
+
+func unlock_slot_6() -> void:
+	dice_slots.play("UnlockableSlot1")
+	
+func unlock_slot_7() -> void:
+	dice_slots.play("UnlockableSlot2")

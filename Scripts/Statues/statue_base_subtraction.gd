@@ -12,6 +12,7 @@ var rarity : Array = [1, 2, 3, 4]
 @onready var label_3d: Label3D = $Label3D
 @onready var statue_base_logic: StatueBaseLogic = $StatueBaseLogic
 
+@export var item_name : String = "Subtractive"
 @onready var collider: StaticBody3D = $Collider
 @export var statue_tooltip : String
 
@@ -50,4 +51,6 @@ func create_value() -> void:
 	create_tooltip()
 	
 func create_tooltip() -> void:
-	statue_tooltip = "Subtraction: Subtracts -" + str(base_statue_value) + " to the model placed above this base."
+	statue_tooltip = "
+	Statue Base
+	Subtraction: Has a base value of " + str(base_statue_value) + ", this gets subtracted from the value of the model placed above this base."

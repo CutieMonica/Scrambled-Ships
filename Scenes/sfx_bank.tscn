@@ -4,3 +4,21 @@
 
 [node name="SFXBank" type="Node" unique_id=860984771]
 script = ExtResource("1_gq4t3")
+dice_clink_sound_1 = null
+dice_clink_sound_2 = null
+dice_clink_sound_3 = null
+coin_drop_1 = null
+coin_table_hit = null
+softsound1 = null
+softsound2 = null
+orchestrahit = null
+coinclick = null
+coin_hit_1 = null
+coin_hit_2 = null
+coin_hit_3 = null
+explosion_1 = null
+explosion_2 = null
+card_flip_1 = null
+card_flip_2 = null
+card_flip_3 = null
+shadow_wizard_money_gang = null

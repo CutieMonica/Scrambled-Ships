@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Scrambled Ships"
+config/description="Just a fun game of Yacht Dice, surely nothing else is going on in this boat."
+config/version="1.0"
 run/main_scene="uid://cikokvs42uudo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://0npl86cl5w7f"
@@ -30,6 +32,7 @@ InputHandler="*uid://cw5iqymbhvxuo"
 [debug]
 
 gdscript/warnings/untyped_declaration=1
+gdscript/version=""
 
 [display]
 
@@ -52,6 +55,8 @@ DealerDialogue=""
 dice_gen=""
 ticket_gen=""
 statue_gen=""
+card_gen=""
+awaiting_new_slot=""
 
 [gui]
 

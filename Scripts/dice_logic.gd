@@ -8,6 +8,9 @@ class_name DiceLogic
 @export var default_mass : float = 0.75
 @export var dice_position : int = 1
 @export var just_spawned : bool = false
+@export var awaiting_placement : bool = false
+@export var dice_being_replaced : bool = false
+@onready var poof_particle: CPUParticles3D = $PoofParticle
 
 @export_group("textures")
 @export var texture : Texture2D
@@ -27,6 +30,8 @@ class_name DiceLogic
 @export var dice_soft_sound_1 = SfxBank.softsound1
 @warning_ignore("untyped_declaration")
 @export var dice_soft_sound_2 = SfxBank.softsound2
+@warning_ignore("untyped_declaration")
+@export var poof_sound = SfxBank.poof_sound
 
 @onready var storage_timer: Timer = $StorageTimer
 @onready var back_to_box_timer: Timer = $BackToBoxTimer
@@ -166,20 +171,27 @@ func _physics_process(delta: float) -> void:
 	if get_parent().returning_to_box:
 		get_parent().position = lerp(get_parent().position, Vector3(get_parent().dice_position * 0.5, 2, 0), delta)
 		
-	if get_parent().focused == true and !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and InputHandler.hovered_object != "scoresheet" and !just_spawned:
+	if get_parent().focused == true and !get_parent().outside_the_box and get_parent().linear_velocity.length() < 1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false:
 		focusdie()
 		
 func focusdie() -> void:
+	if dice_being_replaced:
+		return
 	get_parent().focused = true
-	if !get_parent().outside_the_box and get_parent().rigid_body_3d.sleeping and InputHandler.hovered_object != "scoresheet" and !just_spawned:
+	if !get_parent().outside_the_box and get_parent().linear_velocity.length() < 1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false:
 		get_parent().animation_player.play("highlighted")
 		print("sus")
 		InputHandler.hovered_object = "dice" + str(get_parent().dice_position)
 		print(InputHandler.hovered_object)
+	if get_parent().get_parent().choosing_new_die == true:
+		get_parent().animation_player.play("highlighted")
+		InputHandler.hovered_object = "dice" + str(get_parent().dice_position)
 	else:
 		pass
 
 func losefocusdie() -> void:
+	if dice_being_replaced:
+		return
 	if get_parent().focused:
 		get_parent().animation_player.play("not_highlighted")
 		print("gups")
@@ -188,18 +200,26 @@ func losefocusdie() -> void:
 			InputHandler.hovered_object = "none"
 		
 func interacted() -> void:
+	if dice_being_replaced:
+		return
 	get_parent().leftclickinteraction()
 	
 func storage() -> void:
-	if get_parent().focused and !get_parent().storing and !get_parent().stored and get_parent().rigid_body_3d.sleeping and !get_parent().outside_the_box:
+	if dice_being_replaced:
+		return
+	if get_parent().focused and !get_parent().storing and !get_parent().stored and get_parent().linear_velocity.length() < 1 and !get_parent().outside_the_box:
 		sealed_away_forever()
 		get_parent().add_to_group("stored_dice")
 		get_parent().remove_from_group("dice")
 		losefocusdie()
-	if get_parent().focused and get_parent().stored and get_parent().rigid_body_3d.sleeping:
+	if get_parent().focused and get_parent().stored and get_parent().linear_velocity.length() < 1:
 		return_to_box()
 		losefocusdie()
 
+func end_of_round_reset() -> void:
+	sealed_away_forever()
+	get_parent().add_to_group("stored_dice")
+	get_parent().remove_from_group("dice")
 
 func _on_storage_timer_timeout() -> void:
 	get_parent().storing = false
@@ -238,3 +258,57 @@ func play_soft_sound() -> void:
 	get_parent().audio_stream_player_3d.volume_db = (-10 + randf_range(-2, 2))
 	get_parent().audio_stream_player_3d.pitch_scale = (0 + randf_range(0.8, 1.3))
 	get_parent().audio_stream_player_3d.play()
+
+func purchase_die() -> void:
+	var target_slot : int = get_tree().get_first_node_in_group("main").find_vacant_dice_slot()
+	get_parent().reparent(get_tree().get_first_node_in_group("main"))
+	if target_slot != 0:
+		adjust_number(target_slot)
+		get_parent().get_parent().chosen_dice.set(target_slot, get_parent().name)
+		get_parent().get_parent().in_play_dice_instances.set(target_slot, get_parent())
+		dice_position = target_slot
+		just_spawned = false
+		get_parent().global_position = Vector3.ZERO
+		get_parent().rotation = Vector3.ZERO
+		get_parent().freeze = false
+		end_of_round_reset()
+		remove_from_group("awaiting_new_slot")
+		GameManager.dice_amount += 1
+		return
+	if target_slot == 0:
+		add_to_group("awaiting_new_slot")
+		get_parent().get_parent().shop_to_dice_storage()
+		get_parent().get_parent().choosing_new_die = true
+	
+func replaced() -> void:
+	poof_particle.emitting = true
+	get_parent().audio_stream_player_3d.stream = poof_sound
+	get_parent().audio_stream_player_3d.volume_db = (-8 + randf_range(2, 3))
+	get_parent().audio_stream_player_3d.pitch_scale = (0 + randf_range(0.9, 1.2))
+	get_parent().audio_stream_player_3d.play()
+	get_parent().get_parent().choosing_new_die = false
+	await get_tree().create_timer(0.05).timeout
+	get_parent().mesh.visible = false
+	get_parent()._on_d_6_mouse_detect_mouse_exited()
+	dice_being_replaced = true
+	await get_tree().create_timer(0.45).timeout
+	var temp_dice_position_buffer : int = get_parent().dice_position
+	get_parent().get_parent().remove_dice(get_parent().dice_position)
+	get_tree().get_first_node_in_group("awaiting_new_slot").go_to_new_slot(temp_dice_position_buffer)
+	get_parent().queue_free()
+	
+func go_to_new_slot(slot : int) -> void:
+	adjust_number(slot)
+	get_parent().get_parent().chosen_dice.set(slot, get_parent().name)
+	get_parent().get_parent().in_play_dice_instances.set(slot, get_parent())
+	dice_position = slot
+	
+	just_spawned = false
+	get_parent().global_position = Vector3.ZERO
+	get_parent().rotation = Vector3.ZERO
+	get_parent().freeze = false
+	end_of_round_reset()
+	remove_from_group("awaiting_new_slot")
+	GameManager.dice_amount += 1
+	await get_tree().create_timer(0.65).timeout
+	get_parent().get_parent().dice_storage_to_shop()

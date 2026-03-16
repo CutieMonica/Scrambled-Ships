@@ -1,8 +1,8 @@
 extends RigidBody3D
 
-class_name D6
+class_name basicD6
 
-@onready var rigid_body_3d: D6 = $"."
+@onready var rigid_body_3d: basicD6 = $"."
 
 @onready var dice_logic: DiceLogic = $DiceLogic
 
@@ -35,6 +35,12 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
+@export var item_type : String = "Die"
+@export var item_name : String = "Basic D6"
+@export var tooltip : String = "Every game's a roll of the die!"
+@export var description : String = "Rolls 1-6. Your standard 6-sided die. Not too interesting, not too uninteresting. Perfectly weighted, sleek, and smooth."
+@export var rarity : String = "Common"
 
 func _ready() -> void:
 	var rotating_x : float
@@ -156,7 +162,7 @@ func _physics_process(delta: float) -> void:
 				rotation.y = move_toward(rotation.y, 0.0, delta * rotation_delta_mult)
 			if rotation.z != -3.0:
 				rotation.z = move_toward(rotation.z, -3.0, delta * rotation_delta_mult)
-		position = lerp(position, stored_pos, delta * 5)
+		position = lerp(position, stored_pos, delta * 8)
 
 func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice"):

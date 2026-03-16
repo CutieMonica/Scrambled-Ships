@@ -15,7 +15,35 @@ extends Node3D
 @onready var highlight_11: MeshInstance3D = $ShopPlacementArea11/Highlight11
 @onready var highlight_12: MeshInstance3D = $ShopPlacementArea12/Highlight12
 
+@onready var dice_generator_1: Node3D = $DiceShopPlacement1/DiceGenerator1
+@onready var dice_generator_2: Node3D = $DiceShopPlacement2/DiceGenerator2
+@onready var dice_generator_3: Node3D = $DiceShopPlacement3/DiceGenerator3
+@onready var dice_generator_4: Node3D = $DiceShopPlacement4/DiceGenerator4
+@onready var dice_generator_5: Node3D = $DiceShopPlacement5/DiceGenerator5
+@onready var ticket_generator_1: Node3D = $TicketShopPlacement/TicketGenerator1
+@onready var ticket_generator_2: Node3D = $TicketShopPlacement2/TicketGenerator2
+@onready var statue_spawner_1: Node3D = $StatueShopPlacement1/StatueSpawner1
+@onready var statue_spawner_2: Node3D = $StatueShopPlacement2/StatueSpawner2
+@onready var card_generator_1: Node3D = $CardShopPlacement1/CardGenerator1
+@onready var card_generator_2: Node3D = $CardShopPlacement2/CardGenerator2
+@onready var card_generator_3: Node3D = $CardShopPlacement3/CardGenerator3
+
+
+@onready var shop_placement_area_1: Area3D = $ShopPlacementArea1
+@onready var shop_placement_area_2: Area3D = $ShopPlacementArea2
+@onready var shop_placement_area_3: Area3D = $ShopPlacementArea3
+@onready var shop_placement_area_4: Area3D = $ShopPlacementArea4
+@onready var shop_placement_area_5: Area3D = $ShopPlacementArea5
+@onready var shop_placement_area_6: Area3D = $ShopPlacementArea6
+@onready var shop_placement_area_7: Area3D = $ShopPlacementArea7
+@onready var shop_placement_area_8: Area3D = $ShopPlacementArea8
+@onready var shop_placement_area_9: Area3D = $ShopPlacementArea9
+@onready var shop_placement_area_10: Area3D = $ShopPlacementArea10
+@onready var shop_placement_area_11: Area3D = $ShopPlacementArea11
+@onready var shop_placement_area_12: Area3D = $ShopPlacementArea12
+
 var highlights : Dictionary = {}
+var shop_placement_areas : Dictionary = {}
 
 func _ready() -> void:
 	highlights = {

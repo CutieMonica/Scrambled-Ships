@@ -37,6 +37,12 @@ var values : Array = [1, 2, 3, 4, 5, 6]
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+@export var item_type : String = "Die"
+@export var item_name : String = "Cheater's Die"
+@export var tooltip : String = "Seems like someone rigged this one, that just ain't fair!"
+@export var description : String = "Rolls 1-6, but is weighted to roll one number most often. More likely to be weighted to lower numbers, but you don't get to know which one."
+@export var rarity : String = "Rare"
+
 func _ready() -> void:
 	var rotating_x : float
 	var rotating_y : float
@@ -174,7 +180,7 @@ func _physics_process(delta: float) -> void:
 				rotation.y = move_toward(rotation.y, 0.0, delta * rotation_delta_mult)
 			if rotation.z != -3.0:
 				rotation.z = move_toward(rotation.z, -3.0, delta * rotation_delta_mult)
-		position = lerp(position, stored_pos, delta * 5)
+		position = lerp(position, stored_pos, delta * 8)
 
 func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice"):

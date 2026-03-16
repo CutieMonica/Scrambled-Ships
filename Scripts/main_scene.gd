@@ -1,16 +1,19 @@
 extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var die_spawned : int = 0
+
 var max_die : int = 5
+var max_cards : int = 5
+var max_statues : int = 4
+
 var next_card : int = 0
 var watching_coins : bool = false
 var statues_created : int = 0
 
-var basic_d6 : PackedScene = preload("res://Scenes/dice/Basicd_6.tscn")
+var choosing_new_die : bool = false
 
-#all possible cards
-var bomb_card := preload("uid://dgpdr61xocghe")
-
+var basic_d6 := preload("res://Scenes/dice/Basicd_6.tscn")
+var INSCRYBED := preload("uid://cvdes1pfuas6d")
 
 var card_instance : Node
 var dice_instance : Node
@@ -39,6 +42,8 @@ var card_shop_slots_unlocked : int = 11
 
 @onready var target_score_display: Node3D = $TargetScoreDisplay
 @onready var round_score_buffer: Timer = $RoundScoreBuffer
+
+@onready var shop_overlays: Control = $ShopOverlays
 
 @onready var random_coin_buffer: Timer = $RandomCoinBuffer
 @onready var main_scene: Node3D = $"."
@@ -84,6 +89,18 @@ var card_shop_slots_unlocked : int = 11
 @onready var dice_generator_4: Node3D = $ShopPlacementReferences/DiceShopPlacement4/DiceGenerator4
 @onready var dice_generator_5: Node3D = $ShopPlacementReferences/DiceShopPlacement5/DiceGenerator5
 
+@onready var shop_placement_collider_1: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea1/ShopPlacementCollider1
+@onready var shop_placement_collider_2: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea2/ShopPlacementCollider2
+@onready var shop_placement_collider_3: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea3/ShopPlacementCollider3
+@onready var shop_placement_collider_4: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea4/ShopPlacementCollider4
+@onready var shop_placement_collider_5: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea5/ShopPlacementCollider5
+@onready var shop_placement_collider_6: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea6/ShopPlacementCollider6
+@onready var shop_placement_collider_7: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea7/ShopPlacementCollider7
+@onready var shop_placement_collider_8: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea8/ShopPlacementCollider8
+@onready var shop_placement_collider_9: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea9/ShopPlacementCollider9
+@onready var shop_placement_collider_10: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea10/ShopPlacementCollider10
+@onready var shop_placement_collider_11: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea11/ShopPlacementCollider11
+@onready var shop_placement_collider_12: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea12/ShopPlacementCollider12
 
 
 var chosen_dice : Dictionary = {
@@ -91,7 +108,7 @@ var chosen_dice : Dictionary = {
 	2: basic_d6,
 	3: basic_d6,
 	4: basic_d6,
-	5: basic_d6,
+	5: INSCRYBED,
 	6: null,
 	7: null
 }
@@ -134,13 +151,22 @@ var in_play_dice_instances : Dictionary = {
 }
 
 @export var card_deck : Dictionary = {
-	1: bomb_card,
+	1: null,
 	2: null,
 	3: null,
 	4: null,
 	5: null,
 	6: null,
 	7: null
+}
+
+@export var in_play_statues : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null
 }
 
 @export var shop_items : Dictionary = {
@@ -158,6 +184,24 @@ var in_play_dice_instances : Dictionary = {
 	12: null
 }
 
+@export var shop_prices : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null,
+	7: null,
+	8: null,
+	9: null,
+	10: null,
+	11: null,
+	12: null
+}
+
+var shop_placement_references : Dictionary = {}
+
+var current_shop_area : Area3D
 
 @export var reroll_coins : Dictionary = {}
 
@@ -225,7 +269,7 @@ func spawn_coins() -> void:
 		random_coin_buffer.wait_time = random_buffer_time
 		random_coin_buffer.start()
 		await random_coin_buffer.timeout
-		reroll_coins.get_or_add(n, reroll_coin)
+		reroll_coins.set(n, reroll_coin)
 		reroll_coin_instance = reroll_coins.get(n).instantiate()
 		reroll_coins.set(n, reroll_coin_instance)
 		reroll_coin_instance.name = "Coin" + str(n)
@@ -234,6 +278,7 @@ func spawn_coins() -> void:
 		reroll_coin_instance.position.x = GameManager.rng.randf_range(10.5, 12.5)
 		reroll_coin_instance.position.z = GameManager.rng.randf_range(2.5, 4.5)
 		add_child(reroll_coin_instance)
+		GameManager.rolls += 1
 	
 
 func spawn_money() -> void:
@@ -242,9 +287,9 @@ func spawn_money() -> void:
 		random_money_buffer.wait_time = random_buffer_time
 		random_money_buffer.start()
 		await random_money_buffer.timeout
-		money_coins.get_or_add(n, money_coin)
+		money_coins.set(n + money_coins.size(), money_coin)
 		money_coin_instance = money_coins.get(n).instantiate()
-		money_coins.set(n, money_coin_instance)
+		money_coins.set(n + money_coins.size(), money_coin_instance)
 		money_coin_instance.name = "MoneyCoin" + str(n)
 		money_coin_instance.coin_number = n + 1
 		money_coin_instance.position.y = GameManager.rng.randf_range(15, 16)
@@ -254,6 +299,8 @@ func spawn_money() -> void:
 		GameManager.current_money += 1
 		if GameManager.rolls > 0:
 			GameManager.update_rolls_count(-1)
+		if GameManager.rolls <= 0:
+			reroll_coins = {}
 	GameManager.money_due = 0
 	if watching_coins == true:
 		random_money_buffer.wait_time = 1.0
@@ -264,6 +311,21 @@ func spawn_money() -> void:
 func round_start() -> void:
 	get_tree().call_group("statues", "main_scene_round_started")
 	spawn_coins()
+	if GameManager.current_round != 1:
+		shop_to_default()
+		score_sheet.reset_everything()
+		camerabuffer.wait_time = 1
+		between_rounds = false
+		score_sheet.highlighter.play_backwards("Clicked")
+		score_sheet.unhighlight_box()
+		get_tree().call_group("stored_dice", "return_to_box")
+		InputHandler.actionable = true
+		camerabuffer.start()
+		await camerabuffer.timeout
+		give_extra_rerolls(1)
+		score_sheet.inside_sheet = false
+		score_sheet.hovered_category = "none"
+		reload()
 
 func _ready() -> void:
 	InputHandler.main_scene_entered()
@@ -288,7 +350,22 @@ func _ready() -> void:
 	7:
 		card_placement_ref_7
 	}
-
+	
+	shop_placement_references = {
+		1: dice_shop_placement_1,
+		2: dice_shop_placement_2,
+		3: dice_shop_placement_3,
+		4: dice_shop_placement_4,
+		5: dice_shop_placement_5,
+		6: ticket_shop_placement,
+		7: ticket_shop_placement_2,
+		8: statue_shop_placement_1,
+		9: statue_shop_placement_2,
+		10: card_shop_placement_1,
+		11: card_shop_placement_2,
+		12: card_shop_placement_3
+	}
+	
 func _on_timer_timeout() -> void:
 	if die_spawned != max_die:
 		die_spawned += 1
@@ -367,6 +444,7 @@ func focus_a_die(focused_die : int) -> void:
 func zoom_on_score_sheet() -> void:
 	camera_movement.play("DefaultToSheet")
 	InputHandler.actionable = false
+	camerabuffer.wait_time = 1
 	camerabuffer.start()
 	await camerabuffer.timeout
 	InputHandler.actionable = true
@@ -374,6 +452,7 @@ func zoom_on_score_sheet() -> void:
 func zoom_out_score_sheet() -> void:
 	camera_movement.play_backwards("DefaultToSheet")
 	InputHandler.actionable = false
+	camerabuffer.wait_time = 1
 	camerabuffer.start()
 	await camerabuffer.timeout
 	InputHandler.actionable = true
@@ -435,10 +514,41 @@ func _on_card_animations_animation_finished(anim_name: StringName) -> void:
 					if card_deck.get(i) != null:
 						card_deck.get(i).card_logic.move_along_now = false
 
+func find_vacant_dice_slot() -> int:
+	var current_lowest_slot : int = 0
+	for i in max_die + 1:
+		print("scanning dice slot " + str(i))
+		if in_play_dice_instances.get(i) == null:
+			if current_lowest_slot == 0:
+				current_lowest_slot = i
+	return current_lowest_slot
+	
+	
+func find_vacant_statue_slot() -> int:
+	var current_lowest_slot : int = 0
+	for i in max_statues + 1:
+		if in_play_statues.get(i) == null:
+			if current_lowest_slot == 0:
+				current_lowest_slot = i
+	return current_lowest_slot
+	
+	
+func find_vacant_card_slot() -> int:
+	var current_lowest_slot : int = 0
+	for i in max_cards + 1:
+		if card_deck.get(i) == null:
+			if current_lowest_slot == 0:
+				current_lowest_slot = i
+	return current_lowest_slot
+	
+
 func play_sheet_to_counter() -> void:
 	between_rounds = true
 	InputHandler.actionable = false
-	camera_movement.play("sheet_to_counter")
+	if score_sheet.inside_sheet:
+		camera_movement.play("sheet_to_counter")
+	if !score_sheet.inside_sheet:
+		camera_movement.play("default_to_counter")
 	round_score_buffer.start()
 	await round_score_buffer.timeout
 	target_score_display.get_new_target_score()
@@ -446,14 +556,85 @@ func play_sheet_to_counter() -> void:
 func get_rick_quick_bitch() -> void:
 	watching_coins = true
 	camera_movement.play("end_of_round_counter_to_coins")
+	
 	spawn_money()
 	
 func play_coins_to_shop() -> void:
 	watching_coins = false
 	camera_movement.play("coins_to_shop")
 	shop_box.play_shop_reload()
+	update_money(0)
+
+func shop_to_default() -> void:
+	camera_movement.play_backwards("default_to_shop")
+	
 
 func generate_shop() -> void:
 	get_tree().call_group("dice_gen", "create_dice")
 	get_tree().call_group("ticket_gen", "generate_ticket")
 	get_tree().call_group("statue_gen", "spawn_statue")
+	get_tree().call_group("card_gen", "spawn_card")
+	
+
+func shop_to_dice_storage() -> void:
+	camera_movement.queue("shop_to_dice_storage")
+	
+func dice_storage_to_shop() -> void:
+	camera_movement.play_backwards("shop_to_dice_storage")
+
+func update_money(amount : int) -> void:
+	GameManager.current_money -= amount
+	shop_box.money_tracker.update_money()
+
+func clear_shop_items() -> void:
+	for i in shop_items.size():
+		if shop_items.get(i) != null:
+			shop_items.get(i).queue_free()
+
+func shop_slot_zoom(slot : int) -> void:
+	disable_all_shop_areas()
+	camera_movement.play("shop_to_slot_" + str(slot))
+	shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot) 
+
+func shop_slot_zoom_out(slot : int) -> void:
+	camera_movement.play_backwards("shop_to_slot_" + str(slot))
+	camerabuffer.wait_time = 0.4
+	camerabuffer.start()
+	await camerabuffer.timeout
+	enable_all_shop_areas()
+
+func reset_storage_slots() -> void:
+	for i in stored_dice.size() + 1:
+		if stored_dice.get(i) == "true":
+			stored_dice.set(i, "false")
+
+func disable_all_shop_areas() -> void:
+	shop_placement_collider_1.disabled = true
+	shop_placement_collider_2.disabled = true
+	shop_placement_collider_3.disabled = true
+	shop_placement_collider_4.disabled = true
+	shop_placement_collider_5.disabled = true
+	shop_placement_collider_6.disabled = true
+	shop_placement_collider_7.disabled = true
+	shop_placement_collider_8.disabled = true
+	shop_placement_collider_9.disabled = true
+	shop_placement_collider_10.disabled = true
+	shop_placement_collider_11.disabled = true
+	shop_placement_collider_12.disabled = true
+
+func enable_all_shop_areas() -> void:
+	shop_placement_collider_1.disabled = false
+	shop_placement_collider_2.disabled = false
+	shop_placement_collider_3.disabled = false
+	shop_placement_collider_4.disabled = false
+	shop_placement_collider_5.disabled = false
+	shop_placement_collider_6.disabled = false
+	shop_placement_collider_7.disabled = false
+	shop_placement_collider_8.disabled = false
+	shop_placement_collider_9.disabled = false
+	shop_placement_collider_10.disabled = false
+	shop_placement_collider_11.disabled = false
+	shop_placement_collider_12.disabled = false
+
+func recall_all_dice() -> void:
+	get_tree().call_group("dice_logic", "end_of_round_reset")

@@ -4,6 +4,12 @@ var current_reroll_state : int = 0
 var hovered_object : String = "none"
 var statue_camera_state : bool = false
 var next_card : int = 0
+var currently_vacant_dice_slot : int
+var currently_vacant_statue_slot : int
+var currently_vacant_card_slot : int
+
+var selected_shop_slot : int
+
 @export var in_game : bool = false
 @export var actionable : bool = false
 @onready var main_scene : Node3D = null
@@ -16,6 +22,66 @@ func main_scene_entered() -> void:
 func _input(event: InputEvent) -> void:
 	if in_game == true:
 		if get_tree().get_first_node_in_group("main").between_rounds == true:
+			if event.is_action_pressed("Interact"):
+				#dice slots
+				if hovered_object == "shop_slot_1":
+					selected_shop_slot = 1
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_2":
+					selected_shop_slot = 2
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_3":
+					selected_shop_slot = 3
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_4":
+					selected_shop_slot = 4
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_5":
+					selected_shop_slot = 5
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				#ticket slots
+				if hovered_object == "shop_slot_6":
+					selected_shop_slot = 6
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_7":
+					selected_shop_slot = 7
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				#statue slots
+				if hovered_object == "shop_slot_8":
+					selected_shop_slot = 8
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_9":
+					selected_shop_slot = 9
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				#card slots
+				if hovered_object == "shop_slot_10":
+					selected_shop_slot = 10
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_11":
+					selected_shop_slot = 11
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+				if hovered_object == "shop_slot_12":
+					selected_shop_slot = 12
+					get_tree().get_first_node_in_group("main").shop_slot_zoom(selected_shop_slot)
+					
+				if hovered_object == "shop_leave":
+					get_tree().get_first_node_in_group("main").shop_box.exit_shop()
+					
+				if get_tree().get_first_node_in_group("main").choosing_new_die:
+					if hovered_object == "dice1":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(1).dice_logic.replaced()
+					if hovered_object == "dice2":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(2).dice_logic.replaced()
+					if hovered_object == "dice3":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(3).dice_logic.replaced()
+					if hovered_object == "dice4":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(4).dice_logic.replaced()
+					if hovered_object == "dice5":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(5).dice_logic.replaced()
+					if hovered_object == "dice6":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(6).dice_logic.replaced()
+					if hovered_object == "dice7":
+						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(7).dice_logic.replaced()
 			return
 		#if event.is_action_pressed("debug_spawn_card"):
 			#next_card += 1
@@ -71,14 +137,20 @@ func _input(event: InputEvent) -> void:
 						get_tree().get_first_node_in_group("main").zoom_out_statue()
 					statue_camera_state = !statue_camera_state
 				if hovered_object == "cards":
+					if !actionable:
+						return
 					get_tree().get_first_node_in_group("main").pull_up_cards()
 					for i : int in get_tree().get_first_node_in_group("main").card_deck.size():
 						if get_tree().get_first_node_in_group("main").card_deck.get(i) != null:
 							get_tree().get_first_node_in_group("main").card_deck.get(i).card_logic.move_along_now = true
 				if hovered_object == "exitcards":
 					get_tree().get_first_node_in_group("main").pull_down_cards()
+					actionable = true
 					for i : int in get_tree().get_first_node_in_group("main").card_deck.size():
 						if get_tree().get_first_node_in_group("main").card_deck.get(i) != null:
 							get_tree().get_first_node_in_group("main").card_deck.get(i).card_logic.move_along_now = true
 		if event.is_action_pressed("DebugTool"):
 			print(get_tree().get_first_node_in_group("main").stored_dice.has("false"))
+			
+			
+			

@@ -4,6 +4,5 @@
 
 [node name="StatueCombiner" type="Node3D" unique_id=868220046 groups=["statues"]]
 script = ExtResource("1_xwwdv")
-shop_slot = null
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=265748667]

@@ -4,13 +4,14 @@ extends Control
 @onready var crt_filter: ColorRect = $CanvasLayer/CRTFilter
 @onready var fps: Label = $CanvasLayer/FPS
 
-@export var rolls : int = 8
+@export var rolls : int = 0
 @export var max_rolls : int = 8
 @onready var fps_2: Label = $CanvasLayer/FPS2
 
 signal round_changing
 
 var money_due : int 
+var permanent_money_increases : int = 0
 var current_money : int
 var performance_mode : bool = false
 var visible_fps : bool = false
@@ -116,12 +117,12 @@ func calculate_round_target_and_progress_round() -> void:
 	@warning_ignore("integer_division")
 	new_round_target = (base_round_target * (current_round * (previous_round_target / 40)))
 	@warning_ignore("integer_division")
-	print("new round target is " + str((base_round_target * (current_round * (previous_round_target / 40)))))
+	print("new round target is " + str(new_round_target))
 	round_changing.emit()
 	
 func progress_round(current_grand_total : int) -> void:
 	@warning_ignore("integer_division")
-	money_due = (((current_grand_total - new_round_target) / current_round) + rolls)
+	money_due = (((current_grand_total - new_round_target) / current_round) + rolls) + permanent_money_increases
 	get_tree().call_group("main", "play_sheet_to_counter")
 
 func _process(_delta: float) -> void:

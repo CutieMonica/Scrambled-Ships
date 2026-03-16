@@ -33,6 +33,11 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var highlight: MeshInstance3D = $Highlight
 
+@export var item_type : String = "Die"
+@export var item_name : String = "Cursed Die"
+@export var tooltip : String = "Maybe don't keep your hands on it for too long, looks dangerous."
+@export var description : String = "Rolls 1-3. Has a repeat of each number once, making this essential if you're a low rider."
+@export var rarity : String = "Common"
 
 func _ready() -> void:
 	var rotating_x : float
@@ -152,7 +157,7 @@ func _physics_process(delta: float) -> void:
 				rotation.y = move_toward(rotation.y, 0.0, delta * rotation_delta_mult)
 			if rotation.z != -3.0:
 				rotation.z = move_toward(rotation.z, -3.0, delta * rotation_delta_mult)
-		position = lerp(position, stored_pos, delta * 5)
+		position = lerp(position, stored_pos, delta * 8)
 
 func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice"):

@@ -13,6 +13,10 @@ extends Node3D
 var has_given_modifier : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var item_name : String = "Wolf"
+@export var tooltip : String = "Inside of you are two wolves. You should really get that checked out."
+@export var description : String = "Statue Model
+At the start of every round, the Wolf will pick a random category. It will then permanently boost that category by its current value. Not very affected by bases."
 
 func randomize_category() -> void:
 	if has_given_modifier:
@@ -81,9 +85,10 @@ func update_text() -> void:
 			category_chosen.text = "Yacht"
 			
 func statue_activate() -> void:
-	statue_model_logic.play_audio()
-	randomize_category()
-	generate_value()
-	update_text()
-	get_parent().get_parent().score_sheet.buff_one_modifier(added_modifier, current_category)
-	animation_player.play("activate")
+	if !get_parent().in_shop:
+		statue_model_logic.play_audio()
+		randomize_category()
+		generate_value()
+		update_text()
+		get_parent().get_parent().score_sheet.buff_one_modifier(added_modifier, current_category)
+		animation_player.play("activate")

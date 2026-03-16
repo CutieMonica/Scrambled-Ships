@@ -1,10 +1,51 @@
 extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shop_generate_timer: Timer = $ShopGenerateTimer
+@onready var move_nametag: AnimationPlayer = $MoveNametag
+@onready var leave_shop_highlight: MeshInstance3D = $LeaveShop/LeaveShopHighlight
+@onready var shop_clear_timer: Timer = $ShopClearTimer
+@onready var money_tracker: Node3D = $MoneyTracker
+@onready var shop_reroll_timer: Timer = $ShopRerollTimer
 
 func play_shop_reload() -> void:
 	animation_player.play("lidflip")
 	shop_generate_timer.start()
 
+func shop_reroll() -> void:
+	move_nametag.play_backwards("move_nametag")
+	animation_player.play_backwards("lidflip")
+	shop_reroll_timer.start()
+	await shop_reroll_timer.timeout
+	get_parent().clear_shop_items()
+	animation_player.stop()
+	play_shop_reload()
+
+func exit_shop() -> void:
+	move_nametag.play_backwards("move_nametag")
+	animation_player.play_backwards("lidflip")
+	#delete all shop items NOW
+	
+	get_parent().round_start()
+	shop_clear_timer.start()
+
 func _on_shop_generate_timer_timeout() -> void:
 	get_parent().generate_shop()
+	await get_tree().process_frame
+	move_nametag.play("move_nametag")
+
+
+func _on_mouse_detect_mouse_entered() -> void:
+	if get_parent().between_rounds == true:
+		InputHandler.hovered_object = "shop_leave"
+		leave_shop_highlight.visible = true
+		
+
+func _on_mouse_detect_mouse_exited() -> void:
+	if InputHandler.hovered_object == "shop_leave":
+		InputHandler.hovered_object = "none"
+		leave_shop_highlight.visible = false
+
+
+func _on_shop_clear_timer_timeout() -> void:
+	get_parent().clear_shop_items()
+	

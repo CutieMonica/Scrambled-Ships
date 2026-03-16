@@ -2,16 +2,21 @@ extends Node3D
 
 @export var base_modifier : float = 0.01
 @export var current_category : String = "none"
-@export var statue_name : String = "Sisyphus' Boulder"
+@export var statue_name : String = "Sisyphus' Rock"
 @export var color_shift_level : int = 1
 @export var trigger_condition : String = "Reroll"
 @onready var statue_model_logic: Node3D = $StatueModelLogic
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var item_name : String = "Sisyphus' Rock"
 @export var added_modifier : float
 @onready var category_chosen: Label3D = $CategoryChosen
 @onready var buff_text: Label3D = $BuffText
+
+@export var tooltip : String = "The kingdom of heaven has long since forgotten my name, and I am EAGER to make them remember."
+@export var description : String = "Statue Model
+After each roll, the boulder moves on the mountain, adjusting all multipliers by a small amount. This statue is barely affected by its base."
 
 #placeholder, only for activating the statue while testing
 #func _ready() -> void:

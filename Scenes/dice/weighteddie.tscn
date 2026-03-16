@@ -285,7 +285,7 @@ collision_mask = 128
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D6_Mouse_Detect" unique_id=107950606]
 shape = SubResource("BoxShape3D_yahnv")
 
-[node name="DiceLogic" parent="." unique_id=1171884486 groups=["dice_logic"] instance=ExtResource("5_nyde5")]
+[node name="DiceLogic" parent="." unique_id=1171884486 instance=ExtResource("5_nyde5")]
 default_mass = 1.0
 texture = ExtResource("2_4t8vi")
 normal = ExtResource("3_8j67f")

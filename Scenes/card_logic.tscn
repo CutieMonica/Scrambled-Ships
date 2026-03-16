@@ -6,6 +6,7 @@
 script = ExtResource("1_3rgpg")
 
 [node name="Timer" type="Timer" parent="." unique_id=541735209]
+wait_time = 0.35
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

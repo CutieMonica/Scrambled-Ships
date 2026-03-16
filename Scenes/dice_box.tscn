@@ -76,6 +76,24 @@ size = Vector3(1.2, 0.2, 0.1)
 material = ExtResource("4_8w3c8")
 size = Vector3(0.1, 0.2, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8w3c8"]
+load_path = "res://.godot/imported/Texturelabs_Wood_283S.jpg-2bc0c4a1f39db67787690fe468d7d4a6.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_23pg4"]
+load_path = "res://.godot/imported/WoodNormalMap.png-6240630e5f44b403cf83aa65b2104b74.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at6vx"]
+albedo_color = Color(0.20618686, 0.23460382, 0.4761415, 1)
+albedo_texture = SubResource("CompressedTexture2D_8w3c8")
+metallic = 0.18
+metallic_specular = 0.39
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_23pg4")
+
+[sub_resource type="BoxMesh" id="BoxMesh_7cw85"]
+material = SubResource("StandardMaterial3D_at6vx")
+size = Vector3(0.1, 0.1, 0.11)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hf8wg"]
 load_path = "res://.godot/imported/leather2.jpg-14ce716f053ec32eca2b3e4a3eaa8d2b.s3tc.ctex"
 
@@ -172,6 +190,120 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_vegrt"]
 size = Vector3(10, 0.5, 9.95)
 
+[sub_resource type="Animation" id="Animation_l0bp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base2/Dice_Slot_unlockable_1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base2/Dice_Slot_unlockable_1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5570001, 0.15, 0.29500008)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Base2/Dice_Slot_unlockable_2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5570001, 0.15, 0.4460001)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Base2/Dice_Slot_unlockable_2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vegrt"]
+resource_name = "UnlockableSlot1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base2/Dice_Slot_unlockable_1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base2/Dice_Slot_unlockable_1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5570001, 0.15, 0.29500008), Vector3(0.5570001, 0.15087615, 0.29500008), Vector3(0.5570001, 0.1570092, 0.29500008), Vector3(0.5570001, 0.173656, 0.29500008), Vector3(0.5570001, 0.2060735, 0.29500008), Vector3(0.5570001, 0.25951853, 0.29500008), Vector3(0.5570001, 0.339248, 0.29500008), Vector3(0.5570001, 0.45051882, 0.29500008), Vector3(0.5570001, 0.59858793, 0.29500008), Vector3(0.5570001, 0.788712, 0.29500008), Vector3(0.5570001, 1.0261482, 0.29500008), Vector3(0.5570001, 1.3161532, 0.29500008), Vector3(0.5570001, 1.6639841, 0.29500008), Vector3(0.5570001, 2.0748978, 0.29500008), Vector3(0.5570001, 2.5541506, 0.29500008), Vector3(0.5570001, 3.107, 0.29500008), Vector3(0.5570001, 3.65985, 0.29500008), Vector3(0.5570001, 4.139102, 0.29500008), Vector3(0.5570001, 4.5500164, 0.29500008), Vector3(0.5570001, 4.897847, 0.29500008), Vector3(0.5570001, 5.1878524, 0.29500008), Vector3(0.5570001, 5.4252877, 0.29500008), Vector3(0.5570001, 5.615412, 0.29500008), Vector3(0.5570001, 5.763481, 0.29500008), Vector3(0.5570001, 5.874752, 0.29500008), Vector3(0.5570001, 5.9544816, 0.29500008), Vector3(0.5570001, 6.0079265, 0.29500008), Vector3(0.5570001, 6.040344, 0.29500008), Vector3(0.5570001, 6.056991, 0.29500008), Vector3(0.5570001, 6.0631237, 0.29500008), Vector3(0.5570001, 6.064, 0.29500008)]
+}
+
+[sub_resource type="Animation" id="Animation_0tqhf"]
+resource_name = "UnlockableSlot2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base2/Dice_Slot_unlockable_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5570001, 0.15, 0.4460001), Vector3(0.5570001, 0.15087615, 0.4460001), Vector3(0.5570001, 0.1570092, 0.4460001), Vector3(0.5570001, 0.173656, 0.4460001), Vector3(0.5570001, 0.2060735, 0.4460001), Vector3(0.5570001, 0.25951853, 0.4460001), Vector3(0.5570001, 0.339248, 0.4460001), Vector3(0.5570001, 0.45051882, 0.4460001), Vector3(0.5570001, 0.59858793, 0.4460001), Vector3(0.5570001, 0.788712, 0.4460001), Vector3(0.5570001, 1.0261482, 0.4460001), Vector3(0.5570001, 1.3161532, 0.44600007), Vector3(0.55700004, 1.6639841, 0.44600007), Vector3(0.55700004, 2.0748978, 0.44600007), Vector3(0.55700004, 2.5541506, 0.44600007), Vector3(0.55700004, 3.107, 0.44600004), Vector3(0.55700004, 3.65985, 0.44600004), Vector3(0.55700004, 4.139102, 0.44600004), Vector3(0.55700004, 4.5500164, 0.44600004), Vector3(0.557, 4.897847, 0.44600004), Vector3(0.557, 5.1878524, 0.446), Vector3(0.557, 5.4252877, 0.446), Vector3(0.557, 5.615412, 0.446), Vector3(0.557, 5.763481, 0.446), Vector3(0.557, 5.874752, 0.446), Vector3(0.557, 5.9544816, 0.446), Vector3(0.557, 6.0079265, 0.446), Vector3(0.557, 6.040344, 0.446), Vector3(0.557, 6.056991, 0.446), Vector3(0.557, 6.0631237, 0.446), Vector3(0.557, 6.064, 0.446)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base2/Dice_Slot_unlockable_2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4999, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtfdb"]
+_data = {
+&"RESET": SubResource("Animation_l0bp7"),
+&"UnlockableSlot1": SubResource("Animation_vegrt"),
+&"UnlockableSlot2": SubResource("Animation_0tqhf")
+}
+
 [node name="DiceBox" type="Node3D" unique_id=622061906]
 script = ExtResource("1_hf8wg")
 
@@ -267,6 +399,14 @@ mesh = SubResource("BoxMesh_tmp4e")
 [node name="MeshInstance3D19" type="MeshInstance3D" parent="Base2" unique_id=1470736744]
 transform = Transform3D(-0.9999998, 0, 4.3711377e-09, 0, 1, 0, -8.7422784e-08, 0, -0.049999982, 0.555, 0.1, 0.3700001)
 mesh = SubResource("BoxMesh_tmp4e")
+
+[node name="Dice_Slot_unlockable_1" type="MeshInstance3D" parent="Base2" unique_id=390334102]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.5570001, 0.15, 0.29500008)
+mesh = SubResource("BoxMesh_7cw85")
+
+[node name="Dice_Slot_unlockable_2" type="MeshInstance3D" parent="Base2" unique_id=1960798465]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.5570001, 0.15, 0.4460001)
+mesh = SubResource("BoxMesh_7cw85")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Base2" unique_id=1304400102]
 transform = Transform3D(-0.99999994, 0, 8.742275e-09, 0, 0.7, 0, -8.7422784e-08, 0, -0.099999964, 0.555, 0.07, 0.29500005)
@@ -386,6 +526,9 @@ libraries/ = SubResource("AnimationLibrary_8w3c8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiceClippingFix" unique_id=1465928890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.02499938)
 shape = SubResource("BoxShape3D_vegrt")
+
+[node name="DiceSlots" type="AnimationPlayer" parent="." unique_id=1191018929]
+libraries/ = SubResource("AnimationLibrary_jtfdb")
 
 [connection signal="body_entered" from="OutsideTheBoxDetect" to="." method="_on_outside_the_box_detect_body_entered"]
 [connection signal="body_entered" from="BackInTheBoxDetect" to="." method="_on_back_in_the_box_detect_body_entered"]

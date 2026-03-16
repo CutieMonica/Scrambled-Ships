@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cpvp2m400pa2i"]
+
+[ext_resource type="Script" uid="uid://bgls8ki1v4tn6" path="res://Scripts/card_generator.gd" id="1_2xmi0"]
+
+[node name="CardGenerator" type="Node3D" unique_id=1978848217]
+script = ExtResource("1_2xmi0")
+shop_slot = null

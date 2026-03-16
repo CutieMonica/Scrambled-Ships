@@ -163,7 +163,11 @@ func calculate_score() -> void:
 	fives_amount = (GameManager.dice_numbers.values().count(5) * 5)
 	sixes_amount = (GameManager.dice_numbers.values().count(6) * 6)
 	
-	choice_amount = (ones_amount + twos_amount + threes_amount + fours_amount + fives_amount + sixes_amount)
+	choice_amount = 0
+	
+	for i in GameManager.dice_numbers.size() + 1:
+		if GameManager.dice_numbers.get(i) != null:
+			choice_amount += GameManager.dice_numbers.get(i)
 	
 	small_straight_amount = 0
 	large_straight_amount = 0
@@ -222,6 +226,8 @@ func calculate_score() -> void:
 	current_best_triple = 0
 	current_best_quad = 0
 	current_best_quint = 0
+	second_best_double = 0
+	second_best_triple = 0
 	
 	for n in 25:
 		if GameManager.dice_numbers.values().count(n) >= 5:
@@ -306,6 +312,54 @@ func _ready() -> void:
 	bonus_explaination.modulate = info_color
 	bonus_explaination.outline_modulate = info_outline_color
 
+func reset_everything() -> void:
+	
+	ones_locked_in = false
+	twos_locked_in = false
+	threes_locked_in = false
+	fours_locked_in = false
+	fives_locked_in = false
+	sixes_locked_in = false
+
+	choice_locked_in = false
+	small_straight_locked_in = false
+	large_straight_locked_in = false
+	full_house_locked_in = false
+	four_of_a_kind_locked_in = false
+	yacht_locked_in = false
+
+	ones_locked_in_score = 0
+	twos_locked_in_score = 0
+	threes_locked_in_score = 0
+	fours_locked_in_score = 0
+	fives_locked_in_score = 0
+	sixes_locked_in_score = 0
+
+	choice_locked_in_score = 0
+	small_straight_locked_in_score = 0
+	large_straight_locked_in_score = 0
+	full_house_locked_in_score = 0
+	four_of_a_kind_locked_in_score = 0
+	yacht_locked_in_score = 0
+	
+	bonus_given = false
+	
+	ones_score.text = ""
+	twos_score.text = ""
+	threes_score.text = ""
+	fours_score.text = ""
+	fives_score.text = ""
+	sixes_score.text = ""
+	
+	choice_score.text = ""
+	small_straight_score.text = ""
+	large_straight_score.text = ""
+	full_house_score.text = ""
+	four_of_a_kind_score.text = ""
+	yacht_score.text = ""
+	
+	grand_total_amount.text = ""
+	current_grand_total = 0
 
 func reset_text() -> void:
 	current_sum.modulate = info_color
@@ -352,89 +406,110 @@ func lock_in_score() -> void:
 		ones_locked_in_score = roundi(ones_amount * ones_multiplier)
 		ones_score.outline_modulate = outline_color
 		ones_score.modulate = permanent_number_color
+		ones_score.text = str(ones_locked_in_score)
 		current_grand_total += ones_locked_in_score
 	if hovered_category == "twos":
 		twos_locked_in = true
 		twos_locked_in_score = roundi(twos_amount * twos_multiplier)
 		twos_score.outline_modulate = outline_color
 		twos_score.modulate = permanent_number_color
+		twos_score.text = str(twos_locked_in_score)
 		current_grand_total += twos_locked_in_score
 	if hovered_category == "threes":
 		threes_locked_in = true
 		threes_locked_in_score = roundi(threes_amount * threes_multiplier)
 		threes_score.outline_modulate = outline_color
 		threes_score.modulate = permanent_number_color
+		threes_score.text = str(threes_locked_in_score)
 		current_grand_total += threes_locked_in_score
 	if hovered_category == "fours":
 		fours_locked_in = true
 		fours_locked_in_score = roundi(fours_amount * fours_multiplier)
 		fours_score.outline_modulate = outline_color
 		fours_score.modulate = permanent_number_color
+		fours_score.text = str(fours_locked_in_score)
 		current_grand_total += fours_locked_in_score
 	if hovered_category == "fives":
 		fives_locked_in = true
 		fives_locked_in_score = roundi(fives_amount * fives_multiplier)
 		fives_score.outline_modulate = outline_color
 		fives_score.modulate = permanent_number_color
+		fives_score.text = str(fives_locked_in_score)
 		current_grand_total += fives_locked_in_score
 	if hovered_category == "sixes":
 		sixes_locked_in = true
 		sixes_locked_in_score = roundi(sixes_amount * sixes_multiplier)
 		sixes_score.outline_modulate = outline_color
 		sixes_score.modulate = permanent_number_color
+		sixes_score.text = str(sixes_locked_in_score)
 		current_grand_total += sixes_locked_in_score
 	if hovered_category == "choice":
 		choice_locked_in = true
 		choice_locked_in_score = roundi(choice_amount * choice_multiplier)
 		choice_score.outline_modulate = outline_color
 		choice_score.modulate = permanent_number_color
+		choice_score.text = str(choice_locked_in_score)
 		current_grand_total += choice_locked_in_score
 	if hovered_category == "small_straight":
 		small_straight_locked_in = true
 		small_straight_locked_in_score = roundi(small_straight_amount * small_straight_multiplier)
 		small_straight_score.outline_modulate = outline_color
 		small_straight_score.modulate = permanent_number_color
+		small_straight_score.text = str(small_straight_locked_in_score)
 		current_grand_total += small_straight_locked_in_score
 	if hovered_category == "large_straight":
 		large_straight_locked_in = true
 		large_straight_locked_in_score = roundi(large_straight_amount * large_straight_multiplier)
 		large_straight_score.outline_modulate = outline_color
 		large_straight_score.modulate = permanent_number_color
+		large_straight_score.text = str(large_straight_locked_in_score)
 		current_grand_total += large_straight_locked_in_score
 	if hovered_category == "full_house":
 		full_house_locked_in = true
 		full_house_locked_in_score = roundi(full_house_amount * full_house_multiplier)
 		full_house_score.outline_modulate = outline_color
 		full_house_score.modulate = permanent_number_color
+		full_house_score.text = str(full_house_locked_in_score)
 		current_grand_total += full_house_locked_in_score
 	if hovered_category == "four_of_a_kind":
 		four_of_a_kind_locked_in = true
 		four_of_a_kind_locked_in_score = roundi(four_of_a_kind_amount * four_of_a_kind_multiplier)
 		four_of_a_kind_score.outline_modulate = outline_color
 		four_of_a_kind_score.modulate = permanent_number_color
+		four_of_a_kind_score.text = str(four_of_a_kind_locked_in_score)
 		current_grand_total += four_of_a_kind_locked_in_score
 	if hovered_category == "yacht":
 		yacht_locked_in = true
 		yacht_locked_in_score = roundi(yacht_amount * yacht_multiplier)
 		yacht_score.outline_modulate = outline_color
 		yacht_score.modulate = permanent_number_color
+		yacht_score.text = str(yacht_locked_in_score)
 		current_grand_total += yacht_locked_in_score
 	hovered_category = "none"
 	top_sum = (ones_locked_in_score + twos_locked_in_score + threes_locked_in_score + fours_locked_in_score + fives_locked_in_score + sixes_locked_in_score)
 	current_sum.text = "TOP SUM: " + str(top_sum)
 	grand_total_amount.text = str(current_grand_total)
-	if current_grand_total > GameManager.new_round_target:
+	if current_grand_total >= GameManager.new_round_target and inside_sheet:
 		GameManager.progress_round(current_grand_total)
+		get_parent().recall_all_dice()
 		return
-	if GameManager.rolls > 0:
+	if GameManager.rolls > 0 and inside_sheet:
 		get_tree().call_group("stored_dice", "return_to_box")
 		leave_sheet()
 		get_parent().become_inactionable()
 		await get_tree().create_timer(0.301).timeout
 		get_parent().become_actionable()
 		get_parent().reload()
+		get_parent().reset_storage_slots()
+	if !inside_sheet:
+		get_parent().become_inactionable()
+		await get_tree().create_timer(0.5).timeout
+		get_parent().become_actionable()
+		if current_grand_total >= GameManager.new_round_target:
+			GameManager.progress_round(current_grand_total)
 	if GameManager.rolls <= 0:
 		pass
+	
 
 func _on_area_3d_mouse_entered() -> void:
 	if can_highlight:
@@ -762,5 +837,87 @@ func buff_one_modifier(buff : float, modifier : String) -> void:
 			four_of_a_kind_multiplier += buff
 		"yacht_multiplier":
 			yacht_multiplier += buff
+	
+	update_multipliers()
+
+func buff_one_score(buff : float, score : String) -> void:
+	match score:
+		"ones_score":
+			@warning_ignore("narrowing_conversion")
+			ones_locked_in_score += buff * ones_multiplier
+			hovered_category = "ones"
+		"twos_score":
+			@warning_ignore("narrowing_conversion")
+			twos_locked_in_score += buff * twos_multiplier
+			hovered_category = "twos"
+		"threes_score":
+			@warning_ignore("narrowing_conversion")
+			threes_locked_in_score += buff * threes_multiplier
+			hovered_category = "threes"
+		"fours_score":
+			@warning_ignore("narrowing_conversion")
+			fours_locked_in_score += buff * fours_multiplier
+			hovered_category = "fours"
+		"fives_score":
+			@warning_ignore("narrowing_conversion")
+			fives_locked_in_score += buff * fives_multiplier
+			hovered_category = "fives"
+		"sixes_score":
+			@warning_ignore("narrowing_conversion")
+			sixes_locked_in_score += buff * sixes_multiplier
+			hovered_category = "sixes"
+		"choice_score":
+			@warning_ignore("narrowing_conversion")
+			choice_locked_in_score += buff * choice_multiplier
+			hovered_category = "choice"
+		"small_straight_score":
+			@warning_ignore("narrowing_conversion")
+			small_straight_locked_in_score += buff * small_straight_multiplier
+			hovered_category = "small_straight"
+		"large_straight_score":
+			@warning_ignore("narrowing_conversion")
+			large_straight_locked_in_score += buff * large_straight_multiplier
+			hovered_category = "large_straight"
+		"full_house_score":
+			@warning_ignore("narrowing_conversion")
+			full_house_locked_in_score += buff * full_house_multiplier
+			hovered_category = "full_house"
+		"four_of_a_kind_score":
+			@warning_ignore("narrowing_conversion")
+			four_of_a_kind_locked_in_score += buff * four_of_a_kind_multiplier
+			hovered_category = "four_of_a_kind"
+		"yacht_score":
+			@warning_ignore("narrowing_conversion")
+			yacht_locked_in_score += buff * yacht_multiplier
+			hovered_category = "yacht"
+	lock_in_score()
+	hovered_category = "none"
+
+func multiply_one_modifier(buff : float, modifier : String) -> void:
+	match modifier:
+		"ones_multiplier":
+			ones_multiplier *= buff
+		"twos_multiplier":
+			twos_multiplier *= buff
+		"threes_multiplier":
+			threes_multiplier *= buff
+		"fours_multiplier":
+			fours_multiplier *= buff
+		"fives_multiplier":
+			fives_multiplier *= buff
+		"sixes_multiplier":
+			sixes_multiplier *= buff
+		"choice_multiplier":
+			choice_multiplier *= buff
+		"small_straight_multiplier":
+			small_straight_multiplier *= buff
+		"large_straight_multiplier":
+			large_straight_multiplier *= buff
+		"full_house_multiplier":
+			full_house_multiplier *= buff
+		"four_of_a_kind_multiplier":
+			four_of_a_kind_multiplier *= buff
+		"yacht_multiplier":
+			yacht_multiplier *= buff
 	
 	update_multipliers()
