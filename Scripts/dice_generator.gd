@@ -17,7 +17,8 @@ var leaded_die : PackedScene = load("res://Scenes/dice/LeadedDice.tscn")
 var sky_die : PackedScene = load("res://Scenes/dice/SkyDie.tscn")
 var weighted_die : PackedScene = load("res://Scenes/dice/weighteddie.tscn")
 var inscrybed_die : PackedScene = load("uid://cvdes1pfuas6d")
-var jelly_die : PackedScene = preload("uid://vlnditpvpyti")
+var jelly_die : PackedScene = load("uid://vlnditpvpyti")
+var binary_die : PackedScene = load("res://Scenes/dice/BinaryDie.tscn")
 
 var common_dice : Dictionary = {
 	1: basic_d6,
@@ -31,7 +32,8 @@ var uncommon_dice : Dictionary = {
 }
 
 var rare_dice : Dictionary = {
-	1: weighted_die
+	1: weighted_die,
+	2: binary_die
 }
 
 var legendary_dice : Dictionary = {

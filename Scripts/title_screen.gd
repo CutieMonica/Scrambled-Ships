@@ -8,13 +8,16 @@ extends Node3D
 @onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D
 
 func _ready() -> void:
+	GameManager.reset_things()
 	seed(1)
 
 func performance_switch() -> void:
 	if GameManager.performance_mode:
+		await get_tree().process_frame
 		mesh_instance_3d.visible = false
 		directional_light_3d.shadow_enabled = false
 	if !GameManager.performance_mode:
+		await get_tree().process_frame
 		mesh_instance_3d.visible = true
 		directional_light_3d.shadow_enabled = true
 
@@ -25,6 +28,9 @@ func _on_settings_pressed() -> void:
 	settings.and_then_i_pull_up_hop_out_at_the_after_party()
 	
 func _on_start_pressed() -> void:
+	GameManager.run_number += 1
+	SaveLoad.SaveFileData.run_number += 1
+	SaveLoad._save()
 	GameManager.give_me_your_seed()
 	settings.random_sound()
 	animation_player.play("fadeout")

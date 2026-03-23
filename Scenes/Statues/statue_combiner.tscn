@@ -1,8 +1,79 @@
 [gd_scene format=3 uid="uid://bi60iqmoecgti"]
 
 [ext_resource type="Script" uid="uid://df02ry3ltiofv" path="res://Scripts/Statues/statue_combiner.gd" id="1_xwwdv"]
+[ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="2_4t60h"]
+[ext_resource type="Material" uid="uid://ciug8wq24ba67" path="res://Materials/highlightmaterial.tres" id="3_4812u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4812u"]
+transparency = 3
+alpha_hash_scale = 1.84
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.8, 0.8, 0.8, 0.8156863)
+albedo_texture = ExtResource("2_4t60h")
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ico1"]
+material = SubResource("StandardMaterial3D_4812u")
+radius = 0.8
+height = 1.2
+
+[sub_resource type="Curve" id="Curve_v7xr8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0733945, 1), 0.0, 0.0, 0, 0, Vector2(0.7247707, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_4t60h"]
+material = ExtResource("3_4812u")
+flip_faces = true
+size = Vector3(2.2, 3, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8ecq"]
+size = Vector3(1.8000001, 2.8, 1.8000001)
 
 [node name="StatueCombiner" type="Node3D" unique_id=868220046 groups=["statues"]]
 script = ExtResource("1_xwwdv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=265748667]
+
+[node name="PoofParticle" type="CPUParticles3D" parent="." unique_id=927871217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
+amount = 48
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_4ico1")
+emission_shape = 1
+emission_sphere_radius = 1.56
+direction = Vector3(0, 10, 0)
+spread = 80.69
+gravity = Vector3(0, 20, 0)
+initial_velocity_max = 8.63
+angular_velocity_min = -49.66
+angular_velocity_max = 99.31
+linear_accel_min = -1.73
+linear_accel_max = 1.72
+damping_min = 2.586
+damping_max = 8.62
+angle_min = -558.6
+angle_max = 434.5
+scale_amount_min = 0.4
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_v7xr8")
+
+[node name="StatueHighlight" type="MeshInstance3D" parent="." unique_id=1250328987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+visible = false
+mesh = SubResource("BoxMesh_4t60h")
+
+[node name="StatueChoiceArea" type="Area3D" parent="." unique_id=2001005802]
+
+[node name="StatueMouseCollider" type="CollisionShape3D" parent="StatueChoiceArea" unique_id=631133469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 1.25, -5.9604645e-08)
+shape = SubResource("BoxShape3D_x8ecq")
+
+[node name="DieTimer" type="Timer" parent="." unique_id=1884602427]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="mouse_entered" from="StatueChoiceArea" to="." method="_on_statue_choice_area_mouse_entered"]
+[connection signal="mouse_exited" from="StatueChoiceArea" to="." method="_on_statue_choice_area_mouse_exited"]

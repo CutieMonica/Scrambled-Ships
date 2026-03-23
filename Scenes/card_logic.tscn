@@ -1,6 +1,24 @@
 [gd_scene format=3 uid="uid://crcpsnxro28o7"]
 
 [ext_resource type="Script" uid="uid://4lk3aa5qqmtb" path="res://Scripts/cards/card_logic.gd" id="1_3rgpg"]
+[ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="2_0k24x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpk0l"]
+transparency = 3
+alpha_hash_scale = 1.84
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.8, 0.8, 0.8, 0.8156863)
+albedo_texture = ExtResource("2_0k24x")
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bwxet"]
+material = SubResource("StandardMaterial3D_cpk0l")
+radius = 0.8
+height = 1.2
+
+[sub_resource type="Curve" id="Curve_1r8ll"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05504588, 1), 0.0, 0.0, 0, 0, Vector2(0.7247707, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="card_logic" type="Node3D" unique_id=300499701]
 script = ExtResource("1_3rgpg")
@@ -8,5 +26,30 @@ script = ExtResource("1_3rgpg")
 [node name="Timer" type="Timer" parent="." unique_id=541735209]
 wait_time = 0.35
 one_shot = true
+
+[node name="PoofParticle" type="CPUParticles3D" parent="." unique_id=699210486]
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_bwxet")
+emission_shape = 3
+emission_box_extents = Vector3(-0.815, 1.19, -0.06)
+direction = Vector3(0, 10, 0)
+spread = 80.69
+gravity = Vector3(0, 20, 0)
+initial_velocity_max = 8.63
+angular_velocity_min = -49.66
+angular_velocity_max = 99.31
+linear_accel_min = -1.73
+linear_accel_max = 1.72
+damping_min = 2.586
+damping_max = 8.62
+angle_min = -558.6
+angle_max = 434.5
+scale_amount_min = 0.3
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_1r8ll")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

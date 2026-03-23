@@ -6,12 +6,17 @@ extends Node3D
 @onready var shop_clear_timer: Timer = $ShopClearTimer
 @onready var money_tracker: Node3D = $MoneyTracker
 @onready var shop_reroll_timer: Timer = $ShopRerollTimer
+@onready var leave_shop_collider: CollisionShape3D = $LeaveShop/MouseDetect/LeaveShopCollider
+@onready var exit_button_timer: Timer = $ExitButtonTimer
+
+var exit_button_can_be_enabled : bool = false
 
 func play_shop_reload() -> void:
 	animation_player.play("lidflip")
 	shop_generate_timer.start()
 
 func shop_reroll() -> void:
+	temp_disable_exit_button()
 	move_nametag.play_backwards("move_nametag")
 	animation_player.play_backwards("lidflip")
 	shop_reroll_timer.start()
@@ -21,17 +26,19 @@ func shop_reroll() -> void:
 	play_shop_reload()
 
 func exit_shop() -> void:
-	move_nametag.play_backwards("move_nametag")
-	animation_player.play_backwards("lidflip")
-	#delete all shop items NOW
-	
-	get_parent().round_start()
-	shop_clear_timer.start()
+	if !get_parent().camera_movement.is_playing():
+		move_nametag.play_backwards("move_nametag")
+		animation_player.play_backwards("lidflip")
+		#delete all shop items NOW
+		
+		get_parent().round_start()
+		shop_clear_timer.start()
 
 func _on_shop_generate_timer_timeout() -> void:
 	get_parent().generate_shop()
 	await get_tree().process_frame
 	move_nametag.play("move_nametag")
+	exit_button_can_be_enabled = true
 
 
 func _on_mouse_detect_mouse_entered() -> void:
@@ -43,9 +50,22 @@ func _on_mouse_detect_mouse_entered() -> void:
 func _on_mouse_detect_mouse_exited() -> void:
 	if InputHandler.hovered_object == "shop_leave":
 		InputHandler.hovered_object = "none"
-		leave_shop_highlight.visible = false
+	leave_shop_highlight.visible = false
 
 
 func _on_shop_clear_timer_timeout() -> void:
 	get_parent().clear_shop_items()
 	
+func disable_exit_button() -> void:
+	leave_shop_collider.disabled = true
+	
+func enable_exit_button() -> void:
+	if exit_button_can_be_enabled == true:
+		leave_shop_collider.disabled = false
+
+func temp_disable_exit_button() -> void:
+	leave_shop_collider.disabled = true
+	exit_button_timer.start()
+	await exit_button_timer.timeout
+	if exit_button_can_be_enabled == true:
+		leave_shop_collider.disabled = false

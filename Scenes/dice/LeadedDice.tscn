@@ -18,10 +18,10 @@ size = Vector3(0.855, 0.855, 0.855)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xy4q"]
 albedo_color = Color(0.9673745, 1.152807, 1.224127, 1)
 albedo_texture = ExtResource("2_emfos")
-metallic = 1.0
-metallic_specular = 0.61
+metallic = 0.86
+metallic_specular = 0.0
 metallic_texture = ExtResource("3_y4h5t")
-roughness = 0.5
+roughness = 0.81
 roughness_texture = ExtResource("3_y4h5t")
 normal_enabled = true
 normal_texture = ExtResource("3_y4h5t")
@@ -198,14 +198,11 @@ collision_priority = 5.0
 input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_yahnv")
 gravity_scale = 3.0
-center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_y4h5t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=6220827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008239746, 0.0034926683, -0.0001449585)
-visible = false
 shape = SubResource("BoxShape3D_ihl4l")
 
 [node name="Sketchfab_Scene" type="Node3D" parent="." unique_id=659088398]
@@ -287,7 +284,7 @@ collision_mask = 128
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D6_Mouse_Detect" unique_id=107950606]
 shape = SubResource("BoxShape3D_yahnv")
 
-[node name="DiceLogic" parent="." unique_id=1171884486 groups=["dice_logic"] instance=ExtResource("6_1o66m")]
+[node name="DiceLogic" parent="." unique_id=1171884486 instance=ExtResource("6_1o66m")]
 outside_the_box_multiplier = 2.0
 default_gravity = 3.2
 default_mass = 5.0
@@ -297,6 +294,5 @@ roughness = ExtResource("3_y4h5t")
 
 [connection signal="area_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_area_entered"]
 [connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
-[connection signal="body_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_body_entered"]
 [connection signal="mouse_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_exited"]

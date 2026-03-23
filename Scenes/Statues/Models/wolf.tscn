@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://byqe5dgbju3cs" path="res://Assets/Textures/Normals/StatueMidNormal.png" id="4_14nap"]
 [ext_resource type="PackedScene" uid="uid://dbf2qrmgjbpyi" path="res://Scenes/Statues/statue_model_logic.tscn" id="4_ea5w3"]
 [ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="6_xe8q2"]
+[ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="7_xe8q2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g18ih"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14nap"]
 resource_local_to_scene = true
 albedo_color = Color(0.18039216, 0.43137255, 1, 1)
 albedo_texture = ExtResource("3_xe8q2")
@@ -178,6 +179,23 @@ _data = {
 &"activate": SubResource("Animation_xe8q2")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74thg"]
+transparency = 3
+alpha_hash_scale = 1.84
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.8, 0.8, 0.8, 0.8156863)
+albedo_texture = ExtResource("7_xe8q2")
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lei74"]
+material = SubResource("StandardMaterial3D_74thg")
+radius = 0.8
+height = 1.2
+
+[sub_resource type="Curve" id="Curve_nypog"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0733945, 1), 0.0, 0.0, 0, 0, Vector2(0.7247707, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="WolfModel" type="Node3D" unique_id=86786559]
 script = ExtResource("1_gl83b")
 
@@ -185,7 +203,7 @@ script = ExtResource("1_gl83b")
 transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, 0.90000004, 0.3)
 
 [node name="wolf_Material_0" parent="WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf" parent_id_path=PackedInt32Array(935228335, 664740748) index="0" unique_id=583058577]
-surface_material_override/0 = SubResource("StandardMaterial3D_g18ih")
+surface_material_override/0 = SubResource("StandardMaterial3D_14nap")
 
 [node name="StatueModelLogic" parent="." unique_id=334103761 instance=ExtResource("4_ea5w3")]
 
@@ -204,6 +222,7 @@ font = ExtResource("6_xe8q2")
 font_size = 64
 
 [node name="Collider" type="StaticBody3D" parent="." unique_id=565700885]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" unique_id=1308145268]
 transform = Transform3D(0.0020683538, 0, 0, 0, 0.0020683538, -4.592668e-19, 0, 4.592668e-19, 0.0020683538, 0, 0.90000004, 0.3)
@@ -221,5 +240,31 @@ spot_angle = 50.22
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1273895839]
 libraries/ = SubResource("AnimationLibrary_14nap")
 speed_scale = 2.2
+
+[node name="PoofParticle" type="CPUParticles3D" parent="." unique_id=957757042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+emitting = false
+amount = 32
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_lei74")
+emission_shape = 1
+emission_sphere_radius = 1.81
+direction = Vector3(0, 10, 0)
+spread = 80.69
+gravity = Vector3(0, 20, 0)
+initial_velocity_max = 8.63
+angular_velocity_min = -49.66
+angular_velocity_max = 99.31
+linear_accel_min = -1.73
+linear_accel_max = 1.72
+damping_min = 2.586
+damping_max = 8.62
+angle_min = -558.6
+angle_max = 434.5
+scale_amount_min = 0.4
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_nypog")
 
 [editable path="WolfModel"]

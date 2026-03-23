@@ -11,6 +11,8 @@ extends Node3D
 @export var card_position : int = 1
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var mouse_collider: CollisionShape3D = $MouseDetect/MouseCollider
+@onready var card_visuals: Node3D = $CardVisuals
+
 
 @export var item_type : String = "Card"
 @export var tooltip : String = "Not in your mailbox, thankfully."
@@ -47,8 +49,14 @@ func activate() -> void:
 	position = Vector3(0, 0, 0)
 	rotation = Vector3.ZERO
 	animation_player.play("explode")
+	
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "explode":
 		InputHandler.actionable = true
+
+
+func _on_explosionboxes_body_entered(body: Node3D) -> void:
+	if body.is_in_group("dice"):
+		body.dice_logic.explosion()

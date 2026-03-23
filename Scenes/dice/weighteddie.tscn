@@ -203,7 +203,6 @@ max_contacts_reported = 4
 script = ExtResource("1_xj7pb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=6220827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008239746, 0.0034926683, -0.0001449585)
 shape = SubResource("BoxShape3D_ihl4l")
 
 [node name="Sketchfab_Scene" type="Node3D" parent="." unique_id=659088398]

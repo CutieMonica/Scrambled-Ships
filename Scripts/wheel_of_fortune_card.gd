@@ -11,6 +11,7 @@ extends Node3D
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var mouse_collider: CollisionShape3D = $MouseDetect/MouseCollider
 @onready var text: Label3D = $CardVisuals/Text
+@onready var card_visuals: Node3D = $CardVisuals
 
 @export var item_type : String = "Card"
 @export var tooltip : String = "Looks like it was stolen from a random game of Poker."
@@ -36,7 +37,7 @@ func yall_ready_for_this() -> void:
 
 func activate() -> void:
 	position = Vector3(-3.715, 9.0, 2.0)
-	var is_activating: int = GameManager.rng_cards.randi_range(4, 4)
+	var is_activating: int = GameManager.rng_cards.randi_range(1, 4)
 	if is_activating != 4:
 		animation_player.play("nope")
 	if is_activating == 4:

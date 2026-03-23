@@ -23,7 +23,7 @@ var stored_pos : Vector3
 var storing : bool = false
 var stored : bool = false
 var returning_to_box : bool = false
-var rotation_delta_mult : int = 10
+var rotation_delta_mult : int = 12
 var outside_the_box : bool = false
 var outside_the_box_multiplier_given_to_top_row : int = 0
 @export var dice_position : int = 1
@@ -67,7 +67,7 @@ func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
-	if rigid_body_3d.sleeping and !has_given_number:
+	if linear_velocity.length() < 0.1 and !has_given_number:
 		current_pos = position
 		if ray_cast_1.is_colliding():
 			number = 3
@@ -81,8 +81,10 @@ func _physics_process(delta: float) -> void:
 			number = 7
 		if ray_cast_6.is_colliding():
 			number = 8
-		if outside_the_box_multiplier_given_to_top_row != 0:
+		if outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true or !outside_the_box and outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true:
 			match outside_the_box_multiplier_given_to_top_row:
+				0:
+					pass
 				1:
 					get_parent().score_sheet.ones_multiplier -= dice_logic.outside_the_box_multiplier
 				2:
@@ -95,14 +97,11 @@ func _physics_process(delta: float) -> void:
 					get_parent().score_sheet.fives_multiplier -= dice_logic.outside_the_box_multiplier
 				6:
 					get_parent().score_sheet.sixes_multiplier -= dice_logic.outside_the_box_multiplier
+			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
 		if outside_the_box:
 			outside_the_box_multiplier_given_to_top_row = number
-			get_parent().score_sheet.has_temp_modifier = true
+			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
 			match number:
-				1:
-					get_parent().score_sheet.ones_multiplier += dice_logic.outside_the_box_multiplier
-				2:
-					get_parent().score_sheet.twos_multiplier += dice_logic.outside_the_box_multiplier
 				3:
 					get_parent().score_sheet.threes_multiplier += dice_logic.outside_the_box_multiplier
 				4:
@@ -111,9 +110,12 @@ func _physics_process(delta: float) -> void:
 					get_parent().score_sheet.fives_multiplier += dice_logic.outside_the_box_multiplier
 				6:
 					get_parent().score_sheet.sixes_multiplier += dice_logic.outside_the_box_multiplier
-		
+				7:
+					get_parent().score_sheet.choice_multiplier += dice_logic.outside_the_box_multiplier
+				8:
+					get_parent().score_sheet.small_straight_multiplier += dice_logic.outside_the_box_multiplier
+		get_parent().score_sheet.modifier_check()
 		get_parent().score_sheet.update_multipliers()
-			
 		print(number)
 		dice_logic.update_ui()
 		has_given_number = true
@@ -164,7 +166,7 @@ func _physics_process(delta: float) -> void:
 				rotation.y = move_toward(rotation.y, 0.0, delta * rotation_delta_mult)
 			if rotation.z != -3.0:
 				rotation.z = move_toward(rotation.z, -3.0, delta * rotation_delta_mult)
-		position = lerp(position, stored_pos, delta * 8)
+		position = lerp(position, stored_pos, delta * 10)
 
 func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("dice"):

@@ -8,10 +8,13 @@ var currently_vacant_dice_slot : int
 var currently_vacant_statue_slot : int
 var currently_vacant_card_slot : int
 
+signal pressed_tutorial_interact
+
 var selected_shop_slot : int
 
 @export var in_game : bool = false
 @export var actionable : bool = false
+@export var can_progress_text : bool = false
 @onready var main_scene : Node3D = null
 
 func main_scene_entered() -> void:
@@ -21,6 +24,11 @@ func main_scene_entered() -> void:
 
 func _input(event: InputEvent) -> void:
 	if in_game == true:
+		if GameManager.in_tutorial:
+			if event.is_action_pressed("Interact") and can_progress_text:
+				pressed_tutorial_interact.emit()
+				can_progress_text = false
+			return
 		if get_tree().get_first_node_in_group("main").between_rounds == true:
 			if event.is_action_pressed("Interact"):
 				#dice slots
@@ -82,6 +90,54 @@ func _input(event: InputEvent) -> void:
 						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(6).dice_logic.replaced()
 					if hovered_object == "dice7":
 						get_tree().get_first_node_in_group("main").in_play_dice_instances.get(7).dice_logic.replaced()
+				if get_tree().get_first_node_in_group("main").choosing_new_statue:
+					if hovered_object == "statue1":
+						get_tree().get_first_node_in_group("main").in_play_statues.get(1).statue_chosen()
+					if hovered_object == "statue2":
+						get_tree().get_first_node_in_group("main").in_play_statues.get(2).statue_chosen()
+					if hovered_object == "statue3":
+						get_tree().get_first_node_in_group("main").in_play_statues.get(3).statue_chosen()
+					if hovered_object == "statue4":
+						get_tree().get_first_node_in_group("main").in_play_statues.get(4).statue_chosen()
+					if hovered_object == "statue5":
+						get_tree().get_first_node_in_group("main").in_play_statues.get(5).statue_chosen()
+					if hovered_object == "statue6":
+						get_tree().get_first_node_in_group("main").in_play_statues.get(6).statue_chosen()
+				if hovered_object == "statue_combiner_bottom_1":
+					get_tree().get_first_node_in_group("main").statue_bottom_choice = GameManager.combined_statue_1.statue_bottom_instance
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_bottom_highlight_1_solidified()
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_bottom_highlight_2_unsolidified()
+					
+				if hovered_object == "statue_combiner_bottom_2":
+					get_tree().get_first_node_in_group("main").statue_bottom_choice = GameManager.combined_statue_2.statue_bottom_instance
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_bottom_highlight_1_unsolidified()
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_bottom_highlight_2_solidified()
+					
+				if hovered_object == "statue_combiner_top_1":
+					get_tree().get_first_node_in_group("main").statue_top_choice = GameManager.combined_statue_1.statue_top_instance
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_top_highlight_1_solidified()
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_top_highlight_2_unsolidified()
+					
+				if hovered_object == "statue_combiner_top_2":
+					get_tree().get_first_node_in_group("main").statue_top_choice = GameManager.combined_statue_2.statue_top_instance
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_top_highlight_1_unsolidified()
+					get_tree().get_first_node_in_group("main").statue_combiner_stuff.combiner_top_highlight_2_solidified()
+					
+				if GameManager.choosing_new_cards:
+					if hovered_object == "card1":
+						get_tree().get_first_node_in_group("main").card_deck.get(1).card_logic.replaced()
+					if hovered_object == "card2":
+						get_tree().get_first_node_in_group("main").card_deck.get(2).card_logic.replaced()
+					if hovered_object == "card3":
+						get_tree().get_first_node_in_group("main").card_deck.get(3).card_logic.replaced()
+					if hovered_object == "card4":
+						get_tree().get_first_node_in_group("main").card_deck.get(4).card_logic.replaced()
+					if hovered_object == "card5":
+						get_tree().get_first_node_in_group("main").card_deck.get(5).card_logic.replaced()
+					if hovered_object == "card6":
+						get_tree().get_first_node_in_group("main").card_deck.get(6).card_logic.replaced()
+					if hovered_object == "card7":
+						get_tree().get_first_node_in_group("main").card_deck.get(7).card_logic.replaced()
 			return
 		#if event.is_action_pressed("debug_spawn_card"):
 			#next_card += 1

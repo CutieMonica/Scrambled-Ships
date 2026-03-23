@@ -11,20 +11,26 @@ var watching_coins : bool = false
 var statues_created : int = 0
 
 var choosing_new_die : bool = false
+var choosing_new_statue : bool = false
+var choosing_new_card : bool = false
+
+var statue_top_choice : Node3D
+var statue_bottom_choice : Node3D
 
 var basic_d6 := preload("res://Scenes/dice/Basicd_6.tscn")
-var INSCRYBED := preload("uid://cvdes1pfuas6d")
 
 var card_instance : Node
 var dice_instance : Node
 var prev_die : int = 0
 var between_rounds : bool = false
 #var placeholdersong := preload("res://Assets/Music/Tabletop Jazz Cafe.ogg")
-var roll_with_it_music := load("res://Assets/Music/Roll with it (final).ogg")
+
 var reroll_coin : PackedScene = preload("res://Scenes/gold_coin.tscn")
 var reroll_coin_instance : Node
 var money_coin : PackedScene = preload("res://Scenes/currency_gold_coin.tscn")
 var money_coin_instance : Node
+var cards_hovered : bool = false
+var cards_highlighted : bool = false
 
 var dice_shop_slots_unlocked : int = 3
 var ticket_shop_slots_unlocked : int = 6
@@ -62,6 +68,7 @@ var card_shop_slots_unlocked : int = 11
 @onready var camerabuffer: Timer = $Camerabuffer
 @onready var exit_card_outline: MeshInstance3D = $ExitCardOutline
 @onready var shop_box: Node3D = $ShopBox
+@onready var statue_stand: Node3D = $StatueStand
 
 @onready var card_placement_ref_1: Node3D = $CardPlacementRef1
 @onready var card_placement_ref_2: Node3D = $CardPlacementRef2
@@ -102,13 +109,29 @@ var card_shop_slots_unlocked : int = 11
 @onready var shop_placement_collider_11: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea11/ShopPlacementCollider11
 @onready var shop_placement_collider_12: CollisionShape3D = $ShopPlacementReferences/ShopPlacementArea12/ShopPlacementCollider12
 
+@onready var statue_placement_ref_1: Node3D = $StatueStand/StatuePlacementRef1
+@onready var statue_placement_ref_2: Node3D = $StatueStand/StatuePlacementRef2
+@onready var statue_placement_ref_3: Node3D = $StatueStand/StatuePlacementRef3
+@onready var statue_placement_ref_4: Node3D = $StatueStand/StatuePlacementRef4
+@onready var statue_placement_ref_5: Node3D = $StatueStand/StatuePlacementRef5
+@onready var statue_placement_ref_6: Node3D = $StatueStand/StatuePlacementRef6
+
+@onready var statue_combiner_top_1: Node3D = $StatueCombinerStuff/StatueCombinerTop1
+@onready var statue_combiner_top_2: Node3D = $StatueCombinerStuff/StatueCombinerTop2
+@onready var statue_combiner_bottom_1: Node3D = $StatueCombinerStuff/StatueCombinerBottom1
+@onready var statue_combiner_bottom_2: Node3D = $StatueCombinerStuff/StatueCombinerBottom2
+@onready var statue_final_product_area: Node3D = $StatueFinalProductArea
+
+@onready var dialogue_player: AnimationPlayer = $DialogueHandler/DialoguePlayer
+
+@onready var statue_combiner_stuff: Node3D = $StatueCombinerStuff
 
 var chosen_dice : Dictionary = {
 	1: basic_d6,
 	2: basic_d6,
 	3: basic_d6,
 	4: basic_d6,
-	5: INSCRYBED,
+	5: basic_d6,
 	6: null,
 	7: null
 }
@@ -169,6 +192,15 @@ var in_play_dice_instances : Dictionary = {
 	6: null
 }
 
+@export var statue_positions : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null
+}
+
 @export var shop_items : Dictionary = {
 	1: null,
 	2: null,
@@ -207,8 +239,14 @@ var current_shop_area : Area3D
 
 @export var money_coins : Dictionary = {}
 
+func _process(_delta: float) -> void:
+	if cards_hovered == true and InputHandler.actionable and GameManager.card_count > 0 and !cards_highlighted:
+		highlight_cards()
+		 
+
 func performance_switch() -> void:
 	if GameManager.performance_mode:
+		await get_tree().process_frame
 		mesh_instance_3d.visible = false
 		directional_light_3d.shadow_enabled = false
 		omni_light_3d.shadow_enabled = false
@@ -216,6 +254,7 @@ func performance_switch() -> void:
 		spot_light_3d_2.shadow_enabled = false
 		spot_light_3d_3.shadow_enabled = false
 	if !GameManager.performance_mode:
+		await get_tree().process_frame
 		mesh_instance_3d.visible = true
 		#directional_light_3d.shadow_enabled = true
 		#omni_light_3d.shadow_enabled = true
@@ -230,6 +269,12 @@ func remove_dice(dice_position : int) -> void:
 	stored_dice.set(dice_position, null)
 	GameManager.dice_amount -= 1
 	GameManager.dice_numbers.set(dice_position, null)
+	
+func remove_card(card_position : int) -> void:
+	card_deck.set(card_position, null)
+	if InputHandler.hovered_object == "card" + str(card_position):
+		InputHandler.hovered_object = "none"
+	GameManager.card_count -= 1
 	
 func give_extra_rerolls(amount : int) -> void:
 	for i in amount:
@@ -282,35 +327,39 @@ func spawn_coins() -> void:
 	
 
 func spawn_money() -> void:
-	for n in GameManager.money_due:
+	for i in GameManager.money_due:
 		var random_buffer_time : float = GameManager.rng.randf_range(0.1, 0.2)
 		random_money_buffer.wait_time = random_buffer_time
 		random_money_buffer.start()
 		await random_money_buffer.timeout
-		money_coins.set(n + money_coins.size(), money_coin)
+		GameManager.current_money += 1
+		var n : int = money_coins.size()
+		money_coins.get_or_add(n, money_coin)
 		money_coin_instance = money_coins.get(n).instantiate()
-		money_coins.set(n + money_coins.size(), money_coin_instance)
+		money_coins.set(n, money_coin_instance)
 		money_coin_instance.name = "MoneyCoin" + str(n)
 		money_coin_instance.coin_number = n + 1
 		money_coin_instance.position.y = GameManager.rng.randf_range(15, 16)
 		money_coin_instance.position.x = GameManager.rng.randf_range(15.3, 15.8)
 		money_coin_instance.position.z = GameManager.rng.randf_range(-3.65, -3.3)
 		add_child(money_coin_instance)
-		GameManager.current_money += 1
-		if GameManager.rolls > 0:
-			GameManager.update_rolls_count(-1)
-		if GameManager.rolls <= 0:
-			reroll_coins = {}
+		if watching_coins == true:
+			if GameManager.rolls > 0:
+				GameManager.update_rolls_count(-1)
 	GameManager.money_due = 0
-	if watching_coins == true:
+	if watching_coins == true and GameManager.dialogue_seen.get(2) == true:
 		random_money_buffer.wait_time = 1.0
 		random_money_buffer.start()
 		await random_money_buffer.timeout
 		play_coins_to_shop()
 
 func round_start() -> void:
+	statue_stand.mouse_box_on()
 	get_tree().call_group("statues", "main_scene_round_started")
 	spawn_coins()
+	for i : int in stored_dice.size() + 1:
+		if stored_dice.get(i) != null:
+			stored_dice.set(i, "false")
 	if GameManager.current_round != 1:
 		shop_to_default()
 		score_sheet.reset_everything()
@@ -319,7 +368,10 @@ func round_start() -> void:
 		score_sheet.highlighter.play_backwards("Clicked")
 		score_sheet.unhighlight_box()
 		get_tree().call_group("stored_dice", "return_to_box")
+		GameManager.reset_dice_resting()
+		InputHandler.current_reroll_state = 0
 		InputHandler.actionable = true
+		camerabuffer.wait_time = 1
 		camerabuffer.start()
 		await camerabuffer.timeout
 		give_extra_rerolls(1)
@@ -330,8 +382,11 @@ func round_start() -> void:
 func _ready() -> void:
 	InputHandler.main_scene_entered()
 	performance_switch()
-	music_source.stream = roll_with_it_music
-	music_source.play()
+	if GameManager.dialogue_seen.get(1) == false:
+		dialogue_player.opening_tutorial_dialogue()
+		camera_movement.play("Default_FirstTime")
+	if GameManager.dialogue_seen.get(1) == true:
+		camera_movement.play("Default")
 	round_start()
 	GlobalMusicPlayer.start_act1ambience()
 	card_placement_references = {
@@ -366,12 +421,23 @@ func _ready() -> void:
 		12: card_shop_placement_3
 	}
 	
+	statue_positions = {
+		1: statue_placement_ref_1.global_position,
+		2: statue_placement_ref_2.global_position,
+		3: statue_placement_ref_3.global_position,
+		4: statue_placement_ref_4.global_position,
+		5: statue_placement_ref_5.global_position,
+		6: statue_placement_ref_6.global_position
+	}
+	
 func _on_timer_timeout() -> void:
 	if die_spawned != max_die:
 		die_spawned += 1
 		dice_spawner(die_spawned)
 		
 func dice_spawner(dice_position : int) -> void:
+	if chosen_dice.get(dice_position) == null:
+		return
 	dice_instance = chosen_dice.get(dice_position).instantiate()
 	in_play_dice_instances.set(dice_position, dice_instance)
 	dice_instance.name = "Die" + str(dice_position)
@@ -392,7 +458,6 @@ func card_spawner(card_position : int) -> void:
 	card_instance.scale = card_placement_references[card_position].scale
 	add_child(card_instance)
 	card_instance.card_logic.card_position = card_position
-	card_instance.card_logic.change_layers()
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "cup_reloading":
@@ -407,13 +472,17 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		await lid_collider_delay.timeout
 		dice_cup.lid_collider.disabled = false
 		InputHandler.current_reroll_state = 3
-	
-		
 		
 func roll_used() -> void:
 	if reroll_coins.get(GameManager.rolls) != null:
 		reroll_coins.get(GameManager.rolls).i_must_go_now()
 		reroll_coins.erase(GameManager.rolls)
+	
+func coins_spent(amount : int) -> void:
+	for n in amount:
+		if money_coins.get(money_coins.size() - 1) != null:
+			money_coins.get(money_coins.size() - 1).i_must_go_now()
+			money_coins.erase(money_coins.size() - 1)
 	
 func become_actionable() -> void:
 	InputHandler.actionable = true
@@ -432,7 +501,6 @@ func reload() -> void:
 		GameManager.update_rolls_count(-1)
 	if InputHandler.current_reroll_state == 3:
 		GameManager.has_pressed_release = true
-		camera_movement.play_backwards("zoom_on_box")
 		InputHandler.current_reroll_state = 4
 		get_tree().call_group("statues", "main_scene_rerolling")
 		
@@ -444,15 +512,18 @@ func focus_a_die(focused_die : int) -> void:
 func zoom_on_score_sheet() -> void:
 	camera_movement.play("DefaultToSheet")
 	InputHandler.actionable = false
-	camerabuffer.wait_time = 1
+	camerabuffer.wait_time = 0.9
+	score_sheet.can_leave = false
 	camerabuffer.start()
 	await camerabuffer.timeout
+	InputHandler.hovered_object = "scoresheet"
+	score_sheet.can_leave = true
 	InputHandler.actionable = true
 
 func zoom_out_score_sheet() -> void:
 	camera_movement.play_backwards("DefaultToSheet")
 	InputHandler.actionable = false
-	camerabuffer.wait_time = 1
+	camerabuffer.wait_time = 0.9
 	camerabuffer.start()
 	await camerabuffer.timeout
 	InputHandler.actionable = true
@@ -471,19 +542,38 @@ func zoom_out_statue() -> void:
 
 
 func _on_card_hover_detection_mouse_entered() -> void:
-	InputHandler.hovered_object = "cards"
-	card_outline.visible = true
+	cards_hovered = true
+	if InputHandler.actionable and GameManager.card_count > 0:
+		highlight_cards()
 
 func _on_card_hover_detection_mouse_exited() -> void:
+	cards_hovered = false
+	unhighlight_cards()
+
+func highlight_cards() -> void:
+	InputHandler.hovered_object = "cards"
+	card_outline.visible = true
+	cards_highlighted = true
+	
+func unhighlight_cards() -> void:
 	if InputHandler.hovered_object == "cards":
 		InputHandler.hovered_object = "none"
-		card_outline.visible = false
-
+	card_outline.visible = false
+	cards_highlighted = false
+	
 func pull_up_cards() -> void:
 	card_animations.play("pullupcards")
+	camerabuffer.wait_time = 0.7
+	camerabuffer.start()
+	await camerabuffer.timeout
+	if !choosing_new_card:
+		GameManager.viewing_cards = true
+	else:
+		GameManager.choosing_new_cards = true
 	
 func pull_down_cards() -> void:
 	card_animations.play_backwards("pullupcards")
+	GameManager.viewing_cards = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_spawn_card"):
@@ -491,19 +581,15 @@ func _input(event: InputEvent) -> void:
 		get_tree().get_first_node_in_group("main").card_spawner(next_card)
 
 func _on_card_exit_detect_mouse_entered() -> void:
-	InputHandler.hovered_object = "exitcards"
-	exit_card_outline.visible = true
+	if !GameManager.choosing_new_cards:
+		InputHandler.hovered_object = "exitcards"
+		exit_card_outline.visible = true
 
 func _on_card_exit_detect_mouse_exited() -> void:
 	exit_card_outline.visible = false
 	if InputHandler.hovered_object == "exitcards":
 		InputHandler.hovered_object = "none"
 		
-
-func remove_card(card_position : int) -> void:
-	card_deck.set(card_position, null)
-	if InputHandler.hovered_object == "card" + str(card_position):
-		InputHandler.hovered_object = "none"
 		
 func _on_card_animations_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "pullupcards":
@@ -542,9 +628,22 @@ func find_vacant_card_slot() -> int:
 	return current_lowest_slot
 	
 
+func ending_counter_camera() -> void:
+	between_rounds = true
+	InputHandler.actionable = false
+	statue_stand.mouse_box_off()
+	if score_sheet.inside_sheet:
+		camera_movement.play("sheet_to_counter")
+	if !score_sheet.inside_sheet:
+		camera_movement.play("default_to_counter")
+	round_score_buffer.start()
+	await round_score_buffer.timeout
+	target_score_display.play_random_death_voice()
+
 func play_sheet_to_counter() -> void:
 	between_rounds = true
 	InputHandler.actionable = false
+	statue_stand.mouse_box_off()
 	if score_sheet.inside_sheet:
 		camera_movement.play("sheet_to_counter")
 	if !score_sheet.inside_sheet:
@@ -566,7 +665,49 @@ func play_coins_to_shop() -> void:
 	update_money(0)
 
 func shop_to_default() -> void:
-	camera_movement.play_backwards("default_to_shop")
+	camera_movement.queue("shop_to_default")
+	shop_box.temp_disable_exit_button()
+
+func default_to_shop() -> void:
+	camera_movement.queue("default_to_shop")
+	shop_box.temp_disable_exit_button()
+	shop_box.exit_button_can_be_enabled = true
+
+func shop_to_card_deck() -> void:
+	camera_movement.queue("shop_to_card_deck")
+	shop_box.temp_disable_exit_button()
+	
+func card_deck_to_shop() -> void:
+	camera_movement.play_backwards("shop_to_card_deck")
+	shop_box.temp_disable_exit_button()
+	shop_box.exit_button_can_be_enabled = true
+	
+func shop_to_statue_stand() -> void:
+	camera_movement.queue("shop_to_statues")
+	shop_box.temp_disable_exit_button()
+	shop_box.exit_button_can_be_enabled = true
+
+func statue_stand_to_statue_fusion() -> void:
+	camera_movement.play("statues_to_combiner")
+	
+func statue_fusion_zoom() -> void:
+	camera_movement.play("combiner_pan_zoom")
+	
+func statue_fusion_to_statue_stand() -> void:
+	camera_movement.play("combiner_pan_zoom_to_statues")
+
+func statue_stand_to_shop() -> void:
+	camera_movement.play_backwards("shop_to_statues")
+	dialogue_player.no_dialogue()
+	shop_box.temp_disable_exit_button()
+	shop_box.exit_button_can_be_enabled = true
+	enable_all_shop_areas()
+
+func backwards_default() -> void:
+	camera_movement.play_backwards("Default")
+	InputHandler.in_game = false
+	InputHandler.actionable = false
+	
 	
 
 func generate_shop() -> void:
@@ -581,27 +722,37 @@ func shop_to_dice_storage() -> void:
 	
 func dice_storage_to_shop() -> void:
 	camera_movement.play_backwards("shop_to_dice_storage")
+	dialogue_player.no_dialogue()
+	enable_all_shop_areas()
+	shop_box.temp_disable_exit_button()
+	shop_box.exit_button_can_be_enabled = true
 
 func update_money(amount : int) -> void:
+	coins_spent(amount)
 	GameManager.current_money -= amount
 	shop_box.money_tracker.update_money()
 
 func clear_shop_items() -> void:
 	for i in shop_items.size():
-		if shop_items.get(i) != null:
+		if shop_items.get(i) != null and shop_items.get(i).item_type != "Ticket":
 			shop_items.get(i).queue_free()
 
 func shop_slot_zoom(slot : int) -> void:
 	disable_all_shop_areas()
 	camera_movement.play("shop_to_slot_" + str(slot))
-	shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot) 
+	shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot)
+	shop_box.disable_exit_button() 
 
 func shop_slot_zoom_out(slot : int) -> void:
 	camera_movement.play_backwards("shop_to_slot_" + str(slot))
-	camerabuffer.wait_time = 0.4
+	camerabuffer.wait_time = 0.25
 	camerabuffer.start()
 	await camerabuffer.timeout
-	enable_all_shop_areas()
+	if !choosing_new_die and !choosing_new_card:
+		enable_all_shop_areas()
+	if choosing_new_die or choosing_new_card:
+		dialogue_player.play_dice_selection_dialogue()
+		
 
 func reset_storage_slots() -> void:
 	for i in stored_dice.size() + 1:
@@ -638,3 +789,11 @@ func enable_all_shop_areas() -> void:
 
 func recall_all_dice() -> void:
 	get_tree().call_group("dice_logic", "end_of_round_reset")
+
+func ending_fade_out() -> void:
+	camera_movement.play("ending_fade")
+
+func _on_camera_movement_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "ending_fade":
+		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+		GlobalMusicPlayer.start_title_song()

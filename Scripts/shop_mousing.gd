@@ -42,6 +42,48 @@ extends Node3D
 @onready var shop_placement_area_11: Area3D = $ShopPlacementArea11
 @onready var shop_placement_area_12: Area3D = $ShopPlacementArea12
 
+var common_upgrades_taken : Dictionary = {
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+	7: false,
+	8: false
+}
+
+var uncommon_upgrades_taken : Dictionary = {
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+	7: false,
+	8: false
+}
+
+var rare_upgrades_taken : Dictionary = {
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+	7: false,
+	8: false
+}
+
+var legendary_upgrades_taken : Dictionary = {
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false
+}
+
 var highlights : Dictionary = {}
 var shop_placement_areas : Dictionary = {}
 

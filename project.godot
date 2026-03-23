@@ -28,6 +28,7 @@ GameManager="*uid://cg3ysk1gmje83"
 GlobalMusicPlayer="*uid://bu0owrhtrjj5o"
 SfxBank="*uid://hfm2er5quhfd"
 InputHandler="*uid://cw5iqymbhvxuo"
+SaveLoad="*uid://c4gm4hinxj0n7"
 
 [debug]
 
@@ -57,6 +58,7 @@ ticket_gen=""
 statue_gen=""
 card_gen=""
 awaiting_new_slot=""
+statuefusionnew=""
 
 [gui]
 
@@ -115,3 +117,5 @@ rapier/solver/contact_natural_frequency=50.0
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+rendering_device/fallback_to_vulkan=false
+rendering_device/fallback_to_d3d12=false

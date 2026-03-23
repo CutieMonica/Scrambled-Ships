@@ -35,7 +35,7 @@ func random_coin_clink() -> void:
 
 func honk_shoo_mimimi() -> void:
 	print(gold_coin.linear_velocity.y)
-	if gold_coin.sleeping or linear_velocity.y < 5 and linear_velocity.y > -5:
+	if gold_coin.sleeping or linear_velocity.y < 1 and linear_velocity.y > -1:
 		gold_coin.freeze = true
 	else:
 		pass
@@ -46,13 +46,12 @@ func unfreeze() -> void:
 		timer.start()
 
 func i_must_go_now() -> void:
-	gold_coin.freeze = false
-	get_tree().call_group("currency", "unfreeze")
-	#gold_coin.set_collision_layer_value(1, false)
-	#gold_coin.set_collision_layer_value(5, false)
-	#gold_coin.set_collision_mask_value(1, false)
-	#gold_coin.set_collision_mask_value(5, false)
-	gold_coin.linear_velocity.y = 70
+	unfreeze()
+	gold_coin.set_collision_layer_value(1, false)
+	gold_coin.set_collision_layer_value(5, false)
+	gold_coin.set_collision_mask_value(1, false)
+	gold_coin.set_collision_mask_value(5, false)
+	gold_coin.linear_velocity.y = 80
 	gold_coin.angular_velocity.x = 40
 	kill_timer.start()
 

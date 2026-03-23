@@ -194,13 +194,11 @@ collision_priority = 5.0
 input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_yahnv")
 gravity_scale = 3.0
-center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_bvy70")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=6220827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008239746, 0.0034926683, -0.0001449585)
 shape = SubResource("BoxShape3D_ihl4l")
 
 [node name="Sketchfab_Scene" type="Node3D" parent="." unique_id=659088398]

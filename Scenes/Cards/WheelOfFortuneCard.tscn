@@ -344,45 +344,54 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urq1j"]
-render_priority = 16
+render_priority = 15
+depth_draw_mode = 1
 metallic = 0.71
 metallic_specular = 0.19
 emission_enabled = true
 emission = Color(1, 0.50463665, 0.97491246, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ginii"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_urq1j")
 size = Vector2(10.5, 15.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3ge4"]
+resource_local_to_scene = true
 render_priority = 22
 transparency = 1
+depth_draw_mode = 1
 albedo_texture = ExtResource("96_iwmvd")
 metallic = 0.71
 metallic_specular = 0.19
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7v11y"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_k3ge4")
 size = Vector2(10, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keqs"]
-render_priority = 17
+render_priority = 20
 transparency = 1
+depth_draw_mode = 1
 albedo_texture = ExtResource("3_el2j5")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_80ftd"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_5keqs")
 size = Vector2(9.29, 5.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80ftd"]
-render_priority = 18
+render_priority = 21
 transparency = 1
 cull_mode = 1
+depth_draw_mode = 1
 albedo_texture = ExtResource("98_cfbgd")
 metallic = 0.71
 metallic_specular = 0.19
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wocp"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_80ftd")
 size = Vector2(10, 15)
 
@@ -413,18 +422,20 @@ libraries/ = SubResource("AnimationLibrary_taem4")
 [node name="CardVisuals" type="Node3D" parent="." unique_id=109712147]
 
 [node name="Nametag" type="Label3D" parent="CardVisuals" unique_id=374057504]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4713951, 0.098538175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.471, 0.01)
 shaded = true
-render_priority = 20
-outline_render_priority = 19
+double_sided = false
+render_priority = 23
+outline_render_priority = 22
 text = "Wheel of Fortune"
 font_size = 128
 
 [node name="Description" type="Label3D" parent="CardVisuals" unique_id=1363177856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17139512, 0.098538116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.171, 0.01)
 shaded = true
-render_priority = 20
-outline_render_priority = 19
+double_sided = false
+render_priority = 23
+outline_render_priority = 22
 text = "When used, there is a 1/4 chance for it to activate.
 When activated, it will choose a random category, and give it either +1.5x mult or multiply its mult by 1.5x."
 font_size = 128
@@ -433,18 +444,20 @@ autowrap_mode = 2
 width = 1800.0
 
 [node name="Rarity" type="Label3D" parent="CardVisuals" unique_id=2066783178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.4486046, 0.098537825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.449, 0.01)
 shaded = true
-render_priority = 20
-outline_render_priority = 19
+double_sided = false
+render_priority = 23
+outline_render_priority = 22
 text = "COMMON"
 font_size = 128
 
 [node name="Text" type="Label3D" parent="CardVisuals" unique_id=580098662]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.51239586, 0.098537825)
 shaded = true
-render_priority = 29
-outline_render_priority = 28
+double_sided = false
+render_priority = 30
+outline_render_priority = 29
 text = "Nope!"
 font = ExtResource("2_2uuo4")
 font_size = 128
@@ -452,20 +465,20 @@ outline_size = 48
 autowrap_mode = 2
 
 [node name="Outline" type="MeshInstance3D" parent="CardVisuals" unique_id=1545889884]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.10139525, 0.058538113)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.101, -0.03)
 visible = false
 mesh = SubResource("PlaneMesh_ginii")
 
 [node name="CardBack" type="MeshInstance3D" parent="CardVisuals" unique_id=1935962852]
-transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.10139525, 0.058538113)
+transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.101, -0.02)
 mesh = SubResource("PlaneMesh_7v11y")
 
 [node name="CardArt" type="MeshInstance3D" parent="CardVisuals" unique_id=1241105196]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.651628, 0.06853831)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.652, -0.01)
 mesh = SubResource("PlaneMesh_80ftd")
 
 [node name="CardFront" type="MeshInstance3D" parent="CardVisuals" unique_id=1386641156]
-transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.10139525, 0.07853811)
+transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.101, 0)
 mesh = SubResource("PlaneMesh_6wocp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1064943768]

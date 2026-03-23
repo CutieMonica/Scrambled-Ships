@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dw2patqwygvtl"]
+
+[ext_resource type="Script" uid="uid://c7j7x6d7kvvmb" path="res://SaveData.gd" id="1_mwara"]
+
+[node name="SaveData" type="Node" unique_id=2106603533]
+script = ExtResource("1_mwara")

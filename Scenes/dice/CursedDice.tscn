@@ -200,13 +200,11 @@ collision_priority = 5.0
 input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_yahnv")
 gravity_scale = 3.0
-center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_8p0s3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=6220827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008239746, 0.0034926683, -0.0001449585)
 visible = false
 shape = SubResource("BoxShape3D_ihl4l")
 
@@ -289,13 +287,12 @@ collision_mask = 128
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D6_Mouse_Detect" unique_id=107950606]
 shape = SubResource("BoxShape3D_yahnv")
 
-[node name="DiceLogic" parent="." unique_id=1171884486 groups=["dice_logic"] instance=ExtResource("5_la0lk")]
+[node name="DiceLogic" parent="." unique_id=1171884486 instance=ExtResource("5_la0lk")]
 texture = ExtResource("6_muc6x")
 normal = ExtResource("7_la0lk")
 roughness = ExtResource("8_d20cq")
 
 [connection signal="area_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_area_entered"]
 [connection signal="body_entered" from="DiceNoiseDetection" to="." method="_on_dice_noise_detection_body_entered"]
-[connection signal="body_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_body_entered"]
 [connection signal="mouse_entered" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="D6_Mouse_Detect" to="." method="_on_d_6_mouse_detect_mouse_exited"]

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cdvd8w1uwsjyk"]
+
+[ext_resource type="Material" uid="uid://bfp1igb2v7bhh" path="res://Materials/plasticine in stark submission.tres" id="2_2fefu"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7g0sy"]
+material = ExtResource("2_2fefu")
+left_to_right = 1.0
+size = Vector3(0.5, 0.25, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3ky2l"]
+material = ExtResource("2_2fefu")
+
+[sub_resource type="PrismMesh" id="PrismMesh_8x2pv"]
+material = ExtResource("2_2fefu")
+left_to_right = 1.0
+size = Vector3(0.5, 0.25, 2)
+
+[node name="StatueStandMid" type="Node3D" unique_id=1704196050]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2074362759]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.26)
+mesh = SubResource("PrismMesh_7g0sy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2021757882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499999, 1.4901161e-08, -8.3196504e-08)
+mesh = SubResource("PlaneMesh_3ky2l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1056750770]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -9.313226e-09, 0, -1.24)
+mesh = SubResource("PrismMesh_7g0sy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1393973178]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 1.2499999, 0, 0.010000022)
+mesh = SubResource("PrismMesh_8x2pv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=943116614]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -1.2500005, 0, 0.010000015)
+mesh = SubResource("PrismMesh_8x2pv")

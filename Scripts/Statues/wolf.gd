@@ -12,6 +12,7 @@ extends Node3D
 @export var trigger_condition : String = "RoundStart"
 var has_given_modifier : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var poof_particle: CPUParticles3D = $PoofParticle
 
 @export var item_name : String = "Wolf"
 @export var tooltip : String = "Inside of you are two wolves. You should really get that checked out."

@@ -59,10 +59,25 @@ extends Node3D
 @export var second_best_triple : int = 0
 @export var second_best_double : int = 0
 	
+var can_leave : bool = false
 var highlighted : bool = false
 var can_highlight : bool = true
 var has_temp_modifier : bool = false
 
+var dice_giving_temp_modifier : Dictionary = {
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+	7: false
+}
+
+var lower_small_straight_floor : bool = false
+var lower_four_of_a_kind_floor : bool = false
+var lower_large_straight_floor : bool = false
+var lower_yacht_floor : bool = false
 
 var ones_amount : int
 var twos_amount : int
@@ -134,7 +149,7 @@ var top_sum : int
 var bonus_given : bool = false
 var max_top_sum : int
 var bonus_amount : int
-var current_grand_total : int = 79
+var current_grand_total : int
 var bonus_threshold_amount : int
 
 var outline_color : Color = Color("a010a230")
@@ -183,6 +198,11 @@ func calculate_score() -> void:
 				print("second straight check passed for number " + str(n))
 				if GameManager.dice_numbers.values().count(n - 2) != 0:
 					print("third straight check passed for number " + str(n))
+					if lower_small_straight_floor:
+						valid_small_straight = true
+						@warning_ignore("narrowing_conversion")
+						straight_highest_number = n
+						small_straight_amount = ((straight_highest_number) + ((straight_highest_number) - 1) + ((straight_highest_number) - 2))
 					if GameManager.dice_numbers.values().count(n - 3) != 0:
 						print("fourth straight check passed for number " + str(n))
 						valid_small_straight = true
@@ -192,6 +212,10 @@ func calculate_score() -> void:
 						print("straight highest number :" + str(straight_highest_number))
 						print("small straight amount :" + str(small_straight_amount))
 						print("small straight valid = " + str(valid_small_straight))
+						if lower_large_straight_floor:
+							large_straight_amount = ((straight_highest_number) + ((straight_highest_number) * 3) - 6)
+							valid_large_straight = true
+							large_straight_dice_cap = 4
 						if GameManager.dice_numbers.values().count(n - 4) != 0:
 							print("fifth straight check passed for number " + str(n))
 							@warning_ignore("narrowing_conversion")
@@ -286,9 +310,21 @@ func calculate_score() -> void:
 	four_of_a_kind_amount = 0
 	yacht_amount = 0
 		
+	if lower_four_of_a_kind_floor and current_best_triple > 0 or lower_four_of_a_kind_floor and second_best_triple > 0:
+		valid_four_of_a_kind = true
+		if current_best_triple > second_best_triple:
+			four_of_a_kind_amount = ((current_best_triple) * 3)
+		if second_best_triple > current_best_triple:
+			four_of_a_kind_amount = ((second_best_triple) * 3)
+			
 	if current_best_quad > 0:
 		valid_four_of_a_kind = true
 		four_of_a_kind_amount = ((current_best_quad) * 4)
+		
+	if lower_yacht_floor and current_best_quad > 0:
+		valid_yacht = true
+		yacht_amount = ((current_best_quad) * 4)
+		
 	if current_best_quint > 0:
 		valid_yacht = true
 		valid_four_of_a_kind = true
@@ -297,12 +333,14 @@ func calculate_score() -> void:
 			four_of_a_kind_amount = ((current_best_quint) * 4)
 			
 	if current_best_quad <= 0 and current_best_quint <= 0:
-		valid_four_of_a_kind = false
-		four_of_a_kind_amount = 0
+		if !lower_four_of_a_kind_floor or lower_four_of_a_kind_floor and current_best_triple <= 0:
+			valid_four_of_a_kind = false
+			four_of_a_kind_amount = 0
 		
 	if current_best_quint <= 0:
-		valid_yacht = false
-		yacht_amount = 0
+		if !lower_yacht_floor or lower_yacht_floor and current_best_quad <= 0:
+			valid_yacht = false
+			yacht_amount = 0
 		
 	
 func _ready() -> void:
@@ -390,14 +428,13 @@ func update_multipliers() -> void:
 	print(bonus_threshold_amount)
 	bonus_threshold.text = ("BONUS THRESHOLD: " + str(bonus_threshold_amount))
 	bonus_score.text = ("BONUS SCORE: " + str(bonus_amount))
-	if !bonus_given and top_sum > bonus_threshold_amount:
-		max_top_sum += bonus_amount
-		bonus_threshold.outline_modulate = outline_color
-		bonus_score.outline_modulate = outline_color
-		bonus_score.modulate = permanent_number_color
-		bonus_threshold.modulate = permanent_number_color
-		bonus_given = true
 	
+	
+func modifier_check() -> void:
+	if dice_giving_temp_modifier.find_key(true) == null:
+		has_temp_modifier = false
+	else:
+		has_temp_modifier = true
 
 func lock_in_score() -> void:
 	random_sound()
@@ -486,30 +523,38 @@ func lock_in_score() -> void:
 		yacht_score.text = str(yacht_locked_in_score)
 		current_grand_total += yacht_locked_in_score
 	hovered_category = "none"
+	if !bonus_given and top_sum > bonus_threshold_amount:
+		bonus_threshold.outline_modulate = outline_color
+		bonus_score.outline_modulate = outline_color
+		bonus_score.modulate = permanent_number_color
+		bonus_threshold.modulate = permanent_number_color
+		bonus_given = true
 	top_sum = (ones_locked_in_score + twos_locked_in_score + threes_locked_in_score + fours_locked_in_score + fives_locked_in_score + sixes_locked_in_score)
 	current_sum.text = "TOP SUM: " + str(top_sum)
 	grand_total_amount.text = str(current_grand_total)
 	if current_grand_total >= GameManager.new_round_target and inside_sheet:
+		GameManager.high_score += current_grand_total
 		GameManager.progress_round(current_grand_total)
 		get_parent().recall_all_dice()
 		return
+	if GameManager.rolls <= 0:
+		get_parent().become_inactionable()
+		GameManager.high_score += current_grand_total
+		get_parent().ending_counter_camera()
+		is_sheet_highlighted = false
+		hovered_category = "none"
+
 	if GameManager.rolls > 0 and inside_sheet:
 		get_tree().call_group("stored_dice", "return_to_box")
 		leave_sheet()
-		get_parent().become_inactionable()
-		await get_tree().create_timer(0.301).timeout
+		InputHandler.actionable = false
+		InputHandler.hovered_object = "none"
+		hovered_category = "none"
+		is_sheet_highlighted = false
+		await get_tree().create_timer(0.34).timeout
 		get_parent().become_actionable()
 		get_parent().reload()
 		get_parent().reset_storage_slots()
-	if !inside_sheet:
-		get_parent().become_inactionable()
-		await get_tree().create_timer(0.5).timeout
-		get_parent().become_actionable()
-		if current_grand_total >= GameManager.new_round_target:
-			GameManager.progress_round(current_grand_total)
-	if GameManager.rolls <= 0:
-		pass
-	
 
 func _on_area_3d_mouse_entered() -> void:
 	if can_highlight:
@@ -536,12 +581,18 @@ func interact() -> void:
 		pass
 
 func enter_sheet() -> void:
+	if !InputHandler.actionable:
+		return
 	inside_sheet = true
 	highlighter.play("Clicked")
 	is_sheet_highlighted = false
 	get_parent().zoom_on_score_sheet()
 		
 func leave_sheet() -> void:
+	if !can_leave:
+		return
+	if !InputHandler.actionable:
+		return
 	inside_sheet = false
 	highlighter.play_backwards("Clicked")
 	unhighlight_box()

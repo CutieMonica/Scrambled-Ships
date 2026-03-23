@@ -274,9 +274,10 @@ transform = Transform3D(0.99998814, 6.388873e-07, 2.2351742e-07, -9.313226e-10, 
 shape = SubResource("CylinderShape3D_5ajnl")
 
 [node name="lid_collider" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1092772340]
-transform = Transform3D(0.99998814, 6.388873e-07, 2.2351742e-07, -9.313226e-10, 0.99999416, -2.9802322e-08, 2.9802322e-08, 4.4703967e-08, 0.99999577, 4.1951097e-08, 5.7528186, 2.2615206e-08)
+transform = Transform3D(0.99998814, 6.388873e-07, 2.2351742e-07, -9.313226e-10, 0.99999416, -2.9802322e-08, 2.9802322e-08, 4.4703967e-08, 0.99999577, 4.1951097e-08, 6.0873265, 2.2615206e-08)
 shape = SubResource("CylinderShape3D_5fdiy")
 disabled = true
+debug_color = Color(0.8271727, 0.0015559709, 0.95260733, 0.41960785)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cup/CupBody3D" unique_id=1523307062]
 transform = Transform3D(1, -6.519258e-08, 0, -7.124618e-08, 0.9999999, 0, 3.7252903e-08, -3.7252903e-09, 1, 0.2029345, 2.9548407, -2.7134302)

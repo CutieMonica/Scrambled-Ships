@@ -14,7 +14,7 @@ var hovered : bool = false
 @onready var lid_collider_timer: Timer = $LidColliderTimer
 @onready var release_timer: Timer = $ReleaseTimer
 @onready var returnal_timer: Timer = $ReturnalTimer
-
+var camera_moved_back : bool = false
 
 var outlined : bool = false
 var back_to_normal : bool = true
@@ -22,6 +22,7 @@ var back_to_normal : bool = true
 func release_on_that_thang() -> void:
 	RELEASE = true
 	animation_player.play("lid_off_after_shake")
+	
 	lid_collider_timer.start()
 
 	#cup_body_3d.set_collision_layer_value(1, false)
@@ -74,7 +75,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		current_shakes += 1
 		if !GameManager.has_pressed_release or current_shakes < 2 or !GameManager.has_pressed_release and current_shakes >= 2:
 			animation_player.play("shake")
-			
+			camera_moved_back = false
+		if GameManager.has_pressed_release and !camera_moved_back:
+			get_parent().camera_movement.play_backwards("zoom_on_box")
+			camera_moved_back = true
 		if GameManager.has_pressed_release and current_shakes >= 2:
 			current_shakes = 0
 			play_anim = "none"

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Kitchen Sink
+* source:	https://sketchfab.com/3d-models/kitchen-sink-58ca4c0f36c54eff8cf7562b30c8a9f2
+* author:	Fen1xTon (https://sketchfab.com/Fen1xTon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Kitchen Sink" (https://sketchfab.com/3d-models/kitchen-sink-58ca4c0f36c54eff8cf7562b30c8a9f2) by Fen1xTon (https://sketchfab.com/Fen1xTon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

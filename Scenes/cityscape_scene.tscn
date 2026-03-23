@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dq38n88cf8h1j"]
+
+[ext_resource type="PackedScene" uid="uid://d0wlwayp70uwa" path="res://Scenes/dice_box.tscn" id="1_5mu72"]
+[ext_resource type="PackedScene" uid="uid://vyhid80ditay" path="res://Assets/Models/futuristiccitypasha/scene.gltf" id="2_exwh7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s4qdn"]
+sky_top_color = Color(0.2822592, 0.2486633, 0.6294634, 1)
+sky_horizon_color = Color(0.053639695, 0.019771481, 0.15843621, 1)
+sky_curve = 0.68921715
+ground_bottom_color = Color(0.13482445, 0.113268726, 0.2456666, 1)
+ground_horizon_color = Color(0.052857593, 0.0013141861, 0.13212097, 1)
+ground_curve = 0.04141062
+energy_multiplier = 0.9
+
+[sub_resource type="Sky" id="Sky_7ewk0"]
+sky_material = SubResource("ProceduralSkyMaterial_s4qdn")
+
+[sub_resource type="Environment" id="Environment_r1ldl"]
+background_mode = 2
+sky = SubResource("Sky_7ewk0")
+ambient_light_color = Color(0.91764706, 0, 0.7411765, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="CityscapeScene" type="Node3D" unique_id=359851520]
+
+[node name="DiceBox" parent="." unique_id=622061906 instance=ExtResource("1_5mu72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+
+[node name="Sketchfab_Scene" parent="." unique_id=793661892 instance=ExtResource("2_exwh7")]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, -936.52997, -678.20996, -1969.3799)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=427819031]
+environment = SubResource("Environment_r1ldl")
+
+[editable path="Sketchfab_Scene"]

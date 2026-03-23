@@ -6,11 +6,19 @@ extends Control
 
 @export var rolls : int = 0
 @export var max_rolls : int = 8
+
+@export var statue_count : int
+
 @onready var fps_2: Label = $CanvasLayer/FPS2
 
 signal round_changing
 
+var high_score : int
+var viewing_cards : bool = false
+var choosing_new_cards : bool = false
+var combining_statues: bool = false
 var money_due : int 
+var run_number : int
 var permanent_money_increases : int = 0
 var current_money : int
 var performance_mode : bool = false
@@ -18,33 +26,119 @@ var visible_fps : bool = false
 var has_pressed_release : bool = false
 var dice_amount : int = 5
 var card_slots : int = 5
-var previous_round_target : int = 40
+var card_count : int = 0
+var previous_round_target : int = 20
 var rng := RandomNumberGenerator.new()
 var rng_shops := RandomNumberGenerator.new()
 var rng_statues := RandomNumberGenerator.new()
 var rng_upgrades := RandomNumberGenerator.new()
 var rng_cards := RandomNumberGenerator.new()
 var input_seed : int
-@export var base_round_target : int = 80
-@export var new_round_target : int = 40
+var statue_top_choice : Node3D
+var statue_bottom_choice : Node3D
+var combined_statue_1 : Node3D
+var combined_statue_2 : Node3D
+
+var dialogue_seen : Dictionary = {
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+	7: false,
+	8: false,
+	9: false,
+	10: false,
+	11: false,
+	12: false,
+	13: false,
+	14: false,
+	15: false,
+	16: false,
+	17: false,
+	18: false,
+	19: false,
+	20: false,
+	21: false,
+	22: false,
+	23: false,
+	24: false,
+	25: false,
+	26: false,
+	27: false,
+	28: false,
+	29: false,
+	30: false
+}
+
+@export var in_tutorial : bool = false
+@export var overkill_money_cap : int = 8
+@export var base_round_target : int = 40
+@export var new_round_target : int = 20
 @export var current_round : int = 0
 @export var dice_rested : int = 0
 @export var dice_resting : bool = false
 @export var highlighting : String = "none"
+@export var is_on_web : bool = false
+
+func reset_things() -> void:
+	high_score = 0
+	money_due = 0
+	permanent_money_increases = 3
+	current_money = 0
+	has_pressed_release = false
+	dice_amount = 5
+	card_slots = 5
+	card_count = 0
+	previous_round_target = 15
+	input_seed = 0
+	overkill_money_cap  = 8
+	give_me_your_seed()
+	base_round_target = 30
+	new_round_target = 15
+	current_round = 0
+	dice_rested = 0
+	dice_resting = false
+	highlighting = "none"
+	InputHandler.current_reroll_state = 0
+	InputHandler.hovered_object = "none"
+	InputHandler.statue_camera_state = false
+	InputHandler.next_card = 0
+	InputHandler.currently_vacant_dice_slot = 0
+	InputHandler.currently_vacant_statue_slot = 0
+	InputHandler.currently_vacant_card_slot = 0
+	InputHandler.selected_shop_slot = 0
+	InputHandler.in_game = false
+	InputHandler.actionable = false
 
 func _ready() -> void:
 	if !OS.has_feature("web"):
 		@warning_ignore("narrowing_conversion")
 		Engine.max_fps = DisplayServer.screen_get_refresh_rate()
-		toggle_performance_mode(false)
+		is_on_web = false
+		toggle_performance_mode(true)
+		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120 
 		print("notonweb")
 	if OS.has_feature("web"):
 		Engine.max_fps = 60
+		is_on_web = true
 		toggle_performance_mode(true)
 		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120
 		print("onweb")
+	SaveLoad._load()
+	dialogue_seen = SaveLoad.SaveFileData.dialogue_seen
+	run_number = SaveLoad.SaveFileData.run_number
+	#performance_mode = SaveLoad.SaveFileData.performance_mode
+	performance_mode = true
+	if !is_on_web:
+		if performance_mode:
+			toggle_performance_mode(true)
+		if !performance_mode:
+			toggle_performance_mode(false)
+	
 
 func give_me_your_seed() -> void:
 	#seed
@@ -114,18 +208,23 @@ func _input(event: InputEvent) -> void:
 func calculate_round_target_and_progress_round() -> void:
 	current_round += 1
 	previous_round_target = new_round_target
-	@warning_ignore("integer_division")
-	new_round_target = (base_round_target * (current_round * (previous_round_target / 40)))
+	@warning_ignore("integer_division", "narrowing_conversion")
+	new_round_target = snappedi((base_round_target) + (previous_round_target) + ((previous_round_target) * (current_round * 0.05)) + 1, 10)
 	@warning_ignore("integer_division")
 	print("new round target is " + str(new_round_target))
 	round_changing.emit()
 	
 func progress_round(current_grand_total : int) -> void:
 	@warning_ignore("integer_division")
-	money_due = (((current_grand_total - new_round_target) / current_round) + rolls) + permanent_money_increases
+	var overkill_money : int = ((current_grand_total - new_round_target) / current_round)
+	if overkill_money > overkill_money_cap:
+		overkill_money = overkill_money_cap
+	@warning_ignore("integer_division")
+	money_due = (overkill_money + rolls) + permanent_money_increases
 	get_tree().call_group("main", "play_sheet_to_counter")
 
 func _process(_delta: float) -> void:
+	
 	
 	if visible_fps:
 		fps.text = str(Engine.get_frames_per_second()) + " FPS"

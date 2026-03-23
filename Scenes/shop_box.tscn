@@ -333,7 +333,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LeaveShop/MouseDetect/CollisionShape3D:disabled")
+tracks/4/path = NodePath("LeaveShop/MouseDetect/LeaveShopCollider:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -396,7 +396,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LeaveShop/MouseDetect/CollisionShape3D:disabled")
+tracks/4/path = NodePath("LeaveShop/MouseDetect/LeaveShopCollider:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -539,7 +539,7 @@ mesh = SubResource("PlaneMesh_315vy")
 
 [node name="MouseDetect" type="Area3D" parent="LeaveShop" unique_id=152508017]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LeaveShop/MouseDetect" unique_id=154158132]
+[node name="LeaveShopCollider" type="CollisionShape3D" parent="LeaveShop/MouseDetect" unique_id=154158132]
 transform = Transform3D(1.0000005, 0, 3.7252903e-09, 0, 1, 0, -3.7252903e-09, 0, 1.0000005, 0.0005030632, -0.0010001659, -0.00050091743)
 shape = SubResource("BoxShape3D_aqkja")
 disabled = true
@@ -555,6 +555,10 @@ one_shot = true
 
 [node name="ShopRerollTimer" type="Timer" parent="." unique_id=345759288]
 wait_time = 1.5
+one_shot = true
+
+[node name="ExitButtonTimer" type="Timer" parent="." unique_id=1926702859]
+process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="ShopGenerateTimer" to="." method="_on_shop_generate_timer_timeout"]

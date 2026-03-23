@@ -11,6 +11,7 @@ var rarity : Array = [1, 2, 3, 4]
 @export var weight_probabilities : Array = [10, 5, 2, 0.5]
 @onready var label_3d: Label3D = $Label3D
 @onready var statue_base_logic: StatueBaseLogic = $StatueBaseLogic
+@onready var poof_particle: CPUParticles3D = $PoofParticle
 
 @export var statue_base_description : String
 @export var item_name : String = "Additive"

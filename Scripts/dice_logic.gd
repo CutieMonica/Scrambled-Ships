@@ -77,8 +77,10 @@ func sealed_away_forever() -> void:
 
 func start_recall() -> void:
 	if !get_parent().stored:
-		if get_parent().outside_the_box:
+		if get_parent().outside_the_box and get_parent().get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true:
 			match get_parent().outside_the_box_multiplier_given_to_top_row:
+				0:
+					pass
 				1:
 					get_parent().get_parent().score_sheet.ones_multiplier -= outside_the_box_multiplier
 				2:
@@ -92,11 +94,14 @@ func start_recall() -> void:
 				6:
 					get_parent().get_parent().score_sheet.sixes_multiplier -= outside_the_box_multiplier
 		get_parent().outside_the_box_multiplier_given_to_top_row = 0
+		get_parent().get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
+		get_parent().get_parent().score_sheet.modifier_check()
 		get_parent().get_parent().score_sheet.update_multipliers()
 		get_parent().set_collision_mask_value(1, false)
 		get_parent().recalling = true
 		get_parent().dropping = false
 		get_parent().shaking = false
+		get_parent().outside_the_box = false
 
 func drop() -> void:
 	if get_parent().recalling == true:
@@ -125,7 +130,10 @@ func return_to_box() -> void:
 	get_parent().set_collision_mask_value(1, false)
 	get_parent().set_collision_layer_value(1, false)
 	get_parent().returning_to_box = true
-	get_parent().get_parent().stored_dice.set(dice_position, "false")
+	get_parent().stored = false
+	get_parent().add_to_group("dice")
+	get_parent().remove_from_group("stored_dice")
+	get_parent().get_parent().stored_dice.set(get_parent().dice_position, "false")
 	back_to_box_timer.start()
 
 func throw() -> void:
@@ -146,16 +154,19 @@ func update_ui() -> void:
 
 func _physics_process(delta: float) -> void:
 		
-	if !get_parent().rigid_body_3d.sleeping and !get_parent().storing:
+	if get_parent().linear_velocity.length() > 0.1 and !get_parent().storing:
 		get_parent().has_given_number = false
 		
 	if get_parent().recalling:
+		get_parent().returning_to_box = false
+		get_parent().stored = false
 		get_parent().has_given_number = true
 		get_parent().linear_velocity = Vector3.ZERO
 		if !get_parent().outside_the_box:
 			get_parent().position = lerp(get_parent().position, Vector3(11.5, 9 + (get_parent().dice_position * 1.5), -8.8), delta * 5)
 		if get_parent().outside_the_box:
-			get_parent().get_parent().score_sheet.has_temp_modifier = false
+			get_parent().get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
+			get_parent().get_parent().score_sheet.modifier_check()
 			get_parent().position = lerp(get_parent().position, Vector3(11.5, 9 + (get_parent().dice_position * 1.5), -8.8), delta * 20)
 			get_parent().outside_the_box = false
 			
@@ -168,17 +179,17 @@ func _physics_process(delta: float) -> void:
 	if get_parent().shaking:
 		get_parent().has_given_number = true
 		
-	if get_parent().returning_to_box:
+	if get_parent().returning_to_box and !get_parent().recalling:
 		get_parent().position = lerp(get_parent().position, Vector3(get_parent().dice_position * 0.5, 2, 0), delta)
 		
-	if get_parent().focused == true and !get_parent().outside_the_box and get_parent().linear_velocity.length() < 1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false:
+	if get_parent().focused == true and !get_parent().outside_the_box and get_parent().linear_velocity.length() < 0.1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false and get_parent().has_given_number:
 		focusdie()
 		
 func focusdie() -> void:
 	if dice_being_replaced:
 		return
 	get_parent().focused = true
-	if !get_parent().outside_the_box and get_parent().linear_velocity.length() < 1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false:
+	if !get_parent().outside_the_box and get_parent().linear_velocity.length() < 0.1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false and get_parent().has_given_number:
 		get_parent().animation_player.play("highlighted")
 		print("sus")
 		InputHandler.hovered_object = "dice" + str(get_parent().dice_position)
@@ -235,8 +246,7 @@ func _on_back_to_box_timer_timeout() -> void:
 	get_parent().gravity_scale = default_gravity
 	get_parent().set_collision_mask_value(1, true)
 	get_parent().set_collision_layer_value(1, true)
-	get_parent().add_to_group("dice")
-	get_parent().remove_from_group("stored_dice")
+	
 
 
 func _on_gravity_reset_timer_timeout() -> void:
@@ -268,12 +278,16 @@ func purchase_die() -> void:
 		get_parent().get_parent().in_play_dice_instances.set(target_slot, get_parent())
 		dice_position = target_slot
 		just_spawned = false
+		get_parent().get_parent().shop_to_dice_storage()
+		await get_tree().create_timer(0.75).timeout
 		get_parent().global_position = Vector3.ZERO
 		get_parent().rotation = Vector3.ZERO
 		get_parent().freeze = false
 		end_of_round_reset()
 		remove_from_group("awaiting_new_slot")
 		GameManager.dice_amount += 1
+		await get_tree().create_timer(1.5).timeout
+		get_parent().get_parent().dice_storage_to_shop()
 		return
 	if target_slot == 0:
 		add_to_group("awaiting_new_slot")
@@ -310,5 +324,13 @@ func go_to_new_slot(slot : int) -> void:
 	end_of_round_reset()
 	remove_from_group("awaiting_new_slot")
 	GameManager.dice_amount += 1
-	await get_tree().create_timer(0.65).timeout
+	await get_tree().create_timer(0.9).timeout
 	get_parent().get_parent().dice_storage_to_shop()
+
+func explosion() -> void:
+	get_parent().linear_velocity.y = GameManager.rng.randf_range(10, 15)
+	get_parent().linear_velocity.x = get_parent().position.x * GameManager.rng.randf_range(12, 15)
+	get_parent().linear_velocity.z = get_parent().position.z * GameManager.rng.randf_range(12, 15)
+	get_parent().rigid_body_3d.rotate_x(GameManager.rng.randf_range(-180, 180))
+	get_parent().rigid_body_3d.rotate_y(GameManager.rng.randf_range(-180, 180))
+	get_parent().rigid_body_3d.rotate_z(GameManager.rng.randf_range(-180, 180))

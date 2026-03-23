@@ -8,6 +8,7 @@ extends Node3D
 @onready var statue_model_logic: Node3D = $StatueModelLogic
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var poof_particle: CPUParticles3D = $PoofParticle
 
 @export var item_name : String = "Sisyphus' Rock"
 @export var added_modifier : float
