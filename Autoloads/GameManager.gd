@@ -117,22 +117,20 @@ func _ready() -> void:
 		@warning_ignore("narrowing_conversion")
 		Engine.max_fps = DisplayServer.screen_get_refresh_rate()
 		is_on_web = false
-		toggle_performance_mode(true)
 		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120 
 		print("notonweb")
 	if OS.has_feature("web"):
 		Engine.max_fps = 60
 		is_on_web = true
-		toggle_performance_mode(true)
 		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120
 		print("onweb")
 	SaveLoad._load()
 	dialogue_seen = SaveLoad.SaveFileData.dialogue_seen
 	run_number = SaveLoad.SaveFileData.run_number
-	#performance_mode = SaveLoad.SaveFileData.performance_mode
-	performance_mode = true
+	performance_mode = SaveLoad.SaveFileData.performance_mode
+	#performance_mode = true
 	if !is_on_web:
 		if performance_mode:
 			toggle_performance_mode(true)

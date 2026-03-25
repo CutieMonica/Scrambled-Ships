@@ -38,6 +38,7 @@ var jonnyboy := load("uid://pa7ius5g80hi")
 var eotu := load("res://Assets/Textures/deskcarvings/eyeogtheuniverse.png")
 
 var mrbeast := load("res://Assets/Textures/deskcarvings/mr beast.png")
+@onready var environment_adjustment: AnimationPlayer = $EnvironmentAdjustment
 
 var random_icon_image : Dictionary = {
 	1 : bad_ideas,
@@ -86,3 +87,6 @@ func _ready() -> void:
 		await get_tree().create_timer(6.66).timeout
 	random_icon = GameManager.rng.randi_range(1, random_icon_image.size())
 	wood_carving.get_active_material(0).albedo_texture = random_icon_image.get(random_icon)
+
+func play_environment_shift() -> void:
+	environment_adjustment.play("Round" + str(GameManager.current_round))

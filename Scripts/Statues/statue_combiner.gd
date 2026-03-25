@@ -260,3 +260,38 @@ func destroy_statue() -> void:
 	if statue_top_instance != null:
 		statue_top_instance.queue_free()
 	queue_free()
+
+func flip_base() -> void:
+	if statue_bottom_instance.statue_type == "Subtract":
+		statue_bottom = common_bases.get(1)
+	if statue_bottom_instance.statue_type == "Add":
+		statue_bottom = common_bases.get(2)
+	var new_statue_value : int = statue_bottom_instance.base_statue_value
+	statue_bottom_instance.queue_free()
+	statue_bottom_instance = statue_bottom.instantiate()
+	add_child(statue_bottom_instance)
+	statue_bottom_instance.name = "Base" + str(statue_bottom_instance.statue_type)
+	
+	statue_bottom_instance.statue_base_logic.name_change(str(statue_top_instance.statue_name))
+	
+	statue_bottom_instance.base_statue_value = new_statue_value
+	match statue_bottom_rarity:
+		1:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.common_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.common_text_outline_color
+		2:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.uncommon_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.uncommon_text_outline_color
+		3:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.rare_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.rare_text_outline_color
+		4:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.legendary_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.legendary_text_outline_color
+
+	statue_top_instance.statue_model_logic.color_shift(str(statue_bottom_instance.color))
+	statue_top_instance.generate_value()
+	statue_top_instance.update_text()
+	
+	item_name = statue_bottom_instance.item_name + " " + statue_top_instance.item_name
+	description = statue_top_instance.description + statue_bottom_instance.statue_tooltip

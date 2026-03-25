@@ -2,10 +2,13 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var die_spawned : int = 0
 
+var is_postgame : bool = false
+
 var max_die : int = 5
 var max_cards : int = 5
 var max_statues : int = 4
 
+var consecutive_rolls : int = 0
 var next_card : int = 0
 var watching_coins : bool = false
 var statues_created : int = 0
@@ -18,6 +21,10 @@ var statue_top_choice : Node3D
 var statue_bottom_choice : Node3D
 
 var basic_d6 := preload("res://Scenes/dice/Basicd_6.tscn")
+
+var boat := load("uid://dgbnt6hnb02c8")
+var city := load("uid://dq38n88cf8h1j")
+var current_environment : Node
 
 var card_instance : Node
 var dice_instance : Node
@@ -45,6 +52,8 @@ var card_shop_slots_unlocked : int = 11
 @onready var card_animations: AnimationPlayer = $CardAnimations
 @onready var card_exit_detect: Area3D = $CardExitDetect
 @onready var card_exit_collider: CollisionShape3D = $CardExitDetect/CardExitCollider
+@onready var lighting_shift: AnimationPlayer = $LightingShift
+
 
 @onready var target_score_display: Node3D = $TargetScoreDisplay
 @onready var round_score_buffer: Timer = $RoundScoreBuffer
@@ -57,14 +66,16 @@ var card_shop_slots_unlocked : int = 11
 @onready var camera_movement: AnimationPlayer = $CameraMovement
 @onready var dice_box: Node3D = $DiceBox
 @onready var score_sheet: Node3D = $ScoreSheet
-@onready var music_source: AudioStreamPlayer3D = $Boat/Radio/MusicSource
+@onready var radio: Node3D = %Radio
+
 @onready var current_dice_paper: Node3D = $CurrentDicePaper
-@onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D
 @onready var mesh_instance_3d: MeshInstance3D = $Camera3D/MeshInstance3D
 @onready var omni_light_3d: OmniLight3D = $OmniLight3D
 @onready var omni_light_3d_2: OmniLight3D = $OmniLight3D2
 @onready var spot_light_3d_3: SpotLight3D = $SpotLight3D3
 @onready var spot_light_3d_2: SpotLight3D = $SpotLight3D2
+@onready var spot_light_3d_4: SpotLight3D = $SpotLight3D4
+
 @onready var camerabuffer: Timer = $Camerabuffer
 @onready var exit_card_outline: MeshInstance3D = $ExitCardOutline
 @onready var shop_box: Node3D = $ShopBox
@@ -125,6 +136,8 @@ var card_shop_slots_unlocked : int = 11
 @onready var dialogue_player: AnimationPlayer = $DialogueHandler/DialoguePlayer
 
 @onready var statue_combiner_stuff: Node3D = $StatueCombinerStuff
+@onready var dealer: Node3D = $Dealer
+
 
 var chosen_dice : Dictionary = {
 	1: basic_d6,
@@ -248,15 +261,16 @@ func performance_switch() -> void:
 	if GameManager.performance_mode:
 		await get_tree().process_frame
 		mesh_instance_3d.visible = false
-		directional_light_3d.shadow_enabled = false
 		omni_light_3d.shadow_enabled = false
 		omni_light_3d_2.shadow_enabled = false
 		spot_light_3d_2.shadow_enabled = false
 		spot_light_3d_3.shadow_enabled = false
+		spot_light_3d_4.shadow_enabled = false
 	if !GameManager.performance_mode:
 		await get_tree().process_frame
 		mesh_instance_3d.visible = true
-		#directional_light_3d.shadow_enabled = true
+		
+
 		#omni_light_3d.shadow_enabled = true
 		#omni_light_3d_2.shadow_enabled = true
 		spot_light_3d_2.shadow_enabled = true
@@ -357,6 +371,10 @@ func round_start() -> void:
 	statue_stand.mouse_box_on()
 	get_tree().call_group("statues", "main_scene_round_started")
 	spawn_coins()
+	if !is_postgame and GameManager.current_round < 9:
+		dealer.phase_shift()
+		current_environment.play_environment_shift()
+		lighting_shift.play("Round" + str(GameManager.current_round))
 	for i : int in stored_dice.size() + 1:
 		if stored_dice.get(i) != null:
 			stored_dice.set(i, "false")
@@ -380,6 +398,7 @@ func round_start() -> void:
 		reload()
 
 func _ready() -> void:
+	environment_check()
 	InputHandler.main_scene_entered()
 	performance_switch()
 	if GameManager.dialogue_seen.get(1) == false:
@@ -388,7 +407,6 @@ func _ready() -> void:
 	if GameManager.dialogue_seen.get(1) == true:
 		camera_movement.play("Default")
 	round_start()
-	GlobalMusicPlayer.start_act1ambience()
 	card_placement_references = {
 	1:
 		card_placement_ref_1,
@@ -429,6 +447,13 @@ func _ready() -> void:
 		5: statue_placement_ref_5.global_position,
 		6: statue_placement_ref_6.global_position
 	}
+	
+func environment_check() -> void:
+	if is_postgame:
+		current_environment = city.instantiate()
+	else:
+		current_environment = boat.instantiate()
+	add_child(current_environment)
 	
 func _on_timer_timeout() -> void:
 	if die_spawned != max_die:
@@ -502,6 +527,9 @@ func reload() -> void:
 	if InputHandler.current_reroll_state == 3:
 		GameManager.has_pressed_release = true
 		InputHandler.current_reroll_state = 4
+		consecutive_rolls += 1
+		if consecutive_rolls == 4:
+			dialogue_player.spamming_rerolls_dialogue()
 		get_tree().call_group("statues", "main_scene_rerolling")
 		
 func focus_a_die(focused_die : int) -> void:
@@ -563,7 +591,7 @@ func unhighlight_cards() -> void:
 	
 func pull_up_cards() -> void:
 	card_animations.play("pullupcards")
-	camerabuffer.wait_time = 0.7
+	camerabuffer.wait_time = 0.3
 	camerabuffer.start()
 	await camerabuffer.timeout
 	if !choosing_new_card:
@@ -626,7 +654,7 @@ func find_vacant_card_slot() -> int:
 			if current_lowest_slot == 0:
 				current_lowest_slot = i
 	return current_lowest_slot
-	
+
 
 func ending_counter_camera() -> void:
 	between_rounds = true
@@ -640,6 +668,7 @@ func ending_counter_camera() -> void:
 	await round_score_buffer.timeout
 	target_score_display.play_random_death_voice()
 
+
 func play_sheet_to_counter() -> void:
 	between_rounds = true
 	InputHandler.actionable = false
@@ -652,11 +681,13 @@ func play_sheet_to_counter() -> void:
 	await round_score_buffer.timeout
 	target_score_display.get_new_target_score()
 
+
 func get_rick_quick_bitch() -> void:
 	watching_coins = true
 	camera_movement.play("end_of_round_counter_to_coins")
 	
 	spawn_money()
+	
 	
 func play_coins_to_shop() -> void:
 	watching_coins = false
@@ -707,8 +738,6 @@ func backwards_default() -> void:
 	camera_movement.play_backwards("Default")
 	InputHandler.in_game = false
 	InputHandler.actionable = false
-	
-	
 
 func generate_shop() -> void:
 	get_tree().call_group("dice_gen", "create_dice")
@@ -733,7 +762,7 @@ func update_money(amount : int) -> void:
 	shop_box.money_tracker.update_money()
 
 func clear_shop_items() -> void:
-	for i in shop_items.size():
+	for i in shop_items.size() + 1:
 		if shop_items.get(i) != null and shop_items.get(i).item_type != "Ticket":
 			shop_items.get(i).queue_free()
 

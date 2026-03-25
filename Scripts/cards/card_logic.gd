@@ -143,7 +143,7 @@ func purchase_card() -> void:
 		GameManager.card_count += 1
 		remove_from_group("awaiting_new_slot")
 		change_layers()
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.8).timeout
 		get_parent().get_parent().card_deck_to_shop()
 		moving_to_target = false
 		return

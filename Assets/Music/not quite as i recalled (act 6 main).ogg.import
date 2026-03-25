@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bkwqq5x1b1sw2"
+path="res://.godot/imported/not quite as i recalled (act 6 main).ogg-d848e5ed9cfd37436ddb9c7b1fdfdb8e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/not quite as i recalled (act 6 main).ogg"
+dest_files=["res://.godot/imported/not quite as i recalled (act 6 main).ogg-d848e5ed9cfd37436ddb9c7b1fdfdb8e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

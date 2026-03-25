@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ycxbyu2uk0ro"
+path="res://.godot/imported/something sinister (act 4 main).ogg-e108af8dd0b751ccf04ab459210d582a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/something sinister (act 4 main).ogg"
+dest_files=["res://.godot/imported/something sinister (act 4 main).ogg-e108af8dd0b751ccf04ab459210d582a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -61,3 +61,5 @@ script = ExtResource("1_hdiv0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=472053443]
 libraries/ = SubResource("AnimationLibrary_tuvam")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

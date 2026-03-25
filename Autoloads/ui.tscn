@@ -37,7 +37,6 @@ theme_override_constants/outline_size = 16
 text = "Rolls: 8"
 
 [node name="CRTFilter" type="ColorRect" parent="CanvasLayer" unique_id=1702216558]
-visible = false
 z_index = 20
 material = ExtResource("3_t2j77")
 anchors_preset = 15
@@ -74,6 +73,7 @@ horizontal_alignment = 2
 [node name="Borderline Forever" type="Node" parent="CanvasLayer" unique_id=323801237]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Borderline Forever" unique_id=759204343]
+z_index = 30
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -84,6 +84,7 @@ offset_bottom = 3.0
 grow_horizontal = 2
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Borderline Forever" unique_id=1023062837]
+z_index = 30
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -94,6 +95,7 @@ offset_bottom = 386.0
 grow_vertical = 2
 
 [node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Borderline Forever" unique_id=254662904]
+z_index = 30
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -107,6 +109,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Borderline Forever" unique_id=246985327]
+z_index = 30
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8hj25t0xsor0"
+path="res://.godot/imported/Absorbing pressence (act 2 ambient).ogg-85abb73d5d67cbc00b3a7a63a1283a7c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Ambient/Absorbing pressence (act 2 ambient).ogg"
+dest_files=["res://.godot/imported/Absorbing pressence (act 2 ambient).ogg-85abb73d5d67cbc00b3a7a63a1283a7c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

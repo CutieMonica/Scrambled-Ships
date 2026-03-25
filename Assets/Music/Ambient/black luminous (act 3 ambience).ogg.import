@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1rp0asdmlpke"
+path="res://.godot/imported/black luminous (act 3 ambience).ogg-335b85e7940d16fb583ce5ad3980ae0d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Ambient/black luminous (act 3 ambience).ogg"
+dest_files=["res://.godot/imported/black luminous (act 3 ambience).ogg-335b85e7940d16fb583ce5ad3980ae0d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

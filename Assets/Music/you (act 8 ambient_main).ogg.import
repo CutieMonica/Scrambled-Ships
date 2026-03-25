@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://deui4xd4isw8n"
+path="res://.godot/imported/you (act 8 ambient_main).ogg-edf1e9ee3c9338fa4616d81ab19f3e07.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/you (act 8 ambient_main).ogg"
+dest_files=["res://.godot/imported/you (act 8 ambient_main).ogg-edf1e9ee3c9338fa4616d81ab19f3e07.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

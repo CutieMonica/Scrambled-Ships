@@ -328,9 +328,9 @@ func go_to_new_slot(slot : int) -> void:
 	get_parent().get_parent().dice_storage_to_shop()
 
 func explosion() -> void:
-	get_parent().linear_velocity.y = GameManager.rng.randf_range(10, 15)
-	get_parent().linear_velocity.x = get_parent().position.x * GameManager.rng.randf_range(12, 15)
-	get_parent().linear_velocity.z = get_parent().position.z * GameManager.rng.randf_range(12, 15)
-	get_parent().rigid_body_3d.rotate_x(GameManager.rng.randf_range(-180, 180))
-	get_parent().rigid_body_3d.rotate_y(GameManager.rng.randf_range(-180, 180))
-	get_parent().rigid_body_3d.rotate_z(GameManager.rng.randf_range(-180, 180))
+	get_parent().linear_velocity.y = GameManager.rng.randf_range(15, 20)
+	get_parent().linear_velocity.x = get_parent().position.x * GameManager.rng.randf_range(20, 22)
+	get_parent().linear_velocity.z = get_parent().position.z * GameManager.rng.randf_range(20, 22)
+	get_parent().rigid_body_3d.rotate_x(GameManager.rng.randf_range(-360, 360))
+	get_parent().rigid_body_3d.rotate_y(GameManager.rng.randf_range(-360, 360))
+	get_parent().rigid_body_3d.rotate_z(GameManager.rng.randf_range(-360, 360))

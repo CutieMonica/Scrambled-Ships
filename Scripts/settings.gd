@@ -76,8 +76,8 @@ func _on_option_button_item_selected(index: int) -> void:
 func _on_texture_button_pressed() -> void:
 	random_sound()
 	animation_player.play_backwards("settingspopup")
-	get_parent().start.disabled = false
-	get_parent().settings_button.disabled = false
+	get_tree().call_group("title", "enable_buttons")
+	check_button.disabled = true
 	SaveLoad._save()
 	
 func _on_check_button_toggled(toggled_on: bool) -> void:
@@ -85,12 +85,12 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		GameManager.toggle_performance_mode(true)
 		SaveLoad.SaveFileData.performance_mode = true
-		get_parent().performance_switch()
+		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120
 	if !toggled_on:
 		GameManager.toggle_performance_mode(false)
 		SaveLoad.SaveFileData.performance_mode = false
-		get_parent().performance_switch()
+		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120 
 
 func _on_sfx_volume_value_changed(value: float) -> void:
@@ -120,6 +120,8 @@ func _on_music_volume_drag_ended(_value_changed: bool) -> void:
 
 func and_then_i_pull_up_hop_out_at_the_after_party() -> void:
 	animation_player.play("settingspopup")
+	if !GameManager.is_on_web:
+		check_button.disabled = false
 
 func _on_line_edit_text_submitted(_new_text: String) -> void:
 	if (int(line_edit.text)) > 0 and (int(line_edit.text)) <= 999999999:

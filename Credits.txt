@@ -1,30 +1,113 @@
-"Dice" (https://skfb.ly/6RtsC) by tnRaro
 
-Models from:
+
+Main Music Composer: RussT
 
 
 Key art by Rand0man
 
-Textures from Texturelabs.org
-
-SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX, VIRALAUDIO, DRAGONSTUDIO, Crunchpix Studio, universfield, Tiovanlley, RibhavAgrawal, 
-
-Main Music Composer: RussT
-
-Extra Music from Skye Ash, LudoLoon Studio
-
-Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF.
-
-Animations and Models from Mixamo
-
-Fonts from moontr3, Somepx, Servo Type Co, Studio Hello Good
-
-Normal maps from cpetry's website
 
 Desk Carving Easter Egg ideas from Me, Bad Ideas Productions, Fan_go_brrrr, VolfenF, Cablll, RussT, LilacStarvix, ThunderSpark, SilviaFoxtris
 
+
+Some textures by ThunderSpark
+
+
 Idea Guys - EnderSam, ThunderSpark, Rand0man
 
-Special Thanks To: Terry Cavanagh, Daniel Mullins, and LocalThunk for inspiring the hell out of this game, I hope the items I made to pay tribute to your games were cool!
 
-Thank you to Mostly Mad Productions and especially to Brackeys for having great tutorials, I literally had never touched 3D game development in my life until the day of the jam starting and Brackeys' 3D Godot tutorial was a miracle.
+Animations and Models from Mixamo
+
+
+3D Models:
+
+"Dice" (https://skfb.ly/6RtsC) by tnRaro
+
+"Boat" (https://skfb.ly/pDRQy) by usedm
+
+"2 boxes" (https://skfb.ly/oCtx7) by Cozmoth
+
+"set_d20_8" (https://skfb.ly/o9O7y) by katrin.jets
+
+"folding table" (https://skfb.ly/6AELB) by Kathrin&Christian
+
+"Gold Hand Statue" (https://skfb.ly/oTASq) by Gonsaku
+
+"Ico Sphere 2 Subdivisions-color" (https://skfb.ly/6unP6) by chandlerklebs
+
+"Apartment" (https://skfb.ly/6GLNT) by Leon
+
+"Lowpoly gold coin" (https://skfb.ly/69CRK) by BlobFortress
+
+"Wolf Lowpoly" (https://skfb.ly/6qspP) by Mirandanimator
+
+"Metal bowl. Art" (https://skfb.ly/p7WRp) by Yvonne DeBandi
+
+"Asian Themed Low Poly Night City Buildings" (https://skfb.ly/pwKLV) by 99.Miles
+
+"Floppy Disk" (https://skfb.ly/6XnUu) by Nyangire
+
+"Old Radio" (https://skfb.ly/o99Av) by Green fish
+
+"Low Poly Psx Hinged door" (https://skfb.ly/oMOQB) by SaukrDev
+
+"Kitchen Sink" (https://skfb.ly/pxExD) by Fen1xTon
+
+"Modern Table" (https://skfb.ly/oS67L) by Solidbot
+
+"Low-poly yatch (animation)" (https://skfb.ly/oLXSW) by dannzjs
+
+
+
+Textures from Texturelabs.org
+
+
+SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX, VIRALAUDIO, DRAGONSTUDIO, Crunchpix Studio, universfield, Tiovanlley, RibhavAgrawal, Floraphobic, 
+
+Extra Music used during testing from Skye Ash, LudoLoon Studio
+
+
+Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF.
+
+
+Fonts from moontr3, Somepx, Servo Type Co, Studio Hello Good
+
+
+Normal maps made with cpetry's website
+
+
+Playtesters: FoxxArie, ThunderSpark, LilacStarvix, Cablll, Rand0man, LightningSizzle, FrostHound
+
+
+Special Thanks To: Terry Cavanagh, Daniel Mullins, and LocalThunk for giving me a ton of creative inspiration. I hope the items I made to pay tribute to your games were cool!
+
+
+Thank you to Mostly Mad Productions and especially to Brackeys for having great tutorials, I had never touched 3D game development in my life until the day of the jam starting and Brackeys' 3D Godot tutorial was a miracle.
+
+
+Thank you to Jonny RaZeR and the rest of Bad Ideas Productions for putting on this jam with such a banger theme, and giving me a chance to get my work out there to more people.
+
+
+Thank you to every kind soul out there who uploads their handcrafted, wonderful work to the internet and makes it completely free to use. If you're one of the disgraces that chooses to upload to these same websites with ai-generated artwork, you suck and I hate you. I had to spend an uncountable amount of time combing through any assets I find on the internet now to make sure I'm getting real things made by real people who actually give a damn about their work.
+
+"If you use gen AI you're a loser and we don't like you" - Jonny RaZeR
+
+
+Thank you to every Godot contributor (who doesn't use AI generated code) and every other open source software developer that makes creativity without limitation possible on a budget of $0.
+
+
+
+This was my first ever 3D project, so hopefully it turned out well.
+
+
+
+Game Design, Programming, Some Textures, Models, Sound Effects, Voice Acting, Animations, Writing, Bug Fixing, And generally just putting all these things together solo: CutieMonica (or Monica Phillips I guess)
+
+
+
+Thank you to someone I won't be naming here, for inspiring this narrative, and making me understand how powerful a motivator pure spite and bottled up emotions can be. You probably aren't reading this, because you never cared about what I did anyway, but genuinely, thank you. This game wouldn't exist without you, for what it's worth.
+
+
+To all my platonic friends who I no longer have the confidence to say "I love you" to, I apologize. You should know you are loved, by me and many others.
+
+
+Every time you lose something, you gain more than you lost. Every failure is a chance to learn, every person no longer in your life leaves you more room to grow, and everything you don't have anymore is weight off your shoulders. You can always be a better you than you were yesterday.

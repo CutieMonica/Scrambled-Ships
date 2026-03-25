@@ -536,12 +536,14 @@ func lock_in_score() -> void:
 		GameManager.high_score += current_grand_total
 		GameManager.progress_round(current_grand_total)
 		get_parent().recall_all_dice()
+		get_parent().consecutive_rolls = 0
 		return
 	if GameManager.rolls <= 0:
 		get_parent().become_inactionable()
 		GameManager.high_score += current_grand_total
 		get_parent().ending_counter_camera()
 		is_sheet_highlighted = false
+		get_parent().consecutive_rolls = 0
 		hovered_category = "none"
 
 	if GameManager.rolls > 0 and inside_sheet:
@@ -551,6 +553,7 @@ func lock_in_score() -> void:
 		InputHandler.hovered_object = "none"
 		hovered_category = "none"
 		is_sheet_highlighted = false
+		get_parent().consecutive_rolls = 0
 		await get_tree().create_timer(0.34).timeout
 		get_parent().become_actionable()
 		get_parent().reload()

@@ -15,6 +15,8 @@ config/description="Just a fun game of Yacht Dice, surely nothing else is going 
 config/version="1.0"
 run/main_scene="uid://cikokvs42uudo"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/stretch_mode=4
+boot_splash/image="uid://b7ksrv1ulpya4"
 config/icon="uid://0npl86cl5w7f"
 config/windows_native_icon="res://scrambledshipsicon.ico"
 
@@ -29,6 +31,7 @@ GlobalMusicPlayer="*uid://bu0owrhtrjj5o"
 SfxBank="*uid://hfm2er5quhfd"
 InputHandler="*uid://cw5iqymbhvxuo"
 SaveLoad="*uid://c4gm4hinxj0n7"
+Settings="*uid://5rfethyswpr0"
 
 [debug]
 
@@ -59,6 +62,7 @@ statue_gen=""
 card_gen=""
 awaiting_new_slot=""
 statuefusionnew=""
+title=""
 
 [gui]
 
