@@ -6,13 +6,13 @@ Main Music Composer: RussT
 Key art by Rand0man
 
 
-Desk Carving Easter Egg ideas from Me, Bad Ideas Productions, Fan_go_brrrr, VolfenF, Cablll, RussT, LilacStarvix, ThunderSpark, SilviaFoxtris
-
-
 Some textures by ThunderSpark
 
 
-Idea Guys - EnderSam, ThunderSpark, Rand0man
+Desk Carving Easter Egg ideas from Me, Bad Ideas Productions, Fan_go_brrrr, VolfenF, Cablll, RussT, LilacStarvix, ThunderSpark, SilviaFoxtris
+
+
+Ideas Guys - EnderSam, ThunderSpark, Rand0man
 
 
 Animations and Models from Mixamo
@@ -58,15 +58,17 @@ Animations and Models from Mixamo
 
 
 
-Textures from Texturelabs.org
+Some textures from Texturelabs.org
 
 
-SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX, VIRALAUDIO, DRAGONSTUDIO, Crunchpix Studio, universfield, Tiovanlley, RibhavAgrawal, Floraphobic, 
+
+SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX, VIRALAUDIO, DRAGONSTUDIO, Crunchpix Studio, universfield, Tiovanlley, RibhavAgrawal, Floraphobic
+
 
 Extra Music used during testing from Skye Ash, LudoLoon Studio
 
 
-Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF, and Binbun.
+Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF, Malkar_Shader, and Binbun.
 
 
 Fonts from moontr3, Somepx, Servo Type Co, Studio Hello Good
@@ -87,7 +89,10 @@ Thank you to Mostly Mad Productions and especially to Brackeys for having great 
 Thank you to Jonny RaZeR and the rest of Bad Ideas Productions for putting on this jam with such a banger theme, and giving me a chance to get my work out there to more people.
 
 
-Thank you to every kind soul out there who uploads their handcrafted, wonderful work to the internet and makes it completely free to use. If you're one of the disgraces that chooses to upload to these same websites with ai-generated artwork, you suck and I hate you. I had to spend an uncountable amount of time combing through any assets I find on the internet now to make sure I'm getting real things made by real people who actually give a damn about their work.
+Thank you to every kind soul out there who uploads their handcrafted, wonderful work to the internet and makes it completely free to use.
+
+If you're one of the disgraces that chooses to upload to these same websites with ai-generated artwork, you suck and I hate you. I had to spend an uncountable amount of time combing through any assets I find on the internet now to make sure I'm getting real things made by real people who actually give a damn about their work.
+
 
 "If you use gen AI you're a loser and we don't like you" - Jonny RaZeR
 
@@ -96,8 +101,8 @@ Thank you to every Godot contributor (who doesn't use AI generated code) and eve
 
 
 
-This was my first ever 3D project, so hopefully it turned out well.
 
+This was my first ever 3D project, so hopefully it turned out well.
 
 
 Game Design, Programming, Some Textures, Models, Sound Effects, Voice Acting, Animations, Writing, Bug Fixing, And generally just putting all these things together solo: CutieMonica (or Monica Phillips I guess)
@@ -107,7 +112,24 @@ Game Design, Programming, Some Textures, Models, Sound Effects, Voice Acting, An
 Thank you to someone I won't be naming here, for inspiring this narrative, and making me understand how powerful a motivator pure spite and bottled up emotions can be. You probably aren't reading this, because you never cared about what I did anyway, but genuinely, thank you. This game wouldn't exist without you, for what it's worth.
 
 
+
 To all my platonic friends who I no longer have the confidence to say "I love you" to, I apologize. You should know you are loved, by me and many others.
 
 
-Every time you lose something, you gain more than you lost. Every failure is a chance to learn, every person no longer in your life leaves you more room to grow, and everything you don't have anymore is weight off your shoulders. You can always be a better you than you were yesterday.
+
+
+
+
+Every time you lose something, 
+
+you gain more than you lost. 
+
+Every failure is a chance to learn, 
+
+Every person no longer in your life leaves you more room to grow, 
+
+And everything you don't have anymore is weight off your shoulders. 
+
+
+
+You can always be a better you than you were yesterday.

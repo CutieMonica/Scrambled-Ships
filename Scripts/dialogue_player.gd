@@ -417,7 +417,7 @@ var death_dialogue_4 : Dictionary = {
 var death_dialogue_5 : Dictionary = {
 	0: "...",
 	1: "DO YOU FEEL THAT?",
-	2: "THE PANG IN YOUR CHEST FROM LOSING ANOTHER RUN.",
+	2: "THE PAIN IN YOUR CHEST FROM LOSING ANOTHER RUN.",
 	3: "FROM SPENDING SO MUCH TIME... JUST FOR IT TO LEAVE YOU IN AN INSTANT.",
 	4: "MAYBE YOU'RE YEARNING FOR THE BETTER TIMES.",
 	5: "FOR THE RUN WHERE EVERYTHING GOES RIGHT.",
@@ -1098,6 +1098,7 @@ func finale_dialogue() -> void:
 				get_parent().get_parent().dealer.play_finale_2()
 			76:
 				get_parent().get_parent().camera_movement.play("BlackOut")
+				get_parent().get_parent().radio.fade_out_song()
 				dialogue_handler_2.min_pitch = 1.05
 				dialogue_handler_2.max_pitch = 1.5
 				dialogue_handler_2.volume = -2.5
@@ -1109,6 +1110,7 @@ func finale_dialogue() -> void:
 	no_dialogue()
 	no_dialogue_voice_2()
 	GameManager.ending_cutscene = true
+	get_parent().get_parent().add_breakdown_cutscene()
 
 func dialogue_save(dialogue_number : int) -> void:
 	GameManager.dialogue_seen.set(dialogue_number, true)

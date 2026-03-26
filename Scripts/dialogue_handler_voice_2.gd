@@ -93,6 +93,9 @@ func _on_timer_timeout() -> void:
 		text_done.emit()
 		timer.stop()
 
+func back_to_normal() -> void:
+	text_shader_animation.play("wave")
+
 func play_shake_1() -> void:
 	text_shader_animation.play("shaky")
 	

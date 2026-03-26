@@ -31,6 +31,8 @@ func fade_in() -> void:
 
 func play_breakdown_song() -> void:
 	global_music_player.stream = breakdown_cutscene_song
+	fade_in()
+	global_music_player.play()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	#global_music_player.playing = false

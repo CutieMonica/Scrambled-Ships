@@ -171,7 +171,7 @@ func _ready() -> void:
 	dialogue_seen = SaveLoad.SaveFileData.dialogue_seen
 	run_number = SaveLoad.SaveFileData.run_number
 	performance_mode = SaveLoad.SaveFileData.performance_mode
-	#performance_mode = true
+	# = true
 	if !is_on_web:
 		if performance_mode:
 			toggle_performance_mode(true)

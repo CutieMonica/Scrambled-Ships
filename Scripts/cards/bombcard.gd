@@ -35,9 +35,9 @@ func _process(_delta: float) -> void:
 		match playsound:
 			"explode":
 				var random_vine_boom_jumpscare : int = randi_range(1, 100)
-				if random_vine_boom_jumpscare < 100:
+				if random_vine_boom_jumpscare < 100 or GameManager.current_round >= 5:
 					audio_stream_player_3d.stream = SfxBank.explosion_1
-				if random_vine_boom_jumpscare == 100:
+				if random_vine_boom_jumpscare == 100 and GameManager.current_round < 5:
 					audio_stream_player_3d.stream = SfxBank.explosion_2
 		audio_stream_player_3d.play()
 		playsound = "none"

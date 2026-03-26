@@ -22,6 +22,10 @@ var basic_d6 := preload("res://Scenes/dice/Basicd_6.tscn")
 
 var boat := load("uid://dgbnt6hnb02c8")
 var city := load("uid://dq38n88cf8h1j")
+
+var breakdown_cutscene := load("res://Scenes/breakdown_cutscene.tscn")
+var breakdown_instance : Node
+
 var current_environment : Node
 
 var card_instance : Node
@@ -527,7 +531,7 @@ func reload() -> void:
 		InputHandler.current_reroll_state = 4
 		InputHandler.actionable = true
 		consecutive_rolls += 1
-		if consecutive_rolls == 4:
+		if consecutive_rolls == 4 and GameManager.current_round < 5:
 			dialogue_player.spamming_rerolls_dialogue()
 		get_tree().call_group("statues", "main_scene_rerolling")
 		
@@ -823,6 +827,11 @@ func ending_fade_out() -> void:
 	radio.play_round_end_song()
 	dialogue_player.in_death_we_part()
 
+func add_breakdown_cutscene() -> void:
+	breakdown_instance = breakdown_cutscene.instantiate()
+	add_child(breakdown_instance)
+	
+	
 func back_to_title(state : int) -> void:
 	GlobalMusicPlayer.fade_out()
 	GlobalMusicPlayer.ambience_target = 0
