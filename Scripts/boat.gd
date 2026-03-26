@@ -90,3 +90,7 @@ func _ready() -> void:
 
 func play_environment_shift() -> void:
 	environment_adjustment.play("Round" + str(GameManager.current_round))
+
+func play_losing_round() -> void:
+	environment_adjustment.play("Round" + str(GameManager.current_round) + "_to_end")
+	environment_adjustment.queue("RoundEnd")

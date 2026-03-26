@@ -66,7 +66,7 @@ SFX from Pixabay.com, SOUND_GARAGE, David Stearns, Impact FX, VIRALAUDIO, DRAGON
 Extra Music used during testing from Skye Ash, LudoLoon Studio
 
 
-Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF.
+Shaders by Xtarsia, Destrea, Frenk74, KitsuneKotta, Gerardo LCDF, and Binbun.
 
 
 Fonts from moontr3, Somepx, Servo Type Co, Studio Hello Good

@@ -1165,6 +1165,10 @@ shape = SubResource("BoxShape3D_7dlp3")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1218816317]
 bus = &"SFX"
 
+[node name="Timer" type="Timer" parent="." unique_id=149103826]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="mouse_entered" from="MeshInstance3D/MouseDetectOnes" to="." method="_on_mouse_detect_ones_mouse_entered"]
 [connection signal="mouse_exited" from="MeshInstance3D/MouseDetectOnes" to="." method="_on_mouse_detect_ones_mouse_exited"]
 [connection signal="mouse_entered" from="MeshInstance3D/MouseDetectTwos" to="." method="_on_mouse_detect_twos_mouse_entered"]

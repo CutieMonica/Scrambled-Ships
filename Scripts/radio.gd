@@ -20,6 +20,7 @@ var act5music := preload("res://Assets/Music/in loving memory (act 5 main).ogg")
 var act6music := preload("res://Assets/Music/not quite as i recalled (act 6 main).ogg")
 var act7music := preload("res://Assets/Music/remember (act 7 ambient_main).ogg")
 var act8music := preload("res://Assets/Music/you (act 8 ambient_main).ogg")
+var roundendmusic := preload("res://Assets/Music/roll with it (directional end game mix).ogg")
 
 func _ready() -> void:
 	play_round_1_song()
@@ -39,6 +40,13 @@ func play_round_1_song() -> void:
 	music_fade_in.play("FadeIn1")
 	music_source.stream = act1music
 	music_source.play()
+	current_song = 1
+	
+func play_round_end_song() -> void:
+	music_fade_in.queue("FadeIn1")
+	music_source.stream = act1music
+	music_source.play()
+	music_source.playing = true
 	current_song = 1
 	
 func play_round_2_song() -> void:

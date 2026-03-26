@@ -1,44 +1,366 @@
 [gd_scene format=3 uid="uid://cqkd1gi4oeeoa"]
 
 [ext_resource type="Script" uid="uid://bop5vlxxsfyvd" path="res://Scripts/dialogue_handler_voice_2.gd" id="1_poqvu"]
-[ext_resource type="Shader" uid="uid://c8kwx4cskfyqs" path="res://Shaders/test_shader.gdshader" id="2_n4wwo"]
+[ext_resource type="Shader" uid="uid://bhnomti2e18ql" path="res://Shaders/dialogue2.gdshader" id="2_poqvu"]
 [ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="3_poqvu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhbmq"]
-shader = ExtResource("2_n4wwo")
-shader_parameter/wave_amplitude = -5.0
-shader_parameter/wave_frequency = 140.0
-shader_parameter/movement_speed = 2.0
-shader_parameter/movement_amplitude = 5.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4wwo"]
+shader = ExtResource("2_poqvu")
+shader_parameter/text_color = Color(0.23043218, 0.5241196, 1, 1)
+shader_parameter/warp_frequency = 10.0
+shader_parameter/warp_amplitude = 5.0
+shader_parameter/warp_speed = 2.0
 
 [sub_resource type="Theme" id="Theme_u17yf"]
 default_font_size = 48
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_poqvu"]
+shader = ExtResource("2_poqvu")
+shader_parameter/text_color = Color(0, 0, 0, 1)
+shader_parameter/warp_frequency = 10.0
+shader_parameter/warp_amplitude = 5.0
+shader_parameter/warp_speed = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhbmq"]
+shader = ExtResource("2_poqvu")
+shader_parameter/text_color = Color(1, 1, 1, 1)
+shader_parameter/warp_frequency = 10.0
+shader_parameter/warp_amplitude = 5.0
+shader_parameter/warp_speed = 2.0
 
 [sub_resource type="Animation" id="Animation_decec"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Text:material:shader_parameter/wave_frequency")
+tracks/0/path = NodePath("Text:material:shader_parameter/warp_frequency")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [140.0]
+"values": [10.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Text:material:shader_parameter/wave_amplitude")
+tracks/1/path = NodePath("Text:material:shader_parameter/warp_amplitude")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-5.0]
+"values": [5.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:material:shader_parameter/warp_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:material:shader_parameter/warp_frequency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shadow:material:shader_parameter/warp_amplitude")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:material:shader_parameter/warp_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Outline:material:shader_parameter/warp_frequency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Outline:material:shader_parameter/warp_amplitude")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Outline:material:shader_parameter/warp_speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_poqvu"]
+resource_name = "shaky"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:material:shader_parameter/warp_frequency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.77600074936]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:material:shader_parameter/warp_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.43200040052]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:material:shader_parameter/warp_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0430000495425]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:material:shader_parameter/warp_frequency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.77600074936]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shadow:material:shader_parameter/warp_amplitude")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.43200040052]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:material:shader_parameter/warp_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0430000495425]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Outline:material:shader_parameter/warp_frequency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.77600074936]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Outline:material:shader_parameter/warp_amplitude")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.43200040052]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Outline:material:shader_parameter/warp_speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0430000495425]
+}
+
+[sub_resource type="Animation" id="Animation_n4wwo"]
+resource_name = "shaky2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:material:shader_parameter/warp_frequency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.510000879225]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:material:shader_parameter/warp_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.9950004747625]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:material:shader_parameter/warp_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.3560000644099999]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:material:shader_parameter/warp_frequency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.510000879225]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shadow:material:shader_parameter/warp_amplitude")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.9950004747625]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:material:shader_parameter/warp_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.3560000644099999]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Outline:material:shader_parameter/warp_frequency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.510000879225]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Outline:material:shader_parameter/warp_amplitude")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.9950004747625]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Outline:material:shader_parameter/warp_speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.3560000644099999]
 }
 
 [sub_resource type="Animation" id="Animation_mhbmq"]
@@ -48,31 +370,117 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Text:material:shader_parameter/wave_frequency")
+tracks/0/path = NodePath("Text:material:shader_parameter/warp_frequency")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [140.0, 280.0]
+"values": [4.650000220875]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Text:material:shader_parameter/wave_amplitude")
+tracks/1/path = NodePath("Text:material:shader_parameter/warp_amplitude")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.31, 3.88),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-5.0, 5.0]
+"values": [2.74000013015]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:material:shader_parameter/warp_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0310000489725]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:material:shader_parameter/warp_frequency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.650000220875]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shadow:material:shader_parameter/warp_amplitude")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.74000013015]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:material:shader_parameter/warp_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0310000489725]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Outline:material:shader_parameter/warp_frequency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.650000220875]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Outline:material:shader_parameter/warp_amplitude")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.74000013015]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Outline:material:shader_parameter/warp_speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0310000489725]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8ks0"]
 _data = {
 &"RESET": SubResource("Animation_decec"),
+&"shaky": SubResource("Animation_poqvu"),
+&"shaky2": SubResource("Animation_n4wwo"),
 &"wave": SubResource("Animation_mhbmq")
 }
 
@@ -87,6 +495,60 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_poqvu")
 text = " fesfstgsdz esrdghf wase ws gzsz tstgerex "
+
+[node name="Shadow" type="RichTextLabel" parent="." unique_id=1345146251]
+material = SubResource("ShaderMaterial_n4wwo")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -593.5
+offset_top = -310.0
+offset_right = 578.5
+offset_bottom = 348.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_u17yf")
+theme_override_colors/default_color = Color(0.43529412, 0.79607844, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.43356574, 0.79648453, 0.99999994, 1)
+theme_override_fonts/normal_font = ExtResource("3_poqvu")
+theme_override_font_sizes/normal_font_size = 76
+text = "ABCDEFGHIJKLMNOPQRSTUVWXYS!~,.?'\": aa aa aa AAAAAAAAAAAA AA AA AA AA AA"
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+visible_characters_behavior = 1
+
+[node name="Outline" type="RichTextLabel" parent="." unique_id=1170101344]
+material = SubResource("ShaderMaterial_poqvu")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.5
+offset_top = -304.0
+offset_right = 585.5
+offset_bottom = 354.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_u17yf")
+theme_override_colors/default_color = Color(0.43529412, 0.79607844, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.43356574, 0.79648453, 0.99999994, 1)
+theme_override_fonts/normal_font = ExtResource("3_poqvu")
+theme_override_font_sizes/normal_font_size = 76
+text = "ABCDEFGHIJKLMNOPQRSTUVWXYS!~,.?'\": aa aa aa AAAAAAAAAAAA AA AA AA AA AA"
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+visible_characters_behavior = 1
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=2092525365]
 material = SubResource("ShaderMaterial_mhbmq")
@@ -107,10 +569,6 @@ theme = SubResource("Theme_u17yf")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.43356574, 0.79648453, 0.99999994, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("3_poqvu")
 theme_override_font_sizes/normal_font_size = 76
 text = "ABCDEFGHIJKLMNOPQRSTUVWXYS!~,.?'\": aa aa aa AAAAAAAAAAAA AA AA AA AA AA"

@@ -59,6 +59,9 @@ extends Node3D
 @export var second_best_triple : int = 0
 @export var second_best_double : int = 0
 	
+@onready var timer: Timer = $Timer
+
+	
 var can_leave : bool = false
 var highlighted : bool = false
 var can_highlight : bool = true
@@ -438,6 +441,7 @@ func modifier_check() -> void:
 
 func lock_in_score() -> void:
 	random_sound()
+	
 	if hovered_category == "ones":
 		ones_locked_in = true
 		ones_locked_in_score = roundi(ones_amount * ones_multiplier)
@@ -529,9 +533,11 @@ func lock_in_score() -> void:
 		bonus_score.modulate = permanent_number_color
 		bonus_threshold.modulate = permanent_number_color
 		bonus_given = true
+		
 	top_sum = (ones_locked_in_score + twos_locked_in_score + threes_locked_in_score + fours_locked_in_score + fives_locked_in_score + sixes_locked_in_score)
 	current_sum.text = "TOP SUM: " + str(top_sum)
 	grand_total_amount.text = str(current_grand_total)
+	
 	if current_grand_total >= GameManager.new_round_target and inside_sheet:
 		GameManager.high_score += current_grand_total
 		GameManager.progress_round(current_grand_total)
@@ -545,20 +551,22 @@ func lock_in_score() -> void:
 		is_sheet_highlighted = false
 		get_parent().consecutive_rolls = 0
 		hovered_category = "none"
-
-	if GameManager.rolls > 0 and inside_sheet:
+	else:
 		get_tree().call_group("stored_dice", "return_to_box")
 		leave_sheet()
 		InputHandler.actionable = false
 		InputHandler.hovered_object = "none"
 		hovered_category = "none"
 		is_sheet_highlighted = false
+		inside_sheet = false
 		get_parent().consecutive_rolls = 0
-		await get_tree().create_timer(0.34).timeout
-		get_parent().become_actionable()
+		await get_tree().create_timer(0.35).timeout
+		InputHandler.actionable = true
 		get_parent().reload()
 		get_parent().reset_storage_slots()
-
+		
+	is_sheet_highlighted = false
+	
 func _on_area_3d_mouse_entered() -> void:
 	if can_highlight:
 		highlighter.play("Highlighted")
@@ -574,28 +582,28 @@ func _on_area_3d_mouse_exited() -> void:
 		pass
 
 func interact() -> void:
-	if is_sheet_highlighted:
+	if is_sheet_highlighted and InputHandler.actionable:
 		enter_sheet()
-	if hovered_category != "none" and hovered_category != "outside":
-		lock_in_score()
-	if hovered_category == "outside":
+	if hovered_category == "outside" and InputHandler.actionable:
 		leave_sheet()
-	if hovered_category == "none":
-		pass
+	if hovered_category != "none" and hovered_category != "outside" and !get_parent().camera_movement.is_playing() and InputHandler.actionable:
+		lock_in_score()
+
 
 func enter_sheet() -> void:
 	if !InputHandler.actionable:
 		return
-	inside_sheet = true
+	
 	highlighter.play("Clicked")
 	is_sheet_highlighted = false
 	get_parent().zoom_on_score_sheet()
+	#timer.start()
+	#await timer.timeout
+	inside_sheet = true
 		
 func leave_sheet() -> void:
-	if !can_leave:
-		return
-	if !InputHandler.actionable:
-		return
+#	if !can_leave or !InputHandler.actionable or !inside_sheet:
+		#return
 	inside_sheet = false
 	highlighter.play_backwards("Clicked")
 	unhighlight_box()
@@ -945,7 +953,7 @@ func buff_one_score(buff : float, score : String) -> void:
 			yacht_locked_in_score += buff * yacht_multiplier
 			hovered_category = "yacht"
 	lock_in_score()
-	hovered_category = "none"
+	#hovered_category = "none"
 
 func multiply_one_modifier(buff : float, modifier : String) -> void:
 	match modifier:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://de77m0wso4pri"
+path="res://.godot/imported/roll with it (directional end game mix).ogg-dc6ef389f2046f57c187d4f01f7feefb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/roll with it (directional end game mix).ogg"
+dest_files=["res://.godot/imported/roll with it (directional end game mix).ogg-dc6ef389f2046f57c187d4f01f7feefb.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

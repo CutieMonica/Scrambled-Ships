@@ -13,6 +13,16 @@ extends Control
 
 signal round_changing
 
+@export var dice_numbers : Dictionary = {
+	1: 0,
+	2: 0,
+	3: 0,
+	4: 0,
+	5: 0,
+	6: null,
+	7: null
+}
+
 var high_score : int
 var viewing_cards : bool = false
 var choosing_new_cards : bool = false
@@ -38,6 +48,8 @@ var statue_top_choice : Node3D
 var statue_bottom_choice : Node3D
 var combined_statue_1 : Node3D
 var combined_statue_2 : Node3D
+var ending_cutscene : bool = false
+var is_postgame : bool = false
 
 var dialogue_seen : Dictionary = {
 	1: false,
@@ -69,7 +81,27 @@ var dialogue_seen : Dictionary = {
 	27: false,
 	28: false,
 	29: false,
-	30: false
+	30: false,
+	31: false,
+	32: false,
+	33: false,
+	34: false,
+	35: false,
+	36: false,
+	37: false,
+	38: false,
+	39: false,
+	40: false,
+	41: false,
+	42: false,
+	43: false,
+	44: false,
+	45: false,
+	46: false,
+	47: false,
+	48: false,
+	49: false,
+	50: false
 }
 
 @export var in_tutorial : bool = false
@@ -111,6 +143,15 @@ func reset_things() -> void:
 	InputHandler.selected_shop_slot = 0
 	InputHandler.in_game = false
 	InputHandler.actionable = false
+	dice_numbers = {
+	1: 0,
+	2: 0,
+	3: 0,
+	4: 0,
+	5: 0,
+	6: null,
+	7: null
+}
 
 func _ready() -> void:
 	if !OS.has_feature("web"):
@@ -162,15 +203,7 @@ func toggle_performance_mode(state : bool) -> void:
 		performance_mode = false
 		crt_filter.visible = false
 
-@export var dice_numbers : Dictionary = {
-	1: 0,
-	2: 0,
-	3: 0,
-	4: 0,
-	5: 0,
-	6: null,
-	7: null
-}
+
 
 func update_rolls_count(increment : int) -> void:
 	rolls += increment
@@ -222,8 +255,6 @@ func progress_round(current_grand_total : int) -> void:
 	get_tree().call_group("main", "play_sheet_to_counter")
 
 func _process(_delta: float) -> void:
-	
-	
 	if visible_fps:
 		fps.text = str(Engine.get_frames_per_second()) + " FPS"
 		fps_2.text = str(Engine.get_physics_frames()) + " PTPS"

@@ -529,17 +529,17 @@ func purchase_ticket() -> void:
 						get_parent().get_parent().get_parent().statue_stand.divider_1_gone()
 					if get_parent().get_parent().get_parent().max_statues == 6:
 						get_parent().get_parent().get_parent().statue_stand.divider_2_gone()
-					rare_upgrades_taken.set(random_ticket_choice, true)
+					legendary_upgrades_taken.set(random_ticket_choice, true)
 				4:
 					get_parent().get_parent().get_parent().max_statues += 1
 					if get_parent().get_parent().get_parent().max_statues == 5:
 						get_parent().get_parent().get_parent().statue_stand.divider_1_gone()
 					if get_parent().get_parent().get_parent().max_statues == 6:
 						get_parent().get_parent().get_parent().statue_stand.divider_2_gone()
-					rare_upgrades_taken.set(random_ticket_choice, true)
+					legendary_upgrades_taken.set(random_ticket_choice, true)
 				5:
 					get_parent().get_parent().get_parent().score_sheet.lower_yacht_floor = true
-					rare_upgrades_taken.set(random_ticket_choice, true)
+					legendary_upgrades_taken.set(random_ticket_choice, true)
 				6:
 					get_parent().get_parent().get_parent().score_sheet.yacht_multiplier *= 5
 	

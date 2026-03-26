@@ -77,7 +77,7 @@ func _ready() -> void:
 	
 func play_random_death_voice() -> void:
 	get_parent().radio.fade_out_song()
-	GlobalMusicPlayer.fade_out()
+	#GlobalMusicPlayer.fade_out()
 	var random_death_line := GameManager.rng.randi_range(1, random_death_voice_line.size())
 	label_3d.text = "LOSE"
 	audio_stream_player_3d.stream = YOU_LOSE
@@ -129,7 +129,10 @@ func play_random_death_voice() -> void:
 	variable_timer.start()
 	await variable_timer.timeout
 	get_parent().ending_fade_out()
-	GlobalMusicPlayer.start_title_song()
+	if !GameManager.is_postgame:
+		get_parent().current_environment.play_losing_round()
+		get_parent().lighting_shift.play("EndRound")
+	#GlobalMusicPlayer.start_title_song()
 	
 func play_number(number : int) -> void:
 	match number:
@@ -185,6 +188,10 @@ func get_new_target_score() -> void:
 	variable_timer.wait_time = 0.8
 	variable_timer.start()
 	await variable_timer.timeout
+	if !GameManager.is_postgame and GameManager.current_round == 9:
+		get_parent().dialogue_player.finale_dialogue()
+		get_parent().radio.play_round_end_song()
+		return
 	label_3d.text = "ROUND " + str(GameManager.current_round)
 	audio_stream_player_3d.stream = voiceROUND
 	audio_stream_player_3d.play()
@@ -219,9 +226,11 @@ func get_new_target_score() -> void:
 	label_3d.visible = true
 	round_counter.visible = true
 	round_counter.text = str(GameManager.current_round)
-	if GameManager.dialogue_seen.get(2) != true:
-		get_parent().dialogue_player.shop_tutorial_dialogue()
-	else:
+	if GameManager.is_postgame:
+		return
+	if GameManager.current_round < 9:
+		get_parent().dialogue_player.play_round_dialogue()
+	if GameManager.current_round >= 9:
 		get_parent().get_rick_quick_bitch()
 	
 	

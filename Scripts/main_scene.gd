@@ -2,8 +2,6 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var die_spawned : int = 0
 
-var is_postgame : bool = false
-
 var max_die : int = 5
 var max_cards : int = 5
 var max_statues : int = 4
@@ -371,7 +369,7 @@ func round_start() -> void:
 	statue_stand.mouse_box_on()
 	get_tree().call_group("statues", "main_scene_round_started")
 	spawn_coins()
-	if !is_postgame and GameManager.current_round < 9:
+	if !GameManager.is_postgame and GameManager.current_round < 9:
 		dealer.phase_shift()
 		current_environment.play_environment_shift()
 		lighting_shift.play("Round" + str(GameManager.current_round))
@@ -449,7 +447,7 @@ func _ready() -> void:
 	}
 	
 func environment_check() -> void:
-	if is_postgame:
+	if GameManager.is_postgame:
 		current_environment = city.instantiate()
 	else:
 		current_environment = boat.instantiate()
@@ -527,6 +525,7 @@ func reload() -> void:
 	if InputHandler.current_reroll_state == 3:
 		GameManager.has_pressed_release = true
 		InputHandler.current_reroll_state = 4
+		InputHandler.actionable = true
 		consecutive_rolls += 1
 		if consecutive_rolls == 4:
 			dialogue_player.spamming_rerolls_dialogue()
@@ -820,9 +819,22 @@ func recall_all_dice() -> void:
 	get_tree().call_group("dice_logic", "end_of_round_reset")
 
 func ending_fade_out() -> void:
-	camera_movement.play("ending_fade")
+	camera_movement.play("counter_to_dealer_losing")
+	radio.play_round_end_song()
+	dialogue_player.in_death_we_part()
+
+func back_to_title(state : int) -> void:
+	GlobalMusicPlayer.fade_out()
+	GlobalMusicPlayer.ambience_target = 0
+	match state:
+		1:
+			camera_movement.play("ending_fade")
+		2:
+			camera_movement.play("ending_fade_2")
 
 func _on_camera_movement_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "ending_fade":
-		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+	if anim_name == "ending_fade" or anim_name == "ending_fade_2":
 		GlobalMusicPlayer.start_title_song()
+		GlobalMusicPlayer.fade_in()
+		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+		

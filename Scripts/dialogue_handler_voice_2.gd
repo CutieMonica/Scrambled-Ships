@@ -16,13 +16,40 @@ var sound_7 := preload("res://Assets/SFX/voice2/ooh.ogg")
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var label: RichTextLabel = $Text
 @onready var timer: Timer = $Timer
+@export var align_screen : String = "bottom"
+@export var min_pitch : float = 0.8
+@export var max_pitch : float = 1.1
+@onready var text_shader_animation: AnimationPlayer = $text_shader_animation
+@onready var outline: RichTextLabel = $Outline
+@onready var shadow: RichTextLabel = $Shadow
 
 func update_text() -> void:
 	label.visible_characters = 0
+	outline.visible_characters = 0
+	shadow.visible_characters = 0
 	label.text = text
+	outline.text = text
+	shadow.text = text
+	match align_screen:
+		"bottom":
+			label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+			outline.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+			shadow.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		"middle":
+			label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			outline.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			shadow.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		"top":
+			label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+			outline.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+			shadow.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 
 func _ready() -> void:
 	label.text = " "
+	outline.text = " "
+	shadow.text = " "
+	if GameManager.ending_cutscene:
+		align_screen = "middle"
 
 func _process(_delta: float) -> void:
 	if start_cutscene == true:
@@ -48,7 +75,7 @@ func random_noises() -> void:
 	if random_noise == 7:
 		audio_stream_player.stream = sound_7
 	audio_stream_player.volume_db = (-8 + GameManager.rng.randf_range(-1, 4) - volume)
-	audio_stream_player.pitch_scale = (0 + GameManager.rng.randf_range(0.8, 1.1))
+	audio_stream_player.pitch_scale = (0 + GameManager.rng.randf_range(min_pitch, max_pitch))
 	audio_stream_player.play()
 		
 	#if audio_stream_player.playing:
@@ -58,8 +85,16 @@ func random_noises() -> void:
 func _on_timer_timeout() -> void:
 	if label.visible_ratio != 1:
 		label.visible_characters += 1
+		outline.visible_characters += 1
+		shadow.visible_characters += 1
 		if str(label.text[label.visible_characters - 1]) != " ":
 			random_noises()
 	if label.visible_ratio == 1:
 		text_done.emit()
 		timer.stop()
+
+func play_shake_1() -> void:
+	text_shader_animation.play("shaky")
+	
+func play_shake_2() -> void:
+	text_shader_animation.play("shaky2")
