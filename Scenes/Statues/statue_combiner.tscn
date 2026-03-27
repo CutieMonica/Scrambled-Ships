@@ -27,7 +27,7 @@ flip_faces = true
 size = Vector3(2.2, 3, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8ecq"]
-size = Vector3(1.8000001, 2.8, 1.8000001)
+size = Vector3(2, 2.9, 1.9)
 
 [node name="StatueCombiner" type="Node3D" unique_id=868220046 groups=["statues"]]
 script = ExtResource("1_xwwdv")
@@ -68,7 +68,7 @@ mesh = SubResource("BoxMesh_4t60h")
 [node name="StatueChoiceArea" type="Area3D" parent="." unique_id=2001005802]
 
 [node name="StatueMouseCollider" type="CollisionShape3D" parent="StatueChoiceArea" unique_id=631133469]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 1.25, -5.9604645e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 1.3000001, 0.049999893)
 shape = SubResource("BoxShape3D_x8ecq")
 
 [node name="DieTimer" type="Timer" parent="." unique_id=1884602427]

@@ -44,11 +44,17 @@ var statue_price : int
 #statue models
 var wolf := load("uid://bwhv5cg85yfkq")
 var sisyphus := load("res://Scenes/Statues/Models/sisyphus.tscn")
+var paperweight := load("uid://dk4tm1lkctsbk")
+
 
 var common_statues : Dictionary = {
 	1: wolf,
 	2: sisyphus
 	}
+	
+var uncommon_statues : Dictionary = {
+	1: paperweight
+}
 	
 #statue bases
 var statue_base_addition := load("uid://c64vl8ofj38lu")
@@ -66,9 +72,15 @@ func create_statue() -> void:
 	add_child(statue_bottom_instance)
 	statue_bottom_instance.name = "Base" + str(statue_bottom_instance.statue_type)
 	
-	var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, common_statues.size())
-	statue_top = common_statues.get(random_statue_top_choice)
-	statue_top_rarity = 1
+	var statue_top_rarity_choice : int = GameManager.rng_statues.randi_range(1, 4)
+	if statue_top_rarity_choice < 4:
+		var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, common_statues.size())
+		statue_top = common_statues.get(random_statue_top_choice)
+		statue_top_rarity = 1
+	else:
+		var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, uncommon_statues.size())
+		statue_top = uncommon_statues.get(random_statue_top_choice)
+		statue_top_rarity = 2
 	statue_top_instance = statue_top.instantiate()
 	add_child(statue_top_instance)
 	statue_top_instance.name = "Base" + str(statue_top_instance.statue_name)

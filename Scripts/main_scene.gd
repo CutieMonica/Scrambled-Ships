@@ -403,10 +403,12 @@ func _ready() -> void:
 	environment_check()
 	InputHandler.main_scene_entered()
 	performance_switch()
-	if GameManager.dialogue_seen.get(1) == false:
+	if GameManager.is_postgame:
+		camera_movement.play("DefaultPostgame")
+	if GameManager.dialogue_seen.get(1) == false and !GameManager.is_postgame:
 		dialogue_player.opening_tutorial_dialogue()
 		camera_movement.play("Default_FirstTime")
-	if GameManager.dialogue_seen.get(1) == true:
+	if GameManager.dialogue_seen.get(1) == true and !GameManager.is_postgame:
 		camera_movement.play("Default")
 	round_start()
 	card_placement_references = {
@@ -770,10 +772,11 @@ func clear_shop_items() -> void:
 			shop_items.get(i).queue_free()
 
 func shop_slot_zoom(slot : int) -> void:
-	disable_all_shop_areas()
-	camera_movement.play("shop_to_slot_" + str(slot))
-	shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot)
-	shop_box.disable_exit_button() 
+	if !camera_movement.is_playing():
+		disable_all_shop_areas()
+		camera_movement.play("shop_to_slot_" + str(slot))
+		shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot)
+		shop_box.disable_exit_button() 
 
 func shop_slot_zoom_out(slot : int) -> void:
 	camera_movement.play_backwards("shop_to_slot_" + str(slot))
@@ -847,3 +850,11 @@ func _on_camera_movement_animation_finished(anim_name: StringName) -> void:
 		GlobalMusicPlayer.fade_in()
 		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 		
+func enter_postgame() -> void:
+	GameManager.is_postgame = true
+	SaveLoad.SaveFileData.is_postgame = true
+	SaveLoad._save()
+	current_environment.queue_free()
+	current_environment = null
+	environment_check()
+	camera_movement.play_backwards("DefaultPostgameFirstTime")

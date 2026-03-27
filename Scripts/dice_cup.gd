@@ -65,8 +65,8 @@ func _process(delta: float) -> void:
 		rotation = lerp(rotation, Vector3(0, 0, 0), delta)
 		position = lerp(position, Vector3(position.x, position.y + 2, position.z), delta * 2)
 	if resetting:
-		rotation = Vector3(0, 0, 0)
-		position = Vector3(0, 0, 0)
+		#rotation = Vector3(0, 0, 0)
+	#	position = Vector3(0, 0, 0)
 		animation_player.play("RESET")
 		resetting = false
 

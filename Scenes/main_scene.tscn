@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://dy43eotutggt5" path="res://Scenes/statue_spawner.tscn" id="25_s8qe6"]
 [ext_resource type="PackedScene" uid="uid://cpvp2m400pa2i" path="res://Scenes/card_generator.tscn" id="25_yb0ja"]
 [ext_resource type="Script" uid="uid://cukyu37a8g5su" path="res://Scripts/statue_combiner_stuff.gd" id="28_igw8g"]
-[ext_resource type="PackedScene" uid="uid://cdvd8w1uwsjyk" path="res://Scenes/statue_combiner_middle.tscn" id="30_stxua"]
 [ext_resource type="Texture2D" uid="uid://d4kch0rqr5410" path="res://Assets/LonelyBlackBalloonEasterEgg/1773451192331.png" id="32_b00ha"]
 [ext_resource type="Shader" uid="uid://ckv2fv5jqhjy6" path="res://Shaders/pencildissolve.gdshader" id="32_rpyod"]
 [ext_resource type="Texture2D" uid="uid://cmgl2ymeqi0kx" path="res://Assets/Textures/UI Stuff/shopoverlay.png" id="32_urcnp"]
@@ -368,6 +367,756 @@ tracks/10/keys = {
 "update": 1,
 "values": [false, false, true, true]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DarkLight:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DarkLight7:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DarkLight8:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DarkLight9:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DarkLight6:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DarkLight2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("DarkLight5:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("DarkLight3:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("OmniLight3D2:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("OmniLight3D:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Radio:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-39, 5.1700006, -36.070004)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Radio:rotation")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.5235988, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Radio:scale")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.5, 2.5, 2.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ym6rb"]
+resource_name = "DefaultPostgame"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0001551404, 0, 0), Vector3(-0.0012411232, 0, 0), Vector3(-0.00418879, 0, 0), Vector3(-0.0099289855, 0, 0), Vector3(-0.019392548, 0, 0), Vector3(-0.03351032, 0, 0), Vector3(-0.053213146, 0, 0), Vector3(-0.079431884, 0, 0), Vector3(-0.11309734, 0, 0), Vector3(-0.15514039, 0, 0), Vector3(-0.20649183, 0, 0), Vector3(-0.26808256, 0, 0), Vector3(-0.3408434, 0, 0), Vector3(-0.42570516, 0, 0), Vector3(-0.52359873, 0, 0), Vector3(-0.6214924, 0, 0), Vector3(-0.706354, 0, 0), Vector3(-0.779115, 0, 0), Vector3(-0.8407057, 0, 0), Vector3(-0.8920571, 0, 0), Vector3(-0.9341001, 0, 0), Vector3(-0.96776557, 0, 0), Vector3(-0.99398434, 0, 0), Vector3(-1.0136871, 0, 0), Vector3(-1.027805, 0, 0), Vector3(-1.0372685, 0, 0), Vector3(-1.0430087, 0, 0), Vector3(-1.0459564, 0, 0), Vector3(-1.0470423, 0, 0), Vector3(-1.0471975, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 12.699558, 15.502427), Vector3(-0.5, 12.699558, 15.500901), Vector3(-0.5, 12.699558, 15.49022), Vector3(-0.5, 12.699558, 15.461227), Vector3(-0.5, 12.699558, 15.404768), Vector3(-0.5, 12.699558, 15.3116865), Vector3(-0.5, 12.699558, 15.172827), Vector3(-0.5, 12.699558, 14.979034), Vector3(-0.5, 12.699558, 14.721153), Vector3(-0.5, 12.699558, 14.390027), Vector3(-0.5, 12.699558, 13.976501), Vector3(-0.5, 12.699558, 13.471419), Vector3(-0.5, 12.699558, 12.865627), Vector3(-0.5, 12.699558, 12.149967), Vector3(-0.5, 12.699558, 11.315287), Vector3(-0.5, 12.699558, 10.352427), Vector3(-0.5, 12.699558, 9.389566), Vector3(-0.5, 12.699558, 8.554887), Vector3(-0.5, 12.699558, 7.8392262), Vector3(-0.5, 12.699558, 7.2334337), Vector3(-0.5, 12.699558, 6.7283525), Vector3(-0.5, 12.699558, 6.314827), Vector3(-0.5, 12.699558, 5.9837008), Vector3(-0.5, 12.699558, 5.7258196), Vector3(-0.5, 12.699558, 5.5320272), Vector3(-0.5, 12.699558, 5.3931675), Vector3(-0.5, 12.699558, 5.300086), Vector3(-0.5, 12.699558, 5.2436266), Vector3(-0.5, 12.699558, 5.214634), Vector3(-0.5, 12.699558, 5.203953), Vector3(-0.5, 12.699558, 5.202427)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/MeshInstance3D:mesh:material:shader_parameter/color_levels")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 6, 8, 11, 17, 23, 26, 28, 30, 31, 31, 31, 32, 32, 32, 32, 32, 32, 32, 32]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D/MeshInstance3D:mesh:material:shader_parameter/enable_color_limit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D/Sprite3D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9229837, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.99999815), Color(0, 0, 0, 0.99997), Color(0, 0, 0, 0.9998483), Color(0, 0, 0, 0.99952054), Color(0, 0, 0, 0.9988295), Color(0, 0, 0, 0.9975728), Color(0, 0, 0, 0.9955033), Color(0, 0, 0, 0.9923289), Color(0, 0, 0, 0.9877123), Color(0, 0, 0, 0.9812716), Color(0, 0, 0, 0.97257984), Color(0, 0, 0, 0.9611649), Color(0, 0, 0, 0.9465993), Color(0, 0, 0, 0.9330084), Color(0, 0, 0, 0.92249215), Color(0, 0, 0, 0.9145477), Color(0, 0, 0, 0.90871704), Color(0, 0, 0, 0.90458703), Color(0, 0, 0, 0.9017896), Color(0, 0, 0, 0.9000017), Color(0, 0, 0, 0.898945), Color(0, 0, 0, 0.89838624), Color(0, 0, 0, 0.8981372), Color(0, 0, 0, 0.8980545), Color(0, 0, 0, 0.89803964), Color(0, 0, 0, 0.87722886), Color(0, 0, 0, 0.5650736), Color(0, 0, 0, 0.061377943), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DarkLight:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.999923338257371, 15.998773412117975, 15.993790399637922, 15.980374593887628, 15.952086415263594, 15.900646394206738, 15.81593518023856, 15.685993502202052, 15.497022323683597, 15.233382644217508, 14.877595557117443, 14.410342307307817, 13.810464291323768, 13.054962883816984, 12.11899995803833, 11.18303610695716, 10.42753585607852, 9.827657146117588, 9.360404358959215, 9.004617214027746, 8.74097770805588, 8.552006413874608, 8.422064793669506, 8.3373533483757, 8.2859134682829, 8.257625119779107, 8.244209621258165, 8.239226404560952, 8.238076716185446, 8.238]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DarkLight2:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.99985292836903, 15.99764685390447, 15.988087199408232, 15.962349662471537, 15.908080239094408, 15.80939519053172, 15.646881060628582, 15.397594599544576, 15.035063061922717, 14.529283825510538, 13.846724502106682, 12.9503230485075, 11.799487766507047, 10.350096970057308, 8.554499983787537, 6.758901222372231, 5.309512644854408, 4.158676031494807, 3.2622754654683916, 2.5797160311179397, 2.0739371275455483, 1.7114053680304977, 1.4621190178930874, 1.2996044442035668, 1.2009196660732044, 1.1466499167904516, 1.120912969257546, 1.1113529229811403, 1.1091473046544422, 1.109]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DarkLight5:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.99985292836903, 15.99764685390447, 15.988087199408232, 15.962349662471537, 15.908080239094408, 15.80939519053172, 15.646881060628582, 15.397594599544576, 15.035063061922717, 14.529283825510538, 13.846724502106682, 12.9503230485075, 11.799487766507047, 10.350096970057308, 8.554499983787537, 6.758901222372231, 5.309512644854408, 4.158676031494807, 3.2622754654683916, 2.5797160311179397, 2.0739371275455483, 1.7114053680304977, 1.4621190178930874, 1.2996044442035668, 1.2009196660732044, 1.1466499167904516, 1.120912969257546, 1.1113529229811403, 1.1091473046544422, 1.109]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DarkLight3:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.99985292836903, 15.99764685390447, 15.988087199408232, 15.962349662471537, 15.908080239094408, 15.80939519053172, 15.646881060628582, 15.397594599544576, 15.035063061922717, 14.529283825510538, 13.846724502106682, 12.9503230485075, 11.799487766507047, 10.350096970057308, 8.554499983787537, 6.758901222372231, 5.309512644854408, 4.158676031494807, 3.2622754654683916, 2.5797160311179397, 2.0739371275455483, 1.7114053680304977, 1.4621190178930874, 1.2996044442035668, 1.2009196660732044, 1.1466499167904516, 1.120912969257546, 1.1113529229811403, 1.1091473046544422, 1.109]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:fov")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 75.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dealer:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DarkLight:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DarkLight7:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DarkLight8:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DarkLight9:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DarkLight6:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DarkLight2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("OmniLight3D2:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Radio:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5184364, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Radio:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-22.840002, -6.439999, -31.930004)]
+}
+
+[sub_resource type="Animation" id="Animation_pvyqv"]
+resource_name = "DefaultPostgameFirstTime"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.47996554, 0, 0), Vector3(0.43355104, 0, 0), Vector3(0.39022976, 0, 0), Vector3(0.34989482, 0, 0), Vector3(0.3124398, 0, 0), Vector3(0.27775782, 0, 0), Vector3(0.24574237, 0, 0), Vector3(0.21628669, 0, 0), Vector3(0.18928418, 0, 0), Vector3(0.16462818, 0, 0), Vector3(0.14221197, 0, 0), Vector3(0.12192902, 0, 0), Vector3(0.103672564, 0, 0), Vector3(0.087335944, 0, 0), Vector3(0.07281256, 0, 0), Vector3(0.05999568, 0, 0), Vector3(0.048778713, 0, 0), Vector3(0.03905496, 0, 0), Vector3(0.03071779, 0, 0), Vector3(0.02366054, 0, 0), Vector3(0.01777649, 0, 0), Vector3(0.012959063, 0, 0), Vector3(0.00910157, 0, 0), Vector3(0.0060973465, 0, 0), Vector3(0.0038397312, 0, 0), Vector3(0.0022220612, 0, 0), Vector3(0.0011377037, 0, 0), Vector3(0.0004799664, 0, 0), Vector3(0.00014221668, 0, 0), Vector3(1.7762184e-05, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 21.225, 15.502), Vector3(-0.5, 20.400558, 14.505992), Vector3(-0.5, 19.631058, 13.576361), Vector3(-0.5, 18.914604, 12.710814), Vector3(-0.5, 18.249306, 11.907068), Vector3(-0.5, 17.633263, 11.1628275), Vector3(-0.5, 17.064585, 10.475809), Vector3(-0.5, 16.541374, 9.8437195), Vector3(-0.5, 16.06174, 9.264273), Vector3(-0.5, 15.623785, 8.73518), Vector3(-0.5, 15.225615, 8.254152), Vector3(-0.5, 14.865336, 7.8188996), Vector3(-0.5, 14.541054, 7.4271345), Vector3(-0.5, 14.250874, 7.0765676), Vector3(-0.5, 13.992899, 6.7649107), Vector3(-0.5, 13.765239, 6.489874), Vector3(-0.5, 13.565996, 6.2491684), Vector3(-0.5, 13.393276, 6.0405064), Vector3(-0.5, 13.245187, 5.8616), Vector3(-0.5, 13.119831, 5.7101583), Vector3(-0.5, 13.015315, 5.583893), Vector3(-0.5, 12.929746, 5.4805155), Vector3(-0.5, 12.861226, 5.3977375), Vector3(-0.5, 12.807863, 5.33327), Vector3(-0.5, 12.767762, 5.2848234), Vector3(-0.5, 12.739028, 5.2501097), Vector3(-0.5, 12.719767, 5.226841), Vector3(-0.5, 12.708083, 5.2127266), Vector3(-0.5, 12.702085, 5.2054787), Vector3(-0.5, 12.699874, 5.2028084), Vector3(-0.5, 12.699558, 5.202427)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/MeshInstance3D:mesh:material:shader_parameter/color_levels")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 6, 8, 11, 17, 23, 26, 28, 30, 31, 31, 31, 32, 32, 32, 32, 32, 32, 32, 32]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D/MeshInstance3D:mesh:material:shader_parameter/enable_color_limit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D/Sprite3D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9229837, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.99999815), Color(0, 0, 0, 0.99997), Color(0, 0, 0, 0.9998483), Color(0, 0, 0, 0.99952054), Color(0, 0, 0, 0.9988295), Color(0, 0, 0, 0.9975728), Color(0, 0, 0, 0.9955033), Color(0, 0, 0, 0.9923289), Color(0, 0, 0, 0.9877123), Color(0, 0, 0, 0.9812716), Color(0, 0, 0, 0.97257984), Color(0, 0, 0, 0.9611649), Color(0, 0, 0, 0.9465993), Color(0, 0, 0, 0.9330084), Color(0, 0, 0, 0.92249215), Color(0, 0, 0, 0.9145477), Color(0, 0, 0, 0.90871704), Color(0, 0, 0, 0.90458703), Color(0, 0, 0, 0.9017896), Color(0, 0, 0, 0.9000017), Color(0, 0, 0, 0.898945), Color(0, 0, 0, 0.89838624), Color(0, 0, 0, 0.8981372), Color(0, 0, 0, 0.8980545), Color(0, 0, 0, 0.89803964), Color(0, 0, 0, 0.87722886), Color(0, 0, 0, 0.5650736), Color(0, 0, 0, 0.061377943), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DarkLight:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.999923338257371, 15.998773412117975, 15.993790399637922, 15.980374593887628, 15.952086415263594, 15.900646394206738, 15.81593518023856, 15.685993502202052, 15.497022323683597, 15.233382644217508, 14.877595557117443, 14.410342307307817, 13.810464291323768, 13.054962883816984, 12.11899995803833, 11.18303610695716, 10.42753585607852, 9.827657146117588, 9.360404358959215, 9.004617214027746, 8.74097770805588, 8.552006413874608, 8.422064793669506, 8.3373533483757, 8.2859134682829, 8.257625119779107, 8.244209621258165, 8.239226404560952, 8.238076716185446, 8.238]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DarkLight2:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.99985292836903, 15.99764685390447, 15.988087199408232, 15.962349662471537, 15.908080239094408, 15.80939519053172, 15.646881060628582, 15.397594599544576, 15.035063061922717, 14.529283825510538, 13.846724502106682, 12.9503230485075, 11.799487766507047, 10.350096970057308, 8.554499983787537, 6.758901222372231, 5.309512644854408, 4.158676031494807, 3.2622754654683916, 2.5797160311179397, 2.0739371275455483, 1.7114053680304977, 1.4621190178930874, 1.2996044442035668, 1.2009196660732044, 1.1466499167904516, 1.120912969257546, 1.1113529229811403, 1.1091473046544422, 1.109]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DarkLight5:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.99985292836903, 15.99764685390447, 15.988087199408232, 15.962349662471537, 15.908080239094408, 15.80939519053172, 15.646881060628582, 15.397594599544576, 15.035063061922717, 14.529283825510538, 13.846724502106682, 12.9503230485075, 11.799487766507047, 10.350096970057308, 8.554499983787537, 6.758901222372231, 5.309512644854408, 4.158676031494807, 3.2622754654683916, 2.5797160311179397, 2.0739371275455483, 1.7114053680304977, 1.4621190178930874, 1.2996044442035668, 1.2009196660732044, 1.1466499167904516, 1.120912969257546, 1.1113529229811403, 1.1091473046544422, 1.109]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DarkLight3:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 15.99985292836903, 15.99764685390447, 15.988087199408232, 15.962349662471537, 15.908080239094408, 15.80939519053172, 15.646881060628582, 15.397594599544576, 15.035063061922717, 14.529283825510538, 13.846724502106682, 12.9503230485075, 11.799487766507047, 10.350096970057308, 8.554499983787537, 6.758901222372231, 5.309512644854408, 4.158676031494807, 3.2622754654683916, 2.5797160311179397, 2.0739371275455483, 1.7114053680304977, 1.4621190178930874, 1.2996044442035668, 1.2009196660732044, 1.1466499167904516, 1.120912969257546, 1.1113529229811403, 1.1091473046544422, 1.109]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:fov")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [75.0, 71.80877369642258, 68.83022224903107, 66.0569971203804, 63.48177927732468, 61.09722018241882, 58.89600080251694, 56.870776534080505, 55.01422244310379, 53.31899982690811, 51.77777588367462, 50.38322174549103, 49.12800067663193, 48.004777908325195, 47.00622260570526, 46.125, 45.353777289390564, 44.685221672058105, 44.11200034618378, 43.62677854299545, 43.22222149372101, 42.89100033044815, 42.62577831745148, 42.41922265291214, 42.26400053501129, 42.15277719497681, 42.078221797943115, 42.03299957513809, 42.00977772474289, 42.00122147798538, 42.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dealer:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DiceBox:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DiceCup:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ScoreSheet:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CurrentDicePaper:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TargetScoreDisplay:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CurrencyCup:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("ShopBox:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("ShopPlacementReferences:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Sketchfab_Scene:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("StatueStand:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Radio:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("OmniLight3D2:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DarkLight2:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DarkLight:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("DarkLight7:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("DarkLight8:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("DarkLight9:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("DarkLight6:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_drdnd"]
 resource_name = "DefaultToSheet"
@@ -582,6 +1331,45 @@ tracks/2/keys = {
 "values": [30.5, 30.50659259374515, 30.55274074996123, 30.678000008454543, 30.921925999689847, 31.324074163101617, 31.92400006763637, 32.76125926151872, 33.87540799751878, 35.30600045621395, 37.09259330481291, 39.274740889668465, 41.892000541090965, 44.98392693698406, 48.590074092149734, 52.75, 56.90992856025696, 60.51607173681259, 63.60800343751907, 66.22526043653488, 68.40740868449211, 70.1939982175827, 71.62459233403206, 72.73874107003212, 73.57599976658821, 74.17592641711235, 74.57807371020317, 74.82199963927269, 74.94725954532623, 74.99340611696243, 75.0]
 }
 
+[sub_resource type="Animation" id="Animation_pmo5y"]
+resource_name = "PostgameFirstTime_to_default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0001551404, 0, 0), Vector3(-0.0012411232, 0, 0), Vector3(-0.00418879, 0, 0), Vector3(-0.0099289855, 0, 0), Vector3(-0.019392548, 0, 0), Vector3(-0.03351032, 0, 0), Vector3(-0.053213146, 0, 0), Vector3(-0.079431884, 0, 0), Vector3(-0.11309734, 0, 0), Vector3(-0.15514039, 0, 0), Vector3(-0.20649183, 0, 0), Vector3(-0.26808256, 0, 0), Vector3(-0.3408434, 0, 0), Vector3(-0.42570516, 0, 0), Vector3(-0.52359873, 0, 0), Vector3(-0.6214924, 0, 0), Vector3(-0.706354, 0, 0), Vector3(-0.779115, 0, 0), Vector3(-0.8407057, 0, 0), Vector3(-0.8920571, 0, 0), Vector3(-0.9341001, 0, 0), Vector3(-0.96776557, 0, 0), Vector3(-0.99398434, 0, 0), Vector3(-1.0136871, 0, 0), Vector3(-1.027805, 0, 0), Vector3(-1.0372685, 0, 0), Vector3(-1.0430087, 0, 0), Vector3(-1.0459564, 0, 0), Vector3(-1.0470423, 0, 0), Vector3(-1.0471975, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427), Vector3(-0.5, 12.699558, 5.202427)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [42.0, 42.0048888897436, 42.03911111794878, 42.132000006269664, 42.312888943590224, 42.611111177131534, 43.05600005015731, 43.67688889056444, 44.50311154872179, 45.564000338315964, 46.88888941705227, 48.507111221551895, 50.44800040125847, 52.74088963866234, 55.41511112451553, 58.5, 61.584890842437744, 64.25910937786102, 66.55200254917145, 68.49288976192474, 70.11111205816269, 71.4359986782074, 72.49688869714737, 73.32311135530472, 73.94399982690811, 74.3888892531395, 74.68711084127426, 74.86799973249435, 74.96088910102844, 74.99511015415192, 75.0]
+}
+
 [sub_resource type="Animation" id="Animation_76v2p"]
 length = 0.001
 tracks/0/type = "value"
@@ -594,7 +1382,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.0471975, 0, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -606,7 +1394,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.5, 12.699558, 5.202427)]
+"values": [Vector3(-0.5, 12.699558, 15.502427)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -642,7 +1430,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1158,7 +1946,7 @@ tracks/47/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [6]
 }
 tracks/48/type = "value"
 tracks/48/imported = false
@@ -1171,6 +1959,186 @@ tracks/48/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("TargetScoreDisplay:visible")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("ShopPlacementReferences:visible")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("DarkLight:visible")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("DarkLight7:visible")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("DarkLight8:visible")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("DarkLight9:visible")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("DarkLight6:visible")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("DarkLight2:visible")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("DarkLight5:visible")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("DarkLight3:visible")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("OmniLight3D2:visible")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("OmniLight3D:visible")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("Radio:position")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-39, 5.1700006, -36.070004)]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("Radio:rotation")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.5235988, 0)]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("Radio:scale")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.5, 2.5, 2.5)]
 }
 
 [sub_resource type="Animation" id="Animation_x4ev2"]
@@ -1537,7 +2505,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5, 5.0333333, 5.0666666, 5.1, 5.133333, 5.1666665, 5.2, 5.233333, 5.266667, 5.3, 5.3333335, 5.366667, 5.4, 5.4333334, 5.4666667, 5.5, 5.5333333, 5.5666666, 5.6, 5.633333, 5.6666665, 5.7, 5.733333, 5.766667, 5.8, 5.8333335, 5.866667, 5.9, 5.9333334, 5.9666667, 6, 6.0333333, 6.0666666, 6.1, 6.133333, 6.1666665, 6.2, 6.233333, 6.266667, 6.3, 6.3333335, 6.366667, 6.4, 6.4333334, 6.4666667, 6.5, 6.5333333, 6.5666666, 6.6, 6.633333, 6.6666665, 6.7, 6.733333, 6.766667, 6.8, 6.8333335, 6.866667, 6.9, 6.9333334, 6.9666667, 7, 7.0333333, 7.0666666, 7.1, 7.133333, 7.1666665, 7.2, 7.233333, 7.266667, 7.3, 7.3333335, 7.366667, 7.4, 7.4333334, 7.4666667, 7.5, 7.5333333, 7.5666666, 7.6, 7.633333, 7.6666665, 7.7, 7.733333, 7.766667, 7.8, 7.8333335, 7.866667, 7.9, 7.9333334, 7.9666667, 8, 8.033334, 8.066667, 8.1, 8.133333, 8.166667, 8.2, 8.233334, 8.266666, 8.3, 8.333333, 8.366667, 8.4, 8.433333, 8.466666, 8.5, 8.533334, 8.566667, 8.6, 8.633333, 8.666667, 8.7, 8.733334, 8.766666, 8.8, 8.833333, 8.866667, 8.9, 8.933333, 8.966666, 9, 9.033334, 9.066667, 9.1, 9.133333, 9.166667, 9.2, 9.233334, 9.266666, 9.3, 9.333333, 9.366667, 9.4, 9.433333, 9.466666, 9.5, 9.533334, 9.566667, 9.6, 9.633333, 9.666667, 9.7, 9.733334, 9.766666, 9.8, 9.833333, 9.866667, 9.9, 9.933333, 9.966666, 10, 10.033334, 10.066667, 10.1, 10.133333, 10.166667, 10.2, 10.233334, 10.266666, 10.3, 10.333333, 10.366667, 10.4, 10.433333, 10.466666, 10.5, 10.533334, 10.566667, 10.6, 10.633333, 10.666667, 10.7, 10.733334, 10.766666, 10.8, 10.833333, 10.866667, 10.9, 10.933333, 10.966666, 11, 11.033334, 11.066667, 11.1, 11.133333, 11.166667, 11.2, 11.233334, 11.266666, 11.3, 11.333333, 11.366667, 11.4, 11.433333, 11.466666, 11.5, 11.533334, 11.566667, 11.6, 11.633333, 11.666667, 11.7, 11.733334, 11.766666, 11.8, 11.833333, 11.866667, 11.9, 11.933333, 11.966666, 12, 12.033334, 12.066667, 12.1, 12.133333, 12.166667, 12.2, 12.233334, 12.266666, 12.3, 12.333333, 12.366667, 12.4, 12.433333, 12.466666, 12.5, 12.533334, 12.566667, 12.6, 12.633333, 12.666667, 12.7, 12.733334, 12.766666, 12.8, 12.833333, 12.866667, 12.9, 12.933333, 12.966666, 13, 13.033334, 13.066667, 13.1, 13.133333, 13.166667, 13.2, 13.233334, 13.266666, 13.3, 13.333333, 13.366667, 13.4, 13.433333, 13.466666, 13.5, 13.533334, 13.566667, 13.6, 13.633333, 13.666667, 13.7, 13.733334, 13.766666, 13.8, 13.833333, 13.866667, 13.9, 13.933333, 13.966666, 14, 14.033334, 14.066667, 14.1, 14.133333, 14.166667, 14.2, 14.233334, 14.266666, 14.3, 14.333333, 14.366667, 14.4, 14.433333, 14.466666, 14.5, 14.533334, 14.566667, 14.6, 14.633333, 14.666667, 14.7, 14.733334, 14.766666, 14.8, 14.833333, 14.866667, 14.9, 14.933333, 14.966666, 15, 15.033334, 15.066667, 15.1, 15.133333, 15.166667, 15.2, 15.233334, 15.266666, 15.3, 15.333333, 15.366667, 15.4, 15.433333, 15.466666, 15.5, 15.533334, 15.566667, 15.6, 15.633333, 15.666667, 15.7, 15.733334, 15.766666, 15.8, 15.833333, 15.866667, 15.9, 15.933333, 15.966666, 16, 16.033333, 16.066668, 16.1, 16.133333, 16.166666, 16.2, 16.233334, 16.266666, 16.3, 16.333334, 16.366667, 16.4, 16.433332, 16.466667, 16.5, 16.533333, 16.566668, 16.6, 16.633333, 16.666666, 16.7, 16.733334, 16.766666, 16.8, 16.833334, 16.866667, 16.9, 16.933332, 16.966667, 17, 17.033333, 17.066668, 17.1, 17.133333, 17.166666, 17.2, 17.233334, 17.266666, 17.3, 17.333334, 17.366667, 17.4, 17.433332, 17.466667, 17.5, 17.533333, 17.566668, 17.6, 17.633333, 17.666666, 17.7, 17.733334, 17.766666, 17.8, 17.833334, 17.866667, 17.9, 17.933332, 17.966667, 18, 18.033333, 18.066668, 18.1, 18.133333, 18.166666, 18.2, 18.233334, 18.266666, 18.3, 18.333334, 18.366667, 18.4, 18.433332, 18.466667, 18.5, 18.533333, 18.566668, 18.6, 18.633333, 18.666666, 18.7, 18.733334, 18.766666, 18.8, 18.833334, 18.866667, 18.9, 18.933332, 18.966667, 19, 19.033333, 19.066668, 19.1, 19.133333, 19.166666, 19.2, 19.233334, 19.266666, 19.3, 19.333334, 19.366667, 19.4, 19.433332, 19.466667, 19.5, 19.533333, 19.566668, 19.6, 19.633333, 19.666666, 19.7, 19.733334, 19.766666, 19.8, 19.833334, 19.866667, 19.9, 19.933332, 19.966667, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [25.1, 25.100612963070127, 25.104903704561004, 25.116550000786084, 25.139229636488018, 25.176620378647932, 25.232400006288664, 25.310246296506378, 25.413837091904135, 25.546850042417645, 25.71296302918345, 25.915853717550636, 26.159200050309302, 26.446679723635317, 26.781970372051003, 27.168750000000003, 27.61069673523307, 28.111487102508548, 28.674800339341164, 29.304312723875046, 30.00370423346758, 30.776649913191797, 31.626829740405086, 32.557919746637346, 33.573600402474405, 34.67754527330399, 35.87343778908253, 37.164948555827145, 38.555762976408005, 40.04955165684223, 41.650000000000006, 43.25044538378715, 44.74423899650574, 46.13505243062973, 47.4265612244606, 48.62245078086853, 49.72640255689621, 50.74208025336266, 51.673171246051794, 52.52334910035134, 53.29629724621773, 53.995687276124954, 54.62519867420197, 55.18851289749146, 55.689303511381155, 56.13125, 56.51802987456322, 56.853320646286015, 57.14079982638359, 57.38414689898491, 57.58703740239144, 57.75315082073212, 57.88616269230843, 57.98975447416306, 58.067599731683735, 58.12337992191315, 58.160770583152775, 58.18344922661782, 58.19509533643723, 58.19938642382622, 58.2, 58.19999915663253, 58.199993253060235, 58.199977229081355, 58.199946024481875, 58.19989457907441, 58.199817832650844, 58.19971072498229, 58.19956819585496, 58.1993851850777, 58.19915663259526, 58.19887747780886, 58.198542661206744, 58.198147121888184, 58.197685799858306, 58.197153635122234, 58.19654556683963, 58.195856535981875, 58.195081480621596, 58.19421534342109, 58.193253060762075, 58.19218957627309, 58.19101982247085, 58.18973874878139, 58.18834128965391, 58.18682238581823, 58.18517697510543, 58.183400003076535, 58.181486398866404, 58.179431113833566, 58.17722908097785, 58.17487524489407, 58.172364534717055, 58.16969190663659, 58.166852287855, 58.1638406268321, 58.16065184497275, 58.15728091392666, 58.15372274736874, 58.149972301488745, 58.14602448609658, 58.14187428057194, 58.13751661018469, 58.13294638860971, 58.128158579766755, 58.12314813984558, 58.117909990251064, 58.112439052388076, 58.10673031723127, 58.100778675265616, 58.094579086545856, 58.08812647247687, 58.08141580084339, 58.07444200078026, 58.06720002461225, 58.059684770554306, 58.0518911909312, 58.04381426125765, 58.03544891066849, 58.026790037378674, 58.0178326478228, 58.00857164021582, 57.99900195915252, 57.98911854922772, 57.97891627773643, 57.968390212953096, 57.95753525309265, 57.946346311829984, 57.93481830284, 57.92294629439712, 57.910725014656784, 57.89814960919321, 57.88521475978196, 57.8719157665968, 57.858247311413294, 57.8442043542862, 57.82978197894991, 57.81497495993972, 57.79977841190994, 57.7841868929565, 57.76819588877261, 57.75179995745421, 57.7349942445755, 57.717773493751885, 57.70013288147748, 57.68206705860794, 57.66357110887766, 57.64463996142149, 57.625268638134, 57.605452129989864, 57.58518511876464, 57.564462842792274, 57.543279922008516, 57.521631718426946, 57.499512419104576, 57.47691788077355, 57.45384253785014, 57.43028144314886, 57.406229402124886, 57.38168146759272, 57.356632692366844, 57.33107775822282, 57.30501177981496, 57.27842956259847, 57.251326406747104, 57.22369680851698, 57.19553600624204, 57.16683868169785, 57.137600196897985, 57.10781467705965, 57.07747816443444, 57.046584598720074, 57.01512952744961, 56.98310787975788, 56.95051409006119, 56.917343829572204, 56.88359128534794, 56.849251757562165, 56.814320299029355, 56.77879183888436, 56.74266118258238, 56.70592338293791, 56.66857312172652, 56.630605451762676, 56.59201567322016, 56.55279822051526, 56.512948393821716, 56.47246075123549, 56.43133022189141, 56.389552229642874, 56.34712170362473, 56.30403320193291, 56.26028202474117, 56.21586260646582, 56.170770494639875, 56.125, 56.07854642271996, 56.031404444575315, 55.98357035517693, 55.93503698110581, 55.88580011725426, 55.83585481643677, 55.78519687354565, 55.733818867802626, 55.681718078255656, 55.62888856828213, 55.57532613277436, 55.521024340391165, 55.46597849130631, 55.410183390975, 55.35363483428955, 55.29632762670517, 55.23825583159924, 55.17941474914551, 55.11979967951775, 55.05940592288971, 54.998227295279506, 54.93625884950161, 54.873495143651965, 54.809934198856354, 54.74556711018086, 54.68039066195488, 54.61439965963364, 54.54758866131306, 54.47995395660401, 54.41148861944676, 54.342187950015074, 54.27204749584198, 54.2010630518198, 54.12922719717026, 54.05653646886349, 53.98298542499543, 53.908568871021274, 53.8332821071148, 53.75711969137192, 53.680077171325685, 53.60214910507202, 53.52333153486252, 53.443617039918905, 53.363001662492756, 53.281480950117114, 53.19905045032502, 53.115702742338186, 53.031434363126756, 52.94623937606812, 52.860113823413855, 52.773053747415545, 52.68505024313927, 52.59609935283661, 52.506198602914814, 52.415343046188354, 52.323524272441865, 52.23074030280114, 52.136982727050786, 52.042251545190815, 51.946536862850195, 51.849835216999054, 51.75214166045189, 51.65345174074173, 51.55376051068306, 51.45306153893471, 51.351350867748266, 51.24862206578255, 51.14487167000771, 51.04009423851967, 50.93428383469582, 50.82743650078774, 50.71954877376557, 50.61061125397683, 50.50062196254731, 50.389574468135834, 50.277464318275456, 50.164288049936296, 50.050038242340094, 49.93470945358277, 49.81829822063446, 49.700801575183874, 49.582209622859956, 49.462517416477205, 49.341723966598515, 49.21982531547547, 49.09681057929993, 48.97267678976059, 48.84742097854615, 48.72103621959687, 48.59351954460144, 48.46486303806305, 48.33506175279618, 48.204112720489505, 48.072011983394624, 47.93875063657761, 47.80432472229004, 47.668730282783514, 47.531961381435394, 47.394014060497284, 47.25488238334656, 47.1145623922348, 46.9730481505394, 46.83033471107483, 46.686417126655584, 46.54128946065903, 46.394943797588354, 46.24738706350327, 46.0986, 45.9485849738121, 45.7973317027092, 45.64484361410141, 45.4911088347435, 45.336125385761264, 45.17988238334656, 45.02238576412201, 44.86361969709397, 44.70358715057373, 44.54227526187897, 44.37968600988388, 44.215810489654544, 44.050641775131226, 43.884181845188145, 43.71641783714295, 43.54735271930694, 43.3769736289978, 43.20528353452683, 43.03226561546326, 42.85792778730392, 42.682256197929384, 42.50525084733963, 42.326900851726535, 42.1472091794014, 41.966163957118994, 41.78376617431641, 41.6, 41.41623778343201, 41.23383703231812, 41.052789831161505, 40.87309617996216, 40.69474816322327, 40.51774578094482, 40.34206924438477, 40.16773438453674, 39.99471943378448, 39.8230263710022, 39.65264728069306, 39.48357820510864, 39.31581716537475, 39.14936218261719, 38.98418951034546, 38.820314979553224, 38.65772275924682, 38.49641284942627, 38.33638129234314, 38.17761225700379, 38.020117616653444, 37.863877582550046, 37.7088921546936, 37.555157375335696, 37.402665328979495, 37.251416015625, 37.1014034986496, 36.95261392593384, 36.80505719184876, 36.658707571029666, 36.513580894470216, 36.36966528892518, 36.2269488811493, 36.0854376077652, 35.94511761665345, 35.80598692893982, 35.668039608001706, 35.53126971721649, 35.39567527770996, 35.26125431060791, 35.12798900604248, 34.99588925838471, 34.86493527889252, 34.735138940811154, 34.60648441314697, 34.47896180152893, 34.35257902145386, 34.22732419967652, 34.103189420700076, 33.98017468452454, 33.858274054527286, 33.73748159408569, 33.61779532432556, 33.49919743537903, 33.38170375823975, 33.26528856754303, 33.14996373653412, 33.03571343421936, 32.922535681724554, 32.81042652130127, 32.6993780374527, 32.58938825130463, 32.480451226234436, 32.372561025619504, 32.265713691711426, 32.15990724563599, 32.05512585639954, 31.951379418373108, 31.848648142814636, 31.746939945220948, 31.646240973472597, 31.54654726982117, 31.447858834266665, 31.350163793563844, 31.253464126586916, 31.15774796009064, 31.06301529407501, 30.969258213043215, 30.87647671699524, 30.78465497493744, 30.69380090236664, 30.603898668289187, 30.514952230453492, 30.426947736740114, 30.339885187149047, 30.253760623931885, 30.1685661315918, 30.084297752380373, 30.000951528549194, 29.918517565727235, 29.836997842788698, 29.756384444236755, 29.67666747570038, 29.59785089492798, 29.519920849800112, 29.442881298065185, 29.36671838760376, 29.291430139541628, 29.21701457500458, 29.14346377849579, 29.070773792266845, 28.99893867969513, 28.927950525283812, 28.85781328678131, 28.788513112068177, 28.72004406452179, 28.65241208076477, 28.585597372055055, 28.51960983276367, 28.454433631896972, 28.390064811706544, 28.326503372192384, 28.263741397857665, 28.20177295207977, 28.140596055984496, 28.0801988363266, 28.02058525085449, 27.961745405197142, 27.903673362731933, 27.84636516571045, 27.78981487751007, 27.734020519256593, 27.678976154327394, 27.624673867225646, 27.571109700202943, 27.518281674385072, 27.466179895401, 27.41480436325073, 27.36414518356323, 27.314200377464296, 27.264964008331297, 27.216430139541625, 27.168594813346864, 27.121454071998595, 27.075, 27.02922863960266, 26.984138011932373, 26.939718222618104, 26.89596531391144, 26.852877306938172, 26.810448265075685, 26.768668293952942, 26.727539372444152, 26.687051606178283, 26.64720301628113, 26.607983708381653, 26.56939368247986, 26.531427001953126, 26.494077730178834, 26.457337951660158, 26.421207666397095, 26.38567895889282, 26.350747871398926, 26.316408467292785, 26.282654809951783, 26.249486899375917, 26.216892862319945, 26.184870719909668, 26.153414535522458, 26.12252233028412, 26.092184209823607, 26.062400174140933, 26.03316032886505, 26.00446467399597, 25.97630331516266, 25.9486722946167, 25.921569633483884, 25.894987416267398, 25.868921685218808, 25.843366503715515, 25.818317914009093, 25.793769979476927, 25.769718742370607, 25.746158266067503, 25.72308261394501, 25.7004878282547, 25.678367972373962, 25.656719088554382, 25.63553721904755, 25.614814448356626, 25.594546818733214, 25.574732351303098, 25.555359172821042, 25.536429262161256, 25.5179327249527, 25.499867582321166, 25.482225918769835, 25.4650057554245, 25.44819917678833, 25.43180420398712, 25.41581292152405, 25.400221371650694, 25.385025596618654, 25.37021768093109, 25.355795645713805, 25.34175355434418, 25.32808349132538, 25.31478545665741, 25.30184955596924, 25.289275789260863, 25.277054262161258, 25.265181016922, 25.253654074668887, 25.242463541030887, 25.231609416008, 25.221083784103392, 25.21088070869446, 25.20099821090698, 25.191428375244143, 25.182167243957522, 25.173210859298706, 25.16455130577087, 25.156186604499815, 25.14810883998871, 25.14031603336334, 25.13280026912689, 25.125557589530942, 25.118584036827087, 25.111873674392697, 25.105420565605165, 25.099220752716064, 25.09327027797699, 25.087561225891115, 25.082089638710023, 25.076851558685306, 25.071841049194333, 25.06705415248871, 25.062482953071594, 25.058125472068788, 25.05397577285767, 25.050027918815616, 25.046277952194217, 25.04271993637085, 25.039347934722898, 25.03615996837616, 25.033148121833804, 25.030308437347415, 25.027634978294373, 25.025123786926272, 25.02277090549469, 25.020568418502805, 25.01851434707642, 25.016600775718686, 25.014823746681216, 25.013177323341367, 25.01165952682495, 25.010260462760925, 25.008980131149293, 25.007810616493224, 25.006745982170102, 25.005784249305727, 25.00491948127747, 25.004143762588498, 25.003455114364627, 25.00284562110901, 25.002313303947446, 25.001852226257327, 25.00145645141602, 25.00112202167511, 25.00084300041199, 25.000615429878238, 25.000431394577028, 25.000288915634158, 25.000182056427, 25.000104880332948, 25.000053429603575, 25.000023746490477, 25.00000593662262, 25.0, 25.0]
+"values": [25.1, 25.100612963070127, 25.104903704561004, 25.116550000786084, 25.139229636488015, 25.176620378647932, 25.232400006288664, 25.310246296506374, 25.413837091904135, 25.546850042417645, 25.71296302918345, 25.915853717550636, 26.159200050309305, 26.446679723635317, 26.781970372051003, 27.168750000000003, 27.61069673523307, 28.111487102508548, 28.674800339341164, 29.304312723875046, 30.00370423346758, 30.776649913191797, 31.62682974040509, 32.557919746637346, 33.573600402474405, 34.67754527330399, 35.87343778908253, 37.164948555827145, 38.555762976408005, 40.04955165684223, 41.650000000000006, 43.25044538378715, 44.74423899650574, 46.13505243062973, 47.4265612244606, 48.62245078086853, 49.72640255689621, 50.74208025336266, 51.673171246051794, 52.52334910035134, 53.29629724621773, 53.995687276124954, 54.62519867420197, 55.18851289749146, 55.689303511381155, 56.13125, 56.51802987456322, 56.853320646286015, 57.14079982638359, 57.38414689898491, 57.58703740239144, 57.75315082073212, 57.88616269230843, 57.98975447416306, 58.067599731683735, 58.12337992191315, 58.160770583152775, 58.18344922661782, 58.19509533643723, 58.19938642382622, 58.2, 58.19999915663253, 58.199993253060235, 58.199977229081355, 58.199946024481875, 58.19989457907441, 58.19981783265085, 58.19971072498229, 58.19956819585496, 58.1993851850777, 58.19915663259526, 58.19887747780886, 58.198542661206744, 58.198147121888184, 58.197685799858306, 58.197153635122234, 58.19654556683963, 58.195856535981875, 58.1950814806216, 58.19421534342109, 58.193253060762075, 58.19218957627309, 58.19101982247085, 58.18973874878139, 58.18834128965391, 58.18682238581823, 58.18517697510543, 58.183400003076535, 58.1814863988664, 58.179431113833566, 58.17722908097785, 58.17487524489407, 58.172364534717055, 58.16969190663659, 58.166852287855, 58.1638406268321, 58.16065184497275, 58.15728091392666, 58.15372274736874, 58.149972301488745, 58.14602448609658, 58.14187428057194, 58.13751661018469, 58.13294638860971, 58.128158579766755, 58.12314813984558, 58.117909990251064, 58.11243905238808, 58.10673031723127, 58.100778675265616, 58.094579086545856, 58.08812647247687, 58.08141580084339, 58.07444200078026, 58.06720002461225, 58.059684770554306, 58.0518911909312, 58.04381426125765, 58.03544891066849, 58.026790037378674, 58.0178326478228, 58.00857164021582, 57.99900195915252, 57.98911854922772, 57.97891627773643, 57.968390212953096, 57.95753525309265, 57.946346311829984, 57.93481830284, 57.92294629439712, 57.910725014656784, 57.89814960919321, 57.88521475978196, 57.8719157665968, 57.858247311413294, 57.8442043542862, 57.82978197894991, 57.81497495993972, 57.79977841190994, 57.7841868929565, 57.76819588877261, 57.75179995745421, 57.7349942445755, 57.717773493751885, 57.70013288147748, 57.68206705860794, 57.66357110887766, 57.64463996142149, 57.625268638134, 57.605452129989864, 57.58518511876464, 57.564462842792274, 57.54327992200851, 57.521631718426946, 57.499512419104576, 57.47691788077355, 57.45384253785014, 57.43028144314886, 57.406229402124886, 57.38168146759272, 57.35663269236685, 57.33107775822282, 57.30501177981496, 57.27842956259847, 57.251326406747104, 57.22369680851698, 57.19553600624204, 57.16683868169785, 57.137600196897985, 57.10781467705965, 57.07747816443444, 57.046584598720074, 57.01512952744961, 56.98310787975788, 56.95051409006119, 56.91734382957221, 56.88359128534794, 56.849251757562165, 56.814320299029355, 56.77879183888436, 56.74266118258238, 56.70592338293791, 56.66857312172652, 56.63060545176267, 56.59201567322016, 56.55279822051526, 56.51294839382171, 56.47246075123549, 56.43133022189141, 56.389552229642874, 56.34712170362473, 56.30403320193291, 56.26028202474117, 56.21586260646582, 56.170770494639875, 56.125, 56.07854642271996, 56.031404444575315, 55.98357035517693, 55.93503698110581, 55.88580011725426, 55.83585481643677, 55.78519687354565, 55.733818867802626, 55.681718078255656, 55.62888856828213, 55.57532613277436, 55.521024340391165, 55.46597849130631, 55.410183390975, 55.35363483428955, 55.29632762670517, 55.23825583159924, 55.17941474914551, 55.11979967951775, 55.05940592288971, 54.998227295279506, 54.93625884950161, 54.873495143651965, 54.809934198856354, 54.74556711018086, 54.68039066195488, 54.61439965963364, 54.54758866131306, 54.47995395660401, 54.41148861944676, 54.342187950015074, 54.27204749584198, 54.2010630518198, 54.12922719717026, 54.05653646886349, 53.98298542499543, 53.908568871021274, 53.8332821071148, 53.75711969137192, 53.680077171325685, 53.60214910507202, 53.52333153486252, 53.443617039918905, 53.36300166249275, 53.281480950117114, 53.19905045032502, 53.115702742338186, 53.03143436312675, 52.94623937606812, 52.860113823413855, 52.773053747415545, 52.68505024313927, 52.59609935283661, 52.506198602914814, 52.415343046188354, 52.323524272441865, 52.23074030280114, 52.136982727050786, 52.042251545190815, 51.946536862850195, 51.849835216999054, 51.75214166045189, 51.65345174074173, 51.55376051068306, 51.45306153893471, 51.351350867748266, 51.24862206578255, 51.14487167000771, 51.04009423851967, 50.93428383469582, 50.82743650078774, 50.71954877376557, 50.61061125397683, 50.50062196254731, 50.389574468135834, 50.277464318275456, 50.164288049936296, 50.050038242340094, 49.93470945358277, 49.81829822063446, 49.700801575183874, 49.58220962285995, 49.462517416477205, 49.341723966598515, 49.21982531547547, 49.09681057929993, 48.97267678976059, 48.84742097854615, 48.72103621959687, 48.59351954460144, 48.46486303806305, 48.33506175279618, 48.204112720489505, 48.072011983394624, 47.93875063657761, 47.80432472229004, 47.668730282783514, 47.531961381435394, 47.39401406049728, 47.25488238334656, 47.1145623922348, 46.9730481505394, 46.83033471107483, 46.686417126655584, 46.54128946065903, 46.394943797588354, 46.24738706350327, 46.0986, 45.9485849738121, 45.7973317027092, 45.64484361410141, 45.4911088347435, 45.336125385761264, 45.17988238334656, 45.02238576412201, 44.86361969709397, 44.70358715057373, 44.54227526187897, 44.37968600988388, 44.215810489654544, 44.050641775131226, 43.884181845188145, 43.71641783714295, 43.54735271930694, 43.3769736289978, 43.20528353452683, 43.03226561546326, 42.85792778730392, 42.682256197929384, 42.50525084733963, 42.326900851726535, 42.1472091794014, 41.966163957118994, 41.78376617431641, 41.6, 41.41623778343201, 41.23383703231812, 41.052789831161505, 40.87309617996216, 40.69474816322327, 40.51774578094482, 40.34206924438477, 40.16773438453674, 39.99471943378448, 39.8230263710022, 39.65264728069306, 39.48357820510864, 39.31581716537475, 39.14936218261719, 38.98418951034546, 38.820314979553224, 38.65772275924682, 38.49641284942627, 38.33638129234314, 38.17761225700379, 38.02011761665344, 37.863877582550046, 37.7088921546936, 37.555157375335696, 37.402665328979495, 37.251416015625, 37.1014034986496, 36.95261392593384, 36.80505719184876, 36.658707571029666, 36.513580894470216, 36.36966528892518, 36.2269488811493, 36.0854376077652, 35.94511761665345, 35.80598692893982, 35.668039608001706, 35.53126971721649, 35.39567527770996, 35.26125431060791, 35.12798900604248, 34.99588925838471, 34.86493527889252, 34.735138940811154, 34.60648441314697, 34.47896180152893, 34.35257902145386, 34.22732419967652, 34.103189420700076, 33.98017468452454, 33.858274054527286, 33.73748159408569, 33.61779532432556, 33.49919743537903, 33.38170375823975, 33.26528856754303, 33.14996373653412, 33.03571343421936, 32.922535681724554, 32.81042652130127, 32.6993780374527, 32.58938825130463, 32.480451226234436, 32.372561025619504, 32.265713691711426, 32.15990724563599, 32.05512585639954, 31.951379418373108, 31.848648142814636, 31.746939945220948, 31.646240973472597, 31.54654726982117, 31.447858834266665, 31.350163793563844, 31.253464126586916, 31.15774796009064, 31.06301529407501, 30.969258213043215, 30.87647671699524, 30.78465497493744, 30.69380090236664, 30.603898668289187, 30.514952230453492, 30.42694773674011, 30.339885187149047, 30.253760623931885, 30.1685661315918, 30.084297752380373, 30.00095152854919, 29.918517565727235, 29.836997842788698, 29.756384444236755, 29.67666747570038, 29.59785089492798, 29.519920849800112, 29.442881298065185, 29.36671838760376, 29.291430139541628, 29.21701457500458, 29.14346377849579, 29.070773792266845, 28.99893867969513, 28.927950525283812, 28.85781328678131, 28.788513112068177, 28.72004406452179, 28.65241208076477, 28.585597372055055, 28.51960983276367, 28.454433631896972, 28.390064811706544, 28.326503372192384, 28.263741397857665, 28.20177295207977, 28.140596055984496, 28.0801988363266, 28.02058525085449, 27.961745405197146, 27.903673362731933, 27.84636516571045, 27.78981487751007, 27.734020519256593, 27.67897615432739, 27.62467386722565, 27.571109700202943, 27.518281674385072, 27.466179895401, 27.41480436325073, 27.36414518356323, 27.314200377464296, 27.264964008331297, 27.216430139541625, 27.168594813346864, 27.121454071998595, 27.075, 27.02922863960266, 26.984138011932373, 26.939718222618104, 26.89596531391144, 26.852877306938172, 26.810448265075685, 26.768668293952945, 26.727539372444152, 26.687051606178283, 26.64720301628113, 26.607983708381653, 26.56939368247986, 26.531427001953126, 26.494077730178834, 26.45733795166016, 26.421207666397095, 26.38567895889282, 26.350747871398926, 26.316408467292785, 26.282654809951783, 26.249486899375917, 26.216892862319945, 26.184870719909668, 26.153414535522455, 26.12252233028412, 26.092184209823607, 26.062400174140933, 26.03316032886505, 26.00446467399597, 25.97630331516266, 25.9486722946167, 25.921569633483884, 25.8949874162674, 25.868921685218808, 25.843366503715515, 25.818317914009093, 25.793769979476927, 25.769718742370607, 25.746158266067503, 25.72308261394501, 25.7004878282547, 25.67836797237396, 25.656719088554382, 25.63553721904755, 25.614814448356626, 25.594546818733217, 25.574732351303098, 25.55535917282104, 25.536429262161256, 25.5179327249527, 25.49986758232117, 25.482225918769835, 25.4650057554245, 25.44819917678833, 25.43180420398712, 25.41581292152405, 25.400221371650694, 25.385025596618657, 25.37021768093109, 25.355795645713805, 25.34175355434418, 25.32808349132538, 25.31478545665741, 25.30184955596924, 25.289275789260863, 25.277054262161258, 25.265181016922, 25.253654074668887, 25.242463541030887, 25.231609416008, 25.221083784103392, 25.21088070869446, 25.20099821090698, 25.191428375244143, 25.18216724395752, 25.173210859298703, 25.16455130577087, 25.156186604499815, 25.14810883998871, 25.14031603336334, 25.13280026912689, 25.125557589530946, 25.118584036827087, 25.111873674392697, 25.105420565605165, 25.099220752716064, 25.09327027797699, 25.087561225891115, 25.082089638710023, 25.076851558685306, 25.071841049194333, 25.06705415248871, 25.06248295307159, 25.058125472068788, 25.05397577285767, 25.050027918815616, 25.046277952194217, 25.04271993637085, 25.039347934722898, 25.03615996837616, 25.033148121833804, 25.030308437347415, 25.027634978294373, 25.025123786926272, 25.02277090549469, 25.020568418502805, 25.01851434707642, 25.01660077571869, 25.014823746681216, 25.013177323341367, 25.01165952682495, 25.010260462760925, 25.008980131149293, 25.007810616493224, 25.006745982170106, 25.005784249305727, 25.00491948127747, 25.004143762588495, 25.003455114364627, 25.00284562110901, 25.00231330394745, 25.001852226257327, 25.00145645141602, 25.00112202167511, 25.00084300041199, 25.00061542987824, 25.000431394577028, 25.00028891563416, 25.000182056427, 25.000104880332948, 25.000053429603575, 25.000023746490477, 25.00000593662262, 25.0, 25.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2047,7 +3015,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [25.0, 25.002364815228248, 25.01891852182598, 25.063850003032712, 25.151348174607847, 25.29560188378673, 25.510800024261698, 25.811131482291966, 26.210785396862775, 26.723950163647533, 27.364815070293844, 28.147568571940063, 29.086400194093585, 30.195498510822652, 31.489051858335735, 32.98125, 34.6862831749022, 36.61833543777466, 38.79160130918026, 41.220263892412184, 43.91852056235075, 46.90054966509342, 50.18054857552052, 53.77269944548607, 57.69120155274868, 61.95022753477096, 66.56398808658122, 71.54664442837239, 76.91241486668586, 82.67546062171459, 88.85, 95.02452796101569, 100.78759274482726, 106.15335937738418, 111.13600810766219, 115.74975724220275, 120.00880986452101, 123.92730055451392, 127.51945523023605, 130.79944652915, 133.7814851462841, 136.47973610758783, 138.90839488506316, 141.08166456222534, 143.01371777653694, 144.71875, 146.2109490931034, 147.50450291633604, 148.61359933018684, 149.55243380665777, 150.33518659472463, 150.97605316638945, 151.48921377062797, 151.88887149095535, 152.1891989648342, 152.40439927577972, 152.54865267276762, 152.63614701628683, 152.6810777783394, 152.69763281941414, 152.7]
+"values": [25.0, 25.002364815228248, 25.01891852182598, 25.063850003032712, 25.151348174607847, 25.29560188378673, 25.510800024261695, 25.81113148229197, 26.210785396862775, 26.723950163647533, 27.364815070293844, 28.147568571940063, 29.086400194093585, 30.195498510822652, 31.489051858335735, 32.98125, 34.6862831749022, 36.61833543777466, 38.79160130918026, 41.220263892412184, 43.91852056235075, 46.90054966509342, 50.18054857552052, 53.77269944548607, 57.69120155274868, 61.95022753477096, 66.56398808658122, 71.54664442837239, 76.91241486668586, 82.67546062171459, 88.85, 95.02452796101568, 100.78759274482726, 106.15335937738418, 111.1360081076622, 115.74975724220276, 120.008809864521, 123.92730055451392, 127.51945523023603, 130.79944652915, 133.7814851462841, 136.47973610758785, 138.90839488506316, 141.08166456222534, 143.01371777653694, 144.71875, 146.2109490931034, 147.50450291633604, 148.61359933018684, 149.55243380665777, 150.33518659472463, 150.97605316638945, 151.48921377062797, 151.88887149095535, 152.1891989648342, 152.40439927577972, 152.54865267276762, 152.63614701628683, 152.6810777783394, 152.69763281941414, 152.7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2123,7 +3091,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [25.1, 25.100233333374128, 25.10186666699301, 25.106300000299235, 25.11493333594408, 25.129166669817643, 25.150400002393873, 25.180033333413306, 25.219466687552632, 25.2701000161469, 25.333333358541132, 25.410566671937705, 25.503200019150974, 25.612633369117976, 25.740266667306425, 25.887500000000003, 26.05573350042105, 26.24636669158936, 26.460800129175187, 26.700433242321015, 26.96666686832905, 27.260899966955186, 27.584533375501636, 27.938966429233552, 28.32560015320778, 28.745832943916323, 29.201066952943805, 29.69269945025444, 30.222133338451385, 30.790765887498857, 31.400000000000002, 32.00923298597336, 32.577867412567144, 33.107300925254826, 33.59893267154694, 34.054165554046634, 34.47440097332001, 34.86103357076645, 35.215467000007635, 35.53909965753556, 35.83333369493485, 36.099566757678986, 36.339199495315555, 36.553633308410646, 36.744266593456274, 36.9125, 37.059733426570894, 37.187366771698, 37.29679993391037, 37.389433562755585, 37.466666805744175, 37.529900312423706, 37.580533230304724, 37.61996695995331, 37.649599897861485, 37.67083344459534, 37.68506674766541, 37.69369970560074, 37.698132967948915, 37.699766433238985, 37.7]
+"values": [25.1, 25.100233333374128, 25.10186666699301, 25.106300000299235, 25.11493333594408, 25.129166669817643, 25.150400002393873, 25.180033333413306, 25.219466687552632, 25.2701000161469, 25.333333358541132, 25.410566671937705, 25.503200019150977, 25.612633369117976, 25.740266667306425, 25.887500000000003, 26.05573350042105, 26.24636669158936, 26.460800129175187, 26.700433242321015, 26.96666686832905, 27.260899966955183, 27.584533375501636, 27.938966429233552, 28.32560015320778, 28.745832943916323, 29.201066952943805, 29.69269945025444, 30.222133338451385, 30.790765887498857, 31.4, 32.00923298597336, 32.577867412567144, 33.107300925254826, 33.59893267154694, 34.054165554046634, 34.47440097332001, 34.86103357076645, 35.215467000007635, 35.53909965753556, 35.83333369493485, 36.099566757678986, 36.339199495315555, 36.553633308410646, 36.744266593456274, 36.9125, 37.059733426570894, 37.187366771698, 37.29679993391037, 37.389433562755585, 37.466666805744175, 37.529900312423706, 37.58053323030472, 37.61996695995331, 37.649599897861485, 37.67083344459534, 37.68506674766541, 37.69369970560074, 37.698132967948915, 37.699766433238985, 37.7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2168,10 +3136,10 @@ tracks/4/path = NodePath("Dealer:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.7025086, 1.7666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1.7666667),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true, false]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3545,9 +4513,12 @@ tracks/2/keys = {
 _data = {
 &"BlackOut": SubResource("Animation_f3o22"),
 &"Default": SubResource("Animation_mai8y"),
+&"DefaultPostgame": SubResource("Animation_ym6rb"),
+&"DefaultPostgameFirstTime": SubResource("Animation_pvyqv"),
 &"DefaultToSheet": SubResource("Animation_drdnd"),
 &"Default_FirstTime": SubResource("Animation_8qtx6"),
 &"First_time_to_default": SubResource("Animation_0c7y5"),
+&"PostgameFirstTime_to_default": SubResource("Animation_pmo5y"),
 &"RESET": SubResource("Animation_76v2p"),
 &"bottom_categories_to_choice": SubResource("Animation_x4ev2"),
 &"cards_view_to_statues": SubResource("Animation_7o6dj"),
@@ -4483,6 +5454,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../DialogueHandler2:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["  "]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../DialogueHandler2:start_cutscene")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_stxua"]
 resource_name = "no_dialogue"
@@ -4503,6 +5498,34 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:start_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hwnle"]
+resource_name = "no_dialogue_postgame"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueHandler2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["  "]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueHandler2:start_cutscene")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4540,6 +5563,34 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_7saum"]
+resource_name = "replace_dice_postgame"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueHandler2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Which one do I wanna get rid of?"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueHandler2:start_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_tar5f"]
 resource_name = "replace_statue_1"
 length = 0.01
@@ -4559,6 +5610,34 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:start_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_22wsi"]
+resource_name = "replace_statue_1_postgame"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueHandler2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Gotta pick one to take apart..."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueHandler2:start_cutscene")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4596,13 +5675,45 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_cisrr"]
+resource_name = "replace_statue_2_postgame"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueHandler2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Now, which combo do I want?"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueHandler2:start_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gfj8f"]
 _data = {
 &"RESET": SubResource("Animation_p35vf"),
 &"no_dialogue": SubResource("Animation_stxua"),
+&"no_dialogue_postgame": SubResource("Animation_hwnle"),
 &"replace_dice": SubResource("Animation_37jd4"),
+&"replace_dice_postgame": SubResource("Animation_7saum"),
 &"replace_statue_1": SubResource("Animation_tar5f"),
-&"replace_statue_2": SubResource("Animation_vtohw")
+&"replace_statue_1_postgame": SubResource("Animation_22wsi"),
+&"replace_statue_2": SubResource("Animation_vtohw"),
+&"replace_statue_2_postgame": SubResource("Animation_cisrr")
 }
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_p35vf"]
@@ -5084,7 +6195,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [9.772761661845264, 9.762054959541402, 9.750090044286049, 9.736796945172104, 9.722105846925782, 9.70594676033018, 9.688249860956612, 9.668945205362679, 9.64796292334519, 9.625233025687244, 9.600685715424856, 9.574251012496024, 9.545859083317161, 9.515439911206663, 9.48292375412995, 9.448240558785812, 9.411320564829872, 9.372093828819729, 9.330490370693383, 9.286440210388832, 9.239873697420506, 9.190720888346007, 9.138911693244523, 9.08437609543445, 9.027044664147837, 8.966847309463873, 8.903714014700952, 8.837574616699058, 8.768359831168652, 8.69599942171051, 8.620423591360648, 8.541562176959047, 8.459345601259344, 8.373703920819139, 8.284566533043176, 8.19186473955557, 8.095527791282649, 7.995486257456463, 7.891669535481753, 7.78400863402581, 7.6724329504933735, 7.556873200594907, 7.437258195821499, 7.313519823710919, 7.185587042232669, 7.05339056709721, 6.9168600886661125, 6.775925004344117, 6.6305167622337535, 6.4805650526965906, 6.325999859051024, 6.166751164615448, 6.002748952708259, 5.83392349960468, 5.660205081579932, 5.481522217168276, 5.29780752629955, 5.108990113421669, 4.915, 4.721009810284386, 4.532192104449678, 4.348477706537778, 4.16979513508295, 3.996076424101375, 3.827251263954622, 3.6632487590906067, 3.504000357611858, 3.349435163966291, 3.199483454429128, 3.0540749193619376, 2.9131392491262886, 2.776608477738364, 2.6444122955597322, 2.516479221124655, 2.392741288449315, 2.273127016067974, 2.157567266169508, 2.0459911432018316, 1.9383300952674745, 1.8345138127280052, 1.734472571858646, 1.638135477107312, 1.5454339765765326, 1.4562965888005692, 1.3706547618819513, 1.288437600268594, 1.2095765520630266, 1.1340007217131642, 1.0616403854942291, 0.9924252337677899, 0.9262861287227224, 0.8631527607205953, 0.8029548201229773, 0.7456237550323976, 0.6910880839831179, 0.6392792550776676, 0.5901263727639616, 0.5435597133172223, 0.49950955301267186, 0.45790616812553253, 0.41867924901737297, 0.3817590719634154, 0.3470759132388821, 0.31456004911899527, 0.28414058405167, 0.25574896613943565, 0.22931429983020735, 0.2047668613992073, 0.18203692712165775, 0.16105477327278095, 0.14175009021414553, 0.12405315422097374, 0.10789424156848781, 0.0932030426182564, 0.07990983364550175, 0.06794489092544609, 0.057238490733311664, 0.04771973751701353, 0.03932007937908111, 0.031968620767429456, 0.025595637957280815, 0.020131993137511017, 0.015506790756035116, 0.011650307088075351, 0.008493404322507558, 0.005965186907246789, 0.003995931117515283, 0.002516499142188877, 0.0014565813428362162, 0.0007458680810259466, 0.00031463563198030897, 9.3160270921544e-05, 1.1718273071892327e-05, 0.0]
+"values": [9.772761661845264, 9.762054959541402, 9.750090044286049, 9.736796945172104, 9.722105846925782, 9.70594676033018, 9.688249860956612, 9.66894520536268, 9.64796292334519, 9.625233025687244, 9.600685715424856, 9.574251012496024, 9.54585908331716, 9.515439911206665, 9.48292375412995, 9.448240558785812, 9.411320564829872, 9.372093828819729, 9.330490370693385, 9.286440210388832, 9.239873697420506, 9.190720888346007, 9.138911693244523, 9.08437609543445, 9.027044664147835, 8.966847309463873, 8.903714014700952, 8.837574616699058, 8.768359831168652, 8.69599942171051, 8.620423591360648, 8.541562176959047, 8.459345601259344, 8.373703920819139, 8.284566533043176, 8.19186473955557, 8.095527791282649, 7.995486257456463, 7.891669535481753, 7.78400863402581, 7.672432950493373, 7.556873200594907, 7.437258195821499, 7.313519823710919, 7.185587042232669, 7.05339056709721, 6.9168600886661125, 6.775925004344117, 6.6305167622337535, 6.4805650526965906, 6.325999859051024, 6.166751164615448, 6.002748952708259, 5.83392349960468, 5.660205081579932, 5.481522217168276, 5.29780752629955, 5.108990113421669, 4.915, 4.721009810284386, 4.532192104449678, 4.348477706537778, 4.16979513508295, 3.996076424101375, 3.827251263954622, 3.663248759090606, 3.504000357611858, 3.349435163966291, 3.199483454429128, 3.0540749193619376, 2.9131392491262886, 2.776608477738364, 2.644412295559732, 2.516479221124655, 2.392741288449315, 2.273127016067974, 2.157567266169508, 2.0459911432018316, 1.9383300952674745, 1.8345138127280052, 1.734472571858646, 1.638135477107312, 1.5454339765765326, 1.4562965888005692, 1.3706547618819511, 1.288437600268594, 1.2095765520630266, 1.1340007217131642, 1.0616403854942291, 0.99242523376779, 0.9262861287227224, 0.8631527607205953, 0.8029548201229773, 0.7456237550323976, 0.6910880839831179, 0.6392792550776676, 0.5901263727639616, 0.5435597133172223, 0.49950955301267186, 0.4579061681255326, 0.41867924901737297, 0.3817590719634154, 0.3470759132388821, 0.31456004911899527, 0.28414058405167, 0.25574896613943565, 0.22931429983020735, 0.2047668613992073, 0.18203692712165775, 0.16105477327278095, 0.14175009021414553, 0.12405315422097374, 0.1078942415684878, 0.0932030426182564, 0.07990983364550175, 0.06794489092544609, 0.05723849073331166, 0.04771973751701353, 0.03932007937908111, 0.03196862076742945, 0.02559563795728081, 0.02013199313751101, 0.01550679075603511, 0.01165030708807535, 0.00849340432250755, 0.00596518690724678, 0.00399593111751528, 0.00251649914218887, 0.00145658134283621, 0.00074586808102594, 0.0003146356319803, 9.3160270921544e-05, 1.1718273071892328e-05, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -5096,7 +6207,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [9.772761661845264, 9.762054959541402, 9.750090044286049, 9.736796945172104, 9.722105846925782, 9.70594676033018, 9.688249860956612, 9.668945205362679, 9.64796292334519, 9.625233025687244, 9.600685715424856, 9.574251012496024, 9.545859083317161, 9.515439911206663, 9.48292375412995, 9.448240558785812, 9.411320564829872, 9.372093828819729, 9.330490370693383, 9.286440210388832, 9.239873697420506, 9.190720888346007, 9.138911693244523, 9.08437609543445, 9.027044664147837, 8.966847309463873, 8.903714014700952, 8.837574616699058, 8.768359831168652, 8.69599942171051, 8.620423591360648, 8.541562176959047, 8.459345601259344, 8.373703920819139, 8.284566533043176, 8.19186473955557, 8.095527791282649, 7.995486257456463, 7.891669535481753, 7.78400863402581, 7.6724329504933735, 7.556873200594907, 7.437258195821499, 7.313519823710919, 7.185587042232669, 7.05339056709721, 6.9168600886661125, 6.775925004344117, 6.6305167622337535, 6.4805650526965906, 6.325999859051024, 6.166751164615448, 6.002748952708259, 5.83392349960468, 5.660205081579932, 5.481522217168276, 5.29780752629955, 5.108990113421669, 4.915, 4.721009810284386, 4.532192104449678, 4.348477706537778, 4.16979513508295, 3.996076424101375, 3.827251263954622, 3.6632487590906067, 3.504000357611858, 3.349435163966291, 3.199483454429128, 3.0540749193619376, 2.9131392491262886, 2.776608477738364, 2.6444122955597322, 2.516479221124655, 2.392741288449315, 2.273127016067974, 2.157567266169508, 2.0459911432018316, 1.9383300952674745, 1.8345138127280052, 1.734472571858646, 1.638135477107312, 1.5454339765765326, 1.4562965888005692, 1.3706547618819513, 1.288437600268594, 1.2095765520630266, 1.1340007217131642, 1.0616403854942291, 0.9924252337677899, 0.9262861287227224, 0.8631527607205953, 0.8029548201229773, 0.7456237550323976, 0.6910880839831179, 0.6392792550776676, 0.5901263727639616, 0.5435597133172223, 0.49950955301267186, 0.45790616812553253, 0.41867924901737297, 0.3817590719634154, 0.3470759132388821, 0.31456004911899527, 0.28414058405167, 0.25574896613943565, 0.22931429983020735, 0.2047668613992073, 0.18203692712165775, 0.16105477327278095, 0.14175009021414553, 0.12405315422097374, 0.10789424156848781, 0.0932030426182564, 0.07990983364550175, 0.06794489092544609, 0.057238490733311664, 0.04771973751701353, 0.03932007937908111, 0.031968620767429456, 0.025595637957280815, 0.020131993137511017, 0.015506790756035116, 0.011650307088075351, 0.008493404322507558, 0.005965186907246789, 0.003995931117515283, 0.002516499142188877, 0.0014565813428362162, 0.0007458680810259466, 0.00031463563198030897, 9.3160270921544e-05, 1.1718273071892327e-05, 0.0]
+"values": [9.772761661845264, 9.762054959541402, 9.750090044286049, 9.736796945172104, 9.722105846925782, 9.70594676033018, 9.688249860956612, 9.66894520536268, 9.64796292334519, 9.625233025687244, 9.600685715424856, 9.574251012496024, 9.54585908331716, 9.515439911206665, 9.48292375412995, 9.448240558785812, 9.411320564829872, 9.372093828819729, 9.330490370693385, 9.286440210388832, 9.239873697420506, 9.190720888346007, 9.138911693244523, 9.08437609543445, 9.027044664147835, 8.966847309463873, 8.903714014700952, 8.837574616699058, 8.768359831168652, 8.69599942171051, 8.620423591360648, 8.541562176959047, 8.459345601259344, 8.373703920819139, 8.284566533043176, 8.19186473955557, 8.095527791282649, 7.995486257456463, 7.891669535481753, 7.78400863402581, 7.672432950493373, 7.556873200594907, 7.437258195821499, 7.313519823710919, 7.185587042232669, 7.05339056709721, 6.9168600886661125, 6.775925004344117, 6.6305167622337535, 6.4805650526965906, 6.325999859051024, 6.166751164615448, 6.002748952708259, 5.83392349960468, 5.660205081579932, 5.481522217168276, 5.29780752629955, 5.108990113421669, 4.915, 4.721009810284386, 4.532192104449678, 4.348477706537778, 4.16979513508295, 3.996076424101375, 3.827251263954622, 3.663248759090606, 3.504000357611858, 3.349435163966291, 3.199483454429128, 3.0540749193619376, 2.9131392491262886, 2.776608477738364, 2.644412295559732, 2.516479221124655, 2.392741288449315, 2.273127016067974, 2.157567266169508, 2.0459911432018316, 1.9383300952674745, 1.8345138127280052, 1.734472571858646, 1.638135477107312, 1.5454339765765326, 1.4562965888005692, 1.3706547618819511, 1.288437600268594, 1.2095765520630266, 1.1340007217131642, 1.0616403854942291, 0.99242523376779, 0.9262861287227224, 0.8631527607205953, 0.8029548201229773, 0.7456237550323976, 0.6910880839831179, 0.6392792550776676, 0.5901263727639616, 0.5435597133172223, 0.49950955301267186, 0.4579061681255326, 0.41867924901737297, 0.3817590719634154, 0.3470759132388821, 0.31456004911899527, 0.28414058405167, 0.25574896613943565, 0.22931429983020735, 0.2047668613992073, 0.18203692712165775, 0.16105477327278095, 0.14175009021414553, 0.12405315422097374, 0.1078942415684878, 0.0932030426182564, 0.07990983364550175, 0.06794489092544609, 0.05723849073331166, 0.04771973751701353, 0.03932007937908111, 0.03196862076742945, 0.02559563795728081, 0.02013199313751101, 0.01550679075603511, 0.01165030708807535, 0.00849340432250755, 0.00596518690724678, 0.00399593111751528, 0.00251649914218887, 0.00145658134283621, 0.00074586808102594, 0.0003146356319803, 9.3160270921544e-05, 1.1718273071892328e-05, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -5108,7 +6219,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [7.367846901172925, 7.3597749409511515, 7.350754393143143, 7.340732505522979, 7.3296566431992725, 7.3174740401420415, 7.304132054557867, 7.289577954926922, 7.273759064945633, 7.256622618584016, 7.2381159947547475, 7.218186434329875, 7.19678128861395, 7.1738477708708945, 7.149333301425573, 7.123185065933782, 7.095350470916324, 7.065776784853373, 7.034411248616976, 7.0012011030791825, 6.96609383758517, 6.9290367206151124, 6.8899769102166815, 6.8488616196538, 6.805638503920399, 6.76025472106415, 6.712657484348977, 6.662793896606299, 6.610611723262551, 6.556058011932901, 6.499080141530026, 6.439625214885346, 6.377640776560291, 6.313074095035034, 6.24587194184349, 6.1759825241421, 6.103352503032276, 6.027929533507951, 5.949660387103037, 5.868493050108974, 5.784374294059674, 5.697251884381572, 5.607072150878572, 5.513783742437127, 5.417333099293643, 5.317667986874554, 5.214735397578778, 5.108482102940229, 4.9988564205478525, 4.885805342800566, 4.769276082962293, 4.649215854296955, 4.525571870068475, 4.398291564405781, 4.2673223714378, 4.132610400103431, 3.994104851451638, 3.8517522761513305, 3.7055, 3.559247498781531, 3.4168947026162186, 3.2783893748294304, 3.143677624360066, 3.01270821052708, 2.8854281257293906, 2.7617839206359065, 2.641723912835573, 2.5251946529972997, 2.4121435752500133, 2.302517671992632, 2.1962639356240743, 2.093331125463294, 1.9936662339092095, 1.8972153699007208, 1.8039272927567822, 1.7137481114162938, 1.6266257017381918, 1.5425066143913853, 1.4613391669648195, 1.3830703518574126, 1.3076476031980917, 1.235017471655766, 1.1651282748193807, 1.097926121627836, 1.033359329670077, 0.9713744496150127, 0.9119197990515886, 0.8549419286487137, 0.8003882725353151, 0.748205823110311, 0.6983424562326377, 0.6507451643012132, 0.6053609397149557, 0.5621381000628105, 0.5210227542836776, 0.48196321996650227, 0.4449060477801936, 0.4097986718536788, 0.376588526315885, 0.34522304529573944, 0.3156492211921602, 0.2878144881340745, 0.2616662802504095, 0.23715203167009236, 0.21421829306203222, 0.19281338201517428, 0.1728838491984277, 0.15437712874071963, 0.13724065477097724, 0.12142186141812772, 0.10686774108108921, 0.09352572788878888, 0.0813432559701539, 0.07026731772410244, 0.060245347279561656, 0.05122477876545872, 0.04315304631072081, 0.03597670058425706, 0.02964405917501267, 0.024101672751896785, 0.019296975443836573, 0.015177843109768219, 0.011690826418600864, 0.008783359499261678, 0.006403318210686848, 0.004497253221785513, 0.0030125986614848443, 0.0018972303887210273, 0.0010981408024122175, 0.0005623223014765699, 0.00023720901484125534, 7.023507143344432e-05, 8.834600180307461e-06, 0.0]
+"values": [7.367846901172925, 7.359774940951152, 7.350754393143143, 7.340732505522979, 7.329656643199272, 7.3174740401420415, 7.304132054557867, 7.289577954926922, 7.273759064945633, 7.256622618584016, 7.2381159947547475, 7.218186434329875, 7.19678128861395, 7.1738477708708945, 7.149333301425573, 7.123185065933782, 7.095350470916324, 7.065776784853373, 7.034411248616976, 7.0012011030791825, 6.96609383758517, 6.9290367206151124, 6.8899769102166815, 6.8488616196538, 6.805638503920399, 6.76025472106415, 6.712657484348977, 6.662793896606299, 6.610611723262551, 6.556058011932901, 6.499080141530026, 6.439625214885346, 6.377640776560291, 6.313074095035034, 6.24587194184349, 6.1759825241421, 6.103352503032276, 6.027929533507951, 5.949660387103037, 5.868493050108974, 5.784374294059674, 5.697251884381572, 5.607072150878572, 5.513783742437127, 5.417333099293643, 5.317667986874554, 5.214735397578778, 5.108482102940229, 4.9988564205478525, 4.885805342800566, 4.769276082962293, 4.649215854296955, 4.525571870068475, 4.398291564405781, 4.2673223714378, 4.132610400103431, 3.994104851451638, 3.8517522761513305, 3.7055, 3.559247498781531, 3.416894702616218, 3.2783893748294304, 3.143677624360066, 3.01270821052708, 2.8854281257293906, 2.7617839206359065, 2.641723912835573, 2.5251946529972997, 2.4121435752500133, 2.302517671992632, 2.1962639356240743, 2.093331125463294, 1.9936662339092095, 1.8972153699007208, 1.8039272927567824, 1.7137481114162938, 1.6266257017381918, 1.5425066143913853, 1.4613391669648197, 1.3830703518574126, 1.3076476031980917, 1.235017471655766, 1.1651282748193807, 1.097926121627836, 1.033359329670077, 0.9713744496150128, 0.9119197990515886, 0.8549419286487137, 0.8003882725353151, 0.748205823110311, 0.6983424562326377, 0.6507451643012132, 0.6053609397149557, 0.5621381000628105, 0.5210227542836776, 0.48196321996650227, 0.4449060477801936, 0.4097986718536788, 0.376588526315885, 0.34522304529573944, 0.3156492211921602, 0.2878144881340745, 0.2616662802504095, 0.23715203167009236, 0.21421829306203224, 0.19281338201517428, 0.1728838491984277, 0.15437712874071963, 0.13724065477097724, 0.12142186141812772, 0.1068677410810892, 0.09352572788878888, 0.0813432559701539, 0.07026731772410244, 0.06024534727956165, 0.05122477876545872, 0.04315304631072081, 0.03597670058425706, 0.02964405917501267, 0.02410167275189678, 0.01929697544383657, 0.01517784310976821, 0.01169082641860086, 0.00878335949926167, 0.00640331821068684, 0.00449725322178551, 0.00301259866148484, 0.00189723038872102, 0.00109814080241221, 0.00056232230147656, 0.00023720901484125, 7.023507143344432e-05, 8.834600180307461e-06, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -5120,7 +6231,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [2.098708100178648, 2.0964088276056714, 2.0938393528314734, 2.090984649549817, 2.0878297248768405, 2.0843595485742625, 2.080559125792199, 2.076413436122479, 2.0719074748851085, 2.0670262118418066, 2.061754658040755, 2.0560777852096948, 2.04998059653272, 2.0434480558734833, 2.036465186076299, 2.029016943140732, 2.0210883459790523, 2.012664374183089, 2.0037299994805835, 1.9942701935992773, 1.984269999043704, 1.9737143954056933, 1.9625883308207221, 1.950876769152444, 1.938564800089921, 1.9256373717686301, 1.912079448052225, 1.8978759613480065, 1.883012032801389, 1.8674725790914977, 1.851242611266514, 1.834307061733739, 1.8166509887258826, 1.7982593718347744, 1.7791170490986588, 1.7592092674883588, 1.738520833585767, 1.7170368370799451, 1.694742116009138, 1.6716218544314643, 1.6476608903851684, 1.6228443450156647, 1.5971569305357889, 1.5705840197417729, 1.5431103563028046, 1.5147210613642983, 1.485401035877203, 1.4551351178797631, 1.423908585799154, 1.3917063405863246, 1.3585133461049281, 1.324314566218618, 1.2890949647910475, 1.2528395685985743, 1.215533404417556, 1.1771611215481244, 1.1377082500682718, 1.0971595651035386, 1.0555, 1.0138404959316176, 0.9732917480541801, 0.9338389394870319, 0.8954667195303045, 0.858160492436582, 0.8219051591568132, 0.7866854948165383, 0.7524867778429325, 0.719293783361536, 0.6870915381487066, 0.6558649431553931, 0.6255988993325445, 0.5962788109327448, 0.5678895789069429, 0.5404158525552702, 0.5138430361303108, 0.48815577893219597, 0.46333923356269224, 0.4393781751473398, 0.4162578821133138, 0.3939632554115633, 0.3724793218184459, 0.3517908564595018, 0.33188313776190626, 0.31274081502579065, 0.2943491666783302, 0.27669296784506514, 0.25975749695317063, 0.24352752912818687, 0.22798809114647156, 0.21312408395897364, 0.19892066016745957, 0.1853627207228783, 0.17243516657617874, 0.16012327615453614, 0.1484116987580819, 0.13728571281399127, 0.1267300934478044, 0.11672986743587899, 0.10727006155457275, 0.09833570258024338, 0.08991169146383982, 0.08198305498171976, 0.07453481991024091, 0.06755201302576097, 0.06101940945382012, 0.05492228762159357, 0.04924542265462151, 0.04397384132926163, 0.03909257042187164, 0.03458663670880924, 0.03044094114102336, 0.026640510494871705, 0.023170371546711976, 0.020015425247493113, 0.017160698373572814, 0.014591217701308778, 0.012292010007058707, 0.01024785041636278, 0.008444017356396216, 0.006865285952699196, 0.005496682981629419, 0.004323361044953344, 0.003330095268211153, 0.0025019124277605442, 0.0018239651253679767, 0.001281028486573632, 0.0008581292877352098, 0.000540420130619168, 0.00031280196617444744, 0.00016017574534998857, 6.756824450349086e-05, 2.0006239992653718e-05, 2.5165082e-06, 0.0]
+"values": [2.098708100178648, 2.0964088276056714, 2.093839352831474, 2.090984649549817, 2.0878297248768405, 2.0843595485742625, 2.080559125792199, 2.076413436122479, 2.0719074748851085, 2.0670262118418066, 2.061754658040755, 2.0560777852096948, 2.04998059653272, 2.0434480558734833, 2.036465186076299, 2.029016943140732, 2.0210883459790523, 2.012664374183089, 2.0037299994805835, 1.9942701935992773, 1.984269999043704, 1.9737143954056933, 1.962588330820722, 1.950876769152444, 1.938564800089921, 1.92563737176863, 1.912079448052225, 1.8978759613480063, 1.883012032801389, 1.8674725790914977, 1.851242611266514, 1.834307061733739, 1.8166509887258824, 1.7982593718347744, 1.7791170490986588, 1.7592092674883588, 1.738520833585767, 1.7170368370799451, 1.694742116009138, 1.6716218544314645, 1.6476608903851684, 1.6228443450156649, 1.5971569305357889, 1.5705840197417729, 1.5431103563028046, 1.5147210613642983, 1.485401035877203, 1.4551351178797631, 1.423908585799154, 1.3917063405863246, 1.358513346104928, 1.324314566218618, 1.2890949647910477, 1.2528395685985745, 1.215533404417556, 1.1771611215481244, 1.1377082500682718, 1.0971595651035386, 1.0555, 1.0138404959316176, 0.97329174805418, 0.933838939487032, 0.8954667195303045, 0.858160492436582, 0.8219051591568132, 0.7866854948165383, 0.7524867778429325, 0.719293783361536, 0.6870915381487066, 0.6558649431553931, 0.6255988993325445, 0.5962788109327448, 0.5678895789069429, 0.5404158525552702, 0.5138430361303108, 0.488155778932196, 0.46333923356269224, 0.4393781751473398, 0.4162578821133138, 0.3939632554115633, 0.3724793218184459, 0.3517908564595018, 0.33188313776190626, 0.31274081502579065, 0.2943491666783302, 0.27669296784506514, 0.25975749695317063, 0.24352752912818687, 0.22798809114647156, 0.21312408395897364, 0.19892066016745957, 0.1853627207228783, 0.17243516657617874, 0.16012327615453614, 0.1484116987580819, 0.13728571281399127, 0.1267300934478044, 0.116729867435879, 0.10727006155457276, 0.09833570258024338, 0.08991169146383982, 0.08198305498171976, 0.07453481991024091, 0.06755201302576097, 0.06101940945382012, 0.05492228762159357, 0.04924542265462151, 0.04397384132926163, 0.03909257042187164, 0.03458663670880924, 0.03044094114102336, 0.0266405104948717, 0.02317037154671197, 0.02001542524749311, 0.01716069837357281, 0.01459121770130877, 0.0122920100070587, 0.01024785041636278, 0.00844401735639621, 0.00686528595269919, 0.00549668298162941, 0.00432336104495334, 0.00333009526821115, 0.00250191242776054, 0.00182396512536797, 0.00128102848657363, 0.0008581292877352, 0.00054042013061916, 0.00031280196617444, 0.00016017574534998, 6.756824450349086e-05, 2.000623999265372e-05, 2.5165082e-06, 0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -5132,7 +6243,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [6.610284276119982, 6.603042275512863, 6.594949221173232, 6.585957784863384, 6.576020743615796, 6.5650907568080346, 6.553120595280214, 6.54006294937172, 6.525870558960847, 6.51049608342516, 6.493892312181867, 6.476011910800896, 6.456807643929999, 6.436232152369648, 6.414238262691235, 6.390778590925777, 6.3658059512599365, 6.3392730340330985, 6.311132504815191, 6.281337029176143, 6.249839495610985, 6.216592594459101, 6.181548916982052, 6.144661103980312, 6.105882192565645, 6.065164773999612, 6.022461489082687, 5.977724879537519, 5.930908081553696, 5.8819635873149565, 5.830844186238508, 5.777502420047, 5.721891226774375, 5.663963296760016, 5.603670874493105, 5.540967492474522, 5.475805296115624, 5.408137322528177, 5.33791581620136, 5.265094111480408, 5.189624452854503, 5.111459976513231, 5.0305525306344805, 4.946856044030426, 4.860322463956777, 4.770904926603123, 4.67855587461429, 4.583227552479457, 4.48487359177733, 4.3834464351527345, 4.278898723406144, 4.17118309733803, 4.060252197748866, 3.9460588635947715, 3.828555933831865, 3.7076950584823862, 3.5834306617476273, 3.455714789961121, 3.3245, 3.1932853778855588, 3.065569307943406, 2.9413051093642935, 2.8204444321704614, 2.702941304251908, 2.58874816825346, 2.4778170705086495, 2.3701016425961825, 2.265553930849592, 2.1641267742249966, 2.065772615367223, 1.970443896921097, 1.878094646776617, 1.7886773075786095, 1.7021435293493141, 1.6184473399787294, 1.537540389489095, 1.4593759131478237, 1.383905957288448, 1.3110841534896736, 1.2408629443963264, 1.1731951689645257, 1.1080328735278044, 1.045329689664868, 0.9850372673979564, 0.9271092383057749, 0.8714976487218564, 0.8181561302249065, 0.7670367291484581, 0.7180922844486304, 0.6712752387702494, 0.6265388273807275, 0.5838354929248908, 0.5431176780475653, 0.5043390143274564, 0.4674511517868041, 0.43240772200431365, 0.3991607713135181, 0.3676631386705367, 0.3378676630314885, 0.30972718335249283, 0.2831941422783757, 0.2582213787652563, 0.23476173176925386, 0.21276804024648754, 0.19219235053049033, 0.17298829419996764, 0.15510791758845244, 0.13850405965206392, 0.12312955934692127, 0.10893725562914369, 0.09587959114355726, 0.08390940484628118, 0.07297953569343463, 0.06304242632984369, 0.05405091571162757, 0.045957842794905446, 0.03871604653579652, 0.03227757326783376, 0.026596054569722583, 0.021623536774995955, 0.01731285883977307, 0.01361725603146624, 0.010488774683608426, 0.007880253752318822, 0.005744928505009739, 0.004034845275214138, 0.0027028430190512154, 0.00170215700393328, 0.0009852298746864108, 0.0005045042761366858, 0.0002128191644032995, 6.301349560544622e-05, 7.92622586232028e-06, 0.0]
+"values": [6.610284276119982, 6.603042275512863, 6.594949221173232, 6.585957784863384, 6.576020743615796, 6.5650907568080346, 6.553120595280214, 6.54006294937172, 6.525870558960847, 6.51049608342516, 6.493892312181867, 6.476011910800896, 6.456807643929999, 6.436232152369648, 6.414238262691235, 6.390778590925777, 6.3658059512599365, 6.3392730340330985, 6.311132504815191, 6.281337029176143, 6.249839495610985, 6.216592594459101, 6.181548916982052, 6.144661103980312, 6.105882192565645, 6.065164773999612, 6.022461489082687, 5.977724879537519, 5.930908081553696, 5.8819635873149565, 5.830844186238508, 5.777502420047, 5.721891226774375, 5.663963296760016, 5.603670874493105, 5.540967492474522, 5.475805296115624, 5.408137322528177, 5.33791581620136, 5.265094111480408, 5.189624452854503, 5.111459976513231, 5.0305525306344805, 4.946856044030426, 4.860322463956777, 4.770904926603123, 4.67855587461429, 4.583227552479457, 4.48487359177733, 4.3834464351527345, 4.278898723406144, 4.17118309733803, 4.060252197748866, 3.946058863594771, 3.828555933831865, 3.7076950584823862, 3.5834306617476273, 3.455714789961121, 3.3245, 3.1932853778855588, 3.065569307943406, 2.9413051093642935, 2.820444432170462, 2.702941304251908, 2.58874816825346, 2.4778170705086495, 2.3701016425961825, 2.265553930849592, 2.164126774224997, 2.065772615367223, 1.970443896921097, 1.878094646776617, 1.7886773075786095, 1.702143529349314, 1.6184473399787294, 1.537540389489095, 1.4593759131478237, 1.383905957288448, 1.3110841534896736, 1.2408629443963264, 1.1731951689645257, 1.1080328735278044, 1.045329689664868, 0.9850372673979564, 0.9271092383057749, 0.8714976487218564, 0.8181561302249065, 0.7670367291484581, 0.7180922844486304, 0.6712752387702494, 0.6265388273807275, 0.5838354929248908, 0.5431176780475653, 0.5043390143274564, 0.4674511517868041, 0.43240772200431365, 0.3991607713135181, 0.3676631386705367, 0.3378676630314885, 0.30972718335249283, 0.2831941422783757, 0.2582213787652563, 0.23476173176925383, 0.21276804024648752, 0.19219235053049033, 0.17298829419996764, 0.15510791758845244, 0.13850405965206392, 0.12312955934692128, 0.10893725562914368, 0.09587959114355726, 0.08390940484628118, 0.07297953569343463, 0.06304242632984369, 0.05405091571162757, 0.04595784279490544, 0.03871604653579652, 0.03227757326783376, 0.02659605456972258, 0.02162353677499595, 0.01731285883977307, 0.01361725603146624, 0.01048877468360842, 0.00788025375231882, 0.00574492850500973, 0.00403484527521413, 0.00270284301905121, 0.00170215700393328, 0.00098522987468641, 0.00050450427613668, 0.00021281916440329, 6.301349560544622e-05, 7.92622586232028e-06, 0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -5144,7 +6255,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.5020981647999399, 1.5756291428039138, 1.657801215538525, 1.7490949258530002, 1.8499897477455334, 1.9609663498125312, 2.082504268925778, 2.21508385931373, 2.359184972216122, 2.5152882762293602, 2.6838731196044594, 2.8654201080642356, 3.0604088413540635, 3.26932017669112, 3.4926330850848784, 3.730828675246876, 3.9843860439337666, 4.253785545374006, 4.539507785290411, 4.842033369405797, 5.161840639993738, 5.499409951282688, 5.855222663478546, 6.229759633798489, 6.623497695549926, 7.036918208938754, 7.470502031182152, 7.9247310254747365, 8.400081019146477, 8.897034378380711, 9.416070451428455, 9.957671101484326, 10.522314167833176, 11.110480004703462, 11.722653493222126, 12.35930643680937, 13.020924722569578, 13.707985183810163, 14.420972701658066, 15.160361091488372, 15.926635234428026, 16.720270957806996, 17.54175716666199, 18.391561640503447, 19.270172278390632, 20.178064907653514, 21.115722397464154, 22.083629628949495, 23.082257399552297, 24.11208857844462, 25.17360402284364, 26.267284589966536, 27.393611137030483, 28.553062509297774, 29.746117552030704, 30.973267182220866, 32.234974149491485, 33.53172534692439, 34.864001631736755, 36.19627791654912, 37.49303112593691, 38.754736081252645, 39.98188369948792, 41.174940754175736, 42.334390114488144, 43.460718673506975, 44.554397228674986, 45.61591267307401, 46.64574385196633, 47.644373634524015, 48.612284889919124, 49.54994439168465, 50.457835008992646, 51.336447658834715, 52.186249114743845, 53.00773029371163, 53.8013660170906, 54.56764317796258, 55.30703257377033, 56.020017073685906, 56.70707552297161, 57.36869481470926, 58.00534574634162, 58.61751923486028, 59.20568607770801, 59.770333167966626, 60.31193130307889, 60.83096737612664, 61.32792023237215, 61.803272740987495, 62.257499723325196, 62.691084048557315, 63.10450858585591, 63.49824413266374, 63.872781605972406, 64.22859180322466, 64.56616161750233, 64.88596989406771, 65.1884954781831, 65.47421721511078, 65.74361797402283, 65.99717660018152, 66.23537193884916, 66.45868283528803, 66.66759618257997, 66.86258277816773, 67.04412951513315, 67.21271523873851, 67.36881879424611, 67.51291902691824, 67.64549880592696, 67.76703697653457, 67.87801238400336, 67.97890789750538, 68.07020236230294, 68.15237462365832, 68.22590352683382, 68.29127596491126, 68.34896273533342, 68.3994507311821, 68.44321879771961, 68.48074175629847, 68.51250650000051, 68.53899187408803, 68.56067269991354, 68.57803587055888, 68.59156023128634, 68.60172060344844, 68.60899985621725, 68.61388085876483, 68.61684245635347, 68.61836349424546, 68.6189228177031, 68.619]
+"values": [1.50209816479994, 1.5756291428039138, 1.657801215538525, 1.7490949258530002, 1.8499897477455336, 1.9609663498125312, 2.082504268925778, 2.21508385931373, 2.359184972216122, 2.51528827622936, 2.6838731196044594, 2.8654201080642356, 3.0604088413540635, 3.26932017669112, 3.4926330850848784, 3.730828675246876, 3.9843860439337666, 4.253785545374006, 4.539507785290411, 4.842033369405797, 5.161840639993738, 5.499409951282688, 5.855222663478546, 6.229759633798489, 6.623497695549926, 7.036918208938754, 7.470502031182152, 7.924731025474736, 8.400081019146477, 8.897034378380711, 9.416070451428457, 9.957671101484326, 10.522314167833176, 11.110480004703462, 11.722653493222126, 12.35930643680937, 13.020924722569578, 13.707985183810164, 14.420972701658066, 15.160361091488372, 15.926635234428026, 16.720270957806996, 17.54175716666199, 18.391561640503447, 19.270172278390632, 20.17806490765351, 21.11572239746415, 22.083629628949495, 23.082257399552297, 24.11208857844462, 25.17360402284364, 26.267284589966536, 27.393611137030483, 28.553062509297774, 29.746117552030704, 30.973267182220862, 32.234974149491485, 33.53172534692439, 34.864001631736755, 36.19627791654912, 37.49303112593691, 38.754736081252645, 39.98188369948792, 41.174940754175736, 42.334390114488144, 43.460718673506975, 44.554397228674986, 45.61591267307401, 46.64574385196633, 47.644373634524015, 48.61228488991912, 49.54994439168465, 50.457835008992646, 51.336447658834715, 52.186249114743845, 53.00773029371163, 53.8013660170906, 54.56764317796258, 55.30703257377033, 56.020017073685906, 56.70707552297161, 57.36869481470926, 58.00534574634162, 58.61751923486028, 59.20568607770801, 59.770333167966626, 60.31193130307889, 60.83096737612664, 61.32792023237215, 61.803272740987495, 62.2574997233252, 62.691084048557315, 63.10450858585591, 63.49824413266374, 63.872781605972406, 64.22859180322466, 64.56616161750233, 64.88596989406771, 65.1884954781831, 65.47421721511078, 65.74361797402283, 65.99717660018152, 66.23537193884916, 66.45868283528803, 66.66759618257997, 66.86258277816773, 67.04412951513315, 67.21271523873851, 67.36881879424611, 67.51291902691824, 67.64549880592696, 67.76703697653457, 67.87801238400336, 67.97890789750538, 68.07020236230294, 68.15237462365832, 68.22590352683382, 68.29127596491126, 68.34896273533342, 68.3994507311821, 68.44321879771961, 68.48074175629847, 68.51250650000051, 68.53899187408803, 68.56067269991354, 68.57803587055888, 68.59156023128634, 68.60172060344844, 68.60899985621725, 68.61388085876483, 68.61684245635347, 68.61836349424546, 68.6189228177031, 68.619]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -5156,7 +6267,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.6481925484846378, 1.7490512094672201, 1.8617624156982642, 1.986985303090733, 2.125377541469598, 2.277598439228762, 2.4443057524336673, 2.6261583582758665, 2.823814444023151, 3.037933318069425, 3.2691724777587186, 3.5181911452444656, 3.7856471628325776, 4.072200097638368, 4.378506929563048, 4.70522757068381, 5.053019173382807, 5.42254061485159, 5.814451117243593, 6.2294099027122485, 6.668073088754067, 7.131099552560601, 7.619149551170924, 8.132882651700351, 8.672952901874108, 9.24002055873127, 9.834745189387151, 10.457787740804585, 11.109800880861279, 11.791446246443828, 12.503381334896263, 13.24626709318142, 14.020758948872047, 14.827515779159697, 15.66720267054977, 16.540466771529886, 17.447974548452965, 18.390380049044236, 19.368348359809097, 20.382529388930212, 21.43358822291298, 22.52217752963511, 23.64896791499208, 24.814601008081432, 26.019746034951126, 27.26505566347887, 28.551192220475016, 29.87882079244497, 31.248587148028825, 32.66115361403694, 34.11717975758463, 35.617325145787206, 37.16224934575998, 38.75260916492323, 40.38906141069722, 42.072279448672475, 43.80289800870893, 45.58158493700702, 47.40899980068207, 49.23641466435711, 51.01510435235025, 52.74572015269166, 54.428935430971876, 56.06539043644091, 57.65574749590911, 59.20067445557693, 60.70081708408446, 62.15684322763215, 63.56940969364027, 64.93917880891917, 66.2668129002792, 67.5529522169704, 68.7982590858031, 70.00340687236783, 71.16903582591462, 72.29581931203398, 73.38440861875611, 74.43547159228144, 75.44965400125008, 76.42761817247238, 77.3700209133686, 78.2775300701392, 79.15079141142428, 79.99047830281435, 80.79723651294952, 81.57173388803024, 82.31461619669659, 83.02655128514903, 83.70819596080781, 84.36021255048331, 84.9832523422057, 85.57797766278534, 86.14505083903259, 86.68511763958755, 87.19885143004073, 87.68689797903225, 88.14992513276255, 88.58858969865189, 89.00354848412054, 89.39545829658879, 89.76498146286697, 90.11277479037537, 90.43949508653425, 90.74579915876389, 91.03235485326472, 91.29980793867685, 91.54882626120072, 91.78006662825659, 91.99418584726475, 92.19184072564545, 92.37369359020906, 92.54040124837584, 92.69262050756608, 92.83101369459011, 92.95623761686822, 93.06894908182068, 93.16980489686775, 93.25947290820987, 93.33859888448715, 93.40785067190004, 93.46788507786879, 93.51935339042359, 93.56292345576489, 93.59925208131295, 93.62899055509797, 93.65280672332038, 93.67135739340046, 93.68529385336838, 93.6952784300345, 93.7019734502092, 93.70603572131272, 93.70812205076534, 93.70888924598734, 93.709]
+"values": [1.6481925484846378, 1.74905120946722, 1.861762415698264, 1.986985303090733, 2.125377541469598, 2.277598439228762, 2.4443057524336673, 2.6261583582758665, 2.823814444023151, 3.037933318069425, 3.2691724777587186, 3.5181911452444656, 3.7856471628325776, 4.072200097638368, 4.378506929563048, 4.70522757068381, 5.053019173382807, 5.42254061485159, 5.814451117243593, 6.2294099027122485, 6.668073088754067, 7.131099552560601, 7.619149551170924, 8.132882651700351, 8.672952901874108, 9.24002055873127, 9.834745189387151, 10.457787740804584, 11.10980088086128, 11.791446246443828, 12.503381334896265, 13.24626709318142, 14.020758948872048, 14.827515779159697, 15.66720267054977, 16.540466771529886, 17.447974548452965, 18.390380049044236, 19.368348359809097, 20.382529388930212, 21.43358822291298, 22.52217752963511, 23.64896791499208, 24.814601008081432, 26.01974603495113, 27.26505566347887, 28.551192220475016, 29.87882079244497, 31.248587148028825, 32.66115361403694, 34.11717975758463, 35.617325145787206, 37.16224934575998, 38.75260916492323, 40.38906141069722, 42.072279448672475, 43.80289800870893, 45.58158493700702, 47.40899980068207, 49.23641466435711, 51.01510435235025, 52.74572015269166, 54.42893543097187, 56.06539043644091, 57.65574749590911, 59.20067445557693, 60.70081708408446, 62.15684322763215, 63.56940969364027, 64.93917880891917, 66.2668129002792, 67.5529522169704, 68.7982590858031, 70.00340687236783, 71.16903582591462, 72.29581931203398, 73.38440861875611, 74.43547159228144, 75.44965400125008, 76.42761817247238, 77.3700209133686, 78.2775300701392, 79.15079141142428, 79.99047830281435, 80.79723651294952, 81.57173388803024, 82.31461619669659, 83.02655128514903, 83.70819596080781, 84.36021255048331, 84.9832523422057, 85.57797766278534, 86.14505083903259, 86.68511763958755, 87.19885143004073, 87.68689797903225, 88.14992513276255, 88.58858969865189, 89.00354848412054, 89.39545829658879, 89.76498146286697, 90.11277479037535, 90.43949508653424, 90.74579915876387, 91.03235485326472, 91.29980793867684, 91.54882626120072, 91.7800666282566, 91.99418584726476, 92.19184072564543, 92.37369359020906, 92.54040124837584, 92.69262050756608, 92.83101369459013, 92.95623761686822, 93.06894908182068, 93.16980489686776, 93.25947290820989, 93.33859888448715, 93.40785067190004, 93.4678850778688, 93.5193533904236, 93.56292345576487, 93.59925208131295, 93.62899055509796, 93.65280672332038, 93.67135739340046, 93.68529385336838, 93.6952784300345, 93.7019734502092, 93.70603572131272, 93.70812205076534, 93.70888924598734, 93.709]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -5168,7 +6279,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [2.490142355999148, 2.748491926921938, 3.037201805521347, 3.3579603691626394, 3.7124522398250774, 4.102366236684042, 4.529387202623855, 4.995202852294604, 5.501499133105904, 6.049964864233137, 6.642284225845447, 7.280145816213157, 7.965234699125648, 8.699240356473478, 9.483845642995437, 10.320740924202319, 11.211609496643035, 12.15813907496767, 13.162018257446547, 14.22493564234999, 15.3485718753662, 16.534614671145263, 17.784755278818213, 19.100683180275603, 20.484073719484226, 21.936618145575107, 23.460005940438805, 25.055930120446824, 26.72606249508501, 28.47209784796533, 30.295720359256933, 32.19862304533132, 34.182484784636216, 36.24899329182172, 38.39985218670215, 40.63671914083958, 42.961301308529286, 45.375274033738066, 47.88034093628023, 50.47816675667974, 53.17045511475094, 55.95887781997967, 58.845152630104025, 61.830923078762304, 64.91790338921167, 68.10776537093798, 71.40220557479365, 74.80292762059304, 78.31158564541727, 81.92987620011877, 85.65948876658811, 89.50211282671584, 93.45943786239255, 97.53314628654687, 101.7249205121075, 106.03648536577441, 110.4694667087812, 115.02557522990409, 119.70650041103363, 124.38742559216317, 128.94354118224794, 133.37651545629285, 137.68807324099788, 141.8798545355204, 145.95355589071283, 149.9108879953514, 153.75350498651727, 157.4831175529866, 161.10140810768812, 164.61007320147422, 168.01080938519738, 171.30525665801494, 174.49511157077936, 177.5820989501906, 180.56785879540607, 183.4541159331257, 186.24253863835443, 188.93483759986844, 191.53266695474892, 194.03772325384824, 196.45168891009513, 198.7762746122658, 201.01313449744134, 203.16399339232177, 205.2305054339882, 207.21438131121687, 209.1172751610889, 210.94089767238052, 212.68693125802037, 214.3570724688609, 215.95298957990704, 217.4763791420112, 218.92893770602586, 220.3123194090321, 221.62824907773, 222.8783808492006, 224.06442541222012, 225.18806517971728, 226.2509825646207, 227.25485997985913, 228.20139397628492, 229.09226696682683, 229.92916136441346, 230.71375958197353, 231.44777230828328, 232.13285368042375, 232.7707143871712, 233.36303684145435, 233.91150345620184, 234.4177966443423, 234.88361295672823, 235.31063480628828, 235.7005446059511, 236.05503890656922, 236.37580012107122, 236.6645106623858, 236.92285294344163, 237.15253765301497, 237.3552189281869, 237.53260745773363, 237.6863856545839, 237.8182217937425, 237.92982656398576, 238.0228823782423, 238.099057511517, 238.16006265258613, 238.2075802143783, 238.24327847189846, 238.26885397599906, 238.28600327753253, 238.29640878942752, 238.30175292461269, 238.30371809601678, 238.304]
+"values": [2.490142355999148, 2.748491926921938, 3.037201805521347, 3.3579603691626394, 3.7124522398250774, 4.102366236684042, 4.529387202623855, 4.995202852294604, 5.501499133105904, 6.049964864233137, 6.642284225845447, 7.280145816213157, 7.965234699125648, 8.699240356473478, 9.483845642995435, 10.32074092420232, 11.211609496643035, 12.15813907496767, 13.162018257446547, 14.22493564234999, 15.3485718753662, 16.534614671145263, 17.784755278818213, 19.100683180275603, 20.484073719484226, 21.936618145575107, 23.460005940438805, 25.055930120446824, 26.72606249508501, 28.47209784796533, 30.295720359256933, 32.19862304533132, 34.182484784636216, 36.24899329182172, 38.39985218670215, 40.63671914083958, 42.961301308529286, 45.375274033738066, 47.88034093628023, 50.47816675667974, 53.17045511475094, 55.95887781997967, 58.845152630104025, 61.830923078762304, 64.91790338921167, 68.10776537093798, 71.40220557479365, 74.80292762059304, 78.31158564541727, 81.92987620011877, 85.65948876658811, 89.50211282671584, 93.45943786239256, 97.53314628654688, 101.7249205121075, 106.0364853657744, 110.4694667087812, 115.02557522990408, 119.70650041103364, 124.38742559216315, 128.94354118224794, 133.37651545629285, 137.68807324099788, 141.8798545355204, 145.95355589071283, 149.9108879953514, 153.75350498651727, 157.4831175529866, 161.10140810768812, 164.61007320147422, 168.01080938519738, 171.30525665801494, 174.49511157077936, 177.5820989501906, 180.56785879540607, 183.4541159331257, 186.24253863835443, 188.93483759986844, 191.53266695474892, 194.03772325384824, 196.45168891009513, 198.7762746122658, 201.01313449744137, 203.16399339232177, 205.2305054339882, 207.21438131121687, 209.1172751610889, 210.94089767238052, 212.68693125802037, 214.3570724688609, 215.95298957990704, 217.4763791420112, 218.92893770602583, 220.3123194090321, 221.62824907773, 222.8783808492006, 224.06442541222012, 225.18806517971728, 226.2509825646207, 227.25485997985913, 228.20139397628492, 229.09226696682683, 229.92916136441343, 230.71375958197353, 231.44777230828328, 232.13285368042375, 232.7707143871712, 233.36303684145437, 233.91150345620184, 234.4177966443423, 234.88361295672823, 235.31063480628828, 235.7005446059511, 236.0550389065692, 236.3758001210712, 236.6645106623858, 236.92285294344163, 237.15253765301495, 237.3552189281869, 237.53260745773363, 237.6863856545839, 237.8182217937425, 237.92982656398576, 238.0228823782423, 238.099057511517, 238.1600626525861, 238.2075802143783, 238.2432784718985, 238.26885397599904, 238.28600327753253, 238.29640878942752, 238.30175292461269, 238.3037180960168, 238.304]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -5180,7 +6291,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [3.9326521683534272, 4.223644646335677, 4.548833508432546, 4.9101204613568905, 5.309402981936165, 5.748583274516803, 6.2295590647430465, 6.754231312877387, 7.324498988648008, 7.942264296401343, 8.60942421533127, 9.327880700967434, 10.099531727770863, 10.926280246538358, 11.810021743563066, 12.752660164908939, 13.756091494502698, 14.822216692606839, 15.952937714751002, 17.150156516464833, 18.415766095873597, 19.751667413239787, 21.1597654098945, 22.641963036634543, 24.200147319982253, 25.83622320126874, 27.552093631290802, 29.349665541913843, 31.2308219785916, 33.19747186372379, 35.25151217650429, 37.394849848798515, 39.629375888197416, 41.956991254963484, 44.37961482416797, 46.899113716990165, 49.51741078956992, 52.23639306842958, 55.0579794286404, 57.98404495351889, 61.016508518136284, 64.15725316794632, 67.40821370229472, 70.77124131808628, 74.24826683359812, 77.84117329428395, 81.55187161307781, 85.38228066505093, 89.33426359031398, 93.409731301801, 97.61058675030878, 101.93873288663413, 106.39607266157381, 110.98450106378743, 115.70591308193454, 120.56225147749808, 125.55534754203981, 130.6871281127682, 135.95949614048004, 141.2318641681919, 146.3636527010575, 151.356740803462, 156.2130712368883, 160.93449121717265, 165.52291165724904, 169.98025939432597, 174.30839756851407, 178.50925301702185, 182.58472072850887, 186.53671161590916, 190.36713659215673, 194.0778428730878, 197.6707413716364, 201.14777484928547, 204.5107905218712, 207.76173115087653, 210.90247580068657, 213.93495130850982, 216.8610208144569, 219.6825952314619, 222.40156954818434, 225.01987060183268, 227.53936153251766, 229.96198510172215, 232.28960444955683, 234.5241464132302, 236.66747413285287, 238.72151444563337, 240.68816234023126, 242.56932872958055, 244.36689267806636, 246.08276509862273, 247.71885690418367, 249.27703123485986, 250.75923085213418, 252.16731889611737, 253.50322220401787, 254.76883576449524, 255.9660545662091, 257.0967735978189, 258.16290377225886, 259.16634007818834, 260.1089775042671, 260.9927110391546, 261.8194675200593, 262.5911100870919, 263.30956557746094, 263.9767289798259, 264.59449528284637, 265.164759475182, 265.68943246976664, 266.1704092552601, 266.60958482032174, 267.00887007788566, 267.37016001661146, 267.6953496251587, 267.98633389218696, 268.24503965490464, 268.4733300534225, 268.67313192494896, 268.84634025814364, 268.99483411739163, 269.12054033990137, 269.2253539143325, 269.3111539050701, 269.37986714932265, 269.43338863574974, 269.47359742873647, 269.50240444121687, 269.5217205861249, 269.53344085212024, 269.53946022786243, 269.541673702011, 269.542]
+"values": [3.9326521683534272, 4.223644646335677, 4.548833508432546, 4.9101204613568905, 5.309402981936165, 5.748583274516803, 6.2295590647430465, 6.754231312877387, 7.324498988648008, 7.942264296401343, 8.60942421533127, 9.327880700967434, 10.099531727770865, 10.926280246538358, 11.810021743563066, 12.75266016490894, 13.756091494502698, 14.82221669260684, 15.952937714751002, 17.150156516464833, 18.415766095873597, 19.751667413239787, 21.1597654098945, 22.641963036634543, 24.200147319982253, 25.83622320126874, 27.5520936312908, 29.349665541913843, 31.2308219785916, 33.19747186372379, 35.25151217650429, 37.394849848798515, 39.629375888197416, 41.95699125496349, 44.37961482416797, 46.899113716990165, 49.51741078956992, 52.23639306842958, 55.0579794286404, 57.98404495351889, 61.01650851813629, 64.15725316794632, 67.40821370229472, 70.77124131808628, 74.24826683359812, 77.84117329428395, 81.55187161307781, 85.38228066505093, 89.33426359031398, 93.409731301801, 97.61058675030878, 101.93873288663411, 106.3960726615738, 110.98450106378743, 115.70591308193454, 120.56225147749808, 125.5553475420398, 130.6871281127682, 135.95949614048004, 141.2318641681919, 146.3636527010575, 151.356740803462, 156.2130712368883, 160.93449121717265, 165.52291165724904, 169.98025939432597, 174.30839756851407, 178.50925301702185, 182.58472072850887, 186.53671161590916, 190.36713659215673, 194.0778428730878, 197.6707413716364, 201.14777484928547, 204.5107905218712, 207.76173115087653, 210.90247580068657, 213.93495130850985, 216.8610208144569, 219.6825952314619, 222.4015695481843, 225.01987060183268, 227.5393615325177, 229.96198510172215, 232.28960444955683, 234.5241464132302, 236.66747413285287, 238.72151444563335, 240.6881623402313, 242.56932872958055, 244.36689267806636, 246.08276509862273, 247.71885690418367, 249.27703123485983, 250.75923085213415, 252.16731889611737, 253.50322220401787, 254.76883576449524, 255.9660545662091, 257.0967735978189, 258.16290377225886, 259.16634007818834, 260.1089775042671, 260.9927110391546, 261.8194675200593, 262.5911100870919, 263.30956557746094, 263.9767289798259, 264.59449528284637, 265.164759475182, 265.68943246976664, 266.1704092552601, 266.60958482032174, 267.00887007788566, 267.37016001661146, 267.6953496251587, 267.98633389218696, 268.24503965490464, 268.4733300534225, 268.67313192494896, 268.84634025814364, 268.99483411739163, 269.12054033990137, 269.2253539143325, 269.3111539050701, 269.37986714932265, 269.43338863574974, 269.47359742873647, 269.50240444121687, 269.5217205861249, 269.53344085212024, 269.53946022786243, 269.541673702011, 269.542]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -5192,7 +6303,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [6.1304682779075215, 6.3080710103564535, 6.506544973913291, 6.727050845688527, 6.970746721147898, 7.23879358112481, 7.532349672946454, 7.852575218138955, 8.200629223336787, 8.577672669373355, 8.984863347991482, 9.42336208816312, 9.894327289076914, 10.39892038715064, 10.938298262958385, 11.513622960363747, 12.126051663663725, 12.776744594384443, 13.46686258149785, 14.197566453975895, 14.970011573778102, 15.785358162430594, 16.644768871242796, 17.549405136632483, 18.500418675884227, 19.49897214030745, 20.54622696631993, 21.643347020122743, 22.791481589217156, 23.991795754695897, 25.245447308301788, 26.553600116235906, 27.91740832556612, 29.33803215781856, 30.8166427685442, 32.354379726111105, 33.95241661585356, 35.61190515505613, 37.334016499269794, 39.11989507642922, 40.970712042085395, 42.88761668373958, 44.87178987607596, 46.924361468329394, 49.04650990540077, 51.23938447479135, 53.50415147248552, 55.84198205403425, 58.254013358022306, 60.74141168043407, 63.30533845768731, 65.94695512619981, 68.66742312238934, 71.46789902310707, 74.34953940520417, 77.31353000293143, 80.36098851660721, 83.49309096134908, 86.71099877357483, 89.92890658580058, 93.06101389010905, 96.10846754421823, 99.07245328237889, 101.95409852404259, 104.75456956519372, 107.47504242094985, 110.11665422989574, 112.68058100714899, 115.16797932956075, 117.58001549311541, 119.91785579379734, 122.18262765105811, 124.3754973608821, 126.49765065752007, 128.5502149604236, 130.53437600384348, 132.45128064549766, 134.30210490050374, 136.08798590744647, 137.81008996231023, 139.4695736419462, 141.06761296147195, 142.60534505947226, 144.0839556701979, 145.50458193223363, 146.86839986069705, 148.17654659417292, 149.4301981477788, 150.6305110983659, 151.77865174191857, 152.87576693615478, 153.9230229770589, 154.92158616061533, 155.87259362540883, 156.77723110569016, 157.6366357400441, 158.45198354358826, 159.22443109317376, 159.9551349656518, 160.64525173787356, 161.2959477058234, 161.9083794463525, 162.48370353631205, 163.0230765525532, 163.52767451019352, 163.9986345478178, 164.4371326805436, 164.84432548522213, 165.22136953870452, 165.56942141784197, 165.88964741861884, 166.1832041178863, 166.45124809249555, 166.69494563843094, 166.91545333254365, 167.11392775168486, 167.29152547270573, 167.44942251072385, 167.58875600432398, 167.7107019686237, 167.8164169804742, 167.90704789759343, 167.98377073509897, 168.047742069842, 168.1001087595405, 168.14204681931201, 168.17471282600775, 168.19925363734566, 168.21683554931013, 168.22862485788553, 168.23577813992304, 168.23945197227383, 168.24080293178906, 168.241]
+"values": [6.1304682779075215, 6.3080710103564535, 6.506544973913291, 6.727050845688527, 6.970746721147898, 7.23879358112481, 7.532349672946454, 7.852575218138955, 8.200629223336787, 8.577672669373355, 8.984863347991482, 9.42336208816312, 9.894327289076914, 10.39892038715064, 10.938298262958384, 11.513622960363747, 12.126051663663723, 12.776744594384445, 13.46686258149785, 14.197566453975895, 14.970011573778102, 15.785358162430594, 16.644768871242796, 17.549405136632483, 18.500418675884227, 19.49897214030745, 20.54622696631993, 21.643347020122743, 22.791481589217156, 23.991795754695897, 25.245447308301788, 26.553600116235906, 27.91740832556612, 29.33803215781856, 30.8166427685442, 32.354379726111105, 33.95241661585356, 35.61190515505613, 37.334016499269794, 39.11989507642922, 40.970712042085395, 42.88761668373958, 44.87178987607596, 46.924361468329394, 49.04650990540077, 51.23938447479135, 53.50415147248552, 55.84198205403425, 58.254013358022306, 60.74141168043407, 63.30533845768731, 65.94695512619981, 68.66742312238934, 71.46789902310707, 74.34953940520417, 77.31353000293143, 80.36098851660721, 83.49309096134908, 86.71099877357483, 89.92890658580058, 93.06101389010904, 96.10846754421824, 99.07245328237887, 101.9540985240426, 104.75456956519372, 107.47504242094983, 110.11665422989574, 112.680581007149, 115.16797932956077, 117.5800154931154, 119.91785579379734, 122.18262765105813, 124.3754973608821, 126.49765065752008, 128.5502149604236, 130.53437600384348, 132.45128064549766, 134.30210490050374, 136.08798590744647, 137.81008996231023, 139.4695736419462, 141.06761296147195, 142.60534505947226, 144.0839556701979, 145.50458193223363, 146.86839986069705, 148.17654659417292, 149.4301981477788, 150.6305110983659, 151.77865174191857, 152.87576693615478, 153.9230229770589, 154.92158616061533, 155.87259362540885, 156.77723110569016, 157.6366357400441, 158.45198354358826, 159.22443109317376, 159.9551349656518, 160.64525173787356, 161.2959477058234, 161.9083794463525, 162.48370353631205, 163.0230765525532, 163.52767451019352, 163.9986345478178, 164.4371326805436, 164.84432548522213, 165.22136953870452, 165.56942141784197, 165.88964741861884, 166.1832041178863, 166.45124809249555, 166.69494563843094, 166.91545333254365, 167.11392775168486, 167.29152547270573, 167.44942251072385, 167.58875600432398, 167.7107019686237, 167.8164169804742, 167.90704789759343, 167.98377073509897, 168.047742069842, 168.1001087595405, 168.142046819312, 168.17471282600775, 168.19925363734566, 168.21683554931013, 168.2286248578855, 168.23577813992304, 168.23945197227383, 168.24080293178906, 168.241]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -5204,7 +6315,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [17.155362757045665, 17.371479122052392, 17.612992701043723, 17.88131586709865, 18.177857851814764, 18.504031397857105, 18.861245921616288, 19.250913241792233, 19.674443698740674, 20.13325003512665, 20.628741112961706, 21.162329490117855, 21.73542476777874, 22.349440242988464, 23.005783669000436, 23.70586908203086, 24.45110460491918, 25.242902056365324, 26.082673994241304, 26.971832976419137, 27.91178490822199, 28.903941608349783, 29.949717852190815, 31.050526936789197, 32.20777033243553, 33.42286281451811, 34.69721768008105, 36.03225118285684, 37.4293618364477, 38.8899673729303, 40.415476654316194, 42.007305934337865, 43.66685963997429, 45.395549589925395, 47.19480090798879, 49.0660002810132, 51.01057578948462, 53.029928903693644, 55.125484747437895, 57.29863592094284, 59.550807548006105, 61.88339814222991, 64.29784465416537, 66.79552194390772, 69.37786400531968, 72.04626935200349, 74.80215719438002, 77.64695265624687, 80.58203946776439, 83.60883683935344, 86.72875806805814, 89.94321645092259, 93.2536252849909, 96.66139195393043, 100.16792384140854, 103.7746638113531, 107.48297194041743, 111.29427926577591, 115.21, 119.1257189031694, 122.93703214190464, 126.64533435759222, 130.25206841416002, 133.75860621501488, 137.16636697057766, 140.47678171802272, 143.69123418751042, 146.81115541621512, 149.83795278780417, 152.77304551269845, 155.6178528013188, 158.37374655707208, 161.04214599037914, 163.62449396516786, 166.12216238484507, 168.53659411333865, 170.86918470756245, 173.12136520469085, 175.29451933488417, 177.3900663085633, 179.40941350939556, 181.35399197455536, 183.225185434203, 185.0244367522664, 186.7531296589059, 188.41269519129582, 190.00451707959655, 191.53002636098245, 192.99063041912086, 194.38774846443266, 195.7227760538317, 196.99713239773882, 198.2122367065749, 199.3694727105003, 200.47028327344287, 201.51605212556296, 202.50821030403495, 203.44816519252618, 204.337324174704, 205.1770946342358, 205.96889578154241, 206.7141350002912, 207.41421967414954, 208.07055718678475, 208.68457857537123, 209.25766757006932, 209.79125520805337, 210.28674887299076, 210.74555594854883, 211.16908381839494, 211.55875169294995, 211.91596695588123, 212.24213699085612, 212.5386810082955, 212.8070063918667, 213.0485205252371, 213.26463079207406, 213.45676822955193, 213.62631656783105, 213.7747068440858, 213.90334644198356, 214.01363091843814, 214.10699131062393, 214.18483500220827, 214.24855755010503, 214.29958999148857, 214.33933971002625, 214.36920226263192, 214.39059685972643, 214.40494271173065, 214.41364720231195, 214.41811771513767, 214.41976163387517, 214.42]
+"values": [17.155362757045665, 17.371479122052392, 17.612992701043723, 17.88131586709865, 18.177857851814764, 18.504031397857105, 18.861245921616288, 19.250913241792233, 19.67444369874067, 20.13325003512665, 20.628741112961706, 21.162329490117855, 21.73542476777874, 22.349440242988464, 23.005783669000436, 23.70586908203086, 24.45110460491918, 25.242902056365324, 26.082673994241304, 26.971832976419137, 27.91178490822199, 28.903941608349783, 29.949717852190815, 31.050526936789197, 32.20777033243553, 33.42286281451811, 34.69721768008105, 36.03225118285684, 37.4293618364477, 38.8899673729303, 40.415476654316194, 42.007305934337865, 43.66685963997429, 45.395549589925395, 47.19480090798879, 49.0660002810132, 51.01057578948462, 53.02992890369365, 55.125484747437895, 57.29863592094284, 59.550807548006105, 61.88339814222991, 64.29784465416537, 66.79552194390772, 69.37786400531968, 72.04626935200349, 74.80215719438002, 77.64695265624687, 80.58203946776439, 83.60883683935344, 86.72875806805814, 89.94321645092259, 93.2536252849909, 96.66139195393043, 100.16792384140854, 103.7746638113531, 107.48297194041744, 111.29427926577593, 115.21, 119.1257189031694, 122.93703214190464, 126.64533435759222, 130.25206841416002, 133.75860621501488, 137.16636697057766, 140.47678171802272, 143.69123418751042, 146.81115541621512, 149.83795278780417, 152.77304551269845, 155.6178528013188, 158.37374655707208, 161.04214599037914, 163.62449396516786, 166.12216238484507, 168.53659411333865, 170.86918470756245, 173.12136520469085, 175.29451933488417, 177.3900663085633, 179.40941350939556, 181.35399197455536, 183.225185434203, 185.0244367522664, 186.7531296589059, 188.41269519129585, 190.00451707959655, 191.53002636098245, 192.9906304191209, 194.38774846443263, 195.7227760538317, 196.9971323977388, 198.2122367065749, 199.3694727105003, 200.47028327344287, 201.51605212556296, 202.50821030403495, 203.44816519252615, 204.337324174704, 205.1770946342358, 205.9688957815424, 206.7141350002912, 207.4142196741495, 208.07055718678475, 208.68457857537123, 209.25766757006932, 209.79125520805337, 210.28674887299076, 210.74555594854883, 211.16908381839497, 211.55875169294995, 211.91596695588123, 212.24213699085612, 212.5386810082955, 212.8070063918667, 213.0485205252371, 213.2646307920741, 213.45676822955193, 213.62631656783103, 213.7747068440858, 213.90334644198356, 214.01363091843817, 214.10699131062393, 214.18483500220827, 214.24855755010503, 214.29958999148857, 214.33933971002625, 214.36920226263192, 214.39059685972643, 214.40494271173063, 214.41364720231195, 214.41811771513767, 214.41976163387517, 214.42]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -5216,7 +6327,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [16.539367251282393, 16.64025858522922, 16.753006304033157, 16.878269757132948, 17.016706827404406, 17.168977036823087, 17.335738354533213, 17.517649871168302, 17.715369987214615, 17.929558224647707, 18.160872293806577, 18.409971630398374, 18.677514289835727, 18.964160052899416, 19.270566112317994, 19.59739259394587, 19.945296863048412, 20.31493801025914, 20.706975471285205, 21.122068681833753, 21.560873971949263, 22.024050432265255, 22.51225853370977, 23.026158057063583, 23.566403261929395, 24.133654619235244, 24.72857190976191, 25.351816294584694, 26.00404065301177, 26.6859068362657, 27.398072554685484, 28.14119896934642, 28.915941720145725, 29.72295989771692, 30.562918804018864, 31.436465797181654, 32.34426755945867, 33.286978350452614, 34.26526347212234, 35.27977304318699, 36.331172365605426, 37.42011431868582, 38.547269725565116, 39.71328042319533, 40.91881585441888, 42.16452889854395, 43.451082096940354, 44.779140751566956, 46.14935084025933, 47.5623749043873, 49.01887272473164, 50.51950408207313, 52.06492875719255, 53.655803770281636, 55.29278614153213, 56.97654945467002, 58.70772864517471, 60.486991775594106, 62.315, 64.14300547782386, 65.9222713688323, 67.65344779874795, 69.3372083512968, 70.97419348313633, 72.56506573563638, 74.11049317134484, 75.61112176809729, 77.06761958844163, 78.4806436525696, 79.85085650185101, 81.1789206776557, 82.46547663664114, 83.71118692017717, 84.91672511198976, 86.08273166873641, 87.20988017414311, 88.2988221272235, 89.3502255905255, 90.36473654188467, 91.34301752267083, 92.28572555307574, 93.19352869564727, 94.06707292822102, 94.90703183452297, 95.71405139238868, 96.48879966436607, 97.2319226282907, 97.94408834671049, 98.62595383981716, 99.27818164898054, 99.90142327321428, 100.4963412538882, 101.06359813237214, 101.60383988650165, 102.11774010000272, 102.60594475071093, 103.06912190117419, 103.50792857158422, 103.92302178213276, 104.31505855301157, 104.68470142559045, 105.03260742006114, 105.35943355661539, 105.66583685544492, 105.95248537909765, 106.22002510540915, 106.46912409692732, 106.70043937384389, 106.91462795635061, 107.11234686463922, 107.29425864007953, 107.46102030286329, 107.61328887318223, 107.75172689240617, 107.87699138072685, 107.98973935833601, 108.09062784542539, 108.18032490454289, 108.25947651352408, 108.32875073491687, 108.38880458891299, 108.4402895745261, 108.48387375430411, 108.52021414843875, 108.54996225594368, 108.5737861393668, 108.59234281889985, 108.60628379355649, 108.61627160470653, 108.62296879371979, 108.62703238078802, 108.62911938610296, 108.62988682985633, 108.63]
+"values": [16.539367251282393, 16.64025858522922, 16.753006304033157, 16.878269757132948, 17.016706827404406, 17.168977036823087, 17.335738354533213, 17.517649871168302, 17.715369987214615, 17.929558224647707, 18.160872293806577, 18.409971630398378, 18.677514289835727, 18.964160052899416, 19.270566112317994, 19.59739259394587, 19.945296863048412, 20.31493801025914, 20.706975471285205, 21.122068681833753, 21.560873971949263, 22.024050432265255, 22.51225853370977, 23.026158057063583, 23.566403261929395, 24.133654619235244, 24.72857190976191, 25.351816294584697, 26.00404065301177, 26.6859068362657, 27.398072554685484, 28.14119896934642, 28.915941720145725, 29.72295989771692, 30.562918804018864, 31.436465797181658, 32.34426755945867, 33.286978350452614, 34.26526347212234, 35.27977304318699, 36.331172365605426, 37.42011431868582, 38.54726972556512, 39.71328042319533, 40.91881585441888, 42.16452889854395, 43.451082096940354, 44.77914075156696, 46.14935084025933, 47.5623749043873, 49.01887272473164, 50.51950408207313, 52.06492875719255, 53.65580377028163, 55.29278614153213, 56.97654945467002, 58.70772864517471, 60.486991775594106, 62.315, 64.14300547782386, 65.9222713688323, 67.65344779874795, 69.3372083512968, 70.97419348313633, 72.56506573563638, 74.11049317134484, 75.61112176809729, 77.06761958844163, 78.4806436525696, 79.85085650185101, 81.1789206776557, 82.46547663664114, 83.71118692017717, 84.91672511198976, 86.08273166873641, 87.20988017414311, 88.2988221272235, 89.3502255905255, 90.36473654188468, 91.34301752267083, 92.28572555307574, 93.19352869564727, 94.06707292822102, 94.90703183452295, 95.71405139238868, 96.48879966436608, 97.2319226282907, 97.94408834671049, 98.62595383981716, 99.27818164898054, 99.90142327321428, 100.4963412538882, 101.06359813237214, 101.60383988650165, 102.11774010000272, 102.60594475071092, 103.0691219011742, 103.50792857158422, 103.92302178213276, 104.31505855301155, 104.68470142559045, 105.03260742006114, 105.3594335566154, 105.66583685544492, 105.95248537909764, 106.22002510540916, 106.46912409692732, 106.70043937384388, 106.9146279563506, 107.11234686463922, 107.29425864007952, 107.46102030286328, 107.61328887318224, 107.75172689240615, 107.87699138072684, 107.989739358336, 108.0906278454254, 108.18032490454289, 108.25947651352408, 108.32875073491688, 108.388804588913, 108.4402895745261, 108.48387375430411, 108.52021414843875, 108.54996225594368, 108.5737861393668, 108.59234281889984, 108.60628379355649, 108.61627160470653, 108.6229687937198, 108.62703238078802, 108.62911938610296, 108.62988682985632, 108.63]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -5228,7 +6339,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [8.463936753428321, 8.506199365505601, 8.553428526980664, 8.605900434316204, 8.66389066964287, 8.727675501697718, 8.797530548748572, 8.873731898846591, 8.9565553509455, 9.046277173782354, 9.14317287721344, 9.247518693838634, 9.359590278062942, 9.479664007034959, 9.608015173787894, 9.74492030001906, 9.890654751036028, 10.045494614889954, 10.209716124180716, 10.38359551150819, 10.567407708533793, 10.761428803308682, 10.965935462078889, 11.181204061993007, 11.407508667420146, 11.645125944606335, 11.894332270700168, 12.155404601045113, 12.428616421815406, 12.714244977451948, 13.012565777811027, 13.323855778236108, 13.648389621291173, 13.98644339502738, 14.338295789372808, 14.704217977722209, 15.084489228198535, 15.479383605170895, 15.889179798567369, 16.31415013817245, 16.75457331391422, 17.210722811966917, 17.682879635038105, 18.17131264374305, 18.676302262594447, 19.198121977766533, 19.737049322797645, 20.293362987615865, 20.86733356742107, 21.4592385957516, 22.069354449756048, 22.69795750658301, 23.345324143381077, 24.011729580909105, 24.697449039925942, 25.4027646795289, 26.127942469358885, 26.87326225573372, 27.639000415802002, 28.404738575870283, 29.150059518634862, 29.875236152075104, 30.58055063528832, 31.2662712506949, 31.932675531833183, 32.580043325020995, 33.20864522545821, 33.81876107946266, 34.41066610779319, 34.98463784398814, 35.540953821585845, 36.0798823230067, 36.60170088178904, 37.10669165703018, 37.59512293115051, 38.06727686324734, 38.52342636130004, 38.963851271626424, 39.38882218942638, 39.79861664823824, 40.193509868820854, 40.57378169749205, 40.93970272945171, 41.29155512379714, 41.629609475728216, 41.95414563156277, 42.26543418650067, 42.56375498685975, 42.849383253398855, 43.12259651965633, 43.38366769361153, 43.6328743088028, 43.87049389876847, 44.09679705870843, 44.31206594771999, 44.516571161003014, 44.71059254487534, 44.894405320095814, 45.06828470742329, 45.232505927616614, 45.38734651421413, 45.533081687974686, 45.669986669657135, 45.79833668002033, 45.91841156538209, 46.03048192094229, 46.13482759301877, 46.23172380237037, 46.32144576975594, 46.404268715934336, 46.480470174443894, 46.55032536604347, 46.614109511491904, 46.672100144327544, 46.72457248530924, 46.77180175519584, 46.814063174746195, 46.85163659027813, 46.88479259699153, 46.91381104120421, 46.93896714367503, 46.960533812383346, 46.97879089364699, 46.994013608224805, 47.00647486409616, 47.016454507578885, 47.024227759431824, 47.030067527634344, 47.03425134572478, 47.03705674724148, 47.03875895294328, 47.039633183589046, 47.03995465993762, 47.04]
+"values": [8.463936753428321, 8.506199365505601, 8.553428526980664, 8.605900434316204, 8.66389066964287, 8.727675501697718, 8.797530548748572, 8.873731898846591, 8.9565553509455, 9.046277173782354, 9.14317287721344, 9.247518693838634, 9.359590278062942, 9.47966400703496, 9.608015173787894, 9.74492030001906, 9.890654751036028, 10.045494614889954, 10.209716124180716, 10.38359551150819, 10.567407708533793, 10.761428803308682, 10.965935462078887, 11.181204061993007, 11.407508667420146, 11.645125944606336, 11.894332270700168, 12.155404601045111, 12.428616421815406, 12.714244977451948, 13.012565777811028, 13.323855778236108, 13.648389621291171, 13.98644339502738, 14.338295789372808, 14.704217977722209, 15.084489228198535, 15.479383605170897, 15.889179798567367, 16.31415013817245, 16.75457331391422, 17.210722811966917, 17.682879635038105, 18.17131264374305, 18.676302262594447, 19.198121977766533, 19.737049322797645, 20.293362987615865, 20.86733356742107, 21.4592385957516, 22.069354449756048, 22.69795750658301, 23.345324143381077, 24.011729580909105, 24.697449039925942, 25.4027646795289, 26.127942469358885, 26.87326225573372, 27.639000415802, 28.404738575870283, 29.150059518634865, 29.875236152075104, 30.58055063528832, 31.2662712506949, 31.932675531833183, 32.580043325020995, 33.20864522545821, 33.81876107946266, 34.41066610779319, 34.98463784398814, 35.540953821585845, 36.0798823230067, 36.60170088178904, 37.10669165703018, 37.59512293115051, 38.06727686324734, 38.52342636130004, 38.963851271626424, 39.38882218942638, 39.79861664823824, 40.193509868820854, 40.57378169749205, 40.93970272945171, 41.29155512379714, 41.629609475728216, 41.95414563156277, 42.26543418650067, 42.56375498685975, 42.849383253398855, 43.12259651965633, 43.38366769361153, 43.6328743088028, 43.87049389876847, 44.09679705870843, 44.31206594771999, 44.516571161003014, 44.71059254487534, 44.894405320095814, 45.06828470742329, 45.232505927616614, 45.38734651421413, 45.533081687974686, 45.669986669657135, 45.79833668002033, 45.91841156538209, 46.03048192094229, 46.13482759301877, 46.23172380237037, 46.32144576975594, 46.404268715934336, 46.480470174443894, 46.55032536604347, 46.614109511491904, 46.672100144327544, 46.72457248530924, 46.77180175519584, 46.814063174746195, 46.85163659027813, 46.88479259699153, 46.91381104120421, 46.93896714367503, 46.960533812383346, 46.97879089364699, 46.994013608224805, 47.00647486409616, 47.016454507578885, 47.024227759431824, 47.030067527634344, 47.03425134572478, 47.03705674724148, 47.03875895294328, 47.039633183589046, 47.03995465993762, 47.04]
 }
 
 [sub_resource type="Animation" id="Animation_jqu52"]
@@ -9488,7 +10599,7 @@ _data = {
 script = ExtResource("1_x6ack")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=665182046]
-transform = Transform3D(0.9999989, 0, 0, 0, 0.49999967, 0.8660254, 0, -0.86602473, 0.50000006, -0.5, 12.699558, 5.202427)
+transform = Transform3D(0.9999989, 0, 0, 0, 0.99999917, 0, 0, 0, 0.99999994, -0.5, 12.699558, 15.502427)
 attributes = SubResource("CameraAttributesPractical_b48ew")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=950415625]
@@ -9497,9 +10608,9 @@ mesh = SubResource("QuadMesh_m1efj")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D" unique_id=2140876827]
 transform = Transform3D(4.015, 0, 0, 0, 4.015, 0, 0, 0, 4.015, 0, 0, -0.3000002)
-modulate = Color(0, 0, 0, 0)
+modulate = Color(0, 0, 0, 1)
 billboard = 1
-render_priority = 1
+render_priority = 6
 texture = ExtResource("3_drdnd")
 
 [node name="DiceBox" parent="." unique_id=622061906 instance=ExtResource("1_6l7je")]
@@ -9682,7 +10793,7 @@ transform = Transform3D(-0.9890158, 0, -0.14780942, 0, 1, 0, 0.14780942, 0, -0.9
 
 [node name="CameraMovement" type="AnimationPlayer" parent="." unique_id=1533766603]
 libraries/ = SubResource("AnimationLibrary_drdnd")
-autoplay = &"Default"
+autoplay = &"RESET"
 speed_scale = 1.25
 
 [node name="input_handler" parent="." unique_id=1801933789 instance=ExtResource("13_ioaeq")]
@@ -10149,10 +11260,6 @@ mesh = SubResource("BoxMesh_2v2b7")
 [node name="StatueCameraTimer" type="Timer" parent="StatueCombinerStuff" unique_id=1431197455]
 wait_time = 0.5
 one_shot = true
-
-[node name="StatueStandMid" parent="." unique_id=1163540770 instance=ExtResource("30_stxua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.509998, 0.07000005, 2.6799989)
-visible = false
 
 [node name="StatueFinalProductArea" type="Node3D" parent="." unique_id=1207685435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.507904, 0.23173061, 2.6899998)

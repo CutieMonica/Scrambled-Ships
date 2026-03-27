@@ -50,6 +50,8 @@ func _ready() -> void:
 	shadow.text = " "
 	if GameManager.ending_cutscene:
 		align_screen = "middle"
+	if GameManager.is_postgame:
+		align_screen = "top"
 
 func _process(_delta: float) -> void:
 	if start_cutscene == true:

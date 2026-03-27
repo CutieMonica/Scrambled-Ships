@@ -23,7 +23,12 @@ var act8music := preload("res://Assets/Music/you (act 8 ambient_main).ogg")
 var roundendmusic := preload("res://Assets/Music/roll with it (directional end game mix).ogg")
 
 func _ready() -> void:
-	play_round_1_song()
+	if !GameManager.is_postgame:
+		play_round_1_song()
+	else:
+		music_source.stream = roundendmusic
+		music_source.play()
+		current_song = 1
 
 func play_song(song_number : int) -> void:
 	match song_number:

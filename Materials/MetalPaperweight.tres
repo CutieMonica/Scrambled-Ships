@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dlsxwq55xqamp"]
+
+[ext_resource type="Texture2D" uid="uid://b64w4y7u28o2k" path="res://Assets/Textures/Texturelabs_Metal_249S.jpg" id="1_xesr0"]
+[ext_resource type="Texture2D" uid="uid://byqe5dgbju3cs" path="res://Assets/Textures/Normals/StatueMidNormal.png" id="2_3wgtv"]
+
+[resource]
+resource_local_to_scene = true
+albedo_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+albedo_texture = ExtResource("1_xesr0")
+metallic = 1.0
+metallic_specular = 0.41
+metallic_texture = ExtResource("2_3wgtv")
+roughness = 0.52
+roughness_texture = ExtResource("2_3wgtv")
+normal_enabled = true
+normal_texture = ExtResource("2_3wgtv")

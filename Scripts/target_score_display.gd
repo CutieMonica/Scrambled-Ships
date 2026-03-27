@@ -128,8 +128,13 @@ func play_random_death_voice() -> void:
 	variable_timer.wait_time = 0.3
 	variable_timer.start()
 	await variable_timer.timeout
-	get_parent().ending_fade_out()
+	
+	if GameManager.is_postgame:
+		get_parent().back_to_title(2)
+		GameManager.in_tutorial = false
+		InputHandler.actionable = false
 	if !GameManager.is_postgame:
+		get_parent().ending_fade_out()
 		get_parent().current_environment.play_losing_round()
 		get_parent().lighting_shift.play("EndRound")
 	#GlobalMusicPlayer.start_title_song()
@@ -161,7 +166,7 @@ func play_number(number : int) -> void:
 
 func get_new_target_score() -> void:
 	GameManager.calculate_round_target_and_progress_round()
-	if GameManager.current_round < 9:
+	if GameManager.current_round < 9 and !GameManager.is_postgame:
 		GlobalMusicPlayer.ambience_target = GameManager.current_round
 		GlobalMusicPlayer.fade_out()
 		get_parent().radio.play_song(GameManager.current_round)
@@ -227,6 +232,7 @@ func get_new_target_score() -> void:
 	round_counter.visible = true
 	round_counter.text = str(GameManager.current_round)
 	if GameManager.is_postgame:
+		get_parent().get_rick_quick_bitch()
 		return
 	if GameManager.current_round < 9:
 		get_parent().dialogue_player.play_round_dialogue()
@@ -234,4 +240,39 @@ func get_new_target_score() -> void:
 		get_parent().get_rick_quick_bitch()
 	
 	
-	
+func that_type_shit_you_do_when_you_dont_know_how_to_make_a_function_continue_in_the_middle_so_you_do_this_shit_instead() -> void:
+	label_3d.text = "ROUND " + str(GameManager.current_round)
+	audio_stream_player_3d.stream = voiceROUND
+	audio_stream_player_3d.play()
+	variable_timer.wait_time = 0.2
+	variable_timer.start()
+	await variable_timer.timeout
+	for n in (int(str(GameManager.current_round).length())):
+		play_number((int(str(GameManager.current_round)[n])))
+		variable_timer.wait_time = 0.6
+		variable_timer.start()
+		await variable_timer.timeout
+	label_3d.text = "SCORE"
+	audio_stream_player_3d.stream = voiceSCORE
+	audio_stream_player_3d.play()
+	variable_timer.wait_time = 0.8
+	variable_timer.start()
+	await variable_timer.timeout
+	label_3d.text = "IS"
+	audio_stream_player_3d.stream = voiceIS
+	audio_stream_player_3d.play()
+	variable_timer.wait_time = 0.4
+	variable_timer.start()
+	await variable_timer.timeout
+	label_3d.text = str(GameManager.new_round_target)
+	for n in (int(str(GameManager.new_round_target).length())):
+		play_number((int(str(GameManager.new_round_target)[n])))
+		variable_timer.wait_time = 0.4
+		variable_timer.start()
+		label_3d.visible = !label_3d.visible
+		round_counter.visible = !round_counter.visible
+		await variable_timer.timeout
+	label_3d.visible = true
+	round_counter.visible = true
+	round_counter.text = str(GameManager.current_round)
+	get_parent().get_rick_quick_bitch()

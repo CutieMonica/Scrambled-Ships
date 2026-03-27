@@ -339,7 +339,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r2exa"]
-size = Vector3(8.2, 0.3, 10.6)
+size = Vector3(8.655408, 0.3, 10.950415)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0req8"]
 size = Vector3(0.66154003, 0.7761108, 11.052246)
@@ -1137,7 +1137,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1596969990]
-transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, 9.082612e-07, -0.2595237, 4.7435407e-07)
+transform = Transform3D(1, 0, -1.463718e-11, 0, 1, 0, 1.463718e-11, 0, 1, -0.0075121257, -0.2595237, -0.018444555)
 shape = SubResource("BoxShape3D_r2exa")
 
 [node name="MouseDetectLeave" type="Area3D" parent="." unique_id=921477177]

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Presse papier
+* source:	https://sketchfab.com/3d-models/presse-papier-20c48886fe904d7dbd5e1d7e7cad5650
+* author:	Stichting Consortium Beroepsonderwijs (https://sketchfab.com/scb3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Presse papier" (https://sketchfab.com/3d-models/presse-papier-20c48886fe904d7dbd5e1d7e7cad5650) by Stichting Consortium Beroepsonderwijs (https://sketchfab.com/scb3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

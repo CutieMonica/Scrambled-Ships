@@ -6,6 +6,11 @@ extends Node3D
 @onready var mesh_instance_3d: MeshInstance3D = $Camera3D/MeshInstance3D
 @onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D
 @onready var exit: TextureButton = $Control/Exit
+@onready var boat: Node3D = $Boat
+@onready var city: Node3D = $City
+@onready var yacht: Node3D = $Yacht
+@onready var label_2: Label3D = $Camera3D/Label2
+@onready var label: Label3D = $Camera3D/Label
 
 var exiting : bool = false
 
@@ -13,6 +18,16 @@ func _ready() -> void:
 	GameManager.reset_things()
 	performance_switch()
 	seed(1)
+	if GameManager.is_postgame:
+		boat.visible = false
+		city.visible = true
+		yacht.visible = true
+
+	else:
+		boat.visible = true
+		city.visible = false
+		yacht.visible = false
+
 
 func performance_switch() -> void:
 	if GameManager.performance_mode:

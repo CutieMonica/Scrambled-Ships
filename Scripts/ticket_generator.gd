@@ -154,7 +154,7 @@ var common_upgrades_descriptions : Dictionary = {
 	4:
 		"Upgrades the multiplier for the fours category by 2x its current value.",
 	5:
-		"Gain an extra 3 gold each round.",
+		"Gain extra gold each round.",
 	6:
 		"Gain an extra reroll coin every round.",
 	7:
@@ -443,7 +443,7 @@ func purchase_ticket() -> void:
 				4:
 					get_parent().get_parent().get_parent().score_sheet.fours_multiplier *= 2
 				5:
-					GameManager.permanent_money_increases += 3
+					GameManager.permanent_money_increases += 1
 				6:
 					GameManager.max_rolls += 1
 				7:

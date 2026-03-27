@@ -34,6 +34,11 @@ func play_breakdown_song() -> void:
 	fade_in()
 	global_music_player.play()
 
+func play_credits_song() -> void:
+	global_music_player.stream = credits_song
+	fade_in()
+	global_music_player.play()
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	#global_music_player.playing = false
 	if anim_name == "fade_out":

@@ -36,6 +36,8 @@ var silvia2 := load("res://Assets/Textures/deskcarvings/silvia2.png")
 var thesog := load("res://Assets/Textures/deskcarvings/thesog.png")
 var jonnyboy := load("uid://pa7ius5g80hi")
 var eotu := load("res://Assets/Textures/deskcarvings/eyeogtheuniverse.png")
+var arie := load("res://Assets/Textures/deskcarvings/foxxarie.png")
+var tatertot := load("res://Assets/Textures/deskcarvings/tatertot.png")
 
 var mrbeast := load("res://Assets/Textures/deskcarvings/mr beast.png")
 @onready var environment_adjustment: AnimationPlayer = $EnvironmentAdjustment
@@ -75,7 +77,9 @@ var random_icon_image : Dictionary = {
 	32 : silvia2,
 	33 : thesog,
 	34 : jonnyboy,
-	35 : eotu
+	35 : eotu,
+	36 : arie,
+	37 : tatertot
 }
 
 var random_icon : int

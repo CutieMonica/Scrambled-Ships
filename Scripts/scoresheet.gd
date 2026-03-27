@@ -55,7 +55,9 @@ extends Node3D
 @export var current_best_triple : int = 0
 @export var current_best_quad : int = 0
 @export var current_best_quint : int = 0
-	
+@export var current_best_hexa : int = 0
+@export var current_best_septen : int = 0
+
 @export var second_best_triple : int = 0
 @export var second_best_double : int = 0
 	
@@ -255,8 +257,16 @@ func calculate_score() -> void:
 	current_best_quint = 0
 	second_best_double = 0
 	second_best_triple = 0
+	current_best_hexa = 0
+	current_best_septen = 0
 	
 	for n in 25:
+		if GameManager.dice_numbers.values().count(n) >= 7:
+			if n > current_best_septen:
+				current_best_septen = n
+		if GameManager.dice_numbers.values().count(n) >= 6:
+			if n > current_best_hexa:
+				current_best_hexa = n
 		if GameManager.dice_numbers.values().count(n) >= 5:
 			if n > current_best_quint:
 				current_best_quint = n
@@ -328,10 +338,14 @@ func calculate_score() -> void:
 		valid_yacht = true
 		yacht_amount = ((current_best_quad) * 4)
 		
-	if current_best_quint > 0:
+	if current_best_quint > 0 or current_best_hexa > 0 or current_best_septen > 0:
 		valid_yacht = true
 		valid_four_of_a_kind = true
 		yacht_amount = ((current_best_quint) * 5)
+		if current_best_hexa > current_best_quint:
+			yacht_amount = ((current_best_hexa) * 6)
+		if current_best_septen > current_best_hexa and current_best_septen > current_best_quint:
+			yacht_amount = ((current_best_septen) * 7)
 		if current_best_quint > current_best_quad:
 			four_of_a_kind_amount = ((current_best_quint) * 4)
 			
@@ -401,6 +415,12 @@ func reset_everything() -> void:
 	
 	grand_total_amount.text = ""
 	current_grand_total = 0
+	update_multipliers()
+	bonus_threshold.outline_modulate = info_outline_color
+	bonus_score.outline_modulate = info_outline_color
+	bonus_score.modulate = info_color
+	bonus_threshold.modulate = info_color
+	bonus_given = false
 
 func reset_text() -> void:
 	current_sum.modulate = info_color

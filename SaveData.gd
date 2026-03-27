@@ -7,6 +7,7 @@ class_name SaveDataResource
 @export var music_volume : float = 0
 @export var sfx_volume : float = 0
 @export var performance_mode : bool = false
+@export var is_postgame : bool = false
 
 @export var dialogue_seen : Dictionary = {
 	1: false,

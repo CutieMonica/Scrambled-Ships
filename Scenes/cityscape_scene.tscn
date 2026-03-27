@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bft76i0jmwl8u" path="res://Assets/Textures/Normals/BlueStatueMarbleNormal.png" id="5_0kbwu"]
 [ext_resource type="Texture2D" uid="uid://dlqkmrb0x6lqk" path="res://Assets/Textures/Texturelabs_Wood_261S.jpg" id="5_4ck1q"]
 [ext_resource type="Texture2D" uid="uid://d1y3yenw2aqcu" path="res://Assets/Textures/Normals/WoodNormalMap.png" id="6_085jn"]
+[ext_resource type="PackedScene" uid="uid://dbwt03qjv4n7w" path="res://Assets/Models/Hannah Sapiee Carpet/scene.gltf" id="11_l80xh"]
+[ext_resource type="Texture2D" uid="uid://ble2jd8tw3c45" path="res://Assets/Models/Hannah Sapiee Carpet/textures/02_-_Default_baseColor_normal.png" id="12_wu3rg"]
 [ext_resource type="PackedScene" uid="uid://cbsypsc24biha" path="res://Assets/Models/SolidBotTable/scene.gltf" id="18_085jn"]
 [ext_resource type="Texture2D" uid="uid://ecaxgiy5lpk6" path="res://Assets/Textures/deskcarvings/badideaswoodcarving.png" id="20_65sib"]
 
@@ -31,7 +33,9 @@ sky = SubResource("Sky_7ewk0")
 ambient_light_color = Color(0.027562315, 0, 0.3097731, 1)
 ambient_light_sky_contribution = 0.36
 ambient_light_energy = 0.42
-tonemap_exposure = 1.94
+tonemap_mode = 2
+tonemap_exposure = 1.68
+tonemap_white = 3.76
 glow_strength = 0.73
 glow_bloom = 0.07
 fog_enabled = true
@@ -39,7 +43,7 @@ fog_mode = 1
 fog_light_color = Color(0.119300164, 0.00019894846, 0.28100058, 1)
 fog_light_energy = 0.0
 fog_sun_scatter = 0.46
-fog_density = 0.6126
+fog_density = 0.9021
 fog_aerial_perspective = 0.459
 fog_sky_affect = 0.234
 fog_height = -92.25
@@ -100,9 +104,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wu3rg")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_s4qdn"]
-flip_faces = true
-size = Vector2(20, 12)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7o27"]
+albedo_texture = ExtResource("3_g7o27")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0kbwu"]
+material = SubResource("StandardMaterial3D_g7o27")
+size = Vector3(5, 0.1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c674x"]
 transparency = 4
@@ -228,6 +235,713 @@ size = Vector2(3, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfovy"]
 size = Vector3(39, 0.6, 20.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kbwu"]
+transparency = 3
+alpha_hash_scale = 0.97
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 0.7294118, 0.6117647, 0.7137255)
+emission_enabled = true
+emission = Color(1.3807716, 0.5855669, 0, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_l80xh"]
+material = SubResource("StandardMaterial3D_0kbwu")
+
+[sub_resource type="Curve" id="Curve_wu3rg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5277778, 1), 0.0, 0.0, 0, 0, Vector2(0.8981481, 0.1460675), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_g7o27"]
+colors = PackedColorArray(1, 0.5803922, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq62r"]
+transparency = 3
+alpha_hash_scale = 0.97
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 0.71646166, 0.7126427, 0.7137255)
+emission_enabled = true
+emission = Color(0.6481714, 0, 0.09491288, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_cp472"]
+material = SubResource("StandardMaterial3D_lq62r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu3rg"]
+transparency = 3
+alpha_hash_scale = 0.97
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.38299328, 0.3691459, 1, 0.007843138)
+emission_enabled = true
+emission = Color(0.38717616, 0.2730968, 1.2237577, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_g7o27"]
+material = SubResource("StandardMaterial3D_wu3rg")
+radius = 1.702
+height = 2.566
+
+[sub_resource type="Animation" id="Animation_0kbwu"]
+resource_name = "Cycle"
+length = 1440.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 585.86395),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 585.86395),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 585.86395),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 561.78735, 619.9725, 712.2661, 1203.8301, 1368.3535),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.2822592, 0.2486633, 0.6294634, 1), Color(0.06126263, 0.11514761, 0.38348937, 1), Color(0.9519302, 0.65850735, 0.93503606, 1), Color(0.8726664, 0.84104574, 0.99185306, 1), Color(0.46592438, 0.5161498, 0.9039854, 1), Color(0.9543715, 0.67286944, 0.9350686, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:background_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.28]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 561.78735, 617.9667, 712.2661, 1205.8334, 1366.3334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.053639695, 0.019771481, 0.15843621, 1), Color(0.0016308007, 0.008985335, 0.051002204, 1), Color(0.8865626, 0.23467949, 0.31297037, 1), Color(0.6005455, 0.6514462, 0.97553974, 1), Color(0.15968588, 0.28399694, 0.6238375, 1), Color(0.78993094, 0.23629418, 0.13251555, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_curve")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 561.78735),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5795536, 0.14999798]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_energy_multiplier")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 561.78735, 619.9725, 712.2661, 1370.3594),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.37, 0.34, 3.0, 3.0, 3.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 561.78735, 619.9725, 712.2661, 1203.8301, 1370.3594),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.13482445, 0.113268726, 0.2456666, 1), Color(0.024238126, 0.018557236, 0.06891691, 1), Color(0.60919404, 0.3310366, 0.024944436, 1), Color(0.16534263, 0.18456453, 0.6451647, 1), Color(0.043337986, 0.15095162, 0.4081661, 1), Color(0.60919404, 0.3310366, 0.024944436, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 561.78735, 619.9725, 712.2661, 1203.8301, 1370.3594),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.052857593, 0.0013141861, 0.13212097, 1), Color(0.00420946, 0.0016229155, 0.037672915, 1), Color(0.87560946, 0.22532219, 0.056825057, 1), Color(0.60314906, 0.66961783, 0.9794592, 1), Color(0.29454836, 0.4993735, 1, 1), Color(0.77922, 0.19194368, 0.036641363, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_curve")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 619.9725, 712.2661, 1203.8301, 1370.3594),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.87426543, 0.66256934, 1.5769235, 7.9475675, 0.66256934]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_energy_multiplier")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 561.78735, 617.9667, 619.9725, 712.2661, 1203.8301, 1368.3535, 1370.3594),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 2.896582, 3.0, 3.0, 1.6490557, 2.896582, 3.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WorldEnvironment:environment:sky:sky_material:use_debanding")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WorldEnvironment:environment:sky:sky_material:energy_multiplier")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 561.78735, 1203.8301),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4, 0.0, 0.29243156]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 561.78735, 712.2661),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.027562315, 0, 0.3097731, 1), Color(0.01173737, 2.4065375e-08, 0.2010439, 1), Color(0, 0.2243303, 0.36773965, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("WorldEnvironment:environment:ambient_light_sky_contribution")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.36]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 712.2661),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.42, 0.8]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("WorldEnvironment:environment:fog_light_color")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.119300164, 0.00019894846, 0.28100058, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("WorldEnvironment:environment:fog_light_energy")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("WorldEnvironment:environment:fog_height")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-92.25]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("WorldEnvironment:environment:fog_height_density")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0001]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 561.7874, 712.2661),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.89, 1.04]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("WorldEnvironment:environment:fog_density")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 561.78735),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.4679, 0.9021]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DirectionalLight3D:light_angular_distance")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(256.81708, 776.4704),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [22.78, 7.03]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DirectionalLight3D:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(256.81708),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0471976, 1.0943215, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l80xh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2822592, 0.2486633, 0.6294634, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:background_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.28]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.053639695, 0.019771481, 0.15843621, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_curve")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5795536]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_energy_multiplier")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.37]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.13482445, 0.113268726, 0.2456666, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.052857593, 0.0013141861, 0.13212097, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_curve")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.87426543]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_energy_multiplier")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WorldEnvironment:environment:sky:sky_material:use_debanding")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WorldEnvironment:environment:sky:sky_material:energy_multiplier")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.027562315, 0, 0.3097731, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("WorldEnvironment:environment:ambient_light_sky_contribution")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.36]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.42]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("WorldEnvironment:environment:fog_light_color")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.119300164, 0.00019894846, 0.28100058, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("WorldEnvironment:environment:fog_light_energy")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("WorldEnvironment:environment:fog_height")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-92.25]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("WorldEnvironment:environment:fog_height_density")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0001]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("WorldEnvironment:environment:fog_density")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9021]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DirectionalLight3D:light_angular_distance")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [26.15]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DirectionalLight3D:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0471976, 2.6179938, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l80xh"]
+_data = {
+&"Cycle": SubResource("Animation_0kbwu"),
+&"RESET": SubResource("Animation_l80xh")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g7o27"]
+load_path = "res://.godot/imported/02_-_Default_baseColor.jpeg-2f19a39b584ae027abfc43fb660721a3.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp472"]
+resource_name = "02_-_Default"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_g7o27")
+metallic_specular = 0.0
+roughness_texture = ExtResource("12_wu3rg")
+normal_enabled = true
+normal_scale = 9.24
+normal_texture = ExtResource("12_wu3rg")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4ck1q"]
+_surfaces = [{
+"aabb": AABB(-60.8871, -39.51613, 0, 121.7742, 79.03226, 0.8064499),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAAEAAEAAgADAAUAAgAFAAAAAAAGAAQAAAAFAAYABAAHAAEAAQAHAAMABAAGAAcABQADAAcABQAHAAYA"),
+"name": "02_-_Default",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAA//8AAP//AAD///////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_085jn"]
+resource_name = "Sketchfab_Scene_Box001_02 - Default_0"
+_surfaces = [{
+"aabb": AABB(-60.8871, -39.51613, 0, 121.7742, 79.03226, 0.8064499),
+"attribute_data": PackedByteArray("//8AAAAA////////AAAAAAAAAAD///////8AAAAA//8AAAAA////////AAAAAP//AAAAAP///////wAAAAD//wAAAAD///////8AAAAA//8AAAAA////////AAAAAP//"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_cp472"),
+"name": "02_-_Default",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAA//8AAAAAAAAAAAAA///+f/////////5///8AAP///n8AAP/////+fwAAAAAAAP8///8AAP///z///wAAAAD/PwAAAAD///8///8AAAAAqir///////+qKv////8AAKoq//8AAP//qir/////AAAAAAAA/////wAAAAD//wAAAAD///////8AAAAA//8AAKoqAAAAAP//qioAAAAAAACqKgAA/////6oq/3////9/////f////3////9/////f////3////9///8AAP9/AAD/fwAA/38AAP9/qiqqKqoqqiqqKqoqqiqqKv9//7//f/+//3//v/9//79UVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4ck1q")
+
 [node name="CityscapeScene" type="StaticBody3D" unique_id=129478226]
 script = ExtResource("1_5fi2v")
 
@@ -237,14 +951,29 @@ environment = SubResource("Environment_r1ldl")
 [node name="City" parent="." unique_id=30924822 instance=ExtResource("2_5mu72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.579956, -158.95, -444.77)
 
+[node name="BACKGROUND_BUILDINGS_1_001_BACKGROUND_BUILDINGS_1_0" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_001" parent_id_path=PackedInt32Array(30924822, 737040788) index="0" unique_id=1153650942]
+visible = false
+
+[node name="RED_FLARE" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="1" unique_id=1711307762]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_002" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="2" unique_id=128631454]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 6365.2173, 6387.8, -29796.46)
 
 [node name="BACKGROUND_BUILDINGS_1_003" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="3" unique_id=481566838]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -21998.652, 6960.966, 20289.13)
 
+[node name="RED_FLARE_001" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="4" unique_id=1944271713]
+visible = false
+
+[node name="Flare" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="5" unique_id=435446117]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_004" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="6" unique_id=1092358065]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -24864.936, 6944.0186, 19449.666)
+
+[node name="RED_FLARE_002" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="7" unique_id=1038193985]
+visible = false
 
 [node name="BACKGROUND_BUILDING_2_001" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="8" unique_id=2107227112]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -1687.5977, 2230.2207, 25945.48)
@@ -264,6 +993,12 @@ transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-
 [node name="BACKGROUND_BUILDING_2_006" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="14" unique_id=1754460874]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 12932.406, 2738.253, -9585.762)
 
+[node name="RED_FLARE_003" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="15" unique_id=647521444]
+visible = false
+
+[node name="RED_FLARE_004" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="16" unique_id=241915676]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_006" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="17" unique_id=604748164]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -1479.6128, 9270.17, -11533.289)
 
@@ -278,6 +1013,9 @@ transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-
 
 [node name="BACKGROUND_BUILDINGS_1_008" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="21" unique_id=1954682598]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 2098.4268, 19303.746, -28588.75)
+
+[node name="RED_FLARE_005" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="22" unique_id=904328453]
+visible = false
 
 [node name="BACKGROUND_BUILDINGS_1_009" parent="City/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(30924822, 921928821) index="23" unique_id=1208501811]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -14366.492, 20802.914, 15200.453)
@@ -323,11 +1061,26 @@ mesh = SubResource("PlaneMesh_lq62r")
 [node name="City2" parent="." unique_id=139844461 instance=ExtResource("2_5mu72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 570.2999, -158.95, -270.75)
 
+[node name="RED_FLARE" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="1" unique_id=1711307762]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_002" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="2" unique_id=128631454]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 6365.2173, 6387.8, -29796.46)
 
+[node name="BACKGROUND_BUILDINGS_1_002_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_002" index="0" unique_id=438468657]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_003" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="3" unique_id=481566838]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -21998.652, 6960.966, 20289.13)
+
+[node name="BACKGROUND_BUILDINGS_1_003_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_003" index="0" unique_id=652427389]
+visible = false
+
+[node name="RED_FLARE_001" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="4" unique_id=1944271713]
+visible = false
+
+[node name="Flare" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="5" unique_id=435446117]
+visible = false
 
 [node name="BACKGROUND_BUILDINGS_1_004" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="6" unique_id=1092358065]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -24864.936, 6944.0186, 19449.666)
@@ -335,23 +1088,50 @@ transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-
 [node name="BACKGROUND_BUILDING_2_001" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="8" unique_id=2107227112]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -1687.5977, 2230.2207, 25945.48)
 
+[node name="BACKGROUND_BUILDING_2_001_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2_001" index="0" unique_id=1086244824]
+visible = false
+
 [node name="BACKGROUND_BUILDING_2_002" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="9" unique_id=2115261284]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 5514.11, 4652.627, 20884.742)
+
+[node name="BACKGROUND_BUILDING_2_002_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2_002" index="0" unique_id=1454633803]
+visible = false
 
 [node name="BACKGROUND_BUILDING_2_003" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="10" unique_id=987082668]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 8981.656, 5429.6377, 11890.617)
 
+[node name="BACKGROUND_BUILDING_2_003_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2_003" index="0" unique_id=375444038]
+visible = false
+
 [node name="BACKGROUND_BUILDING_2_004" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="11" unique_id=2064887509]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 22628.453, 3879.3818, 13315.266)
+
+[node name="BACKGROUND_BUILDING_2_004_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2_004" index="0" unique_id=433401938]
+visible = false
 
 [node name="BACKGROUND_BUILDINGS_1_005" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="12" unique_id=1060739505]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 23076.617, 5398.9287, 1883.418)
 
+[node name="BACKGROUND_BUILDINGS_1_005_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_005" index="0" unique_id=1788879368]
+visible = false
+
+[node name="BACKGROUND_BUILDING_2_005_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2_005" parent_id_path=PackedInt32Array(139844461, 1481760721) index="0" unique_id=443803319]
+visible = false
+
 [node name="BACKGROUND_BUILDING_2_006" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="14" unique_id=1754460874]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 12932.406, 2738.253, -9585.762)
 
+[node name="RED_FLARE_003" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="15" unique_id=647521444]
+visible = false
+
+[node name="RED_FLARE_004" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="16" unique_id=241915676]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_006" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="17" unique_id=604748164]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -1479.6128, 9270.17, -11533.289)
+
+[node name="BACKGROUND_BUILDINGS_1_006_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_006" index="0" unique_id=514177678]
+visible = false
 
 [node name="BACKGROUND_BUILDING_2_007" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="18" unique_id=994736383]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -11174.014, 14215.255, -10111.293)
@@ -359,26 +1139,47 @@ transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-
 [node name="BACKGROUND_BUILDINGS_1_007" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="19" unique_id=45492327]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 12486.834, 12134.443, -16723.55)
 
+[node name="BACKGROUND_BUILDINGS_1_007_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_007" index="0" unique_id=265195207]
+visible = false
+
 [node name="BACKGROUND_BUILDING_2_008" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="20" unique_id=801059263]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -25419.857, 12330.651, 8683.934)
+
+[node name="BACKGROUND_BUILDING_2_008_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2_008" index="0" unique_id=1732850149]
+visible = false
 
 [node name="BACKGROUND_BUILDINGS_1_008" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="21" unique_id=1954682598]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 2098.4268, 19303.746, -28588.75)
 
+[node name="BACKGROUND_BUILDINGS_1_008_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_008" index="0" unique_id=50037600]
+visible = false
+
+[node name="RED_FLARE_005" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="22" unique_id=904328453]
+visible = false
+
 [node name="BACKGROUND_BUILDINGS_1_009" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="23" unique_id=1208501811]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, -14366.492, 20802.914, 15200.453)
+
+[node name="BACKGROUND_BUILDINGS_1_009_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1_009" index="0" unique_id=770860789]
+visible = false
 
 [node name="BACKGROUND_BUILDINGS_1" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="24" unique_id=1602323174]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 11987.16, 8351.1, 2491.4336)
 
+[node name="BACKGROUND_BUILDINGS_1_BACKGROUND_BUILDINGS_1_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDINGS_1" index="0" unique_id=1959004773]
+visible = false
+
 [node name="BACKGROUND_BUILDING_2" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode" parent_id_path=PackedInt32Array(139844461, 921928821) index="25" unique_id=267216232]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 3977.1655, 16891.623, 6667.828)
 
+[node name="BACKGROUND_BUILDING_2_BACKGROUND_BUILDING_2_0" parent="City2/Sketchfab_model/BACKGROUND_CITY_SKYLINE_fbx/RootNode/BACKGROUND_BUILDING_2" index="0" unique_id=1190758849]
+visible = false
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=91927991]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 215.7, 0)
-light_color = Color(0.119818114, 0.074981384, 0.32745424, 1)
-light_energy = 6.147
-light_angular_distance = 41.9
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.21868306, 0.1475749, 0.53877723, 1)
+light_energy = 4.147
+light_angular_distance = 26.15
 light_bake_mode = 1
 shadow_bias = 10.0
 shadow_normal_bias = 0.0
@@ -391,8 +1192,8 @@ transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -81.49999, -20.279999, 89.
 mesh = SubResource("ArrayMesh_g7o27")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Apartment" unique_id=121654318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9971998, 2.5039997, 1.0347991)
-mesh = SubResource("PlaneMesh_s4qdn")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4619987, 2.5039997, 0.05719948)
+mesh = SubResource("BoxMesh_0kbwu")
 
 [node name="Window" type="MeshInstance3D" parent="Apartment" unique_id=1008541667]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2671993, 1.2483996, -4.934801)
@@ -422,7 +1223,7 @@ mesh = SubResource("BoxMesh_lq62r")
 transform = Transform3D(-1.0490733e-06, 0, 25, 0, 27, 0, -24, 0, -1.0927847e-06, -38.66, 6.1000004, 16.61)
 
 [node name="Table" parent="." unique_id=2000744968 instance=ExtResource("18_085jn")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 30, -5.9604645e-08, -20.19, -23.980001)
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 30, -0.96000004, -20.19, -23.87)
 
 [node name="Cube_Material_0" parent="Table/Sketchfab_model/899646a3f944472b8c49666336888e14_fbx/RootNode/Cube" parent_id_path=PackedInt32Array(2000744968, 993536795) index="0" unique_id=1144368447]
 mesh = SubResource("ArrayMesh_vismx")
@@ -469,7 +1270,107 @@ mesh = SubResource("PlaneMesh_t3qq2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8000021, -0.29999998, -4.1500006)
 shape = SubResource("BoxShape3D_hfovy")
 
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1056626332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.44, 0, -566.05)
+amount = 64
+lifetime = 30.0
+mesh = SubResource("SphereMesh_l80xh")
+emission_shape = 3
+emission_box_extents = Vector3(344.8, 330.97, 345.765)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 26.0
+initial_velocity_max = 84.2
+angular_velocity_min = 6.35
+angular_velocity_max = 7.1
+linear_accel_min = -1.45
+linear_accel_max = 2.05
+radial_accel_min = -1.45
+radial_accel_max = 2.35
+tangential_accel_min = -1.4
+tangential_accel_max = 4.7
+damping_min = 0.265
+damping_max = 1.74
+angle_min = -3411.5
+angle_max = 1911.0
+scale_amount_min = 0.8
+scale_amount_max = 3.28
+scale_amount_curve = SubResource("Curve_wu3rg")
+color = Color(18.892157, 17.976582, 17.34272, 1)
+color_ramp = SubResource("Gradient_g7o27")
+hue_variation_min = -0.35
+hue_variation_max = 0.43
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1222866280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -283.34, 0, -674.81)
+amount = 64
+lifetime = 30.0
+mesh = SubResource("SphereMesh_cp472")
+emission_shape = 3
+emission_box_extents = Vector3(344.8, 330.97, 345.765)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 26.0
+initial_velocity_max = 84.2
+angular_velocity_min = 6.35
+angular_velocity_max = 7.1
+linear_accel_min = -1.45
+linear_accel_max = 2.05
+radial_accel_min = -1.45
+radial_accel_max = 2.35
+tangential_accel_min = -1.4
+tangential_accel_max = 4.7
+damping_min = 0.265
+damping_max = 1.74
+angle_min = -3411.5
+angle_max = 1911.0
+scale_amount_min = 0.25
+scale_amount_max = 3.75
+scale_amount_curve = SubResource("Curve_wu3rg")
+color = Color(18.892157, 17.976582, 17.34272, 1)
+color_ramp = SubResource("Gradient_g7o27")
+hue_variation_min = -0.35
+hue_variation_max = 0.43
+
+[node name="CPUParticles3D3" type="CPUParticles3D" parent="." unique_id=200366108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.72, 721.67, -1186.44)
+amount = 16
+lifetime = 97.71
+preprocess = 10.0
+mesh = SubResource("SphereMesh_g7o27")
+emission_shape = 3
+emission_box_extents = Vector3(1165.635, 806.06, 239.55)
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.4
+angular_velocity_min = 0.05
+angular_velocity_max = 2.7
+linear_accel_max = 0.05
+radial_accel_min = -0.05
+radial_accel_max = 0.45
+tangential_accel_min = -0.3
+tangential_accel_max = 0.45
+damping_min = 0.265
+damping_max = 1.74
+angle_min = -3411.5
+angle_max = 1911.0
+scale_amount_min = 174.16
+scale_amount_max = 212.45
+scale_amount_curve = SubResource("Curve_wu3rg")
+color = Color(18.892157, 17.976582, 17.34272, 1)
+color_ramp = SubResource("Gradient_g7o27")
+hue_variation_min = -0.35
+hue_variation_max = 0.43
+
+[node name="EnvironmentAdjustment" type="AnimationPlayer" parent="." unique_id=603075748]
+libraries/ = SubResource("AnimationLibrary_l80xh")
+autoplay = &"Cycle"
+
+[node name="Sketchfab_Scene" parent="." unique_id=540414772 instance=ExtResource("11_l80xh")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -2.07, -20.52, -8.5199995)
+
+[node name="Box001_02 - Default_0" parent="Sketchfab_Scene/Sketchfab_model/c786f85e303c4184a4f1a6960dab7f81_fbx/RootNode/Box001" parent_id_path=PackedInt32Array(540414772, 1174371449) index="0" unique_id=190519251]
+mesh = SubResource("ArrayMesh_085jn")
+
 [editable path="City"]
 [editable path="City2"]
 [editable path="Apartment"]
 [editable path="Table"]
+[editable path="Sketchfab_Scene"]

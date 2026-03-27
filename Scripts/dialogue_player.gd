@@ -7,7 +7,7 @@ signal dialogue_progressed
 @onready var input_handler := get_node("/root/InputHandler")
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-#split this up into different smaller tutorials
+#TODO: split this up into different smaller tutorials
 var tutorial_dialogue_1 : Dictionary = {
 	0: "YOU OPEN YOUR EYES...",
 	1: "YOU FIND YOURSELF AWAKE IN A YACHT ON THE WATER.",
@@ -608,7 +608,7 @@ func shop_tutorial_dialogue() -> void:
 		get_parent().get_parent().get_rick_quick_bitch()
 
 func spamming_rerolls_dialogue() -> void:
-	if GameManager.dialogue_seen.get(3) != true:
+	if GameManager.dialogue_seen.get(3) != true and !GameManager.is_postgame:
 		GameManager.in_tutorial = true
 		for i in tutorial_dont_waste_your_rolls_dialogue.size():
 			InputHandler.can_progress_text = false
@@ -645,7 +645,8 @@ func play_round_dialogue() -> void:
 			if GameManager.dialogue_seen.get(2) != true:
 				shop_tutorial_dialogue()
 			else:
-				round_2_dialogue()
+				if !GameManager.is_postgame:
+					round_2_dialogue()
 		3: round_3_dialogue()
 		4: round_4_dialogue() 
 		5: round_5_dialogue()
@@ -967,7 +968,6 @@ func round_8_dialogue() -> void:
 	else:
 		get_parent().get_parent().get_rick_quick_bitch()
 		
-		
 func in_death_we_part() -> void:
 	var target_dialogue : Dictionary
 	var target_number : int
@@ -1112,6 +1112,33 @@ func finale_dialogue() -> void:
 	GameManager.ending_cutscene = true
 	get_parent().get_parent().add_breakdown_cutscene()
 
+func postgame_intro_scene() -> void:
+	if GameManager.dialogue_seen.get(22) != true:
+		GameManager.in_tutorial = true
+		for i in postgame_intro.size():
+			InputHandler.can_progress_text = false
+			dialogue_wait_buffer.start()
+			play_confirm_sound()
+			no_dialogue()
+			dialogue_handler_2.text = postgame_intro.get(i)
+			dialogue_handler_2.start_cutscene = true
+			await dialogue_wait_buffer.timeout
+			InputHandler.can_progress_text = true
+			match i:
+				0: dialogue_handler_2.align_screen = "middle"
+				6: get_parent().get_parent().camera_movement.play("DefaultPostgameFirstTime")
+				24: 
+					dialogue_handler_2.align_screen = "top"
+					get_parent().get_parent().camera_movement.play("PostgameFirstTime_to_default")
+			await dialogue_progressed
+		GameManager.in_tutorial = false
+		dialogue_save(22)
+		#get_parent().get_parent().camera_movement.play("dealer_to_default")
+		get_parent().get_parent().camera_movement.play("default_to_counter")
+		get_parent().get_parent().target_score_display.that_type_shit_you_do_when_you_dont_know_how_to_make_a_function_continue_in_the_middle_so_you_do_this_shit_instead()
+		no_dialogue()
+		no_dialogue_voice_2()
+
 func dialogue_save(dialogue_number : int) -> void:
 	GameManager.dialogue_seen.set(dialogue_number, true)
 	SaveLoad.SaveFileData.dialogue_seen.set(dialogue_number, true)
@@ -1120,16 +1147,28 @@ func dialogue_save(dialogue_number : int) -> void:
 func no_dialogue() -> void:
 	dialogue_handler.text = " "
 	dialogue_handler.start_cutscene = true
+	if GameManager.is_postgame:
+		dialogue_handler_2.text = " "
+		dialogue_handler_2.start_cutscene = true
 	
 func no_dialogue_voice_2() -> void:
 	dialogue_handler_2.text = " "
 	dialogue_handler_2.start_cutscene = true
 
 func play_dice_selection_dialogue() -> void:
-	play("replace_dice")
+	if !GameManager.is_postgame:
+		play("replace_dice")
+	else:
+		play("replace_dice_postgame")
 
 func play_statue_dialogue_1() -> void:
-	play("replace_statue_1")
+	if !GameManager.is_postgame:
+		play("replace_statue_1")
+	else:
+		play("replace_statue_1_postgame")
 
 func play_statue_dialogue_2() -> void:
-	play("replace_statue_2")
+	if !GameManager.is_postgame:
+		play("replace_statue_2")
+	else:
+		play("replace_statue_2_postgame")

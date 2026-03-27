@@ -15,6 +15,9 @@ var selected_luminance : float = 2.0
 var statue_bottom_chosen : bool = false
 var statue_top_chosen : bool = false
 
+var statue_top_choice : int = 0
+var statue_bottom_choice : int = 0
+
 @onready var combiner_top_collider_1: CollisionShape3D = $StatueCombinerTop1/CombinerTopArea1/CombinerTopCollider1
 @onready var combiner_top_collider_2: CollisionShape3D = $StatueCombinerTop2/CombinerTopArea2/CombinerTopCollider2
 @onready var combiner_bottom_collider_1: CollisionShape3D = $StatueCombinerBottom1/CombinerBottomArea1/CombinerBottomCollider1
@@ -30,6 +33,17 @@ var statue_top_chosen : bool = false
 const statue_combiner = preload("uid://bi60iqmoecgti")
 
 var new_statue_instance : Node
+
+func _process(_delta: float) -> void:
+	match InputHandler.hovered_object:
+		"statue_combiner_top_1":
+			statue_top_outline_1.visible = true
+		"statue_combiner_top_2":
+			statue_top_outline_2.visible = true
+		"statue_combiner_bottom_1":
+			statue_bottom_outline_1.visible = true
+		"statue_combiner_bottom_2":
+			statue_bottom_outline_2.visible = true
 
 func new_statue_check() -> void:
 	if statue_bottom_chosen and statue_top_chosen:
@@ -55,6 +69,9 @@ func disable_statue_combiner_areas() -> void:
 	combiner_top_highlight_2_unsolidified()
 	combiner_bottom_highlight_1_unsolidified()
 	combiner_bottom_highlight_2_unsolidified()
+	statue_top_choice = 0
+	statue_bottom_choice = 0
+	
 
 
 func _on_combiner_top_area_1_mouse_entered() -> void:
@@ -62,7 +79,8 @@ func _on_combiner_top_area_1_mouse_entered() -> void:
 	statue_top_outline_1.visible = true
 
 func _on_combiner_top_area_1_mouse_exited() -> void:
-	statue_top_outline_1.visible = false
+	if statue_top_choice != 1:
+		statue_top_outline_1.visible = false
 	if InputHandler.hovered_object == "statue_combiner_top_1":
 		InputHandler.hovered_object = "none"
 	
@@ -72,7 +90,8 @@ func _on_combiner_top_area_2_mouse_entered() -> void:
 	InputHandler.hovered_object = "statue_combiner_top_2"
 
 func _on_combiner_top_area_2_mouse_exited() -> void:
-	statue_top_outline_2.visible = false
+	if statue_top_choice != 2:
+		statue_top_outline_2.visible = false
 	if InputHandler.hovered_object == "statue_combiner_top_2":
 		InputHandler.hovered_object = "none"
 
@@ -82,7 +101,8 @@ func _on_combiner_bottom_area_1_mouse_entered() -> void:
 	InputHandler.hovered_object = "statue_combiner_bottom_1"
 
 func _on_combiner_bottom_area_1_mouse_exited() -> void:
-	statue_bottom_outline_1.visible = false
+	if statue_bottom_choice != 1:
+		statue_bottom_outline_1.visible = false
 	if InputHandler.hovered_object == "statue_combiner_bottom_1":
 		InputHandler.hovered_object = "none"
 
@@ -92,54 +112,74 @@ func _on_combiner_bottom_area_2_mouse_entered() -> void:
 	InputHandler.hovered_object = "statue_combiner_bottom_2"
 
 func _on_combiner_bottom_area_2_mouse_exited() -> void:
-	statue_bottom_outline_2.visible = false
+	if statue_bottom_choice != 2:
+		statue_bottom_outline_2.visible = false
 	if InputHandler.hovered_object == "statue_combiner_bottom_2":
 		InputHandler.hovered_object = "none"
 
 
 func combiner_top_highlight_1_solidified() -> void:
+	statue_top_outline_2.visible = false
 	statue_top_outline_1.get_active_material(0).albedo_color = selected_color
 	statue_top_outline_1.get_active_material(0).emission_energy_multiplier = selected_luminance
 	statue_top_chosen = true
+	statue_top_choice = 1
+	statue_top_outline_2.visible = true
+	combiner_top_highlight_2_unsolidified()
 	new_statue_check()
 	
 
 func combiner_top_highlight_1_unsolidified() -> void:
 	statue_top_outline_1.get_active_material(0).albedo_color = unselected_color
 	statue_top_outline_1.get_active_material(0).emission_energy_multiplier = unselected_luminance
-	
+	statue_top_outline_1.visible = false
 	
 func combiner_top_highlight_2_solidified() -> void:
+	statue_top_outline_2.visible = false
 	statue_top_outline_2.get_active_material(0).albedo_color = selected_color
 	statue_top_outline_2.get_active_material(0).emission_energy_multiplier = selected_luminance
 	statue_top_chosen = true
+	statue_top_choice = 2
+	statue_top_outline_2.visible = true
+	combiner_top_highlight_1_unsolidified()
 	new_statue_check()
 
 func combiner_top_highlight_2_unsolidified() -> void:
 	statue_top_outline_2.get_active_material(0).albedo_color = unselected_color
 	statue_top_outline_2.get_active_material(0).emission_energy_multiplier = unselected_luminance
+	statue_top_outline_2.visible = false
 	
 	
 func combiner_bottom_highlight_1_solidified() -> void:
+	statue_bottom_outline_1.visible = false
 	statue_bottom_outline_1.get_active_material(0).albedo_color = selected_color
 	statue_bottom_outline_1.get_active_material(0).emission_energy_multiplier = selected_luminance
+	statue_bottom_choice = 1
 	statue_bottom_chosen = true
+	statue_bottom_outline_1.visible = true
+	combiner_bottom_highlight_2_unsolidified()
 	new_statue_check()
 
 func combiner_bottom_highlight_1_unsolidified() -> void:
 	statue_bottom_outline_1.get_active_material(0).albedo_color = unselected_color
 	statue_bottom_outline_1.get_active_material(0).emission_energy_multiplier = unselected_luminance
+	statue_bottom_outline_1.visible = false
 	
 	
 func combiner_bottom_highlight_2_solidified() -> void:
+	statue_bottom_outline_2.visible = false
 	statue_bottom_outline_2.get_active_material(0).albedo_color = selected_color
 	statue_bottom_outline_2.get_active_material(0).emission_energy_multiplier = selected_luminance
+	statue_bottom_choice = 2
 	statue_bottom_chosen = true
+	statue_bottom_outline_2.visible = true
+	combiner_bottom_highlight_1_unsolidified()
 	new_statue_check()
 
 func combiner_bottom_highlight_2_unsolidified() -> void:
 	statue_bottom_outline_2.get_active_material(0).albedo_color = unselected_color
 	statue_bottom_outline_2.get_active_material(0).emission_energy_multiplier = unselected_luminance
+	statue_bottom_outline_2.visible = false
 	
 
 func statue_combination_epic_style() -> void:
@@ -156,7 +196,7 @@ func statue_combination_epic_style() -> void:
 	new_statue_instance.name = "FusedStatue" + str(get_parent().statues_created)
 	
 	add_child(new_statue_instance)
-	
+	get_tree().call_group("statues", "disable_statue_choice_area")
 	new_statue_instance.global_position = statue_final_product_area.global_position
 	
 	get_parent().statue_top_choice.get_parent().statue_top_instance = null
