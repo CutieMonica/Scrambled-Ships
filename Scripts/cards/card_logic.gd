@@ -105,6 +105,7 @@ func _process(delta: float) -> void:
 
 func card_interact() -> void:
 	if !in_shop and GameManager.viewing_cards:
+		random_card_sound()
 		activated = true
 		get_parent().get_parent().remove_card(card_position)
 		get_parent().get_parent().exit_card_outline.visible = false
@@ -129,7 +130,6 @@ func card_dies() -> void:
 
 func purchase_card() -> void:
 	var target_slot : int = get_tree().get_first_node_in_group("main").find_vacant_card_slot()
-	
 	if target_slot != 0:
 		get_parent().reparent(get_tree().get_first_node_in_group("main"))
 		card_position = target_slot

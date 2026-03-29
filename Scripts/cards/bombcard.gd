@@ -35,11 +35,12 @@ func _process(_delta: float) -> void:
 		match playsound:
 			"explode":
 				var random_vine_boom_jumpscare : int = randi_range(1, 100)
-				if random_vine_boom_jumpscare < 100 or GameManager.current_round >= 5:
+				if random_vine_boom_jumpscare < 100 or GameManager.current_round >= 5 and !GameManager.is_postgame:
 					audio_stream_player_3d.stream = SfxBank.explosion_1
-				if random_vine_boom_jumpscare == 100 and GameManager.current_round < 5:
+				if random_vine_boom_jumpscare == 100 and GameManager.current_round < 5 and !GameManager.is_postgame or random_vine_boom_jumpscare == 100 and GameManager.is_postgame:
 					audio_stream_player_3d.stream = SfxBank.explosion_2
 		audio_stream_player_3d.play()
+		get_tree().get_first_node_in_group("main").shake_screen()
 		playsound = "none"
 				
 func yall_ready_for_this() -> void:
@@ -55,6 +56,7 @@ func activate() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "explode":
 		InputHandler.actionable = true
+		card_logic.card_dies()
 
 
 func _on_explosionboxes_body_entered(body: Node3D) -> void:

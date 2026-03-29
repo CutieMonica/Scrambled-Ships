@@ -15,7 +15,7 @@ var pencil_sound_2 := preload("res://Assets/SFX/pencilsound2.ogg")
 @onready var music_volume_ui: HSlider = $CanvasLayer/TextureRect/MusicVolume
 @onready var sfx_volume_ui: HSlider = $CanvasLayer/TextureRect/SFXVolume
 @onready var option_button: OptionButton = $CanvasLayer/TextureRect/OptionButton
-
+var settings_up : bool = false
 
 func random_sound() -> void:
 	var play_sound : int
@@ -77,7 +77,8 @@ func _on_texture_button_pressed() -> void:
 	random_sound()
 	animation_player.play_backwards("settingspopup")
 	get_tree().call_group("title", "enable_buttons")
-	check_button.disabled = true
+	#check_button.disabled = true
+	settings_up = false
 	SaveLoad._save()
 	
 func _on_check_button_toggled(toggled_on: bool) -> void:
@@ -120,12 +121,21 @@ func _on_music_volume_drag_ended(_value_changed: bool) -> void:
 
 func and_then_i_pull_up_hop_out_at_the_after_party() -> void:
 	animation_player.play("settingspopup")
+	settings_up = true
 	if !GameManager.is_on_web:
 		check_button.disabled = false
+	if InputHandler.in_game:
+		line_edit.text = str(GameManager.input_seed)
+		line_edit.editable = false
 
-func _on_line_edit_text_submitted(_new_text: String) -> void:
-	if (int(line_edit.text)) > 0 and (int(line_edit.text)) <= 999999999:
-		line_edit.text = str(int(line_edit.text))
-		GameManager.input_seed = (int(line_edit.text))
-	else:
-		line_edit.text = str(0)
+#func _on_line_edit_text_submitted(_new_text: String) -> void:
+	#if (int(line_edit.text)) > 0 and (int(line_edit.text)) <= 999999999:
+	#line_edit.text = str(int(line_edit.text)
+	
+	#else:
+		#line_edit.text = str(0)
+func _on_line_edit_text_changed(_new_text: String) -> void:
+	GameManager.input_seed = (int(line_edit.text))
+	if line_edit.text == "sv_cheats 1":
+		PauseScreen.playsound(1)
+		InputHandler.cheats_enabled = true

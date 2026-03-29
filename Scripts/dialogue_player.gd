@@ -803,10 +803,12 @@ func round_6_dialogue() -> void:
 				InputHandler.can_progress_text = true
 			match i:
 				1: get_parent().get_parent().camera_movement.play("counter_to_dealer_alt")
+				4: get_parent().get_parent().dialogue_handler_2.play_shake_1()
 				7: get_parent().get_parent().camera_movement.play_backwards("counter_to_dealer_alt")
 			await dialogue_progressed
 		GameManager.in_tutorial = false
 		dialogue_save(8)
+		dialogue_handler_2.back_to_normal()
 		#get_parent().get_parent().camera_movement.play("dealer_to_default")
 		get_parent().get_parent().get_rick_quick_bitch()
 		no_dialogue()
@@ -837,9 +839,13 @@ func round_7_dialogue() -> void:
 				3: get_parent().get_parent().camera_movement.play("counter_to_dealer_alt")
 				12: get_parent().get_parent().camera_movement.play_backwards("counter_to_dealer_alt")
 				13: get_parent().get_parent().camera_movement.play("counter_to_dealer")
+				23: 
+					get_parent().get_parent().shake_screen()
+					dialogue_handler_2.play_shake_1()
 				26: get_parent().get_parent().camera_movement.play_backwards("counter_to_dealer")
 			await dialogue_progressed
 		GameManager.in_tutorial = false
+		dialogue_handler_2.back_to_normal()
 		dialogue_save(9)
 		#get_parent().get_parent().camera_movement.play("dealer_to_default")
 		get_parent().get_parent().get_rick_quick_bitch()
@@ -1076,6 +1082,7 @@ func finale_dialogue() -> void:
 			2: get_parent().get_parent().camera_movement.play("counter_to_dealer_losing")
 			16: 
 				get_parent().get_parent().dealer.play_finale()
+				get_parent().get_parent().shake_screen()
 				dialogue_handler_2.min_pitch = 0.95
 				dialogue_handler_2.max_pitch = 1.1
 				dialogue_handler_2.play_shake_1()
@@ -1083,6 +1090,8 @@ func finale_dialogue() -> void:
 				dialogue_handler_2.min_pitch = 0.96
 				dialogue_handler_2.max_pitch = 1.1
 				dialogue_handler.volume = -1
+			28:
+				get_parent().get_parent().shake_screen()
 			38: 
 				dialogue_handler_2.min_pitch = 0.97
 				dialogue_handler_2.max_pitch = 1.15
@@ -1092,6 +1101,10 @@ func finale_dialogue() -> void:
 				dialogue_handler_2.min_pitch = 0.98
 				dialogue_handler_2.max_pitch = 1.2
 				dialogue_handler_2.volume = 1.5
+			51:
+				get_parent().get_parent().shake_screen()
+			61:
+				get_parent().get_parent().screenshake.play("shakeconstant")
 			66:
 				dialogue_handler.volume = -2
 			71: 
@@ -1106,6 +1119,7 @@ func finale_dialogue() -> void:
 		await dialogue_progressed
 	GameManager.in_tutorial = false
 	dialogue_save(21)
+	get_parent().get_parent().screenshake.stop()
 		#get_parent().get_parent().camera_movement.play("dealer_to_default")
 	no_dialogue()
 	no_dialogue_voice_2()
@@ -1125,11 +1139,18 @@ func postgame_intro_scene() -> void:
 			await dialogue_wait_buffer.timeout
 			InputHandler.can_progress_text = true
 			match i:
-				0: dialogue_handler_2.align_screen = "middle"
+				0: 
+					dialogue_handler_2.align_screen = "middle"
+					dialogue_handler_2.min_pitch = 0.8
+					dialogue_handler_2.max_pitch = 1.1
 				6: get_parent().get_parent().camera_movement.play("DefaultPostgameFirstTime")
 				24: 
 					dialogue_handler_2.align_screen = "top"
 					get_parent().get_parent().camera_movement.play("PostgameFirstTime_to_default")
+				25:
+					get_parent().get_parent().radio._ready()
+					get_parent().get_parent().radio.music_source.pitch_scale = 1
+					get_parent().get_parent().radio.music_source.volume_db = 0
 			await dialogue_progressed
 		GameManager.in_tutorial = false
 		dialogue_save(22)

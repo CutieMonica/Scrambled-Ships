@@ -293,6 +293,8 @@ func _on_shop_placement_area_12_mouse_exited() -> void:
 		change_highlight(0)
 
 func change_highlight(number : int) -> void:
+	if GameManager.in_tutorial == true:
+		return
 	for i : int in highlights:
 		highlights.get(i).visible = false
 	if number == 0:

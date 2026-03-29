@@ -6,11 +6,17 @@ var card_choice : PackedScene
 
 #every card
 var bomb_card := load("uid://dgpdr61xocghe")
+var bob_card := load("res://Scenes/Cards/BobCard.tscn")
 var wheel_of_fortune_card := load("uid://6bq38k2ugok3")
+
 
 var common_cards: Dictionary = {
 	1: bomb_card,
 	2: wheel_of_fortune_card
+}
+
+var uncommon_cards: Dictionary = {
+	1: bob_card
 }
 
 var card_instance : Node3D
@@ -23,17 +29,16 @@ func spawn_card() -> void:
 		return
 	#var random_weight := GameManager.rng_shops
 	#var random_value : int = rarity[random_weight.rand_weighted(weight_probabilities)]
-	var random_value : int = 1
-
-	match random_value:
-		1:
-			card_rarity = "common"
-			card_choice = common_cards.get(GameManager.rng_shops.randi_range(1, common_cards.size()))
-			card_price = 2
-		#2:
-			#dice_rarity = "uncommon"
-			#dice_choice = uncommon_dice.get(GameManager.rng_shops.randi_range(1, uncommon_dice.size()))
-			#dice_price = 4
+	var random_value : int = GameManager.rng_shops.randi_range(1, 6)
+	
+	if random_value < 5:
+		card_rarity = "common"
+		card_choice = common_cards.get(GameManager.rng_shops.randi_range(1, common_cards.size()))
+		card_price = 2
+	if random_value >= 5:
+		card_rarity = "uncommon"
+		card_choice = uncommon_cards.get(GameManager.rng_shops.randi_range(1, uncommon_cards.size()))
+		card_price = 4
 		#3:
 			#dice_rarity = "rare"
 			#dice_choice = rare_dice.get(GameManager.rng_shops.randi_range(1, rare_dice.size()))

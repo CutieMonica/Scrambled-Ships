@@ -999,6 +999,7 @@ frame = 18
 frame_progress = 0.70150036
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1339127415]
+volume_db = -2.712
 unit_size = 45.36
 bus = &"SFX"
 attenuation_filter_cutoff_hz = 12088.0

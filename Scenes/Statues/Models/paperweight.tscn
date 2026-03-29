@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://het24d0n3kkj" path="res://Assets/Models/StichtingConsortiumPaperWeight/scene.gltf" id="5_4cvs0"]
 [ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="6_init5"]
 [ext_resource type="Material" uid="uid://dlsxwq55xqamp" path="res://Materials/MetalPaperweight.tres" id="6_qvhaa"]
+[ext_resource type="Texture2D" uid="uid://b64w4y7u28o2k" path="res://Assets/Textures/Texturelabs_Metal_249S.jpg" id="7_1uv1i"]
 [ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="7_jk0mj"]
+[ext_resource type="Texture2D" uid="uid://byqe5dgbju3cs" path="res://Assets/Textures/Normals/StatueMidNormal.png" id="8_nhtjf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1uv1i"]
 height = 17.932537
@@ -246,6 +248,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hb2tv")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb2tv"]
+resource_local_to_scene = true
+albedo_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+albedo_texture = ExtResource("7_1uv1i")
+metallic = 1.0
+metallic_specular = 0.41
+metallic_texture = ExtResource("8_nhtjf")
+roughness = 0.52
+roughness_texture = ExtResource("8_nhtjf")
+normal_enabled = true
+normal_texture = ExtResource("8_nhtjf")
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_init5"]
 _surfaces = [{
 "aabb": AABB(-12.5, -12.47086, 10, 25, 24.94172, 32),
@@ -354,7 +368,7 @@ transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 1.5200001, -0.650
 
 [node name="Object_2" parent="Sketchfab_Scene/Sketchfab_model/currentmodel_wrl_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(1771511285, 1724306764) index="0" unique_id=1325621678]
 mesh = SubResource("ArrayMesh_0yqpv")
-surface_material_override/0 = ExtResource("6_qvhaa")
+surface_material_override/0 = SubResource("StandardMaterial3D_hb2tv")
 
 [node name="Object_3" parent="Sketchfab_Scene/Sketchfab_model/currentmodel_wrl_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(1771511285, 1724306764) index="1" unique_id=1030258562]
 mesh = SubResource("ArrayMesh_jk0mj")

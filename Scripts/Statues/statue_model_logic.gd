@@ -13,6 +13,7 @@ func get_symbol() -> String:
 
 func play_audio() -> void:
 	audio_stream_player_3d.stream = statue_activation_noise
+	audio_stream_player_3d.pitch_scale = 0.9 + (get_parent().get_parent().statue_position * 0.1)
 	audio_stream_player_3d.play()
 
 func color_shift(color : String) -> void:

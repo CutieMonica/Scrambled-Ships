@@ -16,6 +16,7 @@ size = Vector3(0.855, 0.855, 0.855)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_408v3"]
 transparency = 1
+depth_draw_mode = 1
 albedo_color = Color(1, 1, 1, 0.9607843)
 albedo_texture = ExtResource("2_wae6c")
 metallic = 0.58

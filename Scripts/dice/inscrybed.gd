@@ -10,7 +10,7 @@ class_name InscrybedDie
 const KILLDICE = preload("uid://7j0rqaqkt7pd")
 
 var dying : bool = false
-var number : int = 0
+var number : int = 3
 var start_shaking : bool = false
 var has_given_number : bool = false
 var current_pos : Vector3
@@ -71,16 +71,29 @@ func _physics_process(delta: float) -> void:
 		current_pos = position
 		if ray_cast_1.is_colliding():
 			number = 3
+			dice_logic.dice_storage_rotation = Vector3.ZERO
+			dice_logic.dice_side_up = 1
 		if ray_cast_2.is_colliding():
 			number = 4
+			dice_logic.dice_storage_rotation = Vector3(0, 0, 1.5)
+			dice_logic.dice_side_up = 2
 		if ray_cast_3.is_colliding():
 			number = 5
+			dice_logic.dice_storage_rotation = Vector3(1.5, 0, 0)
+			dice_logic.dice_side_up = 3
 		if ray_cast_4.is_colliding():
 			number = 6
+			dice_logic.dice_storage_rotation = Vector3(-1.5, 0, 0)
+			dice_logic.dice_side_up = 4
 		if ray_cast_5.is_colliding():
 			number = 7
+			dice_logic.dice_storage_rotation = Vector3(0, 0, -1.5)
+			dice_logic.dice_side_up = 5
 		if ray_cast_6.is_colliding():
 			number = 8
+			dice_logic.dice_storage_rotation = Vector3(0, 0, -3)
+			dice_logic.dice_side_up = 6
+			
 		if outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true or !outside_the_box and outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true:
 			match outside_the_box_multiplier_given_to_top_row:
 				0:
@@ -98,7 +111,7 @@ func _physics_process(delta: float) -> void:
 				6:
 					get_parent().score_sheet.sixes_multiplier -= dice_logic.outside_the_box_multiplier
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
-		if outside_the_box:
+		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
 			outside_the_box_multiplier_given_to_top_row = number
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
 			match number:

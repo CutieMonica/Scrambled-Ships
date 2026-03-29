@@ -26,7 +26,7 @@ func shop_reroll() -> void:
 	play_shop_reload()
 
 func exit_shop() -> void:
-	if !get_parent().camera_movement.is_playing():
+	if !get_parent().camera_movement.is_playing() and InputHandler.hovered_object == "shop_leave":
 		move_nametag.play_backwards("move_nametag")
 		animation_player.play_backwards("lidflip")
 		#delete all shop items NOW

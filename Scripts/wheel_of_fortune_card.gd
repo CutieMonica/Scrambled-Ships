@@ -70,7 +70,7 @@ func activate() -> void:
 				chosen_category_written = "Four of a Kind"
 			"yacht": 
 				chosen_category_written = "Yacht"
-			
+		
 		match random_effect:
 			1:
 				buffing = chosen_category + "_multiplier"
@@ -86,6 +86,8 @@ func activate() -> void:
 			#	text.text = chosen_category_written + " Score + 20!"
 				
 	animation_player.play("success")
+	await get_tree().create_timer(1).timeout
+	card_logic.random_card_sound()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "success" or anim_name == "nope":

@@ -15,6 +15,10 @@ extends Node3D
 var exiting : bool = false
 
 func _ready() -> void:
+	PauseScreen.can_pause = false
+	GameManager.input_seed = 0
+	Settings.line_edit.text = ""
+	Settings.line_edit.editable = true
 	GameManager.reset_things()
 	performance_switch()
 	seed(1)

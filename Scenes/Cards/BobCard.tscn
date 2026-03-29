@@ -1,0 +1,418 @@
+[gd_scene format=3 uid="uid://bsnouaq55lae1"]
+
+[ext_resource type="Script" uid="uid://cs1cd7turchyp" path="res://Scripts/cards/bob_card.gd" id="1_qhhlu"]
+[ext_resource type="Texture2D" uid="uid://blxu3n0irym2v" path="res://Assets/Textures/cards/carddesignuncommonback.png" id="2_10vhl"]
+[ext_resource type="Texture2D" uid="uid://d0abxwxnye6tu" path="res://Assets/Textures/cards/CardArt/bob.png" id="3_10vhl"]
+[ext_resource type="Texture2D" uid="uid://chrnfyxio12r0" path="res://Assets/Textures/cards/carddesignuncommon.png" id="4_0nj1x"]
+[ext_resource type="Texture2D" uid="uid://bhn7booepttx3" path="res://Assets/Textures/cards/CardArt/collectible particle.png" id="6_0nj1x"]
+[ext_resource type="PackedScene" uid="uid://crcpsnxro28o7" path="res://Scenes/card_logic.tscn" id="99_y6ao6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5smr4"]
+size = Vector3(10, 0.06, 15.04)
+
+[sub_resource type="Animation" id="Animation_urq1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardVisuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardVisuals:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardVisuals:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:playsound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["none"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BounceBox/CollisionShape3D2:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles3D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_taem4"]
+resource_name = "explode"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666667, 1.2, 1.2333333, 1.2666667, 1.3000001, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666666, 1.6, 1.6333333, 1.6666666, 1.6999999, 1.7333333, 1.7666667, 1.8, 1.8333333, 1.8666667, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 134.59, 0), Vector3(0, 134.44044, 0), Vector3(0, 133.99182, 0), Vector3(0, 133.2441, 0), Vector3(0, 132.19728, 0), Vector3(0, 130.85138, 0), Vector3(0, 129.20639, 0), Vector3(0, 127.26232, 0), Vector3(0, 125.01915, 0), Vector3(0, 122.4769, 0), Vector3(0, 119.63555, 0), Vector3(0, 116.49512, 0), Vector3(0, 113.055595, 0), Vector3(0, 109.316986, 0), Vector3(0, 105.27929, 0), Vector3(0, 100.9425, 0), Vector3(0, 96.30661, 0), Vector3(0, 91.37166, 0), Vector3(0, 86.137596, 0), Vector3(0, 80.604454, 0), Vector3(0, 74.77222, 0), Vector3(0, 68.6409, 0), Vector3(0, 62.210487, 0), Vector3(0, 55.480995, 0), Vector3(0, 48.452393, 0), Vector3(0, 41.124725, 0), Vector3(0, 33.497948, 0), Vector3(0, 25.572105, 0), Vector3(0, 17.34716, 0), Vector3(0, 8.823135, 0), Vector3(0, 0, 0), Vector3(1.1399996, 1.8022215, 1.2122219), Vector3(4.5599985, 7.208886, 4.8488874), Vector3(10.26, 16.22, 10.91), Vector3(10.379383, 16.157036, 11.15642), Vector3(10.737532, 15.968147, 11.895679), Vector3(11.334445, 15.653333, 13.127779), Vector3(12.170124, 15.212591, 14.852717), Vector3(13.244569, 14.645925, 17.070496), Vector3(14.557779, 13.953331, 19.781115), Vector3(16.109756, 13.134812, 22.984571), Vector3(17.900497, 12.190368, 26.68087), Vector3(19.93, 11.119999, 30.869999), Vector3(20.010979, 10.672488, 30.891022), Vector3(20.253912, 9.329954, 30.954088), Vector3(20.6588, 7.092399, 31.059198), Vector3(21.225645, 3.9598212, 31.206354), Vector3(21.954445, -0.06777859, 31.395554), Vector3(22.845201, -4.9904003, 31.626799), Vector3(23.897911, -10.808043, 31.900087), Vector3(25.11258, -17.520712, 32.21542), Vector3(26.4892, -25.128399, 32.5728), Vector3(28.027779, -33.63111, 32.97222), Vector3(29.728313, -43.02884, 33.41369), Vector3(31.590801, -53.321598, 33.897198), Vector3(33.615246, -64.50937, 34.422752), Vector3(35.801643, -76.59216, 34.990353), Vector3(38.15, -89.56999, 35.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardVisuals:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.6632251, 0, 0), Vector3(0.6963864, -1.1431906, 2.5132742)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardVisuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.9999, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:playsound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["none", "explode"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BounceBox/CollisionShape3D2:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9999, 1, 1.0001, 1.3229102),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles3D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8ds6r"]
+resource_name = "get_out"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0008923063, 0), Vector3(0, 0.028553803, 0), Vector3(0, 0.2168304, 0), Vector3(0, 0.9137217, 0), Vector3(0, 2.7884572, 0), Vector3(0, 6.938573, 0), Vector3(0, 14.99699, 0), Vector3(0, 29.239094, 0), Vector3(0, 52.689796, 0), Vector3(0, 89.23063, 0), Vector3(0, 143.7068, 0), Vector3(0, 222.03433, 0), Vector3(0, 331.30704, 0), Vector3(0, 479.9037, 0), Vector3(0, 677.595, 0), Vector3(0, 875.28644, 0), Vector3(0, 1023.88293, 0), Vector3(0, 1133.1558, 0), Vector3(0, 1211.4832, 0), Vector3(0, 1265.9594, 0), Vector3(0, 1302.5001, 0), Vector3(0, 1325.9508, 0), Vector3(0, 1340.193, 0), Vector3(0, 1348.2513, 0), Vector3(0, 1352.4015, 0), Vector3(0, 1354.2762, 0), Vector3(0, 1354.9731, 0), Vector3(0, 1355.1614, 0), Vector3(0, 1355.1891, 0), Vector3(0, 1355.19, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ginii"]
+resource_name = "highlight"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5smr4"]
+resource_name = "unhighlight"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisuals/Outline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_taem4"]
+_data = {
+&"RESET": SubResource("Animation_urq1j"),
+&"explode": SubResource("Animation_taem4"),
+&"get_out": SubResource("Animation_8ds6r"),
+&"highlight": SubResource("Animation_ginii"),
+&"unhighlight": SubResource("Animation_5smr4")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urq1j"]
+resource_local_to_scene = true
+render_priority = 16
+depth_draw_mode = 1
+metallic = 0.71
+metallic_specular = 0.19
+emission_enabled = true
+emission = Color(1, 0.50463665, 0.97491246, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ginii"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_urq1j")
+size = Vector2(10.5, 15.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gh3sp"]
+resource_local_to_scene = true
+render_priority = 22
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("2_10vhl")
+metallic = 0.71
+metallic_specular = 0.19
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c2p1q"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gh3sp")
+size = Vector2(10, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0nj1x"]
+resource_local_to_scene = true
+render_priority = 20
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("3_10vhl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gh3sp"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0nj1x")
+size = Vector2(9.29, 5.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygp5t"]
+render_priority = 21
+transparency = 1
+cull_mode = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("4_0nj1x")
+metallic = 0.71
+metallic_specular = 0.19
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_svy7g"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ygp5t")
+size = Vector2(10, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_taem4"]
+size = Vector3(152.16, 39.219997, 102.99)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10vhl"]
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+albedo_texture = ExtResource("6_0nj1x")
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.1
+billboard_mode = 1
+billboard_keep_scale = true
+stencil_flags = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0nj1x"]
+material = SubResource("StandardMaterial3D_10vhl")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_0nj1x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.08056872, 1), 0.0, 0.0, 0, 0, Vector2(0.17535546, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="BobCard" type="Node3D" unique_id=1143179809]
+script = ExtResource("1_qhhlu")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1339127415]
+volume_db = -2.712
+unit_size = 45.36
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 12088.0
+
+[node name="MouseDetect" type="Area3D" parent="." unique_id=1647229609]
+
+[node name="MouseCollider" type="CollisionShape3D" parent="MouseDetect" unique_id=1523409022]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.010000229, 0.04000002, -0.039999247)
+shape = SubResource("BoxShape3D_5smr4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=65002038]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_taem4")
+
+[node name="CardVisuals" type="Node3D" parent="." unique_id=109712147]
+
+[node name="Nametag" type="Label3D" parent="CardVisuals" unique_id=374057504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.471, 0.01)
+shaded = true
+double_sided = false
+render_priority = 23
+outline_render_priority = 22
+text = "Bob"
+font_size = 128
+
+[node name="Description" type="Label3D" parent="CardVisuals" unique_id=1363177856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.171, 0.01)
+shaded = true
+double_sided = false
+render_priority = 23
+outline_render_priority = 22
+text = "Upon use, Bob will bounce on the Dice Box, causing every die outside of storage to flip upside down."
+font_size = 128
+vertical_alignment = 0
+autowrap_mode = 2
+width = 1800.0
+
+[node name="Rarity" type="Label3D" parent="CardVisuals" unique_id=2066783178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.449, 0.01)
+shaded = true
+double_sided = false
+render_priority = 23
+outline_render_priority = 22
+text = "UNCOMMON"
+font_size = 128
+
+[node name="Outline" type="MeshInstance3D" parent="CardVisuals" unique_id=1545889884]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.03)
+visible = false
+mesh = SubResource("PlaneMesh_ginii")
+
+[node name="CardBack" type="MeshInstance3D" parent="CardVisuals" unique_id=1935962852]
+transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.101, -0.02)
+mesh = SubResource("PlaneMesh_c2p1q")
+
+[node name="CardArt" type="MeshInstance3D" parent="CardVisuals" unique_id=1241105196]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.652, -0.01)
+mesh = SubResource("PlaneMesh_gh3sp")
+
+[node name="CardFront" type="MeshInstance3D" parent="CardVisuals" unique_id=1386641156]
+transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.101, 0)
+mesh = SubResource("PlaneMesh_svy7g")
+
+[node name="card_logic" parent="." unique_id=300499701 instance=ExtResource("99_y6ao6")]
+
+[node name="BounceBox" type="Area3D" parent="." unique_id=1036323397]
+collision_mask = 17
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BounceBox" unique_id=1845039879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6850033, 1.1773968, 4.575)
+shape = SubResource("BoxShape3D_taem4")
+disabled = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=2041870691]
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("PlaneMesh_0nj1x")
+direction = Vector3(0, 10.465, 0)
+spread = 67.5
+gravity = Vector3(0, -33.74, 0)
+initial_velocity_min = 38.0
+initial_velocity_max = 74.55
+angular_velocity_min = 0.9
+angular_velocity_max = 6.45
+linear_accel_min = 1.75
+linear_accel_max = 3.25
+radial_accel_min = 1.25
+radial_accel_max = 3.9
+tangential_accel_min = -0.3
+tangential_accel_max = 1.2
+damping_min = 0.01
+damping_max = 0.29
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_0nj1x")
+
+[connection signal="mouse_entered" from="MouseDetect" to="." method="_on_mouse_detect_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetect" to="." method="_on_mouse_detect_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="BounceBox" to="." method="_on_bounce_box_body_entered"]

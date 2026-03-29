@@ -7,6 +7,7 @@ var next_card : int = 0
 var currently_vacant_dice_slot : int
 var currently_vacant_statue_slot : int
 var currently_vacant_card_slot : int
+var cheats_enabled : bool = false
 
 signal pressed_tutorial_interact
 
@@ -18,11 +19,17 @@ var selected_shop_slot : int
 @onready var main_scene : Node3D = null
 
 func main_scene_entered() -> void:
+	PauseScreen.can_pause = true
 	main_scene = get_tree().get_first_node_in_group("main")
 	in_game = true
 	print(main_scene)
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_released("pause"):
+		if !Settings.settings_up:
+			PauseScreen.pause()
+		if Settings.settings_up:
+			Settings._on_texture_button_pressed()
 	if in_game == true:
 		if GameManager.in_tutorial:
 			if event.is_action_pressed("Interact") and can_progress_text:
@@ -142,9 +149,9 @@ func _input(event: InputEvent) -> void:
 		#if event.is_action_pressed("debug_spawn_card"):
 			#next_card += 1
 			#get_tree().get_first_node_in_group("main").card_spawner(next_card)
-		if event.is_action_pressed("debug_spawn_coins"):
+		if event.is_action_pressed("debug_spawn_coins") and cheats_enabled:
 			get_tree().get_first_node_in_group("main").give_extra_rerolls(10)
-		if event.is_action_pressed("debug_give_money"):
+		if event.is_action_pressed("debug_give_money") and cheats_enabled:
 			get_tree().get_first_node_in_group("main").give_extra_money(10)
 		if event.is_action_pressed("Interact") and current_reroll_state == 3 or event.is_action_pressed("Reload") and current_reroll_state == 3:
 			get_tree().get_first_node_in_group("main").reload()

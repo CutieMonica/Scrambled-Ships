@@ -4,4 +4,3 @@
 
 [node name="CardGenerator" type="Node3D" unique_id=1978848217]
 script = ExtResource("1_2xmi0")
-shop_slot = null

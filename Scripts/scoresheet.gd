@@ -421,6 +421,7 @@ func reset_everything() -> void:
 	bonus_score.modulate = info_color
 	bonus_threshold.modulate = info_color
 	bonus_given = false
+	reset_text()
 
 func reset_text() -> void:
 	current_sum.modulate = info_color
@@ -547,15 +548,19 @@ func lock_in_score() -> void:
 		yacht_score.text = str(yacht_locked_in_score)
 		current_grand_total += yacht_locked_in_score
 	hovered_category = "none"
+	
+	top_sum = (ones_locked_in_score + twos_locked_in_score + threes_locked_in_score + fours_locked_in_score + fives_locked_in_score + sixes_locked_in_score)
+	current_sum.text = "TOP SUM: " + str(top_sum)
+	
 	if !bonus_given and top_sum > bonus_threshold_amount:
 		bonus_threshold.outline_modulate = outline_color
 		bonus_score.outline_modulate = outline_color
 		bonus_score.modulate = permanent_number_color
 		bonus_threshold.modulate = permanent_number_color
+		current_grand_total += bonus_amount
 		bonus_given = true
 		
-	top_sum = (ones_locked_in_score + twos_locked_in_score + threes_locked_in_score + fours_locked_in_score + fives_locked_in_score + sixes_locked_in_score)
-	current_sum.text = "TOP SUM: " + str(top_sum)
+	
 	grand_total_amount.text = str(current_grand_total)
 	
 	if current_grand_total >= GameManager.new_round_target and inside_sheet:

@@ -75,5 +75,9 @@ shape = SubResource("BoxShape3D_x8ecq")
 wait_time = 0.2
 one_shot = true
 
+[node name="ActivateTimer" type="Timer" parent="." unique_id=1366080685]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="mouse_entered" from="StatueChoiceArea" to="." method="_on_statue_choice_area_mouse_entered"]
 [connection signal="mouse_exited" from="StatueChoiceArea" to="." method="_on_statue_choice_area_mouse_exited"]

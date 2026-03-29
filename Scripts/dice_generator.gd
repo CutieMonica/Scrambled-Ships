@@ -19,16 +19,17 @@ var weighted_die : PackedScene = load("res://Scenes/dice/weighteddie.tscn")
 var inscrybed_die : PackedScene = load("uid://cvdes1pfuas6d")
 var jelly_die : PackedScene = load("uid://vlnditpvpyti")
 var binary_die : PackedScene = load("res://Scenes/dice/BinaryDie.tscn")
+var chaos_die : PackedScene = load("res://Scenes/dice/ChaosDie.tscn")
 
 var common_dice : Dictionary = {
 	1: basic_d6,
 	2: cursed_die,
-	3: leaded_die
+	3: sky_die
 	}
 	
 var uncommon_dice : Dictionary = {
-	1: sky_die,
-	2: jelly_die
+	1: jelly_die,
+	2: leaded_die
 }
 
 var rare_dice : Dictionary = {
@@ -37,7 +38,8 @@ var rare_dice : Dictionary = {
 }
 
 var legendary_dice : Dictionary = {
-	1: inscrybed_die
+	1: inscrybed_die,
+	2: chaos_die
 }
 
 func create_dice() -> void:
@@ -46,6 +48,7 @@ func create_dice() -> void:
 		return
 	var random_weight := GameManager.rng_shops
 	var random_value : int = rarity[random_weight.rand_weighted(weight_probabilities)]
+	#var random_value : int = 4
 	match random_value:
 		1:
 			dice_rarity = "common"

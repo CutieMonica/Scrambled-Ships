@@ -141,7 +141,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_poqvu"]
 resource_name = "shaky"
-length = 5.0
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -253,7 +253,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_n4wwo"]
 resource_name = "shaky2"
-length = 5.0
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -365,8 +365,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_mhbmq"]
 resource_name = "wave"
-length = 5.0
-loop_mode = 1
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

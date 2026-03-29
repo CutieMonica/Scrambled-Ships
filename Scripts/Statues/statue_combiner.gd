@@ -16,6 +16,7 @@ extends Node3D
 @onready var die_timer: Timer = $DieTimer
 @onready var poof_particle: CPUParticles3D = $PoofParticle
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var activate_timer: Timer = $ActivateTimer
 
 var moving_up : bool = false
 var moving_to_new_base : bool = false
@@ -71,8 +72,7 @@ func create_statue() -> void:
 	statue_bottom_instance = statue_bottom.instantiate()
 	add_child(statue_bottom_instance)
 	statue_bottom_instance.name = "Base" + str(statue_bottom_instance.statue_type)
-	
-	var statue_top_rarity_choice : int = GameManager.rng_statues.randi_range(1, 4)
+	var statue_top_rarity_choice : int = GameManager.rng_statues.randi_range(1, 5)
 	if statue_top_rarity_choice < 4:
 		var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, common_statues.size())
 		statue_top = common_statues.get(random_statue_top_choice)
@@ -157,11 +157,17 @@ func redo_statue() -> void:
 	rarity = str(statue_bottom_rarity_label) + " + " + str(statue_top_rarity_label)
 	
 func main_scene_rerolling() -> void:
-	if statue_top_instance.trigger_condition == "Reroll":
+	if statue_top_instance.trigger_condition == "Reroll" and !in_shop:
+		activate_timer.wait_time = statue_position * 0.2
+		activate_timer.start()
+		await activate_timer.timeout
 		statue_top_instance.statue_activate()
 
 func main_scene_round_started() -> void:
-	if statue_top_instance.trigger_condition == "RoundStart":
+	if statue_top_instance.trigger_condition == "RoundStart" and !in_shop:
+		activate_timer.wait_time = statue_position * 0.2
+		activate_timer.start()
+		await activate_timer.timeout
 		statue_top_instance.statue_activate()
 
 func purchase_statue() -> void:
@@ -169,6 +175,7 @@ func purchase_statue() -> void:
 	reparent(get_tree().get_first_node_in_group("main"))
 	if target_slot != 0:
 		statue_position = target_slot
+		
 		get_parent().in_play_statues.set(target_slot, self)
 		in_shop = false
 		get_parent().shop_to_statue_stand()
@@ -181,6 +188,7 @@ func purchase_statue() -> void:
 		await get_tree().create_timer(1.5).timeout
 		get_parent().statue_stand_to_shop()
 		moving_to_target = false
+		shop_slot = target_slot
 		return
 	if target_slot == 0:
 		in_shop = false

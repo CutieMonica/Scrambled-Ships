@@ -887,7 +887,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [75.0, 71.80877369642258, 68.83022224903107, 66.0569971203804, 63.48177927732468, 61.09722018241882, 58.89600080251694, 56.870776534080505, 55.01422244310379, 53.31899982690811, 51.77777588367462, 50.38322174549103, 49.12800067663193, 48.004777908325195, 47.00622260570526, 46.125, 45.353777289390564, 44.685221672058105, 44.11200034618378, 43.62677854299545, 43.22222149372101, 42.89100033044815, 42.62577831745148, 42.41922265291214, 42.26400053501129, 42.15277719497681, 42.078221797943115, 42.03299957513809, 42.00977772474289, 42.00122147798538, 42.0]
+"values": [75.0, 71.80877369642258, 68.83022224903107, 66.0569971203804, 63.48177927732468, 61.09722018241882, 58.89600080251694, 56.870776534080505, 55.01422244310379, 53.31899982690811, 51.77777588367462, 50.38322174549103, 49.12800067663193, 48.004777908325195, 47.00622260570526, 46.125, 45.35377728939056, 44.685221672058105, 44.11200034618378, 43.62677854299545, 43.22222149372101, 42.89100033044815, 42.62577831745148, 42.41922265291214, 42.26400053501129, 42.15277719497681, 42.078221797943115, 42.03299957513809, 42.00977772474289, 42.00122147798538, 42.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -1116,6 +1116,42 @@ tracks/28/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Radio:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-22.840002, -6.439999, -31.930004)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Radio:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5184364, 0)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Radio:scale")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.5, 2.5, 2.5)]
 }
 
 [sub_resource type="Animation" id="Animation_drdnd"]
@@ -1367,7 +1403,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [42.0, 42.0048888897436, 42.03911111794878, 42.132000006269664, 42.312888943590224, 42.611111177131534, 43.05600005015731, 43.67688889056444, 44.50311154872179, 45.564000338315964, 46.88888941705227, 48.507111221551895, 50.44800040125847, 52.74088963866234, 55.41511112451553, 58.5, 61.584890842437744, 64.25910937786102, 66.55200254917145, 68.49288976192474, 70.11111205816269, 71.4359986782074, 72.49688869714737, 73.32311135530472, 73.94399982690811, 74.3888892531395, 74.68711084127426, 74.86799973249435, 74.96088910102844, 74.99511015415192, 75.0]
+"values": [42.0, 42.0048888897436, 42.03911111794878, 42.132000006269664, 42.312888943590224, 42.611111177131534, 43.05600005015731, 43.67688889056444, 44.50311154872179, 45.56400033831597, 46.88888941705227, 48.507111221551895, 50.44800040125847, 52.74088963866234, 55.41511112451553, 58.5, 61.584890842437744, 64.25910937786102, 66.55200254917145, 68.49288976192474, 70.11111205816269, 71.4359986782074, 72.49688869714737, 73.32311135530472, 73.94399982690811, 74.3888892531395, 74.68711084127426, 74.86799973249435, 74.96088910102844, 74.99511015415192, 75.0]
 }
 
 [sub_resource type="Animation" id="Animation_76v2p"]
@@ -10595,7 +10631,98 @@ _data = {
 &"Round8": SubResource("Animation_0g3kh")
 }
 
-[node name="MainScene" type="Node3D" unique_id=400639399 groups=["main"]]
+[sub_resource type="Animation" id="Animation_ylqmj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:h_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xbqty"]
+resource_name = "shake1"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.13333333, 0.16666666, 0.18333334, 0.21666667, 0.25, 0.28333333, 0.3166667, 0.35000002, 0.38333336, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.044, 0.655, 1.17, 0.878, -1.52, 0.729, 0.195, -0.183, 0.071, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:h_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.13333333, 0.16666666, 0.18333334, 0.21666667, 0.25, 0.28333333, 0.3166667, 0.35000002, 0.38333336, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.069, -0.593, -1.41, -0.339, -2.51, -0.934, -0.7, 0.786, 0.425, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u3bm8"]
+resource_name = "shakeconstant"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.051487595, 0.084820926, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.31137735, 0.34471068, 0.378044, 0.4, 0.43333334, 0.46666667, 0.4756473, 0.50898063, 0.542314, 0.5756473, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.05109205436706543, -0.068, -0.00607667392492294, 0.009, -0.0295, -0.068, 0.05750002992153166, 0.183, 0.09142391055822371, -0.05733143299818039, -0.068, 0.00330148088932036, 0.15306521654129027, 0.184, 0.18361167019605637, 0.18302818751335145, 0.183, 0.14692962722480296, 0.04002760583162307, -0.04874746918678285, -0.068, -0.03662499251961709, 0.05750002992153166, 0.15162501496076583, 0.183, 0.0914999781847, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:h_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.051487595, 0.084820926, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.31137735, 0.34471068, 0.378044, 0.4, 0.43333334, 0.46666667, 0.4756473, 0.50898063, 0.542314, 0.5756473, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.09842734003067018, 0.131, 0.02645412480831147, 0.001, 0.066, 0.131, -0.02900003814697266, -0.189, -0.07224960708618164, 0.11739863967895509, 0.131, 0.05460555619001388, -0.10585558915138246, -0.139, -0.1584164901971817, -0.187590624332428, -0.189, -0.14301386737823485, -0.00672443771362304, 0.10645494079589846, 0.131, 0.09099999046325684, -0.02900003814697266, -0.1490000190734863, -0.189, -0.09449997746944427, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3bm8"]
+_data = {
+&"RESET": SubResource("Animation_ylqmj"),
+&"shake1": SubResource("Animation_xbqty"),
+&"shakeconstant": SubResource("Animation_u3bm8")
+}
+
+[node name="MainScene" type="Node3D" unique_id=400639399 groups=["main", "performance_switch"]]
 script = ExtResource("1_x6ack")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=665182046]
@@ -11206,7 +11333,7 @@ shape = SubResource("BoxShape3D_y0lwx")
 disabled = true
 
 [node name="StatueTopOutline1" type="MeshInstance3D" parent="StatueCombinerStuff/StatueCombinerTop1" unique_id=892741757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91999984, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9499998, 0)
 visible = false
 mesh = SubResource("CylinderMesh_5oxhp")
 
@@ -11222,7 +11349,7 @@ shape = SubResource("BoxShape3D_y0lwx")
 disabled = true
 
 [node name="StatueTopOutline2" type="MeshInstance3D" parent="StatueCombinerStuff/StatueCombinerTop2" unique_id=754090513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92999995, 0)
 visible = false
 mesh = SubResource("CylinderMesh_5oxhp")
 
@@ -11238,7 +11365,7 @@ shape = SubResource("BoxShape3D_igw8g")
 disabled = true
 
 [node name="StatueBottomOutline1" type="MeshInstance3D" parent="StatueCombinerStuff/StatueCombinerBottom1" unique_id=475018011]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 visible = false
 mesh = SubResource("BoxMesh_2v2b7")
 
@@ -11621,6 +11748,9 @@ one_shot = true
 
 [node name="LightingShift" type="AnimationPlayer" parent="." unique_id=953346878]
 libraries/ = SubResource("AnimationLibrary_jqu52")
+
+[node name="Screenshake" type="AnimationPlayer" parent="." unique_id=1311172169]
+libraries/ = SubResource("AnimationLibrary_u3bm8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

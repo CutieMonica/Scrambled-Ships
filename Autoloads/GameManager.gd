@@ -124,7 +124,7 @@ func reset_things() -> void:
 	card_slots = 5
 	card_count = 0
 	previous_round_target = 15
-	input_seed = 0
+	#input_seed = 0
 	overkill_money_cap  = 8
 	give_me_your_seed()
 	base_round_target = 30
@@ -190,6 +190,7 @@ func give_me_your_seed() -> void:
 		rng_cards.seed = input_seed
 	if input_seed == null or input_seed == 0:
 		var random_seed := RandomNumberGenerator.new().randi_range(1, 999999999)
+		input_seed = random_seed
 		rng.seed = random_seed
 		rng_shops.seed = random_seed
 		rng_statues.seed = random_seed
@@ -241,7 +242,9 @@ func calculate_round_target_and_progress_round() -> void:
 	current_round += 1
 	previous_round_target = new_round_target
 	@warning_ignore("integer_division", "narrowing_conversion")
-	new_round_target = snappedi((base_round_target) + (previous_round_target) + ((previous_round_target) * (current_round * 0.05)) + 1, 10)
+	new_round_target = snappedi((base_round_target) + (previous_round_target) + ((previous_round_target) * (current_round * 0.06)), 10)
+	if new_round_target < 40:
+		new_round_target = current_round * 20
 	@warning_ignore("integer_division")
 	print("new round target is " + str(new_round_target))
 	round_changing.emit()

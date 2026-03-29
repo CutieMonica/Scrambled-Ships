@@ -10,6 +10,9 @@ class_name DiceLogic
 @export var just_spawned : bool = false
 @export var awaiting_placement : bool = false
 @export var dice_being_replaced : bool = false
+@export var dice_storage_rotation : Vector3
+@export var dice_side_up : int
+
 @onready var poof_particle: CPUParticles3D = $PoofParticle
 
 @export_group("textures")
@@ -214,6 +217,7 @@ func interacted() -> void:
 	if dice_being_replaced:
 		return
 	get_parent().leftclickinteraction()
+	play_soft_sound()
 	
 func storage() -> void:
 	if dice_being_replaced:
@@ -334,3 +338,23 @@ func explosion() -> void:
 	get_parent().rigid_body_3d.rotate_x(GameManager.rng.randf_range(-360, 360))
 	get_parent().rigid_body_3d.rotate_y(GameManager.rng.randf_range(-360, 360))
 	get_parent().rigid_body_3d.rotate_z(GameManager.rng.randf_range(-360, 360))
+
+func bounced_on() -> void:
+	get_parent().linear_velocity.y = GameManager.rng.randf_range(6, 8)
+	match dice_side_up:
+		6:
+			get_parent().rotation = Vector3.ZERO
+		5:
+			get_parent().rotation = Vector3(0, 0, 1.5)
+		4:
+			get_parent().rotation = Vector3(1.5, 0, 0)
+		3:
+			get_parent().rotation = Vector3(-1.5, 0, 0)
+		2:
+			get_parent().rotation = Vector3(0, 0, -1.5)
+		1:
+			get_parent().rotation = Vector3(0, 0, -3)
+
+func round_start_trigger() -> void:
+	if get_parent().item_name == "Chaos Die":
+		get_parent().randomize_numbers()

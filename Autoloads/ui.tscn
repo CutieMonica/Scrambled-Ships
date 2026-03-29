@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://ca5xq3wwesjuy" path="res://Materials/camerafiltertest.tres" id="3_t2j77"]
 [ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="5_mngte"]
 
-[node name="UI" type="Control" unique_id=1016385255]
+[node name="UI" type="Control" unique_id=1016385255 groups=["DealerDialogue"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

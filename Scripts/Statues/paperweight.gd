@@ -1,7 +1,7 @@
 extends Node3D
 
-@export var base_modifier : int = 10
-@export var statue_name : String = "Paperweight"
+@export var base_modifier : int = 0
+@export var statue_name : String = "Paper Weight"
 @export var color_shift_level : int = 3
 @onready var statue_model_logic: Node3D = $StatueModelLogic
 @onready var mesh: MeshInstance3D = $Sketchfab_Scene/Sketchfab_model/currentmodel_wrl_cleaner_materialmerger_gles/Object_2

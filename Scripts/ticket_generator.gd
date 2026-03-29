@@ -346,7 +346,7 @@ var rare_upgrades_tooltips : Dictionary = {
 	7:
 		"Feels just like running up the stairs on all fours.",
 	8:
-		"The stairway to heaven is a safety hazard."
+		"The stairway to heaven doesn't have a railing."
 }
 
 var legendary_upgrades_tooltips : Dictionary = {
@@ -373,10 +373,11 @@ func generate_ticket() -> void:
 	animation_player.play("RESET")
 	var random_weight := GameManager.rng_shops
 	random_value = rarity_numbers[random_weight.rand_weighted(weight_probabilities)]
+	random_value = 1
 	ticket_price = random_value * 3
 	match random_value:
 		1:
-			random_ticket_choice = GameManager.rng_shops.randi_range(1, 8)
+			random_ticket_choice = GameManager.rng_shops.randi_range(1, common_upgrades.size())
 			if common_upgrades_taken.get(random_ticket_choice) == true:
 				generate_ticket()
 				return

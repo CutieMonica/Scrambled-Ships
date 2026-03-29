@@ -139,6 +139,7 @@ var card_shop_slots_unlocked : int = 11
 
 @onready var statue_combiner_stuff: Node3D = $StatueCombinerStuff
 @onready var dealer: Node3D = $Dealer
+@onready var screenshake: AnimationPlayer = $Screenshake
 
 
 var chosen_dice : Dictionary = {
@@ -372,6 +373,7 @@ func spawn_money() -> void:
 func round_start() -> void:
 	statue_stand.mouse_box_on()
 	get_tree().call_group("statues", "main_scene_round_started")
+	get_tree().call_group("dice_logic", "round_start_trigger")
 	spawn_coins()
 	if !GameManager.is_postgame and GameManager.current_round < 9:
 		dealer.phase_shift()
@@ -470,7 +472,7 @@ func dice_spawner(dice_position : int) -> void:
 	dice_instance = chosen_dice.get(dice_position).instantiate()
 	in_play_dice_instances.set(dice_position, dice_instance)
 	dice_instance.name = "Die" + str(dice_position)
-	dice_instance.position.y = GameManager.rng.randf_range(11, 13)
+	dice_instance.position.y = GameManager.rng.randf_range(16, 18)
 	dice_instance.position.x = GameManager.rng.randf_range(-4.5, 4.5)
 	dice_instance.position.z = GameManager.rng.randf_range(-4.5, 4.5)
 	stored_dice.set(dice_instance.dice_position, "false")
@@ -596,6 +598,7 @@ func unhighlight_cards() -> void:
 	
 func pull_up_cards() -> void:
 	card_animations.play("pullupcards")
+	play_card_sounds()
 	camerabuffer.wait_time = 0.3
 	camerabuffer.start()
 	await camerabuffer.timeout
@@ -608,10 +611,13 @@ func pull_down_cards() -> void:
 	card_animations.play_backwards("pullupcards")
 	GameManager.viewing_cards = false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_spawn_card"):
-		next_card += 1
-		get_tree().get_first_node_in_group("main").card_spawner(next_card)
+func play_card_sounds() -> void:
+	for i in card_deck.size():
+		if card_deck.get(i + 1) != null:
+			card_deck.get(i + 1).card_logic.random_card_sound()
+		await get_tree().create_timer(0.07).timeout
+
+
 
 func _on_card_exit_detect_mouse_entered() -> void:
 	if !GameManager.choosing_new_cards:
@@ -773,13 +779,14 @@ func clear_shop_items() -> void:
 
 func shop_slot_zoom(slot : int) -> void:
 	if !camera_movement.is_playing():
+		shop_box.disable_exit_button() 
 		disable_all_shop_areas()
 		camera_movement.play("shop_to_slot_" + str(slot))
 		shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot)
-		shop_box.disable_exit_button() 
-
+		
 func shop_slot_zoom_out(slot : int) -> void:
 	camera_movement.play_backwards("shop_to_slot_" + str(slot))
+	shop_box.temp_disable_exit_button() 
 	camerabuffer.wait_time = 0.25
 	camerabuffer.start()
 	await camerabuffer.timeout
@@ -858,3 +865,6 @@ func enter_postgame() -> void:
 	current_environment = null
 	environment_check()
 	camera_movement.play_backwards("DefaultPostgameFirstTime")
+
+func shake_screen() -> void:
+	screenshake.play("shake1")
