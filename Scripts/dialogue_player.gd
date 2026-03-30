@@ -18,28 +18,41 @@ var tutorial_dialogue_1 : Dictionary = {
 	6: "Cool, anyway, continue.",
 	7: "RIGHT. YOU WAKE UP ON THIS YACHT, IN FRONT OF YOU IS A BOX WITH SOME DICE, A SHEET OF PAPER, AND A CUP.",
 	8: "ONCE THESE DICE HAVE STOPPED MOVING, YOU CAN INTERACT WITH THEM TO STORE THEM, OR KEEP THEM IN THE BOX.",
-	9: "WHEN STORED, THEY WON'T BE REROLLED WHEN YOU INTERACT WITH THE CUP, BUT THE DICE IN THE BOX WILL.",
-	10: "EVERY TIME YOU INTERACT WITH THE CUP, YOU LOSE ONE REROLL TOKEN.",
-	11: "WHEN YOU'RE SATISFIED WITH THE DICE YOU'VE ROLLED, YOU CAN INTERACT WITH THE PAPER, AND PUT THOSE NUMBERS WHEREVER YOU WISH.",
-	12: "THESE TOP CATEGORIES ADD UP HOW MANY OF EACH NUMBER YOU HAVE. IF YOU HAVE THREE THREES, SCORING IN THREES GIVES YOU NINE SCORE.",
-	13: "THE BOTTOM CATEGORIES ARE A LITTLE MORE COMPLEX, AND GIVE SCORE PROPORTIONAL TO THEIR DIFFICULTY.",
-	14: "CHOICE IS THE GENERIC CATCH-ALL CATEGORY, IT JUST GIVES YOU SCORE EQUAL TO ALL YOUR DICE VALUES ADDED UP.",
-	15: "THE TWO STRAIGHTS REQUIRE DICE IN ASCENDING ORDER TO SCORE.",
-	16: "SMALL STRAIGHT REQUIRES FOUR NUMBERS, BUT LARGE STRAIGHT REQUIRES FIVE.",
-	17: "FULL HOUSE REQUIRES TWO OF YOUR DICE TO HAVE THE SAME VALUE, AND THREE OF YOUR DICE TO ALL SHARE A DIFFERENT ONE.",
-	18: "FOUR OF A KIND IS PRETTY SELF-EXPLANATORY.",
-	19: "YACHT IS JUST FIVE OF A KIND, BUT WITH A FANCIER NAME.",
-	20: "So, what do I gotta do when I wanna score?",
-	21: "ONCE ALL YOUR DICE ARE WHERE YOU WANT THEM, INTERACT WITH THE EMPTY SPACE NEXT TO A CATEGORY.",
-	22: "THIS WILL CAUSE YOU TO LOSE ONE REROLL, AND WILL REROLL ALL OF YOUR DICE, EVEN IF THEY WERE STORED.",
-	23: "YOU CAN ONLY FILL OUT EACH CATEGORY ONCE PER ROUND, SO CHOOSE CAREFULLY.",
-	24: "And if I fill a category after running out of reroll tokens?",
-	25: "IF YOU BEAT THE TARGET SCORE, YOU WIN AND PROGRESS TO THE NEXT ROUND.",
-	26: "AND IF YOU FAIL TO MEET THAT SCORE, YOU LOSE.",
-	27: "EVERY TIME YOU WIN, YOU GET TO VISIT THE SHOP, BUT WE'LL GET TO THAT LATER.",
-	28: "FOR NOW, JUST TRY TO NOT SCREW UP ON ROUND ONE.",
-	29: "I'll do my best, no guarantees tho."
+	9: "SO, FIRST THINGS FIRST, CLICK ON THE DICE YOU WANT, THEN CLICK ON THE CUP TO YOUR RIGHT.",
+	10: "LET'S START BY STORING TWO DICE."
 }
+
+var tutorial_dialogue_2 : Dictionary = {
+	0: "WHEN DICE ARE STORED, THEY WON'T BE REROLLED WHEN YOU INTERACT WITH THE CUP, BUT THE DICE IN THE BOX WILL.",
+	1: "EVERY TIME YOU INTERACT WITH THE CUP, YOU LOSE ONE REROLL TOKEN.",
+	2: "WHEN YOU'RE SATISFIED WITH THE DICE YOU'VE ROLLED, YOU CAN INTERACT WITH THE PAPER, AND PUT THOSE NUMBERS WHEREVER YOU WISH.",
+	3: "INTERACT WITH THAT PAPER WHEN YOU'RE READY TO SCORE."
+}
+
+var tutorial_dialogue_3 : Dictionary = {
+	0: "THIS PAPER IS WHERE YOU'LL SPEND A TON OF TIME DELIBERATING.",
+	1: "Bold of you to assume I'm thinking about what I'm doing",
+	2: "... WELL, YOU SHOULD. EACH CATEGORY IS DIFFERENT, AND EACH CONTRIBUTES TO YOUR SCORE IN DIFFERENT WAYS.",
+	3: "THESE TOP CATEGORIES ADD UP HOW MANY OF EACH NUMBER YOU HAVE. IF YOU HAVE THREE THREES, SCORING IN THREES GIVES YOU NINE SCORE.",
+	4: "THE BOTTOM CATEGORIES ARE A LITTLE MORE COMPLEX, AND GIVE SCORE PROPORTIONAL TO THEIR DIFFICULTY.",
+	5: "CHOICE IS THE GENERIC CATCH-ALL CATEGORY, IT JUST GIVES YOU SCORE EQUAL TO ALL YOUR DICE VALUES ADDED UP.",
+	6: "THE TWO STRAIGHTS REQUIRE DICE IN ASCENDING ORDER TO SCORE.",
+	7: "SMALL STRAIGHT REQUIRES FOUR NUMBERS, BUT LARGE STRAIGHT REQUIRES FIVE.",
+	8: "FULL HOUSE REQUIRES TWO OF YOUR DICE TO HAVE THE SAME VALUE, AND THREE OF YOUR DICE TO ALL SHARE A DIFFERENT ONE.",
+	9: "FOUR OF A KIND IS PRETTY SELF-EXPLANATORY.",
+	10: "YACHT IS JUST FIVE OF A KIND, BUT WITH A FANCIER NAME.",
+	11: "So, what do I gotta do when I wanna score?",
+	12: "ONCE ALL YOUR DICE ARE WHERE YOU WANT THEM, INTERACT WITH THE EMPTY SPACE NEXT TO A CATEGORY.",
+	13: "THIS WILL CAUSE YOU TO LOSE ONE REROLL, AND WILL REROLL ALL OF YOUR DICE, EVEN IF THEY WERE STORED.",
+	14: "YOU CAN ONLY FILL OUT EACH CATEGORY ONCE PER ROUND, SO CHOOSE CAREFULLY.",
+	15: "And if I fill a category after running out of reroll tokens?",
+	16: "IF YOU BEAT THE TARGET SCORE, YOU WIN AND PROGRESS TO THE NEXT ROUND.",
+	17: "AND IF YOU FAIL TO MEET THAT SCORE, YOU LOSE.",
+	18: "EVERY TIME YOU WIN, YOU GET TO VISIT THE SHOP, BUT WE'LL GET TO THAT LATER.",
+	19: "FOR NOW, JUST TRY TO NOT SCREW UP ON ROUND ONE.",
+	20: "I'll do my best, no guarantees tho."
+}
+
 
 var tutorial_shop_dialogue : Dictionary = {
 	0: "ALRIGHT, NOW THAT YOU'VE WON THE ROUND...",
@@ -269,7 +282,7 @@ var ending_dialogue : Dictionary = {
 	43: "YOU STAY STUCK IN THIS LOOP OF WANTING MORE, TELLING ME THESE THINGS, AND BEING DISAPPOINTED WHEN I REJECT THEM.",
 	44: "YOU DON'T RESPECT MY STANCE, AND YOU'RE MAKING YOURSELF FEEL BAD FOR IT.",
 	45: "I do respect it, I just... don't know what you want from me. I can't just not feel or think the way I do.",
-	46: "And regardless, you tried to get close with me just last night.",
+	46: "And... you tried to get close with me just last night.",
 	47: "If I had done the same thing you did, you would hate me for it.",
 	48: "THAT WAS DIFFERENT. THIS IS YOU REFUSING TO CHANGE FOR ME.",
 	49: "YOU, CONSTANTLY TRYING TO MAKE ME FEEL UNCOMFORTABLE.",
@@ -519,6 +532,19 @@ var death_dialogue_8 : Dictionary = {
 	24: "DO WHAT YOU WISH."
 }
 
+var outside_the_box_tutorial : Dictionary = {
+	0: "HM, SEEMS THAT ONE OF YOUR DICE GOT A BIT TOO EXCITED.",
+	1: "THAT'S ALRIGHT, IT'S PART OF THE GAME, ACTUALLY.",
+	2: "Oh? so, should I just put it back in the box?",
+	3: "NO. IT NOW RESTS OUTSIDE THE BOX, AND WILL GIVE YOU AN EXTRA MULTIPLIER TO WHATEVER IT LANDED ON.",
+	4: "WHILE IT'S OUTSIDE, HOWEVER, YOU CANNOT STORE IT.",
+	5: "AND AS SOON AS YOU REROLL OR CHOOSE A CATEGORY, IT WILL BE REROLLED TOO, AND YOU LOSE THAT MODIFIER.",
+	6: "... So I should just take whatever number it lands on as soon as it hits the table?",
+	7: "NOT NECESSARILY, BUT THAT ISN'T ALWAYS A BAD IDEA, EITHER.",
+	8: "YOU SIMPLY NEED TO DECIDE IF GOING FOR THAT BONUS MODIFIER IS WORTH IT, OR IF YOU'D RATHER ROLL AGAIN.",
+	9: "Mmkay, gotcha."
+}
+
 func play_confirm_sound() -> void:
 	audio_stream_player.stream = SfxBank.generic_confirm_sound
 	audio_stream_player.pitch_scale = (0 + randf_range(0.8, 1.2))
@@ -540,7 +566,7 @@ func opening_tutorial_dialogue() -> void:
 			InputHandler.can_progress_text = false
 			dialogue_wait_buffer.start()
 			play_confirm_sound()
-			if i == 2 or i == 4 or i == 6 or i == 20 or i == 24 or i == 29:
+			if i == 2 or i == 4 or i == 6:
 				no_dialogue()
 				dialogue_handler_2.text = tutorial_dialogue_1.get(i)
 				dialogue_handler_2.start_cutscene = true
@@ -554,23 +580,125 @@ func opening_tutorial_dialogue() -> void:
 				InputHandler.can_progress_text = true
 			match i:
 				7: get_parent().get_parent().camera_movement.play("First_time_to_default")
-				10: get_parent().get_parent().camera_movement.play("default_to_cup")
-				11: get_parent().get_parent().camera_movement.play("cup_to_paper")
-				12: get_parent().get_parent().camera_movement.play("paper_to_top_categories")
-				13: get_parent().get_parent().camera_movement.play("top_categories_to_bottom_categories")
-				14: get_parent().get_parent().camera_movement.play("bottom_categories_to_choice")
-				15: get_parent().get_parent().camera_movement.play("choice_to_straights")
-				18: get_parent().get_parent().camera_movement.play("straights_to_four_of_a_kind")
-				20: get_parent().get_parent().camera_movement.play("four_of_a_kind_to_sheet")
-				25: get_parent().get_parent().camera_movement.play("sheet_to_counter")
-				27: get_parent().get_parent().camera_movement.play("counter_to_dealer")
+				10: get_parent().get_parent().waitingfor2dice = true
+				#10: get_parent().get_parent().camera_movement.play("default_to_cup")
+				#11: get_parent().get_parent().camera_movement.play("cup_to_paper")
+				#12: get_parent().get_parent().camera_movement.play("paper_to_top_categories")
+				#13: get_parent().get_parent().camera_movement.play("top_categories_to_bottom_categories")
+				#14: get_parent().get_parent().camera_movement.play("bottom_categories_to_choice")
+				#15: get_parent().get_parent().camera_movement.play("choice_to_straights")
+				#18: get_parent().get_parent().camera_movement.play("straights_to_four_of_a_kind")
+				#20: get_parent().get_parent().camera_movement.play("four_of_a_kind_to_sheet")
+				#25: get_parent().get_parent().camera_movement.play("sheet_to_counter")
+				#27: get_parent().get_parent().camera_movement.play("counter_to_dealer")
 			await dialogue_progressed
 		GameManager.in_tutorial = false
 		dialogue_save(1)
-		get_parent().get_parent().camera_movement.play("dealer_to_default")
 		no_dialogue()
 		no_dialogue_voice_2()
 	
+func opening_tutorial_dialogue_2_the_sequel() -> void:
+	if GameManager.dialogue_seen.get(23) != true and !GameManager.is_postgame:
+		GameManager.in_tutorial = true
+		for i in tutorial_dialogue_2.size():
+			InputHandler.can_progress_text = false
+			dialogue_wait_buffer.start()
+			play_confirm_sound()
+			no_dialogue_voice_2()
+			dialogue_handler.text = tutorial_dialogue_2.get(i)
+			dialogue_handler.start_cutscene = true
+			await dialogue_wait_buffer.timeout
+			InputHandler.can_progress_text = true
+			match i:
+				0: get_parent().get_parent().camera_movement.play("default_to_cup")
+				1: get_parent().get_parent().camera_movement.play("cup_to_coins")
+				2: get_parent().get_parent().camera_movement.play("coins_to_default")
+				#12: get_parent().get_parent().camera_movement.play("paper_to_top_categories")
+				#13: get_parent().get_parent().camera_movement.play("top_categories_to_bottom_categories")
+				#14: get_parent().get_parent().camera_movement.play("bottom_categories_to_choice")
+				#15: get_parent().get_parent().camera_movement.play("choice_to_straights")
+				#18: get_parent().get_parent().camera_movement.play("straights_to_four_of_a_kind")
+				#20: get_parent().get_parent().camera_movement.play("four_of_a_kind_to_sheet")
+				#25: get_parent().get_parent().camera_movement.play("sheet_to_counter")
+				#27: get_parent().get_parent().camera_movement.play("counter_to_dealer")
+			await dialogue_progressed
+		GameManager.in_tutorial = false
+		get_parent().get_parent().waiting_on_paper_clicked = true
+		dialogue_save(23)
+		no_dialogue()
+		no_dialogue_voice_2()
+		
+func opening_tutorial_dialogue_3_awesome_sauce() -> void:
+	if GameManager.dialogue_seen.get(24) != true:
+		GameManager.in_tutorial = true
+		for i in tutorial_dialogue_3.size():
+			InputHandler.can_progress_text = false
+			dialogue_wait_buffer.start()
+			play_confirm_sound()
+			if i == 1 or i == 11 or i == 15 or i == 20:
+				no_dialogue()
+				dialogue_handler_2.text = tutorial_dialogue_3.get(i)
+				dialogue_handler_2.start_cutscene = true
+				await dialogue_wait_buffer.timeout
+				InputHandler.can_progress_text = true
+			else:
+				no_dialogue_voice_2()
+				dialogue_handler.text = tutorial_dialogue_3.get(i)
+				dialogue_handler.start_cutscene = true
+				await dialogue_wait_buffer.timeout
+				InputHandler.can_progress_text = true
+			match i:
+				0: get_parent().get_parent().camera_movement.play("DefaultToSheet")
+				3: get_parent().get_parent().camera_movement.play("paper_to_top_categories")
+				4: get_parent().get_parent().camera_movement.play("top_categories_to_bottom_categories")
+				5: get_parent().get_parent().camera_movement.play("bottom_categories_to_choice")
+				6: get_parent().get_parent().camera_movement.play("choice_to_straights")
+				9: get_parent().get_parent().camera_movement.play("straights_to_four_of_a_kind")
+				12: get_parent().get_parent().camera_movement.play("four_of_a_kind_to_sheet")
+				16: get_parent().get_parent().camera_movement.play("sheet_to_counter")
+				18: get_parent().get_parent().camera_movement.play("counter_to_dealer")
+				19: get_parent().get_parent().camera_movement.play_backwards("counter_to_dealer")
+			await dialogue_progressed
+		InputHandler.hovered_object = "scoresheet"
+		get_parent().get_parent().camera_movement.play_backwards("sheet_to_counter")
+		get_parent().get_parent().score_sheet.can_leave = true
+		dialogue_save(24)
+		no_dialogue()
+		no_dialogue_voice_2()
+		await get_tree().create_timer(0.75).timeout
+		GameManager.in_tutorial = false
+		InputHandler.actionable = true
+		
+func outside_the_box_roll_credits_holy_shit_dude_omg() -> void:
+	if GameManager.dialogue_seen.get(25) != true and !get_parent().get_parent().waiting_on_paper_clicked and !GameManager.is_postgame and !GameManager.in_tutorial:
+		GameManager.in_tutorial = true
+		for i in outside_the_box_tutorial.size():
+			InputHandler.can_progress_text = false
+			dialogue_wait_buffer.start()
+			play_confirm_sound()
+			if i == 2 or i == 6 or i == 9:
+				no_dialogue()
+				dialogue_handler_2.text = outside_the_box_tutorial.get(i)
+				dialogue_handler_2.start_cutscene = true
+				await dialogue_wait_buffer.timeout
+				InputHandler.can_progress_text = true
+			else:
+				no_dialogue_voice_2()
+				dialogue_handler.text = outside_the_box_tutorial.get(i)
+				dialogue_handler.start_cutscene = true
+				await dialogue_wait_buffer.timeout
+				InputHandler.can_progress_text = true
+			match i:
+				3: get_parent().get_parent().camera_movement.play("default_to_overhead")
+				6: get_parent().get_parent().camera_movement.play_backwards("default_to_overhead")
+				7: get_parent().get_parent().camera_movement.play_backwards("dealer_to_default")
+				9: get_parent().get_parent().camera_movement.play("dealer_to_default")
+			await dialogue_progressed
+		GameManager.in_tutorial = false
+		dialogue_save(25)
+		no_dialogue()
+		no_dialogue_voice_2()
+		
 func shop_tutorial_dialogue() -> void:
 	if GameManager.dialogue_seen.get(2) != true:
 		GameManager.in_tutorial = true
@@ -1141,8 +1269,8 @@ func postgame_intro_scene() -> void:
 			match i:
 				0: 
 					dialogue_handler_2.align_screen = "middle"
-					dialogue_handler_2.min_pitch = 0.8
-					dialogue_handler_2.max_pitch = 1.1
+					dialogue_handler_2.min_pitch = 0.9
+					dialogue_handler_2.max_pitch = 1.15
 				6: get_parent().get_parent().camera_movement.play("DefaultPostgameFirstTime")
 				24: 
 					dialogue_handler_2.align_screen = "top"

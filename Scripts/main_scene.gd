@@ -41,6 +41,9 @@ var money_coin_instance : Node
 var cards_hovered : bool = false
 var cards_highlighted : bool = false
 
+var waitingfor2dice : bool = false
+var waiting_on_paper_clicked : bool = false
+
 var dice_shop_slots_unlocked : int = 3
 var ticket_shop_slots_unlocked : int = 6
 var statue_shop_slots_unlocked : int = 8
@@ -136,6 +139,8 @@ var card_shop_slots_unlocked : int = 11
 @onready var statue_final_product_area: Node3D = $StatueFinalProductArea
 
 @onready var dialogue_player: AnimationPlayer = $DialogueHandler/DialoguePlayer
+@onready var dialogue_handler_2: Control = $DialogueHandler2
+@onready var dialogue_handler: Control = $DialogueHandler
 
 @onready var statue_combiner_stuff: Node3D = $StatueCombinerStuff
 @onready var dealer: Node3D = $Dealer
@@ -258,6 +263,10 @@ var current_shop_area : Area3D
 func _process(_delta: float) -> void:
 	if cards_hovered == true and InputHandler.actionable and GameManager.card_count > 0 and !cards_highlighted:
 		highlight_cards()
+	if waitingfor2dice:
+		if stored_dice.values().count("true") >= 2:
+			dialogue_player.opening_tutorial_dialogue_2_the_sequel()
+			waitingfor2dice = false
 		 
 
 func performance_switch() -> void:
@@ -529,6 +538,9 @@ func reload() -> void:
 		animation_player.play("cup_reloading")
 		get_tree().call_group("dice_logic", "start_recall")
 		get_tree().call_group("stored_dice", "update_ui")
+		score_sheet.inside_sheet = false
+		if InputHandler.hovered_object == "scoresheet":
+			InputHandler.hovered_object = "none"
 		GameManager.update_rolls_count(-1)
 	if InputHandler.current_reroll_state == 3:
 		GameManager.has_pressed_release = true
@@ -545,6 +557,12 @@ func focus_a_die(focused_die : int) -> void:
 	in_play_dice_instances.get(focused_die).focusdie()
 
 func zoom_on_score_sheet() -> void:
+	if waiting_on_paper_clicked:
+		dialogue_player.opening_tutorial_dialogue_3_awesome_sauce()
+		score_sheet.inside_sheet = false
+		waiting_on_paper_clicked = false
+		return
+	score_sheet.inside_sheet = false
 	camera_movement.play("DefaultToSheet")
 	InputHandler.actionable = false
 	camerabuffer.wait_time = 0.9

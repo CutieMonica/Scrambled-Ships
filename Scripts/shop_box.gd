@@ -8,6 +8,7 @@ extends Node3D
 @onready var shop_reroll_timer: Timer = $ShopRerollTimer
 @onready var leave_shop_collider: CollisionShape3D = $LeaveShop/MouseDetect/LeaveShopCollider
 @onready var exit_button_timer: Timer = $ExitButtonTimer
+@onready var audio_stream_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var exit_button_can_be_enabled : bool = false
 
@@ -27,6 +28,8 @@ func shop_reroll() -> void:
 
 func exit_shop() -> void:
 	if !get_parent().camera_movement.is_playing() and InputHandler.hovered_object == "shop_leave":
+		audio_stream_player.stream = SfxBank.slide_in
+		audio_stream_player.play()
 		move_nametag.play_backwards("move_nametag")
 		animation_player.play_backwards("lidflip")
 		#delete all shop items NOW

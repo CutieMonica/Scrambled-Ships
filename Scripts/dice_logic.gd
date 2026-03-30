@@ -6,7 +6,6 @@ class_name DiceLogic
 @export var outside_the_box_multiplier : float = 1.0
 @export var default_gravity : float = 3.0
 @export var default_mass : float = 0.75
-@export var dice_position : int = 1
 @export var just_spawned : bool = false
 @export var awaiting_placement : bool = false
 @export var dice_being_replaced : bool = false
@@ -80,24 +79,7 @@ func sealed_away_forever() -> void:
 
 func start_recall() -> void:
 	if !get_parent().stored:
-		if get_parent().outside_the_box and get_parent().get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true:
-			match get_parent().outside_the_box_multiplier_given_to_top_row:
-				0:
-					pass
-				1:
-					get_parent().get_parent().score_sheet.ones_multiplier -= outside_the_box_multiplier
-				2:
-					get_parent().get_parent().score_sheet.twos_multiplier -= outside_the_box_multiplier
-				3:
-					get_parent().get_parent().score_sheet.threes_multiplier -= outside_the_box_multiplier
-				4:
-					get_parent().get_parent().score_sheet.fours_multiplier -= outside_the_box_multiplier
-				5:
-					get_parent().get_parent().score_sheet.fives_multiplier -= outside_the_box_multiplier
-				6:
-					get_parent().get_parent().score_sheet.sixes_multiplier -= outside_the_box_multiplier
-		get_parent().outside_the_box_multiplier_given_to_top_row = 0
-		get_parent().get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
+		remove_modifier()
 		get_parent().get_parent().score_sheet.modifier_check()
 		get_parent().get_parent().score_sheet.update_multipliers()
 		get_parent().set_collision_mask_value(1, false)
@@ -168,9 +150,8 @@ func _physics_process(delta: float) -> void:
 		if !get_parent().outside_the_box:
 			get_parent().position = lerp(get_parent().position, Vector3(11.5, 9 + (get_parent().dice_position * 1.5), -8.8), delta * 5)
 		if get_parent().outside_the_box:
-			get_parent().get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
-			get_parent().get_parent().score_sheet.modifier_check()
-			get_parent().position = lerp(get_parent().position, Vector3(11.5, 9 + (get_parent().dice_position * 1.5), -8.8), delta * 20)
+			get_parent().position = lerp(get_parent().position, Vector3(11.5, 9 + (get_parent().dice_position * 1.5), -8.8), delta * 22)
+			remove_modifier()
 			get_parent().outside_the_box = false
 			
 	if get_parent().dropping:
@@ -192,7 +173,7 @@ func focusdie() -> void:
 	if dice_being_replaced:
 		return
 	get_parent().focused = true
-	if !get_parent().outside_the_box and get_parent().linear_velocity.length() < 0.1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false and get_parent().has_given_number:
+	if !get_parent().outside_the_box and get_parent().linear_velocity.length() < 0.1 and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false and get_parent().has_given_number:
 		get_parent().animation_player.play("highlighted")
 		print("sus")
 		InputHandler.hovered_object = "dice" + str(get_parent().dice_position)
@@ -280,7 +261,7 @@ func purchase_die() -> void:
 		adjust_number(target_slot)
 		get_parent().get_parent().chosen_dice.set(target_slot, get_parent().name)
 		get_parent().get_parent().in_play_dice_instances.set(target_slot, get_parent())
-		dice_position = target_slot
+		get_parent().dice_position = target_slot
 		just_spawned = false
 		get_parent().get_parent().shop_to_dice_storage()
 		await get_tree().create_timer(0.75).timeout
@@ -319,7 +300,7 @@ func go_to_new_slot(slot : int) -> void:
 	adjust_number(slot)
 	get_parent().get_parent().chosen_dice.set(slot, get_parent().name)
 	get_parent().get_parent().in_play_dice_instances.set(slot, get_parent())
-	dice_position = slot
+	get_parent().dice_position = slot
 	
 	just_spawned = false
 	get_parent().global_position = Vector3.ZERO
@@ -332,6 +313,8 @@ func go_to_new_slot(slot : int) -> void:
 	get_parent().get_parent().dice_storage_to_shop()
 
 func explosion() -> void:
+	remove_modifier()
+	GameManager.dice_resting = false
 	get_parent().linear_velocity.y = GameManager.rng.randf_range(15, 20)
 	get_parent().linear_velocity.x = get_parent().position.x * GameManager.rng.randf_range(20, 22)
 	get_parent().linear_velocity.z = get_parent().position.z * GameManager.rng.randf_range(20, 22)
@@ -358,3 +341,36 @@ func bounced_on() -> void:
 func round_start_trigger() -> void:
 	if get_parent().item_name == "Chaos Die":
 		get_parent().randomize_numbers()
+
+func remove_modifier() -> void:
+	if get_parent().outside_the_box_multiplier_given_to_top_row != 0 and get_parent().get_parent().score_sheet.dice_giving_temp_modifier.get(get_parent().dice_position) == true or !get_parent().outside_the_box and get_parent().outside_the_box_multiplier_given_to_top_row != 0:
+		match get_parent().outside_the_box_multiplier_given_to_top_row:
+			0:
+				pass
+			1:
+				get_parent().get_parent().score_sheet.ones_multiplier -= outside_the_box_multiplier
+			2:
+				get_parent().get_parent().score_sheet.twos_multiplier -= outside_the_box_multiplier
+			3:
+				get_parent().get_parent().score_sheet.threes_multiplier -= outside_the_box_multiplier
+			4:
+				get_parent().get_parent().score_sheet.fours_multiplier -= outside_the_box_multiplier
+			5:
+				get_parent().get_parent().score_sheet.fives_multiplier -= outside_the_box_multiplier
+			6:
+				get_parent().get_parent().score_sheet.sixes_multiplier -= outside_the_box_multiplier
+			7:
+				get_parent().get_parent().score_sheet.choice_multiplier -= outside_the_box_multiplier
+			8:
+				get_parent().get_parent().score_sheet.small_straight_multiplier -= outside_the_box_multiplier
+			9:
+				get_parent().get_parent().score_sheet.full_house_multiplier -= outside_the_box_multiplier
+			10:
+				get_parent().get_parent().score_sheet.large_straight_multiplier -= outside_the_box_multiplier
+			11:
+				get_parent().get_parent().score_sheet.four_of_a_kind_multiplier -= outside_the_box_multiplier
+			12:
+				get_parent().get_parent().score_sheet.yacht_multiplier -= outside_the_box_multiplier
+		get_parent().get_parent().score_sheet.dice_giving_temp_modifier.set(get_parent().dice_position, false)
+		get_parent().outside_the_box_multiplier_given_to_top_row = 0
+		

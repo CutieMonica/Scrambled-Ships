@@ -613,7 +613,6 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.040609136, 1), 0.0, 0.0, 0, 0,
 point_count = 4
 
 [node name="Standard_D6" type="RigidBody3D" unique_id=194486236 groups=["dice"]]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
 collision_layer = 9
 collision_priority = 5.0
 input_ray_pickable = false
@@ -643,32 +642,32 @@ material_override = SubResource("StandardMaterial3D_1otng")
 mesh = SubResource("ArrayMesh_r57c7")
 
 [node name="RayCast1" type="RayCast3D" parent="." unique_id=1329865488]
-target_position = Vector3(0, 5, 0)
+target_position = Vector3(0, 50, 0)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast2" type="RayCast3D" parent="." unique_id=514379712]
-target_position = Vector3(5, 0, 0)
+target_position = Vector3(50, 0, 0)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast3" type="RayCast3D" parent="." unique_id=1175524337]
-target_position = Vector3(0, 0, -5)
+target_position = Vector3(0, 0, -50)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast4" type="RayCast3D" parent="." unique_id=1898604186]
-target_position = Vector3(0, 0, 5)
+target_position = Vector3(0, 0, 50)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast5" type="RayCast3D" parent="." unique_id=878032170]
-target_position = Vector3(-5, 0, 0)
+target_position = Vector3(-50, 0, 0)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast6" type="RayCast3D" parent="." unique_id=1301920096]
-target_position = Vector3(0, -5, 0)
+target_position = Vector3(0, -50, 0)
 collision_mask = 4
 collide_with_areas = true
 

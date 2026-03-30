@@ -88,13 +88,13 @@ material = SubResource("StandardMaterial3D_8w3c8")
 size = Vector3(0.1, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4asg"]
-size = Vector3(0.001, 1.95, 1.3000001)
+size = Vector3(1.0799999, 1.95, 2.07)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cw85"]
 size = Vector3(0.001, 1.3000001, 1.3000001)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0bp7"]
-size = Vector3(1, 0.16, 1)
+size = Vector3(0.9, 0.39999998, 0.93)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0tqhf"]
 size = Vector3(1, 0.01, 1)
@@ -110,7 +110,7 @@ material = SubResource("StandardMaterial3D_k4asg")
 size = Vector2(12.5, 12.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hf8wg"]
-size = Vector3(124.479996, 0.85, 171.40001)
+size = Vector3(6947.19, 0.001, 5426.23)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_at6vx"]
 size = Vector3(12.150001, 3.9, 12.400001)
@@ -439,19 +439,19 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 input_ray_pickable = false
 
 [node name="OutsideWall1" type="CollisionShape3D" parent="OutsideTheBoxDetect" unique_id=461245834]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5995001, 0.8790078, 0.005000025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1460001, 0.8790078, 0.005000025)
 shape = SubResource("BoxShape3D_k4asg")
 
 [node name="OutsideWall2" type="CollisionShape3D" parent="OutsideTheBoxDetect" unique_id=1846955797]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6605, 0.8740078, 5.9604645e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1735002, 0.8740078, -0.04600003)
 shape = SubResource("BoxShape3D_k4asg")
 
 [node name="OutsideWall3" type="CollisionShape3D" parent="OutsideTheBoxDetect" unique_id=1957218581]
-transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, 0.00049990416, 0.8740078, -0.59999996)
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, 0.00049990416, 0.8740078, -1.1459999)
 shape = SubResource("BoxShape3D_k4asg")
 
 [node name="OutsideWall4" type="CollisionShape3D" parent="OutsideTheBoxDetect" unique_id=279975345]
-transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, 0.00049990416, 0.8740078, 0.6000001)
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, 0.00049990416, 0.8740078, 1.1390002)
 shape = SubResource("BoxShape3D_k4asg")
 
 [node name="OutsideWall5" type="CollisionShape3D" parent="OutsideTheBoxDetect" unique_id=343140112]
@@ -463,7 +463,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.1, 0)
 input_ray_pickable = false
 
 [node name="InBox" type="CollisionShape3D" parent="BackInTheBoxDetect" unique_id=476292658 groups=["soft"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00999999, 0.19999999, 0.005000025)
 shape = SubResource("BoxShape3D_l0bp7")
 
 [node name="Noisemaker" type="Area3D" parent="." unique_id=1724413158 groups=["soft"]]
@@ -487,7 +487,7 @@ collision_mask = 4
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DieDetector" unique_id=794916085]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23000145, 1.5650003, -0.09999466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
 shape = SubResource("BoxShape3D_hf8wg")
 
 [node name="MouseDetector" type="Area3D" parent="." unique_id=1187171533]

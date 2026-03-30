@@ -18,7 +18,7 @@ func _on_timer_timeout() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "breakdown":
-		await get_tree().create_timer(6).timeout
+		await get_tree().create_timer(8).timeout
 		animation_player.play("creditsroll")
 		GlobalMusicPlayer.play_credits_song()
 	if anim_name == "creditsroll":

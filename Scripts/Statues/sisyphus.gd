@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var base_modifier : float = 0.01
+@export var base_modifier : float = 0.05
 @export var current_category : String = "none"
 @export var statue_name : String = "Sisyphus' Rock"
 @export var color_shift_level : int = 1

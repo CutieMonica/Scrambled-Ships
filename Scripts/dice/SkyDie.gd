@@ -88,25 +88,11 @@ func _physics_process(delta: float) -> void:
 			dice_logic.dice_storage_rotation = Vector3(0, 0, -3)
 			dice_logic.dice_side_up = 6
 			
-		if outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true or !outside_the_box and outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true:
-			match outside_the_box_multiplier_given_to_top_row:
-				0:
-					pass
-				1:
-					get_parent().score_sheet.ones_multiplier -= dice_logic.outside_the_box_multiplier
-				2:
-					get_parent().score_sheet.twos_multiplier -= dice_logic.outside_the_box_multiplier
-				3:
-					get_parent().score_sheet.threes_multiplier -= dice_logic.outside_the_box_multiplier
-				4:
-					get_parent().score_sheet.fours_multiplier -= dice_logic.outside_the_box_multiplier
-				5:
-					get_parent().score_sheet.fives_multiplier -= dice_logic.outside_the_box_multiplier
-				6:
-					get_parent().score_sheet.sixes_multiplier -= dice_logic.outside_the_box_multiplier
-			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
+		dice_logic.remove_modifier()
 		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
 			outside_the_box_multiplier_given_to_top_row = number
+			if GameManager.dialogue_seen.get(25) != true:
+				get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
 			match number:
 				1:

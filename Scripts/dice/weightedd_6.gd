@@ -126,22 +126,7 @@ func _physics_process(delta: float) -> void:
 				6:
 					get_parent().score_sheet.sixes_multiplier -= dice_logic.outside_the_box_multiplier
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
-		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
-			outside_the_box_multiplier_given_to_top_row = number
-			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
-			match number:
-				1:
-					get_parent().score_sheet.ones_multiplier += dice_logic.outside_the_box_multiplier
-				2:
-					get_parent().score_sheet.twos_multiplier += dice_logic.outside_the_box_multiplier
-				3:
-					get_parent().score_sheet.threes_multiplier += dice_logic.outside_the_box_multiplier
-				4:
-					get_parent().score_sheet.fours_multiplier += dice_logic.outside_the_box_multiplier
-				5:
-					get_parent().score_sheet.fives_multiplier += dice_logic.outside_the_box_multiplier
-				6:
-					get_parent().score_sheet.sixes_multiplier += dice_logic.outside_the_box_multiplier
+		dice_logic.remove_modifier()
 		get_parent().score_sheet.modifier_check()
 		get_parent().score_sheet.update_multipliers()
 		print(number)

@@ -562,6 +562,9 @@ process_callback = 0
 wait_time = 0.5
 one_shot = true
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=235280526]
+bus = &"SFX"
+
 [connection signal="timeout" from="ShopGenerateTimer" to="." method="_on_shop_generate_timer_timeout"]
 [connection signal="mouse_entered" from="LeaveShop/MouseDetect" to="." method="_on_mouse_detect_mouse_entered"]
 [connection signal="mouse_exited" from="LeaveShop/MouseDetect" to="." method="_on_mouse_detect_mouse_exited"]

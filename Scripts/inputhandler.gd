@@ -155,6 +155,19 @@ func _input(event: InputEvent) -> void:
 			get_tree().get_first_node_in_group("main").give_extra_money(10)
 		if event.is_action_pressed("Interact") and current_reroll_state == 3 or event.is_action_pressed("Reload") and current_reroll_state == 3:
 			get_tree().get_first_node_in_group("main").reload()
+		if get_tree().get_first_node_in_group("main").choosing_new_statue and !get_tree().get_first_node_in_group("main").between_rounds:
+			if hovered_object == "statue1":
+				get_tree().get_first_node_in_group("main").in_play_statues.get(1).statue_chosen()
+			if hovered_object == "statue2":
+				get_tree().get_first_node_in_group("main").in_play_statues.get(2).statue_chosen()
+			if hovered_object == "statue3":
+				get_tree().get_first_node_in_group("main").in_play_statues.get(3).statue_chosen()
+			if hovered_object == "statue4":
+				get_tree().get_first_node_in_group("main").in_play_statues.get(4).statue_chosen()
+			if hovered_object == "statue5":
+				get_tree().get_first_node_in_group("main").in_play_statues.get(5).statue_chosen()
+			if hovered_object == "statue6":
+				get_tree().get_first_node_in_group("main").in_play_statues.get(6).statue_chosen()
 		if actionable:
 			if event.is_action_pressed("Reload"):
 				get_tree().get_first_node_in_group("main").reload()

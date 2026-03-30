@@ -8,7 +8,8 @@ var act4_ambience := preload("res://Assets/Music/Ambient/Rooted in malcontempt (
 var act5_ambience := preload("res://Assets/Music/Ambient/in loathsome recall (act 5 ambience).ogg")
 var act6_ambience := preload("res://Assets/Music/Ambient/but just as i remember (act 6 ambient).ogg")
 var breakdown_cutscene_song := preload("res://Assets/Music/Overcome.ogg")
-var credits_song := preload("res://PLACEHOLDERCREDITSDELETETHISLATER.ogg")
+var credits_song := preload("res://Assets/Music/creditsplusmyvocals.ogg")
+
 
 
 @onready var global_music_player: AudioStreamPlayer = $"."

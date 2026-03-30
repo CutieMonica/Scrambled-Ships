@@ -28,7 +28,7 @@ var viewing_cards : bool = false
 var choosing_new_cards : bool = false
 var combining_statues: bool = false
 var money_due : int 
-var run_number : int
+var run_number : int = 0
 var permanent_money_increases : int = 0
 var current_money : int
 var performance_mode : bool = false
@@ -46,6 +46,7 @@ var rng_cards := RandomNumberGenerator.new()
 var input_seed : int
 var statue_top_choice : Node3D
 var statue_bottom_choice : Node3D
+var reverse_card_choosing : bool = true
 var combined_statue_1 : Node3D
 var combined_statue_2 : Node3D
 var ending_cutscene : bool = false
@@ -196,6 +197,13 @@ func give_me_your_seed() -> void:
 		rng_statues.seed = random_seed
 		rng_upgrades.seed = random_seed
 		rng_cards.seed = random_seed
+	if run_number == 1:
+		input_seed = 926293748
+		rng.seed = 926293748
+		rng_shops.seed = 926293748
+		rng_statues.seed = 926293748
+		rng_upgrades.seed = 926293748
+		rng_cards.seed = 926293748
 		
 func toggle_performance_mode(state : bool) -> void:
 	if state == true:
@@ -242,7 +250,7 @@ func calculate_round_target_and_progress_round() -> void:
 	current_round += 1
 	previous_round_target = new_round_target
 	@warning_ignore("integer_division", "narrowing_conversion")
-	new_round_target = snappedi((base_round_target) + (previous_round_target) + ((previous_round_target) * (current_round * 0.06)), 10)
+	new_round_target = snappedi((base_round_target) + (previous_round_target) + ((previous_round_target) * (current_round * 0.055)), 10)
 	if new_round_target < 40:
 		new_round_target = current_round * 20
 	@warning_ignore("integer_division")

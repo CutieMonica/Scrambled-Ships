@@ -52,6 +52,8 @@ func _ready() -> void:
 		align_screen = "middle"
 	if GameManager.is_postgame:
 		align_screen = "top"
+		min_pitch = 0.9
+		max_pitch = 1.15
 
 func _process(_delta: float) -> void:
 	if start_cutscene == true:

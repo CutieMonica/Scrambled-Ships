@@ -133,35 +133,7 @@ func _physics_process(delta: float) -> void:
 			dice_logic.dice_storage_rotation = Vector3(0, 0, -3)
 			dice_logic.dice_side_up = 6
 			
-		if outside_the_box_multiplier_given_to_top_row != 0 and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == true or !outside_the_box and outside_the_box_multiplier_given_to_top_row != 0:
-			match outside_the_box_multiplier_given_to_top_row:
-				0:
-					pass
-				1:
-					get_parent().score_sheet.ones_multiplier -= dice_logic.outside_the_box_multiplier
-				2:
-					get_parent().score_sheet.twos_multiplier -= dice_logic.outside_the_box_multiplier
-				3:
-					get_parent().score_sheet.threes_multiplier -= dice_logic.outside_the_box_multiplier
-				4:
-					get_parent().score_sheet.fours_multiplier -= dice_logic.outside_the_box_multiplier
-				5:
-					get_parent().score_sheet.fives_multiplier -= dice_logic.outside_the_box_multiplier
-				6:
-					get_parent().score_sheet.sixes_multiplier -= dice_logic.outside_the_box_multiplier
-				7:
-					get_parent().score_sheet.choice_multiplier -= dice_logic.outside_the_box_multiplier
-				8:
-					get_parent().score_sheet.small_straight_multiplier -= dice_logic.outside_the_box_multiplier
-				9:
-					get_parent().score_sheet.full_house_multiplier -= dice_logic.outside_the_box_multiplier
-				10:
-					get_parent().score_sheet.large_straight_multiplier -= dice_logic.outside_the_box_multiplier
-				11:
-					get_parent().score_sheet.four_of_a_kind_multiplier -= dice_logic.outside_the_box_multiplier
-				12:
-					get_parent().score_sheet.yacht_multiplier -= dice_logic.outside_the_box_multiplier
-			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, false)
+		dice_logic.remove_modifier()
 		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
 			outside_the_box_multiplier_given_to_top_row = number
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
@@ -218,6 +190,8 @@ func _on_dice_noise_detection_body_entered(body: Node3D) -> void:
 		audio_stream_player_3d.volume_db = (-8 + randf_range(-1, 4))
 		audio_stream_player_3d.pitch_scale = (0 + randf_range(0.8, 2))
 		audio_stream_player_3d.play()
+	
+	
 	
 func leftclickinteraction() -> void:
 	dice_logic.storage()

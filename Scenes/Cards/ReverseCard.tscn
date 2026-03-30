@@ -286,7 +286,6 @@ depth_draw_mode = 1
 albedo_texture = ExtResource("96_mfajq")
 metallic = 0.71
 metallic_specular = 0.19
-disable_receive_shadows = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d3a7t"]
 resource_local_to_scene = true
@@ -300,7 +299,6 @@ transparency = 1
 depth_draw_mode = 1
 shading_mode = 0
 albedo_texture = ExtResource("97_he8fn")
-disable_receive_shadows = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dsy4n"]
 resource_local_to_scene = true
@@ -314,7 +312,6 @@ cull_mode = 1
 depth_draw_mode = 1
 shading_mode = 0
 albedo_texture = ExtResource("98_dahju")
-disable_receive_shadows = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e7chl"]
 resource_local_to_scene = true

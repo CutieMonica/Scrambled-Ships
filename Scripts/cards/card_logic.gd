@@ -181,6 +181,7 @@ func go_to_new_slot(slot : int) -> void:
 	get_parent().global_position = Vector3(get_parent().get_parent().card_placement_references.get(card_position).global_position.x, get_parent().get_parent().card_placement_references.get(card_position).global_position.y + 20, get_parent().get_parent().card_placement_references.get(card_position).global_position.z)
 	get_parent().rotation = get_parent().get_parent().card_placement_references.get(card_position).rotation
 	moving_to_target = true
+	in_shop = false
 	get_parent().get_parent().dialogue_player.no_dialogue()
 	remove_from_group("awaiting_new_slot")
 	GameManager.card_count += 1

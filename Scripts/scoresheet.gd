@@ -625,6 +625,7 @@ func enter_sheet() -> void:
 	#timer.start()
 	#await timer.timeout
 	inside_sheet = true
+	InputHandler.actionable = true
 		
 func leave_sheet() -> void:
 #	if !can_leave or !InputHandler.actionable or !inside_sheet:
