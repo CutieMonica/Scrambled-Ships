@@ -176,8 +176,8 @@ func _ready() -> void:
 	dialogue_seen = SaveLoad.SaveFileData.dialogue_seen
 	run_number = SaveLoad.SaveFileData.run_number
 	is_postgame = SaveLoad.SaveFileData.is_postgame
-	#performance_mode = SaveLoad.SaveFileData.performance_mode
-	performance_mode = true
+	performance_mode = SaveLoad.SaveFileData.performance_mode
+	#performance_mode = true
 	if !is_on_web:
 		if performance_mode:
 			toggle_performance_mode(true)
