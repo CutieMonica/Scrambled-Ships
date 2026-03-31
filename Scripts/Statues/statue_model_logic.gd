@@ -3,11 +3,11 @@ extends Node3D
 var statue_activation_noise := preload("res://Assets/SFX/potentialstatueactivationnoise.ogg")
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
-func get_symbol() -> String:
+func get_symbol(modifier : float) -> String:
 	var symbol : String = ""
-	if get_parent().added_modifier < 0:
+	if modifier < 0:
 		symbol = ""
-	if get_parent().added_modifier >= 0:
+	if modifier >= 0:
 		symbol = "+"
 	return symbol
 

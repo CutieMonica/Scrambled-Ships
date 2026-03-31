@@ -91,6 +91,9 @@ func _ready() -> void:
 		await get_tree().create_timer(6.66).timeout
 	random_icon = GameManager.rng.randi_range(1, random_icon_image.size())
 	wood_carving.get_active_material(0).albedo_texture = random_icon_image.get(random_icon)
+	if GameManager.jonnymode: 
+		wood_carving.get_active_material(0).albedo_texture = jonnyboy
+		
 
 func play_environment_shift() -> void:
 	environment_adjustment.play("Round" + str(GameManager.current_round))

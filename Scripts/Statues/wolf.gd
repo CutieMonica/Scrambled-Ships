@@ -54,10 +54,10 @@ func generate_value() -> void:
 	match modifier_value:
 		"Subtract":
 			added_modifier = (base_modifier - (get_parent().statue_bottom_instance.base_statue_value * 0.1))
-			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X This Round"
+			buff_text.text = statue_model_logic.get_symbol(added_modifier) + str(added_modifier) + "X This Round"
 		"Add":
 			added_modifier = base_modifier + ((get_parent().statue_bottom_instance.base_statue_value * 0.1))
-			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X This Round"
+			buff_text.text = statue_model_logic.get_symbol(added_modifier) + str(added_modifier) + "X This Round"
 func update_text() -> void:
 	match current_category:
 		"ones_multiplier":

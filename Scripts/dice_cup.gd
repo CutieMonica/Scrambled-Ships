@@ -15,9 +15,16 @@ var hovered : bool = false
 @onready var release_timer: Timer = $ReleaseTimer
 @onready var returnal_timer: Timer = $ReturnalTimer
 var camera_moved_back : bool = false
+@onready var mesh_instance_3d: MeshInstance3D = $Cup/MeshInstance3D
+const MQDEFAULT = preload("uid://bbnd31w11rpx1")
 
 var outlined : bool = false
 var back_to_normal : bool = true
+
+func _ready() -> void:
+	if GameManager.jonnymode:
+		mesh_instance_3d.get_active_material(0).albedo_texture = MQDEFAULT
+		mesh_instance_3d.get_active_material(0).albedo_color = Color(1.0, 1.0, 1.0, 1.0)
 
 func release_on_that_thang() -> void:
 	RELEASE = true

@@ -13,6 +13,8 @@ extends Control
 
 signal round_changing
 
+var jonnymode : bool = false
+
 @export var dice_numbers : Dictionary = {
 	1: 0,
 	2: 0,
@@ -51,6 +53,8 @@ var combined_statue_1 : Node3D
 var combined_statue_2 : Node3D
 var ending_cutscene : bool = false
 var is_postgame : bool = false
+
+var category_to_debuff : String
 
 var dialogue_seen : Dictionary = {
 	1: false,

@@ -437,12 +437,16 @@ func purchase_ticket() -> void:
 			match random_ticket_choice:
 				1:
 					get_parent().get_parent().get_parent().score_sheet.ones_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "ones_multiplier")
 				2:
 					get_parent().get_parent().get_parent().score_sheet.twos_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "twos_multiplier")
 				3:
 					get_parent().get_parent().get_parent().score_sheet.threes_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "threes_multiplier")
 				4:
 					get_parent().get_parent().get_parent().score_sheet.fours_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "fours_multiplier")
 				5:
 					GameManager.permanent_money_increases += 1
 				6:
@@ -457,17 +461,22 @@ func purchase_ticket() -> void:
 			match random_ticket_choice:
 				1:
 					get_parent().get_parent().get_parent().score_sheet.choice_multiplier *= 1.5
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "choice_multiplier")
 				2:
 					get_parent().get_parent().get_parent().score_sheet.lower_small_straight_floor = true
 					uncommon_upgrades_taken.set(2, true)
 				3:
 					get_parent().get_parent().get_parent().score_sheet.small_straight_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "small_straight_multiplier")
 				4:
 					get_parent().get_parent().get_parent().score_sheet.full_house_multiplier *= 2.5
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "full_house_multiplier")
 				5:
 					get_parent().get_parent().get_parent().score_sheet.fives_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "fives_multiplier")
 				6:
 					get_parent().get_parent().get_parent().score_sheet.sixes_multiplier *= 2
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "sixes_multiplier")
 				7:
 					get_parent().get_parent().get_parent().dice_shop_slots_unlocked += 1
 					if get_parent().get_parent().get_parent().dice_shop_slots_unlocked == 4:
@@ -506,11 +515,13 @@ func purchase_ticket() -> void:
 					rare_upgrades_taken.set(random_ticket_choice, true)
 				5:
 					get_parent().get_parent().get_parent().score_sheet.four_of_a_kind_multiplier *= 3
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "four_of_a_kind_multiplier")
 				6:
 					get_parent().get_parent().get_parent().score_sheet.lower_four_of_a_kind_floor = true
 					rare_upgrades_taken.set(random_ticket_choice, true)
 				7:
 					get_parent().get_parent().get_parent().score_sheet.large_straight_multiplier *= 3.5
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "large_straight_multiplier")
 				8:
 					get_parent().get_parent().get_parent().score_sheet.lower_large_straight_floor = true
 					rare_upgrades_taken.set(random_ticket_choice, true)
@@ -543,4 +554,5 @@ func purchase_ticket() -> void:
 					legendary_upgrades_taken.set(random_ticket_choice, true)
 				6:
 					get_parent().get_parent().get_parent().score_sheet.yacht_multiplier *= 5
+					get_parent().get_parent().get_parent().score_sheet.buff_one_modifier(0, "yacht_multiplier")
 	

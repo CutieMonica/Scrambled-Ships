@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://bl6ut7m5ups6b"]
+
+[ext_resource type="Script" uid="uid://dom7sa8ba8x0h" path="res://Scripts/Statues/helpinghand.gd" id="1_8ktho"]
+[ext_resource type="PackedScene" uid="uid://dbf2qrmgjbpyi" path="res://Scenes/Statues/statue_model_logic.tscn" id="3_q21ag"]
+[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="4_5fmcf"]
+[ext_resource type="PackedScene" uid="uid://idl2uh5u0762" path="res://Assets/Models/GoldHandGonsaku/scene.gltf" id="5_q21ag"]
+[ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="5_r6u61"]
+[ext_resource type="Texture2D" uid="uid://bp7jqgyccweoo" path="res://Assets/Models/GoldHandGonsaku/textures/MT_LeftHandStatue_baseColor.png" id="6_5fmcf"]
+[ext_resource type="Texture2D" uid="uid://dsrip5b6wbfmk" path="res://Assets/Models/GoldHandGonsaku/textures/GoldHandNormal.png" id="7_5fmcf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_srq3i"]
+radius = 496.80002
+
+[sub_resource type="Animation" id="Animation_8su0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:spot_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D:spot_angle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.22]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpotLight3D:spot_attenuation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.26]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sketchfab_Scene:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sketchfab_Scene:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.905, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rstxs"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.006910703, 0.055285625, 0.18658894, 0.442285, 0.8638377, 1.4927115, 2.3703706, 3.53828, 5.0379024, 6.9107018, 9.0893, 10.9621, 12.461721, 13.62963, 14.507289, 15.136164, 15.557715, 15.813412, 15.944715, 15.99309, 16.0, 15.912208504974842, 15.297668039798737, 13.62963, 10.381344318389893, 5.618657, 2.3703709, 0.7023325, 0.08779144, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:spot_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [6.6, 6.601447696837638, 6.611582242273124, 6.639090285389399, 6.692658605757009, 6.780973893780285, 6.912722950687211, 7.096592515269911, 7.341269513628092, 7.655440372374571, 8.0477918178143, 8.504208150714419, 8.896559696051526, 9.21073035500325, 9.455407203515364, 9.639276718149375, 9.771025974851057, 9.859341050592406, 9.912909420908704, 9.940417362566706, 9.950551951512182, 9.952, 9.933607347417531, 9.804861129193762, 9.455407203515364, 8.774891383403613, 7.777108485227728, 7.0965925652186, 6.7471385521299965, 6.6183922105954025, 6.6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D:spot_angle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [50.22, 50.215063441790825, 50.18049898940472, 50.086681207046546, 49.903983370315885, 49.60277889789185, 49.15344111145049, 48.526343348188334, 47.6918584176052, 46.62036068125008, 45.28222263821294, 43.64781852587885, 41.68752034668205, 39.37170208967973, 36.6707382405848, 33.555, 30.439260383143846, 27.738299513983293, 25.422477283735137, 23.462181091161256, 21.82777648217143, 20.489640922412946, 19.418141944418498, 18.583657013835364, 17.956559623065004, 17.507221277885947, 17.20601745732256, 17.023319667153373, 16.929501399779838, 16.894938134226322, 16.89]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpotLight3D:spot_attenuation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [2.48, 2.479041158999765, 2.472329138483714, 2.45411080289795, 2.418632974355307, 2.3601425340226214, 2.272886289669195, 2.1511110904150534, 1.9890636613280537, 1.780991058281835, 1.521140138666567, 1.21885960622555, 0.9590086204491256, 0.75093614972522, 0.5888888198799549, 0.4671136537063916, 0.3798572770306521, 0.32136697729042396, 0.285889115667203, 0.2676708472763636, 0.26095879794402776, 0.26, 0.273552802664749, 0.3684224880751943, 0.6259258497423588, 1.1273799713587564, 1.8626198173427753, 2.36407401257091, 2.6215774386483446, 2.716447214923278, 2.73]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sketchfab_Scene:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.000591765, 0.0001809218, 0.00022238302), Vector3(0.00473412, 0.0014473744, 0.0017790642), Vector3(0.01597765, 0.004884887, 0.0060043405), Vector3(0.03787296, 0.011578995, 0.0142325135), Vector3(0.07397061, 0.022615219, 0.027797872), Vector3(0.1278212, 0.039079096, 0.048034724), Vector3(0.20297535, 0.06205616, 0.07627736), Vector3(0.30298367, 0.09263196, 0.11386011), Vector3(0.43139666, 0.13189198, 0.16211723), Vector3(0.59176487, 0.18092175, 0.22238298), Vector3(0.7783187, 0.23795733, 0.2924892), Vector3(0.93868697, 0.28698713, 0.35275498), Vector3(1.0670999, 0.32624713, 0.40101206), Vector3(1.1671082, 0.35682288, 0.4385948), Vector3(1.2422622, 0.37979993, 0.46683744), Vector3(1.296113, 0.39626384, 0.48707432), Vector3(1.3322105, 0.40730006, 0.5006396), Vector3(1.3541058, 0.41399416, 0.5088678), Vector3(1.3653493, 0.41743165, 0.51309305), Vector3(1.3694917, 0.41869813, 0.51464975), Vector3(1.3700835, 0.41887903, 0.51487213), Vector3(1.3625659, 0.41658065, 0.51204705), Vector3(1.3099426, 0.400492, 0.49227142), Vector3(1.1671082, 0.3568229, 0.4385948), Vector3(0.8889568, 0.27178296, 0.33406657), Vector3(0.48112684, 0.1470961, 0.18080562), Vector3(0.20297539, 0.062056154, 0.076277375), Vector3(0.06014085, 0.01838702, 0.02260071), Vector3(0.007517576, 0.002298385, 0.0028250813), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sketchfab_Scene:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.905, 0), Vector3(0, 0.9053239, 0), Vector3(0, 0.90759146, 0), Vector3(0, 0.91374636, 0), Vector3(0, 0.9257321, 0), Vector3(0, 0.9454924, 0), Vector3(0, 0.9749708, 0), Vector3(0, 1.0161111, 0), Vector3(0, 1.0708568, 0), Vector3(0, 1.1411517, 0), Vector3(0, 1.228939, 0), Vector3(0, 1.3310609, 0), Vector3(0, 1.4188484, 0), Vector3(0, 1.4891431, 0), Vector3(0, 1.5438888, 0), Vector3(0, 1.5850291, 0), Vector3(0, 1.6145077, 0), Vector3(0, 1.6342678, 0), Vector3(0, 1.6462536, 0), Vector3(0, 1.6524085, 0), Vector3(0, 1.6546761, 0), Vector3(0, 1.655, 0), Vector3(0, 1.6508847, 0), Vector3(0, 1.6220782, 0), Vector3(0, 1.5438889, 0), Vector3(0, 1.3916255, 0), Vector3(0, 1.1683745, 0), Vector3(0, 1.0161111, 0), Vector3(0, 0.9379218, 0), Vector3(0, 0.9091152, 0), Vector3(0, 0.905, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srq3i"]
+_data = {
+&"RESET": SubResource("Animation_8su0r"),
+&"activate": SubResource("Animation_rstxs")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srq3i"]
+transparency = 3
+alpha_hash_scale = 1.84
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.8, 0.8, 0.8, 0.8156863)
+albedo_texture = ExtResource("5_r6u61")
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_thms4"]
+material = SubResource("StandardMaterial3D_srq3i")
+radius = 0.8
+height = 1.2
+
+[sub_resource type="Curve" id="Curve_3ufsy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0733945, 1), 0.0, 0.0, 0, 0, Vector2(0.7247707, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ognl4"]
+albedo_color = Color(0.8901961, 0.015686275, 0, 1)
+albedo_texture = ExtResource("6_5fmcf")
+metallic = 1.0
+metallic_specular = 0.22
+metallic_texture = ExtResource("7_5fmcf")
+roughness = 0.28
+roughness_texture = ExtResource("7_5fmcf")
+normal_enabled = true
+normal_texture = ExtResource("7_5fmcf")
+
+[node name="HelpingHandModel" type="Node3D" unique_id=86786559]
+script = ExtResource("1_8ktho")
+
+[node name="StatueModelLogic" parent="." unique_id=334103761 instance=ExtResource("3_q21ag")]
+
+[node name="CategoryChosen" type="Label3D" parent="." unique_id=814395500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50000006, 1)
+pixel_size = 0.003
+text = "Single Category -6"
+font = ExtResource("4_5fmcf")
+font_size = 64
+
+[node name="BuffText" type="Label3D" parent="." unique_id=1765353765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30000007, 1)
+pixel_size = 0.003
+text = "All Categories +1"
+font = ExtResource("4_5fmcf")
+font_size = 64
+
+[node name="Collider" type="StaticBody3D" parent="." unique_id=565700885]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" unique_id=1308145268]
+transform = Transform3D(0.0020683538, 0, 0, 0, 0.0020683538, -4.592668e-19, 0, 4.592668e-19, 0.0020683538, 0, 1.7, 0)
+shape = SubResource("SphereShape3D_srq3i")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1277093788]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.2000003, 0)
+light_energy = 0.0
+shadow_enabled = true
+spot_range = 6.6
+spot_attenuation = 0.26
+spot_angle = 50.22
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=143757768]
+libraries/ = SubResource("AnimationLibrary_srq3i")
+speed_scale = 2.2
+
+[node name="PoofParticle" type="CPUParticles3D" parent="." unique_id=187625340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+emitting = false
+amount = 32
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_thms4")
+emission_shape = 1
+emission_sphere_radius = 1.12
+direction = Vector3(0, 10, 0)
+spread = 80.69
+gravity = Vector3(0, 20, 0)
+initial_velocity_max = 8.63
+angular_velocity_min = -49.66
+angular_velocity_max = 99.31
+linear_accel_min = -1.73
+linear_accel_max = 1.72
+damping_min = 2.586
+damping_max = 8.62
+angle_min = -558.6
+angle_max = 434.5
+scale_amount_min = 0.4
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_3ufsy")
+
+[node name="Sketchfab_Scene" parent="." unique_id=1348163646 instance=ExtResource("5_q21ag")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.905, 0)
+
+[node name="Object_4" parent="Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/M_LeftHandStatue_0" parent_id_path=PackedInt32Array(1348163646, 1194138216) index="0" unique_id=785229867]
+surface_material_override/0 = SubResource("StandardMaterial3D_ognl4")
+
+[editable path="Sketchfab_Scene"]

@@ -576,6 +576,14 @@ func lock_in_score() -> void:
 		is_sheet_highlighted = false
 		get_parent().consecutive_rolls = 0
 		hovered_category = "none"
+		return
+	if ones_locked_in and twos_locked_in and threes_locked_in and fours_locked_in and fives_locked_in and sixes_locked_in and choice_locked_in and small_straight_locked_in and full_house_locked_in and large_straight_locked_in and four_of_a_kind_locked_in and yacht_locked_in and current_grand_total < GameManager.new_round_target:
+		get_parent().become_inactionable()
+		GameManager.high_score += current_grand_total
+		get_parent().ending_counter_camera()
+		is_sheet_highlighted = false
+		get_parent().consecutive_rolls = 0
+		hovered_category = "none"
 	else:
 		get_tree().call_group("stored_dice", "return_to_box")
 		leave_sheet()
@@ -589,7 +597,7 @@ func lock_in_score() -> void:
 		InputHandler.actionable = true
 		get_parent().reload()
 		get_parent().reset_storage_slots()
-		
+		return
 	is_sheet_highlighted = false
 	
 func _on_area_3d_mouse_entered() -> void:
@@ -900,6 +908,10 @@ func buff_all_modifiers(buff : float) -> void:
 	update_multipliers()
 
 func buff_one_modifier(buff : float, modifier : String) -> void:
+	if modifier == "none":
+		return
+	GameManager.category_to_debuff = modifier
+	get_tree().call_group("statues", "one_category_buffed")
 	match modifier:
 		"ones_multiplier":
 			ones_multiplier += buff
@@ -929,6 +941,7 @@ func buff_one_modifier(buff : float, modifier : String) -> void:
 	update_multipliers()
 
 func buff_one_score(buff : float, score : String) -> void:
+	
 	match score:
 		"ones_score":
 			@warning_ignore("narrowing_conversion")

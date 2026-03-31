@@ -139,3 +139,6 @@ func _on_line_edit_text_changed(_new_text: String) -> void:
 	if line_edit.text == "sv_cheats 1":
 		PauseScreen.playsound(1)
 		InputHandler.cheats_enabled = true
+	if line_edit.text == "RaZeR":
+		PauseScreen.playsound(1)
+		GameManager.jonnymode = !GameManager.jonnymode

@@ -28,10 +28,10 @@ func generate_value() -> void:
 	match modifier_value:
 		"Subtract":
 			added_modifier = (base_modifier - (get_parent().statue_bottom_instance.base_statue_value * 0.01))
-			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X Every Roll"
+			buff_text.text = statue_model_logic.get_symbol(added_modifier) + str(added_modifier) + "X Every Roll"
 		"Add":
 			added_modifier = base_modifier + ((get_parent().statue_bottom_instance.base_statue_value * 0.01))
-			buff_text.text = statue_model_logic.get_symbol() + str(added_modifier) + "X Every Roll"
+			buff_text.text = statue_model_logic.get_symbol(added_modifier) + str(added_modifier) + "X Every Roll"
 			
 func update_text() -> void:
 	category_chosen.text = "All Categories"

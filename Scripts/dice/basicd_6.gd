@@ -8,6 +8,7 @@ class_name basicD6
 
 @onready var mesh: MeshInstance3D = $Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/Dice_0/Object_4
 @onready var highlight: MeshInstance3D = $Object_4
+const JONNYDICE = preload("uid://crnqhcitbdl56")
 
 
 var number : int = 1
@@ -54,6 +55,8 @@ func _ready() -> void:
 	rigid_body_3d.rotate_z(rotating_z * 90)
 	gravity_scale = dice_logic.default_gravity
 	mass = dice_logic.default_mass
+	if GameManager.jonnymode:
+		dice_logic.texture = JONNYDICE
 	
 func update_ui() -> void:
 	dice_logic.update_ui()

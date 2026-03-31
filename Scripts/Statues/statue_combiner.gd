@@ -10,6 +10,9 @@ extends Node3D
 @export var description : String 
 @export var rarity : String 
 
+var rarity_values : Array = [1, 2, 3, 4]
+@export var weight_probabilities : Array = [10, 5, 2, 0.5]
+
 @onready var statue_choice_area: Area3D = $StatueChoiceArea
 @onready var statue_mouse_collider: CollisionShape3D = $StatueChoiceArea/StatueMouseCollider
 @onready var statue_highlight: MeshInstance3D = $StatueHighlight
@@ -46,7 +49,7 @@ var statue_price : int
 var wolf := load("uid://bwhv5cg85yfkq")
 var sisyphus := load("res://Scenes/Statues/Models/sisyphus.tscn")
 var paperweight := load("uid://dk4tm1lkctsbk")
-
+var helpinghand := load("res://Scenes/Statues/Models/helpinghand.tscn")
 
 var common_statues : Dictionary = {
 	1: wolf,
@@ -56,6 +59,11 @@ var common_statues : Dictionary = {
 var uncommon_statues : Dictionary = {
 	1: paperweight
 }
+	
+var rare_statues : Dictionary = {
+	1: helpinghand
+}
+	
 	
 #statue bases
 var statue_base_addition := load("uid://c64vl8ofj38lu")
@@ -72,15 +80,24 @@ func create_statue() -> void:
 	statue_bottom_instance = statue_bottom.instantiate()
 	add_child(statue_bottom_instance)
 	statue_bottom_instance.name = "Base" + str(statue_bottom_instance.statue_type)
-	var statue_top_rarity_choice : int = GameManager.rng_statues.randi_range(1, 5)
-	if statue_top_rarity_choice < 4:
-		var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, common_statues.size())
-		statue_top = common_statues.get(random_statue_top_choice)
-		statue_top_rarity = 1
-	else:
-		var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, uncommon_statues.size())
-		statue_top = uncommon_statues.get(random_statue_top_choice)
-		statue_top_rarity = 2
+	var random_weight := GameManager.rng_shops
+	var random_value : int = rarity_values[random_weight.rand_weighted(weight_probabilities)]
+	match random_value:
+		1:
+			var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, common_statues.size())
+			statue_top = common_statues.get(random_statue_top_choice)
+			statue_top_rarity = 1
+		2:
+			var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, uncommon_statues.size())
+			statue_top = uncommon_statues.get(random_statue_top_choice)
+			statue_top_rarity = 2
+		3:
+			var random_statue_top_choice : int = GameManager.rng_statues.randi_range(1, rare_statues.size())
+			statue_top = rare_statues.get(random_statue_top_choice)
+			statue_top_rarity = 3
+		4:
+			create_statue()
+			return
 	statue_top_instance = statue_top.instantiate()
 	add_child(statue_top_instance)
 	statue_top_instance.name = "Base" + str(statue_top_instance.statue_name)
@@ -165,6 +182,13 @@ func main_scene_rerolling() -> void:
 
 func main_scene_round_started() -> void:
 	if statue_top_instance.trigger_condition == "RoundStart" and !in_shop:
+		activate_timer.wait_time = statue_position * 0.2
+		activate_timer.start()
+		await activate_timer.timeout
+		statue_top_instance.statue_activate()
+
+func one_category_buffed() -> void:
+	if statue_top_instance.trigger_condition == "OneCategoryBuffed" and !in_shop:
 		activate_timer.wait_time = statue_position * 0.2
 		activate_timer.start()
 		await activate_timer.timeout
