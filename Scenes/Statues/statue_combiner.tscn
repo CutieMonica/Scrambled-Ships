@@ -70,6 +70,7 @@ mesh = SubResource("BoxMesh_4t60h")
 [node name="StatueMouseCollider" type="CollisionShape3D" parent="StatueChoiceArea" unique_id=631133469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 1.3000001, 0.049999893)
 shape = SubResource("BoxShape3D_x8ecq")
+disabled = true
 
 [node name="DieTimer" type="Timer" parent="." unique_id=1884602427]
 wait_time = 0.2

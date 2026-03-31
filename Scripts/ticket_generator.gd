@@ -55,8 +55,6 @@ var STATUESLOTUPGRADE := load("uid://5twwr2mau3rm")
 var YACHTLOWERFLOOR := load("uid://dbtrucpah0l6r")
 var YACHT_UPGRADE := load("uid://bmrtiav1mj1j")
 
-
-
 var common_upgrades_taken
 var uncommon_upgrades_taken
 var rare_upgrades_taken
@@ -373,10 +371,18 @@ func generate_ticket() -> void:
 	animation_player.play("RESET")
 	var random_weight := GameManager.rng_shops
 	random_value = rarity_numbers[random_weight.rand_weighted(weight_probabilities)]
+	if shop_slot == 6:
+		GameManager.ticket_1_choice_1 = random_value
 	ticket_price = random_value * 3
 	match random_value:
 		1:
 			random_ticket_choice = GameManager.rng_shops.randi_range(1, common_upgrades.size())
+			if shop_slot == 6:
+				GameManager.ticket_1_choice_2 = random_ticket_choice
+			if shop_slot == 7:
+				if GameManager.ticket_1_choice_1 == random_value and GameManager.ticket_1_choice_1 == random_ticket_choice:
+					generate_ticket()
+					return
 			if common_upgrades_taken.get(random_ticket_choice) == true:
 				generate_ticket()
 				return
@@ -389,6 +395,12 @@ func generate_ticket() -> void:
 			description = "Upon purchasing, " + common_upgrades_descriptions.get(random_ticket_choice)
 		2:
 			random_ticket_choice = GameManager.rng_shops.randi_range(1, 8)
+			if shop_slot == 6:
+				GameManager.ticket_1_choice_2 = random_ticket_choice
+			if shop_slot == 7:
+				if GameManager.ticket_1_choice_1 == random_value and GameManager.ticket_1_choice_1 == random_ticket_choice:
+					generate_ticket()
+					return
 			if uncommon_upgrades_taken.get(random_ticket_choice) == true:
 				generate_ticket()
 				return
@@ -401,6 +413,12 @@ func generate_ticket() -> void:
 			description = "Upon purchasing, " + uncommon_upgrades_descriptions.get(random_ticket_choice)
 		3:
 			random_ticket_choice = GameManager.rng_shops.randi_range(1, 8)
+			if shop_slot == 6:
+				GameManager.ticket_1_choice_2 = random_ticket_choice
+			if shop_slot == 7:
+				if GameManager.ticket_1_choice_1 == random_value and GameManager.ticket_1_choice_1 == random_ticket_choice:
+					generate_ticket()
+					return
 			if rare_upgrades_taken.get(random_ticket_choice) == true:
 				generate_ticket()
 				return
@@ -413,6 +431,12 @@ func generate_ticket() -> void:
 			description = "Upon purchasing, " + rare_upgrades_descriptions.get(random_ticket_choice)
 		4:
 			random_ticket_choice = GameManager.rng_shops.randi_range(1, 6)
+			if shop_slot == 6:
+				GameManager.ticket_1_choice_2 = random_ticket_choice
+			if shop_slot == 7:
+				if GameManager.ticket_1_choice_1 == random_value and GameManager.ticket_1_choice_1 == random_ticket_choice:
+					generate_ticket()
+					return
 			if legendary_upgrades_taken.get(random_ticket_choice) == true:
 				generate_ticket()
 				return

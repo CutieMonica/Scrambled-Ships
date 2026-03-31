@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://7y3bs8ucwywy"]
+[gd_scene format=3 uid="uid://bgyoj0ck8gj4w"]
 
-[ext_resource type="Script" uid="uid://c4qlpux1n5ki5" path="res://Scripts/ticket_generator.gd" id="1_0y5pb"]
-[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="3_mv6s8"]
+[ext_resource type="Script" uid="uid://c4qlpux1n5ki5" path="res://Scripts/ticket_generator.gd" id="1_py5c0"]
+[ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="2_gp44q"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6mu8e"]
 load_path = "res://.godot/imported/ticketbackground.png-0b09e652ae569a22e4b10a763ddcfbb9.s3tc.ctex"
@@ -190,7 +190,7 @@ _data = {
 
 [node name="TicketGenerator" type="Node3D" unique_id=1146082060]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-script = ExtResource("1_0y5pb")
+script = ExtResource("1_py5c0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=593821278]
 mesh = SubResource("PlaneMesh_jvxuq")
@@ -208,7 +208,7 @@ outline_render_priority = 1
 modulate = Color(0.93375623, 0.80522776, 0.7375256, 1)
 outline_modulate = Color(0.10558469, 0.04934538, 0.01453367, 1)
 text = "Easy Four of a Kind"
-font = ExtResource("3_mv6s8")
+font = ExtResource("2_gp44q")
 font_size = 100
 outline_size = 24
 vertical_alignment = 0
@@ -222,7 +222,7 @@ outline_render_priority = 1
 modulate = Color(0.9437283, 0.8422532, 0.7861883, 1)
 outline_modulate = Color(0.14154723, 0.08082212, 0.027646441, 1)
 text = "a a a a a a a a  a a a a a a aa a a a a a  a aa a a  aa a a a a a a a a  a a a a a  a a a a a a a a aa  aa a a a a a a  a a a a a a a aa a  aa a a a a a a a a a a aa "
-font = ExtResource("3_mv6s8")
+font = ExtResource("2_gp44q")
 font_size = 64
 vertical_alignment = 0
 autowrap_mode = 3

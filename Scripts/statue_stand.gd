@@ -10,6 +10,8 @@ func _on_mouse_detect_mouse_entered() -> void:
 
 func _on_mouse_detect_mouse_exited() -> void:
 	outline_off()
+	if InputHandler.hovered_object == "statues":
+		InputHandler.hovered_object = "none"
 
 func outline_on() -> void:
 	outline.visible = true

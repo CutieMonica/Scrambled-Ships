@@ -36,6 +36,7 @@ func _process(_delta: float) -> void:
 			"explode":
 				audio_stream_player_3d.stream = SfxBank.blade_bounce
 				get_tree().get_first_node_in_group("main").shake_screen()
+				audio_stream_player_3d.volume_db = -10
 		audio_stream_player_3d.play()
 		playsound = "none"
 				

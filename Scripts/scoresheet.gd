@@ -362,6 +362,7 @@ func calculate_score() -> void:
 	
 func _ready() -> void:
 	update_multipliers()
+	reset_everything()
 	GameManager.dice_numbers.values().count(1)
 	print()
 	bonus_explaination.modulate = info_color

@@ -64,6 +64,7 @@ card_gen=""
 awaiting_new_slot=""
 statuefusionnew=""
 title=""
+card_waiting=""
 
 [gui]
 

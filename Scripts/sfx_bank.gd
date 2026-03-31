@@ -7,6 +7,7 @@ extends Node
 @export var poof_sound : Resource = preload("res://Assets/SFX/diekilldieexplodediekilldie.ogg")
 
 @export var generic_confirm_sound : Resource = preload("res://Assets/SFX/confirmsound.ogg")
+@export var generic_deny_sound : Resource = preload("res://Assets/SFX/denysound.ogg")
 
 @export var coin_drop_1 : Resource = preload("res://Assets/SFX/coindrop1.ogg")
 @export var blade_bounce := preload("uid://do8hri06367mf")

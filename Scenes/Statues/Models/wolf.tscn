@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dusukb33xd08g" path="res://Assets/Fonts/Hollyfont-0v5nX.otf" id="6_xe8q2"]
 [ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="7_xe8q2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14nap"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe8q2"]
 resource_local_to_scene = true
 albedo_color = Color(0.18039216, 0.43137255, 1, 1)
 albedo_texture = ExtResource("3_xe8q2")
@@ -203,7 +203,7 @@ script = ExtResource("1_gl83b")
 transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, 0.90000004, 0.3)
 
 [node name="wolf_Material_0" parent="WolfModel/Sketchfab_model/752cfc8e13e440bcaae116cf7f82ed7f_fbx/RootNode/wolf" parent_id_path=PackedInt32Array(935228335, 664740748) index="0" unique_id=583058577]
-surface_material_override/0 = SubResource("StandardMaterial3D_14nap")
+surface_material_override/0 = SubResource("StandardMaterial3D_xe8q2")
 
 [node name="StatueModelLogic" parent="." unique_id=334103761 instance=ExtResource("4_ea5w3")]
 

@@ -105,6 +105,15 @@ func _process(delta: float) -> void:
 
 func card_interact() -> void:
 	if !in_shop and GameManager.viewing_cards:
+		if get_parent().item_name == "Reverse Card" and get_parent().get_parent().in_play_statues.values().count(null) == 6:
+			get_parent().audio_stream_player_3d.stream = SfxBank.generic_deny_sound
+			var random_vine_boom_jumpscare : int = randi_range(1, 100)
+			if random_vine_boom_jumpscare == 100:
+				get_parent().audio_stream_player_3d.stream = SfxBank.explosion_2
+			get_parent().audio_stream_player_3d.volume_db = -10
+			get_parent().audio_stream_player_3d.pitch_scale = (0 + randf_range(0.7, 0.9))
+			get_parent().audio_stream_player_3d.play()
+			return
 		random_card_sound()
 		activated = true
 		get_parent().get_parent().remove_card(card_position)

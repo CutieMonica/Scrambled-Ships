@@ -76,10 +76,6 @@ var common_bases : Dictionary = {
 
 func create_statue() -> void:
 	var random_statue_base_choice : int = GameManager.rng_statues.randi_range(1, common_bases.size())
-	statue_bottom = common_bases.get(random_statue_base_choice)
-	statue_bottom_instance = statue_bottom.instantiate()
-	add_child(statue_bottom_instance)
-	statue_bottom_instance.name = "Base" + str(statue_bottom_instance.statue_type)
 	var random_weight := GameManager.rng_shops
 	var random_value : int = rarity_values[random_weight.rand_weighted(weight_probabilities)]
 	match random_value:
@@ -98,6 +94,11 @@ func create_statue() -> void:
 		4:
 			create_statue()
 			return
+	statue_bottom = common_bases.get(random_statue_base_choice)
+	statue_bottom_instance = statue_bottom.instantiate()
+	add_child(statue_bottom_instance)
+	statue_bottom_instance.name = "Base" + str(statue_bottom_instance.statue_type)
+	
 	statue_top_instance = statue_top.instantiate()
 	add_child(statue_top_instance)
 	statue_top_instance.name = "Base" + str(statue_top_instance.statue_name)
@@ -232,18 +233,26 @@ func purchase_statue() -> void:
 		deconstructing_newer = true
 	
 func statue_chosen() -> void:
-	moving_up = true
-	get_parent().statue_stand_to_statue_fusion()
-	GameManager.combined_statue_1 = self
-	get_tree().call_group("statues", "disable_statue_choice_area")
-	await get_tree().create_timer(0.5).timeout
-	statue_bottom_instance.statue_base_logic.name_change("
-	" + str(statue_bottom_instance.item_name) + " Base
-	Value: " + str(statue_bottom_instance.base_statue_value))
-	moving_up = false
-	deconstructing_former = true
-	get_parent().statue_combiner_stuff.enable_statue_combiner_areas()
-	get_parent().dialogue_player.play_statue_dialogue_2()
+	if !get_parent().between_rounds:
+		GameManager.statue_to_cover = statue_position
+		get_tree().call_group("statues", "disable_statue_choice_area")
+		get_tree().call_group("card_waiting", "play_animation")
+		await get_tree().create_timer(1).timeout
+		flip_base()
+		
+	if get_parent().between_rounds:
+		moving_up = true
+		get_parent().statue_stand_to_statue_fusion()
+		GameManager.combined_statue_1 = self
+		get_tree().call_group("statues", "disable_statue_choice_area")
+		await get_tree().create_timer(0.5).timeout
+		statue_bottom_instance.statue_base_logic.name_change("
+		" + str(statue_bottom_instance.item_name) + " Base
+		Value: " + str(statue_bottom_instance.base_statue_value))
+		moving_up = false
+		deconstructing_former = true
+		get_parent().statue_combiner_stuff.enable_statue_combiner_areas()
+		get_parent().dialogue_player.play_statue_dialogue_2()
 	
 #func go_to_new_slot(slot : int) -> void:
 	#adjust_number(slot)
@@ -280,9 +289,8 @@ func _process(delta: float) -> void:
 
 func _on_statue_choice_area_mouse_entered() -> void:
 	print("statue_hovered")
-	if GameManager.combining_statues:
-		statue_highlight.visible = true
-		InputHandler.hovered_object = "statue" + str(statue_position)
+	statue_highlight.visible = true
+	InputHandler.hovered_object = "statue" + str(statue_position)
 
 func _on_statue_choice_area_mouse_exited() -> void:
 	statue_highlight.visible = false
@@ -306,11 +314,19 @@ func destroy_statue() -> void:
 	queue_free()
 
 func flip_base() -> void:
+	poof_particle.emitting = true
+	audio_stream_player_3d.stream = SfxBank.poof_sound
+	audio_stream_player_3d.volume_db = (-8 + randf_range(2, 3))
+	audio_stream_player_3d.pitch_scale = (0 + randf_range(0.9, 1.2))
+	audio_stream_player_3d.play()
+	
 	if statue_bottom_instance.statue_type == "Subtract":
 		statue_bottom = common_bases.get(1)
 	if statue_bottom_instance.statue_type == "Add":
 		statue_bottom = common_bases.get(2)
+		
 	var new_statue_value : int = statue_bottom_instance.base_statue_value
+	var new_statue_rarity : int = statue_bottom_rarity
 	statue_bottom_instance.queue_free()
 	statue_bottom_instance = statue_bottom.instantiate()
 	add_child(statue_bottom_instance)
@@ -319,6 +335,7 @@ func flip_base() -> void:
 	statue_bottom_instance.statue_base_logic.name_change(str(statue_top_instance.statue_name))
 	
 	statue_bottom_instance.base_statue_value = new_statue_value
+	statue_bottom_rarity = new_statue_rarity
 	match statue_bottom_rarity:
 		1:
 			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.common_text_color

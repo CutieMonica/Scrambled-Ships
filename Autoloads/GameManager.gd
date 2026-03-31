@@ -54,6 +54,10 @@ var combined_statue_2 : Node3D
 var ending_cutscene : bool = false
 var is_postgame : bool = false
 
+var ticket_1_choice_1 : int
+var ticket_1_choice_2 : int
+
+var statue_to_cover : int = 1
 var category_to_debuff : String
 
 var dialogue_seen : Dictionary = {
@@ -202,12 +206,12 @@ func give_me_your_seed() -> void:
 		rng_upgrades.seed = random_seed
 		rng_cards.seed = random_seed
 	if run_number == 1:
-		input_seed = 926293748
-		rng.seed = 926293748
-		rng_shops.seed = 926293748
-		rng_statues.seed = 926293748
-		rng_upgrades.seed = 926293748
-		rng_cards.seed = 926293748
+		input_seed = 332815025
+		rng.seed = 332815025
+		rng_shops.seed = 332815025
+		rng_statues.seed = 332815025
+		rng_upgrades.seed = 332815025
+		rng_cards.seed = 332815025
 		
 func toggle_performance_mode(state : bool) -> void:
 	if state == true:

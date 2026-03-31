@@ -5,7 +5,9 @@
 [ext_resource type="Shader" uid="uid://ckv2fv5jqhjy6" path="res://Shaders/pencildissolve.gdshader" id="3_p4nx5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsuyi"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.788
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_si4sk")
 metallic = 0.43
 metallic_specular = 0.25
