@@ -19,7 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://ohirb6mwnbu8" path="res://Assets/Textures/UI Stuff/exitbuttonhovered.png" id="17_4blwa"]
 [ext_resource type="PackedScene" uid="uid://b3svjfl7vj8s3" path="res://Assets/Models/NightCity99Miles/scene.gltf" id="18_4blwa"]
 [ext_resource type="PackedScene" uid="uid://d4mx62vgaocyg" path="res://Assets/Models/BoatUsedm/scene.gltf" id="18_k1y01"]
+[ext_resource type="Texture2D" uid="uid://d2ovbqunppqbm" path="res://Assets/Textures/UI Stuff/BskyLogo.png" id="18_pcucl"]
+[ext_resource type="Texture2D" uid="uid://dwxqlwp3osa1l" path="res://Assets/Textures/UI Stuff/DiscordLogo.png" id="19_2txeq"]
+[ext_resource type="Texture2D" uid="uid://d1ujdjq0cv6ee" path="res://Assets/Textures/UI Stuff/BskyLogoPressed.png" id="19_82b75"]
 [ext_resource type="PackedScene" uid="uid://ban1p64w5ae02" path="res://Assets/Models/Yacht Dannzjs/scene.gltf" id="19_vqgqr"]
+[ext_resource type="Texture2D" uid="uid://bp61loex0nr1q" path="res://Assets/Textures/UI Stuff/BskyLogoHovered.png" id="20_5jdai"]
+[ext_resource type="Texture2D" uid="uid://b47j0de1ak5it" path="res://Assets/Textures/UI Stuff/DiscordLogoPressed.png" id="22_ne8fx"]
+[ext_resource type="Texture2D" uid="uid://dt0n1mcvyx6ub" path="res://Assets/Textures/UI Stuff/DiscordLogoHovered.png" id="23_1sbh8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w5sh6"]
 sky_top_color = Color(1, 0.6253529, 0.82935846, 1)
@@ -474,6 +480,9 @@ _data = {
 &"idle_title": SubResource("Animation_k1y01")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sjffk"]
+load_path = "res://.godot/imported/BskyLogoHovered.png-17fb25007b9b369f3646e195d1bf8059.ctex"
+
 [sub_resource type="Animation" id="Animation_ycay6"]
 length = 0.001
 tracks/0/type = "value"
@@ -884,6 +893,54 @@ tracks/33/keys = {
 "update": 0,
 "values": [Color(0.90844125, 0.7500565, 0.818597, 1)]
 }
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Control/BskyButton:position")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 17)]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Control/DiscordButton:position")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1036, 17)]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Control/DiscordButton:disabled")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Control/BskyButton:disabled")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_07cxn"]
 resource_name = "fadeout"
@@ -978,6 +1035,30 @@ tracks/7/path = NodePath("Control/Exit:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/BskyButton:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control/DiscordButton:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1347,6 +1428,54 @@ tracks/29/keys = {
 "update": 0,
 "values": [Color(0.9098039, 0.7490196, 0.81960785, 0), Color(0.90844125, 0.7500565, 0.818597, 1)]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Control/BskyButton:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1314, 17), Vector2(1313.976, 17), Vector2(1313.808, 17), Vector2(1313.352, 17), Vector2(1312.464, 17), Vector2(1311, 17), Vector2(1308.816, 17), Vector2(1305.768, 17), Vector2(1301.712, 17), Vector2(1296.504, 17), Vector2(1290, 17), Vector2(1282.056, 17), Vector2(1272.528, 17), Vector2(1261.272, 17), Vector2(1248.144, 17), Vector2(1233, 17), Vector2(1217.856, 17), Vector2(1204.728, 17), Vector2(1193.4719, 17), Vector2(1183.944, 17), Vector2(1176, 17), Vector2(1169.496, 17), Vector2(1164.288, 17), Vector2(1160.2319, 17), Vector2(1157.184, 17), Vector2(1155, 17), Vector2(1153.536, 17), Vector2(1152.648, 17), Vector2(1152.192, 17), Vector2(1152.024, 17), Vector2(1152, 17)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Control/DiscordButton:position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1515, 17), Vector2(1514.979, 17), Vector2(1514.8318, 17), Vector2(1514.4323, 17), Vector2(1513.6543, 17), Vector2(1512.3717, 17), Vector2(1510.4584, 17), Vector2(1507.7881, 17), Vector2(1504.2346, 17), Vector2(1499.672, 17), Vector2(1493.9739, 17), Vector2(1487.0143, 17), Vector2(1478.667, 17), Vector2(1468.8058, 17), Vector2(1457.3044, 17), Vector2(1444.037, 17), Vector2(1428.8772, 17), Vector2(1411.699, 17), Vector2(1392.376, 17), Vector2(1370.7822, 17), Vector2(1346.7915, 17), Vector2(1320.2776, 17), Vector2(1291.1145, 17), Vector2(1259.8855, 17), Vector2(1230.7224, 17), Vector2(1204.2085, 17), Vector2(1180.2178, 17), Vector2(1158.624, 17), Vector2(1139.301, 17), Vector2(1122.1228, 17), Vector2(1106.9629, 17), Vector2(1093.6956, 17), Vector2(1082.1942, 17), Vector2(1072.333, 17), Vector2(1063.9857, 17), Vector2(1057.0261, 17), Vector2(1051.328, 17), Vector2(1046.7654, 17), Vector2(1043.2119, 17), Vector2(1040.5416, 17), Vector2(1038.6283, 17), Vector2(1037.3457, 17), Vector2(1036.5676, 17), Vector2(1036.1682, 17), Vector2(1036.021, 17), Vector2(1036, 17)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Control/DiscordButton:disabled")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(1.9999, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Control/BskyButton:disabled")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(1.9999, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07cxn"]
 _data = {
@@ -1389,7 +1518,7 @@ shadow_normal_bias = 0.0
 shadow_opacity = 0.81
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=705451144]
-transform = Transform3D(0.9061793, -0.27911705, 0.31769854, 0.16286267, 0.9236401, 0.34693566, -0.39027476, -0.26264468, 0.88244164, 79.405, 195.6, 288.87)
+transform = Transform3D(0.90617925, -0.27911705, 0.31769854, 0.16286266, 0.92364, 0.34693566, -0.39027473, -0.26264468, 0.88244164, 79.405, 195.6, 288.87)
 
 [node name="Label" type="Label3D" parent="Camera3D" unique_id=1580839170]
 transform = Transform3D(0.9077776, 0, -0.41945213, 0.01610189, 0.9992631, 0.034847647, 0.4191428, -0.038387865, 0.90710896, -3.8251953, 10.385338, -17.86139)
@@ -1474,8 +1603,8 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -333.99997
 offset_top = 393.00003
-offset_right = 166.00247
-offset_bottom = 633.0034
+offset_right = 166.00284
+offset_bottom = 633.0032
 scale = Vector2(0.5, 0.5)
 disabled = true
 texture_normal = ExtResource("8_o1e67")
@@ -1490,7 +1619,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -351.99997
 offset_top = 544.0
-offset_right = 148.00122
+offset_right = 148.00183
 offset_bottom = 784.00134
 scale = Vector2(0.5, 0.5)
 disabled = true
@@ -1527,6 +1656,46 @@ grow_vertical = 2
 mouse_filter = 0
 texture = ExtResource("2_6vd4x")
 
+[node name="BskyButton" type="TextureButton" parent="Control" unique_id=1127840201]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1112.0
+offset_top = -23.0
+offset_right = 1212.0
+offset_bottom = 77.0
+grow_horizontal = 0
+grow_vertical = 0
+disabled = true
+texture_normal = ExtResource("18_pcucl")
+texture_pressed = ExtResource("19_82b75")
+texture_hover = ExtResource("20_5jdai")
+texture_disabled = ExtResource("19_82b75")
+texture_focused = SubResource("CompressedTexture2D_sjffk")
+
+[node name="DiscordButton" type="TextureButton" parent="Control" unique_id=466198124]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 996.0
+offset_top = -23.0
+offset_right = 1096.0
+offset_bottom = 77.0
+grow_horizontal = 0
+grow_vertical = 0
+disabled = true
+texture_normal = ExtResource("19_2txeq")
+texture_pressed = ExtResource("22_ne8fx")
+texture_hover = ExtResource("23_1sbh8")
+texture_disabled = ExtResource("22_ne8fx")
+texture_focused = ExtResource("23_1sbh8")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=804976829]
 libraries/ = SubResource("AnimationLibrary_07cxn")
 autoplay = &"startup"
@@ -1555,4 +1724,8 @@ mesh = SubResource("PlaneMesh_e3ik3")
 [connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Control/BskyButton" to="." method="_on_bsky_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BskyButton" to="." method="_on_bsky_button_mouse_exited"]
+[connection signal="pressed" from="Control/BskyButton" to="." method="_on_bsky_button_pressed"]
+[connection signal="pressed" from="Control/DiscordButton" to="." method="_on_discord_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

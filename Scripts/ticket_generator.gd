@@ -373,7 +373,6 @@ func generate_ticket() -> void:
 	animation_player.play("RESET")
 	var random_weight := GameManager.rng_shops
 	random_value = rarity_numbers[random_weight.rand_weighted(weight_probabilities)]
-	random_value = 1
 	ticket_price = random_value * 3
 	match random_value:
 		1:

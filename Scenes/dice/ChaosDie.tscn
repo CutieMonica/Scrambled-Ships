@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2f8oockmopi" path="res://Assets/Models/DicetnRaroBasic/textures/Dice_metallicRoughness.png" id="3_mbqfk"]
 [ext_resource type="Texture2D" uid="uid://mmsp45o80nv7" path="res://Assets/Models/DicetnRaroBasic/textures/Dice_normal.png" id="4_7oh30"]
 [ext_resource type="PackedScene" uid="uid://dwp7cq0rq8nc3" path="res://Scenes/dice_logic.tscn" id="5_5mbff"]
-[ext_resource type="FontFile" uid="uid://b88vmgo01fplh" path="res://Assets/Fonts/MetropolisStreet-q25wd.otf" id="7_86ssk"]
+[ext_resource type="FontFile" uid="uid://dsdlndu0rumn6" path="res://Assets/Fonts/MetropolisStreetRegular.otf" id="7_7oh30"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yahnv"]
 rough = true
@@ -235,7 +235,7 @@ outline_render_priority = 1
 modulate = Color(0.9999997, 0.93044204, 0.68177384, 1)
 outline_modulate = Color(0.22485834, 0.0003350622, 0.3333218, 1)
 text = "9"
-font = ExtResource("7_86ssk")
+font = ExtResource("7_7oh30")
 font_size = 148
 outline_size = 24
 
@@ -253,7 +253,7 @@ outline_render_priority = 1
 modulate = Color(0.9999997, 0.93044204, 0.68177384, 1)
 outline_modulate = Color(0.22485834, 0.0003350622, 0.3333218, 1)
 text = "12"
-font = ExtResource("7_86ssk")
+font = ExtResource("7_7oh30")
 font_size = 148
 outline_size = 24
 
@@ -271,7 +271,7 @@ outline_render_priority = 1
 modulate = Color(0.9999997, 0.93044204, 0.68177384, 1)
 outline_modulate = Color(0.22485834, 0.0003350622, 0.3333218, 1)
 text = "12"
-font = ExtResource("7_86ssk")
+font = ExtResource("7_7oh30")
 font_size = 148
 outline_size = 24
 
@@ -289,7 +289,7 @@ outline_render_priority = 1
 modulate = Color(0.9999997, 0.93044204, 0.68177384, 1)
 outline_modulate = Color(0.22485834, 0.0003350622, 0.3333218, 1)
 text = "12"
-font = ExtResource("7_86ssk")
+font = ExtResource("7_7oh30")
 font_size = 148
 outline_size = 24
 
@@ -306,8 +306,8 @@ render_priority = 2
 outline_render_priority = 1
 modulate = Color(0.9999997, 0.93044204, 0.68177384, 1)
 outline_modulate = Color(0.22485834, 0.0003350622, 0.3333218, 1)
-text = "12"
-font = ExtResource("7_86ssk")
+text = "6"
+font = ExtResource("7_7oh30")
 font_size = 148
 outline_size = 24
 
@@ -325,7 +325,7 @@ outline_render_priority = 1
 modulate = Color(0.9999997, 0.93044204, 0.68177384, 1)
 outline_modulate = Color(0.22485834, 0.0003350622, 0.3333218, 1)
 text = "12"
-font = ExtResource("7_86ssk")
+font = ExtResource("7_7oh30")
 font_size = 148
 outline_size = 24
 

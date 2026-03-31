@@ -57,6 +57,9 @@ func _ready() -> void:
 	mass = dice_logic.default_mass
 	if GameManager.jonnymode:
 		dice_logic.texture = JONNYDICE
+		item_name = "Jonny DiCeR"
+		tooltip = "What up Jonny squad? Today we're doing some Jonny racing."
+		description = "Rolls 1-6. Hit short form content creator Jonny RaZeR is here to bring you the curse of being unable to tell what number you rolled at a glance. I am sorry."
 	
 func update_ui() -> void:
 	dice_logic.update_ui()

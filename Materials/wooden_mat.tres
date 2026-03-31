@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1y3yenw2aqcu" path="res://Assets/Textures/Normals/WoodNormalMap.png" id="2_qrktv"]
 
 [resource]
+render_priority = 1
 albedo_color = Color(0.20618686, 0.23460382, 0.4761415, 1)
 albedo_texture = ExtResource("1_kuflm")
 metallic = 0.18

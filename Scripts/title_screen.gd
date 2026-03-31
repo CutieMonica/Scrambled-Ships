@@ -10,7 +10,9 @@ extends Node3D
 @onready var city: Node3D = $City
 @onready var yacht: Node3D = $Yacht
 @onready var label_2: Label3D = $Camera3D/Label2
-@onready var label: Label3D = $Camera3D/Label
+@onready var bsky_button: TextureButton = $Control/BskyButton
+@onready var discord_button: TextureButton = $Control/DiscordButton
+
 
 var exiting : bool = false
 
@@ -82,3 +84,13 @@ func _on_exit_pressed() -> void:
 	animation_player.play("fadeout")
 	GlobalMusicPlayer.fade_out()
 	exiting = true
+
+
+func _on_bsky_button_pressed() -> void:
+	Settings.random_sound()
+	OS.shell_open("https://bsky.app/profile/bladebounce.bsky.social")
+
+func _on_discord_button_pressed() -> void:
+	Settings.random_sound()
+	OS.shell_open("https://discord.gg/PtuUXxKC8G")
+	
