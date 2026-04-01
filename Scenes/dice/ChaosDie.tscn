@@ -192,7 +192,6 @@ shadow_mesh = SubResource("ArrayMesh_75xwo")
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahnv"]
 
 [node name="ChaosDie" type="RigidBody3D" unique_id=194486236 groups=["dice"]]
-rotation_edit_mode = 2
 collision_layer = 9
 collision_priority = 5.0
 input_ray_pickable = false
@@ -222,12 +221,13 @@ material_override = SubResource("StandardMaterial3D_408v3")
 mesh = SubResource("ArrayMesh_r57c7")
 
 [node name="RayCast1" type="RayCast3D" parent="." unique_id=1329865488]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 target_position = Vector3(0, 50, 0)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="LabelSide1" type="Label3D" parent="RayCast1" unique_id=1407336059]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.43, 0)
+transform = Transform3D(1.3113416e-07, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, -1.3113416e-07, -5.7320566e-15, 0, 0.43, 0)
 shaded = true
 double_sided = false
 render_priority = 2
@@ -245,7 +245,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="LabelSide2" type="Label3D" parent="RayCast2" unique_id=1401206428]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.42999998, -0.019999996, 0)
+transform = Transform3D(-4.3711385e-08, -8.742278e-08, 1, -1, -2.1855693e-07, -4.3711402e-08, 2.1855695e-07, -1, -8.742278e-08, 0.42999998, -0.019999996, 0)
 shaded = true
 double_sided = false
 render_priority = 2
@@ -263,7 +263,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="LabelSide3" type="Label3D" parent="RayCast3" unique_id=648854277]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.010000009, -0.019999996, -0.42999998)
+transform = Transform3D(1, -8.742278e-08, 4.371139e-08, -8.742278e-08, -1, -4.3711392e-08, 4.371139e-08, 4.371139e-08, -1, -0.010000009, -0.019999996, -0.42999998)
 shaded = true
 double_sided = false
 render_priority = 2
@@ -281,7 +281,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="LabelSide4" type="Label3D" parent="RayCast4" unique_id=1291588689]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -0.010000009, -0.019999996, 0.42999995)
+transform = Transform3D(1, 1.7484555e-07, 2.1855695e-07, -1.7484555e-07, 1, 4.3711353e-08, -2.1855695e-07, -4.371139e-08, 1, -0.010000009, -0.019999996, 0.42999995)
 shaded = true
 double_sided = false
 render_priority = 2
@@ -299,7 +299,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="LabelSide5" type="Label3D" parent="RayCast5" unique_id=204368985]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.43, -0.019999996, -0.01000005)
+transform = Transform3D(1.3113416e-07, 0, -1, 1, 1.3113416e-07, 1.3113416e-07, 1.3113416e-07, -1, 1.7196168e-14, -0.43, -0.019999996, -0.01000005)
 shaded = true
 double_sided = false
 render_priority = 2
@@ -317,7 +317,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="LabelSide6" type="Label3D" parent="RayCast6" unique_id=748858295]
-transform = Transform3D(-5.732056e-15, -1, 4.371139e-08, 1.3113416e-07, -4.371139e-08, -1, 1, 0, 1.3113416e-07, -2.9802322e-08, -0.43, -5.029142e-08)
+transform = Transform3D(-1, 4.371139e-08, -1.3113416e-07, 1.3113416e-07, -4.371139e-08, -1, -4.3711395e-08, -1, 4.371138e-08, -2.9802322e-08, -0.43, -5.029142e-08)
 shaded = true
 double_sided = false
 render_priority = 2
