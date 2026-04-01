@@ -652,6 +652,8 @@ func leave_sheet() -> void:
 func _on_mouse_detect_ones_mouse_entered() -> void:
 	print("mouse_over_one")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !ones_locked_in:
 		ones_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		ones_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -672,6 +674,8 @@ func _on_mouse_detect_ones_mouse_exited() -> void:
 func _on_mouse_detect_twos_mouse_entered() -> void:
 	print("mouse_over_two")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !twos_locked_in:
 		twos_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		twos_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -692,6 +696,8 @@ func _on_mouse_detect_twos_mouse_exited() -> void:
 func _on_mouse_detect_threes_mouse_entered() -> void:
 	print("mouse_over_three")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !threes_locked_in:
 		threes_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		threes_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -712,6 +718,8 @@ func _on_mouse_detect_threes_mouse_exited() -> void:
 func _on_mouse_detect_fours_mouse_entered() -> void:
 	print("mouse_over_four")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !fours_locked_in:
 		fours_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		fours_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -732,6 +740,8 @@ func _on_mouse_detect_fours_mouse_exited() -> void:
 func _on_mouse_detect_fives_mouse_entered() -> void:
 	print("mouse_over_five")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !fives_locked_in:
 		fives_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		fives_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -752,6 +762,8 @@ func _on_mouse_detect_fives_mouse_exited() -> void:
 func _on_mouse_detect_sixes_mouse_entered() -> void:
 	print("mouse_over_six")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !sixes_locked_in:
 		sixes_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		sixes_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -773,6 +785,8 @@ func _on_mouse_detect_sixes_mouse_exited() -> void:
 func _on_mouse_detect_choice_mouse_entered() -> void:
 	print("mouse_over_choice")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !choice_locked_in:
 		choice_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		choice_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -792,6 +806,8 @@ func _on_mouse_detect_choice_mouse_exited() -> void:
 func _on_mouse_detect_small_straight_mouse_entered() -> void:
 	print("mouse_over_s_straight")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !small_straight_locked_in:
 		small_straight_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		small_straight_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -811,6 +827,8 @@ func _on_mouse_detect_small_straight_mouse_exited() -> void:
 func _on_mouse_detect_large_straight_mouse_entered() -> void:
 	print("mouse_over_l_straight")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !large_straight_locked_in:
 		large_straight_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		large_straight_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -829,6 +847,8 @@ func _on_mouse_detect_large_straight_mouse_exited() -> void:
 func _on_mouse_detect_full_house_mouse_entered() -> void:
 	print("mouse_over_full_house")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !full_house_locked_in:
 		full_house_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		full_house_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -848,6 +868,8 @@ func _on_mouse_detect_full_house_mouse_exited() -> void:
 func _on_mouse_detect_four_of_a_kind_mouse_entered() -> void:
 	print("mouse_over_four_of_a_kind")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !four_of_a_kind_locked_in:
 		four_of_a_kind_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		four_of_a_kind_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -867,6 +889,8 @@ func _on_mouse_detect_four_of_a_kind_mouse_exited() -> void:
 func _on_mouse_detect_yacht_mouse_entered() -> void:
 	print("mouse_over_yacht")
 	unhighlight_box()
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	if !yacht_locked_in:
 		yacht_score.outline_modulate = Color(0.781, 0.643, 0.0, 0.6)
 		yacht_score.modulate = Color(0.0, 0.184, 0.396, 0.729)
@@ -884,6 +908,10 @@ func _on_mouse_detect_yacht_mouse_exited() -> void:
 
 
 func _on_mouse_detect_leave_mouse_entered() -> void:
+	if get_parent().between_rounds:
+		return
+	if InputHandler.hovered_object != "scoresheet":
+		InputHandler.hovered_object = "scoresheet"
 	hovered_category = "outside"
 	print("readytoleave")
 	get_parent().dice_box.highlighton()

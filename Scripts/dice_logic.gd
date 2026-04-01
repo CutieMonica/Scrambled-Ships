@@ -140,7 +140,8 @@ func update_ui() -> void:
 func _physics_process(delta: float) -> void:
 		
 	if get_parent().linear_velocity.length() > 0.1 and !get_parent().storing:
-		get_parent().has_given_number = false
+		if get_parent().item_name != "Robot Die":
+			get_parent().has_given_number = false
 		
 	if get_parent().recalling:
 		get_parent().returning_to_box = false

@@ -205,7 +205,7 @@ func give_me_your_seed() -> void:
 		rng_statues.seed = random_seed
 		rng_upgrades.seed = random_seed
 		rng_cards.seed = random_seed
-	if run_number == 1:
+	if run_number == 0:
 		input_seed = 332815025
 		rng.seed = 332815025
 		rng_shops.seed = 332815025

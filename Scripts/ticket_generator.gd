@@ -302,7 +302,7 @@ var common_upgrades_tooltips : Dictionary = {
 	5:
 		"Step 1, Buy Ticket. Step 2, Get Money. Step 3, ????. Step 4, Profit.",
 	6:
-		"Flip a coin. If it lands on heads you get another roll, if it lands on tails you also get another roll.",
+		"Even more fuel to your coin-flipping addiction.",
 	7:
 		"Thankfully they're just playing cards. If they were jokers, that would be blatant copyright infringement.",
 	8:

@@ -28,6 +28,8 @@ extends Node
 @export var explosion_1 : Resource = preload("res://Assets/SFX/explosion.ogg")
 @export var explosion_2 : Resource = preload("res://Assets/SFX/vineboom.ogg")
 
+@export var robotbeep : Resource = preload("res://Assets/SFX/robotboop.ogg")
+
 @export var card_flip_1 : Resource = preload("uid://cqvrbh0rt0rej")
 @export var card_flip_2 : Resource = preload("uid://bkr2rgaqb3m1j")
 @export var card_flip_3 : Resource = preload("uid://du068mnat3rah")

@@ -138,6 +138,8 @@ func _physics_process(delta: float) -> void:
 			outside_the_box_multiplier_given_to_top_row = number
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
 			match number:
+				0:
+					pass
 				1:
 					get_parent().score_sheet.ones_multiplier += dice_logic.outside_the_box_multiplier
 				2:

@@ -146,7 +146,6 @@ var card_shop_slots_unlocked : int = 11
 @onready var dealer: Node3D = $Dealer
 @onready var screenshake: AnimationPlayer = $Screenshake
 
-
 var chosen_dice : Dictionary = {
 	1: basic_d6,
 	2: basic_d6,
@@ -382,6 +381,7 @@ func spawn_money() -> void:
 func round_start() -> void:
 	statue_stand.mouse_box_on()
 	get_tree().call_group("statues", "main_scene_round_started")
+	get_tree().call_group("robot", "reset_burnt")
 	get_tree().call_group("dice_logic", "round_start_trigger")
 	spawn_coins()
 	if !GameManager.is_postgame and GameManager.current_round < 9:
