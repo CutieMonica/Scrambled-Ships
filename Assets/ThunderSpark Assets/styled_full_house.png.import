@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnt3jhml147ch"
 path.s3tc="res://.godot/imported/styled_full_house.png-de2aa4fb9cc58bf06d07a74f6f028726.s3tc.ctex"
+path.etc2="res://.godot/imported/styled_full_house.png-de2aa4fb9cc58bf06d07a74f6f028726.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/ThunderSpark Assets/styled_full_house.png"
-dest_files=["res://.godot/imported/styled_full_house.png-de2aa4fb9cc58bf06d07a74f6f028726.s3tc.ctex"]
+dest_files=["res://.godot/imported/styled_full_house.png-de2aa4fb9cc58bf06d07a74f6f028726.s3tc.ctex", "res://.godot/imported/styled_full_house.png-de2aa4fb9cc58bf06d07a74f6f028726.etc2.ctex"]
 
 [params]
 

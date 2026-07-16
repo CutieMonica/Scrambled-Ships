@@ -12,9 +12,9 @@ config_version=5
 
 config/name="Scrambled Ships"
 config/description="Just a fun game of Yacht Dice, surely nothing else is going on in this boat."
-config/version="1.0"
+config/version="1.2"
 run/main_scene="uid://cikokvs42uudo"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/stretch_mode=4
 boot_splash/image="uid://b7ksrv1ulpya4"
 config/icon="uid://0npl86cl5w7f"
@@ -65,6 +65,12 @@ awaiting_new_slot=""
 statuefusionnew=""
 title=""
 card_waiting=""
+flashing_switch=""
+contrast_switch=""
+card=""
+card_logic=""
+motion_switch=""
+outline_switch=""
 
 [gui]
 
@@ -112,6 +118,11 @@ pause={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+performance_on_go={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 
@@ -127,6 +138,4 @@ rapier/solver/contact_natural_frequency=50.0
 
 [rendering]
 
-rendering_device/driver.windows="d3d12"
-rendering_device/fallback_to_vulkan=false
-rendering_device/fallback_to_d3d12=false
+textures/vram_compression/import_etc2_astc=true

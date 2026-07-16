@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dt0n1mcvyx6ub"
 path.s3tc="res://.godot/imported/DiscordLogoHovered.png-880f590c873ababe174ce2ea37d008a8.s3tc.ctex"
+path.etc2="res://.godot/imported/DiscordLogoHovered.png-880f590c873ababe174ce2ea37d008a8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/UI Stuff/DiscordLogoHovered.png"
-dest_files=["res://.godot/imported/DiscordLogoHovered.png-880f590c873ababe174ce2ea37d008a8.s3tc.ctex"]
+dest_files=["res://.godot/imported/DiscordLogoHovered.png-880f590c873ababe174ce2ea37d008a8.s3tc.ctex", "res://.godot/imported/DiscordLogoHovered.png-880f590c873ababe174ce2ea37d008a8.etc2.ctex"]
 
 [params]
 

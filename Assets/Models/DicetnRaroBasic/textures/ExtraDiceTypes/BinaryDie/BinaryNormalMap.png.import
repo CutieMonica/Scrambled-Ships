@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b004xdgthsjj"
 path.s3tc="res://.godot/imported/BinaryNormalMap.png-51c1dcbf1c1e84df31d8a87b4940be55.s3tc.ctex"
+path.etc2="res://.godot/imported/BinaryNormalMap.png-51c1dcbf1c1e84df31d8a87b4940be55.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/DicetnRaroBasic/textures/ExtraDiceTypes/BinaryDie/BinaryNormalMap.png"
-dest_files=["res://.godot/imported/BinaryNormalMap.png-51c1dcbf1c1e84df31d8a87b4940be55.s3tc.ctex"]
+dest_files=["res://.godot/imported/BinaryNormalMap.png-51c1dcbf1c1e84df31d8a87b4940be55.s3tc.ctex", "res://.godot/imported/BinaryNormalMap.png-51c1dcbf1c1e84df31d8a87b4940be55.etc2.ctex"]
 
 [params]
 

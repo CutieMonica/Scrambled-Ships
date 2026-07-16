@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvhw6pj7d8687"
 path.s3tc="res://.godot/imported/InscrybedNormal.png-e551883d5b0cb35d5e8e155d02c746a9.s3tc.ctex"
+path.etc2="res://.godot/imported/InscrybedNormal.png-e551883d5b0cb35d5e8e155d02c746a9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/DicetnRaroBasic/textures/ExtraDiceTypes/inscrybed/InscrybedNormal.png"
-dest_files=["res://.godot/imported/InscrybedNormal.png-e551883d5b0cb35d5e8e155d02c746a9.s3tc.ctex"]
+dest_files=["res://.godot/imported/InscrybedNormal.png-e551883d5b0cb35d5e8e155d02c746a9.s3tc.ctex", "res://.godot/imported/InscrybedNormal.png-e551883d5b0cb35d5e8e155d02c746a9.etc2.ctex"]
 
 [params]
 

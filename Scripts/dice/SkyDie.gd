@@ -31,6 +31,8 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var ray_cast_5: RayCast3D = $RayCast5
 @onready var ray_cast_6: RayCast3D = $RayCast6
 @onready var highlight: MeshInstance3D = $Highlight
+@onready var highlight_bubble: MeshInstance3D = $Highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Highlight/HighlightBubble/HighlightCircle
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
@@ -61,6 +63,9 @@ func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
+	if outside_the_box and GameManager.dialogue_seen.get(25) != true and InputHandler.actionable and sleeping and !GameManager.in_tutorial:
+		get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
+			
 	if linear_velocity.length() < 0.1 and !has_given_number:
 		current_pos = position
 		if ray_cast_1.is_colliding():
@@ -89,10 +94,9 @@ func _physics_process(delta: float) -> void:
 			dice_logic.dice_side_up = 6
 			
 		dice_logic.remove_modifier()
+		
 		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
 			outside_the_box_multiplier_given_to_top_row = number
-			if GameManager.dialogue_seen.get(25) != true:
-				get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
 			match number:
 				1:

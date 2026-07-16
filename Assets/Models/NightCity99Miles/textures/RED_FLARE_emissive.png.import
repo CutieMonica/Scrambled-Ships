@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj3184egaam4c"
 path.s3tc="res://.godot/imported/RED_FLARE_emissive.png-b8a06d1c974e6e58a9b3e25144b221bc.s3tc.ctex"
+path.etc2="res://.godot/imported/RED_FLARE_emissive.png-b8a06d1c974e6e58a9b3e25144b221bc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/NightCity99Miles/textures/RED_FLARE_emissive.png"
-dest_files=["res://.godot/imported/RED_FLARE_emissive.png-b8a06d1c974e6e58a9b3e25144b221bc.s3tc.ctex"]
+dest_files=["res://.godot/imported/RED_FLARE_emissive.png-b8a06d1c974e6e58a9b3e25144b221bc.s3tc.ctex", "res://.godot/imported/RED_FLARE_emissive.png-b8a06d1c974e6e58a9b3e25144b221bc.etc2.ctex"]
 
 [params]
 

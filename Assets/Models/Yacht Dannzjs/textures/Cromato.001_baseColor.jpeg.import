@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0n6gwo2y43m"
 path.s3tc="res://.godot/imported/Cromato.001_baseColor.jpeg-0c19a50f9853606834987100c9b6d83e.s3tc.ctex"
+path.etc2="res://.godot/imported/Cromato.001_baseColor.jpeg-0c19a50f9853606834987100c9b6d83e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/Yacht Dannzjs/textures/Cromato.001_baseColor.jpeg"
-dest_files=["res://.godot/imported/Cromato.001_baseColor.jpeg-0c19a50f9853606834987100c9b6d83e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Cromato.001_baseColor.jpeg-0c19a50f9853606834987100c9b6d83e.s3tc.ctex", "res://.godot/imported/Cromato.001_baseColor.jpeg-0c19a50f9853606834987100c9b6d83e.etc2.ctex"]
 
 [params]
 

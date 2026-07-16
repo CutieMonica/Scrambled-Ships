@@ -7,6 +7,8 @@ class_name JellyDie
 @onready var dice_logic: DiceLogic = $DiceLogic
 @onready var highlight: MeshInstance3D = $Object_4
 @onready var mesh: MeshInstance3D = $Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/Dice_0/Object_4
+@onready var highlight_bubble: MeshInstance3D = $Object_4/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Object_4/HighlightBubble/HighlightCircle
 
 @onready var blade_bounce: Timer = $BladeBounce
 var velocity_zeroed : bool = false
@@ -36,6 +38,10 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+const FRED_DIE_NORMAL = preload("uid://bxdie43ia7xfm")
+const FREDDY_DIE = preload("uid://boy2xfrqf135q")
+
+
 @export var item_type : String = "Die"
 @export var item_name : String = "Jelly Die"
 @export var tooltip : String = "Bwow, bwomp, bwoooouwm"
@@ -54,6 +60,18 @@ func _ready() -> void:
 	rigid_body_3d.rotate_z(rotating_z * 90)
 	gravity_scale = dice_logic.default_gravity
 	mass = dice_logic.default_mass
+	if GameManager.fredmode:
+		freeze = false
+		rigid_body_3d.rotation = Vector3(0, 0, 1.5) 
+		dice_logic.dice_storage_rotation = Vector3(0, 0, 1.5)
+		freeze = true
+		dice_logic.dice_side_up = 2
+		dice_logic.texture = FREDDY_DIE
+		dice_logic.normal = FRED_DIE_NORMAL
+		dice_logic.roughness = FRED_DIE_NORMAL
+		item_name = "Fred Die"
+		tooltip = "Does not contain Mercury. Might be French, though."
+		description = "Rolls 1-6. Would be more squishy than bouncy if SOMEONE learned how to use soft bodies properly."
 	
 func update_ui() -> void:
 	dice_logic.update_ui()
@@ -63,6 +81,10 @@ func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
+	
+	if outside_the_box and GameManager.dialogue_seen.get(25) != true and InputHandler.actionable and sleeping and !GameManager.in_tutorial:
+		get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
+			
 	if linear_velocity.length() < 0.1 and !has_given_number:
 		current_pos = position
 		if ray_cast_1.is_colliding():
@@ -90,10 +112,9 @@ func _physics_process(delta: float) -> void:
 			dice_logic.dice_storage_rotation = Vector3(0, 0, -3)
 			dice_logic.dice_side_up = 6
 		dice_logic.remove_modifier()
+		
 		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
 			outside_the_box_multiplier_given_to_top_row = number
-			if GameManager.dialogue_seen.get(25) != true:
-				get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
 			match number:
 				1:

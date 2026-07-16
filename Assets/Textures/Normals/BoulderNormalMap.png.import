@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cim3n4016ciqq"
 path.s3tc="res://.godot/imported/BoulderNormalMap.png-debe5338c9bd68329ca66c6ed26e2a68.s3tc.ctex"
+path.etc2="res://.godot/imported/BoulderNormalMap.png-debe5338c9bd68329ca66c6ed26e2a68.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Normals/BoulderNormalMap.png"
-dest_files=["res://.godot/imported/BoulderNormalMap.png-debe5338c9bd68329ca66c6ed26e2a68.s3tc.ctex"]
+dest_files=["res://.godot/imported/BoulderNormalMap.png-debe5338c9bd68329ca66c6ed26e2a68.s3tc.ctex", "res://.godot/imported/BoulderNormalMap.png-debe5338c9bd68329ca66c6ed26e2a68.etc2.ctex"]
 
 [params]
 

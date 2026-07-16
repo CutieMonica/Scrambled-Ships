@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgb1ksujx7am2"
 path.s3tc="res://.godot/imported/DiceCounterPaper.png-541ca793425e4b2cc691f403ba36523f.s3tc.ctex"
+path.etc2="res://.godot/imported/DiceCounterPaper.png-541ca793425e4b2cc691f403ba36523f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/DiceCounterPaper.png"
-dest_files=["res://.godot/imported/DiceCounterPaper.png-541ca793425e4b2cc691f403ba36523f.s3tc.ctex"]
+dest_files=["res://.godot/imported/DiceCounterPaper.png-541ca793425e4b2cc691f403ba36523f.s3tc.ctex", "res://.godot/imported/DiceCounterPaper.png-541ca793425e4b2cc691f403ba36523f.etc2.ctex"]
 
 [params]
 

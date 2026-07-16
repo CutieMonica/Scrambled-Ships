@@ -8,14 +8,14 @@ uniform sampler2D SCREEN_TEXTURE : source_color, hint_screen_texture, repeat_dis
 uniform float zNear = 0.05;
 uniform float zFar = 100;
 
-uniform bool enable_outline = false;
-uniform vec3 outline_color : source_color = vec3(0.0,0.0,0.0);
-uniform float outline_thickness = 10.0;
+uniform bool enable_outline = true;
+uniform vec3 outline_color : source_color = vec3(1.0, 0.832, 0.959);
+uniform float outline_thickness = 0.4;
 
-uniform bool enable_color_limit = true;
-uniform int color_levels : hint_range(2, 32) = 8;
+uniform bool enable_color_limit = false;
+uniform int color_levels : hint_range(2, 32) = 22;
 
-uniform bool enable_color_palette = true;
+uniform bool enable_color_palette = false;
 uniform vec4 color1  : source_color  = vec4(1.0,0.925,0.839,1.0);			//#bfbfbf - avg = 0.749
 uniform vec4 color2  : source_color  = vec4(1.0,0.831,0.639,1.0);			//#71a668 - avg = 0.501
 uniform vec4 color3  : source_color  = vec4(1.0,0.667,0.369,1.0);			//#6a86b0 - avg = 0.543
@@ -28,7 +28,7 @@ uniform vec4 color8  : source_color  = vec4(0.05,0.169,0.271,1.0);			//#2e253d -
 // In order, dark -> light
 // 8,7,4,5,2,3,6,1
 uniform bool enable_dithering = true;
-uniform float dither_strength : hint_range(0.0, 1.0) = 0.3;
+uniform float dither_strength : hint_range(0.0, 1.0) = 1;
 
 //This shader uses the sobel-feldman operation to create outlines for any object on the screen.
 //It utilizes the depth and normal buffers to create the most accurate or complete outlines.

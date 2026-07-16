@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://jabs1pxp48lv"
 path.s3tc="res://.godot/imported/fourofakindlowerfloor.png-7edd980351e763549acb84882de14a81.s3tc.ctex"
+path.etc2="res://.godot/imported/fourofakindlowerfloor.png-7edd980351e763549acb84882de14a81.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/ticketicons/fourofakindlowerfloor.png"
-dest_files=["res://.godot/imported/fourofakindlowerfloor.png-7edd980351e763549acb84882de14a81.s3tc.ctex"]
+dest_files=["res://.godot/imported/fourofakindlowerfloor.png-7edd980351e763549acb84882de14a81.s3tc.ctex", "res://.godot/imported/fourofakindlowerfloor.png-7edd980351e763549acb84882de14a81.etc2.ctex"]
 
 [params]
 

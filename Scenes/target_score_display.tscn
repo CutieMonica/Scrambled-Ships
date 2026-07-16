@@ -182,51 +182,17 @@ mesh = SubResource("BoxMesh_ahuql")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0049999766, 0.19999999, 2.55)
 mesh = SubResource("BoxMesh_btn3u")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=906328039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67499995, 0)
-visible = false
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=939633739]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.45499998, 0.014999993)
 light_color = Color(0, 1, 0, 1)
-light_indirect_energy = 3.438
-light_volumetric_fog_energy = 4.048
-light_size = 0.457
-light_specular = 1.719
-shadow_bias = 1.814
-distance_fade_begin = 0.0
-distance_fade_shadow = 596.13
-omni_range = 3.217
+light_energy = 4.0
+area_size = Vector2(0.7814112, 4.607737)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1226179873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59999996, 1.1899999)
-light_color = Color(1.11904e-06, 0.42687547, 7.70092e-07, 1)
-light_bake_mode = 1
-shadow_bias = 1.814
-distance_fade_begin = 0.0
-distance_fade_shadow = 596.13
-omni_range = 3.217
-omni_attenuation = 2.0
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1493984631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5749999, 3.27)
-light_color = Color(1.11904e-06, 0.42687547, 7.70092e-07, 1)
-light_bake_mode = 1
-shadow_bias = 1.814
-distance_fade_begin = 0.0
-distance_fade_shadow = 596.13
-omni_range = 3.217
-omni_attenuation = 2.0
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=573812562]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67499995, -1.345)
-visible = false
+[node name="AreaLight3D2" type="AreaLight3D" parent="." unique_id=1437326085]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.45499998, 3.565)
 light_color = Color(0, 1, 0, 1)
-light_indirect_energy = 3.438
-light_volumetric_fog_energy = 4.048
-light_size = 0.457
-light_specular = 1.719
-shadow_bias = 1.814
-distance_fade_begin = 0.0
-distance_fade_shadow = 596.13
-omni_range = 3.217
+light_energy = 4.0
+area_size = Vector2(0.7814112, 1.3404679)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=469613952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.145)
@@ -239,3 +205,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009999961, 0.20250002, 0.99
 shape = SubResource("BoxShape3D_2xv7r")
 
 [node name="VariableTimer" type="Timer" parent="." unique_id=95203118]
+
+[node name="PanicTimer" type="Timer" parent="." unique_id=1382739035]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="PanicTimer" to="." method="_on_panic_timer_timeout"]

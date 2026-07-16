@@ -5,6 +5,8 @@ class_name CursedDie
 @onready var rigid_body_3d: CursedDie = $"."
 
 @onready var dice_logic: DiceLogic = $DiceLogic
+@onready var highlight_bubble: MeshInstance3D = $Highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Highlight/HighlightBubble/HighlightCircle
 
 @onready var mesh: MeshInstance3D = $Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/Dice_0/Object_4
 var number : int = 1

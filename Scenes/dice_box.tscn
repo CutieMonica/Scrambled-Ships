@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://d0wlwayp70uwa"]
 
 [ext_resource type="Script" uid="uid://dy2y7k7ofm8ww" path="res://Scripts/dice_box.gd" id="1_hf8wg"]
-[ext_resource type="Texture2D" uid="uid://bhj4kv7p52qgf" path="res://Assets/Textures/black_fabric.jpg" id="1_k4asg"]
-[ext_resource type="Texture2D" uid="uid://celca3loe88k4" path="res://Assets/Textures/felttexture.png" id="1_tmp4e"]
-[ext_resource type="Texture2D" uid="uid://tfxhpqat7n5y" path="res://Assets/Textures/Normals/FeltNormalMap.png" id="3_8w3c8"]
+[ext_resource type="Texture2D" uid="uid://cvuwifqeqcbly" path="res://Assets/Textures/Texturelabs_Fabric_148M.jpg" id="2_8w3c8"]
+[ext_resource type="Texture2D" uid="uid://b3wr8q6kogkce" path="res://Assets/Textures/Normals/FeltFabricSpecularMap.jpg" id="3_at6vx"]
+[ext_resource type="Texture2D" uid="uid://cggktiivvrn8c" path="res://Assets/Textures/Normals/FeltFabricNormalMap.jpg" id="4_7cw85"]
 [ext_resource type="Material" uid="uid://cgi1c5meifdr1" path="res://Materials/wooden_mat.tres" id="4_8w3c8"]
+[ext_resource type="Texture2D" uid="uid://vn0xtcgxhvfa" path="res://Assets/Textures/Normals/FeltFabricDisplacementMap.jpg" id="5_l0bp7"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="6_23pg4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hf8wg"]
 friction = 0.8
@@ -15,13 +17,21 @@ absorbent = true
 margin = 0.5
 size = Vector3(1, 0.021984374, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_at6vx"]
+load_path = "res://.godot/imported/FeltFabricAmbientOcclusionMap.jpg-c3d92b0f515cfe0a78ceb51df6233f38.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyrr4"]
 albedo_color = Color(0.40832946, 0.40832946, 0.40832946, 1)
-albedo_texture = ExtResource("1_k4asg")
-metallic_specular = 0.0
-roughness_texture = ExtResource("1_tmp4e")
+albedo_texture = ExtResource("2_8w3c8")
+metallic = 0.18
+metallic_specular = 0.11
+metallic_texture = ExtResource("3_at6vx")
+roughness = 0.63
+roughness_texture = ExtResource("5_l0bp7")
 normal_enabled = true
-normal_texture = ExtResource("3_8w3c8")
+normal_scale = 1.61
+normal_texture = ExtResource("4_7cw85")
+ao_texture = SubResource("CompressedTexture2D_at6vx")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tyrr4"]
 material = SubResource("StandardMaterial3D_tyrr4")
@@ -52,7 +62,7 @@ size = Vector3(0.099999994, 0.19, 0.04)
 
 [sub_resource type="BoxMesh" id="BoxMesh_k4asg"]
 material = ExtResource("4_8w3c8")
-size = Vector3(1.2, 0.2, 0.1)
+size = Vector3(1.12, 0.2, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tmp4e"]
 material = ExtResource("4_8w3c8")
@@ -108,6 +118,10 @@ emission = Color(1, 1, 1, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_k4asg"]
 material = SubResource("StandardMaterial3D_k4asg")
 size = Vector2(12.5, 12.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_at6vx"]
+material = ExtResource("6_23pg4")
+size = Vector2(12.5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hf8wg"]
 size = Vector3(6947.19, 0.001, 5426.23)
@@ -355,11 +369,11 @@ transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.55
 shape = SubResource("BoxShape3D_4ol11")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Base2" unique_id=1881037076]
-transform = Transform3D(-0.98999995, 0, 8.7422784e-08, 0, 1, 0, -8.654855e-08, 0, -1, 0.015, 0.101, 0.55)
+transform = Transform3D(-0.98999995, 0, 8.7422784e-08, 0, 1, 0, -8.654855e-08, 0, -1, 0.05250001, 0.101, 0.55)
 mesh = SubResource("BoxMesh_k4asg")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Base2" unique_id=764042569]
-transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, 0.005, 0.101, -0.55)
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, 0.049000002, 0.101, -0.55)
 mesh = SubResource("BoxMesh_k4asg")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Base2" unique_id=73548620]
@@ -478,7 +492,24 @@ shape = SubResource("BoxShape3D_0tqhf")
 visible = false
 
 [node name="BaseGlow" type="MeshInstance3D" parent="Glowers" unique_id=2069111179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
 mesh = SubResource("PlaneMesh_k4asg")
+
+[node name="BoxHighlight" type="MeshInstance3D" parent="Glowers/BaseGlow" unique_id=913596973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16, -6.2499995)
+mesh = SubResource("QuadMesh_at6vx")
+
+[node name="BoxHighlight2" type="MeshInstance3D" parent="Glowers/BaseGlow" unique_id=77372695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16, 6.2499995)
+mesh = SubResource("QuadMesh_at6vx")
+
+[node name="BoxHighlight3" type="MeshInstance3D" parent="Glowers/BaseGlow" unique_id=1125473796]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.25, 1.16, 0)
+mesh = SubResource("QuadMesh_at6vx")
+
+[node name="BoxHighlight4" type="MeshInstance3D" parent="Glowers/BaseGlow" unique_id=118903283]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.25, 1.16, 0)
+mesh = SubResource("QuadMesh_at6vx")
 
 [node name="DieDetector" type="Area3D" parent="." unique_id=2043999481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, 0)

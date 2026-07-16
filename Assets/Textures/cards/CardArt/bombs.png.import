@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://v7henwksk06j"
 path.s3tc="res://.godot/imported/bombs.png-09c70dfe4cad45a52841c9b02a83f1f5.s3tc.ctex"
+path.etc2="res://.godot/imported/bombs.png-09c70dfe4cad45a52841c9b02a83f1f5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/cards/CardArt/bombs.png"
-dest_files=["res://.godot/imported/bombs.png-09c70dfe4cad45a52841c9b02a83f1f5.s3tc.ctex"]
+dest_files=["res://.godot/imported/bombs.png-09c70dfe4cad45a52841c9b02a83f1f5.s3tc.ctex", "res://.godot/imported/bombs.png-09c70dfe4cad45a52841c9b02a83f1f5.etc2.ctex"]
 
 [params]
 

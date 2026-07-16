@@ -34,6 +34,8 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var highlight: MeshInstance3D = $Highlight
+@onready var highlight_bubble: MeshInstance3D = $Highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Highlight/HighlightBubble/HighlightCircle
 @onready var number_buffer: Timer = $NumberBuffer
 @onready var cpu_particles_3d: CPUParticles3D = $CPUParticles3D
 

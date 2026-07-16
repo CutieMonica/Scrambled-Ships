@@ -9,6 +9,8 @@ class_name basicD6
 @onready var mesh: MeshInstance3D = $Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/Dice_0/Object_4
 @onready var highlight: MeshInstance3D = $Object_4
 const JONNYDICE = preload("uid://crnqhcitbdl56")
+@onready var highlight_bubble: MeshInstance3D = $Object_4/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Object_4/HighlightBubble/HighlightCircle
 
 
 var number : int = 1
@@ -68,8 +70,13 @@ func return_to_box() -> void:
 	dice_logic.return_to_box()
 
 func _physics_process(delta: float) -> void:
+	
+	if outside_the_box and GameManager.dialogue_seen.get(25) != true and InputHandler.actionable and sleeping and !GameManager.in_tutorial:
+		get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
+		
 	if dice_logic.just_spawned == true:
 		return
+		
 	if linear_velocity.length() < 0.1 and !has_given_number:
 		current_pos = position
 		if ray_cast_1.is_colliding():
@@ -98,12 +105,10 @@ func _physics_process(delta: float) -> void:
 			dice_logic.dice_side_up = 6
 			
 		dice_logic.remove_modifier()
-		
+			
 		if outside_the_box and get_parent().score_sheet.dice_giving_temp_modifier.get(dice_position) == false:
 			outside_the_box_multiplier_given_to_top_row = number
 			get_parent().score_sheet.dice_giving_temp_modifier.set(dice_position, true)
-			if GameManager.dialogue_seen.get(25) != true:
-				get_parent().dialogue_player.outside_the_box_roll_credits_holy_shit_dude_omg()
 			match number:
 				1:
 					get_parent().score_sheet.ones_multiplier += dice_logic.outside_the_box_multiplier

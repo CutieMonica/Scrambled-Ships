@@ -9,6 +9,8 @@ var card_being_replaced : bool = false
 
 var moving_to_target : bool = false
 
+var hovered : bool = false
+
 var card_sound_1 := SfxBank.card_flip_1
 var card_sound_2 := SfxBank.card_flip_2
 var card_sound_3 := SfxBank.card_flip_3
@@ -79,20 +81,39 @@ func change_layers() -> void:
 	#get_parent().card_front.get_active_material(0).render_priority -= (card_position * 5)
 	
 func focuscard() -> void:
-	if InputHandler.hovered_object != "scoresheet" and !activated and get_tree().get_first_node_in_group("main").between_rounds == false or GameManager.choosing_new_cards:
-		get_parent().animation_player.play("highlight")
+	GameManager.card_count = get_tree().get_first_node_in_group("main").card_deck.size() - get_tree().get_first_node_in_group("main").card_deck.values().count(null)
+	if InputHandler.hovered_object != "scoresheet" and !activated and !moving_to_target and get_tree().get_first_node_in_group("main").between_rounds == false or GameManager.choosing_new_cards and !moving_to_target or GameManager.viewing_cards and !moving_to_target:
+		get_parent().outline.visible = true
 		get_parent().focused = true
 		InputHandler.hovered_object = "card" + str(card_position)
 		print(InputHandler.hovered_object)
+		
+		if !GameManager.choosing_new_cards or !GameManager.viewing_cards:
+			if card_position >= GameManager.card_count and GameManager.card_count > 1:
+				get_parent().card_highlight_4.visible = false
+				get_parent().card_highlight_5.visible = true
+			if card_position == 1 and GameManager.card_count > 1:
+				get_parent().card_highlight_4.visible = true
+				get_parent().card_highlight_5.visible = false
+			if card_position != 1 and GameManager.card_count > card_position:
+				get_parent().card_highlight_4.visible = false
+				get_parent().card_highlight_5.visible = false
+			if GameManager.card_count == 1:
+				get_parent().card_highlight_4.visible = true
+				get_parent().card_highlight_5.visible = true
+		if GameManager.choosing_new_cards or GameManager.viewing_cards:
+			get_parent().card_highlight_2.visible = true
+			get_parent().card_highlight_3.visible = true
+			get_parent().card_highlight_4.visible = true
+			get_parent().card_highlight_5.visible = true
 	else:
 		pass
 
 func unfocuscard() -> void:
-	if !activated:
-		get_parent().animation_player.play("unhighlight")
-		get_parent().focused = false
-		if InputHandler.hovered_object == "card" + str(card_position):
-			InputHandler.hovered_object = "none"
+	get_parent().outline.visible = false
+	get_parent().focused = false
+	if InputHandler.hovered_object == "card" + str(card_position):
+		InputHandler.hovered_object = "none"
 
 func _process(delta: float) -> void:
 	if move_along_now and !activated:
@@ -102,7 +123,14 @@ func _process(delta: float) -> void:
 		pass
 	if moving_to_target:
 		get_parent().position = lerp(get_parent().position, get_parent().get_parent().card_placement_references.get(card_position).position, delta * 9)
-
+	if hovered and GameManager.choosing_new_cards and !moving_to_target and !get_parent().focused:
+		focuscard()
+	if get_parent().outline.visible:
+		if hovered:
+			return
+		if moving_to_target or activated or get_parent().get_parent().card_animations.is_playing():
+			unfocuscard()
+		
 func card_interact() -> void:
 	if !in_shop and GameManager.viewing_cards:
 		if get_parent().item_name == "Reverse Card" and get_parent().get_parent().in_play_statues.values().count(null) == 6:
@@ -124,6 +152,8 @@ func card_interact() -> void:
 		InputHandler.actionable = false
 		get_parent().yall_ready_for_this()
 		timer.start()
+		get_tree().call_group("card_logic", "unfocuscard")
+		unfocuscard()
 	if GameManager.viewing_cards == false:
 		return
 
@@ -134,6 +164,7 @@ func _on_timer_timeout() -> void:
 	get_parent().audio_stream_player_3d.pitch_scale = 1
 
 func card_dies() -> void:
+	GameManager.card_count = get_tree().get_first_node_in_group("main").card_deck.size() - get_tree().get_first_node_in_group("main").card_deck.values().count(null)
 	InputHandler.actionable = true
 	get_parent().queue_free()
 
@@ -144,16 +175,21 @@ func purchase_card() -> void:
 		card_position = target_slot
 		get_parent().get_parent().card_deck.set(target_slot, get_parent())
 		in_shop = false
-		get_parent().get_parent().shop_to_card_deck()
-		await get_tree().create_timer(0.9).timeout
+		if !GameManager.reduce_motion:
+			get_parent().get_parent().shop_to_card_deck()
+			await get_tree().create_timer(0.9).timeout
+		if GameManager.reduce_motion:
+			poof_particle.emitting = true
+			await get_tree().create_timer(0.5).timeout
 		get_parent().global_position = Vector3(get_parent().get_parent().card_placement_references.get(card_position).global_position.x + 20, get_parent().get_parent().card_placement_references.get(card_position).global_position.y, get_parent().get_parent().card_placement_references.get(card_position).global_position.z)
 		get_parent().rotation = get_parent().get_parent().card_placement_references.get(card_position).rotation
 		moving_to_target = true
-		GameManager.card_count += 1
+		GameManager.card_count = get_tree().get_first_node_in_group("main").card_deck.size() - get_tree().get_first_node_in_group("main").card_deck.values().count(null)
 		remove_from_group("awaiting_new_slot")
 		change_layers()
 		await get_tree().create_timer(0.8).timeout
-		get_parent().get_parent().card_deck_to_shop()
+		if !GameManager.reduce_motion:
+			get_parent().get_parent().card_deck_to_shop()
 		moving_to_target = false
 		return
 	if target_slot == 0:
@@ -173,6 +209,7 @@ func replaced() -> void:
 	get_parent().audio_stream_player_3d.play()
 	get_parent().get_parent().choosing_new_card = false
 	GameManager.choosing_new_cards = false
+	GameManager.card_count = get_tree().get_first_node_in_group("main").card_deck.size() - get_tree().get_first_node_in_group("main").card_deck.values().count(null)
 	await get_tree().create_timer(0.05).timeout
 	get_parent().card_visuals.visible = false
 	unfocuscard()
@@ -193,7 +230,7 @@ func go_to_new_slot(slot : int) -> void:
 	in_shop = false
 	get_parent().get_parent().dialogue_player.no_dialogue()
 	remove_from_group("awaiting_new_slot")
-	GameManager.card_count += 1
+	GameManager.card_count = get_tree().get_first_node_in_group("main").card_deck.size() - get_tree().get_first_node_in_group("main").card_deck.values().count(null)
 	await get_tree().create_timer(0.9).timeout
 	for i : int in get_tree().get_first_node_in_group("main").card_deck.size():
 		if get_tree().get_first_node_in_group("main").card_deck.get(i) != null:

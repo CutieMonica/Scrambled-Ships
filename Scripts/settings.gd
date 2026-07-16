@@ -15,6 +15,12 @@ var pencil_sound_2 := preload("res://Assets/SFX/pencilsound2.ogg")
 @onready var music_volume_ui: HSlider = $CanvasLayer/TextureRect/MusicVolume
 @onready var sfx_volume_ui: HSlider = $CanvasLayer/TextureRect/SFXVolume
 @onready var option_button: OptionButton = $CanvasLayer/TextureRect/OptionButton
+@onready var dice_value: CheckButton = $CanvasLayer/TextureRect/DiceValue
+@onready var motion_button: CheckButton = $CanvasLayer/TextureRect/MotionButton
+@onready var contrast_button: CheckButton = $CanvasLayer/TextureRect/ContrastButton
+@onready var flashing_button: CheckButton = $CanvasLayer/TextureRect/FlashingButton
+@onready var pixelization: CheckButton = $CanvasLayer/TextureRect/Pixelization
+
 var settings_up : bool = false
 
 func random_sound() -> void:
@@ -28,11 +34,16 @@ func random_sound() -> void:
 
 func _ready() -> void:
 	SaveLoad._load()
+	
 	audio_stream_player.volume_db = -86
-	if GameManager.performance_mode == true:
-		check_button.button_pressed = true
-	else:
-		check_button.button_pressed = false
+	
+	check_button.button_pressed = GameManager.performance_mode
+	dice_value.button_pressed = GameManager.number_display
+	motion_button.button_pressed = GameManager.reduce_motion
+	contrast_button.button_pressed = GameManager.increase_contrast
+	flashing_button.button_pressed = GameManager.reduce_flashing
+	pixelization.button_pressed = GameManager.pixelization
+	
 	if GameManager.is_on_web == true:
 		check_button.disabled = true
 	screensize = SaveLoad.SaveFileData.screensize
@@ -84,21 +95,19 @@ func _on_texture_button_pressed() -> void:
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	random_sound()
 	if toggled_on:
-		GameManager.toggle_performance_mode(true)
+		GameManager.performance_mode = true
 		SaveLoad.SaveFileData.performance_mode = true
 		get_tree().call_group("performance_switch", "performance_switch")
-		Engine.physics_ticks_per_second = 120
 	if !toggled_on:
-		GameManager.toggle_performance_mode(false)
+		GameManager.performance_mode = false
 		SaveLoad.SaveFileData.performance_mode = false
 		get_tree().call_group("performance_switch", "performance_switch")
-		Engine.physics_ticks_per_second = 120 
+	GameManager.filter_shift()
 
 func _on_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, value)
 	SaveLoad.SaveFileData.sfx_volume = value
 	sfx_volume = value
-	check_button.grab_focus()
 
 func _on_music_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(1, value)
@@ -134,11 +143,68 @@ func and_then_i_pull_up_hop_out_at_the_after_party() -> void:
 	
 	#else:
 		#line_edit.text = str(0)
-func _on_line_edit_text_changed(_new_text: String) -> void:
-	GameManager.input_seed = (int(line_edit.text))
+func _on_line_edit_text_changed(new_text: String) -> void:
+	GameManager.input_seed = hash(new_text)
 	if line_edit.text == "sv_cheats 1":
 		PauseScreen.playsound(1)
 		InputHandler.cheats_enabled = true
 	if line_edit.text == "RaZeR":
 		PauseScreen.playsound(1)
 		GameManager.jonnymode = !GameManager.jonnymode
+	if line_edit.text == "FredEx":
+		PauseScreen.playsound(1)
+		GameManager.fredmode = !GameManager.fredmode
+	
+
+
+func _on_dice_value_toggled(toggled_on: bool) -> void:
+	random_sound()
+	if toggled_on:
+		GameManager.number_display = true
+		SaveLoad.SaveFileData.number_display = true
+	if !toggled_on:
+		GameManager.number_display = false
+		SaveLoad.SaveFileData.number_display = false
+
+
+func _on_motion_button_toggled(toggled_on: bool) -> void:
+	random_sound()
+	if toggled_on:
+		GameManager.reduce_motion = true
+		SaveLoad.SaveFileData.reduce_motion = true
+	if !toggled_on:
+		GameManager.reduce_motion = false
+		SaveLoad.SaveFileData.reduce_motion = false
+	get_tree().call_group("motion_switch", "motion_switch")
+
+func _on_contrast_button_toggled(toggled_on: bool) -> void:
+	random_sound()
+	if toggled_on:
+		GameManager.increase_contrast = true
+		SaveLoad.SaveFileData.increase_contrast = true
+	if !toggled_on:
+		GameManager.increase_contrast = false
+		SaveLoad.SaveFileData.increase_contrast = false
+	get_tree().call_group("contrast_switch", "contrast_switch")
+	GameManager.filter_shift()
+
+func _on_flashing_button_toggled(toggled_on: bool) -> void:
+	random_sound()
+	if toggled_on:
+		GameManager.reduce_flashing = true
+		SaveLoad.SaveFileData.reduce_flashing = true
+	if !toggled_on:
+		GameManager.reduce_flashing = false
+		SaveLoad.SaveFileData.reduce_flashing = false
+	get_tree().call_group("flashing_switch", "flashing_switch")
+
+func _on_pixelization_toggled(toggled_on: bool) -> void:
+	random_sound()
+	if toggled_on:
+		GameManager.pixelization = true
+		SaveLoad.SaveFileData.pixelization = true
+	if !toggled_on:
+		GameManager.pixelization = false
+		SaveLoad.SaveFileData.pixelization = false
+	#GameManager.filter_shift()
+	get_tree().call_group("outline_switch", "outline_switch")

@@ -2,6 +2,7 @@ extends Control
 @onready var dialogue_handler_2: Control = $DialogueHandler2
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var flashing_lights_color: ColorRect = $FlashingLightsColor
 
 func _ready() -> void:
 	GlobalMusicPlayer.play_breakdown_song() 
@@ -10,6 +11,10 @@ func _ready() -> void:
 	get_tree().call_group("DealerDialogue", "ending_instability")
 	animation_player.play("breakdown")
 	timer.start()
+	if GameManager.reduce_flashing:
+		flashing_lights_color.visible = true
+	else:
+		flashing_lights_color.visible = false
 
 
 func _on_timer_timeout() -> void:

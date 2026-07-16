@@ -96,7 +96,9 @@
 [ext_resource type="Texture2D" uid="uid://bfjwcny64gsnw" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-90.png" id="94_hbvsk"]
 [ext_resource type="Texture2D" uid="uid://yfn28yb6dpff" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-91.png" id="95_neltr"]
 [ext_resource type="Texture2D" uid="uid://bm6r0252qrrlo" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-92.png" id="96_t2mso"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="96_taem4"]
 [ext_resource type="Texture2D" uid="uid://87jbjddr3fd8" path="res://Assets/Textures/lowqualityexplosion/6a1cf840-3b3d-4296-acf2-8489cbcdc607-93.png" id="97_5cash"]
+[ext_resource type="Shader" uid="uid://c4ifmvxkjglyn" path="res://Shaders/highlight.gdshader" id="97_8ds6r"]
 [ext_resource type="PackedScene" uid="uid://crcpsnxro28o7" path="res://Scenes/card_logic.tscn" id="98_urq1j"]
 [ext_resource type="Texture2D" uid="uid://x7xp7sx6t2d3" path="res://Assets/particles/smoketexture.png" id="99_ginii"]
 
@@ -927,7 +929,7 @@ point_count = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urq1j"]
 resource_local_to_scene = true
-render_priority = 16
+render_priority = 10
 depth_draw_mode = 1
 metallic = 0.71
 metallic_specular = 0.19
@@ -937,7 +939,43 @@ emission = Color(1, 0.50463665, 0.97491246, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_ginii"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_urq1j")
-size = Vector2(10.5, 15.5)
+size = Vector2(11, 16)
+
+[sub_resource type="QuadMesh" id="QuadMesh_7mqoc"]
+material = ExtResource("96_taem4")
+size = Vector2(11, 8)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vgjow"]
+fractal_weighted_strength = 0.46
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0lk8p"]
+noise = SubResource("FastNoiseLite_vgjow")
+seamless = true
+seamless_blend_skirt = 0.59
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyu0s"]
+render_priority = 30
+shader = ExtResource("97_8ds6r")
+shader_parameter/color = Color(0.81108326, 0.53377783, 1, 1)
+shader_parameter/color_edge = Color(0.9453252, 0.8572083, 1, 1)
+shader_parameter/emission_strength = 2.50000011875
+shader_parameter/rise_progress = 0.3270000155325
+shader_parameter/edge_width = 0.1230000058425
+shader_parameter/noise_scale = 4.844000226830119
+shader_parameter/noise_strength = 0.1930000091675
+shader_parameter/time_speed = 0.7690000365275
+shader_parameter/fade_softness = 0.3830000174939801
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_0lk8p")
+shader_parameter/top_fade_start = 0.0
+shader_parameter/top_fade_power = 5.0
+shader_parameter/invert_top_fade = false
+shader_parameter/wave_transparency = 0.5
+shader_parameter/wave_frequency = 10.7410004626975
+shader_parameter/wave_speed = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_s8rm6"]
+material = SubResource("ShaderMaterial_uyu0s")
+size = Vector2(16, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3ge4"]
 resource_local_to_scene = true
@@ -985,7 +1023,7 @@ radius = 22.14
 [sub_resource type="BoxShape3D" id="BoxShape3D_taem4"]
 size = Vector3(78.95, 4.6, 57.16)
 
-[node name="BombCard" type="Node3D" unique_id=1143179809]
+[node name="BombCard" type="Node3D" unique_id=1143179809 groups=["card"]]
 script = ExtResource("1_lyrm8")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2075573986]
@@ -1182,9 +1220,25 @@ text = "COMMON"
 font_size = 128
 
 [node name="Outline" type="MeshInstance3D" parent="CardVisuals" unique_id=1545889884]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.03)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.02)
 visible = false
 mesh = SubResource("PlaneMesh_ginii")
+
+[node name="CardHighlight2" type="MeshInstance3D" parent="CardVisuals/Outline" unique_id=1458467825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2399998, 8)
+mesh = SubResource("QuadMesh_7mqoc")
+
+[node name="CardHighlight3" type="MeshInstance3D" parent="CardVisuals/Outline" unique_id=67800577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24, -8)
+mesh = SubResource("QuadMesh_7mqoc")
+
+[node name="CardHighlight4" type="MeshInstance3D" parent="CardVisuals/Outline" unique_id=1927744689]
+transform = Transform3D(-4.371139e-08, 4.371139e-08, 1, -4.371139e-08, 1, -4.371139e-08, -1, -4.371139e-08, -4.3711385e-08, -5.5, 2.24, 0)
+mesh = SubResource("QuadMesh_s8rm6")
+
+[node name="CardHighlight5" type="MeshInstance3D" parent="CardVisuals/Outline" unique_id=563840897]
+transform = Transform3D(-4.371139e-08, 4.371139e-08, 1, -4.371139e-08, 1, -4.371139e-08, -1, -4.371139e-08, -4.3711385e-08, 5.5, 2.24, 0)
+mesh = SubResource("QuadMesh_s8rm6")
 
 [node name="CardBack" type="MeshInstance3D" parent="CardVisuals" unique_id=1935962852]
 transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 0.101, -0.02)

@@ -22,6 +22,7 @@ var sound_7 := preload("res://Assets/SFX/voice2/ooh.ogg")
 @onready var text_shader_animation: AnimationPlayer = $text_shader_animation
 @onready var outline: RichTextLabel = $Outline
 @onready var shadow: RichTextLabel = $Shadow
+@onready var contrast_adjuster: AnimationPlayer = $ContrastAdjuster
 
 func update_text() -> void:
 	label.visible_characters = 0
@@ -44,6 +45,7 @@ func update_text() -> void:
 			outline.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 			shadow.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 
+
 func _ready() -> void:
 	label.text = " "
 	outline.text = " "
@@ -54,6 +56,7 @@ func _ready() -> void:
 		align_screen = "top"
 		min_pitch = 0.9
 		max_pitch = 1.15
+	contrast_switch()
 
 func _process(_delta: float) -> void:
 	if start_cutscene == true:
@@ -105,3 +108,9 @@ func play_shake_1() -> void:
 	
 func play_shake_2() -> void:
 	text_shader_animation.play("shaky2")
+
+func contrast_switch() -> void:
+	if GameManager.increase_contrast:
+		contrast_adjuster.play("contraston")
+	else:
+		contrast_adjuster.play("contrastoff")

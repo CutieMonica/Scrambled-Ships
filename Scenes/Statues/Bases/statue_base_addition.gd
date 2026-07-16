@@ -8,6 +8,7 @@ var uncommon_values := GameManager.rng_statues.randi_range(6, 9)
 var rare_values := GameManager.rng_statues.randi_range(10, 30)
 var legendary_values := GameManager.rng_statues.randi_range(31, 100)
 var rarity : Array = [1, 2, 3, 4]
+var base_rarity : int = 0
 @export var weight_probabilities : Array = [10, 5, 2, 0.5]
 @onready var label_3d: Label3D = $Label3D
 @onready var statue_base_logic: StatueBaseLogic = $StatueBaseLogic
@@ -27,26 +28,22 @@ func create_value() -> void:
 	match random_value:
 		1:
 			base_statue_value = common_values
-			label_3d.modulate = statue_base_logic.common_text_color
-			label_3d.outline_modulate = statue_base_logic.common_text_outline_color
+			base_rarity = 1
 			get_parent().statue_bottom_rarity = 1
 			print("common base")
 		2:
 			base_statue_value = uncommon_values
-			label_3d.modulate = statue_base_logic.uncommon_text_color
-			label_3d.outline_modulate = statue_base_logic.uncommon_text_outline_color
+			base_rarity = 2
 			get_parent().statue_bottom_rarity = 2
 			print("uncommon base")
 		3:
 			base_statue_value = rare_values
-			label_3d.modulate = statue_base_logic.rare_text_color
-			label_3d.outline_modulate = statue_base_logic.rare_text_outline_color
+			base_rarity = 3
 			get_parent().statue_bottom_rarity = 3
 			print("rare base")
 		4:
 			base_statue_value = legendary_values
-			label_3d.modulate = statue_base_logic.legendary_text_color
-			label_3d.outline_modulate = statue_base_logic.legendary_text_outline_color
+			base_rarity = 4
 			get_parent().statue_bottom_rarity = 4
 			print("legendary base")
 	print(base_statue_value)

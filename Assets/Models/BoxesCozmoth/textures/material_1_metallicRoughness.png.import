@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://4aat14wvlb0l"
 path.s3tc="res://.godot/imported/material_1_metallicRoughness.png-e771c37db94291ccdb8a13ce60732bb2.s3tc.ctex"
+path.etc2="res://.godot/imported/material_1_metallicRoughness.png-e771c37db94291ccdb8a13ce60732bb2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/BoxesCozmoth/textures/material_1_metallicRoughness.png"
-dest_files=["res://.godot/imported/material_1_metallicRoughness.png-e771c37db94291ccdb8a13ce60732bb2.s3tc.ctex"]
+dest_files=["res://.godot/imported/material_1_metallicRoughness.png-e771c37db94291ccdb8a13ce60732bb2.s3tc.ctex", "res://.godot/imported/material_1_metallicRoughness.png-e771c37db94291ccdb8a13ce60732bb2.etc2.ctex"]
 
 [params]
 

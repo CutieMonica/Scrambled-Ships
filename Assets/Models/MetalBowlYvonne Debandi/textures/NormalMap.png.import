@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bukypcblq2nap"
 path.s3tc="res://.godot/imported/NormalMap.png-16d1516ed9db7db3dd6c7d48226c2a22.s3tc.ctex"
+path.etc2="res://.godot/imported/NormalMap.png-16d1516ed9db7db3dd6c7d48226c2a22.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/MetalBowlYvonne Debandi/textures/NormalMap.png"
-dest_files=["res://.godot/imported/NormalMap.png-16d1516ed9db7db3dd6c7d48226c2a22.s3tc.ctex"]
+dest_files=["res://.godot/imported/NormalMap.png-16d1516ed9db7db3dd6c7d48226c2a22.s3tc.ctex", "res://.godot/imported/NormalMap.png-16d1516ed9db7db3dd6c7d48226c2a22.etc2.ctex"]
 
 [params]
 

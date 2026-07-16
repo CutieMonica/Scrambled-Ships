@@ -5,14 +5,14 @@
 [resource]
 shader = ExtResource("1_3gv1l")
 shader_parameter/texture_mode = 1
-shader_parameter/alpha_mode = 0
-shader_parameter/quantize_size = 1
-shader_parameter/snap_to_world = false
+shader_parameter/alpha_mode = 2
+shader_parameter/quantize_size = 0
+shader_parameter/snap_to_world = true
 shader_parameter/limit_subpixels = false
 shader_parameter/dither_enabled = true
 shader_parameter/dither_pattern = 3
 shader_parameter/levels = 10
-shader_parameter/contrast = 1.0000000475
-shader_parameter/brightness = -0.08499995653750003
+shader_parameter/contrast = 1.02000004845
+shader_parameter/brightness = -0.01999995345000005
 shader_parameter/average = 0.0
 shader_parameter/palette_mode = 0

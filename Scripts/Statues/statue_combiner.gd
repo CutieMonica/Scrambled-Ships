@@ -109,6 +109,8 @@ func create_statue() -> void:
 	statue_top_instance.generate_value()
 	statue_top_instance.update_text()
 	
+	nametag_color_shift()
+	
 	statue_price = ((statue_bottom_rarity + statue_top_rarity) * 2)
 	
 	item_name = statue_bottom_instance.item_name + " " + statue_top_instance.item_name
@@ -127,6 +129,8 @@ func create_statue() -> void:
 		2: statue_top_rarity_label = "Uncommon"
 		3: statue_top_rarity_label = "Rare"
 		4: statue_top_rarity_label = "Legendary"
+	
+	nametag_color_shift()
 	
 	rarity = str(statue_bottom_rarity_label) + " + " + str(statue_top_rarity_label)
 	
@@ -152,11 +156,16 @@ func redo_statue() -> void:
 	statue_top_instance.generate_value()
 	statue_top_instance.update_text()
 	
+	statue_top_rarity = statue_top_instance.rarity
+	statue_bottom_rarity = statue_bottom_instance.base_rarity
+	
 	statue_price = ((statue_bottom_rarity + statue_top_rarity) * 2)
 	
 	item_name = statue_bottom_instance.item_name + " " + statue_top_instance.item_name
 	tooltip = statue_top_instance.tooltip
 	description = statue_top_instance.description + statue_bottom_instance.statue_tooltip
+	
+	nametag_color_shift()
 	
 	var statue_bottom_rarity_label : String
 	match statue_bottom_rarity:
@@ -190,9 +199,7 @@ func main_scene_round_started() -> void:
 
 func one_category_buffed() -> void:
 	if statue_top_instance.trigger_condition == "OneCategoryBuffed" and !in_shop:
-		activate_timer.wait_time = statue_position * 0.2
-		activate_timer.start()
-		await activate_timer.timeout
+		activate_timer.wait_time = statue_position * 0.1
 		statue_top_instance.statue_activate()
 
 func purchase_statue() -> void:
@@ -200,18 +207,22 @@ func purchase_statue() -> void:
 	reparent(get_tree().get_first_node_in_group("main"))
 	if target_slot != 0:
 		statue_position = target_slot
-		
 		get_parent().in_play_statues.set(target_slot, self)
 		in_shop = false
-		get_parent().shop_to_statue_stand()
-		await get_tree().create_timer(0.9).timeout
+		if !GameManager.reduce_motion:
+			get_parent().shop_to_statue_stand()
+			await get_tree().create_timer(0.9).timeout
+		if GameManager.reduce_motion:
+			poof_particle.emitting = true
+			await get_tree().create_timer(0.5).timeout
 		position = Vector3(get_parent().statue_positions.get(target_slot).x, get_parent().statue_positions.get(target_slot).y + 20, get_parent().statue_positions.get(target_slot).z)
 		rotation = Vector3.ZERO
 		moving_to_target = true
 		GameManager.statue_count += 1
 		remove_from_group("awaiting_new_slot")
 		await get_tree().create_timer(1.5).timeout
-		get_parent().statue_stand_to_shop()
+		if !GameManager.reduce_motion:
+			get_parent().statue_stand_to_shop()
 		moving_to_target = false
 		shop_slot = target_slot
 		return
@@ -228,6 +239,7 @@ func purchase_statue() -> void:
 		statue_bottom_instance.statue_base_logic.name_change("
 		" + str(statue_bottom_instance.item_name) + " Base
 		Value: " + str(statue_bottom_instance.base_statue_value))
+		nametag_shift_deconstruction()
 		rotation = Vector3.ZERO
 		position = Vector3.ZERO
 		deconstructing_newer = true
@@ -249,6 +261,9 @@ func statue_chosen() -> void:
 		statue_bottom_instance.statue_base_logic.name_change("
 		" + str(statue_bottom_instance.item_name) + " Base
 		Value: " + str(statue_bottom_instance.base_statue_value))
+		
+		nametag_shift_deconstruction()
+		
 		moving_up = false
 		deconstructing_former = true
 		get_parent().statue_combiner_stuff.enable_statue_combiner_areas()
@@ -336,23 +351,75 @@ func flip_base() -> void:
 	
 	statue_bottom_instance.base_statue_value = new_statue_value
 	statue_bottom_rarity = new_statue_rarity
-	match statue_bottom_rarity:
-		1:
-			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.common_text_color
-			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.common_text_outline_color
-		2:
-			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.uncommon_text_color
-			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.uncommon_text_outline_color
-		3:
-			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.rare_text_color
-			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.rare_text_outline_color
-		4:
-			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.legendary_text_color
-			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.legendary_text_outline_color
-
+	
+	nametag_color_shift()
+		
 	statue_top_instance.statue_model_logic.color_shift(str(statue_bottom_instance.color))
 	statue_top_instance.generate_value()
 	statue_top_instance.update_text()
 	
 	item_name = statue_bottom_instance.item_name + " " + statue_top_instance.item_name
 	description = statue_top_instance.description + statue_bottom_instance.statue_tooltip
+
+func nametag_color_shift() -> void:
+	match statue_bottom_rarity:
+		1:
+			statue_top_instance.category_chosen.modulate = statue_bottom_instance.statue_base_logic.common_text_color
+			statue_top_instance.buff_text.modulate = statue_bottom_instance.statue_base_logic.common_text_color
+			statue_top_instance.category_chosen.outline_modulate = statue_bottom_instance.statue_base_logic.common_text_outline_color
+			statue_top_instance.buff_text.outline_modulate = statue_bottom_instance.statue_base_logic.common_text_outline_color
+			
+		2:
+			statue_top_instance.category_chosen.modulate = statue_bottom_instance.statue_base_logic.uncommon_text_color
+			statue_top_instance.buff_text.modulate = statue_bottom_instance.statue_base_logic.uncommon_text_color
+			statue_top_instance.category_chosen.outline_modulate = statue_bottom_instance.statue_base_logic.uncommon_text_outline_color
+			statue_top_instance.buff_text.outline_modulate = statue_bottom_instance.statue_base_logic.uncommon_text_outline_color
+		
+		3:
+			statue_top_instance.category_chosen.modulate = statue_bottom_instance.statue_base_logic.rare_text_color
+			statue_top_instance.buff_text.modulate = statue_bottom_instance.statue_base_logic.rare_text_color
+			statue_top_instance.category_chosen.outline_modulate = statue_bottom_instance.statue_base_logic.rare_text_outline_color
+			statue_top_instance.buff_text.outline_modulate = statue_bottom_instance.statue_base_logic.rare_text_outline_color
+		
+		4:
+			statue_top_instance.category_chosen.modulate = statue_bottom_instance.statue_base_logic.legendary_text_color
+			statue_top_instance.buff_text.modulate = statue_bottom_instance.statue_base_logic.legendary_text_color
+			statue_top_instance.category_chosen.outline_modulate = statue_bottom_instance.statue_base_logic.legendary_text_outline_color
+			statue_top_instance.buff_text.outline_modulate = statue_bottom_instance.statue_base_logic.legendary_text_outline_color
+	
+	
+	match statue_top_rarity:
+		1: 
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.common_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.common_text_outline_color
+			
+		2:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.uncommon_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.uncommon_text_outline_color
+			
+		3:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.rare_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.rare_text_outline_color
+			
+		4:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.legendary_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.legendary_text_outline_color
+
+
+func nametag_shift_deconstruction() -> void:
+	match statue_bottom_rarity:
+		1: 
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.common_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.common_text_outline_color
+			
+		2:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.uncommon_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.uncommon_text_outline_color
+				
+		3:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.rare_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.rare_text_outline_color
+				
+		4:
+			statue_bottom_instance.label_3d.modulate = statue_bottom_instance.statue_base_logic.legendary_text_color
+			statue_bottom_instance.label_3d.outline_modulate = statue_bottom_instance.statue_base_logic.legendary_text_outline_color

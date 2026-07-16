@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpihejb757bmg"
 path.s3tc="res://.godot/imported/FloppyDisk_baseColor.png-ba0f6795929388de9a851945c999c4d8.s3tc.ctex"
+path.etc2="res://.godot/imported/FloppyDisk_baseColor.png-ba0f6795929388de9a851945c999c4d8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/nyangireFloppydisk/textures/FloppyDisk_baseColor.png"
-dest_files=["res://.godot/imported/FloppyDisk_baseColor.png-ba0f6795929388de9a851945c999c4d8.s3tc.ctex"]
+dest_files=["res://.godot/imported/FloppyDisk_baseColor.png-ba0f6795929388de9a851945c999c4d8.s3tc.ctex", "res://.godot/imported/FloppyDisk_baseColor.png-ba0f6795929388de9a851945c999c4d8.etc2.ctex"]
 
 [params]
 

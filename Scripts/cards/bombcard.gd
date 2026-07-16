@@ -4,6 +4,10 @@ extends Node3D
 @onready var descriptionlabel: Label3D = $CardVisuals/Description
 @onready var raritylabel: Label3D = $CardVisuals/Rarity
 @onready var outline: MeshInstance3D = $CardVisuals/Outline
+@onready var card_highlight_2: MeshInstance3D = $CardVisuals/Outline/CardHighlight2
+@onready var card_highlight_3: MeshInstance3D = $CardVisuals/Outline/CardHighlight3
+@onready var card_highlight_4: MeshInstance3D = $CardVisuals/Outline/CardHighlight4
+@onready var card_highlight_5: MeshInstance3D = $CardVisuals/Outline/CardHighlight5
 @onready var card_back: MeshInstance3D = $CardVisuals/CardBack
 @onready var card_art: MeshInstance3D = $CardVisuals/CardArt
 @onready var card_front: MeshInstance3D = $CardVisuals/CardFront
@@ -25,10 +29,13 @@ extends Node3D
 var focused : bool = false
 
 func _on_mouse_detect_mouse_entered() -> void:
+	card_logic.hovered = true
 	card_logic.focuscard()
 
 func _on_mouse_detect_mouse_exited() -> void:
-	card_logic.unfocuscard()
+	card_logic.hovered = false
+	if GameManager.choosing_new_cards or GameManager.viewing_cards:
+		card_logic.unfocuscard()
 
 func _process(_delta: float) -> void:
 	if playsound != "none":

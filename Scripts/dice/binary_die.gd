@@ -31,6 +31,8 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var ray_cast_5: RayCast3D = $RayCast5
 @onready var ray_cast_6: RayCast3D = $RayCast6
 @onready var highlight: MeshInstance3D = $Highlight
+@onready var highlight_bubble: MeshInstance3D = $Highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Highlight/HighlightBubble/HighlightCircle
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D

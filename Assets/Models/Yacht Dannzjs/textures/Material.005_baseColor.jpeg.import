@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgwlgd6c4ar1o"
 path.s3tc="res://.godot/imported/Material.005_baseColor.jpeg-39d0364b9b080c96ef59256d08103226.s3tc.ctex"
+path.etc2="res://.godot/imported/Material.005_baseColor.jpeg-39d0364b9b080c96ef59256d08103226.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/Yacht Dannzjs/textures/Material.005_baseColor.jpeg"
-dest_files=["res://.godot/imported/Material.005_baseColor.jpeg-39d0364b9b080c96ef59256d08103226.s3tc.ctex"]
+dest_files=["res://.godot/imported/Material.005_baseColor.jpeg-39d0364b9b080c96ef59256d08103226.s3tc.ctex", "res://.godot/imported/Material.005_baseColor.jpeg-39d0364b9b080c96ef59256d08103226.etc2.ctex"]
 
 [params]
 

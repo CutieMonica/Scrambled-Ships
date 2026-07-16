@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://5djuj633p0ui"
 path.s3tc="res://.godot/imported/Cover_art.png-beb2fa254532adb733f3fde162024cc8.s3tc.ctex"
+path.etc2="res://.godot/imported/Cover_art.png-beb2fa254532adb733f3fde162024cc8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Rand0Man Assets/Cover_art.png"
-dest_files=["res://.godot/imported/Cover_art.png-beb2fa254532adb733f3fde162024cc8.s3tc.ctex"]
+dest_files=["res://.godot/imported/Cover_art.png-beb2fa254532adb733f3fde162024cc8.s3tc.ctex", "res://.godot/imported/Cover_art.png-beb2fa254532adb733f3fde162024cc8.etc2.ctex"]
 
 [params]
 

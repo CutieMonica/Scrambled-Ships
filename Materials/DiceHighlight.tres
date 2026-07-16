@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://disaadml51kwn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yahnv"]
+load_path = "res://.godot/imported/Dice_baseColor.png-238397beadf986334e732fafed988d37.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6fs1r"]
+load_path = "res://.godot/imported/Dice_metallicRoughness.png-b5ce2ede439368c6e7e55f462ffe71aa.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s2i7n"]
+load_path = "res://.godot/imported/Dice_normal.png-590038b293ff194a2cf65c11018808e9.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_408v3"]
+load_path = "res://.godot/imported/Dice_metallicRoughness.png-b5ce2ede439368c6e7e55f462ffe71aa.s3tc.ctex"
+
+[resource]
+transparency = 1
+albedo_color = Color(3.1469996, 0.3981288, 2.7449152, 0.263)
+albedo_texture = SubResource("CompressedTexture2D_yahnv")
+metallic_specular = 0.48
+metallic_texture = SubResource("CompressedTexture2D_6fs1r")
+roughness_texture = SubResource("CompressedTexture2D_408v3")
+emission_enabled = true
+emission = Color(0.2164303, 0.0727463, 0.99999994, 1)
+normal_enabled = true
+normal_scale = -2.29
+normal_texture = SubResource("CompressedTexture2D_s2i7n")

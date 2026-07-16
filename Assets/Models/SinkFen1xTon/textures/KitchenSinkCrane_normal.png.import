@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjq20ja0jaxte"
 path.s3tc="res://.godot/imported/KitchenSinkCrane_normal.png-9e5834059ad691745e2d2373e1d9e4bf.s3tc.ctex"
+path.etc2="res://.godot/imported/KitchenSinkCrane_normal.png-9e5834059ad691745e2d2373e1d9e4bf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/SinkFen1xTon/textures/KitchenSinkCrane_normal.png"
-dest_files=["res://.godot/imported/KitchenSinkCrane_normal.png-9e5834059ad691745e2d2373e1d9e4bf.s3tc.ctex"]
+dest_files=["res://.godot/imported/KitchenSinkCrane_normal.png-9e5834059ad691745e2d2373e1d9e4bf.s3tc.ctex", "res://.godot/imported/KitchenSinkCrane_normal.png-9e5834059ad691745e2d2373e1d9e4bf.etc2.ctex"]
 
 [params]
 

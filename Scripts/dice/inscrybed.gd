@@ -34,6 +34,8 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var ray_cast_5: RayCast3D = $RayCast5
 @onready var ray_cast_6: RayCast3D = $RayCast6
 @onready var highlight: MeshInstance3D = $highlight
+@onready var highlight_bubble: MeshInstance3D = $highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $highlight/HighlightBubble/HighlightCircle
 @onready var shaker: AnimationPlayer = $Shaker
 @onready var mouse_detect: CollisionShape3D = $D6_Mouse_Detect/MouseDetect
 
@@ -210,7 +212,7 @@ func leftclickinteraction() -> void:
 	
 	
 func _on_d_6_mouse_detect_mouse_entered() -> void:
-	if !dying:
+	if !dying and !get_tree().get_first_node_in_group("main").between_rounds:
 		dice_logic.focusdie()
 		if number != 0:
 			shaker.play("shake" + str(number))

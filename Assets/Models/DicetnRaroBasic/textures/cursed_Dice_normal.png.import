@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0m6l2vd2bhbc"
 path.s3tc="res://.godot/imported/cursed_Dice_normal.png-32d8b5790641a98e2b4944f317f4e205.s3tc.ctex"
+path.etc2="res://.godot/imported/cursed_Dice_normal.png-32d8b5790641a98e2b4944f317f4e205.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/DicetnRaroBasic/textures/cursed_Dice_normal.png"
-dest_files=["res://.godot/imported/cursed_Dice_normal.png-32d8b5790641a98e2b4944f317f4e205.s3tc.ctex"]
+dest_files=["res://.godot/imported/cursed_Dice_normal.png-32d8b5790641a98e2b4944f317f4e205.s3tc.ctex", "res://.godot/imported/cursed_Dice_normal.png-32d8b5790641a98e2b4944f317f4e205.etc2.ctex"]
 
 [params]
 

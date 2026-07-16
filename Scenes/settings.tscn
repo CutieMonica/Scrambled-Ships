@@ -49,24 +49,24 @@ corner_radius_bottom_left = 4
 corner_detail = 6
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f60ng"]
-content_margin_left = 48.0
+content_margin_left = 28.0
 texture = ExtResource("7_6vr2p")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bismi"]
-content_margin_left = 48.0
+content_margin_left = 28.0
 texture = ExtResource("8_bismi")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgw85"]
+content_margin_left = 28.0
 texture = ExtResource("9_rgw85")
-texture_margin_left = 48.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qv72t"]
-content_margin_left = 48.0
+content_margin_left = 28.0
 texture = ExtResource("8_bismi")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7vst"]
+content_margin_left = 28.0
 texture = ExtResource("9_rgw85")
-texture_margin_left = 48.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8dc3"]
 texture = ExtResource("12_ieo4m")
@@ -393,7 +393,7 @@ mouse_filter = 2
 script = ExtResource("1_h7htg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1297788742]
-layer = 2
+layer = 10
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=423892936]
 visible = false
@@ -406,7 +406,7 @@ anchor_bottom = 0.5
 offset_left = -640.0
 offset_top = 363.0
 offset_right = 634.0747
-offset_bottom = 1078.5548
+offset_bottom = 1078.5531
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.015707964
@@ -424,27 +424,28 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 36.0
-offset_top = 122.0
-offset_right = -638.0
-offset_bottom = -454.0
+offset_top = 119.77759
+offset_right = -575.1642
+offset_bottom = -451.7776
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.65, 0.65)
 theme_override_icons/grabber = ExtResource("2_i44u3")
 theme_override_icons/grabber_highlight = ExtResource("3_j2dne")
 theme_override_icons/grabber_disabled = ExtResource("4_6kysc")
 theme_override_styles/slider = SubResource("StyleBoxTexture_lhmql")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_j2dne")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_6kysc")
-min_value = -72.0
+min_value = -50.0
 max_value = 10.0
 editable = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TextureRect/MasterVolume" unique_id=1007083187]
 layout_mode = 0
-offset_left = 92.0
-offset_top = -63.0
-offset_right = 552.0
-offset_bottom = 20.0
+offset_left = 119.34703
+offset_top = -63.429596
+offset_right = 579.34705
+offset_bottom = 19.570404
 theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
 theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
 theme_override_constants/shadow_offset_x = 4
@@ -458,28 +459,29 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 335.0
-offset_right = -638.0
-offset_bottom = -241.0
+offset_left = 35.040108
+offset_top = 271.67404
+offset_right = -583.8279
+offset_bottom = -299.88113
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.65, 0.65)
 theme_override_icons/grabber = ExtResource("2_i44u3")
 theme_override_icons/grabber_highlight = ExtResource("3_j2dne")
 theme_override_icons/grabber_disabled = ExtResource("4_6kysc")
 theme_override_styles/slider = SubResource("StyleBoxTexture_lhmql")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_j2dne")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_6kysc")
-min_value = -72.0
+min_value = -50.0
 max_value = 10.0
 editable = false
 
 [node name="Label2" type="Label" parent="CanvasLayer/TextureRect/MusicVolume" unique_id=1607167558]
 layout_mode = 0
-offset_left = 103.0
-offset_top = -63.0
-offset_right = 563.0
-offset_bottom = 20.0
+offset_left = 116.67351
+offset_top = -63.214783
+offset_right = 576.6735
+offset_bottom = 19.785217
 theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
 theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
 theme_override_constants/shadow_offset_x = 4
@@ -493,28 +495,29 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 538.0
-offset_right = -638.0
-offset_bottom = -38.0
+offset_left = 34.21984
+offset_top = 422.45813
+offset_right = -589.61365
+offset_bottom = -149.09705
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.65, 0.65)
 theme_override_icons/grabber = ExtResource("2_i44u3")
 theme_override_icons/grabber_highlight = ExtResource("3_j2dne")
 theme_override_icons/grabber_disabled = ExtResource("4_6kysc")
 theme_override_styles/slider = SubResource("StyleBoxTexture_lhmql")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_j2dne")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_6kysc")
-min_value = -72.0
+min_value = -50.0
 max_value = 10.0
 editable = false
 
 [node name="Label3" type="Label" parent="CanvasLayer/TextureRect/SFXVolume" unique_id=453025745]
 layout_mode = 0
-offset_left = 138.0
-offset_top = -63.0
-offset_right = 598.0
-offset_bottom = 20.0
+offset_left = 161.92865
+offset_top = -63.375854
+offset_right = 621.92865
+offset_bottom = 19.624146
 theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
 theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
 theme_override_constants/shadow_offset_x = 4
@@ -525,12 +528,12 @@ text = "SFX VOLUME"
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer/TextureRect" unique_id=1112951742]
 process_mode = 3
 layout_mode = 0
-offset_left = 658.0
-offset_top = 117.0
-offset_right = 1228.0
-offset_bottom = 273.0
+offset_left = 488.54388
+offset_top = 115.67389
+offset_right = 860.57666
+offset_bottom = 222.25359
 theme_override_fonts/font = ExtResource("6_6kysc")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_f60ng")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bismi")
 theme_override_styles/hover = SubResource("StyleBoxTexture_rgw85")
@@ -549,10 +552,11 @@ popup/item_2/id = 2
 
 [node name="Label4" type="Label" parent="CanvasLayer/TextureRect/OptionButton" unique_id=1378137753]
 layout_mode = 0
-offset_left = 83.0
-offset_top = -62.0
-offset_right = 543.0
-offset_bottom = 21.0
+offset_left = 64.66255
+offset_top = -36.963936
+offset_right = 524.66254
+offset_bottom = 46.036064
+scale = Vector2(0.65, 0.65)
 theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
 theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
 theme_override_constants/shadow_offset_x = 4
@@ -563,12 +567,13 @@ text = "SCREEN MODE"
 [node name="CheckButton" type="CheckButton" parent="CanvasLayer/TextureRect" unique_id=341679129]
 process_mode = 3
 layout_mode = 0
-offset_left = 790.0
-offset_top = 334.0
-offset_right = 1055.0
-offset_bottom = 497.0
+offset_left = 580.3596
+offset_top = 267.9949
+offset_right = 858.6093
+offset_bottom = 438.0281
+scale = Vector2(0.65, 0.65)
 tooltip_text = "Disables most shadows, simplifies some materials, 
-changes to a more lightweight CRT shader, and other changes
+changes to a more lightweight shader, and other changes
 to increase performance and keep the game above 60. 
 
 Enable this if physics feel consistently buggy."
@@ -585,12 +590,12 @@ theme_override_icons/unchecked_mirrored = ExtResource("15_vmqi3")
 theme_override_icons/checked_disabled_mirrored = ExtResource("15_vmqi3")
 theme_override_icons/unchecked_disabled_mirrored = ExtResource("15_vmqi3")
 
-[node name="CRT FILTER" type="Label" parent="CanvasLayer/TextureRect/CheckButton" unique_id=216163044]
+[node name="PERFORMANCE MODE" type="Label" parent="CanvasLayer/TextureRect/CheckButton" unique_id=216163044]
 layout_mode = 0
-offset_left = -163.43901
-offset_top = -62.697002
-offset_right = 411.56097
-offset_bottom = 20.302998
+offset_left = -146.94537
+offset_top = -62.95613
+offset_right = 428.05463
+offset_bottom = 20.043869
 theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
 theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
 theme_override_constants/shadow_offset_x = 4
@@ -599,27 +604,209 @@ theme_override_font_sizes/font_size = 64
 text = "PERFORMANCE MODE"
 horizontal_alignment = 1
 
+[node name="MotionButton" type="CheckButton" parent="CanvasLayer/TextureRect" unique_id=935580533]
+process_mode = 3
+layout_mode = 0
+offset_left = 962.15063
+offset_top = 449.79816
+offset_right = 1240.4004
+offset_bottom = 619.83124
+scale = Vector2(0.65, 0.65)
+tooltip_text = "Simplifies or removes some camera movements, and slows down the camera in general."
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8dc3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d6lvq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mth80")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_h7htg")
+theme_override_icons/checked = ExtResource("15_vmqi3")
+theme_override_icons/unchecked = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/checked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("15_vmqi3")
+
+[node name="REDUCE MOTION" type="Label" parent="CanvasLayer/TextureRect/MotionButton" unique_id=1214809358]
+layout_mode = 0
+offset_left = -147.02594
+offset_top = -68.083694
+offset_right = 427.97406
+offset_bottom = 14.916306
+theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/font = ExtResource("6_6kysc")
+theme_override_font_sizes/font_size = 64
+text = "REDUCE MOTION"
+horizontal_alignment = 1
+
+[node name="Pixelization" type="CheckButton" parent="CanvasLayer/TextureRect" unique_id=825041697]
+process_mode = 3
+layout_mode = 0
+offset_left = 581.09296
+offset_top = 418.70203
+offset_right = 859.3427
+offset_bottom = 588.73505
+scale = Vector2(0.65, 0.65)
+tooltip_text = "Gives objects a thin outline, slightly impacts performance."
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8dc3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d6lvq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mth80")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_h7htg")
+theme_override_icons/checked = ExtResource("15_vmqi3")
+theme_override_icons/unchecked = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/checked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("15_vmqi3")
+button_pressed = true
+
+[node name="Pixelization" type="Label" parent="CanvasLayer/TextureRect/Pixelization" unique_id=1169706229]
+layout_mode = 0
+offset_left = -147.02594
+offset_top = -68.083694
+offset_right = 427.97406
+offset_bottom = 14.916306
+theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/font = ExtResource("6_6kysc")
+theme_override_font_sizes/font_size = 64
+text = "OUTLINES"
+horizontal_alignment = 1
+
+[node name="ContrastButton" type="CheckButton" parent="CanvasLayer/TextureRect" unique_id=48445935]
+process_mode = 3
+layout_mode = 0
+offset_left = 956.33386
+offset_top = 112.77022
+offset_right = 1234.5836
+offset_bottom = 282.80347
+scale = Vector2(0.65, 0.65)
+tooltip_text = "Removes the colored backdrops for most text, and makes the score sheet easier to see in darkness."
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8dc3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d6lvq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mth80")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_h7htg")
+theme_override_icons/checked = ExtResource("15_vmqi3")
+theme_override_icons/unchecked = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/checked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("15_vmqi3")
+
+[node name="HIGH CONTRAST" type="Label" parent="CanvasLayer/TextureRect/ContrastButton" unique_id=1619078181]
+layout_mode = 0
+offset_left = -146.94537
+offset_top = -62.95613
+offset_right = 428.05463
+offset_bottom = 20.043869
+theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/font = ExtResource("6_6kysc")
+theme_override_font_sizes/font_size = 64
+text = "HIGH CONTRAST"
+horizontal_alignment = 1
+
+[node name="FlashingButton" type="CheckButton" parent="CanvasLayer/TextureRect" unique_id=500217851]
+process_mode = 3
+layout_mode = 0
+offset_left = 956.7471
+offset_top = 280.5622
+offset_right = 1234.9966
+offset_bottom = 450.59534
+scale = Vector2(0.65, 0.65)
+tooltip_text = "Reduces the flashing lights given off by the character at the other end of the table in the later rounds."
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8dc3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d6lvq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mth80")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_h7htg")
+theme_override_icons/checked = ExtResource("15_vmqi3")
+theme_override_icons/unchecked = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/checked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("15_vmqi3")
+
+[node name="REDUCE FLASHING LIGHTS" type="Label" parent="CanvasLayer/TextureRect/FlashingButton" unique_id=1488492762]
+layout_mode = 0
+offset_left = -142.25664
+offset_top = -80.45905
+offset_right = 432.74335
+offset_bottom = 88.54095
+theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/font = ExtResource("6_6kysc")
+theme_override_font_sizes/font_size = 64
+text = "REDUCE FLASHING
+"
+horizontal_alignment = 1
+
+[node name="DiceValue" type="CheckButton" parent="CanvasLayer/TextureRect" unique_id=159424588]
+process_mode = 3
+layout_mode = 0
+offset_left = 587.858
+offset_top = 566.39185
+offset_right = 866.10767
+offset_bottom = 736.42505
+scale = Vector2(0.65, 0.65)
+tooltip_text = "Adds a number above dice when hovered over, indicating their current value."
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8dc3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d6lvq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mth80")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_h7htg")
+theme_override_icons/checked = ExtResource("15_vmqi3")
+theme_override_icons/unchecked = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled = ExtResource("15_vmqi3")
+theme_override_icons/checked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/checked_disabled_mirrored = ExtResource("15_vmqi3")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("15_vmqi3")
+
+[node name="DISPLAY DICE VALUE" type="Label" parent="CanvasLayer/TextureRect/DiceValue" unique_id=1837072922]
+layout_mode = 0
+offset_left = -146.94537
+offset_top = -62.95613
+offset_right = 428.05463
+offset_bottom = 20.043869
+theme_override_colors/font_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+theme_override_colors/font_shadow_color = Color(0.92099476, 0.9209946, 0.9209946, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/font = ExtResource("6_6kysc")
+theme_override_font_sizes/font_size = 64
+text = "DISPLAY DICE VALUE"
+horizontal_alignment = 1
+
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/TextureRect" unique_id=1862232158]
 process_mode = 3
 layout_mode = 0
-offset_left = 768.0915
-offset_top = 509.10928
-offset_right = 1057.9635
-offset_bottom = 565.10925
+offset_left = 52.117027
+offset_top = 558.0465
+offset_right = 418.56586
+offset_bottom = 653.5089
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("6_6kysc")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "Seed"
 max_length = 12
 emoji_menu_enabled = false
+deselect_on_focus_loss_enabled = false
 caret_blink = true
-caret_force_displayed = true
 caret_mid_grapheme = true
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=2097354923]
 offset_left = 895.0
 offset_top = 1199.0
-offset_right = 1395.0007
+offset_right = 1395.0027
 offset_bottom = 1439.0002
 rotation = -0.034906585
 scale = Vector2(0.65, 0.65)
@@ -643,5 +830,10 @@ libraries/ = SubResource("AnimationLibrary_d6lvq")
 [connection signal="item_selected" from="CanvasLayer/TextureRect/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/TextureRect/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/TextureRect/MotionButton" to="." method="_on_motion_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/TextureRect/Pixelization" to="." method="_on_pixelization_toggled"]
+[connection signal="toggled" from="CanvasLayer/TextureRect/ContrastButton" to="." method="_on_contrast_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/TextureRect/FlashingButton" to="." method="_on_flashing_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/TextureRect/DiceValue" to="." method="_on_dice_value_toggled"]
 [connection signal="text_changed" from="CanvasLayer/TextureRect/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]

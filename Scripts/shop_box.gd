@@ -12,6 +12,10 @@ extends Node3D
 
 var exit_button_can_be_enabled : bool = false
 
+func _process(delta: float) -> void:
+	if !shop_clear_timer.is_stopped():
+		InputHandler.actionable = false
+
 func play_shop_reload() -> void:
 	animation_player.play("lidflip")
 	shop_generate_timer.start()
@@ -33,7 +37,7 @@ func exit_shop() -> void:
 		move_nametag.play_backwards("move_nametag")
 		animation_player.play_backwards("lidflip")
 		#delete all shop items NOW
-		
+		InputHandler.actionable = false
 		get_parent().round_start()
 		shop_clear_timer.start()
 

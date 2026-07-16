@@ -20,13 +20,22 @@ func idle() -> void:
 	
 
 func phase_shift() -> void:
-	phase_shifts.play("Round" + str(GameManager.current_round))
+	if !GameManager.reduce_flashing:
+		phase_shifts.play("Round" + str(GameManager.current_round))
+	else:
+		phase_shifts.play("RESET")
 
 func play_finale() -> void:
-	phase_shifts.play("Finale")
+	if !GameManager.reduce_flashing:
+		phase_shifts.play("Finale")
+	else:
+		phase_shifts.play("Round2")
 
 func play_finale_2() -> void:
-	phase_shifts.play("Finale_2")
+	if !GameManager.reduce_flashing:
+		phase_shifts.play("Finale_2")
+	else:
+		phase_shifts.play("Round3")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -34,3 +43,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		idle()
 	else:
 		animation_player.queue("Sitting Idle/mixamo_com")
+
+func flashing_switch() -> void:
+	if GameManager.reduce_flashing:
+		phase_shifts.play("RESET")
+	else:
+		phase_shift()

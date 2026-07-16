@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://x6cml7npumkc" path="res://Assets/Models/DicetnRaroBasic/textures/ExtraDiceTypes/weighted/WeightedDiceNormal.png" id="3_8j67f"]
 [ext_resource type="Texture2D" uid="uid://mmsp45o80nv7" path="res://Assets/Models/DicetnRaroBasic/textures/Dice_normal.png" id="4_8j67f"]
 [ext_resource type="PackedScene" uid="uid://dwp7cq0rq8nc3" path="res://Scenes/dice_logic.tscn" id="5_nyde5"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="7_8j67f"]
+[ext_resource type="Material" uid="uid://ciug8wq24ba67" path="res://Materials/highlightmaterial.tres" id="8_nyde5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yahnv"]
 rough = true
@@ -188,6 +190,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_75xwo")
 
+[sub_resource type="SphereMesh" id="SphereMesh_nyde5"]
+material = ExtResource("7_8j67f")
+radius = 1.8
+height = 6.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hmg5p"]
+material = ExtResource("8_nyde5")
+bottom_radius = 1.3
+height = 0.01
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahnv"]
 
 [node name="Weighted_D6" type="RigidBody3D" unique_id=194486236 groups=["dice"]]
@@ -276,6 +288,14 @@ transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_brg2b")
 mesh = SubResource("ArrayMesh_r3gm5")
+
+[node name="HighlightBubble" type="MeshInstance3D" parent="highlight" unique_id=1101207478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3636364, 0)
+mesh = SubResource("SphereMesh_nyde5")
+
+[node name="HighlightCircle" type="MeshInstance3D" parent="highlight/HighlightBubble" unique_id=672677617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2727273, 0)
+mesh = SubResource("CylinderMesh_hmg5p")
 
 [node name="D6_Mouse_Detect" type="Area3D" parent="." unique_id=125344462]
 collision_layer = 128

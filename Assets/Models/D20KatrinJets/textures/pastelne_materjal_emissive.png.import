@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d72cfe3p1tdj"
 path.s3tc="res://.godot/imported/pastelne_materjal_emissive.png-6b48834db25271d9037f9fd75899fd41.s3tc.ctex"
+path.etc2="res://.godot/imported/pastelne_materjal_emissive.png-6b48834db25271d9037f9fd75899fd41.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/D20KatrinJets/textures/pastelne_materjal_emissive.png"
-dest_files=["res://.godot/imported/pastelne_materjal_emissive.png-6b48834db25271d9037f9fd75899fd41.s3tc.ctex"]
+dest_files=["res://.godot/imported/pastelne_materjal_emissive.png-6b48834db25271d9037f9fd75899fd41.s3tc.ctex", "res://.godot/imported/pastelne_materjal_emissive.png-6b48834db25271d9037f9fd75899fd41.etc2.ctex"]
 
 [params]
 

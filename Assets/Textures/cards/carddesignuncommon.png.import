@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chrnfyxio12r0"
 path.s3tc="res://.godot/imported/carddesignuncommon.png-c8827326deb1b2ed5c9d6db4d89575fb.s3tc.ctex"
+path.etc2="res://.godot/imported/carddesignuncommon.png-c8827326deb1b2ed5c9d6db4d89575fb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/cards/carddesignuncommon.png"
-dest_files=["res://.godot/imported/carddesignuncommon.png-c8827326deb1b2ed5c9d6db4d89575fb.s3tc.ctex"]
+dest_files=["res://.godot/imported/carddesignuncommon.png-c8827326deb1b2ed5c9d6db4d89575fb.s3tc.ctex", "res://.godot/imported/carddesignuncommon.png-c8827326deb1b2ed5c9d6db4d89575fb.etc2.ctex"]
 
 [params]
 

@@ -55,12 +55,12 @@ func _on_settings_pressed() -> void:
 func _on_start_pressed() -> void:
 	GameManager.run_number += 1
 	SaveLoad.SaveFileData.run_number += 1
-	SaveLoad._save()
 	GameManager.give_me_your_seed()
 	Settings.random_sound()
 	animation_player.play("fadeout")
 	GlobalMusicPlayer.ambience_target = 1
 	GlobalMusicPlayer.fade_out()
+	SaveLoad._save()
 	
 	
 func enable_buttons() -> void:

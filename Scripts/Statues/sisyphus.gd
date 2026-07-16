@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var rarity : int = 1
 @export var base_modifier : float = 0.05
 @export var current_category : String = "none"
 @export var statue_name : String = "Sisyphus' Rock"

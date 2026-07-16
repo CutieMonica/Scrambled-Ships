@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1vp8uhoow0lh"
 path.s3tc="res://.godot/imported/NormalMap.png-9bc118a9f1f58a7d03bfdfca96509c7f.s3tc.ctex"
+path.etc2="res://.godot/imported/NormalMap.png-9bc118a9f1f58a7d03bfdfca96509c7f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/BoatUsedm/textures/NormalMap.png"
-dest_files=["res://.godot/imported/NormalMap.png-9bc118a9f1f58a7d03bfdfca96509c7f.s3tc.ctex"]
+dest_files=["res://.godot/imported/NormalMap.png-9bc118a9f1f58a7d03bfdfca96509c7f.s3tc.ctex", "res://.godot/imported/NormalMap.png-9bc118a9f1f58a7d03bfdfca96509c7f.etc2.ctex"]
 
 [params]
 

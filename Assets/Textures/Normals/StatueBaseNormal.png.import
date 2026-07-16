@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqm33unthamme"
 path.s3tc="res://.godot/imported/StatueBaseNormal.png-bc2b007b7bf55c990d0bbe8d292e31de.s3tc.ctex"
+path.etc2="res://.godot/imported/StatueBaseNormal.png-bc2b007b7bf55c990d0bbe8d292e31de.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Normals/StatueBaseNormal.png"
-dest_files=["res://.godot/imported/StatueBaseNormal.png-bc2b007b7bf55c990d0bbe8d292e31de.s3tc.ctex"]
+dest_files=["res://.godot/imported/StatueBaseNormal.png-bc2b007b7bf55c990d0bbe8d292e31de.s3tc.ctex", "res://.godot/imported/StatueBaseNormal.png-bc2b007b7bf55c990d0bbe8d292e31de.etc2.ctex"]
 
 [params]
 

@@ -24,9 +24,9 @@ func playsound(sound : int) -> void:
 
 func pause() -> void:
 	if can_pause and InputHandler.actionable and pause_buffer.is_stopped():
-		pause_buffer.start()
 		match paused:
 			false:
+				pause_buffer.start()
 				can_unpause = true
 				playsound(2)
 				get_tree().paused = true
@@ -46,12 +46,18 @@ func enable_buttons() -> void:
 
 func _on_continue_pressed() -> void:
 	if can_unpause:
+		if !pause_buffer.is_stopped():
+			await pause_buffer.timeout
+		pause_buffer.start()
+		print("gaypeopletomorrowmorning10am")
 		playsound(3)
 		get_tree().paused = false
 		animation_player.play_backwards("PauseScreenOn")
 		continue_button.disabled = true
 		settings.disabled = true
 		exit.disabled = true
+		if GameManager.mobile:
+			GameManager.pause_button.visible = true
 
 func _on_settings_pressed() -> void:
 	playsound(1)

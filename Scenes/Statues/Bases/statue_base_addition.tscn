@@ -52,10 +52,6 @@ script = ExtResource("1_4wrto")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Square" unique_id=1357465537]
 mesh = SubResource("BoxMesh_k7u25")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Square" unique_id=934393813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0)
-mesh = SubResource("BoxMesh_k7u25")
-
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Square" unique_id=566022250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0)
 mesh = SubResource("BoxMesh_k7u25")

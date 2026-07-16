@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://vwoccstsip56"
 path.s3tc="res://.godot/imported/Texturelabs_Water_127S.jpg-49af05726fc11105a19ac2102f0ed544.s3tc.ctex"
+path.etc2="res://.godot/imported/Texturelabs_Water_127S.jpg-49af05726fc11105a19ac2102f0ed544.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Texturelabs_Water_127S.jpg"
-dest_files=["res://.godot/imported/Texturelabs_Water_127S.jpg-49af05726fc11105a19ac2102f0ed544.s3tc.ctex"]
+dest_files=["res://.godot/imported/Texturelabs_Water_127S.jpg-49af05726fc11105a19ac2102f0ed544.s3tc.ctex", "res://.godot/imported/Texturelabs_Water_127S.jpg-49af05726fc11105a19ac2102f0ed544.etc2.ctex"]
 
 [params]
 

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b0lgnlpq3uix8" path="res://Assets/ThunderSpark Assets/styled_large_straight.png" id="11_0erlp"]
 [ext_resource type="Texture2D" uid="uid://bnt3jhml147ch" path="res://Assets/ThunderSpark Assets/styled_full_house.png" id="12_xkks2"]
 [ext_resource type="Texture2D" uid="uid://c4v8qsiat6vtr" path="res://Assets/ThunderSpark Assets/styled_4_of_a_kind.png" id="13_0erlp"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="14_mqscg"]
 [ext_resource type="Texture2D" uid="uid://bnnkp4lv6ejme" path="res://Assets/ThunderSpark Assets/styled_yacht.png" id="14_xkks2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r358"]
@@ -158,6 +159,14 @@ emission_energy_multiplier = 16.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_0erlp"]
 material = SubResource("StandardMaterial3D_n5bwl")
 size = Vector2(8.5, 11)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1inwp"]
+material = ExtResource("14_mqscg")
+size = Vector2(11, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dhed1"]
+material = ExtResource("14_mqscg")
+size = Vector2(8.5, 5)
 
 [sub_resource type="Animation" id="Animation_ocyq2"]
 resource_name = "Clicked"
@@ -428,7 +437,7 @@ outline_size = 24
 horizontal_alignment = 0
 
 [node name="Bonus Explaination" type="Label3D" parent="MeshInstance3D" unique_id=1392725227]
-transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, -4.1499977, 0.011000002, -0.70725435)
+transform = Transform3D(1, -1.4210855e-14, -8.4703295e-22, 0, -4.3711392e-08, 1, -1.4210855e-14, -1, -4.3711392e-08, -4.1799974, 0.011000002, -0.70725435)
 shaded = true
 double_sided = false
 texture_filter = 1
@@ -440,7 +449,7 @@ text = "Once you reach 60% of your total possible
 top half score, receive a bonus of 33% of 
 your total possible top half score."
 font = ExtResource("4_mqscg")
-font_size = 61
+font_size = 62
 outline_size = 16
 horizontal_alignment = 0
 
@@ -869,7 +878,7 @@ font_size = 164
 outline_size = 24
 
 [node name="SmallStraightMult" type="Label3D" parent="MeshInstance3D/SmallStraightIcon" unique_id=1460144628]
-transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 33.49173, 0.010085836, 0.91073036)
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 33.59173, 0.010085836, 0.9107294)
 shaded = true
 double_sided = false
 texture_filter = 1
@@ -983,7 +992,7 @@ font_size = 164
 outline_size = 24
 
 [node name="LargeStraightMult" type="Label3D" parent="MeshInstance3D/LargeStraightIcon" unique_id=59236092]
-transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 32.807114, 0.010085836, 0.9107361)
+transform = Transform3D(10, -1.7053026e-13, -1.0164395e-20, 0, -4.3711393e-07, 10, -1.7053026e-13, -10, -4.3711393e-07, 32.807117, 0.010085836, 0.9107399)
 shaded = true
 double_sided = false
 texture_filter = 1
@@ -1126,6 +1135,22 @@ transform = Transform3D(-1.05, 0, -1.5854559e-07, 0, 1.05, 0, 1.5854559e-07, 0, 
 visible = false
 transparency = 0.9
 mesh = SubResource("PlaneMesh_0erlp")
+
+[node name="PaperHighlight" type="MeshInstance3D" parent="HighlightOverlay" unique_id=1859905530]
+transform = Transform3D(-4.3711538e-08, 0, -0.99999964, 0, 0.99999964, 0, 0.99999964, 0, -4.3711538e-08, -4.2285705, 1.1261873, 0.011904198)
+mesh = SubResource("QuadMesh_1inwp")
+
+[node name="PaperHighlight2" type="MeshInstance3D" parent="HighlightOverlay" unique_id=898979348]
+transform = Transform3D(-4.371156e-08, 0, -0.99999964, 0, 0.99999964, 0, 0.99999964, 0, -4.371156e-08, 4.2571435, 1.1261873, 0.011905481)
+mesh = SubResource("QuadMesh_1inwp")
+
+[node name="PaperHighlight3" type="MeshInstance3D" parent="HighlightOverlay" unique_id=1693573761]
+transform = Transform3D(0.99999964, 0, -3.2684966e-13, 0, 0.99999964, 0, 3.2684966e-13, 0, 0.99999964, 0.019049378, 1.1261873, -5.4928546)
+mesh = SubResource("QuadMesh_dhed1")
+
+[node name="PaperHighlight4" type="MeshInstance3D" parent="HighlightOverlay" unique_id=2027839364]
+transform = Transform3D(0.99999964, 0, -3.5527137e-13, 0, 0.99999964, 0, 3.5527137e-13, 0, 0.99999964, 0.019047717, 1.1261873, 5.507146)
+mesh = SubResource("QuadMesh_dhed1")
 
 [node name="Highlighter" type="AnimationPlayer" parent="." unique_id=780991852]
 libraries/ = SubResource("AnimationLibrary_0erlp")

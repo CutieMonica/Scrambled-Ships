@@ -58,6 +58,7 @@ var card_shop_slots_unlocked : int = 11
 @onready var card_exit_detect: Area3D = $CardExitDetect
 @onready var card_exit_collider: CollisionShape3D = $CardExitDetect/CardExitCollider
 @onready var lighting_shift: AnimationPlayer = $LightingShift
+@onready var contrast_light: SpotLight3D = $ContrastLight
 
 
 @onready var target_score_display: Node3D = $TargetScoreDisplay
@@ -72,6 +73,7 @@ var card_shop_slots_unlocked : int = 11
 @onready var dice_box: Node3D = $DiceBox
 @onready var score_sheet: Node3D = $ScoreSheet
 @onready var radio: Node3D = %Radio
+@onready var outline_shader: MeshInstance3D = $Camera3D/OutlineShader
 
 @onready var current_dice_paper: Node3D = $CurrentDicePaper
 @onready var mesh_instance_3d: MeshInstance3D = $Camera3D/MeshInstance3D
@@ -260,13 +262,27 @@ var current_shop_area : Area3D
 @export var money_coins : Dictionary = {}
 
 func _process(_delta: float) -> void:
-	if cards_hovered == true and InputHandler.actionable and GameManager.card_count > 0 and !cards_highlighted:
+	if cards_hovered == true and InputHandler.actionable and GameManager.card_count > 0 and !cards_highlighted and !camera_movement.is_playing() and !card_animations.is_playing():
 		highlight_cards()
+	if card_animations.is_playing() and cards_highlighted:
+		unhighlight_cards()
 	if waitingfor2dice:
 		if stored_dice.values().count("true") >= 2:
 			dialogue_player.opening_tutorial_dialogue_2_the_sequel()
 			waitingfor2dice = false
 		 
+
+func motion_switch() -> void:
+	if GameManager.reduce_motion:
+		camera_movement.speed_scale = 1
+	else:
+		camera_movement.speed_scale = 1.25
+
+func contrast_switch() -> void:
+	if GameManager.increase_contrast:
+		contrast_light.visible = true
+	else:
+		contrast_light.visible = false
 
 func performance_switch() -> void:
 	if GameManager.performance_mode:
@@ -287,6 +303,10 @@ func performance_switch() -> void:
 		spot_light_3d_2.shadow_enabled = true
 		spot_light_3d_3.shadow_enabled = true
 		
+
+func outline_switch() -> void:
+	outline_shader.visible = GameManager.pixelization
+
 
 func remove_dice(dice_position : int) -> void:
 	chosen_dice.set(dice_position, null)
@@ -412,8 +432,12 @@ func round_start() -> void:
 
 func _ready() -> void:
 	environment_check()
+	motion_switch()
 	InputHandler.main_scene_entered()
+	GameManager.pause_appear()
 	performance_switch()
+	contrast_switch()
+	outline_switch()
 	if GameManager.is_postgame:
 		camera_movement.play("DefaultPostgame")
 	if GameManager.dialogue_seen.get(1) == false and !GameManager.is_postgame:
@@ -531,7 +555,7 @@ func become_inactionable() -> void:
 	InputHandler.actionable = false
 		
 func reload() -> void:
-	if InputHandler.current_reroll_state == 0 and GameManager.dice_resting and stored_dice.find_key("false") != null and GameManager.rolls > 0:
+	if InputHandler.current_reroll_state == 0 and GameManager.dice_resting and stored_dice.find_key("false") != null and GameManager.rolls > 0 and !between_rounds:
 		become_inactionable()
 		GameManager.reset_dice_resting()
 		InputHandler.current_reroll_state = 1
@@ -539,8 +563,7 @@ func reload() -> void:
 		get_tree().call_group("dice_logic", "start_recall")
 		get_tree().call_group("stored_dice", "update_ui")
 		score_sheet.inside_sheet = false
-		if InputHandler.hovered_object == "scoresheet":
-			InputHandler.hovered_object = "none"
+		InputHandler.hovered_object = "none"
 		GameManager.update_rolls_count(-1)
 	if InputHandler.current_reroll_state == 3:
 		GameManager.has_pressed_release = true
@@ -596,28 +619,31 @@ func zoom_out_statue() -> void:
 
 func _on_card_hover_detection_mouse_entered() -> void:
 	cards_hovered = true
-	if InputHandler.actionable and GameManager.card_count > 0:
+	if InputHandler.actionable and GameManager.card_count > 0 and !between_rounds and !camera_movement.is_playing():
+		get_tree().call_group("card_logic", "focuscard")
 		highlight_cards()
 
 func _on_card_hover_detection_mouse_exited() -> void:
 	cards_hovered = false
+	get_tree().call_group("card_logic", "unfocuscard")
 	unhighlight_cards()
 
 func highlight_cards() -> void:
+	get_tree().call_group("card_logic", "focuscard")
 	InputHandler.hovered_object = "cards"
-	card_outline.visible = true
 	cards_highlighted = true
 	
 func unhighlight_cards() -> void:
+	get_tree().call_group("card_logic", "unfocuscard")
 	if InputHandler.hovered_object == "cards":
 		InputHandler.hovered_object = "none"
-	card_outline.visible = false
 	cards_highlighted = false
 	
 func pull_up_cards() -> void:
 	card_animations.play("pullupcards")
 	play_card_sounds()
 	camerabuffer.wait_time = 0.3
+	get_tree().call_group("card_logic", "unfocuscard")
 	camerabuffer.start()
 	await camerabuffer.timeout
 	if !choosing_new_card:
@@ -627,6 +653,7 @@ func pull_up_cards() -> void:
 	
 func pull_down_cards() -> void:
 	card_animations.play_backwards("pullupcards")
+	get_tree().call_group("card_logic", "unfocuscard")
 	GameManager.viewing_cards = false
 
 func play_card_sounds() -> void:
@@ -799,11 +826,17 @@ func shop_slot_zoom(slot : int) -> void:
 	if !camera_movement.is_playing():
 		shop_box.disable_exit_button() 
 		disable_all_shop_areas()
-		camera_movement.play("shop_to_slot_" + str(slot))
+		if !GameManager.reduce_motion:
+			camera_movement.play("shop_to_slot_" + str(slot))
+		else:
+			camera_movement.play("alt_shop_to_slot_" + str(slot))
 		shop_overlays.slide_in_UI(shop_items.get(slot).item_name, shop_items.get(slot).tooltip, shop_items.get(slot).rarity, shop_items.get(slot).description, slot)
 		
 func shop_slot_zoom_out(slot : int) -> void:
-	camera_movement.play_backwards("shop_to_slot_" + str(slot))
+	if !GameManager.reduce_motion:
+		camera_movement.play_backwards("shop_to_slot_" + str(slot))
+	else:
+		camera_movement.play_backwards("alt_shop_to_slot_" + str(slot))
 	shop_box.temp_disable_exit_button() 
 	camerabuffer.wait_time = 0.25
 	camerabuffer.start()
@@ -873,6 +906,7 @@ func _on_camera_movement_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ending_fade" or anim_name == "ending_fade_2":
 		GlobalMusicPlayer.start_title_song()
 		GlobalMusicPlayer.fade_in()
+		GameManager.hide_pause()
 		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 		
 func enter_postgame() -> void:
@@ -885,4 +919,5 @@ func enter_postgame() -> void:
 	camera_movement.play_backwards("DefaultPostgameFirstTime")
 
 func shake_screen() -> void:
-	screenshake.play("shake1")
+	if !GameManager.reduce_motion:
+		screenshake.play("shake1")

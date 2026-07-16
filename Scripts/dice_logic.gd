@@ -19,6 +19,9 @@ class_name DiceLogic
 @export var normal : Texture2D
 @export var roughness : Texture2D
 
+@export_group("fonts")
+@export var hover_font : FontFile = preload("res://Assets/Fonts/MetropolisStreetRegular.otf")
+
 @export_group("sounds")
 @warning_ignore("untyped_declaration")
 @export var dice_clink_sound_1 = SfxBank.dice_clink_sound_1
@@ -38,6 +41,7 @@ class_name DiceLogic
 @onready var storage_timer: Timer = $StorageTimer
 @onready var back_to_box_timer: Timer = $BackToBoxTimer
 @onready var gravity_reset_timer: Timer = $GravityResetTimer
+@onready var number_display: Label3D = $NumberDisplay
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -49,7 +53,17 @@ func _ready() -> void:
 	get_parent().highlight.get_material_override().metallic_texture = roughness
 	get_parent().highlight.get_material_override().roughness_texture = roughness
 	get_parent().highlight.get_material_override().normal_texture = normal
+	number_display.font = hover_font
 
+func show_number_display() -> void:
+	if get_parent().sleeping and GameManager.number_display or get_parent().sleeping and get_parent().item_name == "Robot Die":
+		number_display.visible = true
+		number_display.rotation = Vector3.ZERO
+		number_display.text = str(get_parent().number)
+
+func hide_number_display() -> void:
+	number_display.visible = false
+	
 func adjust_number(new_pos : float) -> void:
 	get_parent().dice_position = new_pos
 	match get_parent().dice_position:
@@ -162,6 +176,7 @@ func _physics_process(delta: float) -> void:
 		get_parent().has_given_number = true
 		
 	if get_parent().shaking:
+		get_parent().outside_the_box = true
 		get_parent().has_given_number = true
 		
 	if get_parent().returning_to_box and !get_parent().recalling:
@@ -170,10 +185,18 @@ func _physics_process(delta: float) -> void:
 	if get_parent().focused == true and !get_parent().outside_the_box and get_parent().linear_velocity.length() < 0.1 and InputHandler.hovered_object != "scoresheet" and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false and get_parent().has_given_number:
 		focusdie()
 		
+	if int(number_display.text) != get_parent().number:
+		number_display.text = str(get_parent().number)
+		
 func focusdie() -> void:
+	get_parent().highlight_bubble.global_rotation = Vector3.ZERO
+	get_parent().highlight_bubble.global_position = Vector3(get_parent().global_position.x, get_parent().global_position.y + 0.5, get_parent().global_position.z)
+	get_parent().highlight_circle.global_rotation = Vector3.ZERO
+	get_parent().highlight_circle.global_position = Vector3(get_parent().global_position.x, get_parent().global_position.y - 0.4, get_parent().global_position.z)
 	if dice_being_replaced:
 		return
 	get_parent().focused = true
+	show_number_display()
 	if !get_parent().outside_the_box and get_parent().linear_velocity.length() < 0.1 and !just_spawned and get_tree().get_first_node_in_group("main").between_rounds == false and get_parent().has_given_number:
 		get_parent().animation_player.play("highlighted")
 		print("sus")
@@ -186,6 +209,7 @@ func focusdie() -> void:
 		pass
 
 func losefocusdie() -> void:
+	hide_number_display()
 	if dice_being_replaced:
 		return
 	if get_parent().focused:
@@ -264,16 +288,21 @@ func purchase_die() -> void:
 		get_parent().get_parent().in_play_dice_instances.set(target_slot, get_parent())
 		get_parent().dice_position = target_slot
 		just_spawned = false
-		get_parent().get_parent().shop_to_dice_storage()
-		await get_tree().create_timer(0.75).timeout
+		if GameManager.reduce_motion:
+			poof_particle.emitting = true
+			await get_tree().create_timer(0.5).timeout
+		if !GameManager.reduce_motion:
+			get_parent().get_parent().shop_to_dice_storage()
+			await get_tree().create_timer(0.75).timeout
 		get_parent().global_position = Vector3.ZERO
 		get_parent().rotation = Vector3.ZERO
 		get_parent().freeze = false
 		end_of_round_reset()
 		remove_from_group("awaiting_new_slot")
 		GameManager.dice_amount += 1
-		await get_tree().create_timer(1.5).timeout
-		get_parent().get_parent().dice_storage_to_shop()
+		if !GameManager.reduce_motion:
+			await get_tree().create_timer(1.5).timeout
+			get_parent().get_parent().dice_storage_to_shop()
 		return
 	if target_slot == 0:
 		add_to_group("awaiting_new_slot")

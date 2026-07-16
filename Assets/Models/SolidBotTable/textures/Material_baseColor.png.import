@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8pw08ydwskst"
 path.s3tc="res://.godot/imported/Material_baseColor.png-43c5fa1ae6fa98de3d0b1fdc6f33b24a.s3tc.ctex"
+path.etc2="res://.godot/imported/Material_baseColor.png-43c5fa1ae6fa98de3d0b1fdc6f33b24a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/SolidBotTable/textures/Material_baseColor.png"
-dest_files=["res://.godot/imported/Material_baseColor.png-43c5fa1ae6fa98de3d0b1fdc6f33b24a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Material_baseColor.png-43c5fa1ae6fa98de3d0b1fdc6f33b24a.s3tc.ctex", "res://.godot/imported/Material_baseColor.png-43c5fa1ae6fa98de3d0b1fdc6f33b24a.etc2.ctex"]
 
 [params]
 

@@ -16,17 +16,28 @@
 [ext_resource type="Texture2D" uid="uid://c1cid6ej63wn" path="res://Assets/Textures/deskcarvings/lila.png" id="14_3fqed"]
 [ext_resource type="Texture2D" uid="uid://bcdv2yojd5meo" path="res://Assets/Textures/deskcarvings/silvia2.png" id="15_dvga4"]
 [ext_resource type="Texture2D" uid="uid://bjjuu55jjhysb" path="res://Assets/Textures/deskcarvings/the orb everyone has drawn at least once.png" id="16_j6tep"]
+[ext_resource type="Texture2D" uid="uid://cpisbdtpfs7gp" path="res://Assets/Textures/deskcarvings/kilaog.png" id="16_xr6n6"]
 [ext_resource type="Texture2D" uid="uid://xtlau8nhu1md" path="res://Assets/Textures/deskcarvings/d6.png" id="17_2jkra"]
+[ext_resource type="Texture2D" uid="uid://rqn5ryj3kn7q" path="res://Assets/Textures/deskcarvings/sockable.png" id="17_7ypan"]
 [ext_resource type="Texture2D" uid="uid://dfel6t0y42b5s" path="res://Assets/Textures/deskcarvings/b-0.png" id="18_846ha"]
+[ext_resource type="Texture2D" uid="uid://djjrmalqayh0n" path="res://Assets/Textures/deskcarvings/null enemy.png" id="18_hcug0"]
+[ext_resource type="Texture2D" uid="uid://viy5e47alnao" path="res://Assets/Textures/deskcarvings/hypotheticals.png" id="19_flc8j"]
 [ext_resource type="Texture2D" uid="uid://dk5sc8yvldqjm" path="res://Assets/Textures/deskcarvings/cool s.png" id="19_xr6n6"]
+[ext_resource type="Texture2D" uid="uid://bbsrr2xhxvcc8" path="res://Assets/Textures/deskcarvings/gamebox.png" id="20_1v2cw"]
 [ext_resource type="Texture2D" uid="uid://cv67u02wx4iui" path="res://Assets/Textures/deskcarvings/coffee cup.png" id="20_nmgk3"]
+[ext_resource type="Texture2D" uid="uid://chxysni74pjv5" path="res://Assets/Textures/deskcarvings/Fred.png" id="21_ks7mn"]
 [ext_resource type="Texture2D" uid="uid://h4ld6e83jcci" path="res://Assets/Textures/deskcarvings/lilblock.png" id="21_o01wq"]
 [ext_resource type="Texture2D" uid="uid://bect1tg61eocf" path="res://Assets/Textures/deskcarvings/lightbulb.png" id="22_qjjex"]
+[ext_resource type="Texture2D" uid="uid://dl6242maj0l2q" path="res://Assets/Textures/deskcarvings/caltrops.png" id="22_ssww7"]
 [ext_resource type="Texture2D" uid="uid://b4ggdwswmkke2" path="res://Assets/Textures/deskcarvings/tatertot.png" id="23_846ha"]
+[ext_resource type="Texture2D" uid="uid://b356te7lasbwb" path="res://Assets/Textures/deskcarvings/bangbang.png" id="23_xnhf6"]
 [ext_resource type="Texture2D" uid="uid://dcgs5b1k66l8j" path="res://Assets/Textures/deskcarvings/brooke.png" id="24_3fqed"]
+[ext_resource type="Texture2D" uid="uid://dnhx46kr084y3" path="res://Assets/Textures/deskcarvings/box.png" id="24_dwu44"]
 [ext_resource type="Texture2D" uid="uid://r6fb6w6uabgv" path="res://Assets/Textures/deskcarvings/foxxarie.png" id="24_xr6n6"]
 [ext_resource type="Texture2D" uid="uid://pa7ius5g80hi" path="res://Assets/Textures/deskcarvings/jonnyboy.png" id="25_dvga4"]
+[ext_resource type="Texture2D" uid="uid://rdye3cv4lkrr" path="res://Assets/Textures/deskcarvings/glorp.png" id="25_hxs1l"]
 [ext_resource type="Texture2D" uid="uid://bxafid8nugbyj" path="res://Assets/Textures/deskcarvings/monicarving.png" id="26_j6tep"]
+[ext_resource type="Texture2D" uid="uid://m7qfiuykioq4" path="res://Assets/Textures/deskcarvings/boxes.png" id="26_mw6n0"]
 [ext_resource type="Texture2D" uid="uid://ecf2tj8xqfy" path="res://Assets/Textures/deskcarvings/overlydetailedeye.png" id="27_2jkra"]
 [ext_resource type="Texture2D" uid="uid://b737r40t7x3ih" path="res://Assets/Textures/deskcarvings/star.png" id="28_846ha"]
 [ext_resource type="Texture2D" uid="uid://kp74p1hhvh68" path="res://Assets/Textures/deskcarvings/heart.png" id="29_xr6n6"]
@@ -2651,6 +2662,18 @@ tracks/205/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/206/type = "value"
+tracks/206/imported = false
+tracks/206/enabled = true
+tracks/206/path = NodePath("FlashingLightsColor:color")
+tracks/206/interp = 1
+tracks/206/loop_wrap = true
+tracks/206/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.14509805)]
+}
 
 [sub_resource type="Animation" id="Animation_hafik"]
 resource_name = "breakdown"
@@ -5103,6 +5126,18 @@ tracks/203/keys = {
 "update": 0,
 "values": [0.0, 0.0, 50.0]
 }
+tracks/204/type = "value"
+tracks/204/imported = false
+tracks/204/enabled = true
+tracks/204/path = NodePath("FlashingLightsColor:color")
+tracks/204/interp = 1
+tracks/204/loop_wrap = true
+tracks/204/keys = {
+"times": PackedFloat32Array(0, 10.298974),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.14509805), Color(0, 0, 0, 0.8745098)]
+}
 
 [sub_resource type="Animation" id="Animation_u4vm1"]
 resource_name = "creditsroll"
@@ -5183,7 +5218,7 @@ layout_mode = 1
 offset_left = 616.0
 offset_top = 244.0
 offset_right = 616.0
-offset_bottom = 244.01855
+offset_bottom = 244.0216
 text = "   "
 
 [node name="DialogueHandlerTopLeft8" parent="." unique_id=323450839 instance=ExtResource("1_m705g")]
@@ -5198,7 +5233,7 @@ text = "   "
 layout_mode = 1
 offset_left = 591.0
 offset_top = -184.0
-offset_right = 590.9939
+offset_right = 590.99365
 offset_bottom = -183.9862
 text = "   "
 
@@ -5215,7 +5250,7 @@ layout_mode = 1
 offset_left = -238.0
 offset_top = -323.0
 offset_right = -238.0
-offset_bottom = -322.99377
+offset_bottom = -322.99512
 text = "        "
 
 [node name="DialogueHandlerTopLeft7" parent="." unique_id=2007936244 instance=ExtResource("1_m705g")]
@@ -5223,7 +5258,7 @@ layout_mode = 1
 offset_left = 300.0
 offset_top = -318.0
 offset_right = 299.9922
-offset_bottom = -317.98755
+offset_bottom = -317.9911
 text = "        "
 
 [node name="DialogueHandlerTopLeft5" parent="." unique_id=107154988 instance=ExtResource("1_m705g")]
@@ -5239,7 +5274,7 @@ layout_mode = 1
 offset_left = 343.0
 offset_top = 36.0
 offset_right = 343.0
-offset_bottom = 36.000854
+offset_bottom = 36.00049
 text = "        "
 
 [node name="DialogueHandlerLowerLeft" parent="." unique_id=637278484 instance=ExtResource("1_m705g")]
@@ -5247,7 +5282,7 @@ layout_mode = 1
 offset_left = -361.0
 offset_top = 135.0
 offset_right = -361.0
-offset_bottom = 134.99823
+offset_bottom = 134.9978
 text = "   "
 
 [node name="DialogueHandlerLowerLeft2" parent="." unique_id=1306582456 instance=ExtResource("1_m705g")]
@@ -5255,7 +5290,7 @@ layout_mode = 1
 offset_left = -89.0
 offset_top = 328.0
 offset_right = -89.0
-offset_bottom = 328.0149
+offset_bottom = 328.01135
 rotation = 0.81681406
 text = "   "
 
@@ -5272,7 +5307,7 @@ layout_mode = 1
 offset_left = -254.0
 offset_top = 76.0
 offset_right = -254.0
-offset_bottom = 76.008545
+offset_bottom = 76.0105
 text = "        "
 
 [node name="DialogueHandlerLowerLeft4" parent="." unique_id=1922405438 instance=ExtResource("1_m705g")]
@@ -5280,7 +5315,7 @@ layout_mode = 1
 offset_left = -206.0
 offset_top = 301.0
 offset_right = -206.0
-offset_bottom = 301.00403
+offset_bottom = 301.0027
 text = "   "
 
 [node name="DialogueHandlerLowerLeft5" parent="." unique_id=1444380206 instance=ExtResource("1_m705g")]
@@ -5288,7 +5323,7 @@ layout_mode = 1
 offset_left = -388.0
 offset_top = -161.0
 offset_right = -388.0
-offset_bottom = -160.99158
+offset_bottom = -160.98987
 text = "        "
 
 [node name="DialogueHandlerTopRight" parent="." unique_id=1390303756 instance=ExtResource("1_m705g")]
@@ -5304,14 +5339,14 @@ layout_mode = 1
 offset_left = 303.0
 offset_top = -30.0
 offset_right = 303.0
-offset_bottom = -30.000122
+offset_bottom = -30.0
 text = "        "
 
 [node name="DialogueHandlerTopRight2" parent="." unique_id=1929767049 instance=ExtResource("1_m705g")]
 layout_mode = 1
 offset_left = -255.0
 offset_top = 199.0
-offset_right = -254.99902
+offset_right = -254.99878
 offset_bottom = 199.0127
 text = "    "
 
@@ -5320,7 +5355,7 @@ layout_mode = 1
 offset_left = 358.0
 offset_top = 110.0
 offset_right = 358.0669
-offset_bottom = 109.99243
+offset_bottom = 109.9895
 rotation = -0.32637656
 text = "        "
 
@@ -5329,7 +5364,7 @@ layout_mode = 1
 offset_left = 401.0
 offset_top = -196.0
 offset_right = 401.0
-offset_bottom = -195.98547
+offset_bottom = -195.9812
 rotation = -0.4904375
 text = "        "
 
@@ -5346,7 +5381,7 @@ text = "    "
 layout_mode = 1
 offset_left = 266.0
 offset_top = 303.0
-offset_right = 266.00037
+offset_right = 266.0005
 offset_bottom = 302.9901
 rotation = 0.70685834
 text = "        "
@@ -5356,7 +5391,7 @@ layout_mode = 1
 offset_left = -201.0
 offset_top = 328.0
 offset_right = -201.0
-offset_bottom = 328.03198
+offset_bottom = 328.01685
 text = "        "
 
 [node name="DialogueHandlerTopRight6" parent="." unique_id=1827534372 instance=ExtResource("1_m705g")]
@@ -5372,7 +5407,7 @@ layout_mode = 1
 offset_left = -298.0
 offset_top = -23.0
 offset_right = -298.00098
-offset_bottom = -22.977661
+offset_bottom = -22.97705
 text = "        "
 
 [node name="DialogueHandlerTopRight4" parent="." unique_id=1412632869 instance=ExtResource("1_m705g")]
@@ -5380,7 +5415,7 @@ layout_mode = 1
 offset_left = 228.0
 offset_top = -183.0
 offset_right = 228.0
-offset_bottom = -183.03711
+offset_bottom = -183.0365
 text = "        "
 
 [node name="DialogueHandlerLowerRight" parent="." unique_id=617080764 instance=ExtResource("1_m705g")]
@@ -5388,7 +5423,7 @@ layout_mode = 1
 offset_left = -276.0
 offset_top = 268.0
 offset_right = -276.0
-offset_bottom = 268.00317
+offset_bottom = 267.99066
 text = "    "
 
 [node name="DialogueHandlerLowerRight11" parent="." unique_id=1677557683 instance=ExtResource("1_m705g")]
@@ -5396,7 +5431,7 @@ layout_mode = 1
 offset_left = -463.0
 offset_top = 301.0
 offset_right = -463.0
-offset_bottom = 301.00024
+offset_bottom = 301.00708
 text = "        "
 
 [node name="DialogueHandlerLowerRight2" parent="." unique_id=627423338 instance=ExtResource("1_m705g")]
@@ -5404,7 +5439,7 @@ layout_mode = 1
 offset_left = 507.0
 offset_top = 35.0
 offset_right = 507.0
-offset_bottom = 35.015625
+offset_bottom = 35.01538
 text = "  "
 
 [node name="DialogueHandlerLowerRight3" parent="." unique_id=432095314 instance=ExtResource("1_m705g")]
@@ -5412,7 +5447,7 @@ layout_mode = 1
 offset_left = 321.0
 offset_top = 207.0
 offset_right = 321.0
-offset_bottom = 207.0061
+offset_bottom = 207.00659
 text = "    "
 
 [node name="DialogueHandlerLowerRight10" parent="." unique_id=547373613 instance=ExtResource("1_m705g")]
@@ -5420,7 +5455,7 @@ layout_mode = 1
 offset_left = 21.0
 offset_top = 134.0
 offset_right = 21.0
-offset_bottom = 134.00183
+offset_bottom = 134.00488
 text = "        "
 
 [node name="DialogueHandlerLowerRight4" parent="." unique_id=307381836 instance=ExtResource("1_m705g")]
@@ -5428,7 +5463,7 @@ layout_mode = 1
 offset_left = 181.0
 offset_top = 271.0
 offset_right = 181.0
-offset_bottom = 271.02844
+offset_bottom = 271.02173
 text = "    "
 
 [node name="DialogueHandlerLowerRight5" parent="." unique_id=780582506 instance=ExtResource("1_m705g")]
@@ -5436,7 +5471,7 @@ layout_mode = 1
 offset_left = 372.0
 offset_top = 344.0
 offset_right = 372.0
-offset_bottom = 344.01196
+offset_bottom = 344.0027
 text = "    "
 
 [node name="DialogueHandlerLowerRight9" parent="." unique_id=564875147 instance=ExtResource("1_m705g")]
@@ -5460,7 +5495,7 @@ layout_mode = 1
 offset_left = -309.0
 offset_top = -274.0
 offset_right = -309.0
-offset_bottom = -273.99908
+offset_bottom = -273.99365
 text = "        "
 
 [node name="DialogueHandlerLowerRight6" parent="." unique_id=571619211 instance=ExtResource("1_m705g")]
@@ -5470,6 +5505,18 @@ offset_top = 146.0
 offset_right = 183.0
 offset_bottom = 145.99329
 text = "        "
+
+[node name="FlashingLightsColor" type="ColorRect" parent="." unique_id=661238246]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.14509805)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=421313784]
 material = SubResource("ShaderMaterial_wmpjr")
@@ -5600,22 +5647,31 @@ Texturelabs.org
 [b]Desk Carving Easter Egg Refs[/b]
 
 Me
-
 Bad Ideas Productions
-
 Fan_go_brrrr
-
 VolfenF
-
 Cablll
-
 RussT
-
 LilacStarvix
-
 ThunderSpark
-
 SilviaFoxtris
+ChaokoCartoons (go play kilaflow)
+FrostHound
+Wub
+Nacho Del Castillo
+DDD
+Free Will: Devil May Fly Team
+Everyone who made a game about cardboard
+malek elsady
+Outrunfungus43
+Euclidian_Breadcrumb
+Boxhead Luke, Mattbil
+Rainbow Dye Games
+TheSolarSlime
+BeepSoap/Sockable
+DominusGlitch
+StudioStrawPixel
+Reckd
 
 
 [b]Ideas Guys[/b]
@@ -5721,6 +5777,10 @@ Malkar_Shader
 
 Binbun
 
+MadSerb
+
+withoutfail
+
 
 [b]Fonts[/b]
 
@@ -5761,7 +5821,7 @@ Thank you to Terry Cavanagh, Daniel Mullins, and LocalThunk for giving me a ton 
 
 Thank you to Mostly Mad Productions and especially to Brackeys for having great tutorials, I had never touched 3D game development in my life until the day of the jam starting and Brackeys' 3D Godot tutorial was a miracle.
 
-Thank you to Jonny RaZeR and the rest of Bad Ideas Productions for putting on this jam with such a banger theme, and giving me a chance to get my work out there to more people.
+Thank you to Jonny RaZeR, Mary the Producer, Lani, and the rest of Bad Ideas Productions for putting on this jam with such a banger theme, and giving me a chance to get my work out there to more people.
 
 Thank you to every kind soul out there who uploads their handcrafted, wonderful work to the internet and makes it completely free to use.
 
@@ -5780,7 +5840,6 @@ I had to spend an uncountable amount of time combing through any assets I find o
 
 
 This was my first ever 3D project, so hopefully it turned out well.
-
 
 [b]Game Design, Programming, Some Textures, Models, Vocals, Sound Effects, Voice Acting, Animations, Writing, Bug Fixing, And Generally just Putting all these Things Together Solo[/b]
 
@@ -5804,10 +5863,6 @@ To all my platonic friends who I no longer have the confidence to say \"I love y
 
 
 
-
-
-
-
 [b]Every time you lose something, 
 
 You gain more than you lost. 
@@ -5817,11 +5872,6 @@ Every failure is a chance to learn,
 Every person no longer in your life leaves you more room to grow, 
 
 And everything you don't have anymore is weight off your shoulders. 
-
-
-
-
-
 
 
 
@@ -5857,102 +5907,157 @@ texture = ExtResource("10_h80yk")
 
 [node name="Sprite2D6" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=636785944]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(924, 1438)
+position = Vector2(893, 1375.29)
 texture = ExtResource("11_muu3r")
 
 [node name="Sprite2D7" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=860587324]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(299, 1447)
+position = Vector2(308, 1341.29)
 texture = ExtResource("12_ilv12")
 
 [node name="Sprite2D8" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=124065543]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(1038, 1657)
+position = Vector2(1095, 1540.29)
 texture = ExtResource("13_mt6tf")
 
 [node name="Sprite2D9" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=917074726]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(214, 1735)
+position = Vector2(137, 1569.29)
 texture = ExtResource("14_3fqed")
 
 [node name="Sprite2D10" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=240937536]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(987, 1959)
+position = Vector2(982, 2039.29)
 texture = ExtResource("15_dvga4")
+
+[node name="Sprite2D18" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=63560936]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(257, 2046.29)
+texture = ExtResource("16_xr6n6")
+
+[node name="Sprite2D27" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1185781821]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(953, 1715.29)
+texture = ExtResource("17_7ypan")
+
+[node name="Sprite2D28" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1928911155]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(78, 1803.29)
+texture = ExtResource("18_hcug0")
+
+[node name="Sprite2D29" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=77731365]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(301, 2279.29)
+texture = ExtResource("19_flc8j")
+
+[node name="Sprite2D30" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=681068010]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(1114, 1788.29)
+texture = ExtResource("20_1v2cw")
+
+[node name="Sprite2D31" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=165424324]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(332, 1716.29)
+texture = ExtResource("21_ks7mn")
+
+[node name="Sprite2D32" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=89412670]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(1065, 2301.29)
+texture = ExtResource("22_ssww7")
+
+[node name="Sprite2D33" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=253269405]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(851, 2364.29)
+texture = ExtResource("23_xnhf6")
+
+[node name="Sprite2D34" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1150588083]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(360, 2461.29)
+texture = ExtResource("24_dwu44")
+
+[node name="Sprite2D35" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=408807409]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(137, 2459.29)
+texture = ExtResource("25_hxs1l")
+
+[node name="Sprite2D36" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1126135301]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(1024, 2522.29)
+texture = ExtResource("26_mw6n0")
 
 [node name="Sprite2D11" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=845081815]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(346, 2732)
+position = Vector2(270, 3202.5)
 texture = ExtResource("16_j6tep")
 
 [node name="Sprite2D12" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1324175079]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(1141, 3914.42)
+position = Vector2(1149, 4365.5)
 texture = ExtResource("17_2jkra")
 
 [node name="Sprite2D13" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=701741278]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(910, 5365.42)
+position = Vector2(924, 5626.29)
 texture = ExtResource("18_846ha")
 
 [node name="Sprite2D14" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=853358965]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(331, 7302)
+position = Vector2(873, 8227.5)
 texture = ExtResource("19_xr6n6")
 
 [node name="Sprite2D15" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1824156722]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(291, 6299.42)
+position = Vector2(288, 6613.29)
 texture = ExtResource("20_nmgk3")
 
 [node name="Sprite2D16" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=489660827]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(926, 7731.42)
+position = Vector2(942, 8691.499)
 texture = ExtResource("21_o01wq")
 
 [node name="Sprite2D17" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=790494235]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(285, 8090.42)
+position = Vector2(314, 7359.29)
 texture = ExtResource("22_qjjex")
 
 [node name="Sprite2D25" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1821683610]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(905, 9019.42)
+position = Vector2(936, 9668.499)
 texture = ExtResource("23_846ha")
 
 [node name="Sprite2D26" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1310320461]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(302, 8538.42)
+position = Vector2(314, 9087.499)
 texture = ExtResource("24_xr6n6")
 
 [node name="Sprite2D19" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1814851599]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(978, 7089)
+position = Vector2(1026, 7078.29)
 texture = ExtResource("24_3fqed")
 
 [node name="Sprite2D20" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=541346023]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(597, 11288.42)
+position = Vector2(611, 11907.709)
 texture = ExtResource("25_dvga4")
 
 [node name="Sprite2D21" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=2068462062]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(635, 12230.42)
+position = Vector2(621, 12820.499)
 texture = ExtResource("26_j6tep")
 
 [node name="Sprite2D22" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=602838696]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(594, 12784.42)
+position = Vector2(605, 13371.679)
 texture = ExtResource("27_2jkra")
 
 [node name="Sprite2D23" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=1372788859]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(584, 13157.42)
+position = Vector2(598, 13725.679)
 texture = ExtResource("28_846ha")
 
 [node name="Sprite2D24" type="Sprite2D" parent="ColorRect4/Label/RichTextLabel" unique_id=53587112]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(586, 15157.42)
+position = Vector2(582, 15182.47)
 texture = ExtResource("29_xr6n6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2041957050]
@@ -5962,7 +6067,7 @@ speed_scale = 1.5
 
 [node name="Timer" type="Timer" parent="." unique_id=2058925120]
 process_callback = 0
-wait_time = 74.5
+wait_time = 75.0
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dnss80dkblnx4" path="res://Materials/outside_box_mat.tres" id="1_5ajnl"]
 [ext_resource type="Script" uid="uid://c36kiness2afc" path="res://Scripts/dice_cup.gd" id="1_5fdiy"]
+[ext_resource type="Shader" uid="uid://c4ifmvxkjglyn" path="res://Shaders/highlight.gdshader" id="3_5fdiy"]
 
 [sub_resource type="Animation" id="Animation_fspbs"]
 length = 0.001
@@ -166,6 +167,43 @@ top_radius = 3.2
 bottom_radius = 3.2
 height = 0.001
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5fdiy"]
+fractal_weighted_strength = 0.46
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fspbs"]
+noise = SubResource("FastNoiseLite_5fdiy")
+seamless = true
+seamless_blend_skirt = 0.59
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvavy"]
+render_priority = 0
+shader = ExtResource("3_5fdiy")
+shader_parameter/color = Color(0.81108326, 0.53377783, 1, 1)
+shader_parameter/color_edge = Color(0.9453252, 0.8572083, 1, 1)
+shader_parameter/emission_strength = 6.154000292315
+shader_parameter/rise_progress = 0.40400001919
+shader_parameter/edge_width = 0.106000005035
+shader_parameter/noise_scale = 3.32100015448762
+shader_parameter/noise_strength = 0.18800000893
+shader_parameter/time_speed = 0.4810000228475
+shader_parameter/fade_softness = 0.42100001929898
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fspbs")
+shader_parameter/top_fade_start = 0.09600000456
+shader_parameter/top_fade_power = 3.80800015713
+shader_parameter/invert_top_fade = false
+shader_parameter/wave_transparency = 0.990000047025
+shader_parameter/wave_frequency = 2.7030000808925
+shader_parameter/wave_speed = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yvavy"]
+material = SubResource("ShaderMaterial_yvavy")
+top_radius = 3.6
+bottom_radius = 3.1
+height = 6.0
+radial_segments = 24
+cap_top = false
+cap_bottom = false
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_5fdiy"]
 material = ExtResource("1_5ajnl")
 top_radius = 2.6
@@ -260,6 +298,10 @@ mesh = SubResource("TorusMesh_dk23n")
 transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, -0.54, 0)
 visible = false
 mesh = SubResource("CylinderMesh_fspbs")
+
+[node name="Outline2" type="MeshInstance3D" parent="Cup/MeshInstance3D/Outline" unique_id=668784331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0377538, 0)
+mesh = SubResource("CylinderMesh_yvavy")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Cup" unique_id=851259063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999981, 0)
@@ -370,6 +412,7 @@ shape = SubResource("BoxShape3D_5ajnl")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2063001589]
 
 [node name="Outliner" type="AnimationPlayer" parent="." unique_id=226330111]
+callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_lgi01")
 
 [node name="LidColliderTimer" type="Timer" parent="." unique_id=1493967005]

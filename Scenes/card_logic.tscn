@@ -20,7 +20,7 @@ height = 1.2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05504588, 1), 0.0, 0.0, 0, 0, Vector2(0.7247707, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="card_logic" type="Node3D" unique_id=300499701]
+[node name="card_logic" type="Node3D" unique_id=300499701 groups=["card_logic"]]
 script = ExtResource("1_3rgpg")
 
 [node name="Timer" type="Timer" parent="." unique_id=541735209]
@@ -30,12 +30,12 @@ one_shot = true
 [node name="PoofParticle" type="CPUParticles3D" parent="." unique_id=699210486]
 emitting = false
 amount = 24
-lifetime = 0.5
+lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
 mesh = SubResource("SphereMesh_bwxet")
 emission_shape = 3
-emission_box_extents = Vector3(-0.815, 1.19, -0.06)
+emission_box_extents = Vector3(-4.965, 6.89, -0.035)
 direction = Vector3(0, 10, 0)
 spread = 80.69
 gravity = Vector3(0, 20, 0)

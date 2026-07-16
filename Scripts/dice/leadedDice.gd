@@ -31,6 +31,8 @@ var outside_the_box_multiplier_given_to_top_row : int = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var highlight: MeshInstance3D = $Highlight
+@onready var highlight_bubble: MeshInstance3D = $Highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Highlight/HighlightBubble/HighlightCircle
 
 @export var item_type : String = "Die"
 @export var item_name : String = "Leaded Die"

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcqcyixpmg6xe"
 path.s3tc="res://.godot/imported/BACKGROUND_BUILDING_2_metallicRoughness.png-803626e983d47efe0a482af17ca99f2c.s3tc.ctex"
+path.etc2="res://.godot/imported/BACKGROUND_BUILDING_2_metallicRoughness.png-803626e983d47efe0a482af17ca99f2c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/NightCity99Miles/textures/BACKGROUND_BUILDING_2_metallicRoughness.png"
-dest_files=["res://.godot/imported/BACKGROUND_BUILDING_2_metallicRoughness.png-803626e983d47efe0a482af17ca99f2c.s3tc.ctex"]
+dest_files=["res://.godot/imported/BACKGROUND_BUILDING_2_metallicRoughness.png-803626e983d47efe0a482af17ca99f2c.s3tc.ctex", "res://.godot/imported/BACKGROUND_BUILDING_2_metallicRoughness.png-803626e983d47efe0a482af17ca99f2c.etc2.ctex"]
 
 [params]
 

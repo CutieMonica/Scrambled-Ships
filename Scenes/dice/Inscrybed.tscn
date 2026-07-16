@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://mmsp45o80nv7" path="res://Assets/Models/DicetnRaroBasic/textures/Dice_normal.png" id="4_54wjw"]
 [ext_resource type="PackedScene" uid="uid://dwp7cq0rq8nc3" path="res://Scenes/dice_logic.tscn" id="5_nqhm1"]
 [ext_resource type="Shader" uid="uid://cni3eai7yglox" path="res://Shaders/Inscrybed.gdshader" id="7_54wjw"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="8_gcql6"]
+[ext_resource type="Material" uid="uid://ciug8wq24ba67" path="res://Materials/highlightmaterial.tres" id="9_1otng"]
 [ext_resource type="Texture2D" uid="uid://x7xp7sx6t2d3" path="res://Assets/particles/smoketexture.png" id="9_nqhm1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yahnv"]
@@ -379,6 +381,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_75xwo")
 
+[sub_resource type="SphereMesh" id="SphereMesh_1otng"]
+material = ExtResource("8_gcql6")
+radius = 1.8
+height = 6.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6irpo"]
+material = ExtResource("9_1otng")
+bottom_radius = 1.3
+height = 0.01
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahnv"]
 
 [sub_resource type="Animation" id="Animation_2kx7j"]
@@ -696,6 +708,14 @@ transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_brg2b")
 mesh = SubResource("ArrayMesh_r3gm5")
+
+[node name="HighlightBubble" type="MeshInstance3D" parent="highlight" unique_id=1445750036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3636364, 0)
+mesh = SubResource("SphereMesh_1otng")
+
+[node name="HighlightCircle" type="MeshInstance3D" parent="highlight/HighlightBubble" unique_id=1645508102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2727273, 0)
+mesh = SubResource("CylinderMesh_6irpo")
 
 [node name="D6_Mouse_Detect" type="Area3D" parent="." unique_id=125344462]
 collision_layer = 128

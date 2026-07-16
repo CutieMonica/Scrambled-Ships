@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bwcsschvcypgk"]
+
+[ext_resource type="Shader" uid="uid://c4ifmvxkjglyn" path="res://Shaders/highlight.gdshader" id="1_5diqm"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5fdiy"]
+fractal_weighted_strength = 0.46
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fspbs"]
+noise = SubResource("FastNoiseLite_5fdiy")
+seamless = true
+seamless_blend_skirt = 0.59
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5diqm")
+shader_parameter/color = Color(0.81108326, 0.53377783, 1, 1)
+shader_parameter/color_edge = Color(0.9453252, 0.8572083, 1, 1)
+shader_parameter/emission_strength = 2.50000011875
+shader_parameter/rise_progress = 0.3270000155325
+shader_parameter/edge_width = 0.1230000058425
+shader_parameter/noise_scale = 4.844000226830119
+shader_parameter/noise_strength = 0.1930000091675
+shader_parameter/time_speed = 0.7690000365275
+shader_parameter/fade_softness = 0.3830000174939801
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fspbs")
+shader_parameter/top_fade_start = 0.0
+shader_parameter/top_fade_power = 5.0
+shader_parameter/invert_top_fade = false
+shader_parameter/wave_transparency = 0.5
+shader_parameter/wave_frequency = 10.7410004626975
+shader_parameter/wave_speed = 0.0

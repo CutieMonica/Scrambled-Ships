@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var rarity : int = 2
 @export var base_modifier : int = 0
 @export var statue_name : String = "Paper Weight"
 @export var color_shift_level : int = 3

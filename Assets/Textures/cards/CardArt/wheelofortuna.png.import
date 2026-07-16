@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwqy2rom1ig0e"
 path.s3tc="res://.godot/imported/wheelofortuna.png-7a2f908ee1661afd2350b9f8f96e1f59.s3tc.ctex"
+path.etc2="res://.godot/imported/wheelofortuna.png-7a2f908ee1661afd2350b9f8f96e1f59.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/cards/CardArt/wheelofortuna.png"
-dest_files=["res://.godot/imported/wheelofortuna.png-7a2f908ee1661afd2350b9f8f96e1f59.s3tc.ctex"]
+dest_files=["res://.godot/imported/wheelofortuna.png-7a2f908ee1661afd2350b9f8f96e1f59.s3tc.ctex", "res://.godot/imported/wheelofortuna.png-7a2f908ee1661afd2350b9f8f96e1f59.etc2.ctex"]
 
 [params]
 

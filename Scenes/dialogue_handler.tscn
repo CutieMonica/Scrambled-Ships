@@ -153,7 +153,7 @@ _data = {
 &"wave": SubResource("Animation_mhbmq")
 }
 
-[node name="DialogueHandler" type="Control" unique_id=176303350 groups=["DealerDialogue"]]
+[node name="DialogueHandler" type="Control" unique_id=176303350 groups=["DealerDialogue", "contrast_switch"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

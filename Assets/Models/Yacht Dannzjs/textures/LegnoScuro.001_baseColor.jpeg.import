@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1kervnqfvi8q"
 path.s3tc="res://.godot/imported/LegnoScuro.001_baseColor.jpeg-41008192c6489619f0a6b2f1394b1692.s3tc.ctex"
+path.etc2="res://.godot/imported/LegnoScuro.001_baseColor.jpeg-41008192c6489619f0a6b2f1394b1692.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/Yacht Dannzjs/textures/LegnoScuro.001_baseColor.jpeg"
-dest_files=["res://.godot/imported/LegnoScuro.001_baseColor.jpeg-41008192c6489619f0a6b2f1394b1692.s3tc.ctex"]
+dest_files=["res://.godot/imported/LegnoScuro.001_baseColor.jpeg-41008192c6489619f0a6b2f1394b1692.s3tc.ctex", "res://.godot/imported/LegnoScuro.001_baseColor.jpeg-41008192c6489619f0a6b2f1394b1692.etc2.ctex"]
 
 [params]
 

@@ -3,7 +3,8 @@ extends Node3D
 @onready var round_counter: Label3D = $RoundCounter
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var variable_timer: Timer = $VariableTimer
-
+@onready var panic_timer: Timer = $PanicTimer
+var panic_mode : bool = false
 
 const voice_0 = preload("uid://eu3fkj42s76c")
 const voice_1 = preload("uid://dkhqymwux1uc8")
@@ -124,7 +125,13 @@ func play_random_death_voice() -> void:
 	label_3d.text = "FAILED"
 	audio_stream_player_3d.stream = random_death_voice_line.get(random_death_line)
 	audio_stream_player_3d.play()
+	panic_mode = true
+	panic_timer.start()
 	await audio_stream_player_3d.finished
+	panic_mode = false
+	losing_scene()
+	
+func losing_scene() -> void:
 	variable_timer.wait_time = 0.3
 	variable_timer.start()
 	await variable_timer.timeout
@@ -276,3 +283,9 @@ func that_type_shit_you_do_when_you_dont_know_how_to_make_a_function_continue_in
 	round_counter.visible = true
 	round_counter.text = str(GameManager.current_round)
 	get_parent().get_rick_quick_bitch()
+
+
+func _on_panic_timer_timeout() -> void:
+	if panic_mode:
+		losing_scene()
+		panic_mode = false

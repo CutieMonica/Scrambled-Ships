@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgb7hnu1iei85"
 path.s3tc="res://.godot/imported/FloppyDisk_metallicRoughness.png-81c71fd12a77ec57eebe3e12f55a3eca.s3tc.ctex"
+path.etc2="res://.godot/imported/FloppyDisk_metallicRoughness.png-81c71fd12a77ec57eebe3e12f55a3eca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/nyangireFloppydisk/textures/FloppyDisk_metallicRoughness.png"
-dest_files=["res://.godot/imported/FloppyDisk_metallicRoughness.png-81c71fd12a77ec57eebe3e12f55a3eca.s3tc.ctex"]
+dest_files=["res://.godot/imported/FloppyDisk_metallicRoughness.png-81c71fd12a77ec57eebe3e12f55a3eca.s3tc.ctex", "res://.godot/imported/FloppyDisk_metallicRoughness.png-81c71fd12a77ec57eebe3e12f55a3eca.etc2.ctex"]
 
 [params]
 

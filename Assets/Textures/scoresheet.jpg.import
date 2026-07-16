@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6boaes53b136"
 path.s3tc="res://.godot/imported/scoresheet.jpg-7b3d9540689ab9515f4f9b02595acd4b.s3tc.ctex"
+path.etc2="res://.godot/imported/scoresheet.jpg-7b3d9540689ab9515f4f9b02595acd4b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/scoresheet.jpg"
-dest_files=["res://.godot/imported/scoresheet.jpg-7b3d9540689ab9515f4f9b02595acd4b.s3tc.ctex"]
+dest_files=["res://.godot/imported/scoresheet.jpg-7b3d9540689ab9515f4f9b02595acd4b.s3tc.ctex", "res://.godot/imported/scoresheet.jpg-7b3d9540689ab9515f4f9b02595acd4b.etc2.ctex"]
 
 [params]
 

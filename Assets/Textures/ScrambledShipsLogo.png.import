@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://pp6bh5u5s6qi"
 path.s3tc="res://.godot/imported/ScrambledShipsLogo.png-2e02cf65cfaf7cfc1ec6970284bc6bbe.s3tc.ctex"
+path.etc2="res://.godot/imported/ScrambledShipsLogo.png-2e02cf65cfaf7cfc1ec6970284bc6bbe.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/ScrambledShipsLogo.png"
-dest_files=["res://.godot/imported/ScrambledShipsLogo.png-2e02cf65cfaf7cfc1ec6970284bc6bbe.s3tc.ctex"]
+dest_files=["res://.godot/imported/ScrambledShipsLogo.png-2e02cf65cfaf7cfc1ec6970284bc6bbe.s3tc.ctex", "res://.godot/imported/ScrambledShipsLogo.png-2e02cf65cfaf7cfc1ec6970284bc6bbe.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://523q6q1mxokb"
 path.s3tc="res://.godot/imported/musicnote.png-3a3fcf77dd483d6440e7722aced57dda.s3tc.ctex"
+path.etc2="res://.godot/imported/musicnote.png-3a3fcf77dd483d6440e7722aced57dda.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/musicnote.png"
-dest_files=["res://.godot/imported/musicnote.png-3a3fcf77dd483d6440e7722aced57dda.s3tc.ctex"]
+dest_files=["res://.godot/imported/musicnote.png-3a3fcf77dd483d6440e7722aced57dda.s3tc.ctex", "res://.godot/imported/musicnote.png-3a3fcf77dd483d6440e7722aced57dda.etc2.ctex"]
 
 [params]
 

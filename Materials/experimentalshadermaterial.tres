@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c7lkvpwtvnsio"]
+
+[ext_resource type="Shader" uid="uid://dio4vue0ggp26" path="res://Shaders/replacementoutline.gdshader" id="1_f3own"]
+
+[resource]
+render_priority = -10
+shader = ExtResource("1_f3own")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/distance_falloff = 0.2000000095
+shader_parameter/smoothing_cutoff = 0.0
+shader_parameter/smoothing_max = 0.50000002375

@@ -8,6 +8,8 @@ class_name chaosDie
 
 @onready var mesh: MeshInstance3D = $Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/Dice_0/Object_4
 @onready var highlight: MeshInstance3D = $Object_4
+@onready var highlight_bubble: MeshInstance3D = $Object_4/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $Object_4/HighlightBubble/HighlightCircle
 
 
 var number : int = 1

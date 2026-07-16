@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ru2x7hvkphyp"
 path.s3tc="res://.godot/imported/Texturelabs_InkPaint_324S.jpg-2158de15b1e7570f84212a4f38e3ef0d.s3tc.ctex"
+path.etc2="res://.godot/imported/Texturelabs_InkPaint_324S.jpg-2158de15b1e7570f84212a4f38e3ef0d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Texturelabs_InkPaint_324S.jpg"
-dest_files=["res://.godot/imported/Texturelabs_InkPaint_324S.jpg-2158de15b1e7570f84212a4f38e3ef0d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Texturelabs_InkPaint_324S.jpg-2158de15b1e7570f84212a4f38e3ef0d.s3tc.ctex", "res://.godot/imported/Texturelabs_InkPaint_324S.jpg-2158de15b1e7570f84212a4f38e3ef0d.etc2.ctex"]
 
 [params]
 

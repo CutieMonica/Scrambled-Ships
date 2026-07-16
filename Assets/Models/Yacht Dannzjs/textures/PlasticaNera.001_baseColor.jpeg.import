@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx8j4qampl7st"
 path.s3tc="res://.godot/imported/PlasticaNera.001_baseColor.jpeg-bc369653b079f2b8beb6b797f5a14c75.s3tc.ctex"
+path.etc2="res://.godot/imported/PlasticaNera.001_baseColor.jpeg-bc369653b079f2b8beb6b797f5a14c75.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/Yacht Dannzjs/textures/PlasticaNera.001_baseColor.jpeg"
-dest_files=["res://.godot/imported/PlasticaNera.001_baseColor.jpeg-bc369653b079f2b8beb6b797f5a14c75.s3tc.ctex"]
+dest_files=["res://.godot/imported/PlasticaNera.001_baseColor.jpeg-bc369653b079f2b8beb6b797f5a14c75.s3tc.ctex", "res://.godot/imported/PlasticaNera.001_baseColor.jpeg-bc369653b079f2b8beb6b797f5a14c75.etc2.ctex"]
 
 [params]
 

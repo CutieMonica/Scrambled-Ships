@@ -65,6 +65,7 @@ extends Node3D
 
 	
 var can_leave : bool = false
+var hovered : bool = false
 var highlighted : bool = false
 var can_highlight : bool = true
 var has_temp_modifier : bool = false
@@ -157,14 +158,26 @@ var bonus_amount : int
 var current_grand_total : int
 var bonus_threshold_amount : int
 
-var outline_color : Color = Color("a010a230")
+var outline_color : Color = Color("a010a24d")
 var permanent_number_color : Color = Color("000032")
-var info_outline_color : Color = Color("0f0f0fd8")
+var info_outline_color : Color = Color("0f0f0fe6")
 var info_color : Color = Color("c0cadf")
 var inside_sheet : bool = false
 
 var pencil_sound_1 := preload("res://Assets/SFX/pencilsound1.ogg")
 var pencil_sound_2 := preload("res://Assets/SFX/pencilsound2.ogg")
+
+func _process(_delta: float) -> void:
+	if !GameManager.in_tutorial and hovered and !highlighted and can_highlight and !get_parent().camera_movement.is_playing() and InputHandler.current_reroll_state == 0:
+		highlighter.play("Highlighted")
+		highlighted = true
+		InputHandler.hovered_object = "scoresheet"
+
+func contrast_switch() -> void:
+	if GameManager.increase_contrast:
+		bonus_explaination.outline_size = 24
+	else:
+		bonus_explaination.outline_size = 16
 
 func random_sound() -> void:
 	var play_sound : int
@@ -342,10 +355,11 @@ func calculate_score() -> void:
 		valid_yacht = true
 		valid_four_of_a_kind = true
 		yacht_amount = ((current_best_quint) * 5)
-		if current_best_hexa > current_best_quint:
+		if current_best_hexa > 0:
 			yacht_amount = ((current_best_hexa) * 6)
-		if current_best_septen > current_best_hexa and current_best_septen > current_best_quint:
+		if current_best_septen > 0:
 			yacht_amount = ((current_best_septen) * 7)
+			
 		if current_best_quint > current_best_quad:
 			four_of_a_kind_amount = ((current_best_quint) * 4)
 			
@@ -361,6 +375,7 @@ func calculate_score() -> void:
 		
 	
 func _ready() -> void:
+	contrast_switch()
 	update_multipliers()
 	reset_everything()
 	GameManager.dice_numbers.values().count(1)
@@ -415,6 +430,9 @@ func reset_everything() -> void:
 	yacht_score.text = ""
 	
 	grand_total_amount.text = ""
+	
+	top_sum = 0
+	current_sum.text = "TOP SUM: 0"
 	current_grand_total = 0
 	update_multipliers()
 	bonus_threshold.outline_modulate = info_outline_color
@@ -602,12 +620,15 @@ func lock_in_score() -> void:
 	is_sheet_highlighted = false
 	
 func _on_area_3d_mouse_entered() -> void:
-	if can_highlight:
+	hovered = true
+	get_tree().call_group("card_logic", "unfocuscard")
+	if !GameManager.in_tutorial and can_highlight and !get_parent().camera_movement.is_playing() and InputHandler.current_reroll_state == 0:
 		highlighter.play("Highlighted")
 		highlighted = true
 		InputHandler.hovered_object = "scoresheet"
 
 func _on_area_3d_mouse_exited() -> void:
+	hovered = false
 	highlighter.play("NotHighlighted")
 	highlighted = false
 	if InputHandler.hovered_object == "scoresheet" and !inside_sheet:

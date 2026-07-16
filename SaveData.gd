@@ -9,6 +9,12 @@ class_name SaveDataResource
 @export var performance_mode : bool = false
 @export var is_postgame : bool = false
 
+@export var number_display : bool = false
+@export var reduce_motion : bool = false
+@export var increase_contrast : bool = false
+@export var reduce_flashing : bool = false
+@export var pixelization : bool = true
+
 @export var dialogue_seen : Dictionary = {
 	1: false,
 	2: false,

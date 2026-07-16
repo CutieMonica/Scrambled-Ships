@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnj4gl86wmokk"
 path.s3tc="res://.godot/imported/None_baseColor.jpeg-836826aefd10a507e08025f67d073112.s3tc.ctex"
+path.etc2="res://.godot/imported/None_baseColor.jpeg-836826aefd10a507e08025f67d073112.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/FoldingTableKathrinChristian/textures/None_baseColor.jpeg"
-dest_files=["res://.godot/imported/None_baseColor.jpeg-836826aefd10a507e08025f67d073112.s3tc.ctex"]
+dest_files=["res://.godot/imported/None_baseColor.jpeg-836826aefd10a507e08025f67d073112.s3tc.ctex", "res://.godot/imported/None_baseColor.jpeg-836826aefd10a507e08025f67d073112.etc2.ctex"]
 
 [params]
 

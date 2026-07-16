@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chc76drtdvl45"
 path.s3tc="res://.godot/imported/metal_dice_base.png-77052a3db2c88b363fdb8aa422ec4857.s3tc.ctex"
+path.etc2="res://.godot/imported/metal_dice_base.png-77052a3db2c88b363fdb8aa422ec4857.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/DicetnRaroBasic/textures/ExtraDiceTypes/metal/metal_dice_base.png"
-dest_files=["res://.godot/imported/metal_dice_base.png-77052a3db2c88b363fdb8aa422ec4857.s3tc.ctex"]
+dest_files=["res://.godot/imported/metal_dice_base.png-77052a3db2c88b363fdb8aa422ec4857.s3tc.ctex", "res://.godot/imported/metal_dice_base.png-77052a3db2c88b363fdb8aa422ec4857.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbtw3qf341brn"
 path.s3tc="res://.godot/imported/SketchUV_Texture_baseColor.jpeg-aa13e6e516e8f6b156415cd7b774d127.s3tc.ctex"
+path.etc2="res://.godot/imported/SketchUV_Texture_baseColor.jpeg-aa13e6e516e8f6b156415cd7b774d127.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/LeonApartment/textures/SketchUV_Texture_baseColor.jpeg"
-dest_files=["res://.godot/imported/SketchUV_Texture_baseColor.jpeg-aa13e6e516e8f6b156415cd7b774d127.s3tc.ctex"]
+dest_files=["res://.godot/imported/SketchUV_Texture_baseColor.jpeg-aa13e6e516e8f6b156415cd7b774d127.s3tc.ctex", "res://.godot/imported/SketchUV_Texture_baseColor.jpeg-aa13e6e516e8f6b156415cd7b774d127.etc2.ctex"]
 
 [params]
 

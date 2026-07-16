@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdlsrwwd1mt5m" path="res://Scripts/dice_logic.gd" id="1_bjgww"]
 [ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="2_vcfik"]
+[ext_resource type="FontFile" uid="uid://dsdlndu0rumn6" path="res://Assets/Fonts/MetropolisStreetRegular.otf" id="3_vcfik"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpk0l"]
 transparency = 3
@@ -62,6 +63,21 @@ angle_max = 434.5
 scale_amount_min = 0.1
 scale_amount_max = 0.9
 scale_amount_curve = SubResource("Curve_yfyuc")
+
+[node name="NumberDisplay" type="Label3D" parent="." unique_id=1706648704]
+visible = false
+pixel_size = 0.0015
+offset = Vector2(0, 64)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 20
+outline_render_priority = 19
+outline_modulate = Color(0, 0.03681136, 0.3288531, 1)
+text = "1"
+font = ExtResource("3_vcfik")
+font_size = 64
+outline_size = 24
 
 [connection signal="timeout" from="StorageTimer" to="." method="_on_storage_timer_timeout"]
 [connection signal="timeout" from="BackToBoxTimer" to="." method="_on_back_to_box_timer_timeout"]

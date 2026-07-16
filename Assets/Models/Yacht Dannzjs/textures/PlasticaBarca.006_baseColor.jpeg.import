@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpqou36368dox"
 path.s3tc="res://.godot/imported/PlasticaBarca.006_baseColor.jpeg-8ec8ae915b7f4047ee107f0cf4ca1296.s3tc.ctex"
+path.etc2="res://.godot/imported/PlasticaBarca.006_baseColor.jpeg-8ec8ae915b7f4047ee107f0cf4ca1296.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/Yacht Dannzjs/textures/PlasticaBarca.006_baseColor.jpeg"
-dest_files=["res://.godot/imported/PlasticaBarca.006_baseColor.jpeg-8ec8ae915b7f4047ee107f0cf4ca1296.s3tc.ctex"]
+dest_files=["res://.godot/imported/PlasticaBarca.006_baseColor.jpeg-8ec8ae915b7f4047ee107f0cf4ca1296.s3tc.ctex", "res://.godot/imported/PlasticaBarca.006_baseColor.jpeg-8ec8ae915b7f4047ee107f0cf4ca1296.etc2.ctex"]
 
 [params]
 

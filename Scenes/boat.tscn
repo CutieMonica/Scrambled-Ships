@@ -2530,6 +2530,57 @@ material = SubResource("ShaderMaterial_08r7g")
 size = Vector2(800, 800)
 orientation = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kbwu"]
+transparency = 3
+alpha_hash_scale = 0.97
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 0.7294118, 0.6117647, 0.7137255)
+emission_enabled = true
+emission = Color(1.3807716, 0.5855669, 0, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_d0xfp"]
+material = SubResource("StandardMaterial3D_0kbwu")
+
+[sub_resource type="Curve" id="Curve_ksyiy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5277778, 1), 0.0, 0.0, 0, 0, Vector2(0.8981481, 0.1460675), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_e25ta"]
+colors = PackedColorArray(1, 0.5803922, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq62r"]
+transparency = 3
+alpha_hash_scale = 0.97
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 0.71646166, 0.7126427, 0.7137255)
+emission_enabled = true
+emission = Color(0.6481714, 0, 0.09491288, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_4mipr"]
+material = SubResource("StandardMaterial3D_lq62r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu3rg"]
+transparency = 3
+alpha_hash_scale = 0.97
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.38299328, 0.3691459, 1, 0.007843138)
+emission_enabled = true
+emission = Color(0.38717616, 0.2730968, 1.2237577, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_08r7g"]
+material = SubResource("StandardMaterial3D_wu3rg")
+radius = 1.702
+height = 2.566
+
 [node name="Boat" type="StaticBody3D" unique_id=1218170003 groups=["wood"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0.8)
 input_ray_pickable = false
@@ -2610,13 +2661,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.400001, -277.5, -18)
 mesh = SubResource("BoxMesh_4mipr")
 
 [node name="Sketchfab_Scene3" parent="." unique_id=659088398 instance=ExtResource("8_ksyiy")]
-transform = Transform3D(-377.06363, 53.264652, 324.01523, -81.58794, 462.7081, -171.01007, -318.0666, -181.83476, -340.24948, -512.10004, 85.649994, -678.00006)
+transform = Transform3D(-377.06363, 53.26464, 324.01523, -81.58794, 462.708, -171.01007, -318.0666, -181.83473, -340.24948, -512.10004, 85.649994, -678.00006)
 
 [node name="Sketchfab_Scene4" parent="." unique_id=295738325 instance=ExtResource("8_ksyiy")]
-transform = Transform3D(-299.19418, 228.0788, 329.33698, 175.54468, 444.12918, -148.09903, -360.09274, 27.005962, -345.83786, 570.7, 61.29999, -930.6001)
+transform = Transform3D(-299.19418, 228.0788, 329.33698, 175.54466, 444.12918, -148.09903, -360.09274, 27.005962, -345.83786, 570.7, 61.29999, -930.6001)
 
 [node name="Sketchfab_Scene5" parent="." unique_id=1446454738 instance=ExtResource("8_ksyiy")]
-transform = Transform3D(-392.6996, -101.3918, 292.41528, 90.329994, 414.29086, 264.95966, -296.01935, 260.92688, -307.06628, 2148.5, 34.59999, 732.9999)
+transform = Transform3D(-392.69952, -101.3918, 292.41528, 90.32998, 414.29086, 264.95966, -296.0193, 260.92688, -307.06628, 2148.5, 34.59999, 732.9999)
 
 [node name="PassiveAnims" type="AnimationPlayer" parent="." unique_id=1314332504]
 libraries/ = SubResource("AnimationLibrary_dw1d6")
@@ -2626,5 +2677,100 @@ autoplay = &"idle"
 transform = Transform3D(103.325, 0, 0, 0, 103.325, 0, 0, 0, 103.325, 4.2878504, 0, -475.92038)
 visible = false
 mesh = SubResource("PlaneMesh_2e7cs")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=2079922096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.44, 0, -566.05)
+visible = false
+emitting = false
+amount = 64
+lifetime = 30.0
+mesh = SubResource("SphereMesh_d0xfp")
+emission_shape = 3
+emission_box_extents = Vector3(344.8, 330.97, 345.765)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 26.0
+initial_velocity_max = 84.2
+angular_velocity_min = 6.35
+angular_velocity_max = 7.1
+linear_accel_min = -1.45
+linear_accel_max = 2.05
+radial_accel_min = -1.45
+radial_accel_max = 2.35
+tangential_accel_min = -1.4
+tangential_accel_max = 4.7
+damping_min = 0.265
+damping_max = 1.74
+angle_min = -3411.5
+angle_max = 1911.0
+scale_amount_min = 0.8
+scale_amount_max = 3.28
+scale_amount_curve = SubResource("Curve_ksyiy")
+color = Color(18.892157, 17.976582, 17.34272, 1)
+color_ramp = SubResource("Gradient_e25ta")
+hue_variation_min = -0.35
+hue_variation_max = 0.43
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1339042282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -283.34, 0, -674.81)
+visible = false
+emitting = false
+amount = 64
+lifetime = 30.0
+mesh = SubResource("SphereMesh_4mipr")
+emission_shape = 3
+emission_box_extents = Vector3(344.8, 330.97, 345.765)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 26.0
+initial_velocity_max = 84.2
+angular_velocity_min = 6.35
+angular_velocity_max = 7.1
+linear_accel_min = -1.45
+linear_accel_max = 2.05
+radial_accel_min = -1.45
+radial_accel_max = 2.35
+tangential_accel_min = -1.4
+tangential_accel_max = 4.7
+damping_min = 0.265
+damping_max = 1.74
+angle_min = -3411.5
+angle_max = 1911.0
+scale_amount_min = 0.25
+scale_amount_max = 3.75
+scale_amount_curve = SubResource("Curve_ksyiy")
+color = Color(18.892157, 17.976582, 17.34272, 1)
+color_ramp = SubResource("Gradient_e25ta")
+hue_variation_min = -0.35
+hue_variation_max = 0.43
+
+[node name="CPUParticles3D3" type="CPUParticles3D" parent="." unique_id=1620796608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.72, 386.76074, -1186.44)
+visible = false
+emitting = false
+amount = 16
+lifetime = 97.71
+preprocess = 10.0
+mesh = SubResource("SphereMesh_08r7g")
+emission_shape = 3
+emission_box_extents = Vector3(1165.635, 806.06, 239.55)
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.4
+angular_velocity_min = 0.05
+angular_velocity_max = 2.7
+linear_accel_max = 0.05
+radial_accel_min = -0.05
+radial_accel_max = 0.45
+tangential_accel_min = -0.3
+tangential_accel_max = 0.45
+damping_min = 0.265
+damping_max = 1.74
+angle_min = -3411.5
+angle_max = 1911.0
+scale_amount_min = 174.16
+scale_amount_max = 212.45
+scale_amount_curve = SubResource("Curve_ksyiy")
+color = Color(18.892157, 17.976582, 17.34272, 1)
+color_ramp = SubResource("Gradient_e25ta")
+hue_variation_min = -0.35
+hue_variation_max = 0.43
 
 [editable path="Sketchfab_Scene2"]

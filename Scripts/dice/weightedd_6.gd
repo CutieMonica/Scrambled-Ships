@@ -33,6 +33,8 @@ var values : Array = [1, 2, 3, 4, 5, 6]
 @onready var ray_cast_5: RayCast3D = $RayCast5
 @onready var ray_cast_6: RayCast3D = $RayCast6
 @onready var highlight: MeshInstance3D = $highlight
+@onready var highlight_bubble: MeshInstance3D = $highlight/HighlightBubble
+@onready var highlight_circle: MeshInstance3D = $highlight/HighlightBubble/HighlightCircle
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D

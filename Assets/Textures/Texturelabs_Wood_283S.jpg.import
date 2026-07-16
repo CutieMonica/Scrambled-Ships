@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://e8b5dvqrx1b8"
 path.s3tc="res://.godot/imported/Texturelabs_Wood_283S.jpg-2bc0c4a1f39db67787690fe468d7d4a6.s3tc.ctex"
+path.etc2="res://.godot/imported/Texturelabs_Wood_283S.jpg-2bc0c4a1f39db67787690fe468d7d4a6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Texturelabs_Wood_283S.jpg"
-dest_files=["res://.godot/imported/Texturelabs_Wood_283S.jpg-2bc0c4a1f39db67787690fe468d7d4a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/Texturelabs_Wood_283S.jpg-2bc0c4a1f39db67787690fe468d7d4a6.s3tc.ctex", "res://.godot/imported/Texturelabs_Wood_283S.jpg-2bc0c4a1f39db67787690fe468d7d4a6.etc2.ctex"]
 
 [params]
 

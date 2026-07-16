@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://x6cml7npumkc"
 path.s3tc="res://.godot/imported/WeightedDiceNormal.png-bd42f7ffe50c827193c5906b9606a169.s3tc.ctex"
+path.etc2="res://.godot/imported/WeightedDiceNormal.png-bd42f7ffe50c827193c5906b9606a169.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/DicetnRaroBasic/textures/ExtraDiceTypes/weighted/WeightedDiceNormal.png"
-dest_files=["res://.godot/imported/WeightedDiceNormal.png-bd42f7ffe50c827193c5906b9606a169.s3tc.ctex"]
+dest_files=["res://.godot/imported/WeightedDiceNormal.png-bd42f7ffe50c827193c5906b9606a169.s3tc.ctex", "res://.godot/imported/WeightedDiceNormal.png-bd42f7ffe50c827193c5906b9606a169.etc2.ctex"]
 
 [params]
 

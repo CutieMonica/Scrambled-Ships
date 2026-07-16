@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw381xjfxgc3o"
-path="res://.godot/imported/WebScreenshot ScrambledShips.jpg-1767694e40287dcee93b6f270bb2466d.ctex"
+uid="uid://kwx4wcsphmmv"
+path="res://.godot/imported/paige.png-7300495ab3805d9a7a191f292647891a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/WebScreenshot ScrambledShips.jpg"
-dest_files=["res://.godot/imported/WebScreenshot ScrambledShips.jpg-1767694e40287dcee93b6f270bb2466d.ctex"]
+source_file="res://Assets/Textures/deskcarvings/paige.png"
+dest_files=["res://.godot/imported/paige.png-7300495ab3805d9a7a191f292647891a.ctex"]
 
 [params]
 

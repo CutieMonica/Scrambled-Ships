@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://l3123gps5d7k"
 path.s3tc="res://.godot/imported/RED_FLARE_baseColor.png-98e565be8ae1d8deb2f9919e1d6f3186.s3tc.ctex"
+path.etc2="res://.godot/imported/RED_FLARE_baseColor.png-98e565be8ae1d8deb2f9919e1d6f3186.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/NightCity99Miles/textures/RED_FLARE_baseColor.png"
-dest_files=["res://.godot/imported/RED_FLARE_baseColor.png-98e565be8ae1d8deb2f9919e1d6f3186.s3tc.ctex"]
+dest_files=["res://.godot/imported/RED_FLARE_baseColor.png-98e565be8ae1d8deb2f9919e1d6f3186.s3tc.ctex", "res://.godot/imported/RED_FLARE_baseColor.png-98e565be8ae1d8deb2f9919e1d6f3186.etc2.ctex"]
 
 [params]
 

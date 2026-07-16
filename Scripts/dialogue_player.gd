@@ -31,7 +31,7 @@ var tutorial_dialogue_2 : Dictionary = {
 
 var tutorial_dialogue_3 : Dictionary = {
 	0: "THIS PAPER IS WHERE YOU'LL SPEND A TON OF TIME DELIBERATING.",
-	1: "Bold of you to assume I'm thinking about what I'm doing",
+	1: "Bold of you to assume I'm thinking about what I'm doing.",
 	2: "... WELL, YOU SHOULD. EACH CATEGORY IS DIFFERENT, AND EACH CONTRIBUTES TO YOUR SCORE IN DIFFERENT WAYS.",
 	3: "THESE TOP CATEGORIES ADD UP HOW MANY OF EACH NUMBER YOU HAVE. IF YOU HAVE THREE THREES, SCORING IN THREES GIVES YOU NINE SCORE.",
 	4: "THE BOTTOM CATEGORIES ARE A LITTLE MORE COMPLEX, AND GIVE SCORE PROPORTIONAL TO THEIR DIFFICULTY.",
@@ -556,8 +556,22 @@ func _ready() -> void:
 func tutorial_pressed() -> void:
 	tutorial_prompt_pressed = true
 	if tutorial_prompt_pressed:
-		dialogue_progressed.emit()
-		tutorial_prompt_pressed = false
+		if !dialogue_wait_buffer.is_stopped():
+			await dialogue_wait_buffer.timeout
+		if dialogue_handler.label.visible_ratio != 1 or dialogue_handler_2.label.visible_ratio != 1:
+			dialogue_handler.label.visible_ratio = 1
+			dialogue_handler_2.label.visible_ratio = 1
+			dialogue_handler_2.outline.visible_ratio = 1
+			dialogue_handler_2.shadow.visible_ratio = 1
+			tutorial_prompt_pressed = false
+			InputHandler.can_progress_text = false
+			dialogue_wait_buffer.start()
+			await dialogue_wait_buffer.timeout
+			InputHandler.can_progress_text = true
+			return
+		else:
+			dialogue_progressed.emit()
+			tutorial_prompt_pressed = false
 
 func opening_tutorial_dialogue() -> void:
 	if GameManager.dialogue_seen.get(1) != true:
@@ -1232,7 +1246,8 @@ func finale_dialogue() -> void:
 			51:
 				get_parent().get_parent().shake_screen()
 			61:
-				get_parent().get_parent().screenshake.play("shakeconstant")
+				if !GameManager.reduce_motion:
+					get_parent().get_parent().screenshake.play("shakeconstant")
 			66:
 				dialogue_handler.volume = -2
 			71: 

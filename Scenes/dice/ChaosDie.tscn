@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://mmsp45o80nv7" path="res://Assets/Models/DicetnRaroBasic/textures/Dice_normal.png" id="4_7oh30"]
 [ext_resource type="PackedScene" uid="uid://dwp7cq0rq8nc3" path="res://Scenes/dice_logic.tscn" id="5_5mbff"]
 [ext_resource type="FontFile" uid="uid://dsdlndu0rumn6" path="res://Assets/Fonts/MetropolisStreetRegular.otf" id="7_7oh30"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="8_5mbff"]
+[ext_resource type="Material" uid="uid://ciug8wq24ba67" path="res://Materials/highlightmaterial.tres" id="9_emnmo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yahnv"]
 rough = true
@@ -189,6 +191,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_75xwo")
 
+[sub_resource type="SphereMesh" id="SphereMesh_emnmo"]
+material = ExtResource("8_5mbff")
+radius = 1.8
+height = 6.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_86ssk"]
+material = ExtResource("9_emnmo")
+bottom_radius = 1.3
+height = 0.01
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahnv"]
 
 [node name="ChaosDie" type="RigidBody3D" unique_id=194486236 groups=["dice"]]
@@ -354,6 +366,14 @@ transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_brg2b")
 mesh = SubResource("ArrayMesh_r3gm5")
+
+[node name="HighlightBubble" type="MeshInstance3D" parent="Object_4" unique_id=848401184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3636364, 0)
+mesh = SubResource("SphereMesh_emnmo")
+
+[node name="HighlightCircle" type="MeshInstance3D" parent="Object_4/HighlightBubble" unique_id=1913633819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2727273, 0)
+mesh = SubResource("CylinderMesh_86ssk")
 
 [node name="D6_Mouse_Detect" type="Area3D" parent="." unique_id=125344462]
 collision_layer = 128

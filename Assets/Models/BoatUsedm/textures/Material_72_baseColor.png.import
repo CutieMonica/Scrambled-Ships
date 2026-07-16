@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://br6ju2imfn566"
 path.s3tc="res://.godot/imported/Material_72_baseColor.png-a4a0e406f9ab34d5fd62dc233f5bb378.s3tc.ctex"
+path.etc2="res://.godot/imported/Material_72_baseColor.png-a4a0e406f9ab34d5fd62dc233f5bb378.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/BoatUsedm/textures/Material_72_baseColor.png"
-dest_files=["res://.godot/imported/Material_72_baseColor.png-a4a0e406f9ab34d5fd62dc233f5bb378.s3tc.ctex"]
+dest_files=["res://.godot/imported/Material_72_baseColor.png-a4a0e406f9ab34d5fd62dc233f5bb378.s3tc.ctex", "res://.godot/imported/Material_72_baseColor.png-a4a0e406f9ab34d5fd62dc233f5bb378.etc2.ctex"]
 
 [params]
 

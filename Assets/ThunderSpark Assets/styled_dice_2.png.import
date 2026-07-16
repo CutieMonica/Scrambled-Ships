@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5um1r12jmcis"
 path.s3tc="res://.godot/imported/styled_dice_2.png-3b086857c169494b252e151a8e9b0ce3.s3tc.ctex"
+path.etc2="res://.godot/imported/styled_dice_2.png-3b086857c169494b252e151a8e9b0ce3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/ThunderSpark Assets/styled_dice_2.png"
-dest_files=["res://.godot/imported/styled_dice_2.png-3b086857c169494b252e151a8e9b0ce3.s3tc.ctex"]
+dest_files=["res://.godot/imported/styled_dice_2.png-3b086857c169494b252e151a8e9b0ce3.s3tc.ctex", "res://.godot/imported/styled_dice_2.png-3b086857c169494b252e151a8e9b0ce3.etc2.ctex"]
 
 [params]
 

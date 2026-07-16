@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnulfgs7hp11g"
 path.s3tc="res://.godot/imported/Texturelabs_LensFX_216S.jpg-aad469e478f855d07b6f51d9113894d2.s3tc.ctex"
+path.etc2="res://.godot/imported/Texturelabs_LensFX_216S.jpg-aad469e478f855d07b6f51d9113894d2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Texturelabs_LensFX_216S.jpg"
-dest_files=["res://.godot/imported/Texturelabs_LensFX_216S.jpg-aad469e478f855d07b6f51d9113894d2.s3tc.ctex"]
+dest_files=["res://.godot/imported/Texturelabs_LensFX_216S.jpg-aad469e478f855d07b6f51d9113894d2.s3tc.ctex", "res://.godot/imported/Texturelabs_LensFX_216S.jpg-aad469e478f855d07b6f51d9113894d2.etc2.ctex"]
 
 [params]
 

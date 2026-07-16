@@ -10,10 +10,13 @@ extends Control
 @export var statue_count : int
 
 @onready var fps_2: Label = $CanvasLayer/FPS2
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var pause_button: TextureButton = $CanvasLayer/PauseButton
 
 signal round_changing
 
 var jonnymode : bool = false
+var fredmode : bool = false
 
 @export var dice_numbers : Dictionary = {
 	1: 0,
@@ -34,6 +37,7 @@ var run_number : int = 0
 var permanent_money_increases : int = 0
 var current_money : int
 var performance_mode : bool = false
+var pixelization : bool = true
 var visible_fps : bool = false
 var has_pressed_release : bool = false
 var dice_amount : int = 5
@@ -53,6 +57,7 @@ var combined_statue_1 : Node3D
 var combined_statue_2 : Node3D
 var ending_cutscene : bool = false
 var is_postgame : bool = false
+var mobile : bool = false
 
 var ticket_1_choice_1 : int
 var ticket_1_choice_2 : int
@@ -122,8 +127,15 @@ var dialogue_seen : Dictionary = {
 @export var dice_resting : bool = false
 @export var highlighting : String = "none"
 @export var is_on_web : bool = false
+@onready var performance_filter_adjust: AnimationPlayer = $PerformanceFilterAdjust
+
+@export var number_display : bool = false
+@export var reduce_motion : bool = false
+@export var increase_contrast : bool = false
+@export var reduce_flashing : bool = false
 
 func reset_things() -> void:
+	rolls = 0
 	high_score = 0
 	money_due = 0
 	permanent_money_increases = 3
@@ -176,17 +188,23 @@ func _ready() -> void:
 		get_tree().call_group("performance_switch", "performance_switch")
 		Engine.physics_ticks_per_second = 120
 		print("onweb")
+		
+	if OS.has_feature("mobile"):
+		mobile = true
+		
 	SaveLoad._load()
 	dialogue_seen = SaveLoad.SaveFileData.dialogue_seen
 	run_number = SaveLoad.SaveFileData.run_number
 	is_postgame = SaveLoad.SaveFileData.is_postgame
+	
 	performance_mode = SaveLoad.SaveFileData.performance_mode
-	#performance_mode = true
-	if !is_on_web:
-		if performance_mode:
-			toggle_performance_mode(true)
-		if !performance_mode:
-			toggle_performance_mode(false)
+	number_display = SaveLoad.SaveFileData.number_display
+	reduce_motion = SaveLoad.SaveFileData.reduce_motion
+	increase_contrast = SaveLoad.SaveFileData.increase_contrast
+	reduce_flashing = SaveLoad.SaveFileData.reduce_flashing
+	pixelization = SaveLoad.SaveFileData.pixelization
+	
+	filter_shift()
 	
 
 func give_me_your_seed() -> void:
@@ -280,3 +298,27 @@ func _process(_delta: float) -> void:
 		fps_2.text = str(Engine.get_physics_frames()) + " PTPS"
 	else:
 		pass
+	if mobile and PauseScreen.can_pause and InputHandler.actionable and PauseScreen.pause_buffer.is_stopped():
+		pause_button.disabled = false
+	else:
+		pause_button.disabled = true
+
+func pause_appear() -> void:
+	if mobile:
+		animation_player.play("pauseappear")
+func hide_pause() -> void:
+	if mobile:
+		animation_player.play_backwards("pauseappear")
+	
+
+func _on_pause_button_pressed() -> void:
+	PauseScreen.pause()
+	pause_button.visible = false
+
+func filter_shift() -> void:
+	performance_filter_adjust.play("Performance" + str(performance_mode) + "Pixelfalse") #+ "Pixel" + str(pixelization))
+	contrast_shift()
+
+func contrast_shift() -> void:
+	if increase_contrast:
+		performance_filter_adjust.queue("highcontrast")

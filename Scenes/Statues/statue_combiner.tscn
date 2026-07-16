@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://df02ry3ltiofv" path="res://Scripts/Statues/statue_combiner.gd" id="1_xwwdv"]
 [ext_resource type="Texture2D" uid="uid://bh8ahdqipjxjh" path="res://Assets/particles/cloudtexture.png" id="2_4t60h"]
 [ext_resource type="Material" uid="uid://ciug8wq24ba67" path="res://Materials/highlightmaterial.tres" id="3_4812u"]
+[ext_resource type="Material" uid="uid://bwcsschvcypgk" path="res://Materials/highlightshader.tres" id="4_4t60h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4812u"]
 transparency = 3
@@ -24,7 +25,11 @@ point_count = 4
 [sub_resource type="BoxMesh" id="BoxMesh_4t60h"]
 material = ExtResource("3_4812u")
 flip_faces = true
-size = Vector3(2.2, 3, 2.2)
+size = Vector3(2.1, 0.01, 2.1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_x8ecq"]
+material = ExtResource("4_4t60h")
+size = Vector2(2.02, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8ecq"]
 size = Vector3(2, 2.9, 1.9)
@@ -61,9 +66,25 @@ scale_amount_max = 1.8
 scale_amount_curve = SubResource("Curve_v7xr8")
 
 [node name="StatueHighlight" type="MeshInstance3D" parent="." unique_id=1250328987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09999993, 0)
 visible = false
 mesh = SubResource("BoxMesh_4t60h")
+
+[node name="StatueHighlight2" type="MeshInstance3D" parent="StatueHighlight" unique_id=499170077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 1.01)
+mesh = SubResource("QuadMesh_x8ecq")
+
+[node name="StatueHighlight3" type="MeshInstance3D" parent="StatueHighlight" unique_id=745136544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -1.01)
+mesh = SubResource("QuadMesh_x8ecq")
+
+[node name="StatueHighlight4" type="MeshInstance3D" parent="StatueHighlight" unique_id=921934736]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.01, 0.9, 0)
+mesh = SubResource("QuadMesh_x8ecq")
+
+[node name="StatueHighlight5" type="MeshInstance3D" parent="StatueHighlight" unique_id=940500347]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.01, 0.9, 0)
+mesh = SubResource("QuadMesh_x8ecq")
 
 [node name="StatueChoiceArea" type="Area3D" parent="." unique_id=2001005802]
 

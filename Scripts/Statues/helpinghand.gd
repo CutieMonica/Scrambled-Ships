@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var rarity : int = 3
 @export var base_modifier : float = 1
 @export var single_modifier : float = -8
 @export var current_category : String = "none"

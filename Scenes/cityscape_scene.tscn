@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dbwt03qjv4n7w" path="res://Assets/Models/Hannah Sapiee Carpet/scene.gltf" id="11_l80xh"]
 [ext_resource type="Texture2D" uid="uid://ble2jd8tw3c45" path="res://Assets/Models/Hannah Sapiee Carpet/textures/02_-_Default_baseColor_normal.png" id="12_wu3rg"]
 [ext_resource type="PackedScene" uid="uid://cbsypsc24biha" path="res://Assets/Models/SolidBotTable/scene.gltf" id="18_085jn"]
-[ext_resource type="Texture2D" uid="uid://ecaxgiy5lpk6" path="res://Assets/Textures/deskcarvings/badideaswoodcarving.png" id="20_65sib"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s4qdn"]
 sky_top_color = Color(0.2822592, 0.2486633, 0.6294634, 1)
@@ -210,18 +209,20 @@ size = Vector3(130.8, 65.4, 4.7000003)
 [sub_resource type="BoxShape3D" id="BoxShape3D_64ova"]
 size = Vector3(18, 65.4, 50.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_badgh"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l80xh"]
+load_path = "res://.godot/imported/badideaswoodcarving.png-38d5f11ffb9a3c6284337d2999c87413.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ck1q"]
 transparency = 1
-albedo_color = Color(0.0627451, 0.0627451, 0.0627451, 0.9254902)
-albedo_texture = ExtResource("20_65sib")
-metallic = 0.78
-metallic_specular = 1.0
-roughness = 0.95
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_l80xh")
+metallic = 1.0
+metallic_specular = 0.41
 rim = 0.0
 rim_tint = 0.0
 clearcoat_enabled = true
-clearcoat = 0.22
-clearcoat_roughness = 0.69
+clearcoat = 0.09
+clearcoat_roughness = 0.91
 refraction_scale = -1.0
 distance_fade_mode = 1
 distance_fade_max_distance = 30.0
@@ -229,13 +230,13 @@ stencil_flags = 2
 stencil_color = Color(1, 1, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t3qq2"]
-material = SubResource("StandardMaterial3D_badgh")
+material = SubResource("StandardMaterial3D_4ck1q")
 size = Vector2(3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfovy"]
 size = Vector3(39, 0.6, 20.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kbwu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu3rg"]
 transparency = 3
 alpha_hash_scale = 0.97
 alpha_antialiasing_mode = 0
@@ -247,7 +248,7 @@ emission_on_uv2 = true
 disable_receive_shadows = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_l80xh"]
-material = SubResource("StandardMaterial3D_0kbwu")
+material = SubResource("StandardMaterial3D_wu3rg")
 
 [sub_resource type="Curve" id="Curve_wu3rg"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5277778, 1), 0.0, 0.0, 0, 0, Vector2(0.8981481, 0.1460675), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -270,7 +271,7 @@ disable_receive_shadows = true
 [sub_resource type="SphereMesh" id="SphereMesh_cp472"]
 material = SubResource("StandardMaterial3D_lq62r")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu3rg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_085jn"]
 transparency = 3
 alpha_hash_scale = 0.97
 alpha_antialiasing_mode = 0
@@ -282,7 +283,7 @@ emission_on_uv2 = true
 disable_receive_shadows = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_g7o27"]
-material = SubResource("StandardMaterial3D_wu3rg")
+material = SubResource("StandardMaterial3D_085jn")
 radius = 1.702
 height = 2.566
 
@@ -945,7 +946,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4ck1q")
 
-[node name="CityscapeScene" type="StaticBody3D" unique_id=129478226]
+[node name="CityscapeScene" type="StaticBody3D" unique_id=129478226 groups=["performance_switch"]]
 input_ray_pickable = false
 script = ExtResource("1_5fi2v")
 
@@ -1230,6 +1231,7 @@ transform = Transform3D(-1.0490733e-06, 0, 25, 0, 27, 0, -24, 0, -1.0927847e-06,
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 30, -0.96000004, -20.19, -23.87)
 
 [node name="Cube_Material_0" parent="Table/Sketchfab_model/899646a3f944472b8c49666336888e14_fbx/RootNode/Cube" parent_id_path=PackedInt32Array(2000744968, 993536795) index="0" unique_id=1144368447]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 1.4210855e-14, 0, 2.842171e-14, 1.0000002, 0, -1.4901161e-08, 0.0044000037)
 mesh = SubResource("ArrayMesh_vismx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=276808296]

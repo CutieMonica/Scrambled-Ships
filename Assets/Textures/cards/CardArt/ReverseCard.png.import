@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu0bgv010wewo"
 path.s3tc="res://.godot/imported/ReverseCard.png-40aa8f8e869b68f386f841a1ad22024f.s3tc.ctex"
+path.etc2="res://.godot/imported/ReverseCard.png-40aa8f8e869b68f386f841a1ad22024f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/cards/CardArt/ReverseCard.png"
-dest_files=["res://.godot/imported/ReverseCard.png-40aa8f8e869b68f386f841a1ad22024f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ReverseCard.png-40aa8f8e869b68f386f841a1ad22024f.s3tc.ctex", "res://.godot/imported/ReverseCard.png-40aa8f8e869b68f386f841a1ad22024f.etc2.ctex"]
 
 [params]
 

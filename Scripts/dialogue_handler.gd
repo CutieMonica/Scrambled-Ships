@@ -35,9 +35,14 @@ func update_text() -> void:
 		"top":
 			label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 
-
+func contrast_switch() -> void:
+	if GameManager.increase_contrast:
+		label.set("theme_override_colors/font_shadow_color", Color("000000ff"))
+	else:
+		label.set("theme_override_colors/font_shadow_color", Color("0000ffff"))
 
 func _ready() -> void:
+	contrast_switch()
 	label.text = " "
 	if GameManager.ending_cutscene:
 		align_screen = "middle"
@@ -82,6 +87,7 @@ func _on_timer_timeout() -> void:
 	if label.visible_ratio == 1:
 		text_done.emit()
 		timer.stop()
+	
 
 func ending_instability() -> void:
 	text_shader_animation.stop()

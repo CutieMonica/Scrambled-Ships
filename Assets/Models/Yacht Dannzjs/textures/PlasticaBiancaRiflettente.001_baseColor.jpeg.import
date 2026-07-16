@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7s4332mxo3rc"
 path.s3tc="res://.godot/imported/PlasticaBiancaRiflettente.001_baseColor.jpeg-d1373aefc8fbfb072abc5a3730bbfbdf.s3tc.ctex"
+path.etc2="res://.godot/imported/PlasticaBiancaRiflettente.001_baseColor.jpeg-d1373aefc8fbfb072abc5a3730bbfbdf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Models/Yacht Dannzjs/textures/PlasticaBiancaRiflettente.001_baseColor.jpeg"
-dest_files=["res://.godot/imported/PlasticaBiancaRiflettente.001_baseColor.jpeg-d1373aefc8fbfb072abc5a3730bbfbdf.s3tc.ctex"]
+dest_files=["res://.godot/imported/PlasticaBiancaRiflettente.001_baseColor.jpeg-d1373aefc8fbfb072abc5a3730bbfbdf.s3tc.ctex", "res://.godot/imported/PlasticaBiancaRiflettente.001_baseColor.jpeg-d1373aefc8fbfb072abc5a3730bbfbdf.etc2.ctex"]
 
 [params]
 

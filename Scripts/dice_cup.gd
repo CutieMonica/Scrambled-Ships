@@ -38,9 +38,10 @@ func release_on_that_thang() -> void:
 	
 
 func _process(delta: float) -> void:
-	if hovered and back_to_normal and !outlined:
+	if hovered and back_to_normal and !outlined and !get_parent().between_rounds and !get_parent().camera_movement.is_playing():
 		outliner.play("outlineon")
 		outlined = true
+		InputHandler.hovered_object = "dicecup"
 	if play_anim == "reload_die":
 		lid_collider.disabled = true
 		animation_player.play("reload_die")
@@ -98,7 +99,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_static_body_3d_mouse_entered() -> void:
-	if back_to_normal:
+	if back_to_normal and !get_parent().between_rounds and !get_parent().camera_movement.is_playing():
 		outliner.play("outlineon")
 		outlined = true
 		InputHandler.hovered_object = "dicecup"

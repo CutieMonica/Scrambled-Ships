@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://qu66yl6pcvrx"
 path.s3tc="res://.godot/imported/PricetagPaper.png-986279c18a823f0b3da9f2ed6c99d431.s3tc.ctex"
+path.etc2="res://.godot/imported/PricetagPaper.png-986279c18a823f0b3da9f2ed6c99d431.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/PricetagPaper.png"
-dest_files=["res://.godot/imported/PricetagPaper.png-986279c18a823f0b3da9f2ed6c99d431.s3tc.ctex"]
+dest_files=["res://.godot/imported/PricetagPaper.png-986279c18a823f0b3da9f2ed6c99d431.s3tc.ctex", "res://.godot/imported/PricetagPaper.png-986279c18a823f0b3da9f2ed6c99d431.etc2.ctex"]
 
 [params]
 
