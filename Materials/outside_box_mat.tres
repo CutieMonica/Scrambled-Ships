@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://q1rvacwmd1xd" path="res://Assets/Textures/Normals/LeatherNormal.png" id="2_qm7f7"]
 
 [resource]
-albedo_color = Color(2.1658839e-06, 0.36908993, 0.63204986, 1)
+albedo_color = Color(0.60367435, 0.6253795, 0.78957844, 1)
 albedo_texture = ExtResource("1_pbd68")
-metallic_specular = 0.48
-roughness = 0.94
+metallic = 0.15
+metallic_specular = 0.09
+roughness = 0.87
 normal_enabled = true
-normal_scale = 1.33
+normal_scale = 1.85
 normal_texture = ExtResource("2_qm7f7")

@@ -34,6 +34,7 @@ var choosing_new_cards : bool = false
 var combining_statues: bool = false
 var money_due : int 
 var run_number : int = 0
+var coinflip_high_score : int = 0
 var permanent_money_increases : int = 0
 var current_money : int
 var performance_mode : bool = false
@@ -124,6 +125,7 @@ var dialogue_seen : Dictionary = {
 @export var new_round_target : int = 20
 @export var current_round : int = 0
 @export var dice_rested : int = 0
+@export var coin_flip_round_score : int = 0
 @export var dice_resting : bool = false
 @export var highlighting : String = "none"
 @export var is_on_web : bool = false
@@ -138,6 +140,7 @@ func reset_things() -> void:
 	rolls = 0
 	high_score = 0
 	money_due = 0
+	coin_flip_round_score = 0
 	permanent_money_increases = 3
 	current_money = 0
 	has_pressed_release = false
@@ -196,6 +199,8 @@ func _ready() -> void:
 	dialogue_seen = SaveLoad.SaveFileData.dialogue_seen
 	run_number = SaveLoad.SaveFileData.run_number
 	is_postgame = SaveLoad.SaveFileData.is_postgame
+	coinflip_high_score = SaveLoad.SaveFileData.coinflip_high_score
+	
 	
 	performance_mode = SaveLoad.SaveFileData.performance_mode
 	number_display = SaveLoad.SaveFileData.number_display
@@ -203,6 +208,7 @@ func _ready() -> void:
 	increase_contrast = SaveLoad.SaveFileData.increase_contrast
 	reduce_flashing = SaveLoad.SaveFileData.reduce_flashing
 	pixelization = SaveLoad.SaveFileData.pixelization
+	
 	
 	filter_shift()
 	

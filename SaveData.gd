@@ -2,12 +2,14 @@ extends Resource
 class_name SaveDataResource
 
 @export var run_number : int = 0
+@export var coinflip_high_score : int = 0
+@export var is_postgame : bool = false
+
 @export var screensize : int = 0
 @export var volume : float = 0
 @export var music_volume : float = 0
 @export var sfx_volume : float = 0
 @export var performance_mode : bool = false
-@export var is_postgame : bool = false
 
 @export var number_display : bool = false
 @export var reduce_motion : bool = false

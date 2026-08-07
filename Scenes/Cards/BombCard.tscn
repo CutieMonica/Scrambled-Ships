@@ -384,7 +384,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("97_5cash")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Explode",
 "speed": 120.0
 }]

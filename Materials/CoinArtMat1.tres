@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bb7m1oyw4cmrh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1jaf"]
+load_path = "res://.godot/imported/bob.png-aff51c10a367ba1f832a662800480961.s3tc.ctex"
+
+[resource]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.85882354)
+albedo_texture = SubResource("CompressedTexture2D_e1jaf")
+metallic = 1.0
+metallic_specular = 0.1
+roughness = 0.88

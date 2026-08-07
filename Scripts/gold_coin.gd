@@ -6,13 +6,17 @@ var mid_air_hits : int = 0
 var hovered : bool = false
 var random_song : int = 1
 
+@onready var graphic_1: MeshInstance3D = $Graphic1
+@onready var graphic_2: MeshInstance3D = $Graphic2
+@onready var random_drawing_picker: Node = $RandomDrawingPicker
+
 var moving : bool = false
 @onready var gold_coin: RigidBody3D = $"."
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var hit_counter: Label3D = $"../HitCounter"
 @onready var timer: Timer = $Timer
 @onready var collision_shape_3d: CollisionShape3D = $StupidFeatureNeutral/CollisionShape3D
-@onready var mesh: MeshInstance3D = $"Sketchfab_Scene/Sketchfab_model/4761e60571154708a3a5b48b4216d582_fbx/RootNode/bitcoin/bitcoin_Material_0"
+@onready var mesh: CSGCylinder3D = $CSGCylinder3D
 var values : Array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 @export var weight_probabilities : Array = [2, 2, 1, 0.7, 0.7, 0.7, 0.2, 0.2, 0.9, 0.9]
 var random_noise : int = 1
@@ -44,26 +48,33 @@ func _ready() -> void:
 	var random_value : int = values[random_weight.rand_weighted(weight_probabilities)]
 	match random_value:
 		1:
-			mesh.get_surface_override_material(0).albedo_color = Color("fcb700")
+			mesh.get_material().albedo_color = Color("fcb700")
 		2:
-			mesh.get_surface_override_material(0).albedo_color = Color("fc9500ff")
+			mesh.get_material().albedo_color = Color("fc9500ff")
 		3:
-			mesh.get_surface_override_material(0).albedo_color = Color("fcd71eff")
+			mesh.get_material().albedo_color = Color("fcd71eff")
 		4:
-			mesh.get_surface_override_material(0).albedo_color = Color("d6835eff")
+			mesh.get_material().albedo_color = Color("d6835eff")
 		5:
-			mesh.get_surface_override_material(0).albedo_color = Color("f9b669ff")
+			mesh.get_material().albedo_color = Color("f9b669ff")
 		6:
-			mesh.get_surface_override_material(0).albedo_color = Color("bb5333ff")
+			mesh.get_material().albedo_color = Color("bb5333ff")
 		7:
-			mesh.get_surface_override_material(0).albedo_color = Color("cde9fdff")
+			mesh.get_material().albedo_color = Color("cde9fdff")
 		8:
-			mesh.get_surface_override_material(0).albedo_color = Color("aed9f6ff")
+			mesh.get_material().albedo_color = Color("aed9f6ff")
 		9:
-			mesh.get_surface_override_material(0).albedo_color = Color("d48c5aff")
+			mesh.get_material().albedo_color = Color("d48c5aff")
 		10:
-			mesh.get_surface_override_material(0).albedo_color = Color("fecf98ff")
-
+			mesh.get_material().albedo_color = Color("fecf98ff")
+	#this game costs one bobillion dollars to play
+	#I cant get the randomization to work the way I want. Either way, i'll just make it static textures cause its easier and may look better.
+	#random_drawing_picker.random_icon = GameManager.rng.randi_range(1, random_drawing_picker.random_icon_image.size())
+	#graphic_1.get_active_material(0).albedo_texture = random_drawing_picker.random_icon_image.get(random_drawing_picker.random_icon)
+	
+	#random_drawing_picker.random_icon = GameManager.rng.randi_range(1, random_drawing_picker.random_icon_image.size())
+	#graphic_2.get_active_material(0).albedo_texture = random_drawing_picker.random_icon_image.get(random_drawing_picker.random_icon)
+	
 func freeze() -> void:
 	if gold_coin.sleeping or linear_velocity.length() < 1.5:
 		gold_coin.freeze = true
@@ -76,6 +87,12 @@ func unfreeze() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact") and hovered:
 		mid_air_hits += 1
+		if mid_air_hits > GameManager.coin_flip_round_score and mid_air_hits <= 12:
+			GameManager.coin_flip_round_score = mid_air_hits
+			get_tree().call_group("coin_flip_affected", "update_numbers")
+		if mid_air_hits > GameManager.coinflip_high_score:
+			GameManager.coinflip_high_score = mid_air_hits
+			SaveLoad.SaveFileData.coinflip_high_score = mid_air_hits
 		moving = true
 		unfreeze()
 		collision_shape_3d.disabled = false

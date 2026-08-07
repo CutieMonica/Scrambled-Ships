@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dlqkmrb0x6lqk" path="res://Assets/Textures/Texturelabs_Wood_261S.jpg" id="5_4ck1q"]
 [ext_resource type="Texture2D" uid="uid://d1y3yenw2aqcu" path="res://Assets/Textures/Normals/WoodNormalMap.png" id="6_085jn"]
 [ext_resource type="PackedScene" uid="uid://dbwt03qjv4n7w" path="res://Assets/Models/Hannah Sapiee Carpet/scene.gltf" id="11_l80xh"]
+[ext_resource type="PackedScene" uid="uid://c1si25ufsnkkg" path="res://Scenes/random_drawing_picker.tscn" id="12_g7o27"]
 [ext_resource type="Texture2D" uid="uid://ble2jd8tw3c45" path="res://Assets/Models/Hannah Sapiee Carpet/textures/02_-_Default_baseColor_normal.png" id="12_wu3rg"]
 [ext_resource type="PackedScene" uid="uid://cbsypsc24biha" path="res://Assets/Models/SolidBotTable/scene.gltf" id="18_085jn"]
 
@@ -1374,6 +1375,8 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -2.07, -20.52, -8.5199995)
 
 [node name="Box001_02 - Default_0" parent="Sketchfab_Scene/Sketchfab_model/c786f85e303c4184a4f1a6960dab7f81_fbx/RootNode/Box001" parent_id_path=PackedInt32Array(540414772, 1174371449) index="0" unique_id=190519251]
 mesh = SubResource("ArrayMesh_085jn")
+
+[node name="RandomDrawingPicker" parent="." unique_id=8445754 instance=ExtResource("12_g7o27")]
 
 [editable path="City"]
 [editable path="City2"]

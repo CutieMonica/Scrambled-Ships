@@ -399,7 +399,9 @@ func spawn_money() -> void:
 		play_coins_to_shop()
 
 func round_start() -> void:
+	GameManager.coin_flip_round_score = 0
 	statue_stand.mouse_box_on()
+	get_tree().call_group("coin_flip_affected", "update_numbers")
 	get_tree().call_group("statues", "main_scene_round_started")
 	get_tree().call_group("robot", "reset_burnt")
 	get_tree().call_group("dice_logic", "round_start_trigger")

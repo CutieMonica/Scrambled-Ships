@@ -9,8 +9,11 @@
 render_priority = 1
 albedo_color = Color(0.20618686, 0.23460382, 0.4761415, 1)
 albedo_texture = ExtResource("1_qrktv")
-metallic_specular = 0.08
+metallic = 0.06
+metallic_specular = 0.0
 metallic_texture = ExtResource("2_msg2j")
+roughness = 0.88
 roughness_texture = ExtResource("4_mu0b4")
 normal_enabled = true
+normal_scale = 0.69
 normal_texture = ExtResource("3_p8afr")

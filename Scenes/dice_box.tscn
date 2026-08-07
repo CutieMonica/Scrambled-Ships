@@ -35,6 +35,7 @@ ao_texture = SubResource("CompressedTexture2D_at6vx")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tyrr4"]
 material = SubResource("StandardMaterial3D_tyrr4")
+size = Vector3(1.1999999, 1, 1.18)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8w3c8"]
 rough = true
@@ -63,6 +64,36 @@ size = Vector3(0.099999994, 0.19, 0.04)
 [sub_resource type="BoxMesh" id="BoxMesh_k4asg"]
 material = ExtResource("4_8w3c8")
 size = Vector3(1.12, 0.2, 0.1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7cw85"]
+load_path = "res://.godot/imported/Texturelabs_Wood_270M.jpg-1e0264ee5394a49bae25eb46b2f31bef.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l0bp7"]
+load_path = "res://.godot/imported/NewWoodSpecularMap.png-44e06aa38dac23275f2831902e83a769.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vegrt"]
+load_path = "res://.godot/imported/NewWoodNormalMap.png-5e334680c75fe71ec787a9c7b0461bf7.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0tqhf"]
+load_path = "res://.godot/imported/NewWoodDisplacementMap.png-4ab0db54dbde6fc9342eb1c004928af9.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtfdb"]
+render_priority = 1
+albedo_color = Color(0.20618686, 0.23460382, 0.4761415, 1)
+albedo_texture = SubResource("CompressedTexture2D_7cw85")
+metallic_specular = 0.08
+metallic_texture = SubResource("CompressedTexture2D_l0bp7")
+roughness_texture = SubResource("CompressedTexture2D_0tqhf")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_vegrt")
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ol11"]
+material = SubResource("StandardMaterial3D_jtfdb")
+size = Vector3(0.1, 0.2, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3m2ur"]
+material = SubResource("StandardMaterial3D_jtfdb")
+size = Vector3(1, 0.2, 0.08)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tmp4e"]
 material = ExtResource("4_8w3c8")
@@ -312,7 +343,7 @@ physics_material_override = SubResource("PhysicsMaterial_hf8wg")
 shape = SubResource("BoxShape3D_tyrr4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Base" unique_id=771833328]
-transform = Transform3D(1, 0, 0, 0, -0.020000003, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -0.020000003, 0, 0, 0, 1, 0.009999931, 0, -5.9604645e-08)
 mesh = SubResource("BoxMesh_tyrr4")
 
 [node name="Base2" type="StaticBody3D" parent="." unique_id=1993021355]
@@ -321,7 +352,7 @@ input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_8w3c8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base2" unique_id=836903897]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054138184, 0.094122544, 0.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054138184, 0.08512255, 0.55)
 shape = SubResource("BoxShape3D_xyhqa")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Base2" unique_id=40622165]
@@ -373,12 +404,20 @@ transform = Transform3D(-0.98999995, 0, 8.7422784e-08, 0, 1, 0, -8.654855e-08, 0
 mesh = SubResource("BoxMesh_k4asg")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Base2" unique_id=764042569]
-transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, 0.049000002, 0.101, -0.55)
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, 0.049000002, 0.102, -0.55)
 mesh = SubResource("BoxMesh_k4asg")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Base2" unique_id=73548620]
-transform = Transform3D(-1, 0, 1.04907336e-07, 0, 1, 0, -8.7422784e-08, 0, -1.2, -0.55, 0.1, 0)
-mesh = SubResource("BoxMesh_tmp4e")
+transform = Transform3D(-1, 0, 1.04907336e-07, 0, 1, 0, -8.7422784e-08, 0, -1.2, -0.54599994, 0.103999995, -0.55)
+mesh = SubResource("BoxMesh_4ol11")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Base2" unique_id=862249076]
+transform = Transform3D(-1, 0, 1.04907336e-07, 0, 1, 0, -8.742279e-08, 0, -1.2, -0.54599994, 0.10200001, 0.54800004)
+mesh = SubResource("BoxMesh_4ol11")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Base2" unique_id=487663868]
+transform = Transform3D(1.3113417e-07, 0, 1.2, 0, 1, 0, -1, 0, 1.5736101e-07, -0.54800004, 0.102, -0.0019999028)
+mesh = SubResource("BoxMesh_3m2ur")
 
 [node name="MeshInstance3D17" type="MeshInstance3D" parent="Base2" unique_id=40446212]
 transform = Transform3D(-0.099999964, 0, 8.74228e-08, 0, 1, 0, -8.742275e-09, 0, -1.0000001, 0.5050001, 0.1, 0)

@@ -149,7 +149,7 @@ func throw() -> void:
 	
 func update_ui() -> void:
 	GameManager.update_dice_numbers(get_parent().dice_position, get_parent().number)
-	get_parent().get_parent().current_dice_paper.update_dice_numbers(get_parent().dice_position, get_parent().number)
+	get_tree().get_first_node_in_group("main").current_dice_paper.update_dice_numbers(get_parent().dice_position, get_parent().number)
 
 func _physics_process(delta: float) -> void:
 		

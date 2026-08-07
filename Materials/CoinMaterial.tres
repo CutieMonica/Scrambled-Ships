@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6am5dcv70swi"]
+
+[ext_resource type="Texture2D" uid="uid://be4b0us46pder" path="res://Assets/Textures/metalcointexture.jpg" id="1_mw81j"]
+[ext_resource type="Texture2D" uid="uid://dtjp4eqi531av" path="res://Assets/Textures/Normals/coinmetal/SpecularMap.jpg" id="2_dpjas"]
+[ext_resource type="Texture2D" uid="uid://buf5ylxuh8i26" path="res://Assets/Textures/Normals/coinmetal/NormalMap.jpg" id="3_pgyhc"]
+[ext_resource type="Texture2D" uid="uid://cifha38pm4jth" path="res://Assets/Textures/Normals/coinmetal/DisplacementMap.jpg" id="4_j3umn"]
+
+[resource]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.73192155, 0.42702097, 1)
+albedo_texture = ExtResource("1_mw81j")
+metallic = 0.86
+metallic_specular = 0.1
+metallic_texture = ExtResource("2_dpjas")
+roughness = 0.8
+roughness_texture = ExtResource("4_j3umn")
+normal_enabled = true
+normal_texture = ExtResource("3_pgyhc")

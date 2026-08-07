@@ -1,15 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://djm4rl6gtbpjg"]
 
-[ext_resource type="Texture2D" uid="uid://f6xg2fkburav" path="res://Assets/Models/lowpolyGoldCoinBlobFortress/CoinNormalMap.png" id="1_gir85"]
-
 [resource]
-albedo_color = Color(0.989878, 0.71681124, 3.85046e-07, 1)
-metallic = 1.0
-metallic_specular = 0.1
-roughness = 0.83
-normal_texture = ExtResource("1_gir85")
-bent_normal_texture = ExtResource("1_gir85")
-clearcoat = 0.19
-clearcoat_roughness = 0.7
+shading_mode = 2
+albedo_color = Color(1, 0.7176471, 0, 1)
+metallic = 0.89
+metallic_specular = 0.21
+roughness = 0.45
 refraction_scale = 1.0
 disable_receive_shadows = true

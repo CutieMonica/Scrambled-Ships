@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1si25ufsnkkg"]
+
+[ext_resource type="Script" uid="uid://b157gbcjgo82b" path="res://Scripts/random_drawing_picker.gd" id="1_i0rql"]
+
+[node name="RandomDrawingPicker" type="Node" unique_id=8445754]
+script = ExtResource("1_i0rql")

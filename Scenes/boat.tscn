@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://syyuteg2503v" path="res://Assets/Textures/water.jpg" id="7_d0xfp"]
 [ext_resource type="PackedScene" uid="uid://1cjhdu67y4e8" path="res://Assets/Models/DicetnRaroBasic/scene.gltf" id="8_ksyiy"]
 [ext_resource type="Shader" uid="uid://cnonshuixifsj" path="res://Shaders/blackhole.gdshader" id="9_d0xfp"]
+[ext_resource type="PackedScene" uid="uid://c1si25ufsnkkg" path="res://Scenes/random_drawing_picker.tscn" id="10_ksyiy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdcrg"]
 albedo_texture = ExtResource("3_tcwdh")
@@ -2661,7 +2662,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.400001, -277.5, -18)
 mesh = SubResource("BoxMesh_4mipr")
 
 [node name="Sketchfab_Scene3" parent="." unique_id=659088398 instance=ExtResource("8_ksyiy")]
-transform = Transform3D(-377.06363, 53.26464, 324.01523, -81.58794, 462.708, -171.01007, -318.0666, -181.83473, -340.24948, -512.10004, 85.649994, -678.00006)
+transform = Transform3D(-377.06363, 53.264633, 324.01523, -81.58794, 462.70795, -171.01007, -318.0666, -181.83472, -340.24948, -512.10004, 85.649994, -678.00006)
 
 [node name="Sketchfab_Scene4" parent="." unique_id=295738325 instance=ExtResource("8_ksyiy")]
 transform = Transform3D(-299.19418, 228.0788, 329.33698, 175.54466, 444.12918, -148.09903, -360.09274, 27.005962, -345.83786, 570.7, 61.29999, -930.6001)
@@ -2772,5 +2773,7 @@ color = Color(18.892157, 17.976582, 17.34272, 1)
 color_ramp = SubResource("Gradient_e25ta")
 hue_variation_min = -0.35
 hue_variation_max = 0.43
+
+[node name="RandomDrawingPicker" parent="." unique_id=8445754 instance=ExtResource("10_ksyiy")]
 
 [editable path="Sketchfab_Scene2"]
